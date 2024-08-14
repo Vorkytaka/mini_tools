@@ -17,23 +17,21 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
 
-  if(!kIsWeb && Platform.isMacOS) {
+  if (!kIsWeb && Platform.isMacOS) {
     await _configureMacosWindowUtils();
   }
 
   // const windowOptions = WindowOptions(
-    // size: Size(800, 600),
-    // center: true,
-    // backgroundColor: Colors.white,
-    // skipTaskbar: false,
-    // titleBarStyle: TitleBarStyle.normal,
+  // size: Size(800, 600),
+  // center: true,
+  // backgroundColor: Colors.white,
+  // skipTaskbar: false,
+  // titleBarStyle: TitleBarStyle.normal,
   // );
   // await windowManager.waitUntilReadyToShow(windowOptions, () async {
   //   await windowManager.show();
   //   await windowManager.focus();
   // });
-
-
 
   runApp(const App());
 }

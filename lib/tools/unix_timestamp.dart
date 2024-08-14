@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:macos_ui/macos_ui.dart';
@@ -38,50 +38,64 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
   Widget build(BuildContext context) {
     return MacosScaffold(
       toolBar: const ToolBar(
+        centerTitle: true,
         title: Text('Unix Timestamp'),
       ),
       children: [
         ContentArea(
-          builder: (context, controller) => Column(
-            children: [
-              Row(
+          builder: (context, controller) => SingleChildScrollView(
+            controller: controller,
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
                 children: [
-                  PushButton(
-                    controlSize: ControlSize.large,
-                    onPressed: _setNow,
-                    child: Text('Now'),
-                  ),
-                  Expanded(
-                    child: MacosTextField(
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                      ],
-                      controller: _inputController,
-                    ),
-                  ),
-                  MacosPopupButton(
-                    value: _type,
-                    items: TimestampType.values
-                        .map(
-                          (type) => MacosPopupMenuItem(
-                            value: type,
-                            child: Text(type.name),
+                  Row(
+                    children: [
+                      PushButton(
+                        controlSize: ControlSize.regular,
+                        onPressed: _setNow,
+                        child: Text('Now'),
+                      ),
+                      Expanded(
+                        child: MacosTextField(
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
+                          keyboardType: const TextInputType.numberWithOptions(
+                            decimal: false,
+                            signed: false,
                           ),
-                        )
-                        .toList(growable: false),
-                    onChanged: (type) {
-                      if (type != null && type != _type) {
-                        setState(() {
-                          _type = type;
-                          _onInputChange();
-                        });
-                      }
-                    },
+                          controller: _inputController,
+                        ),
+                      ),
+                      MacosPopupButton(
+                        value: _type,
+                        items: TimestampType.values
+                            .map(
+                              (type) => MacosPopupMenuItem(
+                                value: type,
+                                child: Text(type.name),
+                              ),
+                            )
+                            .toList(growable: false),
+                        onChanged: (type) {
+                          if (type != null && type != _type) {
+                            setState(() {
+                              _type = type;
+                              _onInputChange();
+                            });
+                          }
+                        },
+                      ),
+                    ],
                   ),
+                  const SizedBox(height: 16),
+                  MacosPulldownMenuDivider(),
+                  const SizedBox(height: 16),
+                  _DateTimeOutput(datetime: _datetime),
                 ],
               ),
-              if (_datetime != null) _DateTimeOutput(datetime: _datetime!),
-            ],
+            ),
           ),
         ),
       ],
@@ -129,7 +143,7 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
 }
 
 class _DateTimeOutput extends StatelessWidget {
-  final DateTime datetime;
+  final DateTime? datetime;
 
   static final _weekdayFormat = DateFormat.EEEE();
   static final _dateFormat = DateFormat.yMd();
@@ -145,61 +159,66 @@ class _DateTimeOutput extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _DateItem(
-              title: 'Local time',
-              datetime: datetime,
-              mapper: (datetime) => datetime.toIso8601String(),
-            ),
-            SizedBox(height: 12),
-            _DateItem(
-              title: 'UTC time',
-              datetime: datetime,
-              mapper: (datetime) => datetime.toUtc().toIso8601String(),
-            ),
-          ],
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _DateItem(
+                title: 'Local time',
+                datetime: datetime,
+                mapper: (datetime) => datetime.toIso8601String(),
+              ),
+              SizedBox(height: 12),
+              _DateItem(
+                title: 'UTC time',
+                datetime: datetime,
+                mapper: (datetime) => datetime.toUtc().toIso8601String(),
+              ),
+            ],
+          ),
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _DateItem(
-              title: 'Weekday',
-              datetime: datetime,
-              mapper: _weekdayFormat.format,
-            ),
-            SizedBox(height: 12),
-            _DateItem(
-              title: 'Week of the year',
-              datetime: datetime,
-              mapper: (datetime) => '${weekNumber(datetime)}',
-            ),
-            SizedBox(height: 12),
-            _DateItem(
-              title: 'Day of the year',
-              datetime: datetime,
-              mapper: (datetime) => '${dayNumber(datetime)}',
-            ),
-            SizedBox(height: 12),
-            _DateItem(
-              title: 'Day of the year',
-              datetime: datetime,
-              mapper: (datetime) => '${isLeapYear(datetime)}',
-            ),
-            SizedBox(height: 12),
-            _DateItem(
-              title: 'Date only',
-              datetime: datetime,
-              mapper: (datetime) => '${_dateFormat.format(datetime)}',
-            ),
-            SizedBox(height: 12),
-            _DateItem(
-              title: 'Time only',
-              datetime: datetime,
-              mapper: (datetime) => '${_timeFormat.format(datetime)}',
-            ),
-          ],
+        const SizedBox(width: 16),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _DateItem(
+                title: 'Weekday',
+                datetime: datetime,
+                mapper: _weekdayFormat.format,
+              ),
+              SizedBox(height: 12),
+              _DateItem(
+                title: 'Week of the year',
+                datetime: datetime,
+                mapper: (datetime) => '${weekNumber(datetime)}',
+              ),
+              SizedBox(height: 12),
+              _DateItem(
+                title: 'Day of the year',
+                datetime: datetime,
+                mapper: (datetime) => '${dayNumber(datetime)}',
+              ),
+              SizedBox(height: 12),
+              _DateItem(
+                title: 'Leap year',
+                datetime: datetime,
+                mapper: isLeapYearYesNo,
+              ),
+              SizedBox(height: 12),
+              _DateItem(
+                title: 'Date only',
+                datetime: datetime,
+                mapper: (datetime) => '${_dateFormat.format(datetime)}',
+              ),
+              SizedBox(height: 12),
+              _DateItem(
+                title: 'Time only',
+                datetime: datetime,
+                mapper: (datetime) => '${_timeFormat.format(datetime)}',
+              ),
+            ],
+          ),
         ),
       ],
     );
@@ -208,9 +227,9 @@ class _DateTimeOutput extends StatelessWidget {
 
 typedef _DateItemMapper = String Function(DateTime datetime);
 
-class _DateItem extends StatelessWidget {
+class _DateItem extends StatefulWidget {
   final String title;
-  final DateTime datetime;
+  final DateTime? datetime;
   final _DateItemMapper mapper;
 
   const _DateItem({
@@ -220,14 +239,77 @@ class _DateItem extends StatelessWidget {
   });
 
   @override
+  State<_DateItem> createState() => _DateItemState();
+}
+
+class _DateItemState extends State<_DateItem> {
+  final _controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _updateText();
+  }
+
+  @override
+  void didUpdateWidget(_DateItem oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (widget.datetime != oldWidget.datetime ||
+        widget.mapper != widget.mapper) {
+      _updateText();
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _updateText() {
+    final datetime = widget.datetime;
+    if (datetime != null) {
+      _controller.text = widget.mapper(datetime);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title),
-        Text(mapper(datetime)),
+        Text(widget.title),
+        const SizedBox(height: 4),
+        Row(
+          children: [
+            Expanded(
+              child: MacosTextField(
+                maxLines: 1,
+                readOnly: true,
+                controller: _controller,
+              ),
+            ),
+            const SizedBox(width: 4),
+            MacosIconButton(
+              onPressed: () {
+                Clipboard.setData(
+                  ClipboardData(
+                    text: _controller.text,
+                  ),
+                );
+              },
+              semanticLabel: 'Copy',
+              icon: const MacosIcon(
+                size: 16,
+                CupertinoIcons.doc_on_clipboard_fill,
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
@@ -256,6 +338,8 @@ int weekNumber(DateTime date) {
   }
   return woy;
 }
+
+String isLeapYearYesNo(DateTime date) => isLeapYear(date) ? 'Yes' : 'No';
 
 bool isLeapYear(DateTime date) =>
     (date.year % 4 == 0) && ((date.year % 100 != 0) || (date.year % 400 == 0));
