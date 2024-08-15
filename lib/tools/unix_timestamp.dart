@@ -1,7 +1,17 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:macos_ui/macos_ui.dart';
+
+import '../common/macos_read_only_field.dart';
+import 'tools.dart';
+
+final unixTimestampTool = Tool(
+  title: 'Unix timestamp',
+  icon: Icons.timelapse,
+  screenBuilder: (context) => const UnixTimestampToolWidget(),
+);
 
 enum TimestampType {
   sec,
@@ -48,51 +58,75 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
+                      const SizedBox(width: 12),
+                      const Text('Input:'),
+                      const SizedBox(width: 12),
                       PushButton(
                         controlSize: ControlSize.regular,
                         onPressed: _setNow,
-                        child: Text('Now'),
+                        child: const Text('Now'),
                       ),
-                      Expanded(
-                        child: MacosTextField(
-                          inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly,
-                          ],
-                          keyboardType: const TextInputType.numberWithOptions(
-                            decimal: false,
-                            signed: false,
-                          ),
-                          controller: _inputController,
-                        ),
-                      ),
-                      MacosPopupButton(
-                        value: _type,
-                        items: TimestampType.values
-                            .map(
-                              (type) => MacosPopupMenuItem(
-                                value: type,
-                                child: Text(type.name),
-                              ),
-                            )
-                            .toList(growable: false),
-                        onChanged: (type) {
-                          if (type != null && type != _type) {
-                            setState(() {
-                              _type = type;
-                              _onInputChange();
-                            });
-                          }
-                        },
+                      const SizedBox(width: 12),
+                      PushButton(
+                        controlSize: ControlSize.regular,
+                        onPressed: _clear,
+                        secondary: true,
+                        child: const Text('Clear'),
                       ),
                     ],
                   ),
+                  const SizedBox(height: 8),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 300),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: MacosTextField(
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                            ],
+                            keyboardType: const TextInputType.numberWithOptions(
+                              decimal: false,
+                              signed: false,
+                            ),
+                            controller: _inputController,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        MacosPopupButton(
+                          value: _type,
+                          items: TimestampType.values
+                              .map(
+                                (type) => MacosPopupMenuItem(
+                                  value: type,
+                                  child: Text(type.name),
+                                ),
+                              )
+                              .toList(growable: false),
+                          onChanged: (type) {
+                            if (type != null && type != _type) {
+                              setState(() {
+                                _type = type;
+                                _onInputChange();
+                              });
+                            }
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                   const SizedBox(height: 16),
-                  MacosPulldownMenuDivider(),
+                  const MacosPulldownMenuDivider(),
                   const SizedBox(height: 16),
-                  _DateTimeOutput(datetime: _datetime),
+                  _DateTimeOutput(
+                    datetime: _datetime,
+                    key: ValueKey(_datetime?.microsecondsSinceEpoch),
+                  ),
                 ],
               ),
             ),
@@ -116,6 +150,12 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
     }
 
     _inputController.text = '$input';
+  }
+
+  void _clear() {
+    _inputController.text = '';
+    _datetime = null;
+    setState(() {});
   }
 
   void _onInputChange() {
@@ -151,6 +191,7 @@ class _DateTimeOutput extends StatelessWidget {
 
   const _DateTimeOutput({
     required this.datetime,
+    super.key,
   });
 
   @override
@@ -168,7 +209,7 @@ class _DateTimeOutput extends StatelessWidget {
                 datetime: datetime,
                 mapper: (datetime) => datetime.toIso8601String(),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               _DateItem(
                 title: 'UTC time',
                 datetime: datetime,
@@ -187,35 +228,35 @@ class _DateTimeOutput extends StatelessWidget {
                 datetime: datetime,
                 mapper: _weekdayFormat.format,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               _DateItem(
                 title: 'Week of the year',
                 datetime: datetime,
                 mapper: (datetime) => '${weekNumber(datetime)}',
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               _DateItem(
                 title: 'Day of the year',
                 datetime: datetime,
                 mapper: (datetime) => '${dayNumber(datetime)}',
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               _DateItem(
                 title: 'Leap year',
                 datetime: datetime,
                 mapper: isLeapYearYesNo,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               _DateItem(
                 title: 'Date only',
                 datetime: datetime,
-                mapper: (datetime) => '${_dateFormat.format(datetime)}',
+                mapper: _dateFormat.format,
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               _DateItem(
                 title: 'Time only',
                 datetime: datetime,
-                mapper: (datetime) => '${_timeFormat.format(datetime)}',
+                mapper: _timeFormat.format,
               ),
             ],
           ),
@@ -227,7 +268,7 @@ class _DateTimeOutput extends StatelessWidget {
 
 typedef _DateItemMapper = String Function(DateTime datetime);
 
-class _DateItem extends StatefulWidget {
+class _DateItem extends StatelessWidget {
   final String title;
   final DateTime? datetime;
   final _DateItemMapper mapper;
@@ -239,58 +280,19 @@ class _DateItem extends StatefulWidget {
   });
 
   @override
-  State<_DateItem> createState() => _DateItemState();
-}
-
-class _DateItemState extends State<_DateItem> {
-  final _controller = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-
-    _updateText();
-  }
-
-  @override
-  void didUpdateWidget(_DateItem oldWidget) {
-    super.didUpdateWidget(oldWidget);
-
-    if (widget.datetime != oldWidget.datetime ||
-        widget.mapper != widget.mapper) {
-      _updateText();
-    }
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  void _updateText() {
-    final datetime = widget.datetime;
-    if (datetime != null) {
-      _controller.text = widget.mapper(datetime);
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(widget.title),
+        Text(title),
         const SizedBox(height: 4),
         Row(
           children: [
             Expanded(
-              child: MacosTextField(
-                maxLines: 1,
-                readOnly: true,
-                controller: _controller,
+              child: MacosReadonlyField(
+                text: text,
               ),
             ),
             const SizedBox(width: 4),
@@ -298,7 +300,7 @@ class _DateItemState extends State<_DateItem> {
               onPressed: () {
                 Clipboard.setData(
                   ClipboardData(
-                    text: _controller.text,
+                    text: text,
                   ),
                 );
               },
@@ -312,6 +314,15 @@ class _DateItemState extends State<_DateItem> {
         ),
       ],
     );
+  }
+
+  String get text {
+    final datetime = this.datetime;
+    if (datetime != null) {
+      return mapper(datetime);
+    } else {
+      return '';
+    }
   }
 }
 
