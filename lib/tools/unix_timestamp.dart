@@ -26,7 +26,6 @@ enum TimestampType {
 enum DatetimeFormat {
   iso8601,
   rfc2822,
-  rfc3339,
 }
 
 class UnixTimestampToolWidget extends StatefulWidget {
@@ -214,22 +213,7 @@ class _DateTimeOutput extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _DateItem(
-                title: 'Local time',
-                datetime: datetime,
-                mapper: (datetime) => datetime.toIso8601String(),
-              ),
-              const SizedBox(height: 12),
-              _DateItem(
-                title: 'UTC time',
-                datetime: datetime,
-                mapper: (datetime) => datetime.toUtc().toIso8601String(),
-              ),
-            ],
-          ),
+          child: _DateTimeLocalUTCOutput(datetime: datetime),
         ),
         const SizedBox(width: 16),
         Expanded(
@@ -276,6 +260,76 @@ class _DateTimeOutput extends StatelessWidget {
         ),
       ],
     );
+  }
+}
+
+class _DateTimeLocalUTCOutput extends StatefulWidget {
+  final TZDateTime? datetime;
+
+  const _DateTimeLocalUTCOutput({
+    required this.datetime,
+  });
+
+  @override
+  State<_DateTimeLocalUTCOutput> createState() =>
+      _DateTimeLocalUTCOutputState();
+}
+
+class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
+  DatetimeFormat _format = DatetimeFormat.iso8601;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            const Text('Datetime format: '),
+            const SizedBox(width: 8),
+            MacosPopupButton(
+              value: _format,
+              items: DatetimeFormat.values
+                  .map(
+                    (type) => MacosPopupMenuItem(
+                      value: type,
+                      child: Text(type.name),
+                    ),
+                  )
+                  .toList(growable: false),
+              onChanged: (format) {
+                if (format != null && format != _format) {
+                  setState(() {
+                    _format = format;
+                  });
+                }
+              },
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        _DateItem(
+          title: 'Local time',
+          datetime: widget.datetime,
+          mapper: _formatDatetime,
+        ),
+        const SizedBox(height: 12),
+        _DateItem(
+          title: 'UTC time',
+          datetime: widget.datetime,
+          mapper: (datetime) => _formatDatetime(datetime.toUtc()),
+        ),
+      ],
+    );
+  }
+
+  String _formatDatetime(TZDateTime datetime) {
+    switch (_format) {
+      case DatetimeFormat.iso8601:
+        return datetime.toIso8601String();
+      case DatetimeFormat.rfc2822:
+        return formatRFC2822(datetime);
+    }
   }
 }
 
@@ -340,7 +394,8 @@ class _DateItem extends StatelessWidget {
 }
 
 int dayNumber(TZDateTime date) {
-  final diff = date.difference(TZDateTime(date.location, date.year, 1, 0, 0, 0));
+  final diff =
+      date.difference(TZDateTime(date.location, date.year, 1, 0, 0, 0));
   return diff.inDays;
 }
 
@@ -367,3 +422,23 @@ String isLeapYearYesNo(TZDateTime date) => isLeapYear(date) ? 'Yes' : 'No';
 
 bool isLeapYear(TZDateTime date) =>
     (date.year % 4 == 0) && ((date.year % 100 != 0) || (date.year % 400 == 0));
+
+String formatRFC2822(TZDateTime? dateTime) {
+  if (dateTime == null) {
+    return '';
+  }
+
+  final tz = _formatTimeZoneOffset(dateTime);
+
+  final string = DateFormat('EEE, d MMM y HH:mm:ss').format(dateTime);
+  return '$string $tz';
+}
+
+String _formatTimeZoneOffset(DateTime dateTime) {
+  final offset = dateTime.timeZoneOffset;
+  final hours = offset.inHours.abs().toString().padLeft(2, '0');
+  final minutes = (offset.inMinutes.abs() % 60).toString().padLeft(2, '0');
+  final sign = offset.isNegative ? '-' : '+';
+
+  return '$sign$hours$minutes';
+}
