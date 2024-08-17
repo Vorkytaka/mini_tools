@@ -21,6 +21,19 @@ enum TimestampType {
   us,
 }
 
+extension on TimestampType {
+  String format(BuildContext context) {
+    switch (this) {
+      case TimestampType.sec:
+        return 'Seconds since epoch';
+      case TimestampType.ms:
+        return 'Milliseconds since epoch';
+      case TimestampType.us:
+        return 'Microseconds since epoch';
+    }
+  }
+}
+
 // Date: Tue, 15 Nov 1994 08:12:31 GMT
 // Date: Fri, 21 Nov 1997 09:55:06 -0600
 enum DatetimeFormat {
@@ -89,45 +102,33 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
                     ],
                   ),
                   const SizedBox(height: 8),
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 300),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: MacosTextField(
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly,
-                            ],
-                            keyboardType: const TextInputType.numberWithOptions(
-                              decimal: false,
-                              signed: false,
-                            ),
-                            controller: _inputController,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 260),
+                        child: MacosTextField(
+                          keyboardType: const TextInputType.numberWithOptions(
+                            decimal: false,
+                            signed: false,
                           ),
+                          controller: _inputController,
                         ),
-                        const SizedBox(width: 8),
-                        MacosPopupButton(
-                          value: _type,
-                          items: TimestampType.values
-                              .map(
-                                (type) => MacosPopupMenuItem(
-                                  value: type,
-                                  child: Text(type.name),
-                                ),
-                              )
-                              .toList(growable: false),
-                          onChanged: (type) {
-                            if (type != null && type != _type) {
-                              setState(() {
-                                _type = type;
-                                _onInputChange();
-                              });
-                            }
-                          },
-                        ),
-                      ],
-                    ),
+                      ),
+                      const SizedBox(width: 8),
+                      MacosPopupButton(
+                        value: _type,
+                        items: TimestampType.values
+                            .map(
+                              (type) => MacosPopupMenuItem(
+                                value: type,
+                                child: Text(type.format(context)),
+                              ),
+                            )
+                            .toList(growable: false),
+                        onChanged: _onInputTypeUpdate,
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 16),
                   const MacosPulldownMenuDivider(),
@@ -173,6 +174,8 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
     int? input = int.tryParse(inputText);
 
     if (input == null) {
+      _datetime = null;
+      setState(() {});
       return;
     }
 
@@ -191,6 +194,32 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
 
     _datetime = TZDateTime.fromMicrosecondsSinceEpoch(timezone, input);
     setState(() {});
+  }
+
+  void _onInputTypeUpdate(TimestampType? type) {
+    if (type != null && type != _type) {
+      setState(() {
+        _type = type;
+
+        final datetime = _datetime;
+        if (datetime != null) {
+          // Update input
+          String newInput;
+          switch(type) {
+            case TimestampType.sec:
+              newInput = '${datetime.millisecondsSinceEpoch ~/ 1000}';
+              break;
+            case TimestampType.ms:
+              newInput = '${datetime.millisecondsSinceEpoch}';
+              break;
+            case TimestampType.us:
+              newInput = '${datetime.microsecondsSinceEpoch}';
+              break;
+          }
+          _inputController.text = newInput;
+        }
+      });
+    }
   }
 }
 
