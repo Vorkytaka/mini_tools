@@ -41,9 +41,34 @@ class _Body extends StatefulWidget {
   State<_Body> createState() => _BodyState();
 }
 
+enum _JsonFormat {
+  min,
+  two,
+  four,
+  tab,
+}
+
+extension on _JsonFormat {
+  JsonEncoder get encoder {
+    switch (this) {
+      case _JsonFormat.min:
+        return const JsonEncoder();
+      case _JsonFormat.two:
+        return const JsonEncoder.withIndent('  ');
+      case _JsonFormat.four:
+        return const JsonEncoder.withIndent('    ');
+      case _JsonFormat.tab:
+        return const JsonEncoder.withIndent('\t');
+    }
+  }
+}
+
 class _BodyState extends State<_Body> {
   final _inputController = TextEditingController();
   TextEditingController? _outputController;
+
+  _JsonFormat _format = _JsonFormat.two;
+  JsonEncoder _formatter = _JsonFormat.two.encoder;
 
   @override
   void initState() {
@@ -54,7 +79,7 @@ class _BodyState extends State<_Body> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    if(_outputController == null) {
+    if (_outputController == null) {
       final theme = HighlightThemeHolder.of(context);
       _outputController = _HighlighterTextEditingController(theme: theme);
     }
@@ -83,22 +108,43 @@ class _BodyState extends State<_Body> {
           ),
         ),
         Expanded(
-          child: SizedBox(
-            height: double.infinity,
-            child: MacosTextField(
-              controller: _outputController,
-              readOnly: true,
-              minLines: null,
-              maxLines: null,
-              textAlignVertical: const TextAlignVertical(y: -1),
-            ),
+          child: Column(
+            children: [
+              MacosPopupButton(
+                value: _format,
+                items: _JsonFormat.values
+                    .map(
+                      (type) => MacosPopupMenuItem(
+                        value: type,
+                        child: Text(type.name),
+                      ),
+                    )
+                    .toList(growable: false),
+                onChanged: (format) {
+                  if (format != null && format != _format) {
+                    setState(() {
+                      _format = format;
+                      _formatter = format.encoder;
+                      _onInputUpdate();
+                    });
+                  }
+                },
+              ),
+              Expanded(
+                child: MacosTextField(
+                  controller: _outputController,
+                  readOnly: true,
+                  minLines: null,
+                  maxLines: null,
+                  textAlignVertical: const TextAlignVertical(y: -1),
+                ),
+              ),
+            ],
           ),
         )
       ],
     );
   }
-
-  final _formatter = const JsonEncoder.withIndent('    ');
 
   void _onInputUpdate() {
     final text = _inputController.text;
