@@ -36,16 +36,15 @@ class _Body extends StatefulWidget {
 }
 
 class _BodyState extends State<_Body> {
-  final _inputController = TextEditingController();
-  final _exampleController = _RegExpTextEditingController();
+  final _inputController = _RegExpTextEditingController();
+  final _exampleController = _RegExpExampleTextEditingController();
 
-  RegExp? _regExp;
   Iterable<RegExpMatch>? _searchResults;
 
   @override
   void initState() {
     super.initState();
-    _inputController.addListener(_onInputUpdate);
+    _inputController.addListener(_search);
     _exampleController.addListener(_search);
   }
 
@@ -70,24 +69,11 @@ class _BodyState extends State<_Body> {
     );
   }
 
-  void _onInputUpdate() {
-    final text = _inputController.text;
-
-    try {
-      _regExp = RegExp(text);
-    } on FormatException catch (_) {
-      _regExp = null;
-    }
-
-    _search();
-    setState(() {});
-  }
-
   void _search() {
-    final regExp = _regExp;
-
+    final regExp = _inputController.regExp;
     if (regExp == null) {
       _searchResults = null;
+      setState(() {});
       return;
     }
 
@@ -99,9 +85,26 @@ class _BodyState extends State<_Body> {
 }
 
 class _RegExpTextEditingController extends TextEditingController {
+  RegExp? _regExp;
+
+  RegExp? get regExp => _regExp;
+
+  @override
+  set value(TextEditingValue newValue) {
+    try {
+      _regExp = RegExp(newValue.text);
+    } on FormatException catch (_) {
+      _regExp = null;
+    }
+
+    super.value = newValue;
+  }
+}
+
+class _RegExpExampleTextEditingController extends TextEditingController {
   Iterable<RegExpMatch>? matches;
 
-  _RegExpTextEditingController();
+  _RegExpExampleTextEditingController();
 
   @override
   TextSpan buildTextSpan({
