@@ -13,12 +13,22 @@ Future<void> _configureMacosWindowUtils() async {
   await config.apply();
 }
 
+Future<void> _configureWindows() async {
+  await windowManager.waitUntilReadyToShow(null, () async {
+    await windowManager.setBackgroundColor(const Color(0xFF111111));
+  });
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
 
-  if (!kIsWeb && Platform.isMacOS) {
+  if (kIsWeb) {
+    // do nothing
+  } else if (Platform.isMacOS) {
     await _configureMacosWindowUtils();
+  } else if (Platform.isWindows) {
+    await _configureWindows();
   }
 
   // const windowOptions = WindowOptions(
