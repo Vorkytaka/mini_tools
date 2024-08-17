@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 
+import '../common/macos_read_only_field.dart';
 import 'tools.dart';
 
 final regExpTool = Tool(
@@ -58,12 +59,47 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        MacosTextField(
-          controller: _inputController,
+        Flexible(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              MacosTextField(
+                controller: _inputController,
+                placeholder: 'RegExp',
+              ),
+              const SizedBox(height: 12),
+              const Padding(
+                padding: EdgeInsetsDirectional.only(start: 12),
+                child: Text('Test string: '),
+              ),
+              const SizedBox(height: 4),
+              Expanded(
+                child: MacosTextField(
+                  controller: _exampleController,
+                  textAlignVertical: const TextAlignVertical(y: -1),
+                  maxLines: 10,
+                ),
+              ),
+            ],
+          ),
         ),
-        MacosTextField(
-          controller: _exampleController,
-          maxLines: 10,
+        ResizablePane(
+          builder: (context, controller) => SizedBox(
+            height: double.infinity,
+            child: MacosReadonlyField(
+              text: _searchResults
+                      ?.map(
+                        (result) => result.group(0),
+                      )
+                      .join('\n') ??
+                  '',
+              textAlignVertical: const TextAlignVertical(y: -1),
+            ),
+          ),
+          minSize: 100,
+          maxSize: 300,
+          resizableSide: ResizableSide.top,
+          startSize: 100,
         ),
       ],
     );
@@ -139,7 +175,10 @@ class _RegExpExampleTextEditingController extends TextEditingController {
       if (matchText.isNotEmpty) {
         spans.add(TextSpan(
           text: matchText,
-          style: style?.copyWith(backgroundColor: Colors.green),
+          style: style?.copyWith(
+            color: Colors.black,
+            backgroundColor: Colors.green,
+          ),
         ));
       }
 
