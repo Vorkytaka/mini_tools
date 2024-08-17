@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:timezone/timezone.dart';
 
+import 'common/timezone_holder.dart';
 import 'tools/tools.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
+  final Location timezone;
+
+  const App({
+    required this.timezone,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return MacosApp(
-      home: const _Window(),
+    return TimezoneHolder(
+      timezone: timezone,
+      child: const MacosApp(
+        home: _Window(),
+      ),
     );
   }
 }

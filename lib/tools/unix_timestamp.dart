@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:timezone/timezone.dart';
 
 import '../common/macos_read_only_field.dart';
+import '../common/timezone_holder.dart';
 import 'tools.dart';
 
 final unixTimestampTool = Tool(
@@ -19,6 +21,14 @@ enum TimestampType {
   us,
 }
 
+// Date: Tue, 15 Nov 1994 08:12:31 GMT
+// Date: Fri, 21 Nov 1997 09:55:06 -0600
+enum DatetimeFormat {
+  iso8601,
+  rfc2822,
+  rfc3339,
+}
+
 class UnixTimestampToolWidget extends StatefulWidget {
   const UnixTimestampToolWidget({super.key});
 
@@ -30,7 +40,7 @@ class UnixTimestampToolWidget extends StatefulWidget {
 class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
   final _inputController = TextEditingController();
   TimestampType _type = TimestampType.sec;
-  DateTime? _datetime;
+  TZDateTime? _datetime;
 
   @override
   void initState() {
@@ -137,7 +147,8 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
   }
 
   void _setNow() {
-    final now = DateTime.now();
+    final timezone = TimezoneHolder.of(context);
+    final now = TZDateTime.now(timezone);
 
     final int input;
     switch (_type) {
@@ -177,13 +188,15 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
         break;
     }
 
-    _datetime = DateTime.fromMicrosecondsSinceEpoch(input);
+    final timezone = TimezoneHolder.of(context);
+
+    _datetime = TZDateTime.fromMicrosecondsSinceEpoch(timezone, input);
     setState(() {});
   }
 }
 
 class _DateTimeOutput extends StatelessWidget {
-  final DateTime? datetime;
+  final TZDateTime? datetime;
 
   static final _weekdayFormat = DateFormat.EEEE();
   static final _dateFormat = DateFormat.yMd();
@@ -266,11 +279,11 @@ class _DateTimeOutput extends StatelessWidget {
   }
 }
 
-typedef _DateItemMapper = String Function(DateTime datetime);
+typedef _DateItemMapper = String Function(TZDateTime datetime);
 
 class _DateItem extends StatelessWidget {
   final String title;
-  final DateTime? datetime;
+  final TZDateTime? datetime;
   final _DateItemMapper mapper;
 
   const _DateItem({
@@ -326,8 +339,8 @@ class _DateItem extends StatelessWidget {
   }
 }
 
-int dayNumber(DateTime date) {
-  final diff = date.difference(DateTime(date.year, 1, 0, 0, 0));
+int dayNumber(TZDateTime date) {
+  final diff = date.difference(TZDateTime(date.location, date.year, 1, 0, 0, 0));
   return diff.inDays;
 }
 
@@ -339,7 +352,7 @@ int numOfWeeks(int year) {
 }
 
 /// Calculates week number from a date as per https://en.wikipedia.org/wiki/ISO_week_date#Calculation
-int weekNumber(DateTime date) {
+int weekNumber(TZDateTime date) {
   final int dayOfYear = int.parse(DateFormat('D').format(date));
   int woy = ((dayOfYear - date.weekday + 10) / 7).floor();
   if (woy < 1) {
@@ -350,7 +363,7 @@ int weekNumber(DateTime date) {
   return woy;
 }
 
-String isLeapYearYesNo(DateTime date) => isLeapYear(date) ? 'Yes' : 'No';
+String isLeapYearYesNo(TZDateTime date) => isLeapYear(date) ? 'Yes' : 'No';
 
-bool isLeapYear(DateTime date) =>
+bool isLeapYear(TZDateTime date) =>
     (date.year % 4 == 0) && ((date.year % 100 != 0) || (date.year % 400 == 0));
