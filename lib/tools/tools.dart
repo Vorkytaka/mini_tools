@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mini_tools/tools/unix_timestamp.dart';
 
+import 'reg_exp_tool.dart';
+
 class Tool {
   final String title;
   final IconData icon;
@@ -16,6 +18,7 @@ class Tool {
 final tools = <Tool>[
   debugTool,
   unixTimestampTool,
+  regExpTool,
 ];
 
 final debugTool = Tool(
