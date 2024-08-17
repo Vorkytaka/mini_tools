@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:syntax_highlight/syntax_highlight.dart';
 import 'package:timezone/timezone.dart';
 
+import 'common/highlight_theme_holder.dart';
 import 'common/timezone_holder.dart';
 import 'tools/tools.dart';
 
 class App extends StatelessWidget {
   final Location timezone;
+  final HighlighterTheme highlighterTheme;
+  final HighlighterTheme highlighterDarkTheme;
 
   const App({
     required this.timezone,
+    required this.highlighterTheme,
+    required this.highlighterDarkTheme,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TimezoneHolder(
-      timezone: timezone,
-      child: const MacosApp(
-        home: _Window(),
+    return HighlightThemeHolder(
+      highlighterTheme: highlighterTheme,
+      highlighterDarkTheme: highlighterDarkTheme,
+      child: TimezoneHolder(
+        timezone: timezone,
+        child: const MacosApp(
+          home: _Window(),
+        ),
       ),
     );
   }

@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:syntax_highlight/syntax_highlight.dart';
 
+import '../common/highlight_theme_holder.dart';
 import 'tools.dart';
 
 final jsonFormatterTool = Tool(
@@ -41,7 +43,7 @@ class _Body extends StatefulWidget {
 
 class _BodyState extends State<_Body> {
   final _inputController = TextEditingController();
-  final _outputController = TextEditingController();
+  TextEditingController? _outputController;
 
   @override
   void initState() {
@@ -50,9 +52,18 @@ class _BodyState extends State<_Body> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if(_outputController == null) {
+      final theme = HighlightThemeHolder.of(context);
+      _outputController = _HighlighterTextEditingController(theme: theme);
+    }
+  }
+
+  @override
   void dispose() {
     _inputController.dispose();
-    _outputController.dispose();
+    _outputController?.dispose();
     super.dispose();
   }
 
@@ -95,11 +106,32 @@ class _BodyState extends State<_Body> {
     Object? json;
     try {
       json = jsonDecode(text);
-    } on FormatException catch(e) {
+    } on FormatException catch (_) {
       return;
     }
 
     final outputJson = _formatter.convert(json);
-    _outputController.text = outputJson;
+    _outputController?.text = outputJson;
+  }
+}
+
+class _HighlighterTextEditingController extends TextEditingController {
+  final Highlighter highlighter;
+  final HighlighterTheme theme;
+
+  _HighlighterTextEditingController({
+    required this.theme,
+  }) : highlighter = Highlighter(
+          language: 'json',
+          theme: theme,
+        );
+
+  @override
+  TextSpan buildTextSpan({
+    required BuildContext context,
+    TextStyle? style,
+    required bool withComposing,
+  }) {
+    return highlighter.highlight(text);
   }
 }
