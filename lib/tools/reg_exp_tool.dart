@@ -1,7 +1,8 @@
+// ignore_for_file: always_put_required_named_parameters_first
+
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 
-import '../common/macos_read_only_field.dart';
 import 'tools.dart';
 
 final regExpTool = Tool(
@@ -95,7 +96,7 @@ class _BodyState extends State<_Body> {
           builder: (context, controller) => Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Match information: '),
+              const Text('Match information: '),
               const SizedBox(height: 8),
               if (_searchResults != null)
                 Expanded(
@@ -224,11 +225,6 @@ class _MatchInformation extends StatelessWidget {
           ),
       ],
     );
-  }
-
-  static String _matchToString(RegExpMatch match) {
-    final result = match.group(0);
-    return '$result {${match.start}, ${match.start}}';
   }
 }
 
