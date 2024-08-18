@@ -57,6 +57,8 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
+    final matchesCount = _searchResults?.length ?? 0;
+
     return Column(
       children: [
         Flexible(
@@ -68,11 +70,17 @@ class _BodyState extends State<_Body> {
                 placeholder: 'RegExp',
               ),
               const SizedBox(height: 12),
-              const Padding(
-                padding: EdgeInsetsDirectional.only(start: 12),
-                child: Text('Test string: '),
+              Padding(
+                padding: const EdgeInsetsDirectional.symmetric(horizontal: 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('Test string: '),
+                    Text('Matches count: $matchesCount'),
+                  ],
+                ),
               ),
-              const SizedBox(height: 4),
+              const SizedBox(height: 8),
               Expanded(
                 child: MacosTextField(
                   controller: _exampleController,
@@ -84,17 +92,21 @@ class _BodyState extends State<_Body> {
           ),
         ),
         ResizablePane(
-          builder: (context, controller) => SizedBox(
-            height: double.infinity,
-            child: MacosReadonlyField(
-              text: _searchResults
-                      ?.map(
-                        (result) => result.group(0),
-                      )
-                      .join('\n') ??
-                  '',
-              textAlignVertical: const TextAlignVertical(y: -1),
-            ),
+          builder: (context, controller) => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Match information: '),
+              const SizedBox(height: 8),
+              if (_searchResults != null)
+                Expanded(
+                  child: SingleChildScrollView(
+                    controller: controller,
+                    child: _MatchInformation(
+                      matches: _searchResults!,
+                    ),
+                  ),
+                ),
+            ],
           ),
           minSize: 100,
           maxSize: 300,
@@ -117,6 +129,106 @@ class _BodyState extends State<_Body> {
     _searchResults = regExp.allMatches(text);
     _exampleController.matches = _searchResults;
     setState(() {});
+  }
+}
+
+class _MatchInformation extends StatelessWidget {
+  final Iterable<RegExpMatch> matches;
+
+  const _MatchInformation({
+    required this.matches,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = MacosTheme.of(context);
+
+    const cellPadding = EdgeInsets.all(8);
+    // This variable mutate later
+    // We use this to not cast [matches] to List
+    int matchCounter = 0;
+
+    TableRow? noMatchFound;
+    if (matches.isEmpty) {
+      noMatchFound = const TableRow(
+        children: [
+          TableCell(child: Padding(padding: cellPadding, child: Text('–'))),
+          TableCell(
+              child:
+                  Padding(padding: cellPadding, child: Text('Nothing found'))),
+          TableCell(child: Padding(padding: cellPadding, child: Text('–'))),
+        ],
+      );
+    }
+
+    return Table(
+      defaultColumnWidth: const IntrinsicColumnWidth(),
+      border: TableBorder.all(
+        color: theme.dividerColor,
+      ),
+      children: [
+        TableRow(
+          children: [
+            TableCell(
+              child: Padding(
+                padding: cellPadding,
+                child: DefaultTextStyle.merge(
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  child: const Text('#'),
+                ),
+              ),
+            ),
+            TableCell(
+              child: Padding(
+                padding: cellPadding,
+                child: DefaultTextStyle.merge(
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  child: const Text('Match'),
+                ),
+              ),
+            ),
+            TableCell(
+              child: Padding(
+                padding: cellPadding,
+                child: DefaultTextStyle.merge(
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  child: const Text('Position'),
+                ),
+              ),
+            ),
+          ],
+        ),
+        if (noMatchFound != null) noMatchFound,
+        for (final match in matches)
+          TableRow(
+            children: [
+              TableCell(
+                child: Padding(
+                  padding: cellPadding,
+                  child: Text('${matchCounter++}'),
+                ),
+              ),
+              TableCell(
+                child: Padding(
+                  padding: cellPadding,
+                  child: Text(match.group(0)!),
+                ),
+              ),
+              TableCell(
+                child: Padding(
+                  padding: cellPadding,
+                  child: Text('${match.start}'),
+                ),
+              ),
+            ],
+          ),
+      ],
+    );
+  }
+
+  static String _matchToString(RegExpMatch match) {
+    final result = match.group(0);
+    return '$result {${match.start}, ${match.start}}';
   }
 }
 
