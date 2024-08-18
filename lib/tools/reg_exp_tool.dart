@@ -98,15 +98,14 @@ class _BodyState extends State<_Body> {
             children: [
               const Text('Match information: '),
               const SizedBox(height: 8),
-              if (_searchResults != null)
-                Expanded(
-                  child: SingleChildScrollView(
-                    controller: controller,
-                    child: _MatchInformation(
-                      matches: _searchResults!,
-                    ),
+              Expanded(
+                child: SingleChildScrollView(
+                  controller: controller,
+                  child: _MatchInformation(
+                    matches: _searchResults,
                   ),
                 ),
+              ),
             ],
           ),
           minSize: 100,
@@ -120,8 +119,9 @@ class _BodyState extends State<_Body> {
 
   void _search() {
     final regExp = _inputController.regExp;
-    if (regExp == null) {
+    if (regExp == null || regExp.pattern.isEmpty) {
       _searchResults = null;
+      _exampleController.matches = null;
       setState(() {});
       return;
     }
@@ -134,7 +134,7 @@ class _BodyState extends State<_Body> {
 }
 
 class _MatchInformation extends StatelessWidget {
-  final Iterable<RegExpMatch> matches;
+  final Iterable<RegExpMatch>? matches;
 
   const _MatchInformation({
     required this.matches,
@@ -143,15 +143,16 @@ class _MatchInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = MacosTheme.of(context);
+    final matches = this.matches;
 
     const cellPadding = EdgeInsets.all(8);
     // This variable mutate later
     // We use this to not cast [matches] to List
     int matchCounter = 0;
 
-    TableRow? noMatchFound;
-    if (matches.isEmpty) {
-      noMatchFound = const TableRow(
+    TableRow? result;
+    if (matches == null || matches.isEmpty) {
+      result = const TableRow(
         children: [
           TableCell(child: Padding(padding: cellPadding, child: Text('–'))),
           TableCell(
@@ -160,7 +161,7 @@ class _MatchInformation extends StatelessWidget {
           TableCell(child: Padding(padding: cellPadding, child: Text('–'))),
         ],
       );
-    }
+    } else {}
 
     return Table(
       defaultColumnWidth: const IntrinsicColumnWidth(),
@@ -199,30 +200,31 @@ class _MatchInformation extends StatelessWidget {
             ),
           ],
         ),
-        if (noMatchFound != null) noMatchFound,
-        for (final match in matches)
-          TableRow(
-            children: [
-              TableCell(
-                child: Padding(
-                  padding: cellPadding,
-                  child: Text('${matchCounter++}'),
+        if (result != null) result,
+        if (matches != null)
+          for (final match in matches)
+            TableRow(
+              children: [
+                TableCell(
+                  child: Padding(
+                    padding: cellPadding,
+                    child: Text('${matchCounter++}'),
+                  ),
                 ),
-              ),
-              TableCell(
-                child: Padding(
-                  padding: cellPadding,
-                  child: Text(match.group(0)!),
+                TableCell(
+                  child: Padding(
+                    padding: cellPadding,
+                    child: SelectableText(match.group(0)!),
+                  ),
                 ),
-              ),
-              TableCell(
-                child: Padding(
-                  padding: cellPadding,
-                  child: Text('${match.start}'),
+                TableCell(
+                  child: Padding(
+                    padding: cellPadding,
+                    child: Text('${match.start}-${match.end}'),
+                  ),
                 ),
-              ),
-            ],
-          ),
+              ],
+            ),
       ],
     );
   }
