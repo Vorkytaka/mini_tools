@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mini_tools/tools/unix_timestamp.dart';
 
 import 'reg_exp_tool.dart';
+import 'number_base_converter.dart';
 
 class Tool {
   final String title;
@@ -19,6 +20,7 @@ final tools = <Tool>[
   debugTool,
   unixTimestampTool,
   regExpTool,
+  numberBaseConverterTool,
 ];
 
 final debugTool = Tool(
