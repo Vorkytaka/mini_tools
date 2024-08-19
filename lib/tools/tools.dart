@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'json_formatter.dart';
 import 'number_base_converter.dart';
 import 'reg_exp_tool.dart';
 import 'unix_timestamp.dart';
-
-import 'json_formatter.dart';
 
 class Tool {
   final String title;
