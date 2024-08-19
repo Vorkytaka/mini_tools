@@ -3,9 +3,15 @@ import 'package:macos_ui/macos_ui.dart';
 
 class MacosReadonlyField extends StatefulWidget {
   final String text;
+  final int? maxLines;
+  final int? minLines;
+  final TextAlignVertical? textAlignVertical;
 
   const MacosReadonlyField({
     required this.text,
+    this.maxLines,
+    this.minLines,
+    this.textAlignVertical,
     super.key,
   });
 
@@ -41,6 +47,9 @@ class _MacosReadonlyFieldState extends State<MacosReadonlyField> {
   Widget build(BuildContext context) {
     return MacosTextField(
       controller: _controller,
+      minLines: widget.minLines,
+      maxLines: widget.maxLines,
+      textAlignVertical: widget.textAlignVertical,
       readOnly: true,
     );
   }
