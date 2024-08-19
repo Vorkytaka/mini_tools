@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
 
@@ -49,6 +50,19 @@ enum _JsonFormat {
 }
 
 extension on _JsonFormat {
+  String format(BuildContext context) {
+    switch (this) {
+      case _JsonFormat.min:
+        return 'Minify';
+      case _JsonFormat.two:
+        return '2 spaces';
+      case _JsonFormat.four:
+        return '4 spaces';
+      case _JsonFormat.tab:
+        return 'Tab';
+    }
+  }
+
   JsonEncoder get encoder {
     switch (this) {
       case _JsonFormat.min:
@@ -110,25 +124,45 @@ class _BodyState extends State<_Body> {
         Expanded(
           child: Column(
             children: [
-              MacosPopupButton(
-                value: _format,
-                items: _JsonFormat.values
-                    .map(
-                      (type) => MacosPopupMenuItem(
-                        value: type,
-                        child: Text(type.name),
-                      ),
-                    )
-                    .toList(growable: false),
-                onChanged: (format) {
-                  if (format != null && format != _format) {
-                    setState(() {
-                      _format = format;
-                      _formatter = format.encoder;
-                      _onInputUpdate();
-                    });
-                  }
-                },
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    const Expanded(child: Text('Output:')),
+                    PushButton(
+                      controlSize: ControlSize.regular,
+                      secondary: true,
+                      onPressed: () {
+                        final text =_outputController?.text;
+                        if(text != null && text.isNotEmpty) {
+                          Clipboard.setData(ClipboardData(text: text));
+                        }
+                      },
+                      child: const Text('Copy'),
+                    ),
+                    const SizedBox(width: 8),
+                    MacosPopupButton(
+                      value: _format,
+                      items: _JsonFormat.values
+                          .map(
+                            (type) => MacosPopupMenuItem(
+                              value: type,
+                              child: Text(type.format(context)),
+                            ),
+                          )
+                          .toList(growable: false),
+                      onChanged: (format) {
+                        if (format != null && format != _format) {
+                          setState(() {
+                            _format = format;
+                            _formatter = format.encoder;
+                            _onInputUpdate();
+                          });
+                        }
+                      },
+                    ),
+                  ],
+                ),
               ),
               Expanded(
                 child: MacosTextField(
