@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:json_path/json_path.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
 
@@ -80,6 +81,10 @@ extension on _JsonFormat {
 class _BodyState extends State<_Body> {
   final _inputController = TextEditingController();
   TextEditingController? _outputController;
+  final _jsonPathController = TextEditingController();
+
+  Object? _json;
+  JsonPath? _jsonPath;
 
   _JsonFormat _format = _JsonFormat.two;
   JsonEncoder _formatter = _JsonFormat.two.encoder;
@@ -88,6 +93,7 @@ class _BodyState extends State<_Body> {
   void initState() {
     super.initState();
     _inputController.addListener(_onInputUpdate);
+    _jsonPathController.addListener(_onJsonPathUpdate);
   }
 
   @override
@@ -103,6 +109,7 @@ class _BodyState extends State<_Body> {
   void dispose() {
     _inputController.dispose();
     _outputController?.dispose();
+    _jsonPathController.dispose();
     super.dispose();
   }
 
@@ -133,8 +140,8 @@ class _BodyState extends State<_Body> {
                       controlSize: ControlSize.regular,
                       secondary: true,
                       onPressed: () {
-                        final text =_outputController?.text;
-                        if(text != null && text.isNotEmpty) {
+                        final text = _outputController?.text;
+                        if (text != null && text.isNotEmpty) {
                           Clipboard.setData(ClipboardData(text: text));
                         }
                       },
@@ -173,6 +180,10 @@ class _BodyState extends State<_Body> {
                   textAlignVertical: const TextAlignVertical(y: -1),
                 ),
               ),
+              MacosTextField(
+                controller: _jsonPathController,
+                placeholder: 'JSONPath',
+              ),
             ],
           ),
         )
@@ -183,11 +194,38 @@ class _BodyState extends State<_Body> {
   void _onInputUpdate() {
     final text = _inputController.text;
 
-    Object? json;
     try {
-      json = jsonDecode(text);
+      _json = jsonDecode(text);
     } on FormatException catch (_) {
+      _json = null;
+    }
+
+    _updateOutput();
+  }
+
+  void _onJsonPathUpdate() {
+    final text = _jsonPathController.text;
+
+    try {
+      _jsonPath = JsonPath(text);
+    } on FormatException catch(_) {
+      _jsonPath = null;
+    }
+
+    _updateOutput();
+  }
+
+  void _updateOutput() {
+    Object? json = _json;
+    final path = _jsonPath;
+
+    if(json == null) {
+      _outputController?.text = '';
       return;
+    }
+
+    if(path != null) {
+      json = [...path.read(json).map((e) => e.value)];
     }
 
     final outputJson = _formatter.convert(json);
