@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -88,6 +89,8 @@ class _BodyState extends State<_Body> {
 
   _JsonFormat _format = _JsonFormat.two;
   JsonEncoder _formatter = _JsonFormat.two.encoder;
+
+  Timer? _jsonPathDebouncer;
 
   @override
   void initState() {
@@ -204,27 +207,33 @@ class _BodyState extends State<_Body> {
   }
 
   void _onJsonPathUpdate() {
-    final text = _jsonPathController.text;
-
-    try {
-      _jsonPath = JsonPath(text);
-    } on FormatException catch(_) {
-      _jsonPath = null;
+    final debouncer = _jsonPathDebouncer;
+    if (debouncer != null && debouncer.isActive) {
+      debouncer.cancel();
     }
+    _jsonPathDebouncer = Timer(const Duration(milliseconds: 700), () {
+      final text = _jsonPathController.text;
 
-    _updateOutput();
+      try {
+        _jsonPath = JsonPath(text);
+      } on FormatException catch (_) {
+        _jsonPath = null;
+      }
+
+      _updateOutput();
+    });
   }
 
   void _updateOutput() {
     Object? json = _json;
     final path = _jsonPath;
 
-    if(json == null) {
+    if (json == null) {
       _outputController?.text = '';
       return;
     }
 
-    if(path != null) {
+    if (path != null) {
       json = [...path.read(json).map((e) => e.value)];
     }
 
