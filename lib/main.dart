@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:syntax_highlight/syntax_highlight.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:window_manager/window_manager.dart';
@@ -44,17 +45,15 @@ Future<void> main() async {
 
   final timezone = await _initializeTimezone();
 
-  // const windowOptions = WindowOptions(
-  // size: Size(800, 600),
-  // center: true,
-  // backgroundColor: Colors.white,
-  // skipTaskbar: false,
-  // titleBarStyle: TitleBarStyle.normal,
-  // );
-  // await windowManager.waitUntilReadyToShow(windowOptions, () async {
-  //   await windowManager.show();
-  //   await windowManager.focus();
-  // });
+  await Highlighter.initialize(['json']);
+  final highlightTheme = await HighlighterTheme.loadLightTheme();
+  final highlightDarkTheme = await HighlighterTheme.loadDarkTheme();
 
-  runApp(App(timezone: timezone));
+  runApp(
+    App(
+      timezone: timezone,
+      highlighterTheme: highlightTheme,
+      highlighterDarkTheme: highlightDarkTheme,
+    ),
+  );
 }

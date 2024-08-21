@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'json_formatter.dart';
 import 'number_base_converter.dart';
 import 'reg_exp_tool.dart';
 import 'unix_timestamp.dart';
@@ -19,6 +20,7 @@ class Tool {
 final tools = <Tool>[
   debugTool,
   unixTimestampTool,
+  jsonFormatterTool,
   regExpTool,
   numberBaseConverterTool,
 ];
@@ -27,10 +29,4 @@ final debugTool = Tool(
   title: 'Debug',
   icon: Icons.developer_mode,
   screenBuilder: (context) => const Center(child: Text('Debug')),
-);
-
-final unixTimestampTool = Tool(
-  title: 'Unix timestamp',
-  icon: Icons.timelapse,
-  screenBuilder: (context) => const UnixTimestampToolWidget(),
 );
