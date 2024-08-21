@@ -128,6 +128,7 @@ class _BodyState extends State<_Body> {
               minLines: null,
               maxLines: null,
               textAlignVertical: const TextAlignVertical(y: -1),
+              placeholder: '{"key": "value"}',
             ),
           ),
         ),
