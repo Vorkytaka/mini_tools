@@ -19,6 +19,7 @@ enum TimestampType {
   sec,
   ms,
   us,
+  iso,
 }
 
 extension on TimestampType {
@@ -30,6 +31,8 @@ extension on TimestampType {
         return 'Milliseconds since epoch';
       case TimestampType.us:
         return 'Microseconds since epoch';
+      case TimestampType.iso:
+        return 'Iso';
     }
   }
 }
@@ -150,17 +153,19 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
     final timezone = TimezoneHolder.of(context);
     final now = TZDateTime.now(timezone);
 
-    final int input;
+    final String input;
     switch (_type) {
       case TimestampType.sec:
-        input = now.millisecondsSinceEpoch ~/ 1000;
+        input = '${now.millisecondsSinceEpoch ~/ 1000}';
       case TimestampType.ms:
-        input = now.millisecondsSinceEpoch;
+        input = '${now.millisecondsSinceEpoch}';
       case TimestampType.us:
-        input = now.microsecondsSinceEpoch;
+        input = '${now.microsecondsSinceEpoch}';
+      case TimestampType.iso:
+        input = now.toIso8601String();
     }
 
-    _inputController.text = '$input';
+    _inputController.text = input;
   }
 
   void _clear() {
@@ -171,28 +176,40 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
 
   void _onInputChange() {
     final inputText = _inputController.text;
-    int? input = int.tryParse(inputText);
-
-    if (input == null) {
-      _datetime = null;
-      setState(() {});
-      return;
-    }
-
-    switch (_type) {
-      case TimestampType.sec:
-        input = input * Duration.microsecondsPerSecond;
-        break;
-      case TimestampType.ms:
-        input = input * Duration.microsecondsPerMillisecond;
-        break;
-      case TimestampType.us:
-        break;
-    }
-
     final timezone = TimezoneHolder.of(context);
 
-    _datetime = TZDateTime.fromMicrosecondsSinceEpoch(timezone, input);
+    if (_type == TimestampType.iso) {
+      try {
+        _datetime = TZDateTime.parse(timezone, inputText);
+      } on FormatException catch (_) {
+        _datetime = null;
+      }
+    } else {
+      int? input = int.tryParse(inputText);
+
+      if (input == null) {
+        _datetime = null;
+        setState(() {});
+        return;
+      }
+
+      switch (_type) {
+        case TimestampType.sec:
+          input = input * Duration.microsecondsPerSecond;
+          break;
+        case TimestampType.ms:
+          input = input * Duration.microsecondsPerMillisecond;
+          break;
+        case TimestampType.us:
+          break;
+        case TimestampType.iso:
+          // Do nothing here
+          break;
+      }
+
+      _datetime = TZDateTime.fromMicrosecondsSinceEpoch(timezone, input);
+    }
+
     setState(() {});
   }
 
@@ -205,7 +222,7 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
         if (datetime != null) {
           // Update input
           String newInput;
-          switch(type) {
+          switch (type) {
             case TimestampType.sec:
               newInput = '${datetime.millisecondsSinceEpoch ~/ 1000}';
               break;
@@ -215,6 +232,8 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
             case TimestampType.us:
               newInput = '${datetime.microsecondsSinceEpoch}';
               break;
+            case TimestampType.iso:
+              newInput = datetime.toIso8601String();
           }
           _inputController.text = newInput;
         }
