@@ -32,7 +32,7 @@ extension on TimestampType {
       case TimestampType.us:
         return 'Microseconds since epoch';
       case TimestampType.iso:
-        return 'Iso';
+        return 'ISO 8601';
     }
   }
 }
@@ -42,6 +42,17 @@ extension on TimestampType {
 enum DatetimeFormat {
   iso8601,
   rfc2822,
+}
+
+extension on DatetimeFormat {
+  String format(BuildContext context) {
+    switch(this) {
+      case DatetimeFormat.iso8601:
+        return 'ISO 8601';
+      case DatetimeFormat.rfc2822:
+        return 'RFC 2822';
+    }
+  }
 }
 
 class UnixTimestampToolWidget extends StatefulWidget {
@@ -341,7 +352,7 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
                   .map(
                     (type) => MacosPopupMenuItem(
                       value: type,
-                      child: Text(type.name),
+                      child: Text(type.format(context)),
                     ),
                   )
                   .toList(growable: false),
