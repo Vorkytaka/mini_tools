@@ -60,6 +60,6 @@
       "four": "4 spaces",
       "tab": "Tab"
     },
-    "json_path_hint": "JSONPath"
+    "json_path_hint": "JSONPath (e.g. \\$.order.products[*].title)"
   }
 }
