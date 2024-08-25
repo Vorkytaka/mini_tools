@@ -28,5 +28,12 @@
     "leap_year": "Leap year",
     "date_only": "Date only",
     "time_only": "Time only"
+  },
+  "number_converter": {
+    "title": "Number base converter",
+    "binary": "Base 2 (Binary):",
+    "octal": "Base 8 (Octal):",
+    "decimal": "Base 10 (Decimal):",
+    "hex": "Base 16 (Hex):"
   }
 }

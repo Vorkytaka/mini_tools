@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 22
+/// Strings: 27
 ///
-/// Built on 2024-08-25 at 00:07 UTC
+/// Built on 2024-08-25 at 00:17 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -149,6 +149,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	// Translations
 	late final _StringsCommonEn common = _StringsCommonEn._(_root);
 	late final _StringsUnixTimestampEn unixTimestamp = _StringsUnixTimestampEn._(_root);
+	late final _StringsNumberConverterEn numberConverter = _StringsNumberConverterEn._(_root);
 }
 
 // Path: common
@@ -184,6 +185,20 @@ class _StringsUnixTimestampEn {
 	String get leapYear => 'Leap year';
 	String get dateOnly => 'Date only';
 	String get timeOnly => 'Time only';
+}
+
+// Path: numberConverter
+class _StringsNumberConverterEn {
+	_StringsNumberConverterEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Number base converter';
+	String get binary => 'Base 2 (Binary):';
+	String get octal => 'Base 8 (Octal):';
+	String get decimal => 'Base 10 (Decimal):';
+	String get hex => 'Base 16 (Hex):';
 }
 
 // Path: unixTimestamp.inputType
@@ -239,6 +254,11 @@ extension on Translations {
 			case 'unixTimestamp.leapYear': return 'Leap year';
 			case 'unixTimestamp.dateOnly': return 'Date only';
 			case 'unixTimestamp.timeOnly': return 'Time only';
+			case 'numberConverter.title': return 'Number base converter';
+			case 'numberConverter.binary': return 'Base 2 (Binary):';
+			case 'numberConverter.octal': return 'Base 8 (Octal):';
+			case 'numberConverter.decimal': return 'Base 10 (Decimal):';
+			case 'numberConverter.hex': return 'Base 16 (Hex):';
 			default: return null;
 		}
 	}
