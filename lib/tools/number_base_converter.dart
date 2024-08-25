@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 
+import '../i18n/strings.g.dart';
 import 'tools.dart';
 
 final numberBaseConverterTool = Tool(
-  title: 'Number base converter',
+  titleBuilder: (context) => Translations.of(context).numberConverter.title,
   icon: Icons.numbers,
   screenBuilder: (context) => const NumberBaseConverter(),
 );
@@ -16,9 +17,11 @@ class NumberBaseConverter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return MacosScaffold(
-      toolBar: const ToolBar(
-        title: Text('Number base converter'),
+      toolBar: ToolBar(
+        title: Text(t.numberConverter.title),
         titleWidth: 175,
         centerTitle: true,
       ),
@@ -38,7 +41,7 @@ class _Body extends StatefulWidget {
 
   const _Body({
     this.controller,
-});
+  });
 
   @override
   State<_Body> createState() => _BodyState();
@@ -61,31 +64,33 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return SingleChildScrollView(
       controller: widget.controller,
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
           _Item(
-            title: 'Base 2 (Binary):',
+            title: t.numberConverter.binary,
             controller: _base2Controller,
             onChanged: _base2Changed,
           ),
           const SizedBox(height: 12),
           _Item(
-            title: 'Base 8 (Octal):',
+            title: t.numberConverter.octal,
             controller: _base8Controller,
             onChanged: _base8Changed,
           ),
           const SizedBox(height: 12),
           _Item(
-            title: 'Base 10 (Decimal):',
+            title: t.numberConverter.decimal,
             controller: _base10Controller,
             onChanged: _base10Changed,
           ),
           const SizedBox(height: 12),
           _Item(
-            title: 'Base 16 (Hex):',
+            title: t.numberConverter.hex,
             controller: _base16Controller,
             onChanged: _base16Changed,
           ),
@@ -149,6 +154,8 @@ class _Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -176,7 +183,7 @@ class _Item extends StatelessWidget {
                   ),
                 );
               },
-              semanticLabel: 'Copy',
+              semanticLabel: t.common.copy,
               icon: const MacosIcon(
                 size: 16,
                 CupertinoIcons.doc_on_clipboard_fill,

@@ -3,6 +3,8 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
   enable-experiment:
     - macros
+  exclude:
+    - lib/i18n/**
 
 # https://dart.dev/guides/language/analysis-options
 linter:

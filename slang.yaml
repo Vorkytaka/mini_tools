@@ -1,0 +1,5 @@
+# Run this command to regenerate strings
+# fvm dart run slang
+
+key_case: camel
+output_directory: lib/i18n

@@ -8,10 +8,11 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
 
 import '../common/highlight_theme_holder.dart';
+import '../i18n/strings.g.dart';
 import 'tools.dart';
 
 final jsonFormatterTool = Tool(
-  title: 'JSON Formatter',
+  titleBuilder: (context) => Translations.of(context).jsonFormatter.title,
   icon: Icons.data_object,
   screenBuilder: (context) => const JsonFormatter(),
 );
@@ -23,9 +24,11 @@ class JsonFormatter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return MacosScaffold(
-      toolBar: const ToolBar(
-        title: Text('JSON Formatter'),
+      toolBar: ToolBar(
+        title: Text(t.jsonFormatter.title),
         centerTitle: true,
       ),
       children: [
@@ -53,15 +56,17 @@ enum _JsonFormat {
 
 extension on _JsonFormat {
   String format(BuildContext context) {
+    final t = Translations.of(context);
+
     switch (this) {
       case _JsonFormat.min:
-        return 'Minify';
+        return t.jsonFormatter.jsonFormat.min;
       case _JsonFormat.two:
-        return '2 spaces';
+        return t.jsonFormatter.jsonFormat.two;
       case _JsonFormat.four:
-        return '4 spaces';
+        return t.jsonFormatter.jsonFormat.four;
       case _JsonFormat.tab:
-        return 'Tab';
+        return t.jsonFormatter.jsonFormat.tab;
     }
   }
 
@@ -118,6 +123,8 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Row(
       children: [
         Expanded(
@@ -128,7 +135,7 @@ class _BodyState extends State<_Body> {
               minLines: null,
               maxLines: null,
               textAlignVertical: const TextAlignVertical(y: -1),
-              placeholder: '{"key": "value"}',
+              placeholder: t.jsonFormatter.inputHint,
             ),
           ),
         ),
@@ -139,7 +146,7 @@ class _BodyState extends State<_Body> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    const Expanded(child: Text('Output:')),
+                    Expanded(child: Text(t.common.output)),
                     PushButton(
                       controlSize: ControlSize.regular,
                       secondary: true,
@@ -149,7 +156,7 @@ class _BodyState extends State<_Body> {
                           Clipboard.setData(ClipboardData(text: text));
                         }
                       },
-                      child: const Text('Copy'),
+                      child: Text(t.common.copy),
                     ),
                     const SizedBox(width: 8),
                     MacosPopupButton(
@@ -186,7 +193,7 @@ class _BodyState extends State<_Body> {
               ),
               MacosTextField(
                 controller: _jsonPathController,
-                placeholder: 'JSONPath',
+                placeholder: t.jsonFormatter.jsonPathHint,
               ),
             ],
           ),

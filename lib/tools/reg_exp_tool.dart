@@ -3,10 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 
+import '../i18n/strings.g.dart';
 import 'tools.dart';
 
 final regExpTool = Tool(
-  title: 'RegExp tool',
+  titleBuilder: (context) => Translations.of(context).regexp.title,
   icon: Icons.manage_search,
   screenBuilder: (context) => const RegExpTool(),
 );
@@ -16,9 +17,11 @@ class RegExpTool extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return MacosScaffold(
-      toolBar: const ToolBar(
-        title: Text('RegExp tool'),
+      toolBar: ToolBar(
+        title: Text(t.regexp.title),
         centerTitle: true,
       ),
       children: [
@@ -58,6 +61,7 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     final matchesCount = _searchResults?.length ?? 0;
 
     return Column(
@@ -68,7 +72,7 @@ class _BodyState extends State<_Body> {
             children: [
               MacosTextField(
                 controller: _inputController,
-                placeholder: 'RegExp',
+                placeholder: t.regexp.regexpHint,
               ),
               const SizedBox(height: 12),
               Padding(
@@ -76,8 +80,11 @@ class _BodyState extends State<_Body> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Test string: '),
-                    Text('Matches count: $matchesCount'),
+                    Text(t.regexp.testStringTitle),
+                    Text(t.regexp.matchesCount(
+                      n: matchesCount,
+                      count: matchesCount,
+                    )),
                   ],
                 ),
               ),
@@ -96,7 +103,7 @@ class _BodyState extends State<_Body> {
           builder: (context, controller) => Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Match information: '),
+              Text(t.regexp.matchInfoTitle),
               const SizedBox(height: 8),
               Expanded(
                 child: SingleChildScrollView(
@@ -143,6 +150,7 @@ class _MatchInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = MacosTheme.of(context);
+    final t = Translations.of(context);
     final matches = this.matches;
 
     const cellPadding = EdgeInsets.all(8);
@@ -152,13 +160,26 @@ class _MatchInformation extends StatelessWidget {
 
     TableRow? result;
     if (matches == null || matches.isEmpty) {
-      result = const TableRow(
+      result = TableRow(
         children: [
-          TableCell(child: Padding(padding: cellPadding, child: Text('–'))),
+          const TableCell(
+            child: Padding(
+              padding: cellPadding,
+              child: Text(' '),
+            ),
+          ),
           TableCell(
-              child:
-                  Padding(padding: cellPadding, child: Text('Nothing found'))),
-          TableCell(child: Padding(padding: cellPadding, child: Text('–'))),
+            child: Padding(
+              padding: cellPadding,
+              child: Text(t.regexp.matchInfoNothing),
+            ),
+          ),
+          const TableCell(
+            child: Padding(
+              padding: cellPadding,
+              child: Text(' '),
+            ),
+          ),
         ],
       );
     } else {}
@@ -176,7 +197,7 @@ class _MatchInformation extends StatelessWidget {
                 padding: cellPadding,
                 child: DefaultTextStyle.merge(
                   style: const TextStyle(fontWeight: FontWeight.bold),
-                  child: const Text('#'),
+                  child: Text(t.regexp.matchInfoNumber),
                 ),
               ),
             ),
@@ -185,7 +206,7 @@ class _MatchInformation extends StatelessWidget {
                 padding: cellPadding,
                 child: DefaultTextStyle.merge(
                   style: const TextStyle(fontWeight: FontWeight.bold),
-                  child: const Text('Match'),
+                  child: Text(t.regexp.matchInfoValue),
                 ),
               ),
             ),
@@ -194,7 +215,7 @@ class _MatchInformation extends StatelessWidget {
                 padding: cellPadding,
                 child: DefaultTextStyle.merge(
                   style: const TextStyle(fontWeight: FontWeight.bold),
-                  child: const Text('Position'),
+                  child: Text(t.regexp.matchInfoPosition),
                 ),
               ),
             ),
