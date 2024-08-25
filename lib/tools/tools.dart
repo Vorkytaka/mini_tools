@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'json_formatter.dart';
 import 'number_base_converter.dart';
+import 'percentages_tool.dart';
 import 'reg_exp_tool.dart';
 import 'unix_timestamp.dart';
 
@@ -25,6 +26,7 @@ final tools = <Tool>[
   jsonFormatterTool,
   regExpTool,
   numberBaseConverterTool,
+  percentagesTool,
 ];
 
 final debugTool = Tool(
