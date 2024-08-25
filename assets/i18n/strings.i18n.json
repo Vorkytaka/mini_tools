@@ -35,5 +35,19 @@
     "octal": "Base 8 (Octal):",
     "decimal": "Base 10 (Decimal):",
     "hex": "Base 16 (Hex):"
+  },
+  "regexp": {
+    "title": "RegExp tester",
+    "regexp_hint": "RegExp (e.g. [^0-9])",
+    "test_string_title": "Test string:",
+    "matches_count": {
+      "one": "$count match",
+      "other": "$count matches"
+    },
+    "match_info_title": "Match information:",
+    "match_info_number": "#",
+    "match_info_value": "Match",
+    "match_info_position": "Position",
+    "match_info_nothing": "Nothing found"
   }
 }

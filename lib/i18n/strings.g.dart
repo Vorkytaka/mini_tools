@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 27
+/// Strings: 37
 ///
-/// Built on 2024-08-25 at 00:17 UTC
+/// Built on 2024-08-25 at 19:19 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -150,6 +150,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsCommonEn common = _StringsCommonEn._(_root);
 	late final _StringsUnixTimestampEn unixTimestamp = _StringsUnixTimestampEn._(_root);
 	late final _StringsNumberConverterEn numberConverter = _StringsNumberConverterEn._(_root);
+	late final _StringsRegexpEn regexp = _StringsRegexpEn._(_root);
 }
 
 // Path: common
@@ -199,6 +200,27 @@ class _StringsNumberConverterEn {
 	String get octal => 'Base 8 (Octal):';
 	String get decimal => 'Base 10 (Decimal):';
 	String get hex => 'Base 16 (Hex):';
+}
+
+// Path: regexp
+class _StringsRegexpEn {
+	_StringsRegexpEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'RegExp tester';
+	String get regexpHint => 'RegExp (e.g. [^0-9])';
+	String get testStringTitle => 'Test string:';
+	String matchesCount({required num n, required Object count}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n,
+		one: '${count} match',
+		other: '${count} matches',
+	);
+	String get matchInfoTitle => 'Match information:';
+	String get matchInfoNumber => '#';
+	String get matchInfoValue => 'Match';
+	String get matchInfoPosition => 'Position';
+	String get matchInfoNothing => 'Nothing found';
 }
 
 // Path: unixTimestamp.inputType
@@ -259,6 +281,18 @@ extension on Translations {
 			case 'numberConverter.octal': return 'Base 8 (Octal):';
 			case 'numberConverter.decimal': return 'Base 10 (Decimal):';
 			case 'numberConverter.hex': return 'Base 16 (Hex):';
+			case 'regexp.title': return 'RegExp tester';
+			case 'regexp.regexpHint': return 'RegExp (e.g. [^0-9])';
+			case 'regexp.testStringTitle': return 'Test string:';
+			case 'regexp.matchesCount': return ({required num n, required Object count}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n,
+				one: '${count} match',
+				other: '${count} matches',
+			);
+			case 'regexp.matchInfoTitle': return 'Match information:';
+			case 'regexp.matchInfoNumber': return '#';
+			case 'regexp.matchInfoValue': return 'Match';
+			case 'regexp.matchInfoPosition': return 'Position';
+			case 'regexp.matchInfoNothing': return 'Nothing found';
 			default: return null;
 		}
 	}
