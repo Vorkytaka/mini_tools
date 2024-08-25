@@ -10,6 +10,7 @@ import 'package:timezone/timezone.dart' as tz;
 import 'package:window_manager/window_manager.dart';
 
 import 'app.dart';
+import 'i18n/strings.g.dart';
 
 /// This method initializes macos_window_utils and styles the window.
 Future<void> _configureMacosWindowUtils() async {
@@ -33,6 +34,7 @@ Future<tz.Location> _initializeTimezone() async {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  LocaleSettings.useDeviceLocale();
   await windowManager.ensureInitialized();
 
   if (kIsWeb) {

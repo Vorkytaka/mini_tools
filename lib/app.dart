@@ -5,6 +5,7 @@ import 'package:timezone/timezone.dart';
 
 import 'common/highlight_theme_holder.dart';
 import 'common/timezone_holder.dart';
+import 'i18n/strings.g.dart';
 import 'tools/tools.dart';
 
 class App extends StatelessWidget {
@@ -21,13 +22,20 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HighlightThemeHolder(
-      highlighterTheme: highlighterTheme,
-      highlighterDarkTheme: highlighterDarkTheme,
-      child: TimezoneHolder(
-        timezone: timezone,
-        child: const MacosApp(
-          home: _Window(),
+    return TranslationProvider(
+      child: HighlightThemeHolder(
+        highlighterTheme: highlighterTheme,
+        highlighterDarkTheme: highlighterDarkTheme,
+        child: TimezoneHolder(
+          timezone: timezone,
+          child: Builder(
+            builder: (context) => MacosApp(
+              locale: TranslationProvider.of(context).flutterLocale,
+              supportedLocales: AppLocaleUtils.supportedLocales,
+              // localizationsDelegates: GlobalMaterialLocalizations.delegates,
+              home: const _Window(),
+            ),
+          ),
         ),
       ),
     );

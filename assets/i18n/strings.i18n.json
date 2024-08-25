@@ -1,0 +1,32 @@
+{
+  "common": {
+    "input": "Input:",
+    "clear": "Clear",
+    "yes": "Yes",
+    "no": "No",
+    "copy": "Copy"
+  },
+  "unix_timestamp": {
+    "title": "Unix timestamp",
+    "input_type": {
+      "sec": "Seconds since epoch",
+      "ms": "Milliseconds since epoch",
+      "us": "Microseconds since epoch",
+      "iso": "ISO 8601"
+    },
+    "datetime_format": {
+      "hint": "Datetime format:",
+      "iso": "ISO 8601",
+      "rfc": "RFC 2822"
+    },
+    "now": "Now",
+    "local": "Local time",
+    "utc": "UTC time",
+    "weekday": "Weekday",
+    "week_of_the_year": "Week of the year",
+    "day_of_the_year": "Day of the year",
+    "leap_year": "Leap year",
+    "date_only": "Date only",
+    "time_only": "Time only"
+  }
+}

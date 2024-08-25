@@ -7,6 +7,7 @@ import 'package:timezone/timezone.dart';
 
 import '../common/macos_read_only_field.dart';
 import '../common/timezone_holder.dart';
+import '../i18n/strings.g.dart';
 import 'tools.dart';
 
 final unixTimestampTool = Tool(
@@ -24,15 +25,16 @@ enum TimestampType {
 
 extension on TimestampType {
   String format(BuildContext context) {
+    final t = Translations.of(context);
     switch (this) {
       case TimestampType.sec:
-        return 'Seconds since epoch';
+        return t.unixTimestamp.inputType.sec;
       case TimestampType.ms:
-        return 'Milliseconds since epoch';
+        return t.unixTimestamp.inputType.ms;
       case TimestampType.us:
-        return 'Microseconds since epoch';
+        return t.unixTimestamp.inputType.us;
       case TimestampType.iso:
-        return 'ISO 8601';
+        return t.unixTimestamp.inputType.iso;
     }
   }
 }
@@ -46,11 +48,12 @@ enum DatetimeFormat {
 
 extension on DatetimeFormat {
   String format(BuildContext context) {
-    switch(this) {
+    final t = Translations.of(context);
+    switch (this) {
       case DatetimeFormat.iso8601:
-        return 'ISO 8601';
+        return t.unixTimestamp.datetimeFormat.iso;
       case DatetimeFormat.rfc2822:
-        return 'RFC 2822';
+        return t.unixTimestamp.datetimeFormat.rfc;
     }
   }
 }
@@ -82,10 +85,12 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return MacosScaffold(
-      toolBar: const ToolBar(
+      toolBar: ToolBar(
         centerTitle: true,
-        title: Text('Unix Timestamp'),
+        title: Text(t.unixTimestamp.title),
       ),
       children: [
         ContentArea(
@@ -99,19 +104,19 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
                   Row(
                     children: [
                       const SizedBox(width: 12),
-                      const Text('Input:'),
+                      Text(t.common.input),
                       const SizedBox(width: 12),
                       PushButton(
                         controlSize: ControlSize.regular,
                         onPressed: _setNow,
-                        child: const Text('Now'),
+                        child: Text(t.unixTimestamp.now),
                       ),
                       const SizedBox(width: 12),
                       PushButton(
                         controlSize: ControlSize.regular,
                         onPressed: _clear,
                         secondary: true,
-                        child: const Text('Clear'),
+                        child: Text(t.common.clear),
                       ),
                     ],
                   ),
@@ -267,6 +272,8 @@ class _DateTimeOutput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -280,37 +287,38 @@ class _DateTimeOutput extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _DateItem(
-                title: 'Weekday',
+                title: t.unixTimestamp.weekday,
                 datetime: datetime,
                 mapper: _weekdayFormat.format,
               ),
               const SizedBox(height: 12),
               _DateItem(
-                title: 'Week of the year',
+                title: t.unixTimestamp.weekOfTheYear,
                 datetime: datetime,
                 mapper: (datetime) => '${weekNumber(datetime)}',
               ),
               const SizedBox(height: 12),
               _DateItem(
-                title: 'Day of the year',
+                title: t.unixTimestamp.dayOfTheYear,
                 datetime: datetime,
                 mapper: (datetime) => '${dayNumber(datetime)}',
               ),
               const SizedBox(height: 12),
               _DateItem(
-                title: 'Leap year',
+                title: t.unixTimestamp.leapYear,
                 datetime: datetime,
-                mapper: isLeapYearYesNo,
+                mapper: (datetime) =>
+                    isLeapYear(datetime) ? t.common.yes : t.common.no,
               ),
               const SizedBox(height: 12),
               _DateItem(
-                title: 'Date only',
+                title: t.unixTimestamp.dateOnly,
                 datetime: datetime,
                 mapper: _dateFormat.format,
               ),
               const SizedBox(height: 12),
               _DateItem(
-                title: 'Time only',
+                title: t.unixTimestamp.timeOnly,
                 datetime: datetime,
                 mapper: _timeFormat.format,
               ),
@@ -339,12 +347,14 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
-            const Text('Datetime format: '),
+            Text(t.unixTimestamp.datetimeFormat.hint),
             const SizedBox(width: 8),
             MacosPopupButton(
               value: _format,
@@ -368,13 +378,13 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
         ),
         const SizedBox(height: 12),
         _DateItem(
-          title: 'Local time',
+          title: t.unixTimestamp.local,
           datetime: widget.datetime,
           mapper: _formatDatetime,
         ),
         const SizedBox(height: 12),
         _DateItem(
-          title: 'UTC time',
+          title: t.unixTimestamp.utc,
           datetime: widget.datetime,
           mapper: (datetime) => _formatDatetime(datetime.toUtc()),
         ),
@@ -407,6 +417,8 @@ class _DateItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -430,7 +442,7 @@ class _DateItem extends StatelessWidget {
                   ),
                 );
               },
-              semanticLabel: 'Copy',
+              semanticLabel: t.common.copy,
               icon: const MacosIcon(
                 size: 16,
                 CupertinoIcons.doc_on_clipboard_fill,
@@ -476,8 +488,6 @@ int weekNumber(TZDateTime date) {
   }
   return woy;
 }
-
-String isLeapYearYesNo(TZDateTime date) => isLeapYear(date) ? 'Yes' : 'No';
 
 bool isLeapYear(TZDateTime date) =>
     (date.year % 4 == 0) && ((date.year % 100 != 0) || (date.year % 400 == 0));
