@@ -7,7 +7,7 @@ import '../i18n/strings.g.dart';
 import 'tools.dart';
 
 final numberBaseConverterTool = Tool(
-  title: 'Number base converter',
+  titleBuilder: (context) => Translations.of(context).numberConverter.title,
   icon: Icons.numbers,
   screenBuilder: (context) => const NumberBaseConverter(),
 );

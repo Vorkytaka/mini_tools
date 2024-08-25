@@ -11,7 +11,7 @@ import '../i18n/strings.g.dart';
 import 'tools.dart';
 
 final unixTimestampTool = Tool(
-  title: 'Unix timestamp',
+  titleBuilder: (context) => Translations.of(context).unixTimestamp.title,
   icon: Icons.timelapse,
   screenBuilder: (context) => const UnixTimestampToolWidget(),
 );

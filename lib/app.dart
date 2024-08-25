@@ -72,7 +72,7 @@ class _WindowState extends State<_Window> {
           items: tools
               .map((tool) => SidebarItem(
                     leading: MacosIcon(tool.icon),
-                    label: Text(tool.title),
+                    label: Text(tool.titleBuilder(context)),
                   ))
               .toList(growable: false),
         ),

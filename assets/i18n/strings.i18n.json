@@ -1,6 +1,7 @@
 {
   "common": {
     "input": "Input:",
+    "output": "Output:",
     "clear": "Clear",
     "yes": "Yes",
     "no": "No",
@@ -49,5 +50,16 @@
     "match_info_value": "Match",
     "match_info_position": "Position",
     "match_info_nothing": "Nothing found"
+  },
+  "json_formatter": {
+    "title": "JSON Formatter",
+    "input_hint": "{\"key\": \"value\"}",
+    "json_format": {
+      "min": "Minify",
+      "two": "2 spaces",
+      "four": "4 spaces",
+      "tab": "Tab"
+    },
+    "json_path_hint": "JSONPath"
   }
 }

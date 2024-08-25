@@ -7,7 +7,7 @@ import '../i18n/strings.g.dart';
 import 'tools.dart';
 
 final regExpTool = Tool(
-  title: 'RegExp tool',
+  titleBuilder: (context) => Translations.of(context).regexp.title,
   icon: Icons.manage_search,
   screenBuilder: (context) => const RegExpTool(),
 );
