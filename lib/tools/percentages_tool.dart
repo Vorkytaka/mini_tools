@@ -5,10 +5,12 @@ import 'package:macos_ui/macos_ui.dart';
 
 import '../common/macos_read_only_field.dart';
 import '../common/num.dart';
+import '../i18n/strings.g.dart';
 import 'tools.dart';
 
 final percentagesTool = Tool(
-  titleBuilder: (context) => 'Percentage Calculator',
+  titleBuilder: (context) =>
+      Translations.of(context).percentageCalculator.title,
   icon: Icons.percent,
   screenBuilder: (context) => const PercentagesTool(),
 );
@@ -18,9 +20,11 @@ class PercentagesTool extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return MacosScaffold(
-      toolBar: const ToolBar(
-        title: Text('Percentage Calculator'),
+      toolBar: ToolBar(
+        title: Text(t.percentageCalculator.title),
         centerTitle: true,
         titleWidth: 164,
       ),
@@ -31,12 +35,12 @@ class PercentagesTool extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8),
                   child: _PercentagesFromValue(),
                 ),
                 MacosPulldownMenuDivider(),
                 Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8),
                   child: _PercentagesOfValue(),
                 ),
               ],
@@ -77,12 +81,14 @@ class _PercentagesFromValueState extends State<_PercentagesFromValue> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Row(
           children: [
-            Text('What is '),
+            Text(t.percentageCalculator.percentFromValue.whatIs),
             SizedBox(
               width: 100,
               child: MacosTextField(
@@ -90,11 +96,11 @@ class _PercentagesFromValueState extends State<_PercentagesFromValue> {
                 textAlign: TextAlign.end,
                 suffix: Opacity(
                   opacity: 0.5,
-                  child: Text('%'),
+                  child: Text(t.common.percent),
                 ),
               ),
             ),
-            Text(' of '),
+            Text(t.percentageCalculator.percentFromValue.of),
             SizedBox(
               width: 100,
               child: MacosTextField(
@@ -102,8 +108,8 @@ class _PercentagesFromValueState extends State<_PercentagesFromValue> {
                 controller: _numberController,
               ),
             ),
-            Text('?'),
-            Spacer(),
+            Text(t.common.questionMark),
+            const Spacer(),
             SizedBox(
               width: 100,
               child: MacosReadonlyField(
@@ -119,7 +125,7 @@ class _PercentagesFromValueState extends State<_PercentagesFromValue> {
                   Clipboard.setData(ClipboardData(text: _value));
                 }
               },
-              icon: MacosIcon(CupertinoIcons.doc_on_clipboard_fill),
+              icon: const MacosIcon(CupertinoIcons.doc_on_clipboard_fill),
             ),
           ],
         ),
@@ -173,6 +179,8 @@ class _PercentagesOfValueState extends State<_PercentagesOfValue> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Row(
       children: [
         SizedBox(
@@ -182,7 +190,7 @@ class _PercentagesOfValueState extends State<_PercentagesOfValue> {
             textAlign: TextAlign.end,
           ),
         ),
-        Text(' is what % of '),
+        Text(t.percentageCalculator.partOfTotal.isWhat),
         SizedBox(
           width: 100,
           child: MacosTextField(
@@ -190,8 +198,8 @@ class _PercentagesOfValueState extends State<_PercentagesOfValue> {
             controller: _totalController,
           ),
         ),
-        Text('?'),
-        Spacer(),
+        Text(t.common.questionMark),
+        const Spacer(),
         SizedBox(
           width: 100,
           child: MacosReadonlyField(
@@ -200,7 +208,7 @@ class _PercentagesOfValueState extends State<_PercentagesOfValue> {
             text: _value,
             suffix: Opacity(
               opacity: 0.5,
-              child: Text('%'),
+              child: Text(t.common.percent),
             ),
           ),
         ),
@@ -211,7 +219,7 @@ class _PercentagesOfValueState extends State<_PercentagesOfValue> {
               Clipboard.setData(ClipboardData(text: _value));
             }
           },
-          icon: MacosIcon(CupertinoIcons.doc_on_clipboard_fill),
+          icon: const MacosIcon(CupertinoIcons.doc_on_clipboard_fill),
         ),
       ],
     );
