@@ -12,6 +12,8 @@ enum CopyButtonType {
 
 class CopyButton extends StatelessWidget {
   /// Value to copy on tap
+  ///
+  /// Will be copied only if value is not null and not empty
   final String? value;
 
   final CopyButtonType type;
@@ -21,6 +23,21 @@ class CopyButton extends StatelessWidget {
     this.value,
     super.key,
   });
+
+  const CopyButton.icon({
+    this.value,
+    super.key,
+  }) : type = CopyButtonType.icon;
+
+  const CopyButton.text({
+    this.value,
+    super.key,
+  }) : type = CopyButtonType.text;
+
+  const CopyButton.both({
+    this.value,
+    super.key,
+  }) : type = CopyButtonType.both;
 
   @override
   Widget build(BuildContext context) {
