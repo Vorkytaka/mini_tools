@@ -21,6 +21,9 @@ dependencies:
   timezone: ^0.9.4
   window_manager: ^0.4.0
 
+  re_editor: ^0.3.1
+  re_highlight: ^0.0.3
+
 dev_dependencies:
   flutter_lints: ^3.0.0
   flutter_test:

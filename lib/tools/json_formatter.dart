@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:json_path/json_path.dart';
 import 'package:macos_ui/macos_ui.dart';
-import 'package:syntax_highlight/syntax_highlight.dart';
+import 'package:re_editor/re_editor.dart';
+import 'package:re_highlight/languages/json.dart';
+import 'package:re_highlight/styles/base16/monokai.dart';
 
-import '../common/highlight_theme_holder.dart';
+import '../common/macos_code_editor.dart';
 import '../i18n/strings.g.dart';
 import 'tools.dart';
 
@@ -85,8 +87,8 @@ extension on _JsonFormat {
 }
 
 class _BodyState extends State<_Body> {
-  final _inputController = TextEditingController();
-  TextEditingController? _outputController;
+  final _inputController = CodeLineEditingController();
+  final _outputController = CodeLineEditingController();
   final _jsonPathController = TextEditingController();
 
   Object? _json;
@@ -102,15 +104,6 @@ class _BodyState extends State<_Body> {
     super.initState();
     _inputController.addListener(_onInputUpdate);
     _jsonPathController.addListener(_onJsonPathUpdate);
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (_outputController == null) {
-      final theme = HighlightThemeHolder.of(context);
-      _outputController = _HighlighterTextEditingController(theme: theme);
-    }
   }
 
   @override
@@ -130,72 +123,90 @@ class _BodyState extends State<_Body> {
         Expanded(
           child: SizedBox(
             height: double.infinity,
-            child: MacosTextField(
-              controller: _inputController,
-              minLines: null,
-              maxLines: null,
-              textAlignVertical: const TextAlignVertical(y: -1),
-              placeholder: t.jsonFormatter.inputHint,
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: MacosCodeEditor(
+                controller: _inputController,
+                style: MacosCodeEditor.defaultStyle(
+                  context,
+                  codeTheme: CodeHighlightTheme(
+                    languages: {'json': CodeHighlightThemeMode(mode: langJson)},
+                    theme: monokaiTheme,
+                  ),
+                ),
+                indicatorBuilder: MacosCodeEditor.defaultIndicatorBuilder,
+              ),
             ),
           ),
         ),
         Expanded(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Expanded(child: Text(t.common.output)),
-                    PushButton(
-                      controlSize: ControlSize.regular,
-                      secondary: true,
-                      onPressed: () {
-                        final text = _outputController?.text;
-                        if (text != null && text.isNotEmpty) {
-                          Clipboard.setData(ClipboardData(text: text));
-                        }
-                      },
-                      child: Text(t.common.copy),
-                    ),
-                    const SizedBox(width: 8),
-                    MacosPopupButton(
-                      value: _format,
-                      items: _JsonFormat.values
-                          .map(
-                            (type) => MacosPopupMenuItem(
-                              value: type,
-                              child: Text(type.format(context)),
-                            ),
-                          )
-                          .toList(growable: false),
-                      onChanged: (format) {
-                        if (format != null && format != _format) {
-                          setState(() {
-                            _format = format;
-                            _formatter = format.encoder;
-                            _onInputUpdate();
-                          });
-                        }
-                      },
-                    ),
-                  ],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Row(
+                    children: [
+                      Expanded(child: Text(t.common.output)),
+                      PushButton(
+                        controlSize: ControlSize.regular,
+                        secondary: true,
+                        onPressed: () {
+                          final text = _outputController.text;
+                          if (text.isNotEmpty) {
+                            Clipboard.setData(ClipboardData(text: text));
+                          }
+                        },
+                        child: Text(t.common.copy),
+                      ),
+                      const SizedBox(width: 8),
+                      MacosPopupButton(
+                        value: _format,
+                        items: _JsonFormat.values
+                            .map(
+                              (type) => MacosPopupMenuItem(
+                                value: type,
+                                child: Text(type.format(context)),
+                              ),
+                            )
+                            .toList(growable: false),
+                        onChanged: (format) {
+                          if (format != null && format != _format) {
+                            setState(() {
+                              _format = format;
+                              _formatter = format.encoder;
+                              _onInputUpdate();
+                            });
+                          }
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: MacosTextField(
-                  controller: _outputController,
-                  readOnly: true,
-                  minLines: null,
-                  maxLines: null,
-                  textAlignVertical: const TextAlignVertical(y: -1),
+                Expanded(
+                  child: MacosCodeEditor(
+                    controller: _outputController,
+                    readOnly: true,
+                    style: MacosCodeEditor.defaultStyle(
+                      context,
+                      codeTheme: CodeHighlightTheme(
+                        languages: {
+                          'json': CodeHighlightThemeMode(mode: langJson)
+                        },
+                        theme: monokaiTheme,
+                      ),
+                    ),
+                    indicatorBuilder: MacosCodeEditor.defaultIndicatorBuilder,
+                  ),
                 ),
-              ),
-              MacosTextField(
-                controller: _jsonPathController,
-                placeholder: t.jsonFormatter.jsonPathHint,
-              ),
-            ],
+                const SizedBox(height: 8),
+                MacosTextField(
+                  controller: _jsonPathController,
+                  placeholder: t.jsonFormatter.jsonPathHint,
+                ),
+              ],
+            ),
           ),
         )
       ],
@@ -237,7 +248,7 @@ class _BodyState extends State<_Body> {
     final path = _jsonPath;
 
     if (json == null) {
-      _outputController?.text = '';
+      _outputController.text = '';
       return;
     }
 
@@ -246,27 +257,6 @@ class _BodyState extends State<_Body> {
     }
 
     final outputJson = _formatter.convert(json);
-    _outputController?.text = outputJson;
-  }
-}
-
-class _HighlighterTextEditingController extends TextEditingController {
-  final Highlighter highlighter;
-  final HighlighterTheme theme;
-
-  _HighlighterTextEditingController({
-    required this.theme,
-  }) : highlighter = Highlighter(
-          language: 'json',
-          theme: theme,
-        );
-
-  @override
-  TextSpan buildTextSpan({
-    required BuildContext context,
-    TextStyle? style,
-    required bool withComposing,
-  }) {
-    return highlighter.highlight(text);
+    _outputController.text = outputJson;
   }
 }
