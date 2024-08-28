@@ -5,7 +5,9 @@
     "clear": "Clear",
     "yes": "Yes",
     "no": "No",
-    "copy": "Copy"
+    "copy": "Copy",
+    "question_mark": "?",
+    "percent": "%"
   },
   "unix_timestamp": {
     "title": "Unix timestamp",
@@ -61,5 +63,15 @@
       "tab": "Tab"
     },
     "json_path_hint": "JSONPath (e.g. \\$.order.products[*].title)"
+  },
+  "percentage_calculator": {
+    "title": "Percentage Calculator",
+    "percent_from_value": {
+      "what_is": "What is ",
+      "of": " of "
+    },
+    "part_of_total": {
+      "is_what": " is what % of "
+    }
   }
 }

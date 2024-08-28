@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 45
+/// Strings: 51
 ///
-/// Built on 2024-08-25 at 21:08 UTC
+/// Built on 2024-08-25 at 23:51 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -152,6 +152,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final _StringsNumberConverterEn numberConverter = _StringsNumberConverterEn._(_root);
 	late final _StringsRegexpEn regexp = _StringsRegexpEn._(_root);
 	late final _StringsJsonFormatterEn jsonFormatter = _StringsJsonFormatterEn._(_root);
+	late final _StringsPercentageCalculatorEn percentageCalculator = _StringsPercentageCalculatorEn._(_root);
 }
 
 // Path: common
@@ -167,6 +168,8 @@ class _StringsCommonEn {
 	String get yes => 'Yes';
 	String get no => 'No';
 	String get copy => 'Copy';
+	String get questionMark => '?';
+	String get percent => '%';
 }
 
 // Path: unixTimestamp
@@ -238,6 +241,18 @@ class _StringsJsonFormatterEn {
 	String get jsonPathHint => 'JSONPath (e.g. \$.order.products[*].title)';
 }
 
+// Path: percentageCalculator
+class _StringsPercentageCalculatorEn {
+	_StringsPercentageCalculatorEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Percentage Calculator';
+	late final _StringsPercentageCalculatorPercentFromValueEn percentFromValue = _StringsPercentageCalculatorPercentFromValueEn._(_root);
+	late final _StringsPercentageCalculatorPartOfTotalEn partOfTotal = _StringsPercentageCalculatorPartOfTotalEn._(_root);
+}
+
 // Path: unixTimestamp.inputType
 class _StringsUnixTimestampInputTypeEn {
 	_StringsUnixTimestampInputTypeEn._(this._root);
@@ -276,6 +291,27 @@ class _StringsJsonFormatterJsonFormatEn {
 	String get tab => 'Tab';
 }
 
+// Path: percentageCalculator.percentFromValue
+class _StringsPercentageCalculatorPercentFromValueEn {
+	_StringsPercentageCalculatorPercentFromValueEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get whatIs => 'What is ';
+	String get of => ' of ';
+}
+
+// Path: percentageCalculator.partOfTotal
+class _StringsPercentageCalculatorPartOfTotalEn {
+	_StringsPercentageCalculatorPartOfTotalEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get isWhat => ' is what % of ';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -288,6 +324,8 @@ extension on Translations {
 			case 'common.yes': return 'Yes';
 			case 'common.no': return 'No';
 			case 'common.copy': return 'Copy';
+			case 'common.questionMark': return '?';
+			case 'common.percent': return '%';
 			case 'unixTimestamp.title': return 'Unix timestamp';
 			case 'unixTimestamp.inputType.sec': return 'Seconds since epoch';
 			case 'unixTimestamp.inputType.ms': return 'Milliseconds since epoch';
@@ -329,6 +367,10 @@ extension on Translations {
 			case 'jsonFormatter.jsonFormat.four': return '4 spaces';
 			case 'jsonFormatter.jsonFormat.tab': return 'Tab';
 			case 'jsonFormatter.jsonPathHint': return 'JSONPath (e.g. \$.order.products[*].title)';
+			case 'percentageCalculator.title': return 'Percentage Calculator';
+			case 'percentageCalculator.percentFromValue.whatIs': return 'What is ';
+			case 'percentageCalculator.percentFromValue.of': return ' of ';
+			case 'percentageCalculator.partOfTotal.isWhat': return ' is what % of ';
 			default: return null;
 		}
 	}

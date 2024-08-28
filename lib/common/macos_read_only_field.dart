@@ -6,12 +6,16 @@ class MacosReadonlyField extends StatefulWidget {
   final int? maxLines;
   final int? minLines;
   final TextAlignVertical? textAlignVertical;
+  final TextAlign textAlign;
+  final Widget? suffix;
 
   const MacosReadonlyField({
     required this.text,
     this.maxLines,
     this.minLines,
     this.textAlignVertical,
+    this.textAlign = TextAlign.start,
+    this.suffix,
     super.key,
   });
 
@@ -50,7 +54,9 @@ class _MacosReadonlyFieldState extends State<MacosReadonlyField> {
       minLines: widget.minLines,
       maxLines: widget.maxLines,
       textAlignVertical: widget.textAlignVertical,
+      textAlign: widget.textAlign,
       readOnly: true,
+      suffix: widget.suffix,
     );
   }
 }
