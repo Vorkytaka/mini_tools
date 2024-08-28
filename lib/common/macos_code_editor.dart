@@ -89,6 +89,9 @@ class MacosCodeEditor extends StatefulWidget {
     return CodeEditorStyle(
       backgroundColor: const Color.fromRGBO(30, 30, 30, 1),
       codeTheme: codeTheme,
+      cursorWidth: 2,
+      cursorColor: MacosColors.white,
+      textColor: MacosColors.white,
     );
   }
 

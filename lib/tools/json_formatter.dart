@@ -7,9 +7,10 @@ import 'package:json_path/json_path.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:re_editor/re_editor.dart';
 import 'package:re_highlight/languages/json.dart';
-import 'package:re_highlight/styles/base16/monokai.dart';
 
+import '../common/code_themes.dart';
 import '../common/macos_code_editor.dart';
+import '../common/text_styles.dart';
 import '../i18n/strings.g.dart';
 import 'tools.dart';
 
@@ -109,7 +110,7 @@ class _BodyState extends State<_Body> {
   @override
   void dispose() {
     _inputController.dispose();
-    _outputController?.dispose();
+    _outputController.dispose();
     _jsonPathController.dispose();
     super.dispose();
   }
@@ -131,7 +132,7 @@ class _BodyState extends State<_Body> {
                   context,
                   codeTheme: CodeHighlightTheme(
                     languages: {'json': CodeHighlightThemeMode(mode: langJson)},
-                    theme: monokaiTheme,
+                    theme: CodeThemes.monokai(TextStyles.firaCode),
                   ),
                 ),
                 indicatorBuilder: MacosCodeEditor.defaultIndicatorBuilder,
@@ -141,7 +142,7 @@ class _BodyState extends State<_Body> {
         ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: Column(
               children: [
                 Padding(
@@ -194,7 +195,7 @@ class _BodyState extends State<_Body> {
                         languages: {
                           'json': CodeHighlightThemeMode(mode: langJson)
                         },
-                        theme: monokaiTheme,
+                        theme: CodeThemes.monokai(TextStyles.firaCode),
                       ),
                     ),
                     indicatorBuilder: MacosCodeEditor.defaultIndicatorBuilder,
