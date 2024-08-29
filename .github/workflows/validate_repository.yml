@@ -51,10 +51,10 @@ jobs:
         run: flutter doctor -v
 
       - name: Ensure the Dart code is formatted correctly
-        run: fvm dart format --set-exit-if-changed .
+        run: dart format --set-exit-if-changed .
 
       - name: Check flutter analyze
-        run: fvm flutter analyze .
+        run: flutter analyze .
 
       - name: Run Flutter unit tests
-        run: fvm flutter test
+        run: flutter test
