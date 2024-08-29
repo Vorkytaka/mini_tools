@@ -6,6 +6,7 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:timezone/timezone.dart';
 
 import '../common/macos_read_only_field.dart';
+import '../common/text_styles.dart';
 import '../common/timezone_holder.dart';
 import '../i18n/strings.g.dart';
 import 'tools.dart';
@@ -431,6 +432,8 @@ class _DateItem extends StatelessWidget {
             Expanded(
               child: MacosReadonlyField(
                 text: text,
+                style: TextStyles.mono,
+                maxLines: 1,
               ),
             ),
             const SizedBox(width: 4),
