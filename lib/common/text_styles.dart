@@ -6,6 +6,7 @@ class TextStyles {
 
   static TextStyle get firaCode => GoogleFonts.firaCode().copyWith(
         fontFeatures: [const FontFeature.tabularFigures()],
+        fontFamilyFallback: ['monospace', 'Courier'],
       );
 
   static TextStyle get mono => const TextStyle(
