@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 import '../common/macos_read_only_field.dart';
@@ -54,6 +56,8 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
+    const separator = SizedBox(height: 8);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -80,13 +84,33 @@ class _BodyState extends State<_Body> {
             ],
           ),
         ),
+        const SizedBox(height: 16),
         Column(
           children: [
-            MacosReadonlyField(text: colorToHex(_color)),
-            MacosReadonlyField(text: colorToARGBHex(_color)),
-            MacosReadonlyField(text: colorToRGB(_color)),
-            MacosReadonlyField(text: colorToRGBA(_color)),
-            MacosReadonlyField(text: colorToHSL(_color)),
+            _OutputItem(
+              title: 'HEX:',
+              value: colorToHex(_color),
+            ),
+            separator,
+            _OutputItem(
+              title: 'HEX with alpha:',
+              value: colorToARGBHex(_color),
+            ),
+            separator,
+            _OutputItem(
+              title: 'RGB:',
+              value: colorToRGB(_color),
+            ),
+            separator,
+            _OutputItem(
+              title: 'RGBA:',
+              value: colorToRGBA(_color),
+            ),
+            separator,
+            _OutputItem(
+              title: 'HSL:',
+              value: colorToHSL(_color),
+            ),
             // MacosReadonlyField(text: colorToHSB(_color)),
             // MacosReadonlyField(text: colorToHWB(_color)),
           ],
@@ -200,4 +224,39 @@ extension on HSLColor {
   double whiteness() => lightness * (1 - saturation);
 
   double blackness() => 1 - lightness * (1 + saturation);
+}
+
+class _OutputItem extends StatelessWidget {
+  final String title;
+  final String value;
+
+  const _OutputItem({
+    required this.title,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(title),
+        const SizedBox(height: 2),
+        Row(
+          children: [
+            Expanded(child: MacosReadonlyField(text: value)),
+            const SizedBox(width: 4),
+            MacosIconButton(
+              onPressed: () {
+                if (value.isNotEmpty) {
+                  Clipboard.setData(ClipboardData(text: value));
+                }
+              },
+              icon: const MacosIcon(CupertinoIcons.doc_on_clipboard_fill),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
 }
