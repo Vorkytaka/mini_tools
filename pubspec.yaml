@@ -12,18 +12,17 @@ dependencies:
     sdk: flutter
   flutter_timezone: ^2.1.0
   freezed: ^3.0.0-0.0.dev
+  google_fonts: ^6.2.1
   intl: ^0.19.0
   json_path: ^0.7.4
   macos_ui: ^2.0.8
+  re_editor: ^0.3.1
+  re_highlight: ^0.0.3
   slang: ^3.31.1
   slang_flutter: ^3.31.0
   syntax_highlight: ^0.4.0
   timezone: ^0.9.4
   window_manager: ^0.4.0
-
-  re_editor: ^0.3.1
-  re_highlight: ^0.0.3
-  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_lints: ^3.0.0
