@@ -8,6 +8,7 @@ class MacosReadonlyField extends StatefulWidget {
   final TextAlignVertical? textAlignVertical;
   final TextAlign textAlign;
   final Widget? suffix;
+  final TextStyle? style;
 
   const MacosReadonlyField({
     required this.text,
@@ -16,6 +17,7 @@ class MacosReadonlyField extends StatefulWidget {
     this.textAlignVertical,
     this.textAlign = TextAlign.start,
     this.suffix,
+    this.style,
     super.key,
   });
 
@@ -57,6 +59,7 @@ class _MacosReadonlyFieldState extends State<MacosReadonlyField> {
       textAlign: widget.textAlign,
       readOnly: true,
       suffix: widget.suffix,
+      style: widget.style,
     );
   }
 }

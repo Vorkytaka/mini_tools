@@ -5,8 +5,10 @@ class TextStyles {
   const TextStyles._();
 
   static TextStyle get firaCode => GoogleFonts.firaCode().copyWith(
-        fontFeatures: [
-          const FontFeature.tabularFigures(),
-        ],
+        fontFeatures: [const FontFeature.tabularFigures()],
+      );
+
+  static TextStyle get mono => const TextStyle(
+        fontFeatures: [FontFeature.tabularFigures()],
       );
 }
