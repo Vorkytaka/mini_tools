@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'hash.dart';
 import 'json_formatter.dart';
 import 'number_base_converter.dart';
 import 'percentages_tool.dart';
@@ -27,6 +28,7 @@ final tools = <Tool>[
   regExpTool,
   numberBaseConverterTool,
   percentagesTool,
+  hashTool,
 ];
 
 final debugTool = Tool(
