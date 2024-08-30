@@ -113,8 +113,11 @@ class _BodyState extends State<_Body> {
               title: 'HSL:',
               value: colorToHSL(_color),
             ),
-            // MacosReadonlyField(text: colorToHSB(_color)),
-            // MacosReadonlyField(text: colorToHWB(_color)),
+            separator,
+            _Item(
+              title: 'HSB:',
+              value: colorToHSB(_color),
+            ),
           ],
         ),
       ],
@@ -193,20 +196,35 @@ class _BodyState extends State<_Body> {
     return 'hsl(${hslColor.hue.round()}, ${(hslColor.saturation * 100).round()}%, ${(hslColor.lightness * 100).round()}%)';
   }
 
-  // TODO(Vorkytaka): Fix HSB
-  static String colorToHSB(Color? color) {
+  String colorToHSB(Color? color) {
     if (color == null) {
       return '';
     }
 
-    final hslColor = HSLColor.fromColor(color);
-    final hue = hslColor.hue.round();
-    final saturation = (hslColor.saturation * 100).round();
-    final brightness =
-        (hslColor.lightness * 2.0 * (1.0 - hslColor.saturation / 2))
-                .clamp(0.0, 1.0) *
-            100;
-    return 'hsb($hue, $saturation%, ${brightness.round()}%)';
+    double hue, saturation, brightness;
+
+    final int r = color.red;
+    final int g = color.green;
+    final int b = color.blue;
+
+    final double max = [r, g, b].reduce((a, b) => a > b ? a : b) / 255.0;
+    final double min = [r, g, b].reduce((a, b) => a < b ? a : b) / 255.0;
+    brightness = max;
+
+    final double delta = max - min;
+    saturation = max == 0 ? 0 : delta / max;
+
+    if (max == min) {
+      hue = 0;
+    } else if (max == r / 255.0) {
+      hue = 60 * ((g - b) / 255.0 / delta + (g < b ? 6 : 0));
+    } else if (max == g / 255.0) {
+      hue = 60 * ((b - r) / 255.0 / delta + 2);
+    } else {
+      hue = 60 * ((r - g) / 255.0 / delta + 4);
+    }
+
+    return 'hsb(${hue.round()}, ${(saturation * 100).round()}%, ${(brightness * 100).round()}%)';
   }
 
   // TODO(Vorkytaka): Fix HWB
@@ -250,7 +268,7 @@ class _Item extends StatelessWidget {
             const SizedBox(width: 4),
             MacosIconButton(
               onPressed: () {
-                if(value.isNotEmpty) {
+                if (value.isNotEmpty) {
                   Clipboard.setData(ClipboardData(text: value));
                 }
               },
