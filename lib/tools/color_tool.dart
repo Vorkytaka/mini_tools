@@ -118,6 +118,11 @@ class _BodyState extends State<_Body> {
               title: 'HSB:',
               value: colorToHSB(_color),
             ),
+            separator,
+            _Item(
+              title: 'HWB:',
+              value: colorToHWB(_color),
+            ),
           ],
         ),
       ],
@@ -227,23 +232,37 @@ class _BodyState extends State<_Body> {
     return 'hsb(${hue.round()}, ${(saturation * 100).round()}%, ${(brightness * 100).round()}%)';
   }
 
-  // TODO(Vorkytaka): Fix HWB
   String colorToHWB(Color? color) {
     if (color == null) {
       return '';
     }
 
-    final hslColor = HSLColor.fromColor(color);
-    final whiteness = (hslColor.whiteness() * 100).round();
-    final blackness = (hslColor.blackness() * 100).round();
-    return 'hwb(${hslColor.hue.round()}, $whiteness%, $blackness%)';
+    final r = color.red / 255.0;
+    final g = color.green / 255.0;
+    final b = color.blue / 255.0;
+
+    final max = [r, g, b].reduce((a, b) => a > b ? a : b);
+    final min = [r, g, b].reduce((a, b) => a < b ? a : b);
+    final delta = max - min;
+
+    double hue = 0;
+    if (delta != 0) {
+      if (max == r) {
+        hue = (g - b) / delta;
+      } else if (max == g) {
+        hue = 2 + (b - r) / delta;
+      } else {
+        hue = 4 + (r - g) / delta;
+      }
+    }
+    hue = (hue * 60) % 360;
+    if (hue < 0) hue += 360;
+
+    final white = min;
+    final black = 1 - max;
+
+    return 'hwb(${hue.round()}, ${(white * 100).round()}%, ${(black * 100).round()}%)';
   }
-}
-
-extension on HSLColor {
-  double whiteness() => lightness * (1 - saturation);
-
-  double blackness() => 1 - lightness * (1 + saturation);
 }
 
 class _Item extends StatelessWidget {
