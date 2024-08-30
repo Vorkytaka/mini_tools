@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:convert/convert.dart';
+import 'package:desktop_drop/desktop_drop.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -147,7 +148,7 @@ class _HashToolState extends State<HashTool> {
   }
 }
 
-class _Body extends StatelessWidget {
+class _Body extends StatefulWidget {
   final ValueChanged<String> onChanged;
 
   const _Body({
@@ -155,9 +156,58 @@ class _Body extends StatelessWidget {
   });
 
   @override
+  State<_Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<_Body> {
+  final _controller = TextEditingController();
+  bool _dropped = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() => widget.onChanged(_controller.text));
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return MacosTextField(
-      onChanged: onChanged,
+    return DropTarget(
+      onDragDone: (details) async {
+        final content = await details.files.first.readAsString();
+        _controller.text = content;
+      },
+      onDragEntered: (_) {
+        setState(() {
+          _dropped = true;
+        });
+      },
+      onDragExited: (_) {
+        setState(() {
+          _dropped = false;
+        });
+      },
+      child: Stack(
+        fit: StackFit.expand,
+        alignment: Alignment.center,
+        children: [
+          MacosTextField(
+            readOnly: _dropped,
+            controller: _controller,
+            maxLines: null,
+          ),
+          if (_dropped)
+            const MacosIcon(
+              Icons.upload_file,
+              size: 120,
+            ),
+        ],
+      ),
     );
   }
 }
