@@ -206,56 +206,6 @@ extension on HSLColor {
   double blackness() => 1 - lightness * (1 + saturation);
 }
 
-Future<Color?> showColorPicker({
-  required BuildContext context,
-  required Color? color,
-  required ValueChanged<Color> onChanged,
-}) =>
-    showMacosSheet(
-      context: context,
-      barrierDismissible: true,
-      builder: (context) {
-        final brightness = MacosTheme.brightnessOf(context);
-        return MacosSheet(
-          child: Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 300),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Flexible(
-                    child: Material(
-                      color: brightness.resolve(
-                        CupertinoColors.systemGrey6.color,
-                        MacosColors.controlBackgroundColor.darkColor,
-                      ),
-                      child: ColorPicker(
-                        color: color ?? const Color(0xffff0000),
-                        onChanged: onChanged,
-                        initialPicker: Picker.wheel,
-                        pickerOrientation: PickerOrientation.portrait,
-                      ),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      PushButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Text('Done'),
-                        controlSize: ControlSize.large,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
-
 class _ColorButton extends StatefulWidget {
   final Color? color;
   final ValueChanged<Color> onChanged;
@@ -275,6 +225,11 @@ class _ColorButtonState extends State<_ColorButton> {
 
   @override
   Widget build(BuildContext context) {
+    Widget? child;
+    if(widget.color == null) {
+      child = const Placeholder();
+    }
+
     return CompositedTransformTarget(
       link: _link,
       child: OverlayPortal(
@@ -291,7 +246,7 @@ class _ColorButtonState extends State<_ColorButton> {
                   child: Padding(
                     padding: const EdgeInsets.all(8),
                     child: ColorPicker(
-                      color: const Color(0xffff0000),
+                      color: widget.color ?? const Color(0xffff0000),
                       onChanged: widget.onChanged,
                       initialPicker: Picker.wheel,
                       pickerOrientation: PickerOrientation.portrait,
@@ -312,6 +267,8 @@ class _ColorButtonState extends State<_ColorButton> {
               border: Border.all(width: 2, color: MacosColors.headerTextColor),
               borderRadius: const BorderRadius.all(Radius.circular(12)),
             ),
+            clipBehavior: Clip.hardEdge,
+            child: child,
           ),
         ),
       ),
