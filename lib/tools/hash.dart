@@ -200,6 +200,7 @@ class _BodyState extends State<_Body> {
             readOnly: _dropped,
             controller: _controller,
             maxLines: null,
+            textAlignVertical: const TextAlignVertical(y: -1),
           ),
           if (_dropped)
             const MacosIcon(
