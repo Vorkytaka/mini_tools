@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 import '../common/macos_read_only_field.dart';
@@ -67,14 +69,27 @@ class _BodyState extends State<_Body> {
                 ),
               ),
               const SizedBox(width: 8),
-              Container(
-                width: 42,
-                height: 42,
-                decoration: BoxDecoration(
-                  color: _color,
-                  border:
-                      Border.all(width: 2, color: MacosColors.headerTextColor),
-                  borderRadius: const BorderRadius.all(Radius.circular(12)),
+              GestureDetector(
+                onTap: () {
+                  showColorPicker(
+                    context: context,
+                    color: _color,
+                    onChanged: (color) {
+                      setState(() {
+                        _inputController.text = colorToHex(color);
+                      });
+                    },
+                  );
+                },
+                child: Container(
+                  width: 42,
+                  height: 42,
+                  decoration: BoxDecoration(
+                    color: _color,
+                    border: Border.all(
+                        width: 2, color: MacosColors.headerTextColor),
+                    borderRadius: const BorderRadius.all(Radius.circular(12)),
+                  ),
                 ),
               ),
             ],
@@ -201,3 +216,53 @@ extension on HSLColor {
 
   double blackness() => 1 - lightness * (1 + saturation);
 }
+
+Future<Color?> showColorPicker({
+  required BuildContext context,
+  required Color? color,
+  required ValueChanged<Color> onChanged,
+}) =>
+    showMacosSheet(
+      context: context,
+      barrierDismissible: true,
+      builder: (context) {
+        final brightness = MacosTheme.brightnessOf(context);
+        return MacosSheet(
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 300),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Flexible(
+                    child: Material(
+                      color: brightness.resolve(
+                        CupertinoColors.systemGrey6.color,
+                        MacosColors.controlBackgroundColor.darkColor,
+                      ),
+                      child: ColorPicker(
+                        color: color ?? const Color(0xffff0000),
+                        onChanged: onChanged,
+                        initialPicker: Picker.wheel,
+                        pickerOrientation: PickerOrientation.portrait,
+                      ),
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      PushButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text('Done'),
+                        controlSize: ControlSize.large,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
