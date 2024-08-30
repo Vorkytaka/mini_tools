@@ -68,6 +68,7 @@ class _BodyState extends State<_Body> {
             children: [
               Expanded(
                 child: MacosTextField(
+                  placeholder: '#ffffff',
                   controller: _inputController,
                 ),
               ),
