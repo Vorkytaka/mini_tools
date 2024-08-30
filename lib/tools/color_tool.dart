@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 import '../common/macos_read_only_field.dart';
@@ -67,52 +68,62 @@ class _BodyState extends State<_Body> {
             children: [
               Expanded(
                 child: MacosTextField(
+                  placeholder: '#ffffff',
                   controller: _inputController,
                 ),
               ),
               const SizedBox(width: 8),
-              Container(
-                width: 42,
-                height: 42,
-                decoration: BoxDecoration(
-                  color: _color,
-                  border:
-                      Border.all(width: 2, color: MacosColors.headerTextColor),
-                  borderRadius: const BorderRadius.all(Radius.circular(12)),
-                ),
+              _ColorButton(
+                onChanged: (color) {
+                  setState(() {
+                    if (color.alpha == 255) {
+                      _inputController.text = colorToHex(color);
+                    } else {
+                      _inputController.text = colorToARGBHex(color);
+                    }
+                  });
+                },
+                color: _color,
               ),
             ],
           ),
         ),
-        const SizedBox(height: 16),
         Column(
           children: [
-            _OutputItem(
+            _Item(
               title: 'HEX:',
               value: colorToHex(_color),
             ),
             separator,
-            _OutputItem(
+            _Item(
               title: 'HEX with alpha:',
               value: colorToARGBHex(_color),
             ),
             separator,
-            _OutputItem(
+            _Item(
               title: 'RGB:',
               value: colorToRGB(_color),
             ),
             separator,
-            _OutputItem(
+            _Item(
               title: 'RGBA:',
               value: colorToRGBA(_color),
             ),
             separator,
-            _OutputItem(
+            _Item(
               title: 'HSL:',
               value: colorToHSL(_color),
             ),
-            // MacosReadonlyField(text: colorToHSB(_color)),
-            // MacosReadonlyField(text: colorToHWB(_color)),
+            separator,
+            _Item(
+              title: 'HSB:',
+              value: colorToHSB(_color),
+            ),
+            separator,
+            _Item(
+              title: 'HWB:',
+              value: colorToHWB(_color),
+            ),
           ],
         ),
       ],
@@ -191,46 +202,75 @@ class _BodyState extends State<_Body> {
     return 'hsl(${hslColor.hue.round()}, ${(hslColor.saturation * 100).round()}%, ${(hslColor.lightness * 100).round()}%)';
   }
 
-  // TODO(Vorkytaka): Fix HSB
-  static String colorToHSB(Color? color) {
+  String colorToHSB(Color? color) {
     if (color == null) {
       return '';
     }
 
-    final hslColor = HSLColor.fromColor(color);
-    final hue = hslColor.hue.round();
-    final saturation = (hslColor.saturation * 100).round();
-    final brightness =
-        (hslColor.lightness * 2.0 * (1.0 - hslColor.saturation / 2))
-                .clamp(0.0, 1.0) *
-            100;
-    return 'hsb($hue, $saturation%, ${brightness.round()}%)';
+    double hue, saturation, brightness;
+
+    final int r = color.red;
+    final int g = color.green;
+    final int b = color.blue;
+
+    final double max = [r, g, b].reduce((a, b) => a > b ? a : b) / 255.0;
+    final double min = [r, g, b].reduce((a, b) => a < b ? a : b) / 255.0;
+    brightness = max;
+
+    final double delta = max - min;
+    saturation = max == 0 ? 0 : delta / max;
+
+    if (max == min) {
+      hue = 0;
+    } else if (max == r / 255.0) {
+      hue = 60 * ((g - b) / 255.0 / delta + (g < b ? 6 : 0));
+    } else if (max == g / 255.0) {
+      hue = 60 * ((b - r) / 255.0 / delta + 2);
+    } else {
+      hue = 60 * ((r - g) / 255.0 / delta + 4);
+    }
+
+    return 'hsb(${hue.round()}, ${(saturation * 100).round()}%, ${(brightness * 100).round()}%)';
   }
 
-  // TODO(Vorkytaka): Fix HWB
   String colorToHWB(Color? color) {
     if (color == null) {
       return '';
     }
 
-    final hslColor = HSLColor.fromColor(color);
-    final whiteness = (hslColor.whiteness() * 100).round();
-    final blackness = (hslColor.blackness() * 100).round();
-    return 'hwb(${hslColor.hue.round()}, $whiteness%, $blackness%)';
+    final r = color.red / 255.0;
+    final g = color.green / 255.0;
+    final b = color.blue / 255.0;
+
+    final max = [r, g, b].reduce((a, b) => a > b ? a : b);
+    final min = [r, g, b].reduce((a, b) => a < b ? a : b);
+    final delta = max - min;
+
+    double hue = 0;
+    if (delta != 0) {
+      if (max == r) {
+        hue = (g - b) / delta;
+      } else if (max == g) {
+        hue = 2 + (b - r) / delta;
+      } else {
+        hue = 4 + (r - g) / delta;
+      }
+    }
+    hue = (hue * 60) % 360;
+    if (hue < 0) hue += 360;
+
+    final white = min;
+    final black = 1 - max;
+
+    return 'hwb(${hue.round()}, ${(white * 100).round()}%, ${(black * 100).round()}%)';
   }
 }
 
-extension on HSLColor {
-  double whiteness() => lightness * (1 - saturation);
-
-  double blackness() => 1 - lightness * (1 + saturation);
-}
-
-class _OutputItem extends StatelessWidget {
+class _Item extends StatelessWidget {
   final String title;
   final String value;
 
-  const _OutputItem({
+  const _Item({
     required this.title,
     required this.value,
   });
@@ -241,7 +281,7 @@ class _OutputItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(title),
-        const SizedBox(height: 2),
+        const SizedBox(height: 4),
         Row(
           children: [
             Expanded(child: MacosReadonlyField(text: value)),
@@ -252,11 +292,81 @@ class _OutputItem extends StatelessWidget {
                   Clipboard.setData(ClipboardData(text: value));
                 }
               },
-              icon: const MacosIcon(CupertinoIcons.doc_on_clipboard_fill),
+              icon: MacosIcon(CupertinoIcons.doc_on_clipboard_fill),
             ),
           ],
         ),
       ],
+    );
+  }
+}
+
+class _ColorButton extends StatefulWidget {
+  final Color? color;
+  final ValueChanged<Color> onChanged;
+
+  const _ColorButton({
+    required this.onChanged,
+    this.color,
+  });
+
+  @override
+  State<_ColorButton> createState() => _ColorButtonState();
+}
+
+class _ColorButtonState extends State<_ColorButton> {
+  final _overlayController = OverlayPortalController();
+  final _link = LayerLink();
+
+  @override
+  Widget build(BuildContext context) {
+    Widget? child;
+    if (widget.color == null) {
+      child = const Placeholder();
+    }
+
+    return CompositedTransformTarget(
+      link: _link,
+      child: OverlayPortal(
+        controller: _overlayController,
+        overlayChildBuilder: (context) {
+          return CompositedTransformFollower(
+            link: _link,
+            targetAnchor: Alignment.bottomCenter,
+            child: Align(
+              alignment: AlignmentDirectional.topStart,
+              child: SizedBox(
+                width: 300,
+                child: Material(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: ColorPicker(
+                      color: widget.color ?? const Color(0xffff0000),
+                      onChanged: widget.onChanged,
+                      initialPicker: Picker.wheel,
+                      pickerOrientation: PickerOrientation.portrait,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+        child: GestureDetector(
+          onTap: _overlayController.toggle,
+          child: Container(
+            width: 42,
+            height: 42,
+            decoration: BoxDecoration(
+              color: widget.color,
+              border: Border.all(width: 2, color: MacosColors.headerTextColor),
+              borderRadius: const BorderRadius.all(Radius.circular(12)),
+            ),
+            clipBehavior: Clip.hardEdge,
+            child: child,
+          ),
+        ),
+      ),
     );
   }
 }

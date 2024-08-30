@@ -34,6 +34,10 @@ class App extends StatelessWidget {
               supportedLocales: AppLocaleUtils.supportedLocales,
               // localizationsDelegates: GlobalMaterialLocalizations.delegates,
               home: const _Window(),
+              builder: (context, child) => Theme(
+                data: ThemeData.dark(),
+                child: child!,
+              ),
             ),
           ),
         ),
