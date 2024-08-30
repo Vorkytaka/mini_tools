@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart';
 import 'package:macos_ui/macos_ui.dart';
 
@@ -56,6 +57,8 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
+    const separator = SizedBox(height: 8);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -86,11 +89,30 @@ class _BodyState extends State<_Body> {
         ),
         Column(
           children: [
-            MacosReadonlyField(text: colorToHex(_color)),
-            MacosReadonlyField(text: colorToARGBHex(_color)),
-            MacosReadonlyField(text: colorToRGB(_color)),
-            MacosReadonlyField(text: colorToRGBA(_color)),
-            MacosReadonlyField(text: colorToHSL(_color)),
+            _Item(
+              title: 'HEX:',
+              value: colorToHex(_color),
+            ),
+            separator,
+            _Item(
+              title: 'HEX with alpha:',
+              value: colorToARGBHex(_color),
+            ),
+            separator,
+            _Item(
+              title: 'RGB:',
+              value: colorToRGB(_color),
+            ),
+            separator,
+            _Item(
+              title: 'RGBA:',
+              value: colorToRGBA(_color),
+            ),
+            separator,
+            _Item(
+              title: 'HSL:',
+              value: colorToHSL(_color),
+            ),
             // MacosReadonlyField(text: colorToHSB(_color)),
             // MacosReadonlyField(text: colorToHWB(_color)),
           ],
@@ -206,6 +228,41 @@ extension on HSLColor {
   double blackness() => 1 - lightness * (1 + saturation);
 }
 
+class _Item extends StatelessWidget {
+  final String title;
+  final String value;
+
+  const _Item({
+    required this.title,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(title),
+        const SizedBox(height: 4),
+        Row(
+          children: [
+            Expanded(child: MacosReadonlyField(text: value)),
+            const SizedBox(width: 4),
+            MacosIconButton(
+              onPressed: () {
+                if(value.isNotEmpty) {
+                  Clipboard.setData(ClipboardData(text: value));
+                }
+              },
+              icon: MacosIcon(CupertinoIcons.doc_on_clipboard_fill),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
 class _ColorButton extends StatefulWidget {
   final Color? color;
   final ValueChanged<Color> onChanged;
@@ -226,7 +283,7 @@ class _ColorButtonState extends State<_ColorButton> {
   @override
   Widget build(BuildContext context) {
     Widget? child;
-    if(widget.color == null) {
+    if (widget.color == null) {
       child = const Placeholder();
     }
 
