@@ -69,28 +69,17 @@ class _BodyState extends State<_Body> {
                 ),
               ),
               const SizedBox(width: 8),
-              GestureDetector(
-                onTap: () {
-                  showColorPicker(
-                    context: context,
-                    color: _color,
-                    onChanged: (color) {
-                      setState(() {
-                        _inputController.text = colorToHex(color);
-                      });
-                    },
-                  );
+              _ColorButton(
+                onChanged: (color) {
+                  setState(() {
+                    if (color.alpha == 255) {
+                      _inputController.text = colorToHex(color);
+                    } else {
+                      _inputController.text = colorToARGBHex(color);
+                    }
+                  });
                 },
-                child: Container(
-                  width: 42,
-                  height: 42,
-                  decoration: BoxDecoration(
-                    color: _color,
-                    border: Border.all(
-                        width: 2, color: MacosColors.headerTextColor),
-                    borderRadius: const BorderRadius.all(Radius.circular(12)),
-                  ),
-                ),
+                color: _color,
               ),
             ],
           ),
@@ -266,3 +255,66 @@ Future<Color?> showColorPicker({
         );
       },
     );
+
+class _ColorButton extends StatefulWidget {
+  final Color? color;
+  final ValueChanged<Color> onChanged;
+
+  const _ColorButton({
+    required this.onChanged,
+    this.color,
+  });
+
+  @override
+  State<_ColorButton> createState() => _ColorButtonState();
+}
+
+class _ColorButtonState extends State<_ColorButton> {
+  final _overlayController = OverlayPortalController();
+  final _link = LayerLink();
+
+  @override
+  Widget build(BuildContext context) {
+    return CompositedTransformTarget(
+      link: _link,
+      child: OverlayPortal(
+        controller: _overlayController,
+        overlayChildBuilder: (context) {
+          return CompositedTransformFollower(
+            link: _link,
+            targetAnchor: Alignment.bottomCenter,
+            child: Align(
+              alignment: AlignmentDirectional.topStart,
+              child: SizedBox(
+                width: 300,
+                child: Material(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: ColorPicker(
+                      color: const Color(0xffff0000),
+                      onChanged: widget.onChanged,
+                      initialPicker: Picker.wheel,
+                      pickerOrientation: PickerOrientation.portrait,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+        child: GestureDetector(
+          onTap: _overlayController.toggle,
+          child: Container(
+            width: 42,
+            height: 42,
+            decoration: BoxDecoration(
+              color: widget.color,
+              border: Border.all(width: 2, color: MacosColors.headerTextColor),
+              borderRadius: const BorderRadius.all(Radius.circular(12)),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
