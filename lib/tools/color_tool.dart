@@ -5,10 +5,11 @@ import 'package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 import '../common/macos_read_only_field.dart';
+import '../i18n/strings.g.dart';
 import 'tools.dart';
 
 final colorTool = Tool(
-  titleBuilder: (context) => 'Color tool',
+  titleBuilder: (context) => Translations.of(context).color.title,
   icon: Icons.color_lens_outlined,
   screenBuilder: (context) => const ColorTool(),
 );
@@ -18,9 +19,11 @@ class ColorTool extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return MacosScaffold(
       toolBar: ToolBar(
-        title: Text('Color tool'),
+        title: Text(t.color.title),
         centerTitle: true,
       ),
       children: [
@@ -57,22 +60,18 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
     const separator = SizedBox(height: 8);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: 200,
-          child: Row(
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Expanded(
-                child: MacosTextField(
-                  placeholder: '#ffffff',
-                  controller: _inputController,
-                ),
-              ),
-              const SizedBox(width: 8),
               _ColorButton(
                 onChanged: (color) {
                   setState(() {
@@ -85,48 +84,81 @@ class _BodyState extends State<_Body> {
                 },
                 color: _color,
               ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(t.common.input),
+                        const SizedBox(width: 12),
+                        PushButton(
+                          controlSize: ControlSize.regular,
+                          secondary: true,
+                          onPressed: () => _inputController.text = '',
+                          child: Text(t.common.clear),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    SizedBox(
+                      width: 200,
+                      child: MacosTextField(
+                        placeholder: t.color.inputPlaceholder,
+                        inputFormatters: const [UpperCaseInputFormatter()],
+                        controller: _inputController,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
-        ),
-        Column(
-          children: [
-            _Item(
-              title: 'HEX:',
-              value: colorToHex(_color),
+          const SizedBox(height: 24),
+          Expanded(
+            child: Column(
+              children: [
+                _Item(
+                  title: t.color.titles.hex,
+                  value: colorToHex(_color),
+                ),
+                separator,
+                _Item(
+                  title: t.color.titles.hexWithAlpha,
+                  value: colorToARGBHex(_color),
+                ),
+                separator,
+                _Item(
+                  title: t.color.titles.rgb,
+                  value: colorToRGB(_color),
+                ),
+                separator,
+                _Item(
+                  title: t.color.titles.rgba,
+                  value: colorToRGBA(_color),
+                ),
+                separator,
+                _Item(
+                  title: t.color.titles.hsl,
+                  value: colorToHSL(_color),
+                ),
+                separator,
+                _Item(
+                  title: t.color.titles.hsb,
+                  value: colorToHSB(_color),
+                ),
+                separator,
+                _Item(
+                  title: t.color.titles.hwb,
+                  value: colorToHWB(_color),
+                ),
+              ],
             ),
-            separator,
-            _Item(
-              title: 'HEX with alpha:',
-              value: colorToARGBHex(_color),
-            ),
-            separator,
-            _Item(
-              title: 'RGB:',
-              value: colorToRGB(_color),
-            ),
-            separator,
-            _Item(
-              title: 'RGBA:',
-              value: colorToRGBA(_color),
-            ),
-            separator,
-            _Item(
-              title: 'HSL:',
-              value: colorToHSL(_color),
-            ),
-            separator,
-            _Item(
-              title: 'HSB:',
-              value: colorToHSB(_color),
-            ),
-            separator,
-            _Item(
-              title: 'HWB:',
-              value: colorToHWB(_color),
-            ),
-          ],
-        ),
-      ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -137,31 +169,26 @@ class _BodyState extends State<_Body> {
     });
   }
 
-  Color? parseColor(String input) {
+  static Color? parseColor(String input) {
     final hexRegex = RegExp(r'^#?([0-9a-fA-F]{3}){1,2}$');
     final alphaHexRegex = RegExp(r'^#?([0-9a-fA-F]{8})$');
 
     if (hexRegex.hasMatch(input)) {
-      // Remove the leading hash, if present
       input = input.replaceFirst('#', '');
 
       if (input.length == 3) {
-        // Handle shorthand hex codes
         input = input.split('').map((char) => '$char$char').join('');
       }
 
-      // Add an opaque alpha value to the hex string if it's not already present
       input = 'FF$input';
 
       return Color(int.parse(input, radix: 16));
     } else if (alphaHexRegex.hasMatch(input)) {
-      // Remove the leading hash, if present
       input = input.replaceFirst('#', '');
 
       return Color(int.parse(input, radix: 16));
     }
 
-    // If the input is not a valid hex color code, return null
     return null;
   }
 
@@ -202,7 +229,7 @@ class _BodyState extends State<_Body> {
     return 'hsl(${hslColor.hue.round()}, ${(hslColor.saturation * 100).round()}%, ${(hslColor.lightness * 100).round()}%)';
   }
 
-  String colorToHSB(Color? color) {
+  static String colorToHSB(Color? color) {
     if (color == null) {
       return '';
     }
@@ -233,7 +260,7 @@ class _BodyState extends State<_Body> {
     return 'hsb(${hue.round()}, ${(saturation * 100).round()}%, ${(brightness * 100).round()}%)';
   }
 
-  String colorToHWB(Color? color) {
+  static String colorToHWB(Color? color) {
     if (color == null) {
       return '';
     }
@@ -257,7 +284,9 @@ class _BodyState extends State<_Body> {
       }
     }
     hue = (hue * 60) % 360;
-    if (hue < 0) hue += 360;
+    if (hue < 0) {
+      hue += 360;
+    }
 
     final white = min;
     final black = 1 - max;
@@ -284,7 +313,12 @@ class _Item extends StatelessWidget {
         const SizedBox(height: 4),
         Row(
           children: [
-            Expanded(child: MacosReadonlyField(text: value)),
+            Expanded(
+              child: MacosReadonlyField(
+                text: value,
+                maxLines: 1,
+              ),
+            ),
             const SizedBox(width: 4),
             MacosIconButton(
               onPressed: () {
@@ -292,7 +326,7 @@ class _Item extends StatelessWidget {
                   Clipboard.setData(ClipboardData(text: value));
                 }
               },
-              icon: MacosIcon(CupertinoIcons.doc_on_clipboard_fill),
+              icon: const MacosIcon(CupertinoIcons.doc_on_clipboard_fill),
             ),
           ],
         ),
@@ -369,4 +403,15 @@ class _ColorButtonState extends State<_ColorButton> {
       ),
     );
   }
+}
+
+class UpperCaseInputFormatter implements TextInputFormatter {
+  const UpperCaseInputFormatter();
+
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) =>
+      newValue.copyWith(text: newValue.text.toUpperCase());
 }

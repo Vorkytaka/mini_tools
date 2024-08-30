@@ -73,5 +73,18 @@
     "part_of_total": {
       "is_what": " is what % of "
     }
+  },
+  "color": {
+    "title": "Color converter",
+    "input_placeholder": "#FFFFFF",
+    "titles": {
+      "hex": "HEX:",
+      "hex_with_alpha": "HEX with alpha:",
+      "rgb": "RGB:",
+      "rgba": "RGBA:",
+      "hsl": "HSL:",
+      "hsb": "HSB",
+      "hwb": "HWB"
+    }
   }
 }
