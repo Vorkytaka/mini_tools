@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tools/tools/tools.dart';
 
@@ -88,21 +89,29 @@ class _MaterialColor extends StatelessWidget {
     return Column(
       children: colors
           .map(
-            (color) => Container(
-              width: 200,
-              height: 50,
-              color: color.color,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: DefaultTextStyle.merge(
-                  style: TextStyle(
-                    color: color.brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [Text(color.title), Text(color.hex)],
+            (color) => MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () {
+                  Clipboard.setData(ClipboardData(text: color.hex));
+                },
+                child: Container(
+                  width: 200,
+                  height: 50,
+                  color: color.color,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: DefaultTextStyle.merge(
+                      style: TextStyle(
+                        color: color.brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [Text(color.title), Text(color.hex)],
+                      ),
+                    ),
                   ),
                 ),
               ),
