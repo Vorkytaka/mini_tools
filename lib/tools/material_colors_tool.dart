@@ -3,8 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tools/tools/tools.dart';
 
+import '../i18n/strings.g.dart';
+
 final materialColorTool = Tool(
-  titleBuilder: (context) => 'Material Colors',
+  titleBuilder: (context) => Translations.of(context).materialColors.title,
   icon: Icons.invert_colors_sharp,
   screenBuilder: (context) => const MaterialColorTool(),
 );
@@ -39,9 +41,11 @@ class MaterialColorTool extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return MacosScaffold(
       toolBar: ToolBar(
-        title: Text('Material Colors'),
+        title: Text(t.materialColors.title),
         centerTitle: true,
       ),
       children: [
