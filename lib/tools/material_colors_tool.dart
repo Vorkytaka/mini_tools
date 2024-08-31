@@ -30,7 +30,7 @@ const _materialColors = <MaterialColor>[
   Colors.blueGrey,
 ];
 
-late final _materialColorItems =
+final _materialColorItems =
     _materialColors.map((color) => color.items).toList(growable: false);
 
 class MaterialColorTool extends StatelessWidget {
@@ -88,7 +88,6 @@ class _MaterialColor extends StatelessWidget {
     return Column(
       children: colors
           .map(
-            // TODO(Vorkytaka): Count and cache text brightness for color
             (color) => Container(
               width: 200,
               height: 50,
@@ -128,21 +127,6 @@ const _materialColorsValues = [
 ];
 
 extension on MaterialColor {
-  List<Color> get all {
-    return [
-      shade50,
-      shade100,
-      shade200,
-      shade300,
-      shade400,
-      shade500,
-      shade600,
-      shade700,
-      shade800,
-      shade900,
-    ];
-  }
-
   List<_ColorItem> get items {
     return List.generate(
       _materialColorsValues.length,
