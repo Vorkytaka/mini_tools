@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
-import 'package:mini_tools/tools/tools.dart';
 
 import '../i18n/strings.g.dart';
+import 'tools.dart';
 
 final materialColorTool = Tool(
   titleBuilder: (context) => Translations.of(context).materialColors.title,
