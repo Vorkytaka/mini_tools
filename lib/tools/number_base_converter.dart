@@ -100,27 +100,27 @@ class _BodyState extends State<_Body> {
   }
 
   void _base2Changed(String value) {
-    final integer = int.tryParse(value, radix: 2);
+    final integer = BigInt.tryParse(value, radix: 2);
     _updateValues(value: integer, updateBase2: false);
   }
 
   void _base8Changed(String value) {
-    final integer = int.tryParse(value, radix: 8);
+    final integer = BigInt.tryParse(value, radix: 8);
     _updateValues(value: integer, updateBase8: false);
   }
 
   void _base10Changed(String value) {
-    final integer = int.tryParse(value, radix: 10);
+    final integer = BigInt.tryParse(value, radix: 10);
     _updateValues(value: integer, updateBase10: false);
   }
 
   void _base16Changed(String value) {
-    final integer = int.tryParse(value, radix: 16);
+    final integer = BigInt.tryParse(value, radix: 16);
     _updateValues(value: integer, updateBase16: false);
   }
 
   void _updateValues({
-    required int? value,
+    required BigInt? value,
     bool updateBase2 = true,
     bool updateBase8 = true,
     bool updateBase10 = true,
