@@ -73,5 +73,42 @@
     "part_of_total": {
       "is_what": " is what % of "
     }
+  },
+  "color": {
+    "title": "Color converter",
+    "input_placeholder": "#FFFFFF",
+    "titles": {
+      "hex": "HEX:",
+      "hex_with_alpha": "HEX with alpha:",
+      "rgb": "RGB:",
+      "rgba": "RGBA:",
+      "hsl": "HSL:",
+      "hsb": "HSB",
+      "hwb": "HWB"
+    }
+  },
+  "material_colors": {
+    "title": "Material Colors",
+    "colors": {
+      "red": "Red",
+      "pink": "Pink",
+      "purple": "Purple",
+      "deepPurple": "Deep Purple",
+      "indigo": "Indigo",
+      "blue": "Blue",
+      "lightBlue": "Light Blue",
+      "cyan": "Cyan",
+      "teal": "Teal",
+      "green": "Green",
+      "lightGreen": "Light Green",
+      "lime": "Lime",
+      "yellow": "Yellow",
+      "amber": "Amber",
+      "orange": "Orange",
+      "deepOrange": "Deep Orange",
+      "brown": "Brown",
+      "grey": "Grey",
+      "blueGrey": "Blue Grey"
+    }
   }
 }

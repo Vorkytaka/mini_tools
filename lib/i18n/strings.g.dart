@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 51
+/// Strings: 80
 ///
-/// Built on 2024-08-25 at 23:51 UTC
+/// Built on 2024-09-01 at 22:00 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -197,6 +197,9 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
       _StringsJsonFormatterEn._(_root);
   late final _StringsPercentageCalculatorEn percentageCalculator =
       _StringsPercentageCalculatorEn._(_root);
+  late final _StringsColorEn color = _StringsColorEn._(_root);
+  late final _StringsMaterialColorsEn materialColors =
+      _StringsMaterialColorsEn._(_root);
 }
 
 // Path: common
@@ -304,6 +307,30 @@ class _StringsPercentageCalculatorEn {
       _StringsPercentageCalculatorPartOfTotalEn._(_root);
 }
 
+// Path: color
+class _StringsColorEn {
+  _StringsColorEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Color converter';
+  String get inputPlaceholder => '#FFFFFF';
+  late final _StringsColorTitlesEn titles = _StringsColorTitlesEn._(_root);
+}
+
+// Path: materialColors
+class _StringsMaterialColorsEn {
+  _StringsMaterialColorsEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Material Colors';
+  late final _StringsMaterialColorsColorsEn colors =
+      _StringsMaterialColorsColorsEn._(_root);
+}
+
 // Path: unixTimestamp.inputType
 class _StringsUnixTimestampInputTypeEn {
   _StringsUnixTimestampInputTypeEn._(this._root);
@@ -361,6 +388,50 @@ class _StringsPercentageCalculatorPartOfTotalEn {
 
   // Translations
   String get isWhat => ' is what % of ';
+}
+
+// Path: color.titles
+class _StringsColorTitlesEn {
+  _StringsColorTitlesEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get hex => 'HEX:';
+  String get hexWithAlpha => 'HEX with alpha:';
+  String get rgb => 'RGB:';
+  String get rgba => 'RGBA:';
+  String get hsl => 'HSL:';
+  String get hsb => 'HSB';
+  String get hwb => 'HWB';
+}
+
+// Path: materialColors.colors
+class _StringsMaterialColorsColorsEn {
+  _StringsMaterialColorsColorsEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get red => 'Red';
+  String get pink => 'Pink';
+  String get purple => 'Purple';
+  String get deepPurple => 'Deep Purple';
+  String get indigo => 'Indigo';
+  String get blue => 'Blue';
+  String get lightBlue => 'Light Blue';
+  String get cyan => 'Cyan';
+  String get teal => 'Teal';
+  String get green => 'Green';
+  String get lightGreen => 'Light Green';
+  String get lime => 'Lime';
+  String get yellow => 'Yellow';
+  String get amber => 'Amber';
+  String get orange => 'Orange';
+  String get deepOrange => 'Deep Orange';
+  String get brown => 'Brown';
+  String get grey => 'Grey';
+  String get blueGrey => 'Blue Grey';
 }
 
 /// Flat map(s) containing all translations.
@@ -474,6 +545,64 @@ extension on Translations {
         return ' of ';
       case 'percentageCalculator.partOfTotal.isWhat':
         return ' is what % of ';
+      case 'color.title':
+        return 'Color converter';
+      case 'color.inputPlaceholder':
+        return '#FFFFFF';
+      case 'color.titles.hex':
+        return 'HEX:';
+      case 'color.titles.hexWithAlpha':
+        return 'HEX with alpha:';
+      case 'color.titles.rgb':
+        return 'RGB:';
+      case 'color.titles.rgba':
+        return 'RGBA:';
+      case 'color.titles.hsl':
+        return 'HSL:';
+      case 'color.titles.hsb':
+        return 'HSB';
+      case 'color.titles.hwb':
+        return 'HWB';
+      case 'materialColors.title':
+        return 'Material Colors';
+      case 'materialColors.colors.red':
+        return 'Red';
+      case 'materialColors.colors.pink':
+        return 'Pink';
+      case 'materialColors.colors.purple':
+        return 'Purple';
+      case 'materialColors.colors.deepPurple':
+        return 'Deep Purple';
+      case 'materialColors.colors.indigo':
+        return 'Indigo';
+      case 'materialColors.colors.blue':
+        return 'Blue';
+      case 'materialColors.colors.lightBlue':
+        return 'Light Blue';
+      case 'materialColors.colors.cyan':
+        return 'Cyan';
+      case 'materialColors.colors.teal':
+        return 'Teal';
+      case 'materialColors.colors.green':
+        return 'Green';
+      case 'materialColors.colors.lightGreen':
+        return 'Light Green';
+      case 'materialColors.colors.lime':
+        return 'Lime';
+      case 'materialColors.colors.yellow':
+        return 'Yellow';
+      case 'materialColors.colors.amber':
+        return 'Amber';
+      case 'materialColors.colors.orange':
+        return 'Orange';
+      case 'materialColors.colors.deepOrange':
+        return 'Deep Orange';
+      case 'materialColors.colors.brown':
+        return 'Brown';
+      case 'materialColors.colors.grey':
+        return 'Grey';
+      case 'materialColors.colors.blueGrey':
+        return 'Blue Grey';
       default:
         return null;
     }
