@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 
+import '../common/color.dart';
 import '../i18n/strings.g.dart';
 import 'tools.dart';
 
@@ -143,13 +144,16 @@ extension on MaterialColor {
   List<_ColorItem> get items {
     return List.generate(
       _materialColorsValues.length,
-      (i) => _ColorItem(
-        color: this[_materialColorsValues[i]]!,
-        title: '${_materialColorsValues[i]}',
-        hex: '#ff0000',
-        brightness: ThemeData.estimateBrightnessForColor(
-            this[_materialColorsValues[i]]!),
-      ),
+      (i) {
+        final shade = _materialColorsValues[i];
+        final color = this[shade]!;
+        return _ColorItem(
+          color: color,
+          title: '$shade',
+          hex: color.toHexString,
+          brightness: ThemeData.estimateBrightnessForColor(color),
+        );
+      },
       growable: false,
     );
   }
