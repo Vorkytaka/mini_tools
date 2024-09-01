@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'color_tool.dart';
 import 'json_formatter.dart';
 import 'material_colors_tool.dart';
 import 'number_base_converter.dart';
@@ -28,6 +29,7 @@ final tools = <Tool>[
   regExpTool,
   numberBaseConverterTool,
   percentagesTool,
+  colorTool,
   materialColorTool,
 ];
 
