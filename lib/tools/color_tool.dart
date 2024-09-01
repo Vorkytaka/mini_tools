@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart';
 import 'package:macos_ui/macos_ui.dart';
 
+import '../common/color.dart';
 import '../common/macos_read_only_field.dart';
 import '../i18n/strings.g.dart';
 import 'tools.dart';
@@ -76,9 +77,9 @@ class _BodyState extends State<_Body> {
                 onChanged: (color) {
                   setState(() {
                     if (color.alpha == 255) {
-                      _inputController.text = colorToHex(color);
+                      _inputController.text = color.toHexString;
                     } else {
-                      _inputController.text = colorToARGBHex(color);
+                      _inputController.text = color.toArgbHexString;
                     }
                   });
                 },
@@ -122,37 +123,37 @@ class _BodyState extends State<_Body> {
               children: [
                 _Item(
                   title: t.color.titles.hex,
-                  value: colorToHex(_color),
+                  value: _color?.toHexString,
                 ),
                 separator,
                 _Item(
                   title: t.color.titles.hexWithAlpha,
-                  value: colorToARGBHex(_color),
+                  value: _color?.toArgbHexString,
                 ),
                 separator,
                 _Item(
                   title: t.color.titles.rgb,
-                  value: colorToRGB(_color),
+                  value: _color?.toRgbString,
                 ),
                 separator,
                 _Item(
                   title: t.color.titles.rgba,
-                  value: colorToRGBA(_color),
+                  value: _color?.toRgbaString,
                 ),
                 separator,
                 _Item(
                   title: t.color.titles.hsl,
-                  value: colorToHSL(_color),
+                  value: _color?.toHslString,
                 ),
                 separator,
                 _Item(
                   title: t.color.titles.hsb,
-                  value: colorToHSB(_color),
+                  value: _color?.toHsbString,
                 ),
                 separator,
                 _Item(
                   title: t.color.titles.hwb,
-                  value: colorToHWB(_color),
+                  value: _color?.toHwbString,
                 ),
               ],
             ),
@@ -191,113 +192,11 @@ class _BodyState extends State<_Body> {
 
     return null;
   }
-
-  static String colorToHex(Color? color) {
-    if (color == null) {
-      return '';
-    }
-    return '#${color.value.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}';
-  }
-
-  static String colorToARGBHex(Color? color) {
-    if (color == null) {
-      return '';
-    }
-    return '#${color.value.toRadixString(16).padLeft(8, '0').toUpperCase()}';
-  }
-
-  static String colorToRGB(Color? color) {
-    if (color == null) {
-      return '';
-    }
-    return 'rgb(${color.red}, ${color.green}, ${color.blue})';
-  }
-
-  static String colorToRGBA(Color? color) {
-    if (color == null) {
-      return '';
-    }
-    return 'rgba(${color.red}, ${color.green}, ${color.blue}, ${color.opacity})';
-  }
-
-  static String colorToHSL(Color? color) {
-    if (color == null) {
-      return '';
-    }
-
-    final hslColor = HSLColor.fromColor(color);
-    return 'hsl(${hslColor.hue.round()}, ${(hslColor.saturation * 100).round()}%, ${(hslColor.lightness * 100).round()}%)';
-  }
-
-  static String colorToHSB(Color? color) {
-    if (color == null) {
-      return '';
-    }
-
-    double hue, saturation, brightness;
-
-    final int r = color.red;
-    final int g = color.green;
-    final int b = color.blue;
-
-    final double max = [r, g, b].reduce((a, b) => a > b ? a : b) / 255.0;
-    final double min = [r, g, b].reduce((a, b) => a < b ? a : b) / 255.0;
-    brightness = max;
-
-    final double delta = max - min;
-    saturation = max == 0 ? 0 : delta / max;
-
-    if (max == min) {
-      hue = 0;
-    } else if (max == r / 255.0) {
-      hue = 60 * ((g - b) / 255.0 / delta + (g < b ? 6 : 0));
-    } else if (max == g / 255.0) {
-      hue = 60 * ((b - r) / 255.0 / delta + 2);
-    } else {
-      hue = 60 * ((r - g) / 255.0 / delta + 4);
-    }
-
-    return 'hsb(${hue.round()}, ${(saturation * 100).round()}%, ${(brightness * 100).round()}%)';
-  }
-
-  static String colorToHWB(Color? color) {
-    if (color == null) {
-      return '';
-    }
-
-    final r = color.red / 255.0;
-    final g = color.green / 255.0;
-    final b = color.blue / 255.0;
-
-    final max = [r, g, b].reduce((a, b) => a > b ? a : b);
-    final min = [r, g, b].reduce((a, b) => a < b ? a : b);
-    final delta = max - min;
-
-    double hue = 0;
-    if (delta != 0) {
-      if (max == r) {
-        hue = (g - b) / delta;
-      } else if (max == g) {
-        hue = 2 + (b - r) / delta;
-      } else {
-        hue = 4 + (r - g) / delta;
-      }
-    }
-    hue = (hue * 60) % 360;
-    if (hue < 0) {
-      hue += 360;
-    }
-
-    final white = min;
-    final black = 1 - max;
-
-    return 'hwb(${hue.round()}, ${(white * 100).round()}%, ${(black * 100).round()}%)';
-  }
 }
 
 class _Item extends StatelessWidget {
   final String title;
-  final String value;
+  final String? value;
 
   const _Item({
     required this.title,
@@ -315,14 +214,15 @@ class _Item extends StatelessWidget {
           children: [
             Expanded(
               child: MacosReadonlyField(
-                text: value,
+                text: value ?? '',
                 maxLines: 1,
               ),
             ),
             const SizedBox(width: 4),
             MacosIconButton(
               onPressed: () {
-                if (value.isNotEmpty) {
+                final value = this.value;
+                if (value != null && value.isNotEmpty) {
                   Clipboard.setData(ClipboardData(text: value));
                 }
               },
