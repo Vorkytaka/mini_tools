@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:convert/convert.dart';
+import 'package:cross_file/cross_file.dart';
 import 'package:desktop_drop/desktop_drop.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +82,7 @@ class _HashToolState extends State<HashTool> {
   ];
 
   _HashFormat _format = _HashFormat.hex;
-  String _text = '';
+  Uint8List? _bytes;
 
   @override
   Widget build(BuildContext context) {
@@ -92,9 +93,9 @@ class _HashToolState extends State<HashTool> {
       children: [
         ContentArea(
           builder: (context, controller) => _Body(
-            onChanged: (text) {
+            onChanged: (bytes) {
               setState(() {
-                _text = text;
+                _bytes = Uint8List.fromList(bytes);
               });
             },
           ),
@@ -132,7 +133,7 @@ class _HashToolState extends State<HashTool> {
               ..._digestes
                   .map<Widget>((digest) => _DigestItem(
                         digest: digest,
-                        value: _text,
+                        bytes: _bytes,
                         codec: _format.codec,
                       ))
                   .toList(growable: false)
@@ -149,7 +150,7 @@ class _HashToolState extends State<HashTool> {
 }
 
 class _Body extends StatefulWidget {
-  final ValueChanged<String> onChanged;
+  final ValueChanged<List<int>> onChanged;
 
   const _Body({
     required this.onChanged,
@@ -159,14 +160,22 @@ class _Body extends StatefulWidget {
   State<_Body> createState() => _BodyState();
 }
 
+enum _InputType {
+  text,
+  file,
+}
+
 class _BodyState extends State<_Body> {
   final _controller = TextEditingController();
-  bool _dropped = false;
+
+  _InputType _type = _InputType.text;
+  XFile? _file;
+  bool _dropping = false;
 
   @override
   void initState() {
     super.initState();
-    _controller.addListener(() => widget.onChanged(_controller.text));
+    _controller.addListener(() => widget.onChanged(_controller.text.codeUnits));
   }
 
   @override
@@ -179,30 +188,40 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     return DropTarget(
       onDragDone: (details) async {
-        final content = await details.files.first.readAsString();
-        _controller.text = content;
+        _file = details.files.firstOrNull;
+        final List<int> content = await _file?.readAsBytes() ?? [];
+        widget.onChanged(content);
+        setState(() {
+          _type = _InputType.file;
+        });
       },
       onDragEntered: (_) {
         setState(() {
-          _dropped = true;
+          _dropping = true;
         });
       },
       onDragExited: (_) {
         setState(() {
-          _dropped = false;
+          _dropping = false;
         });
       },
       child: Stack(
         fit: StackFit.expand,
         alignment: Alignment.center,
         children: [
-          MacosTextField(
-            readOnly: _dropped,
-            controller: _controller,
-            maxLines: null,
-            textAlignVertical: const TextAlignVertical(y: -1),
-          ),
-          if (_dropped)
+          if (_file != null)
+            MacosReadonlyField(
+              placeholder: 'Hash of file ${_file!.path}',
+              textAlignVertical: const TextAlignVertical(y: -1),
+            )
+          else
+            MacosTextField(
+              readOnly: _dropping,
+              controller: _controller,
+              maxLines: null,
+              textAlignVertical: const TextAlignVertical(y: -1),
+            ),
+          if (_dropping)
             const MacosIcon(
               Icons.upload_file,
               size: 120,
@@ -215,12 +234,12 @@ class _BodyState extends State<_Body> {
 
 class _DigestItem extends StatelessWidget {
   final Digest digest;
-  final String value;
+  final Uint8List? bytes;
   final Codec<List<int>, String> codec;
 
   const _DigestItem({
     required this.digest,
-    required this.value,
+    required this.bytes,
     required this.codec,
   });
 
@@ -258,12 +277,12 @@ class _DigestItem extends StatelessWidget {
   }
 
   String _countDigest() {
-    if (value.isEmpty) {
+    final bytes = this.bytes;
+    if (bytes == null || bytes.isEmpty) {
       return '';
     }
 
-    final utf8value = utf8.encode(value);
-    final intValue = digest.process(Uint8List.fromList(utf8value));
+    final intValue = digest.process(bytes);
     return codec.encode(intValue);
   }
 }
