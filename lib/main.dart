@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
@@ -32,10 +33,20 @@ Future<tz.Location> _initializeTimezone() async {
   return tz.local;
 }
 
+void _firaCodeLicense() {
+  LicenseRegistry.addLicense(() async* {
+    final licence =
+        await rootBundle.loadString('assets/google_fonts/FiraCode-OFL.txt');
+    final entry = LicenseEntryWithLineBreaks(['google_fonts'], licence);
+    yield entry;
+  });
+}
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   LocaleSettings.useDeviceLocale();
   await windowManager.ensureInitialized();
+  _firaCodeLicense();
 
   if (kIsWeb) {
     // do nothing
