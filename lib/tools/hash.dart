@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:convert/convert.dart';
 import 'package:cross_file/cross_file.dart';
-import 'package:desktop_drop/desktop_drop.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,8 +19,9 @@ import 'package:pointycastle/digests/sha512.dart';
 import 'package:pointycastle/digests/sm3.dart';
 import 'package:pointycastle/digests/tiger.dart';
 import 'package:pointycastle/digests/whirlpool.dart';
-import 'package:pointycastle/pointycastle.dart';
+import 'package:pointycastle/pointycastle.dart' hide Padding;
 
+import '../common/file_drop_widget.dart';
 import '../common/list_utils.dart';
 import '../common/macos_read_only_field.dart';
 import 'tools.dart';
@@ -170,7 +170,6 @@ class _BodyState extends State<_Body> {
 
   _InputType _type = _InputType.text;
   XFile? _file;
-  bool _dropping = false;
 
   @override
   void initState() {
@@ -186,48 +185,25 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    return DropTarget(
-      onDragDone: (details) async {
-        _file = details.files.firstOrNull;
+    return FileDropWidget(
+      onFileDropped: (file) async {
+        _file = file;
         final List<int> content = await _file?.readAsBytes() ?? [];
         widget.onChanged(content);
         setState(() {
           _type = _InputType.file;
         });
       },
-      onDragEntered: (_) {
-        setState(() {
-          _dropping = true;
-        });
-      },
-      onDragExited: (_) {
-        setState(() {
-          _dropping = false;
-        });
-      },
-      child: Stack(
-        fit: StackFit.expand,
-        alignment: Alignment.center,
-        children: [
-          if (_file != null)
-            MacosReadonlyField(
+      child: _file != null
+          ? MacosReadonlyField(
               placeholder: 'Hash of file ${_file!.path}',
               textAlignVertical: const TextAlignVertical(y: -1),
             )
-          else
-            MacosTextField(
-              readOnly: _dropping,
+          : MacosTextField(
               controller: _controller,
               maxLines: null,
               textAlignVertical: const TextAlignVertical(y: -1),
             ),
-          if (_dropping)
-            const MacosIcon(
-              Icons.upload_file,
-              size: 120,
-            ),
-        ],
-      ),
     );
   }
 }
