@@ -9,17 +9,19 @@ class MacosReadonlyField extends StatefulWidget {
   final TextAlign textAlign;
   final Widget? suffix;
   final TextStyle? style;
+  final String? placeholder;
 
   const MacosReadonlyField({
-    required this.text,
+    String? text,
     this.maxLines,
     this.minLines,
     this.textAlignVertical,
     this.textAlign = TextAlign.start,
     this.suffix,
     this.style,
+    this.placeholder,
     super.key,
-  });
+  }) : text = text ?? '';
 
   @override
   State<MacosReadonlyField> createState() => _MacosReadonlyFieldState();
@@ -60,6 +62,7 @@ class _MacosReadonlyFieldState extends State<MacosReadonlyField> {
       readOnly: true,
       suffix: widget.suffix,
       style: widget.style,
+      placeholder: widget.placeholder,
     );
   }
 }

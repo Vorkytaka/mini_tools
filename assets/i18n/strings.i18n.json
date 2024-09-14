@@ -7,7 +7,8 @@
     "no": "No",
     "copy": "Copy",
     "question_mark": "?",
-    "percent": "%"
+    "percent": "%",
+    "file_drop_title": "Drop file here"
   },
   "unix_timestamp": {
     "title": "Unix timestamp",
@@ -110,5 +111,17 @@
       "grey": "Grey",
       "blueGrey": "Blue Grey"
     }
+  },
+  "hash": {
+    "title": "Hash calculator",
+    "load_file": "Load file",
+    "drop_file": "Drop file",
+    "text_input_hint": "Input any text here",
+    "bytes_count": "$n bytes",
+    "hash_format": {
+      "hex": "HEX",
+      "base64": "Base64"
+    },
+    "hash_of_file": "Hash of file: $path"
   }
 }
