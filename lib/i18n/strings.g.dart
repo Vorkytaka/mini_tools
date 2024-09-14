@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 80
+/// Strings: 89
 ///
-/// Built on 2024-09-01 at 22:00 UTC
+/// Built on 2024-09-14 at 18:06 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -200,6 +200,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
   late final _StringsColorEn color = _StringsColorEn._(_root);
   late final _StringsMaterialColorsEn materialColors =
       _StringsMaterialColorsEn._(_root);
+  late final _StringsHashEn hash = _StringsHashEn._(_root);
 }
 
 // Path: common
@@ -217,6 +218,7 @@ class _StringsCommonEn {
   String get copy => 'Copy';
   String get questionMark => '?';
   String get percent => '%';
+  String get fileDropTitle => 'Drop file here';
 }
 
 // Path: unixTimestamp
@@ -331,6 +333,23 @@ class _StringsMaterialColorsEn {
       _StringsMaterialColorsColorsEn._(_root);
 }
 
+// Path: hash
+class _StringsHashEn {
+  _StringsHashEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Hash calculator';
+  String get loadFile => 'Load file';
+  String get dropFile => 'Drop file';
+  String get textInputHint => 'Input any text here';
+  String bytesCount({required Object n}) => '${n} bytes';
+  late final _StringsHashHashFormatEn hashFormat =
+      _StringsHashHashFormatEn._(_root);
+  String hashOfFile({required Object path}) => 'Hash of file: ${path}';
+}
+
 // Path: unixTimestamp.inputType
 class _StringsUnixTimestampInputTypeEn {
   _StringsUnixTimestampInputTypeEn._(this._root);
@@ -434,6 +453,17 @@ class _StringsMaterialColorsColorsEn {
   String get blueGrey => 'Blue Grey';
 }
 
+// Path: hash.hashFormat
+class _StringsHashHashFormatEn {
+  _StringsHashHashFormatEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get hex => 'HEX';
+  String get base64 => 'Base64';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -456,6 +486,8 @@ extension on Translations {
         return '?';
       case 'common.percent':
         return '%';
+      case 'common.fileDropTitle':
+        return 'Drop file here';
       case 'unixTimestamp.title':
         return 'Unix timestamp';
       case 'unixTimestamp.inputType.sec':
@@ -603,6 +635,22 @@ extension on Translations {
         return 'Grey';
       case 'materialColors.colors.blueGrey':
         return 'Blue Grey';
+      case 'hash.title':
+        return 'Hash calculator';
+      case 'hash.loadFile':
+        return 'Load file';
+      case 'hash.dropFile':
+        return 'Drop file';
+      case 'hash.textInputHint':
+        return 'Input any text here';
+      case 'hash.bytesCount':
+        return ({required Object n}) => '${n} bytes';
+      case 'hash.hashFormat.hex':
+        return 'HEX';
+      case 'hash.hashFormat.base64':
+        return 'Base64';
+      case 'hash.hashOfFile':
+        return ({required Object path}) => 'Hash of file: ${path}';
       default:
         return null;
     }

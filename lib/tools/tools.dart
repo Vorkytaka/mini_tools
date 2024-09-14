@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'color_tool.dart';
+import 'hash.dart';
 import 'json_formatter.dart';
 import 'material_colors_tool.dart';
 import 'number_base_converter.dart';
@@ -31,6 +32,7 @@ final tools = <Tool>[
   percentagesTool,
   colorTool,
   materialColorTool,
+  hashTool,
 ];
 
 final debugTool = Tool(
