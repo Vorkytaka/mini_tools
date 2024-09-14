@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 
+import '../i18n/strings.g.dart';
+
 class FileDropWidget extends StatefulWidget {
   final ValueChanged<XFile?>? onFileDropped;
   final Widget child;
@@ -58,6 +60,7 @@ class _DroppingHint extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final s = Translations.of(context);
     final theme = MacosTheme.of(context);
 
     return ColoredBox(
@@ -74,13 +77,14 @@ class _DroppingHint extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const MacosIcon(
+                MacosIcon(
                   CupertinoIcons.arrow_down_doc_fill,
                   size: 40,
+                  color: DefaultTextStyle.of(context).style.color,
                 ),
                 const SizedBox(height: 12),
                 Text(
-                  'Drop file here',
+                  s.common.fileDropTitle,
                   style: theme.typography.title1,
                 ),
               ],

@@ -7,7 +7,11 @@ environment:
   sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
+  convert: ^3.1.1
+  cross_file: ^0.3.4+2
   cupertino_icons: ^1.0.6
+  desktop_drop: ^0.4.4
+  file_picker: ^8.1.2
   flutter:
     sdk: flutter
   flutter_hsvcolor_picker: ^1.5.1
@@ -17,6 +21,7 @@ dependencies:
   intl: ^0.19.0
   json_path: ^0.7.4
   macos_ui: ^2.0.8
+  pointycastle: ^3.9.1
   re_editor: ^0.3.1
   re_highlight: ^0.0.3
   slang: ^3.31.1
@@ -24,11 +29,6 @@ dependencies:
   syntax_highlight: ^0.4.0
   timezone: ^0.9.4
   window_manager: ^0.4.0
-
-  convert: ^3.1.1
-  pointycastle: ^3.9.1
-  desktop_drop: ^0.4.4
-  file_picker: ^8.1.2
 
 dev_dependencies:
   flutter_lints: ^3.0.0

@@ -25,10 +25,11 @@ import 'package:pointycastle/pointycastle.dart' hide Padding;
 import '../common/file_drop_widget.dart';
 import '../common/list_utils.dart';
 import '../common/macos_read_only_field.dart';
+import '../i18n/strings.g.dart';
 import 'tools.dart';
 
 final hashTool = Tool(
-  titleBuilder: (context) => 'Hash',
+  titleBuilder: (context) => Translations.of(context).hash.title,
   icon: Icons.qr_code_2,
   screenBuilder: (context) => const HashTool(),
 );
@@ -40,11 +41,12 @@ enum _HashFormat {
 
 extension on _HashFormat {
   String format(BuildContext context) {
+    final s = Translations.of(context);
     switch (this) {
       case _HashFormat.base64:
-        return 'Base64';
+        return s.hash.hashFormat.base64;
       case _HashFormat.hex:
-        return 'HEX';
+        return s.hash.hashFormat.hex;
     }
   }
 
@@ -66,7 +68,7 @@ class HashTool extends StatefulWidget {
 }
 
 class _HashToolState extends State<HashTool> {
-  static final _digestes = <Digest>[
+  static final _digestList = <Digest>[
     MD2Digest(),
     MD4Digest(),
     MD5Digest(),
@@ -87,9 +89,11 @@ class _HashToolState extends State<HashTool> {
 
   @override
   Widget build(BuildContext context) {
+    final s = Translations.of(context);
+
     return MacosScaffold(
       toolBar: ToolBar(
-        title: Text('Hash'),
+        title: Text(s.hash.title),
         centerTitle: true,
       ),
       children: [
@@ -111,7 +115,7 @@ class _HashToolState extends State<HashTool> {
                 padding: const EdgeInsets.symmetric(horizontal: 4),
                 child: Row(
                   children: [
-                    Text('${_bytes?.length ?? 0} bytes'),
+                    Text(s.hash.bytesCount(n: _bytes?.length ?? 0)),
                     const Spacer(),
                     MacosPopupButton(
                       value: _format,
@@ -135,7 +139,7 @@ class _HashToolState extends State<HashTool> {
                 ),
               ),
               const SizedBox(height: 16),
-              ..._digestes
+              ..._digestList
                   .map<Widget>((digest) => _DigestItem(
                         digest: digest,
                         bytes: _bytes,
@@ -184,10 +188,12 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
+    final s = Translations.of(context);
+
     final file = _file;
     final field = file != null
         ? MacosReadonlyField(
-            text: 'Hash of file ${file.path}',
+            text: s.hash.hashOfFile(path: file.path),
             maxLines: 10,
             textAlignVertical: const TextAlignVertical(y: -1),
           )
@@ -195,7 +201,7 @@ class _BodyState extends State<_Body> {
             controller: _controller,
             maxLines: null,
             textAlignVertical: const TextAlignVertical(y: -1),
-            placeholder: 'Input any text',
+            placeholder: s.hash.textInputHint,
           );
 
     return Padding(
@@ -215,14 +221,14 @@ class _BodyState extends State<_Body> {
                   PushButton(
                     onPressed: _onFilePicked,
                     controlSize: ControlSize.regular,
-                    child: const Text('Load file'),
+                    child: Text(s.hash.loadFile),
                   ),
                   const SizedBox(width: 8),
                   PushButton(
                     onPressed: file != null ? _dropFile : null,
                     controlSize: ControlSize.regular,
                     secondary: true,
-                    child: const Text('Drop file'),
+                    child: Text(s.hash.dropFile),
                   ),
                 ],
               ),
