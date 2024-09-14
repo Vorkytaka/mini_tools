@@ -92,12 +92,15 @@ class _HashToolState extends State<HashTool> {
       ),
       children: [
         ContentArea(
-          builder: (context, controller) => _Body(
-            onChanged: (bytes) {
-              setState(() {
-                _bytes = Uint8List.fromList(bytes);
-              });
-            },
+          builder: (context, controller) => Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: _Body(
+              onChanged: (bytes) {
+                setState(() {
+                  _bytes = Uint8List.fromList(bytes);
+                });
+              },
+            ),
           ),
         ),
         ResizablePane(
@@ -107,7 +110,7 @@ class _HashToolState extends State<HashTool> {
             children: [
               Row(
                 children: [
-                  const Text('Outputs:'),
+                  Text('Outputs (${_bytes?.length ?? 0} bytes):'),
                   const Spacer(),
                   MacosPopupButton(
                     value: _format,
