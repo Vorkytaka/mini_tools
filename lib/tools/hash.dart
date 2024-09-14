@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:convert/convert.dart';
 import 'package:cross_file/cross_file.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -89,18 +90,16 @@ class _HashToolState extends State<HashTool> {
     return MacosScaffold(
       toolBar: ToolBar(
         title: Text('Hash'),
+        centerTitle: true,
       ),
       children: [
         ContentArea(
-          builder: (context, controller) => Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: _Body(
-              onChanged: (bytes) {
-                setState(() {
-                  _bytes = Uint8List.fromList(bytes);
-                });
-              },
-            ),
+          builder: (context, controller) => _Body(
+            onChanged: (bytes) {
+              setState(() {
+                _bytes = Uint8List.fromList(bytes);
+              });
+            },
           ),
         ),
         ResizablePane(
@@ -108,29 +107,32 @@ class _HashToolState extends State<HashTool> {
             padding: const EdgeInsets.all(8),
             controller: controller,
             children: [
-              Row(
-                children: [
-                  Text('Outputs (${_bytes?.length ?? 0} bytes):'),
-                  const Spacer(),
-                  MacosPopupButton(
-                    value: _format,
-                    items: _HashFormat.values
-                        .map(
-                          (type) => MacosPopupMenuItem(
-                            value: type,
-                            child: Text(type.format(context)),
-                          ),
-                        )
-                        .toList(growable: false),
-                    onChanged: (format) {
-                      if (format != null && format != _format) {
-                        setState(() {
-                          _format = format;
-                        });
-                      }
-                    },
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                child: Row(
+                  children: [
+                    Text('${_bytes?.length ?? 0} bytes'),
+                    const Spacer(),
+                    MacosPopupButton(
+                      value: _format,
+                      items: _HashFormat.values
+                          .map(
+                            (type) => MacosPopupMenuItem(
+                              value: type,
+                              child: Text(type.format(context)),
+                            ),
+                          )
+                          .toList(growable: false),
+                      onChanged: (format) {
+                        if (format != null && format != _format) {
+                          setState(() {
+                            _format = format;
+                          });
+                        }
+                      },
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: 16),
               ..._digestes
@@ -163,15 +165,9 @@ class _Body extends StatefulWidget {
   State<_Body> createState() => _BodyState();
 }
 
-enum _InputType {
-  text,
-  file,
-}
-
 class _BodyState extends State<_Body> {
   final _controller = TextEditingController();
 
-  _InputType _type = _InputType.text;
   XFile? _file;
 
   @override
@@ -188,26 +184,78 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    return FileDropWidget(
-      onFileDropped: (file) async {
-        _file = file;
-        final List<int> content = await _file?.readAsBytes() ?? [];
-        widget.onChanged(content);
-        setState(() {
-          _type = _InputType.file;
-        });
-      },
-      child: _file != null
-          ? MacosReadonlyField(
-              placeholder: 'Hash of file ${_file!.path}',
-              textAlignVertical: const TextAlignVertical(y: -1),
-            )
-          : MacosTextField(
-              controller: _controller,
-              maxLines: null,
-              textAlignVertical: const TextAlignVertical(y: -1),
+    final file = _file;
+    final field = file != null
+        ? MacosReadonlyField(
+            text: 'Hash of file ${file.path}',
+            maxLines: 10,
+            textAlignVertical: const TextAlignVertical(y: -1),
+          )
+        : MacosTextField(
+            controller: _controller,
+            maxLines: null,
+            textAlignVertical: const TextAlignVertical(y: -1),
+            placeholder: 'Input any text',
+          );
+
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: FileDropWidget(
+        onFileDropped: (file) {
+          if (file != null) {
+            _update(file);
+          }
+        },
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Row(
+                children: [
+                  PushButton(
+                    onPressed: _onFilePicked,
+                    controlSize: ControlSize.regular,
+                    child: const Text('Load file'),
+                  ),
+                  const SizedBox(width: 8),
+                  PushButton(
+                    onPressed: file != null ? _dropFile : null,
+                    controlSize: ControlSize.regular,
+                    secondary: true,
+                    child: const Text('Drop file'),
+                  ),
+                ],
+              ),
             ),
+            const SizedBox(height: 4),
+            Expanded(child: field),
+          ],
+        ),
+      ),
     );
+  }
+
+  Future<void> _onFilePicked() async {
+    final result = await FilePicker.platform.pickFiles();
+    if (result != null) {
+      final file = result.xFiles.first;
+      await _update(file);
+    }
+  }
+
+  void _dropFile() {
+    setState(() {
+      _file = null;
+      widget.onChanged(Uint8List(0));
+    });
+  }
+
+  Future<void> _update(XFile file) async {
+    final List<int> content = await file.readAsBytes();
+    widget.onChanged(content);
+    setState(() {
+      _file = file;
+    });
   }
 }
 
@@ -230,7 +278,10 @@ class _DigestItem extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(digest.algorithmName),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4),
+          child: Text(digest.algorithmName),
+        ),
         const SizedBox(height: 4),
         Row(
           children: [
