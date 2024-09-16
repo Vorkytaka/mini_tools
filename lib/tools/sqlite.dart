@@ -29,6 +29,8 @@ class _SqliteToolState extends State<SqliteTool> {
 
   Database get database => _database ??= sqlite3.openInMemory();
 
+  List<_TableInfo> _tableInfos = const [];
+
   final _history = <(String, dynamic)>[];
 
   @override
@@ -97,6 +99,16 @@ class _SqliteToolState extends State<SqliteTool> {
             ],
           ),
         ),
+        ResizablePane(
+          builder: (context, controller) => _TableInfoWidget(
+            infos: _tableInfos,
+            controller: controller,
+          ),
+          minSize: 200,
+          resizableSide: ResizableSide.left,
+          startSize: 200,
+          isResizable: false,
+        ),
       ],
     );
   }
@@ -105,6 +117,7 @@ class _SqliteToolState extends State<SqliteTool> {
     _database?.dispose();
     _database = null;
     _history.clear();
+    _tableInfos = const [];
   }
 
   void _execute(String query) {
@@ -114,7 +127,100 @@ class _SqliteToolState extends State<SqliteTool> {
     } on SqliteException catch (e) {
       _history.add((query, e));
     }
+    _getDatabaseInfo();
     setState(() {});
+  }
+
+  static const _tableQuery =
+      "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';";
+
+  static String _tableSchemaQuery(String tableName) =>
+      'PRAGMA table_info($tableName);';
+
+  void _getDatabaseInfo() {
+    final tables = database
+        .select(_tableQuery)
+        .map((row) => row['name'])
+        .map((tableName) =>
+            (tableName, database.select(_tableSchemaQuery(tableName))))
+        .map((data) => _TableInfo(
+            name: data.$1,
+            columns: data.$2
+                .map((column) => _ColumnInfo(
+                      name: column['name'],
+                      type: column['type'],
+                      pk: column['pk'] == 1,
+                    ))
+                .toList()))
+        .toList(growable: false);
+
+    setState(() {
+      _tableInfos = tables;
+    });
+  }
+}
+
+class _TableInfo {
+  final String name;
+  final List<_ColumnInfo> columns;
+
+  _TableInfo({
+    required this.name,
+    required this.columns,
+  });
+}
+
+class _ColumnInfo {
+  final String name;
+  final String type;
+  final bool pk;
+
+  _ColumnInfo({
+    required this.name,
+    required this.type,
+    required this.pk,
+  });
+}
+
+class _TableInfoWidget extends StatelessWidget {
+  final ScrollController? controller;
+  final List<_TableInfo> infos;
+
+  const _TableInfoWidget({
+    required this.infos,
+    this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = MacosTheme.of(context);
+
+    return ListView.separated(
+      controller: controller,
+      itemCount: infos.length,
+      padding: const EdgeInsets.all(8),
+      separatorBuilder: (context, i) => const MacosPulldownMenuDivider(),
+      itemBuilder: (context, i) {
+        final info = infos[i];
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(info.name, style: theme.typography.title2),
+            for (final column in info.columns)
+              Row(
+                children: [
+                  if (column.pk) const Icon(Icons.key, size: 12),
+                  const SizedBox(width: 4),
+                  Text(column.name),
+                  const SizedBox(width: 4),
+                  Text('(${column.type})'),
+                ],
+              ),
+          ],
+        );
+      },
+    );
   }
 }
 
@@ -153,10 +259,10 @@ class _History extends StatelessWidget {
             ),
             const SizedBox(width: 12),
             Expanded(
-              child: SelectableText(
+              child: Text(
                 '${history[i].$2}',
                 maxLines: 10,
-                // overflow: TextOverflow.ellipsis,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
           ],
