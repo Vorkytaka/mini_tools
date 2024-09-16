@@ -5,9 +5,9 @@ import 'package:re_editor/re_editor.dart';
 import 'package:re_highlight/languages/sql.dart';
 import 'package:sqlite3/sqlite3.dart' hide Row;
 
-import '../common/code_themes.dart';
-import '../common/macos_code_editor.dart';
-import '../common/text_styles.dart';
+import '../../common/code_themes.dart';
+import '../../common/macos_code_editor.dart';
+import '../../common/text_styles.dart';
 
 final sqliteTool = Tool(
   titleBuilder: (context) => 'Sqlite',

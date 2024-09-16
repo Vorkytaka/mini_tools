@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mini_tools/tools/sqlite.dart';
+import 'package:mini_tools/tools/sqlite/sqlite.dart';
 
 import 'color_tool.dart';
 import 'hash.dart';
