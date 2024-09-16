@@ -6,6 +6,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   desktop_drop
   flutter_timezone
   screen_retriever
+  sqlite3_flutter_libs
   window_manager
 )
 

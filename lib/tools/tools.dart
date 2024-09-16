@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_tools/tools/sqlite.dart';
 
 import 'color_tool.dart';
 import 'hash.dart';
@@ -33,6 +34,7 @@ final tools = <Tool>[
   colorTool,
   materialColorTool,
   hashTool,
+  sqliteTool,
 ];
 
 final debugTool = Tool(
