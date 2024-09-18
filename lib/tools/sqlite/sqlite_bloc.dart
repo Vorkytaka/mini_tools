@@ -58,7 +58,10 @@ class SqliteCubit extends Cubit<SqliteState> {
   Future<void> importDatabase(XFile file) async {
     await _databaseHolder.setDatabaseFromFile(file);
     final tablesInfo = _getTablesInfo();
-    emit(state.copyWith(tablesInfo: tablesInfo));
+    emit(state.copyWith(
+      tablesInfo: tablesInfo,
+      history: const [],
+    ));
   }
 
   List<TableInfo> _getTablesInfo() {
