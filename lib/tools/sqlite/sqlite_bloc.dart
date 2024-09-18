@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqlite3/sqlite3.dart';
 
@@ -8,11 +10,21 @@ class SqliteCubit extends Cubit<SqliteState> {
   static String _tableSchemaQuery(String tableName) =>
       'PRAGMA table_info($tableName);';
 
-  Database? _connection;
+  final _databaseHolder = DatabaseHolder();
 
   SqliteCubit() : super(const SqliteState.init());
 
-  Database get database => _connection ??= sqlite3.openInMemory();
+  void init() {
+    _databaseHolder.isDatabaseConnectedStream.listen(
+      (isConnected) => emit(
+        state.copyWith(
+          databaseStatus: isConnected
+              ? SqliteDatabaseStatus.connected
+              : SqliteDatabaseStatus.disconnected,
+        ),
+      ),
+    );
+  }
 
   void execute(String query) {
     if (query.isEmpty) {
@@ -21,7 +33,7 @@ class SqliteCubit extends Cubit<SqliteState> {
 
     dynamic result;
     try {
-      result = database.select(query);
+      result = _databaseHolder.database.select(query);
     } on SqliteException catch (e) {
       result = e;
     }
@@ -38,11 +50,13 @@ class SqliteCubit extends Cubit<SqliteState> {
 
   List<TableInfo> _getTablesInfo() {
     try {
-      return database
+      return _databaseHolder.database
           .select(_tableQuery)
           .map((row) => row['name'])
-          .map((tableName) =>
-              (tableName, database.select(_tableSchemaQuery(tableName))))
+          .map((tableName) => (
+                tableName,
+                _databaseHolder.database.select(_tableSchemaQuery(tableName))
+              ))
           .map(
             (data) => TableInfo(
               name: data.$1,
@@ -62,32 +76,41 @@ class SqliteCubit extends Cubit<SqliteState> {
   }
 
   void dropTable() {
-    database.dispose();
-    _connection = null;
+    _databaseHolder.dispose();
     emit(const SqliteState.init());
   }
+}
+
+enum SqliteDatabaseStatus {
+  disconnected,
+  connected
 }
 
 class SqliteState {
   final List<TableInfo> tablesInfo;
   final List<(String, dynamic)> history;
+  final SqliteDatabaseStatus databaseStatus;
 
   const SqliteState({
     required this.tablesInfo,
     required this.history,
+    required this.databaseStatus,
   });
 
   const SqliteState.init()
       : tablesInfo = const [],
-        history = const [];
+        history = const [],
+        databaseStatus = SqliteDatabaseStatus.disconnected;
 
   SqliteState copyWith({
     List<TableInfo>? tablesInfo,
     List<(String, dynamic)>? history,
+    SqliteDatabaseStatus? databaseStatus,
   }) {
     return SqliteState(
       tablesInfo: tablesInfo ?? this.tablesInfo,
       history: history ?? this.history,
+      databaseStatus: databaseStatus ?? this.databaseStatus,
     );
   }
 }
@@ -112,4 +135,28 @@ class ColumnInfo {
     required this.type,
     required this.pk,
   });
+}
+
+class DatabaseHolder {
+  Database? _database;
+  final _streamController = StreamController<Database?>.broadcast();
+
+  DatabaseHolder();
+
+  Stream<bool> get isDatabaseConnectedStream =>
+      _streamController.stream.map((db) => db != null);
+
+  Database get database {
+    if (_database == null) {
+      _database = sqlite3.openInMemory();
+      _streamController.add(_database);
+    }
+    return _database!;
+  }
+
+  void dispose() {
+    _database?.dispose();
+    _database = null;
+    _streamController.add(null);
+  }
 }

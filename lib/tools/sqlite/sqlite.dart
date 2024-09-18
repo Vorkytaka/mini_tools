@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tools/tools/tools.dart';
 import 'package:re_editor/re_editor.dart';
 import 'package:re_highlight/languages/sql.dart';
-import 'package:sqlite3/sqlite3.dart' hide Row;
 
 import '../../common/code_themes.dart';
 import '../../common/macos_code_editor.dart';
 import '../../common/text_styles.dart';
+import 'sqlite_bloc.dart';
 
 final sqliteTool = Tool(
   titleBuilder: (context) => 'Sqlite',
   icon: Icons.table_chart,
-  screenBuilder: (context) => const SqliteTool(),
+  screenBuilder: (context) => BlocProvider(
+    create: (context) => SqliteCubit()..init(),
+    child: const SqliteTool(),
+  ),
 );
 
 class SqliteTool extends StatefulWidget {
@@ -24,20 +28,6 @@ class SqliteTool extends StatefulWidget {
 
 class _SqliteToolState extends State<SqliteTool> {
   final _queryController = CodeLineEditingController();
-
-  Database? _database;
-
-  Database get database => _database ??= sqlite3.openInMemory();
-
-  List<_TableInfo> _tableInfos = const [];
-
-  final _history = <(String, dynamic)>[];
-
-  @override
-  void dispose() {
-    _dropDatabase();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,20 +48,11 @@ class _SqliteToolState extends State<SqliteTool> {
                     onPressed: () {
                       final query = _queryController.text;
                       if (query.isNotEmpty) {
-                        _execute(query);
+                        context.read<SqliteCubit>().execute(query);
                       }
                     },
                   ),
-                  PushButton(
-                    onPressed: _database != null
-                        ? () {
-                            _dropDatabase();
-                            setState(() {});
-                          }
-                        : null,
-                    child: Text('Drop table'),
-                    controlSize: ControlSize.large,
-                  ),
+                  const _DropDatabaseButton(),
                 ],
               ),
               Flexible(
@@ -88,10 +69,7 @@ class _SqliteToolState extends State<SqliteTool> {
                 ),
               ),
               ResizablePane(
-                builder: (context, controller) => _History(
-                  history: _history,
-                  onRerun: _execute,
-                ),
+                builder: (context, controller) => const _History(),
                 minSize: 200,
                 resizableSide: ResizableSide.top,
                 startSize: 200,
@@ -101,7 +79,6 @@ class _SqliteToolState extends State<SqliteTool> {
         ),
         ResizablePane(
           builder: (context, controller) => _TableInfoWidget(
-            infos: _tableInfos,
             controller: controller,
           ),
           minSize: 200,
@@ -112,82 +89,31 @@ class _SqliteToolState extends State<SqliteTool> {
       ],
     );
   }
-
-  void _dropDatabase() {
-    _database?.dispose();
-    _database = null;
-    _history.clear();
-    _tableInfos = const [];
-  }
-
-  void _execute(String query) {
-    try {
-      final result = database.select(query);
-      _history.add((query, result));
-    } on SqliteException catch (e) {
-      _history.add((query, e));
-    }
-    _getDatabaseInfo();
-    setState(() {});
-  }
-
-  static const _tableQuery =
-      "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';";
-
-  static String _tableSchemaQuery(String tableName) =>
-      'PRAGMA table_info($tableName);';
-
-  void _getDatabaseInfo() {
-    final tables = database
-        .select(_tableQuery)
-        .map((row) => row['name'])
-        .map((tableName) =>
-            (tableName, database.select(_tableSchemaQuery(tableName))))
-        .map((data) => _TableInfo(
-            name: data.$1,
-            columns: data.$2
-                .map((column) => _ColumnInfo(
-                      name: column['name'],
-                      type: column['type'],
-                      pk: column['pk'] == 1,
-                    ))
-                .toList()))
-        .toList(growable: false);
-
-    setState(() {
-      _tableInfos = tables;
-    });
-  }
 }
 
-class _TableInfo {
-  final String name;
-  final List<_ColumnInfo> columns;
+class _DropDatabaseButton extends StatelessWidget {
+  const _DropDatabaseButton();
 
-  _TableInfo({
-    required this.name,
-    required this.columns,
-  });
-}
-
-class _ColumnInfo {
-  final String name;
-  final String type;
-  final bool pk;
-
-  _ColumnInfo({
-    required this.name,
-    required this.type,
-    required this.pk,
-  });
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SqliteCubit, SqliteState>(
+      builder: (context, state) => PushButton(
+        onPressed: state.databaseStatus == SqliteDatabaseStatus.connected
+            ? () {
+                context.read<SqliteCubit>().dropTable();
+              }
+            : null,
+        child: Text('Drop table'),
+        controlSize: ControlSize.large,
+      ),
+    );
+  }
 }
 
 class _TableInfoWidget extends StatelessWidget {
   final ScrollController? controller;
-  final List<_TableInfo> infos;
 
   const _TableInfoWidget({
-    required this.infos,
     this.controller,
   });
 
@@ -195,79 +121,79 @@ class _TableInfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = MacosTheme.of(context);
 
-    return ListView.separated(
-      controller: controller,
-      itemCount: infos.length,
-      padding: const EdgeInsets.all(8),
-      separatorBuilder: (context, i) => const MacosPulldownMenuDivider(),
-      itemBuilder: (context, i) {
-        final info = infos[i];
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(info.name, style: theme.typography.title2),
-            for (final column in info.columns)
-              Row(
-                children: [
-                  if (column.pk) const Icon(Icons.key, size: 12),
-                  const SizedBox(width: 4),
-                  Text(column.name),
-                  const SizedBox(width: 4),
-                  Text('(${column.type})'),
-                ],
-              ),
-          ],
-        );
-      },
-    );
+    return BlocBuilder<SqliteCubit, SqliteState>(builder: (context, state) {
+      return ListView.separated(
+        controller: controller,
+        itemCount: state.tablesInfo.length,
+        padding: const EdgeInsets.all(8),
+        separatorBuilder: (context, i) => const MacosPulldownMenuDivider(),
+        itemBuilder: (context, i) {
+          final info = state.tablesInfo[i];
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(info.name, style: theme.typography.title2),
+              for (final column in info.columns)
+                Row(
+                  children: [
+                    if (column.pk) const Icon(Icons.key, size: 12),
+                    const SizedBox(width: 4),
+                    Text(column.name),
+                    const SizedBox(width: 4),
+                    Text('(${column.type})'),
+                  ],
+                ),
+            ],
+          );
+        },
+      );
+    });
   }
 }
 
 class _History extends StatelessWidget {
-  final List<(String, dynamic)> history;
-  final ValueChanged<String> onRerun;
-
-  const _History({
-    required this.history,
-    required this.onRerun,
-  });
+  const _History();
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: history.length,
-      separatorBuilder: (context, _) => const MacosPulldownMenuDivider(),
-      itemBuilder: (context, i) => Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8,
-          vertical: 12,
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            MacosIconButton(
-              icon: const MacosIcon(Icons.play_arrow),
-              onPressed: () => onRerun(history[i].$1),
-            ),
-            Expanded(
-              child: Text(
-                history[i].$1,
-                maxLines: 10,
-                overflow: TextOverflow.ellipsis,
+    return BlocBuilder<SqliteCubit, SqliteState>(builder: (context, state) {
+      return ListView.separated(
+        itemCount: state.history.length,
+        separatorBuilder: (context, _) => const MacosPulldownMenuDivider(),
+        itemBuilder: (context, i) => Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 8,
+            vertical: 12,
+          ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              MacosIconButton(
+                icon: const MacosIcon(Icons.play_arrow),
+                onPressed: () {
+                  context.read<SqliteCubit>().execute(state.history[i].$1);
+                },
               ),
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                '${history[i].$2}',
-                maxLines: 10,
-                overflow: TextOverflow.ellipsis,
+              Expanded(
+                child: Text(
+                  state.history[i].$1,
+                  maxLines: 10,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
-            ),
-          ],
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  '${state.history[i].$2}',
+                  maxLines: 10,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
