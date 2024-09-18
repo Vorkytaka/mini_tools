@@ -173,10 +173,14 @@ class DatabaseHolder {
   Future<void> setDatabaseFromFile(XFile file) async {
     final fileConn = sqlite3.open(file.path);
     final inMemConn = sqlite3.openInMemory();
-    await fileConn.backup(inMemConn).drain();
-
-    fileConn.dispose();
-    setDatabase(inMemConn);
+    try {
+      await fileConn.backup(inMemConn).drain();
+      setDatabase(inMemConn);
+    } on SqliteException catch (_) {
+      inMemConn.dispose();
+    } finally {
+      fileConn.dispose();
+    }
   }
 
   void setDatabase(Database database) {

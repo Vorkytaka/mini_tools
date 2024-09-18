@@ -100,12 +100,14 @@ class _DropDatabaseButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SqliteCubit, SqliteState>(
+      buildWhen: (prev, curr) => prev.databaseStatus != curr.databaseStatus,
       builder: (context, state) => PushButton(
         onPressed: state.databaseStatus == SqliteDatabaseStatus.connected
             ? () => context.read<SqliteCubit>().dropTable()
             : null,
         child: Text('Drop table'),
         controlSize: ControlSize.large,
+        secondary: true,
       ),
     );
   }
