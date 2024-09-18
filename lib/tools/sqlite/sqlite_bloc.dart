@@ -48,6 +48,12 @@ class SqliteCubit extends Cubit<SqliteState> {
     );
   }
 
+  void exportDatabase(String path) {
+    final exportConn = sqlite3.open(path);
+    final database = _databaseHolder.database;
+    database.backup(exportConn).drain().whenComplete(exportConn.dispose);
+  }
+
   List<TableInfo> _getTablesInfo() {
     try {
       return _databaseHolder.database
@@ -83,7 +89,7 @@ class SqliteCubit extends Cubit<SqliteState> {
 
 enum SqliteDatabaseStatus {
   disconnected,
-  connected
+  connected,
 }
 
 class SqliteState {

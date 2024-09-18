@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:macos_ui/macos_ui.dart';
@@ -53,6 +54,7 @@ class _SqliteToolState extends State<SqliteTool> {
                     },
                   ),
                   const _DropDatabaseButton(),
+                  const _ExportDatabaseButton(),
                 ],
               ),
               Flexible(
@@ -99,9 +101,7 @@ class _DropDatabaseButton extends StatelessWidget {
     return BlocBuilder<SqliteCubit, SqliteState>(
       builder: (context, state) => PushButton(
         onPressed: state.databaseStatus == SqliteDatabaseStatus.connected
-            ? () {
-                context.read<SqliteCubit>().dropTable();
-              }
+            ? () => context.read<SqliteCubit>().dropTable()
             : null,
         child: Text('Drop table'),
         controlSize: ControlSize.large,
@@ -195,5 +195,30 @@ class _History extends StatelessWidget {
         ),
       );
     });
+  }
+}
+
+class _ExportDatabaseButton extends StatelessWidget {
+  const _ExportDatabaseButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SqliteCubit, SqliteState>(
+      builder: (context, state) {
+        return PushButton(
+          onPressed: state.databaseStatus == SqliteDatabaseStatus.connected
+              ? () async {
+                  final path = await FilePicker.platform.saveFile();
+                  if (path != null) {
+                    context.read<SqliteCubit>().exportDatabase(path);
+                  }
+                }
+              : null,
+          child: Text("Export Database"),
+          controlSize: ControlSize.large,
+          secondary: true,
+        );
+      },
+    );
   }
 }
