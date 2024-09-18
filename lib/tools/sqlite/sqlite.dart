@@ -53,8 +53,9 @@ class _SqliteToolState extends State<SqliteTool> {
                       }
                     },
                   ),
-                  const _DropDatabaseButton(),
+                  const _ImportDatabaseButton(),
                   const _ExportDatabaseButton(),
+                  const _DropDatabaseButton(),
                 ],
               ),
               Flexible(
@@ -220,6 +221,25 @@ class _ExportDatabaseButton extends StatelessWidget {
           secondary: true,
         );
       },
+    );
+  }
+}
+
+class _ImportDatabaseButton extends StatelessWidget {
+  const _ImportDatabaseButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return PushButton(
+      onPressed: () async {
+        final cubit = context.read<SqliteCubit>();
+        final result = await FilePicker.platform.pickFiles();
+        if (result != null && result.isSinglePick && result.xFiles.isNotEmpty) {
+          await cubit.importDatabase(result.xFiles.first);
+        }
+      },
+      child: Text('Import Database'),
+      controlSize: ControlSize.large,
     );
   }
 }

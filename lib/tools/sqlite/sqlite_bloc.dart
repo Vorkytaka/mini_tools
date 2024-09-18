@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cross_file/cross_file.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sqlite3/sqlite3.dart';
 
@@ -52,6 +53,12 @@ class SqliteCubit extends Cubit<SqliteState> {
     final exportConn = sqlite3.open(path);
     final database = _databaseHolder.database;
     database.backup(exportConn).drain().whenComplete(exportConn.dispose);
+  }
+
+  Future<void> importDatabase(XFile file) async {
+    await _databaseHolder.setDatabaseFromFile(file);
+    final tablesInfo = _getTablesInfo();
+    emit(state.copyWith(tablesInfo: tablesInfo));
   }
 
   List<TableInfo> _getTablesInfo() {
@@ -158,6 +165,23 @@ class DatabaseHolder {
       _streamController.add(_database);
     }
     return _database!;
+  }
+
+  Future<void> setDatabaseFromFile(XFile file) async {
+    final fileConn = sqlite3.open(file.path);
+    final inMemConn = sqlite3.openInMemory();
+    await fileConn.backup(inMemConn).drain();
+
+    fileConn.dispose();
+    setDatabase(inMemConn);
+  }
+
+  void setDatabase(Database database) {
+    if (_database != null) {
+      dispose();
+    }
+    _database = database;
+    _streamController.add(_database);
   }
 
   void dispose() {
