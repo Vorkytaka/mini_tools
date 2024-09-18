@@ -208,7 +208,8 @@ class _ExportDatabaseButton extends StatelessWidget {
         return PushButton(
           onPressed: state.databaseStatus == SqliteDatabaseStatus.connected
               ? () async {
-                  final path = await FilePicker.platform.saveFile();
+                  final path = await FilePicker.platform
+                      .saveFile(fileName: 'database.sqlite3');
                   if (path != null) {
                     context.read<SqliteCubit>().exportDatabase(path);
                   }
