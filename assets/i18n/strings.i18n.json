@@ -123,5 +123,14 @@
       "base64": "Base64"
     },
     "hash_of_file": "Hash of file: $path"
+  },
+  "sqlite": {
+    "title": "SQLite Editor",
+    "run": "Run",
+    "import": "Import Database",
+    "export": "Export Database",
+    "drop": "Drop Database",
+    "tables": "Tables",
+    "history": "History"
   }
 }

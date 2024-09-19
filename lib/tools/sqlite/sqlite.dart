@@ -2,17 +2,18 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:macos_ui/macos_ui.dart';
-import 'package:mini_tools/tools/tools.dart';
 import 'package:re_editor/re_editor.dart';
 import 'package:re_highlight/languages/sql.dart';
 
 import '../../common/code_themes.dart';
 import '../../common/macos_code_editor.dart';
 import '../../common/text_styles.dart';
+import '../../i18n/strings.g.dart';
+import '../tools.dart';
 import 'sqlite_bloc.dart';
 
 final sqliteTool = Tool(
-  titleBuilder: (context) => 'Sqlite',
+  titleBuilder: (context) => Translations.of(context).sqlite.title,
   icon: Icons.table_chart,
   screenBuilder: (context) => BlocProvider(
     create: (context) => SqliteCubit()..init(),
@@ -32,9 +33,11 @@ class _SqliteToolState extends State<SqliteTool> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return MacosScaffold(
-      toolBar: const ToolBar(
-        title: Text('Sqlite'),
+      toolBar: ToolBar(
+        title: Text(t.sqlite.title),
         centerTitle: true,
       ),
       children: [
@@ -99,15 +102,17 @@ class _DropDatabaseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return BlocBuilder<SqliteCubit, SqliteState>(
       buildWhen: (prev, curr) => prev.databaseStatus != curr.databaseStatus,
       builder: (context, state) => PushButton(
         onPressed: state.databaseStatus == SqliteDatabaseStatus.connected
             ? () => context.read<SqliteCubit>().dropTable()
             : null,
-        child: Text('Drop table'),
         controlSize: ControlSize.large,
         secondary: true,
+        child: Text(t.sqlite.drop),
       ),
     );
   }
@@ -136,17 +141,36 @@ class _TableInfoWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(info.name, style: theme.typography.title2),
+              Text(info.name, style: theme.typography.title3),
               for (final column in info.columns)
-                Row(
-                  children: [
-                    if (column.pk) const Icon(Icons.key, size: 12),
-                    const SizedBox(width: 4),
-                    Text(column.name),
-                    const SizedBox(width: 4),
-                    Text('(${column.type})'),
-                  ],
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(text: column.name),
+                      TextSpan(
+                        text: ' (${column.type}) ',
+                        style: theme.typography.caption2,
+                      ),
+                      if (column.pk)
+                        const WidgetSpan(
+                          child: Icon(Icons.key, size: 12),
+                        ),
+                    ],
+                  ),
                 ),
+              // Row(
+              //   crossAxisAlignment: CrossAxisAlignment.end,
+              //   children: [
+              //     Text(column.name),
+              //     const SizedBox(width: 4),
+              //     Text(
+              //       '(${column.type})',
+              //       style: theme.typography.caption2,
+              //     ),
+              //     const SizedBox(width: 4),
+              //     if (column.pk) const Icon(Icons.key, size: 12),
+              //   ],
+              // ),
             ],
           );
         },
@@ -206,21 +230,24 @@ class _ExportDatabaseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return BlocBuilder<SqliteCubit, SqliteState>(
       builder: (context, state) {
         return PushButton(
           onPressed: state.databaseStatus == SqliteDatabaseStatus.connected
               ? () async {
+                  final cubit = context.read<SqliteCubit>();
                   final path = await FilePicker.platform
                       .saveFile(fileName: 'database.sqlite3');
                   if (path != null) {
-                    context.read<SqliteCubit>().exportDatabase(path);
+                    cubit.exportDatabase(path);
                   }
                 }
               : null,
-          child: Text("Export Database"),
           controlSize: ControlSize.large,
           secondary: true,
+          child: Text(t.sqlite.export),
         );
       },
     );
@@ -232,6 +259,8 @@ class _ImportDatabaseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return PushButton(
       onPressed: () async {
         final cubit = context.read<SqliteCubit>();
@@ -240,8 +269,8 @@ class _ImportDatabaseButton extends StatelessWidget {
           await cubit.importDatabase(result.xFiles.first);
         }
       },
-      child: Text('Import Database'),
       controlSize: ControlSize.large,
+      child: Text(t.sqlite.import),
     );
   }
 }
