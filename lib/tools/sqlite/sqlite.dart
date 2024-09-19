@@ -87,9 +87,9 @@ class _SqliteToolState extends State<SqliteTool> {
           builder: (context, controller) => _TableInfoWidget(
             controller: controller,
           ),
-          minSize: 200,
+          minSize: 240,
           resizableSide: ResizableSide.left,
-          startSize: 200,
+          startSize: 240,
           isResizable: false,
         ),
       ],
@@ -134,44 +134,57 @@ class _TableInfoWidget extends StatelessWidget {
         controller: controller,
         itemCount: state.tablesInfo.length,
         padding: const EdgeInsets.all(8),
-        separatorBuilder: (context, i) => const MacosPulldownMenuDivider(),
+        separatorBuilder: (context, i) => const SizedBox(height: 8),
         itemBuilder: (context, i) {
           final info = state.tablesInfo[i];
-          return Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(info.name, style: theme.typography.title3),
-              for (final column in info.columns)
-                Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(text: column.name),
-                      TextSpan(
-                        text: ' (${column.type}) ',
-                        style: theme.typography.caption2,
-                      ),
-                      if (column.pk)
-                        const WidgetSpan(
-                          child: Icon(Icons.key, size: 12),
-                        ),
-                    ],
+          return Card(
+            color: theme.datePickerTheme.backgroundColor,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    info.name,
+                    style: theme.typography.title3.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                ),
-              // Row(
-              //   crossAxisAlignment: CrossAxisAlignment.end,
-              //   children: [
-              //     Text(column.name),
-              //     const SizedBox(width: 4),
-              //     Text(
-              //       '(${column.type})',
-              //       style: theme.typography.caption2,
-              //     ),
-              //     const SizedBox(width: 4),
-              //     if (column.pk) const Icon(Icons.key, size: 12),
-              //   ],
-              // ),
-            ],
+                  MacosPulldownMenuDivider(),
+                  for (final column in info.columns)
+                    Text.rich(
+                      TextSpan(
+                        children: [
+                          TextSpan(text: column.name),
+                          TextSpan(
+                            text: ' (${column.type}) ',
+                            style: theme.typography.caption2,
+                          ),
+                          if (column.pk)
+                            const WidgetSpan(
+                              child: Icon(Icons.key, size: 12),
+                            ),
+                        ],
+                      ),
+                    ),
+                  // Row(
+                  //   crossAxisAlignment: CrossAxisAlignment.end,
+                  //   children: [
+                  //     Text(column.name),
+                  //     const SizedBox(width: 4),
+                  //     Text(
+                  //       '(${column.type})',
+                  //       style: theme.typography.caption2,
+                  //     ),
+                  //     const SizedBox(width: 4),
+                  //     if (column.pk) const Icon(Icons.key, size: 12),
+                  //   ],
+                  // ),
+                ],
+              ),
+            ),
           );
         },
       );
