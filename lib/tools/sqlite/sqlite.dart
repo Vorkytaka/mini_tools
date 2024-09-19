@@ -138,7 +138,12 @@ class _TableInfoWidget extends StatelessWidget {
         itemBuilder: (context, i) {
           final info = state.tablesInfo[i];
           return Card(
-            color: theme.datePickerTheme.backgroundColor,
+            elevation: 0,
+            color: theme.helpButtonTheme.color,
+            shape: RoundedRectangleBorder(
+              side: BorderSide(color: theme.dividerColor),
+              borderRadius: const BorderRadius.all(Radius.circular(12)),
+            ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
               child: Column(
@@ -152,7 +157,7 @@ class _TableInfoWidget extends StatelessWidget {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  MacosPulldownMenuDivider(),
+                  const MacosPulldownMenuDivider(),
                   for (final column in info.columns)
                     Text.rich(
                       TextSpan(
@@ -169,19 +174,6 @@ class _TableInfoWidget extends StatelessWidget {
                         ],
                       ),
                     ),
-                  // Row(
-                  //   crossAxisAlignment: CrossAxisAlignment.end,
-                  //   children: [
-                  //     Text(column.name),
-                  //     const SizedBox(width: 4),
-                  //     Text(
-                  //       '(${column.type})',
-                  //       style: theme.typography.caption2,
-                  //     ),
-                  //     const SizedBox(width: 4),
-                  //     if (column.pk) const Icon(Icons.key, size: 12),
-                  //   ],
-                  // ),
                 ],
               ),
             ),
