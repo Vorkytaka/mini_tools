@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:sqlite3/sqlite3.dart';
 
+import '../../common/either.dart';
+
 abstract interface class DatabaseHolder {
   static DatabaseHolder factory() => DatabaseHolderImpl();
 
@@ -18,6 +20,8 @@ abstract interface class DatabaseHolder {
   void disposeDatabase();
 
   Future<void> setDatabaseFromPath(String path);
+
+  Either<SqliteException, Iterable<dynamic>> execute(String query);
 }
 
 class DatabaseHolderImpl implements DatabaseHolder {
@@ -72,5 +76,16 @@ class DatabaseHolderImpl implements DatabaseHolder {
     _database?.dispose();
     _database = null;
     _streamController.add(null);
+  }
+
+  @override
+  Either<SqliteException, Iterable> execute(String query) {
+    assert(query.isNotEmpty);
+
+    try {
+      return Either.right(database.select(query).toList(growable: false));
+    } on SqliteException catch (e) {
+      return Either.left(e);
+    }
   }
 }

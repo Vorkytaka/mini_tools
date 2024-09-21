@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path/path.dart';
 import 'package:sqlite3/sqlite3.dart';
 
+import '../../common/either.dart';
 import 'database_holder.dart';
 
 class SqliteCubit extends Cubit<SqliteState> {
@@ -35,19 +36,15 @@ class SqliteCubit extends Cubit<SqliteState> {
       return;
     }
 
-    dynamic result;
-    try {
-      result = _databaseHolder.database.select(query);
-    } on SqliteException catch (e) {
-      result = e;
-    }
+    final result = _databaseHolder.execute(query).leftMap((exc) => '$exc');
+    final queryResult = QueryResult(query: query, result: result);
 
     final tablesInfo = _getTablesInfo();
 
     emit(
       state.copyWith(
         tablesInfo: tablesInfo,
-        history: [(query, result), ...state.history],
+        history: [queryResult, ...state.history],
       ),
     );
   }
@@ -121,9 +118,19 @@ class FileInfo {
         name = context.basename(path);
 }
 
+class QueryResult {
+  final String query;
+  final Either<String, Iterable<dynamic>> result;
+
+  const QueryResult({
+    required this.query,
+    required this.result,
+  });
+}
+
 class SqliteState {
   final List<TableInfo> tablesInfo;
-  final List<(String, dynamic)> history;
+  final List<QueryResult> history;
   final SqliteDatabaseStatus databaseStatus;
 
   /// Info about imported database file
@@ -144,7 +151,7 @@ class SqliteState {
 
   SqliteState copyWith({
     List<TableInfo>? tablesInfo,
-    List<(String, dynamic)>? history,
+    List<QueryResult>? history,
     SqliteDatabaseStatus? databaseStatus,
     FileInfo? fileInfo,
   }) {

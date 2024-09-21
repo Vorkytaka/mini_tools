@@ -6,6 +6,7 @@ import 'package:re_editor/re_editor.dart';
 import 'package:re_highlight/languages/sql.dart';
 
 import '../../common/code_themes.dart';
+import '../../common/either.dart';
 import '../../common/file_drop_widget.dart';
 import '../../common/macos_code_editor.dart';
 import '../../common/text_styles.dart';
@@ -225,29 +226,46 @@ class _History extends StatelessWidget {
               MacosIconButton(
                 icon: const MacosIcon(Icons.play_arrow),
                 onPressed: () {
-                  context.read<SqliteCubit>().execute(state.history[i].$1);
+                  context.read<SqliteCubit>().execute(state.history[i].query);
                 },
               ),
               Expanded(
                 child: Text(
-                  state.history[i].$1,
+                  state.history[i].query,
                   maxLines: 10,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
               const SizedBox(width: 12),
               Expanded(
-                child: Text(
-                  '${state.history[i].$2}',
-                  maxLines: 10,
-                  overflow: TextOverflow.ellipsis,
-                ),
+                child: _Result(result: state.history[i].result),
               ),
             ],
           ),
         ),
       );
     });
+  }
+}
+
+class _Result extends StatelessWidget {
+  final Either<String, Iterable<dynamic>> result;
+
+  const _Result({
+    required this.result,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return result.fold(
+      ifLeft: (exc) => DefaultTextStyle.merge(
+        style: TextStyle(color: theme.colorScheme.error),
+        child: Text(exc),
+      ),
+      ifRight: (result) => Text('${result.length}'),
+    );
   }
 }
 
