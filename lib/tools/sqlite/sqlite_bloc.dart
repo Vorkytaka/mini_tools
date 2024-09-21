@@ -174,7 +174,7 @@ class DatabaseHolder {
     final fileConn = sqlite3.open(file.path);
     final inMemConn = sqlite3.openInMemory();
     try {
-      await fileConn.backup(inMemConn).drain();
+      await fileConn.backup(inMemConn, nPage: 1024).drain();
       setDatabase(inMemConn);
     } on SqliteException catch (_) {
       inMemConn.dispose();

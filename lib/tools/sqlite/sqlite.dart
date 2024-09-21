@@ -274,15 +274,48 @@ class _ImportDatabaseButton extends StatelessWidget {
     final t = Translations.of(context);
 
     return PushButton(
-      onPressed: () async {
-        final cubit = context.read<SqliteCubit>();
-        final result = await FilePicker.platform.pickFiles();
-        if (result != null && result.isSinglePick && result.xFiles.isNotEmpty) {
-          await cubit.importDatabase(result.xFiles.first);
-        }
-      },
+      onPressed: () => onTap(context: context),
       controlSize: ControlSize.large,
       child: Text(t.sqlite.import),
     );
+  }
+
+  static Future<void> onTap({required BuildContext context}) async {
+    final cubit = context.read<SqliteCubit>();
+    final result = await FilePicker.platform.pickFiles();
+    if (result != null && result.isSinglePick && result.xFiles.isNotEmpty) {
+      if (context.mounted &&
+          cubit.state.databaseStatus == SqliteDatabaseStatus.connected) {
+        final confirm = await confirmOverride(context: context);
+        if (!confirm) {
+          return;
+        }
+      }
+      await cubit.importDatabase(result.xFiles.first);
+    }
+  }
+
+  static Future<bool> confirmOverride({required BuildContext context}) {
+    return showMacosAlertDialog<bool>(
+      context: context,
+      barrierDismissible: true,
+      builder: (context) => MacosAlertDialog(
+        appIcon: Text('🤔', style: TextStyle(fontSize: 40),),
+        title: Text('Override current database?'),
+        message: Text(
+            'This action will override your current snapshot. It cannot be undone. Do you want to continue?'),
+        primaryButton: PushButton(
+          onPressed: () => Navigator.of(context).pop(true),
+          child: Text('Override'),
+          controlSize: ControlSize.large,
+        ),
+        secondaryButton: PushButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text('Cancel'),
+          controlSize: ControlSize.large,
+          secondary: true,
+        ),
+      ),
+    ).then((confirm) => confirm ?? false);
   }
 }
