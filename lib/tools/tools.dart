@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mini_tools/tools/sqlite/sqlite.dart';
 
 import 'color_tool.dart';
 import 'hash.dart';
@@ -8,6 +7,7 @@ import 'material_colors_tool.dart';
 import 'number_base_converter.dart';
 import 'percentages_tool.dart';
 import 'reg_exp_tool.dart';
+import 'sqlite/sqlite.dart';
 import 'unix_timestamp.dart';
 
 typedef TitleBuilder = String Function(BuildContext context);
