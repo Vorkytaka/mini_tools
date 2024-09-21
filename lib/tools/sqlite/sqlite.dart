@@ -75,7 +75,9 @@ class _SqliteToolState extends State<SqliteTool> {
                 ),
               ),
               ResizablePane(
-                builder: (context, controller) => const _History(),
+                builder: (context, controller) => _History(
+                  controller: controller,
+                ),
                 minSize: 200,
                 resizableSide: ResizableSide.top,
                 startSize: 200,
@@ -185,12 +187,17 @@ class _TableInfoWidget extends StatelessWidget {
 }
 
 class _History extends StatelessWidget {
-  const _History();
+  final ScrollController? controller;
+
+  const _History({
+    this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SqliteCubit, SqliteState>(builder: (context, state) {
       return ListView.separated(
+        controller: controller,
         itemCount: state.history.length,
         separatorBuilder: (context, _) => const MacosPulldownMenuDivider(),
         itemBuilder: (context, i) => Padding(
