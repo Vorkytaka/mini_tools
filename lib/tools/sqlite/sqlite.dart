@@ -6,6 +6,7 @@ import 'package:re_editor/re_editor.dart';
 import 'package:re_highlight/languages/sql.dart';
 
 import '../../common/code_themes.dart';
+import '../../common/file_drop_widget.dart';
 import '../../common/macos_code_editor.dart';
 import '../../common/text_styles.dart';
 import '../../i18n/strings.g.dart';
@@ -35,66 +36,77 @@ class _SqliteToolState extends State<SqliteTool> {
   Widget build(BuildContext context) {
     final t = Translations.of(context);
 
-    return MacosScaffold(
-      toolBar: ToolBar(
-        title: Text(t.sqlite.title),
-        centerTitle: true,
-      ),
-      children: [
-        ContentArea(
-          builder: (context, controller) => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  MacosIconButton(
-                    icon: const MacosIcon(Icons.play_arrow),
-                    onPressed: () {
-                      final query = _queryController.text;
-                      if (query.isNotEmpty) {
-                        context.read<SqliteCubit>().execute(query);
-                      }
-                    },
-                  ),
-                  const _ImportDatabaseButton(),
-                  const _ExportDatabaseButton(),
-                  const _DropDatabaseButton(),
-                ],
-              ),
-              Flexible(
-                child: MacosCodeEditor(
-                  controller: _queryController,
-                  style: MacosCodeEditor.defaultStyle(
-                    context,
-                    codeTheme: CodeHighlightTheme(
-                      languages: {'sql': CodeHighlightThemeMode(mode: langSql)},
-                      theme: CodeThemes.monokai(TextStyles.firaCode),
+    return FileDropWidget(
+      onFileDropped: (file) {
+        if (file != null) {
+          context.read<SqliteCubit>().importDatabase(file);
+        }
+      },
+      child: MacosScaffold(
+        toolBar: ToolBar(
+          title: Text(t.sqlite.title),
+          centerTitle: true,
+        ),
+        children: [
+          ContentArea(
+            builder: (context, controller) => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    MacosIconButton(
+                      icon: const MacosIcon(Icons.play_arrow),
+                      onPressed: () {
+                        final query = _queryController.text;
+                        if (query.isNotEmpty) {
+                          context.read<SqliteCubit>().execute(query);
+                        }
+                      },
                     ),
+                    const _ImportDatabaseButton(),
+                    const SizedBox(width: 8),
+                    const _ExportDatabaseButton(),
+                    const SizedBox(width: 8),
+                    const _DropDatabaseButton(),
+                  ],
+                ),
+                Flexible(
+                  child: MacosCodeEditor(
+                    controller: _queryController,
+                    style: MacosCodeEditor.defaultStyle(
+                      context,
+                      codeTheme: CodeHighlightTheme(
+                        languages: {
+                          'sql': CodeHighlightThemeMode(mode: langSql)
+                        },
+                        theme: CodeThemes.monokai(TextStyles.firaCode),
+                      ),
+                    ),
+                    indicatorBuilder: MacosCodeEditor.defaultIndicatorBuilder,
                   ),
-                  indicatorBuilder: MacosCodeEditor.defaultIndicatorBuilder,
                 ),
-              ),
-              ResizablePane(
-                builder: (context, controller) => _History(
-                  controller: controller,
+                ResizablePane(
+                  builder: (context, controller) => _History(
+                    controller: controller,
+                  ),
+                  minSize: 200,
+                  resizableSide: ResizableSide.top,
+                  startSize: 200,
                 ),
-                minSize: 200,
-                resizableSide: ResizableSide.top,
-                startSize: 200,
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        ResizablePane(
-          builder: (context, controller) => _TableInfoWidget(
-            controller: controller,
+          ResizablePane(
+            builder: (context, controller) => _TableInfoWidget(
+              controller: controller,
+            ),
+            minSize: 240,
+            resizableSide: ResizableSide.left,
+            startSize: 240,
+            isResizable: false,
           ),
-          minSize: 240,
-          resizableSide: ResizableSide.left,
-          startSize: 240,
-          isResizable: false,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -250,8 +262,10 @@ class _ExportDatabaseButton extends StatelessWidget {
           onPressed: state.databaseStatus == SqliteDatabaseStatus.connected
               ? () async {
                   final cubit = context.read<SqliteCubit>();
-                  final path = await FilePicker.platform
-                      .saveFile(fileName: 'database.sqlite3');
+                  final path = await FilePicker.platform.saveFile(
+                    fileName: state.fileInfo?.name ?? 'database.sqlite3',
+                    initialDirectory: state.fileInfo?.folder,
+                  );
                   if (path != null) {
                     cubit.exportDatabase(path);
                   }
@@ -300,7 +314,10 @@ class _ImportDatabaseButton extends StatelessWidget {
       context: context,
       barrierDismissible: true,
       builder: (context) => MacosAlertDialog(
-        appIcon: Text('🤔', style: TextStyle(fontSize: 40),),
+        appIcon: Text(
+          '🤔',
+          style: TextStyle(fontSize: 40),
+        ),
         title: Text('Override current database?'),
         message: Text(
             'This action will override your current snapshot. It cannot be undone. Do you want to continue?'),
