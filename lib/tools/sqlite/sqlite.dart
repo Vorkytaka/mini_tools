@@ -52,23 +52,26 @@ class _SqliteToolState extends State<SqliteTool> {
             builder: (context, controller) => Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    MacosIconButton(
-                      icon: const MacosIcon(Icons.play_arrow),
-                      onPressed: () {
-                        final query = _queryController.text;
-                        if (query.isNotEmpty) {
-                          context.read<SqliteCubit>().execute(query);
-                        }
-                      },
-                    ),
-                    const _ImportDatabaseButton(),
-                    const SizedBox(width: 8),
-                    const _ExportDatabaseButton(),
-                    const SizedBox(width: 8),
-                    const _DropDatabaseButton(),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Wrap(
+                    runSpacing: 8,
+                    spacing: 8,
+                    children: [
+                      MacosIconButton(
+                        icon: const MacosIcon(Icons.play_arrow),
+                        onPressed: () {
+                          final query = _queryController.text;
+                          if (query.isNotEmpty) {
+                            context.read<SqliteCubit>().execute(query);
+                          }
+                        },
+                      ),
+                      const _ImportDatabaseButton(),
+                      const _ExportDatabaseButton(),
+                      const _DropDatabaseButton(),
+                    ],
+                  ),
                 ),
                 Flexible(
                   child: MacosCodeEditor(
