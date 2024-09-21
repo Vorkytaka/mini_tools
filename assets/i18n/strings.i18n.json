@@ -8,7 +8,8 @@
     "copy": "Copy",
     "question_mark": "?",
     "percent": "%",
-    "file_drop_title": "Drop file here"
+    "file_drop_title": "Drop file here",
+    "cancel": "Cancel"
   },
   "unix_timestamp": {
     "title": "Unix timestamp",
@@ -127,10 +128,15 @@
   "sqlite": {
     "title": "SQLite Editor",
     "run": "Run",
-    "import": "Import Database",
-    "export": "Export Database",
-    "drop": "Drop Database",
+    "import": "Import",
+    "export": "Export",
+    "drop": "Drop",
     "tables": "Tables",
-    "history": "History"
+    "history": "History",
+    "override": {
+      "title": "Override current database?",
+      "message": "This action will override your current snapshot. It cannot be undone. Do you want to continue?",
+      "confirm": "Override"
+    }
   }
 }

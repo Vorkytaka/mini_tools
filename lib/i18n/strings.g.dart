@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 96
+/// Strings: 100
 ///
-/// Built on 2024-09-19 at 21:19 UTC
+/// Built on 2024-09-21 at 22:21 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -175,6 +175,7 @@ class _StringsCommonEn {
 	String get questionMark => '?';
 	String get percent => '%';
 	String get fileDropTitle => 'Drop file here';
+	String get cancel => 'Cancel';
 }
 
 // Path: unixTimestamp
@@ -306,11 +307,12 @@ class _StringsSqliteEn {
 	// Translations
 	String get title => 'SQLite Editor';
 	String get run => 'Run';
-	String get import => 'Import Database';
-	String get export => 'Export Database';
-	String get drop => 'Drop Database';
+	String get import => 'Import';
+	String get export => 'Export';
+	String get drop => 'Drop';
 	String get tables => 'Tables';
 	String get history => 'History';
+	late final _StringsSqliteOverrideEn override = _StringsSqliteOverrideEn._(_root);
 }
 
 // Path: unixTimestamp.inputType
@@ -427,6 +429,18 @@ class _StringsHashHashFormatEn {
 	String get base64 => 'Base64';
 }
 
+// Path: sqlite.override
+class _StringsSqliteOverrideEn {
+	_StringsSqliteOverrideEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Override current database?';
+	String get message => 'This action will override your current snapshot. It cannot be undone. Do you want to continue?';
+	String get confirm => 'Override';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -442,6 +456,7 @@ extension on Translations {
 			case 'common.questionMark': return '?';
 			case 'common.percent': return '%';
 			case 'common.fileDropTitle': return 'Drop file here';
+			case 'common.cancel': return 'Cancel';
 			case 'unixTimestamp.title': return 'Unix timestamp';
 			case 'unixTimestamp.inputType.sec': return 'Seconds since epoch';
 			case 'unixTimestamp.inputType.ms': return 'Milliseconds since epoch';
@@ -526,11 +541,14 @@ extension on Translations {
 			case 'hash.hashOfFile': return ({required Object path}) => 'Hash of file: ${path}';
 			case 'sqlite.title': return 'SQLite Editor';
 			case 'sqlite.run': return 'Run';
-			case 'sqlite.import': return 'Import Database';
-			case 'sqlite.export': return 'Export Database';
-			case 'sqlite.drop': return 'Drop Database';
+			case 'sqlite.import': return 'Import';
+			case 'sqlite.export': return 'Export';
+			case 'sqlite.drop': return 'Drop';
 			case 'sqlite.tables': return 'Tables';
 			case 'sqlite.history': return 'History';
+			case 'sqlite.override.title': return 'Override current database?';
+			case 'sqlite.override.message': return 'This action will override your current snapshot. It cannot be undone. Do you want to continue?';
+			case 'sqlite.override.confirm': return 'Override';
 			default: return null;
 		}
 	}

@@ -58,9 +58,8 @@ class _SqliteToolState extends State<SqliteTool> {
                     runSpacing: 8,
                     spacing: 8,
                     children: [
-                      MacosIconButton(
-                        icon: const MacosIcon(Icons.play_arrow),
-                        onPressed: () {
+                      _RunButton(
+                        onTap: () {
                           final query = _queryController.text;
                           if (query.isNotEmpty) {
                             context.read<SqliteCubit>().execute(query);
@@ -127,7 +126,7 @@ class _DropDatabaseButton extends StatelessWidget {
         onPressed: state.databaseStatus == SqliteDatabaseStatus.connected
             ? () => context.read<SqliteCubit>().dropTable()
             : null,
-        controlSize: ControlSize.large,
+        controlSize: ControlSize.regular,
         secondary: true,
         child: Text(t.sqlite.drop),
       ),
@@ -274,9 +273,12 @@ class _ExportDatabaseButton extends StatelessWidget {
                   }
                 }
               : null,
-          controlSize: ControlSize.large,
+          controlSize: ControlSize.regular,
           secondary: true,
-          child: Text(t.sqlite.export),
+          child: _IconTextWidget(
+            icon: const Icon(Icons.upgrade),
+            text: Text(t.sqlite.export),
+          ),
         );
       },
     );
@@ -292,8 +294,12 @@ class _ImportDatabaseButton extends StatelessWidget {
 
     return PushButton(
       onPressed: () => onTap(context: context),
-      controlSize: ControlSize.large,
-      child: Text(t.sqlite.import),
+      controlSize: ControlSize.regular,
+      secondary: true,
+      child: _IconTextWidget(
+        icon: const Icon(Icons.publish),
+        text: Text(t.sqlite.import),
+      ),
     );
   }
 
@@ -316,26 +322,85 @@ class _ImportDatabaseButton extends StatelessWidget {
     return showMacosAlertDialog<bool>(
       context: context,
       barrierDismissible: true,
-      builder: (context) => MacosAlertDialog(
-        appIcon: Text(
-          '🤔',
-          style: TextStyle(fontSize: 40),
-        ),
-        title: Text('Override current database?'),
-        message: Text(
-            'This action will override your current snapshot. It cannot be undone. Do you want to continue?'),
-        primaryButton: PushButton(
-          onPressed: () => Navigator.of(context).pop(true),
-          child: Text('Override'),
-          controlSize: ControlSize.large,
-        ),
-        secondaryButton: PushButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: Text('Cancel'),
-          controlSize: ControlSize.large,
-          secondary: true,
-        ),
-      ),
+      builder: (context) {
+        final t = Translations.of(context);
+
+        return MacosAlertDialog(
+          appIcon: const Text(
+            '🤔',
+            style: TextStyle(fontSize: 40),
+          ),
+          title: Text(t.sqlite.override.title),
+          message: Text(t.sqlite.override.message),
+          primaryButton: PushButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            controlSize: ControlSize.large,
+            child: Text(t.sqlite.override.confirm),
+          ),
+          secondaryButton: PushButton(
+            onPressed: () => Navigator.of(context).pop(),
+            controlSize: ControlSize.large,
+            secondary: true,
+            child: Text(t.common.cancel),
+          ),
+        );
+      },
     ).then((confirm) => confirm ?? false);
+  }
+}
+
+class _IconTextWidget extends StatelessWidget {
+  final Widget? icon;
+  final Widget text;
+
+  const _IconTextWidget({
+    required this.text,
+    this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final textStyle = DefaultTextStyle.of(context).style;
+    final iconStyle = IconThemeData(
+      color: textStyle.color,
+      size: textStyle.fontSize,
+    );
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        if (icon != null) ...[
+          IconTheme.merge(
+            data: iconStyle,
+            child: icon!,
+          ),
+          const SizedBox(width: 4),
+        ],
+        text,
+        if (icon != null) const SizedBox(width: 2),
+      ],
+    );
+  }
+}
+
+class _RunButton extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const _RunButton({
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return PushButton(
+      onPressed: onTap,
+      controlSize: ControlSize.regular,
+      child: const _IconTextWidget(
+        icon: Icon(Icons.play_arrow),
+        text: Text('Run'),
+      ),
+    );
   }
 }
