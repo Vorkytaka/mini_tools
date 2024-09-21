@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path/path.dart';
 import 'package:sqlite3/sqlite3.dart';
 
+import 'database_holder.dart';
+
 class SqliteCubit extends Cubit<SqliteState> {
   static const _tableQuery =
       "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';";
@@ -12,12 +14,12 @@ class SqliteCubit extends Cubit<SqliteState> {
   static String _tableSchemaQuery(String tableName) =>
       'PRAGMA table_info($tableName);';
 
-  final _databaseHolder = DatabaseHolder();
+  final _databaseHolder = DatabaseHolder.factory();
 
   SqliteCubit() : super(const SqliteState.init());
 
   void init() {
-    _databaseHolder.isDatabaseConnectedStream.listen(
+    _databaseHolder.isConnectedStream.listen(
       (isConnected) => emit(
         state.copyWith(
           databaseStatus: isConnected
@@ -57,7 +59,7 @@ class SqliteCubit extends Cubit<SqliteState> {
   }
 
   Future<void> importDatabase(XFile file) async {
-    await _databaseHolder.setDatabaseFromFile(file);
+    await _databaseHolder.setDatabaseFromPath(file.path);
     final tablesInfo = _getTablesInfo();
     final fileInfo = FileInfo.fromPath(file.path);
     emit(state.copyWith(
@@ -95,7 +97,7 @@ class SqliteCubit extends Cubit<SqliteState> {
   }
 
   void dropTable() {
-    _databaseHolder.dispose();
+    _databaseHolder.disposeDatabase();
     emit(const SqliteState.init());
   }
 }
@@ -175,49 +177,4 @@ class ColumnInfo {
     required this.type,
     required this.pk,
   });
-}
-
-class DatabaseHolder {
-  Database? _database;
-  final _streamController = StreamController<Database?>.broadcast();
-
-  DatabaseHolder();
-
-  Stream<bool> get isDatabaseConnectedStream =>
-      _streamController.stream.map((db) => db != null);
-
-  Database get database {
-    if (_database == null) {
-      _database = sqlite3.openInMemory();
-      _streamController.add(_database);
-    }
-    return _database!;
-  }
-
-  Future<void> setDatabaseFromFile(XFile file) async {
-    final fileConn = sqlite3.open(file.path);
-    final inMemConn = sqlite3.openInMemory();
-    try {
-      await fileConn.backup(inMemConn, nPage: 1024).drain();
-      setDatabase(inMemConn);
-    } on SqliteException catch (_) {
-      inMemConn.dispose();
-    } finally {
-      fileConn.dispose();
-    }
-  }
-
-  void setDatabase(Database database) {
-    if (_database != null) {
-      dispose();
-    }
-    _database = database;
-    _streamController.add(_database);
-  }
-
-  void dispose() {
-    _database?.dispose();
-    _database = null;
-    _streamController.add(null);
-  }
 }
