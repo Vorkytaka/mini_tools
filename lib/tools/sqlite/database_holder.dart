@@ -19,7 +19,7 @@ abstract interface class DatabaseHolder {
 
   void disposeDatabase();
 
-  Future<void> setDatabaseFromPath(String path);
+  Future<bool> setDatabaseFromPath(String path);
 
   Either<SqliteException, Iterable<dynamic>> execute(String query);
 }
@@ -49,17 +49,19 @@ class DatabaseHolderImpl implements DatabaseHolder {
   bool get isConnected => _database != null;
 
   @override
-  Future<void> setDatabaseFromPath(String path) async {
+  Future<bool> setDatabaseFromPath(String path) async {
     final fileConn = sqlite3.open(path);
     final inMemConn = sqlite3.openInMemory();
     try {
       await fileConn.backup(inMemConn, nPage: 1024).drain();
       setDatabase(inMemConn);
+      return true;
     } on SqliteException catch (_) {
       inMemConn.dispose();
     } finally {
       fileConn.dispose();
     }
+    return false;
   }
 
   @override

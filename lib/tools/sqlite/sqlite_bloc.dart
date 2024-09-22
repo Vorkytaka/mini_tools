@@ -38,15 +38,9 @@ class SqliteCubit extends Cubit<SqliteState> {
 
     final result = _databaseHolder.execute(query).leftMap((exc) => '$exc');
     final queryResult = QueryResult(query: query, result: result);
+    emit(state.copyWith(history: [queryResult, ...state.history]));
 
-    final tablesInfo = _getTablesInfo();
-
-    emit(
-      state.copyWith(
-        tablesInfo: tablesInfo,
-        history: [queryResult, ...state.history],
-      ),
-    );
+    _updateTablesInfo();
   }
 
   void exportDatabase(String path) {
@@ -56,14 +50,20 @@ class SqliteCubit extends Cubit<SqliteState> {
   }
 
   Future<void> importDatabase(XFile file) async {
-    await _databaseHolder.setDatabaseFromPath(file.path);
-    final tablesInfo = _getTablesInfo();
-    final fileInfo = FileInfo.fromPath(file.path);
-    emit(state.copyWith(
-      tablesInfo: tablesInfo,
-      history: const [],
-      fileInfo: fileInfo,
-    ));
+    final isSuccess = await _databaseHolder.setDatabaseFromPath(file.path);
+    if (isSuccess) {
+      _updateTablesInfo();
+      final fileInfo = FileInfo.fromPath(file.path);
+      emit(state.copyWith(
+        history: const [],
+        fileInfo: fileInfo,
+      ));
+    }
+  }
+
+  void _updateTablesInfo() {
+    final info = _getTablesInfo();
+    emit(state.copyWith(tablesInfo: info));
   }
 
   List<TableInfo> _getTablesInfo() {

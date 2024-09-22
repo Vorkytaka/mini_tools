@@ -146,58 +146,64 @@ class _TableInfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = MacosTheme.of(context);
 
-    return BlocBuilder<SqliteCubit, SqliteState>(builder: (context, state) {
-      return ListView.separated(
-        controller: controller,
-        itemCount: state.tablesInfo.length,
-        padding: const EdgeInsets.all(8),
-        separatorBuilder: (context, i) => const SizedBox(height: 8),
-        itemBuilder: (context, i) {
-          final info = state.tablesInfo[i];
-          return Card(
-            elevation: 0,
-            color: theme.helpButtonTheme.color,
-            shape: RoundedRectangleBorder(
-              side: BorderSide(color: theme.dividerColor),
-              borderRadius: const BorderRadius.all(Radius.circular(12)),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    info.name,
-                    style: theme.typography.title3.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const MacosPulldownMenuDivider(),
-                  for (final column in info.columns)
-                    Text.rich(
-                      TextSpan(
-                        children: [
-                          TextSpan(text: column.name),
-                          TextSpan(
-                            text: ' (${column.type}) ',
-                            style: theme.typography.caption2,
-                          ),
-                          if (column.pk)
-                            const WidgetSpan(
-                              child: Icon(Icons.key, size: 12),
-                            ),
-                        ],
-                      ),
-                    ),
-                ],
+    return BlocBuilder<SqliteCubit, SqliteState>(
+      buildWhen: (prev, curr) => prev.tablesInfo != curr.tablesInfo,
+      builder: (context, state) {
+        return ListView.separated(
+          controller: controller,
+          itemCount: state.tablesInfo.length,
+          padding: const EdgeInsets.all(8),
+          separatorBuilder: (context, i) => const SizedBox(height: 8),
+          itemBuilder: (context, i) {
+            final info = state.tablesInfo[i];
+            return Card(
+              elevation: 0,
+              color: theme.helpButtonTheme.color,
+              shape: RoundedRectangleBorder(
+                side: BorderSide(color: theme.dividerColor),
+                borderRadius: const BorderRadius.all(Radius.circular(12)),
               ),
-            ),
-          );
-        },
-      );
-    });
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 8,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      info.name,
+                      style: theme.typography.title3.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const MacosPulldownMenuDivider(),
+                    for (final column in info.columns)
+                      Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(text: column.name),
+                            TextSpan(
+                              text: ' (${column.type}) ',
+                              style: theme.typography.caption2,
+                            ),
+                            if (column.pk)
+                              const WidgetSpan(
+                                child: Icon(Icons.key, size: 12),
+                              ),
+                          ],
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
   }
 }
 
