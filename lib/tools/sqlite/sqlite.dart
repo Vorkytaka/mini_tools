@@ -114,6 +114,8 @@ class _SqliteToolState extends State<SqliteTool> {
     );
   }
 
+  // stupid fuckin dart analyzer
+  // ignore:use_setters_to_change_properties
   void _onItemEdit(String query) {
     _queryController.text = query;
   }
@@ -251,6 +253,7 @@ class _HistoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = MacosTheme.of(context);
+    final t = Translations.of(context);
 
     final showResult = result.result.fold(
       ifLeft: (_) => true,
@@ -282,9 +285,9 @@ class _HistoryItem extends StatelessWidget {
                   onPressed: () => onEdit(result.query),
                   controlSize: ControlSize.regular,
                   secondary: true,
-                  child: const _IconTextWidget(
-                    icon: Icon(Icons.edit),
-                    text: Text('Edit'),
+                  child: _IconTextWidget(
+                    icon: const Icon(Icons.edit),
+                    text: Text(t.sqlite.edit),
                   ),
                 ),
                 const Spacer(),
@@ -299,7 +302,7 @@ class _HistoryItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(child: Text(result.query)),
-                if(showResult) ...[
+                if (showResult) ...[
                   const SizedBox(width: 8),
                   Expanded(child: _Result(result: result.result)),
                 ],
@@ -342,13 +345,14 @@ class _Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final t = Translations.of(context);
 
     return result.fold(
       ifLeft: (exc) => DefaultTextStyle.merge(
         style: TextStyle(color: theme.colorScheme.error),
         child: Text(exc),
       ),
-      ifRight: (result) => Text('${result.length} rows affected'),
+      ifRight: (result) => Text(t.sqlite.rowAffected(count: result.length)),
     );
   }
 }

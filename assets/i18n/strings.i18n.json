@@ -137,6 +137,8 @@
       "title": "Override current database?",
       "message": "This action will override your current snapshot. It cannot be undone. Do you want to continue?",
       "confirm": "Override"
-    }
+    },
+    "edit": "Edit",
+    "row_affected": "$count row affected"
   }
 }
