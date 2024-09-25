@@ -265,6 +265,7 @@ class _HistoryItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 _RunButton(
                   onTap: () {
@@ -276,10 +277,15 @@ class _HistoryItem extends StatelessWidget {
                   onPressed: () => onEdit(result.query),
                   controlSize: ControlSize.regular,
                   secondary: true,
-                  child: _IconTextWidget(
+                  child: const _IconTextWidget(
                     icon: Icon(Icons.edit),
                     text: Text('Edit'),
                   ),
+                ),
+                const Spacer(),
+                Text(
+                  formatDateTime(result.datetime),
+                  style: theme.typography.caption2,
                 ),
               ],
             ),
@@ -295,6 +301,26 @@ class _HistoryItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  static String formatDateTime(DateTime dateTime) {
+    // Получаем компоненты даты и времени
+    final year = dateTime.year;
+    final month = dateTime.month;
+    final day = dateTime.day;
+    final hour = dateTime.hour;
+    final minute = dateTime.minute;
+    final second = dateTime.second;
+
+    // Преобразуем компоненты в строку и добавляем ведущие нули там, где это необходимо
+    final formattedMonth = month.toString().padLeft(2, '0');
+    final formattedDay = day.toString().padLeft(2, '0');
+    final formattedHour = hour.toString().padLeft(2, '0');
+    final formattedMinute = minute.toString().padLeft(2, '0');
+    final formattedSecond = second.toString().padLeft(2, '0');
+
+    // Собираем строку в нужном формате
+    return '$year-$formattedMonth-$formattedDay $formattedHour:$formattedMinute:$formattedSecond';
   }
 }
 

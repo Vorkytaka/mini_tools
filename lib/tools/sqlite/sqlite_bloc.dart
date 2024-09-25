@@ -37,7 +37,11 @@ class SqliteCubit extends Cubit<SqliteState> {
     }
 
     final result = _databaseHolder.execute(query).leftMap(_formatException);
-    final queryResult = QueryResult(query: query, result: result);
+    final queryResult = QueryResult(
+      query: query,
+      result: result,
+      datetime: DateTime.now(),
+    );
     emit(state.copyWith(history: [queryResult, ...state.history]));
 
     _updateTablesInfo();
@@ -125,10 +129,12 @@ class FileInfo {
 class QueryResult {
   final String query;
   final Either<String, Iterable<dynamic>> result;
+  final DateTime datetime;
 
   const QueryResult({
     required this.query,
     required this.result,
+    required this.datetime,
   });
 }
 
