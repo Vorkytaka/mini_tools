@@ -36,11 +36,15 @@ class SqliteCubit extends Cubit<SqliteState> {
       return;
     }
 
-    final result = _databaseHolder.execute(query).leftMap((exc) => '$exc');
+    final result = _databaseHolder.execute(query).leftMap(_formatException);
     final queryResult = QueryResult(query: query, result: result);
     emit(state.copyWith(history: [queryResult, ...state.history]));
 
     _updateTablesInfo();
+  }
+
+  static String _formatException(SqliteException exception) {
+    return 'Error code ${exception.extendedResultCode}: ${exception.message}';
   }
 
   void exportDatabase(String path) {
