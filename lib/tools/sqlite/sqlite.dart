@@ -14,13 +14,11 @@ import '../../i18n/strings.g.dart';
 import '../tools.dart';
 import 'sqlite_bloc.dart';
 
-final sqliteTool = BaseTool(
+final sqliteTool = BlocTool<SqliteCubit, SqliteState>(
   titleBuilder: (context) => Translations.of(context).sqlite.title,
   icon: Icons.table_chart,
-  screenBuilder: (context) => BlocProvider(
-    create: (context) => SqliteCubit()..init(),
-    child: const SqliteTool(),
-  ),
+  screenBuilder: (context) => const SqliteTool(),
+  bloc: SqliteCubit()..init(),
 );
 
 class SqliteTool extends StatefulWidget {
