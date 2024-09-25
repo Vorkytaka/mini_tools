@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 89
+/// Strings: 102
 ///
-/// Built on 2024-09-14 at 18:06 UTC
+/// Built on 2024-09-25 at 18:55 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -201,6 +201,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
   late final _StringsMaterialColorsEn materialColors =
       _StringsMaterialColorsEn._(_root);
   late final _StringsHashEn hash = _StringsHashEn._(_root);
+  late final _StringsSqliteEn sqlite = _StringsSqliteEn._(_root);
 }
 
 // Path: common
@@ -219,6 +220,7 @@ class _StringsCommonEn {
   String get questionMark => '?';
   String get percent => '%';
   String get fileDropTitle => 'Drop file here';
+  String get cancel => 'Cancel';
 }
 
 // Path: unixTimestamp
@@ -350,6 +352,26 @@ class _StringsHashEn {
   String hashOfFile({required Object path}) => 'Hash of file: ${path}';
 }
 
+// Path: sqlite
+class _StringsSqliteEn {
+  _StringsSqliteEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'SQLite Editor';
+  String get run => 'Run';
+  String get import => 'Import';
+  String get export => 'Export';
+  String get drop => 'Drop';
+  String get tables => 'Tables';
+  String get history => 'History';
+  late final _StringsSqliteOverrideEn override =
+      _StringsSqliteOverrideEn._(_root);
+  String get edit => 'Edit';
+  String rowAffected({required Object count}) => '${count} row affected';
+}
+
 // Path: unixTimestamp.inputType
 class _StringsUnixTimestampInputTypeEn {
   _StringsUnixTimestampInputTypeEn._(this._root);
@@ -464,6 +486,19 @@ class _StringsHashHashFormatEn {
   String get base64 => 'Base64';
 }
 
+// Path: sqlite.override
+class _StringsSqliteOverrideEn {
+  _StringsSqliteOverrideEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Override current database?';
+  String get message =>
+      'This action will override your current snapshot. It cannot be undone. Do you want to continue?';
+  String get confirm => 'Override';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -488,6 +523,8 @@ extension on Translations {
         return '%';
       case 'common.fileDropTitle':
         return 'Drop file here';
+      case 'common.cancel':
+        return 'Cancel';
       case 'unixTimestamp.title':
         return 'Unix timestamp';
       case 'unixTimestamp.inputType.sec':
@@ -651,6 +688,30 @@ extension on Translations {
         return 'Base64';
       case 'hash.hashOfFile':
         return ({required Object path}) => 'Hash of file: ${path}';
+      case 'sqlite.title':
+        return 'SQLite Editor';
+      case 'sqlite.run':
+        return 'Run';
+      case 'sqlite.import':
+        return 'Import';
+      case 'sqlite.export':
+        return 'Export';
+      case 'sqlite.drop':
+        return 'Drop';
+      case 'sqlite.tables':
+        return 'Tables';
+      case 'sqlite.history':
+        return 'History';
+      case 'sqlite.override.title':
+        return 'Override current database?';
+      case 'sqlite.override.message':
+        return 'This action will override your current snapshot. It cannot be undone. Do you want to continue?';
+      case 'sqlite.override.confirm':
+        return 'Override';
+      case 'sqlite.edit':
+        return 'Edit';
+      case 'sqlite.rowAffected':
+        return ({required Object count}) => '${count} row affected';
       default:
         return null;
     }

@@ -7,6 +7,7 @@ import 'material_colors_tool.dart';
 import 'number_base_converter.dart';
 import 'percentages_tool.dart';
 import 'reg_exp_tool.dart';
+import 'sqlite/sqlite.dart';
 import 'unix_timestamp.dart';
 
 typedef TitleBuilder = String Function(BuildContext context);
@@ -33,6 +34,7 @@ final tools = <Tool>[
   colorTool,
   materialColorTool,
   hashTool,
+  sqliteTool,
 ];
 
 final debugTool = Tool(

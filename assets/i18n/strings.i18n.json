@@ -8,7 +8,8 @@
     "copy": "Copy",
     "question_mark": "?",
     "percent": "%",
-    "file_drop_title": "Drop file here"
+    "file_drop_title": "Drop file here",
+    "cancel": "Cancel"
   },
   "unix_timestamp": {
     "title": "Unix timestamp",
@@ -123,5 +124,21 @@
       "base64": "Base64"
     },
     "hash_of_file": "Hash of file: $path"
+  },
+  "sqlite": {
+    "title": "SQLite Editor",
+    "run": "Run",
+    "import": "Import",
+    "export": "Export",
+    "drop": "Drop",
+    "tables": "Tables",
+    "history": "History",
+    "override": {
+      "title": "Override current database?",
+      "message": "This action will override your current snapshot. It cannot be undone. Do you want to continue?",
+      "confirm": "Override"
+    },
+    "edit": "Edit",
+    "row_affected": "$count row affected"
   }
 }
