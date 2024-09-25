@@ -91,6 +91,7 @@ class _SqliteToolState extends State<SqliteTool> {
                 ResizablePane(
                   builder: (context, controller) => _History(
                     controller: controller,
+                    onItemEdit: _onItemEdit,
                   ),
                   minSize: 200,
                   resizableSide: ResizableSide.top,
@@ -111,6 +112,10 @@ class _SqliteToolState extends State<SqliteTool> {
         ],
       ),
     );
+  }
+
+  void _onItemEdit(String query) {
+    _queryController.text = query;
   }
 }
 
@@ -157,6 +162,7 @@ class _TableInfoWidget extends StatelessWidget {
           itemBuilder: (context, i) {
             final info = state.tablesInfo[i];
             return Card(
+              margin: EdgeInsets.zero,
               elevation: 0,
               color: theme.helpButtonTheme.color,
               shape: RoundedRectangleBorder(
@@ -209,8 +215,10 @@ class _TableInfoWidget extends StatelessWidget {
 
 class _History extends StatelessWidget {
   final ScrollController? controller;
+  final ValueChanged<String> onItemEdit;
 
   const _History({
+    required this.onItemEdit,
     this.controller,
   });
 
@@ -218,39 +226,75 @@ class _History extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SqliteCubit, SqliteState>(builder: (context, state) {
       return ListView.separated(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         controller: controller,
         itemCount: state.history.length,
-        separatorBuilder: (context, _) => const MacosPulldownMenuDivider(),
-        itemBuilder: (context, i) => Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 8,
-            vertical: 12,
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              MacosIconButton(
-                icon: const MacosIcon(Icons.play_arrow),
-                onPressed: () {
-                  context.read<SqliteCubit>().execute(state.history[i].query);
-                },
-              ),
-              Expanded(
-                child: Text(
-                  state.history[i].query,
-                  maxLines: 10,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: _Result(result: state.history[i].result),
-              ),
-            ],
-          ),
+        separatorBuilder: (context, _) => const SizedBox(height: 8),
+        itemBuilder: (context, i) => _HistoryItem(
+          result: state.history[i],
+          onEdit: onItemEdit,
         ),
       );
     });
+  }
+}
+
+class _HistoryItem extends StatelessWidget {
+  final QueryResult result;
+  final ValueChanged<String> onEdit;
+
+  const _HistoryItem({
+    required this.result,
+    required this.onEdit,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = MacosTheme.of(context);
+
+    return Card(
+      margin: EdgeInsets.zero,
+      color: theme.helpButtonTheme.color,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: theme.dividerColor),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                _RunButton(
+                  onTap: () {
+                    context.read<SqliteCubit>().execute(result.query);
+                  },
+                ),
+                const SizedBox(width: 8),
+                PushButton(
+                  onPressed: () => onEdit(result.query),
+                  controlSize: ControlSize.regular,
+                  secondary: true,
+                  child: _IconTextWidget(
+                    icon: Icon(Icons.edit),
+                    text: Text('Edit'),
+                  ),
+                ),
+              ],
+            ),
+            const MacosPulldownMenuDivider(),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(child: Text(result.query)),
+                Expanded(child: _Result(result: result.result)),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
