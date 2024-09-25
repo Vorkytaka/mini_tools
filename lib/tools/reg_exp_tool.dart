@@ -6,7 +6,7 @@ import 'package:macos_ui/macos_ui.dart';
 import '../i18n/strings.g.dart';
 import 'tools.dart';
 
-final regExpTool = Tool(
+final regExpTool = BaseTool(
   titleBuilder: (context) => Translations.of(context).regexp.title,
   icon: Icons.manage_search,
   screenBuilder: (context) => const RegExpTool(),

@@ -14,7 +14,7 @@ import '../../i18n/strings.g.dart';
 import '../tools.dart';
 import 'sqlite_bloc.dart';
 
-final sqliteTool = Tool(
+final sqliteTool = BaseTool(
   titleBuilder: (context) => Translations.of(context).sqlite.title,
   icon: Icons.table_chart,
   screenBuilder: (context) => BlocProvider(

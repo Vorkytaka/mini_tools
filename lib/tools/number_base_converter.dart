@@ -6,7 +6,7 @@ import 'package:macos_ui/macos_ui.dart';
 import '../i18n/strings.g.dart';
 import 'tools.dart';
 
-final numberBaseConverterTool = Tool(
+final numberBaseConverterTool = BaseTool(
   titleBuilder: (context) => Translations.of(context).numberConverter.title,
   icon: Icons.numbers,
   screenBuilder: (context) => const NumberBaseConverter(),

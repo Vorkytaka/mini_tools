@@ -14,7 +14,7 @@ import '../common/text_styles.dart';
 import '../i18n/strings.g.dart';
 import 'tools.dart';
 
-final jsonFormatterTool = Tool(
+final jsonFormatterTool = BaseTool(
   titleBuilder: (context) => Translations.of(context).jsonFormatter.title,
   icon: Icons.data_object,
   screenBuilder: (context) => const JsonFormatter(),

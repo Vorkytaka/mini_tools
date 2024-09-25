@@ -8,7 +8,7 @@ import '../common/num.dart';
 import '../i18n/strings.g.dart';
 import 'tools.dart';
 
-final percentagesTool = Tool(
+final percentagesTool = BaseTool(
   titleBuilder: (context) =>
       Translations.of(context).percentageCalculator.title,
   icon: Icons.percent,

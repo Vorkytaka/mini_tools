@@ -28,7 +28,7 @@ import '../common/macos_read_only_field.dart';
 import '../i18n/strings.g.dart';
 import 'tools.dart';
 
-final hashTool = Tool(
+final hashTool = BaseTool(
   titleBuilder: (context) => Translations.of(context).hash.title,
   icon: Icons.qr_code_2,
   screenBuilder: (context) => const HashTool(),

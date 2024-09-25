@@ -9,7 +9,7 @@ import '../common/macos_read_only_field.dart';
 import '../i18n/strings.g.dart';
 import 'tools.dart';
 
-final colorTool = Tool(
+final colorTool = BaseTool(
   titleBuilder: (context) => Translations.of(context).color.title,
   icon: Icons.color_lens_outlined,
   screenBuilder: (context) => const ColorTool(),

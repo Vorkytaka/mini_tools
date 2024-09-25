@@ -11,7 +11,7 @@ import '../common/timezone_holder.dart';
 import '../i18n/strings.g.dart';
 import 'tools.dart';
 
-final unixTimestampTool = Tool(
+final unixTimestampTool = BaseTool(
   titleBuilder: (context) => Translations.of(context).unixTimestamp.title,
   icon: Icons.timelapse,
   screenBuilder: (context) => const UnixTimestampToolWidget(),
