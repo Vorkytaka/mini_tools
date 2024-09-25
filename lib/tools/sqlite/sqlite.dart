@@ -252,6 +252,11 @@ class _HistoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = MacosTheme.of(context);
 
+    final showResult = result.result.fold(
+      ifLeft: (_) => true,
+      ifRight: (result) => result.isNotEmpty,
+    );
+
     return Card(
       margin: EdgeInsets.zero,
       color: theme.helpButtonTheme.color,
@@ -294,7 +299,10 @@ class _HistoryItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(child: Text(result.query)),
-                Expanded(child: _Result(result: result.result)),
+                if(showResult) ...[
+                  const SizedBox(width: 8),
+                  Expanded(child: _Result(result: result.result)),
+                ],
               ],
             ),
           ],
@@ -340,7 +348,7 @@ class _Result extends StatelessWidget {
         style: TextStyle(color: theme.colorScheme.error),
         child: Text(exc),
       ),
-      ifRight: (result) => Text('${result.length}'),
+      ifRight: (result) => Text('${result.length} rows affected'),
     );
   }
 }
