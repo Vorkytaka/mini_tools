@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 import '../i18n/strings.g.dart';
-import 'tools.dart';
+import '../tool/base_tool.dart';
 
 final numberBaseConverterTool = BaseTool(
   titleBuilder: (context) => Translations.of(context).numberConverter.title,

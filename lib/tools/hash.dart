@@ -26,7 +26,7 @@ import '../common/file_drop_widget.dart';
 import '../common/list_utils.dart';
 import '../common/macos_read_only_field.dart';
 import '../i18n/strings.g.dart';
-import 'tools.dart';
+import '../tool/base_tool.dart';
 
 final hashTool = BaseTool(
   titleBuilder: (context) => Translations.of(context).hash.title,

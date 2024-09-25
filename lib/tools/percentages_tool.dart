@@ -6,7 +6,7 @@ import 'package:macos_ui/macos_ui.dart';
 import '../common/macos_read_only_field.dart';
 import '../common/num.dart';
 import '../i18n/strings.g.dart';
-import 'tools.dart';
+import '../tool/base_tool.dart';
 
 final percentagesTool = BaseTool(
   titleBuilder: (context) =>
