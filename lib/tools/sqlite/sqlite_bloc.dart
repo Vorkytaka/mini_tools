@@ -9,12 +9,6 @@ import '../../common/either.dart';
 import 'database_holder.dart';
 
 class SqliteCubit extends Cubit<SqliteState> {
-  static const _tableQuery =
-      "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';";
-
-  static String _tableSchemaQuery(String tableName) =>
-      'PRAGMA table_info($tableName);';
-
   final _databaseHolder = DatabaseHolder.factory();
 
   SqliteCubit() : super(const SqliteState.init());
@@ -47,10 +41,6 @@ class SqliteCubit extends Cubit<SqliteState> {
     _updateTablesInfo();
   }
 
-  static String _formatException(SqliteException exception) {
-    return 'Error code ${exception.extendedResultCode}: ${exception.message}';
-  }
-
   void exportDatabase(String path) {
     final exportConn = sqlite3.open(path);
     final database = _databaseHolder.database;
@@ -69,6 +59,11 @@ class SqliteCubit extends Cubit<SqliteState> {
     }
   }
 
+  void dropTable() {
+    _databaseHolder.disposeDatabase();
+    emit(const SqliteState.init());
+  }
+
   void _updateTablesInfo() {
     final info = _getTablesInfo();
     emit(state.copyWith(tablesInfo: info));
@@ -77,33 +72,43 @@ class SqliteCubit extends Cubit<SqliteState> {
   List<TableInfo> _getTablesInfo() {
     try {
       return _databaseHolder.database
-          .select(_tableQuery)
-          .map((row) => row['name'])
-          .map((tableName) => (
-                tableName,
-                _databaseHolder.database.select(_tableSchemaQuery(tableName))
-              ))
+          .select(_tablesQuery)
+          .map((row) => row['name'] as String)
           .map(
-            (data) => TableInfo(
-              name: data.$1,
-              columns: data.$2
-                  .map((column) => ColumnInfo(
-                        name: column['name'],
-                        type: column['type'],
-                        pk: column['pk'] == 1,
-                      ))
-                  .toList(),
+            (tableName) => (
+              tableName,
+              _databaseHolder.database.select(_tableSchemaQuery(tableName))
             ),
           )
+          .map(_getTableInfo)
           .toList(growable: false);
     } on SqliteException catch (_) {
       return const [];
     }
   }
 
-  void dropTable() {
-    _databaseHolder.disposeDatabase();
-    emit(const SqliteState.init());
+  static const _tablesQuery =
+      "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%';";
+
+  static String _tableSchemaQuery(String tableName) =>
+      'PRAGMA table_info($tableName);';
+
+  static String _formatException(SqliteException exception) {
+    return 'Error code ${exception.extendedResultCode}: ${exception.message}';
+  }
+
+  static TableInfo _getTableInfo(
+      (String, Iterable<Map<String, dynamic>>) data) {
+    return TableInfo(
+        name: data.$1, columns: data.$2.map(_getColumnInfo).toList());
+  }
+
+  static ColumnInfo _getColumnInfo(Map<String, dynamic> row) {
+    return ColumnInfo(
+      name: row['name'],
+      type: row['type'],
+      pk: row['pk'] == 1,
+    );
   }
 }
 
