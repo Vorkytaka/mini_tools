@@ -7,9 +7,9 @@ import 'package:macos_ui/macos_ui.dart';
 import '../common/color.dart';
 import '../common/macos_read_only_field.dart';
 import '../i18n/strings.g.dart';
-import 'tools.dart';
+import '../tool/base_tool.dart';
 
-final colorTool = Tool(
+final colorTool = BaseTool(
   titleBuilder: (context) => Translations.of(context).color.title,
   icon: Icons.color_lens_outlined,
   screenBuilder: (context) => const ColorTool(),
@@ -29,7 +29,7 @@ class ColorTool extends StatelessWidget {
       ),
       children: [
         ContentArea(
-          builder: (context, controller) => const _Body(),
+          builder: (context, controller) => _Body(controller: controller),
         ),
       ],
     );
@@ -37,7 +37,9 @@ class ColorTool extends StatelessWidget {
 }
 
 class _Body extends StatefulWidget {
-  const _Body();
+  final ScrollController? controller;
+
+  const _Body({this.controller});
 
   @override
   State<_Body> createState() => _BodyState();
@@ -64,102 +66,99 @@ class _BodyState extends State<_Body> {
     final t = Translations.of(context);
     const separator = SizedBox(height: 8);
 
-    return Padding(
+    return ListView(
+      controller: widget.controller,
       padding: const EdgeInsets.all(8),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _ColorButton(
-                onChanged: (color) {
-                  setState(() {
-                    if (color.alpha == 255) {
-                      _inputController.text = color.toHexString;
-                    } else {
-                      _inputController.text = color.toArgbHexString;
-                    }
-                  });
-                },
-                color: _color,
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Text(t.common.input),
-                        const SizedBox(width: 12),
-                        PushButton(
-                          controlSize: ControlSize.regular,
-                          secondary: true,
-                          onPressed: () => _inputController.text = '',
-                          child: Text(t.common.clear),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    SizedBox(
-                      width: 200,
-                      child: MacosTextField(
-                        placeholder: t.color.inputPlaceholder,
-                        inputFormatters: const [UpperCaseInputFormatter()],
-                        controller: _inputController,
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _ColorButton(
+              onChanged: (color) {
+                setState(() {
+                  if (color.alpha == 255) {
+                    _inputController.text = color.toHexString;
+                  } else {
+                    _inputController.text = color.toArgbHexString;
+                  }
+                });
+              },
+              color: _color,
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(t.common.input),
+                      const SizedBox(width: 12),
+                      PushButton(
+                        controlSize: ControlSize.regular,
+                        secondary: true,
+                        onPressed: () => _inputController.text = '',
+                        child: Text(t.common.clear),
                       ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  SizedBox(
+                    width: 200,
+                    child: MacosTextField(
+                      placeholder: t.color.inputPlaceholder,
+                      inputFormatters: const [UpperCaseInputFormatter()],
+                      controller: _inputController,
                     ),
-                  ],
-                ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 24),
+        Expanded(
+          child: Column(
+            children: [
+              _Item(
+                title: t.color.titles.hex,
+                value: _color?.toHexString,
+              ),
+              separator,
+              _Item(
+                title: t.color.titles.hexWithAlpha,
+                value: _color?.toArgbHexString,
+              ),
+              separator,
+              _Item(
+                title: t.color.titles.rgb,
+                value: _color?.toRgbString,
+              ),
+              separator,
+              _Item(
+                title: t.color.titles.rgba,
+                value: _color?.toRgbaString,
+              ),
+              separator,
+              _Item(
+                title: t.color.titles.hsl,
+                value: _color?.toHslString,
+              ),
+              separator,
+              _Item(
+                title: t.color.titles.hsb,
+                value: _color?.toHsbString,
+              ),
+              separator,
+              _Item(
+                title: t.color.titles.hwb,
+                value: _color?.toHwbString,
               ),
             ],
           ),
-          const SizedBox(height: 24),
-          Expanded(
-            child: Column(
-              children: [
-                _Item(
-                  title: t.color.titles.hex,
-                  value: _color?.toHexString,
-                ),
-                separator,
-                _Item(
-                  title: t.color.titles.hexWithAlpha,
-                  value: _color?.toArgbHexString,
-                ),
-                separator,
-                _Item(
-                  title: t.color.titles.rgb,
-                  value: _color?.toRgbString,
-                ),
-                separator,
-                _Item(
-                  title: t.color.titles.rgba,
-                  value: _color?.toRgbaString,
-                ),
-                separator,
-                _Item(
-                  title: t.color.titles.hsl,
-                  value: _color?.toHslString,
-                ),
-                separator,
-                _Item(
-                  title: t.color.titles.hsb,
-                  value: _color?.toHsbString,
-                ),
-                separator,
-                _Item(
-                  title: t.color.titles.hwb,
-                  value: _color?.toHwbString,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

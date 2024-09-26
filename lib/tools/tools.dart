@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../tool/base_tool.dart';
+import '../tool/tool.dart';
 import 'color_tool.dart';
 import 'hash.dart';
 import 'json_formatter.dart';
@@ -7,22 +9,8 @@ import 'material_colors_tool.dart';
 import 'number_base_converter.dart';
 import 'percentages_tool.dart';
 import 'reg_exp_tool.dart';
-import 'sqlite/sqlite.dart';
+import 'sqlite/sqlite_tool.dart';
 import 'unix_timestamp.dart';
-
-typedef TitleBuilder = String Function(BuildContext context);
-
-class Tool {
-  final TitleBuilder titleBuilder;
-  final IconData icon;
-  final WidgetBuilder screenBuilder;
-
-  const Tool({
-    required this.titleBuilder,
-    required this.icon,
-    required this.screenBuilder,
-  });
-}
 
 final tools = <Tool>[
   debugTool,
@@ -37,7 +25,7 @@ final tools = <Tool>[
   sqliteTool,
 ];
 
-final debugTool = Tool(
+final debugTool = BaseTool(
   titleBuilder: (context) => 'Debug',
   icon: Icons.developer_mode,
   screenBuilder: (context) => const Center(child: Text('Debug')),

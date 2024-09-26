@@ -9,9 +9,9 @@ import '../common/macos_read_only_field.dart';
 import '../common/text_styles.dart';
 import '../common/timezone_holder.dart';
 import '../i18n/strings.g.dart';
-import 'tools.dart';
+import '../tool/base_tool.dart';
 
-final unixTimestampTool = Tool(
+final unixTimestampTool = BaseTool(
   titleBuilder: (context) => Translations.of(context).unixTimestamp.title,
   icon: Icons.timelapse,
   screenBuilder: (context) => const UnixTimestampToolWidget(),

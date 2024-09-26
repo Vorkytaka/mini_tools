@@ -11,17 +11,7 @@ import '../../common/file_drop_widget.dart';
 import '../../common/macos_code_editor.dart';
 import '../../common/text_styles.dart';
 import '../../i18n/strings.g.dart';
-import '../tools.dart';
 import 'sqlite_bloc.dart';
-
-final sqliteTool = Tool(
-  titleBuilder: (context) => Translations.of(context).sqlite.title,
-  icon: Icons.table_chart,
-  screenBuilder: (context) => BlocProvider(
-    create: (context) => SqliteCubit()..init(),
-    child: const SqliteTool(),
-  ),
-);
 
 class SqliteTool extends StatefulWidget {
   const SqliteTool({super.key});
@@ -32,6 +22,12 @@ class SqliteTool extends StatefulWidget {
 
 class _SqliteToolState extends State<SqliteTool> {
   final _queryController = CodeLineEditingController();
+
+  @override
+  void dispose() {
+    _queryController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -314,8 +310,8 @@ class _HistoryItem extends StatelessWidget {
     );
   }
 
+  /// Thanks to the chatGPT for save my time
   static String formatDateTime(DateTime dateTime) {
-    // Получаем компоненты даты и времени
     final year = dateTime.year;
     final month = dateTime.month;
     final day = dateTime.day;
@@ -323,14 +319,12 @@ class _HistoryItem extends StatelessWidget {
     final minute = dateTime.minute;
     final second = dateTime.second;
 
-    // Преобразуем компоненты в строку и добавляем ведущие нули там, где это необходимо
     final formattedMonth = month.toString().padLeft(2, '0');
     final formattedDay = day.toString().padLeft(2, '0');
     final formattedHour = hour.toString().padLeft(2, '0');
     final formattedMinute = minute.toString().padLeft(2, '0');
     final formattedSecond = second.toString().padLeft(2, '0');
 
-    // Собираем строку в нужном формате
     return '$year-$formattedMonth-$formattedDay $formattedHour:$formattedMinute:$formattedSecond';
   }
 }

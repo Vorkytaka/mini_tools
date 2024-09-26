@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 import '../i18n/strings.g.dart';
-import 'tools.dart';
+import '../tool/base_tool.dart';
 
-final regExpTool = Tool(
+final regExpTool = BaseTool(
   titleBuilder: (context) => Translations.of(context).regexp.title,
   icon: Icons.manage_search,
   screenBuilder: (context) => const RegExpTool(),

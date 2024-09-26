@@ -4,9 +4,9 @@ import 'package:macos_ui/macos_ui.dart';
 
 import '../common/color.dart';
 import '../i18n/strings.g.dart';
-import 'tools.dart';
+import '../tool/base_tool.dart';
 
-final materialColorTool = Tool(
+final materialColorTool = BaseTool(
   titleBuilder: (context) => Translations.of(context).materialColors.title,
   icon: Icons.invert_colors_sharp,
   screenBuilder: (context) => const MaterialColorTool(),

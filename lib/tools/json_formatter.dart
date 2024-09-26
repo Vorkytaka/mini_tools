@@ -12,9 +12,9 @@ import '../common/code_themes.dart';
 import '../common/macos_code_editor.dart';
 import '../common/text_styles.dart';
 import '../i18n/strings.g.dart';
-import 'tools.dart';
+import '../tool/base_tool.dart';
 
-final jsonFormatterTool = Tool(
+final jsonFormatterTool = BaseTool(
   titleBuilder: (context) => Translations.of(context).jsonFormatter.title,
   icon: Icons.data_object,
   screenBuilder: (context) => const JsonFormatter(),
