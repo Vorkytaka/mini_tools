@@ -141,9 +141,3 @@ class HashState {
     );
   }
 }
-
-extension on ChunkedStreamReader<int> {
-  Future<Uint8List> readChunkOfBytes(int size) {
-    return readBytes(size).then(Uint8List.fromList);
-  }
-}
