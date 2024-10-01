@@ -1,13 +1,40 @@
-import 'dart:typed_data';
+import 'dart:io';
 
+import 'package:async/async.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 import 'package:pointycastle/export.dart';
 
 import '../../common/either.dart';
 
 class HashCubit extends Cubit<HashState> {
+  static final _digestList = <Digest>[
+    MD2Digest(),
+    MD4Digest(),
+    MD5Digest(),
+    RIPEMD128Digest(),
+    SHA1Digest(),
+    SHA224Digest(),
+    SHA256Digest(),
+    SHA384Digest(),
+    SHA512Digest(),
+    KeccakDigest(),
+    TigerDigest(),
+    WhirlpoolDigest(),
+    SM3Digest(),
+  ];
+
   HashCubit() : super(const HashState.init());
+
+  void init() {
+    final hashes = _digestList
+        .map((digest) => (
+              digest.algorithmName,
+              Uint8List(0),
+            ))
+        .toList(growable: false);
+    emit(state.copyWith(hashes: hashes));
+  }
 
   void onInputTextChanged(String text) {
     final bytes = Uint8List.fromList(text.codeUnits);
@@ -24,11 +51,42 @@ class HashCubit extends Cubit<HashState> {
     emit(state.copyWith(hashFormat: format));
   }
 
-  void onFileChanged(String path) {
-    // TODO
-    emit(state.copyWith(
-      input: Either.right(path),
-    ));
+  Future<void> onFileChanged(String path) async {
+    emit(state.copyWith(input: Either.right(path)));
+
+    final hashes = await compute(_do, path);
+
+    emit(state.copyWith(hashes: hashes));
+  }
+
+  static Future<List<(String, Uint8List)>> _do(String path) async {
+    for (final digest in _digestList) {
+      digest.reset();
+    }
+
+    final file = File(path);
+    final reader = ChunkedStreamReader(file.openRead());
+
+    try {
+      List<int> chunk = await reader.readChunk(1024 * 1024 * 10);
+      while (chunk.isNotEmpty) {
+        final bytes = Uint8List.fromList(chunk);
+
+        for (final digest in _digestList) {
+          digest.update(bytes, 0, bytes.length);
+        }
+
+        chunk = await reader.readChunk(4096);
+      }
+    } finally {
+      await reader.cancel();
+    }
+
+    return _digestList.map((digest) {
+      final hash = Uint8List(digest.digestSize);
+      digest.doFinal(hash, 0);
+      return (digest.algorithmName, hash);
+    }).toList(growable: false);
   }
 
   void dropFile() {
@@ -43,22 +101,6 @@ enum HashFormat {
   base64,
   hex,
 }
-
-final _digestList = <Digest>[
-  MD2Digest(),
-  MD4Digest(),
-  MD5Digest(),
-  RIPEMD128Digest(),
-  SHA1Digest(),
-  SHA224Digest(),
-  SHA256Digest(),
-  SHA384Digest(),
-  SHA512Digest(),
-  KeccakDigest(),
-  TigerDigest(),
-  WhirlpoolDigest(),
-  SM3Digest(),
-];
 
 @immutable
 class HashState {
@@ -97,5 +139,11 @@ class HashState {
       hashFormat: hashFormat ?? this.hashFormat,
       hashes: hashes ?? this.hashes,
     );
+  }
+}
+
+extension on ChunkedStreamReader<int> {
+  Future<Uint8List> readChunkOfBytes(int size) {
+    return readBytes(size).then(Uint8List.fromList);
   }
 }

@@ -9,5 +9,5 @@ final hashTool = BlocTool<HashCubit, HashState>(
   titleBuilder: (context) => Translations.of(context).hash.title,
   icon: Icons.qr_code_2,
   screenBuilder: (context) => const HashTool(),
-  bloc: HashCubit(),
+  bloc: HashCubit()..init(),
 );
