@@ -4,57 +4,31 @@ import 'package:convert/convert.dart';
 import 'package:cross_file/cross_file.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:macos_ui/macos_ui.dart';
-import 'package:pointycastle/digests/keccak.dart';
-import 'package:pointycastle/digests/md2.dart';
-import 'package:pointycastle/digests/md4.dart';
-import 'package:pointycastle/digests/md5.dart';
-import 'package:pointycastle/digests/ripemd128.dart';
-import 'package:pointycastle/digests/sha1.dart';
-import 'package:pointycastle/digests/sha224.dart';
-import 'package:pointycastle/digests/sha256.dart';
-import 'package:pointycastle/digests/sha384.dart';
-import 'package:pointycastle/digests/sha512.dart';
-import 'package:pointycastle/digests/sm3.dart';
-import 'package:pointycastle/digests/tiger.dart';
-import 'package:pointycastle/digests/whirlpool.dart';
-import 'package:pointycastle/pointycastle.dart' hide Padding;
 
-import '../common/file_drop_widget.dart';
-import '../common/list_utils.dart';
-import '../common/macos_read_only_field.dart';
-import '../i18n/strings.g.dart';
-import '../tool/base_tool.dart';
+import '../../common/file_drop_widget.dart';
+import '../../common/macos_read_only_field.dart';
+import '../../i18n/strings.g.dart';
+import 'hash_bloc.dart';
 
-final hashTool = BaseTool(
-  titleBuilder: (context) => Translations.of(context).hash.title,
-  icon: Icons.qr_code_2,
-  screenBuilder: (context) => const HashTool(),
-);
-
-enum _HashFormat {
-  base64,
-  hex,
-}
-
-extension on _HashFormat {
+extension on HashFormat {
   String format(BuildContext context) {
     final s = Translations.of(context);
     switch (this) {
-      case _HashFormat.base64:
+      case HashFormat.base64:
         return s.hash.hashFormat.base64;
-      case _HashFormat.hex:
+      case HashFormat.hex:
         return s.hash.hashFormat.hex;
     }
   }
 
   Codec<List<int>, String> get codec {
     switch (this) {
-      case _HashFormat.base64:
+      case HashFormat.base64:
         return base64;
-      case _HashFormat.hex:
+      case HashFormat.hex:
         return hex;
     }
   }
@@ -68,25 +42,6 @@ class HashTool extends StatefulWidget {
 }
 
 class _HashToolState extends State<HashTool> {
-  static final _digestList = <Digest>[
-    MD2Digest(),
-    MD4Digest(),
-    MD5Digest(),
-    RIPEMD128Digest(),
-    SHA1Digest(),
-    SHA224Digest(),
-    SHA256Digest(),
-    SHA384Digest(),
-    SHA512Digest(),
-    KeccakDigest(),
-    TigerDigest(),
-    WhirlpoolDigest(),
-    SM3Digest(),
-  ];
-
-  _HashFormat _format = _HashFormat.hex;
-  Uint8List? _bytes;
-
   @override
   Widget build(BuildContext context) {
     final s = Translations.of(context);
@@ -98,13 +53,7 @@ class _HashToolState extends State<HashTool> {
       ),
       children: [
         ContentArea(
-          builder: (context, controller) => _Body(
-            onChanged: (bytes) {
-              setState(() {
-                _bytes = Uint8List.fromList(bytes);
-              });
-            },
-          ),
+          builder: (context, controller) => const _Body(),
         ),
         ResizablePane(
           builder: (context, controller) => ListView(
@@ -115,38 +64,52 @@ class _HashToolState extends State<HashTool> {
                 padding: const EdgeInsets.symmetric(horizontal: 4),
                 child: Row(
                   children: [
-                    Text(s.hash.bytesCount(n: _bytes?.length ?? 0)),
+                    BlocBuilder<HashCubit, HashState>(
+                      buildWhen: (prev, curr) =>
+                          prev.bytesCount != curr.bytesCount,
+                      builder: (context, state) =>
+                          Text(s.hash.bytesCount(n: state.bytesCount)),
+                    ),
                     const Spacer(),
-                    MacosPopupButton(
-                      value: _format,
-                      items: _HashFormat.values
-                          .map(
-                            (type) => MacosPopupMenuItem(
-                              value: type,
-                              child: Text(type.format(context)),
-                            ),
-                          )
-                          .toList(growable: false),
-                      onChanged: (format) {
-                        if (format != null && format != _format) {
-                          setState(() {
-                            _format = format;
-                          });
-                        }
+                    BlocBuilder<HashCubit, HashState>(
+                      builder: (context, state) {
+                        return MacosPopupButton(
+                          value: state.hashFormat,
+                          items: HashFormat.values
+                              .map(
+                                (type) => MacosPopupMenuItem(
+                                  value: type,
+                                  child: Text(type.format(context)),
+                                ),
+                              )
+                              .toList(growable: false),
+                          onChanged: (format) {
+                            if (format != null && format != state.hashFormat) {
+                              context.read<HashCubit>().setFormat(format);
+                            }
+                          },
+                        );
                       },
                     ),
                   ],
                 ),
               ),
               const SizedBox(height: 16),
-              ..._digestList
-                  .map<Widget>((digest) => _DigestItem(
-                        digest: digest,
-                        bytes: _bytes,
-                        codec: _format.codec,
-                      ))
-                  .toList(growable: false)
-                  .interpose(const SizedBox(height: 8))
+              BlocBuilder<HashCubit, HashState>(
+                builder: (context, state) {
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      for (final hash in state.hashes)
+                        _DigestItem(
+                          digestName: hash.$1,
+                          bytes: hash.$2,
+                          codec: state.hashFormat.codec,
+                        ),
+                    ],
+                  );
+                },
+              ),
             ],
           ),
           minSize: 200,
@@ -159,49 +122,32 @@ class _HashToolState extends State<HashTool> {
 }
 
 class _Body extends StatefulWidget {
-  final ValueChanged<List<int>> onChanged;
-
-  const _Body({
-    required this.onChanged,
-  });
+  const _Body();
 
   @override
   State<_Body> createState() => _BodyState();
 }
 
 class _BodyState extends State<_Body> {
-  final _controller = TextEditingController();
-
-  XFile? _file;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller.addListener(() => widget.onChanged(_controller.text.codeUnits));
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final s = Translations.of(context);
 
-    final file = _file;
-    final field = file != null
+    final pathToFile = context.watch<HashCubit>().state.input.fold(
+          ifLeft: (_) => null,
+          ifRight: (path) => path,
+        );
+    final field = pathToFile != null
         ? MacosReadonlyField(
-            text: s.hash.hashOfFile(path: file.path),
+            text: s.hash.hashOfFile(path: pathToFile),
             maxLines: 10,
             textAlignVertical: const TextAlignVertical(y: -1),
           )
         : MacosTextField(
-            controller: _controller,
             maxLines: null,
             textAlignVertical: const TextAlignVertical(y: -1),
             placeholder: s.hash.textInputHint,
+            onChanged: _onTextChanged,
           );
 
     return Padding(
@@ -225,7 +171,7 @@ class _BodyState extends State<_Body> {
                   ),
                   const SizedBox(width: 8),
                   PushButton(
-                    onPressed: file != null ? _dropFile : null,
+                    onPressed: pathToFile != null ? _dropFile : null,
                     controlSize: ControlSize.regular,
                     secondary: true,
                     child: Text(s.hash.dropFile),
@@ -241,37 +187,34 @@ class _BodyState extends State<_Body> {
     );
   }
 
+  void _onTextChanged(String text) {
+    context.read<HashCubit>().onInputTextChanged(text);
+  }
+
   Future<void> _onFilePicked() async {
     final result = await FilePicker.platform.pickFiles();
     if (result != null) {
       final file = result.xFiles.first;
-      await _update(file);
+      _update(file);
     }
   }
 
   void _dropFile() {
-    setState(() {
-      _file = null;
-      widget.onChanged(Uint8List(0));
-    });
+    context.read<HashCubit>().dropFile();
   }
 
-  Future<void> _update(XFile file) async {
-    final List<int> content = await file.readAsBytes();
-    widget.onChanged(content);
-    setState(() {
-      _file = file;
-    });
+  void _update(XFile file) {
+    context.read<HashCubit>().onFileChanged(file.path);
   }
 }
 
 class _DigestItem extends StatelessWidget {
-  final Digest digest;
+  final String digestName;
   final Uint8List? bytes;
   final Codec<List<int>, String> codec;
 
   const _DigestItem({
-    required this.digest,
+    required this.digestName,
     required this.bytes,
     required this.codec,
   });
@@ -286,7 +229,7 @@ class _DigestItem extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 4),
-          child: Text(digest.algorithmName),
+          child: Text(digestName),
         ),
         const SizedBox(height: 4),
         Row(
@@ -317,8 +260,6 @@ class _DigestItem extends StatelessWidget {
     if (bytes == null || bytes.isEmpty) {
       return '';
     }
-
-    final intValue = digest.process(bytes);
-    return codec.encode(intValue);
+    return codec.encode(bytes);
   }
 }
