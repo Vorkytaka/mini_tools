@@ -1,15 +1,18 @@
 // ignore_for_file: always_put_required_named_parameters_first
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:macos_ui/macos_ui.dart';
 
-import '../i18n/strings.g.dart';
-import '../tool/base_tool.dart';
+import '../../i18n/strings.g.dart';
+import '../../tool/bloc_tool.dart';
+import 'regexp_cubit.dart';
 
-final regExpTool = BaseTool(
+final regExpTool = BlocTool(
   titleBuilder: (context) => Translations.of(context).regexp.title,
   icon: Icons.manage_search,
   screenBuilder: (context) => const RegExpTool(),
+  bloc: RegExpCubit(),
 );
 
 class RegExpTool extends StatelessWidget {
@@ -41,28 +44,41 @@ class _Body extends StatefulWidget {
 }
 
 class _BodyState extends State<_Body> {
-  final _inputController = _RegExpTextEditingController();
+  final _regExpController = TextEditingController();
   final _exampleController = _RegExpExampleTextEditingController();
-
-  Iterable<RegExpMatch>? _searchResults;
 
   @override
   void initState() {
     super.initState();
-    _inputController.addListener(_search);
-    _exampleController.addListener(_search);
+
+    _regExpController.addListener(_regExpUpdate);
+    _exampleController.addListener(_exampleUpdate);
+
+    final cubit = context.read<RegExpCubit>();
+    final state = cubit.state;
+    _regExpController.text = state.regexp?.pattern ?? '';
+    _exampleController.text = state.example;
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final cubit = context.read<RegExpCubit>();
+    final state = cubit.state;
+    _exampleController.matches = state.matches;
   }
 
   @override
   void dispose() {
-    _inputController.dispose();
+    _regExpController.dispose();
+    _exampleController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final t = Translations.of(context);
-    final matchesCount = _searchResults?.length ?? 0;
 
     return Column(
       children: [
@@ -71,7 +87,7 @@ class _BodyState extends State<_Body> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               MacosTextField(
-                controller: _inputController,
+                controller: _regExpController,
                 placeholder: t.regexp.regexpHint,
               ),
               const SizedBox(height: 12),
@@ -81,10 +97,14 @@ class _BodyState extends State<_Body> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(t.regexp.testStringTitle),
-                    Text(t.regexp.matchesCount(
-                      n: matchesCount,
-                      count: matchesCount,
-                    )),
+                    BlocBuilder<RegExpCubit, RegExpState>(
+                      buildWhen: (prev, curr) =>
+                          prev.matches?.length != curr.matches?.length,
+                      builder: (context, state) => Text(t.regexp.matchesCount(
+                        n: state.matches?.length ?? 0,
+                        count: state.matches?.length ?? 0,
+                      )),
+                    ),
                   ],
                 ),
               ),
@@ -108,9 +128,7 @@ class _BodyState extends State<_Body> {
               Expanded(
                 child: SingleChildScrollView(
                   controller: controller,
-                  child: _MatchInformation(
-                    matches: _searchResults,
-                  ),
+                  child: const _MatchInformation(),
                 ),
               ),
             ],
@@ -124,147 +142,123 @@ class _BodyState extends State<_Body> {
     );
   }
 
-  void _search() {
-    final regExp = _inputController.regExp;
-    if (regExp == null || regExp.pattern.isEmpty) {
-      _searchResults = null;
-      _exampleController.matches = null;
-      setState(() {});
-      return;
-    }
+  void _regExpUpdate() =>
+      context.read<RegExpCubit>().updateRegExp(_regExpController.text);
 
-    final text = _exampleController.text;
-    _searchResults = regExp.allMatches(text);
-    _exampleController.matches = _searchResults;
-    setState(() {});
-  }
+  void _exampleUpdate() =>
+      context.read<RegExpCubit>().updateExample(_exampleController.text);
 }
 
 class _MatchInformation extends StatelessWidget {
-  final Iterable<RegExpMatch>? matches;
-
-  const _MatchInformation({
-    required this.matches,
-  });
+  const _MatchInformation();
 
   @override
   Widget build(BuildContext context) {
     final theme = MacosTheme.of(context);
     final t = Translations.of(context);
-    final matches = this.matches;
 
-    const cellPadding = EdgeInsets.all(8);
-    // This variable mutate later
-    // We use this to not cast [matches] to List
-    int matchCounter = 0;
+    return BlocBuilder<RegExpCubit, RegExpState>(
+      buildWhen: (prev, curr) => prev.matches != curr.matches,
+      builder: (context, state) {
+        final matches = state.matches;
 
-    TableRow? result;
-    if (matches == null || matches.isEmpty) {
-      result = TableRow(
-        children: [
-          const TableCell(
-            child: Padding(
-              padding: cellPadding,
-              child: Text(' '),
-            ),
-          ),
-          TableCell(
-            child: Padding(
-              padding: cellPadding,
-              child: Text(t.regexp.matchInfoNothing),
-            ),
-          ),
-          const TableCell(
-            child: Padding(
-              padding: cellPadding,
-              child: Text(' '),
-            ),
-          ),
-        ],
-      );
-    } else {}
+        const cellPadding = EdgeInsets.all(8);
+        // This variable mutate later
+        // We use this to not cast [matches] to List
+        int matchCounter = 0;
 
-    return Table(
-      defaultColumnWidth: const IntrinsicColumnWidth(),
-      border: TableBorder.all(
-        color: theme.dividerColor,
-      ),
-      children: [
-        TableRow(
+        TableRow? result;
+        if (matches == null || matches.isEmpty) {
+          result = TableRow(
+            children: [
+              const TableCell(
+                child: Padding(
+                  padding: cellPadding,
+                  child: Text(' '),
+                ),
+              ),
+              TableCell(
+                child: Padding(
+                  padding: cellPadding,
+                  child: Text(t.regexp.matchInfoNothing),
+                ),
+              ),
+              const TableCell(
+                child: Padding(
+                  padding: cellPadding,
+                  child: Text(' '),
+                ),
+              ),
+            ],
+          );
+        } else {}
+
+        return Table(
+          defaultColumnWidth: const IntrinsicColumnWidth(),
+          border: TableBorder.all(
+            color: theme.dividerColor,
+          ),
           children: [
-            TableCell(
-              child: Padding(
-                padding: cellPadding,
-                child: DefaultTextStyle.merge(
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                  child: Text(t.regexp.matchInfoNumber),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: cellPadding,
-                child: DefaultTextStyle.merge(
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                  child: Text(t.regexp.matchInfoValue),
-                ),
-              ),
-            ),
-            TableCell(
-              child: Padding(
-                padding: cellPadding,
-                child: DefaultTextStyle.merge(
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                  child: Text(t.regexp.matchInfoPosition),
-                ),
-              ),
-            ),
-          ],
-        ),
-        if (result != null) result,
-        if (matches != null)
-          for (final match in matches)
             TableRow(
               children: [
                 TableCell(
                   child: Padding(
                     padding: cellPadding,
-                    child: Text('${matchCounter++}'),
+                    child: DefaultTextStyle.merge(
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      child: Text(t.regexp.matchInfoNumber),
+                    ),
                   ),
                 ),
                 TableCell(
                   child: Padding(
                     padding: cellPadding,
-                    child: SelectableText(match.group(0)!),
+                    child: DefaultTextStyle.merge(
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      child: Text(t.regexp.matchInfoValue),
+                    ),
                   ),
                 ),
                 TableCell(
                   child: Padding(
                     padding: cellPadding,
-                    child: Text('${match.start}-${match.end}'),
+                    child: DefaultTextStyle.merge(
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      child: Text(t.regexp.matchInfoPosition),
+                    ),
                   ),
                 ),
               ],
             ),
-      ],
+            if (result != null) result,
+            if (matches != null)
+              for (final match in matches)
+                TableRow(
+                  children: [
+                    TableCell(
+                      child: Padding(
+                        padding: cellPadding,
+                        child: Text('${matchCounter++}'),
+                      ),
+                    ),
+                    TableCell(
+                      child: Padding(
+                        padding: cellPadding,
+                        child: SelectableText(match.group(0)!),
+                      ),
+                    ),
+                    TableCell(
+                      child: Padding(
+                        padding: cellPadding,
+                        child: Text('${match.start}-${match.end}'),
+                      ),
+                    ),
+                  ],
+                ),
+          ],
+        );
+      },
     );
-  }
-}
-
-class _RegExpTextEditingController extends TextEditingController {
-  RegExp? _regExp;
-
-  RegExp? get regExp => _regExp;
-
-  @override
-  set value(TextEditingValue newValue) {
-    try {
-      _regExp = RegExp(newValue.text);
-    } on FormatException catch (_) {
-      _regExp = null;
-    }
-
-    super.value = newValue;
   }
 }
 
