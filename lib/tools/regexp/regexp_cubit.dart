@@ -5,13 +5,13 @@ class RegExpCubit extends Cubit<RegExpState> {
   RegExpCubit() : super(const RegExpState.init());
 
   static RegExp? fromString(String? input) {
-    if(input == null || input.isEmpty) {
+    if (input == null || input.isEmpty) {
       return null;
     }
 
     try {
       return RegExp(input);
-    } on FormatException catch(_) {
+    } on FormatException catch (_) {
       return null;
     }
   }
