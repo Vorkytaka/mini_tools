@@ -64,7 +64,7 @@ class _BodyState extends State<_Body> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    final cubit = context.read<RegExpCubit>();
+    final cubit = context.watch<RegExpCubit>();
     final state = cubit.state;
     _exampleController.matches = state.matches;
   }
@@ -97,14 +97,7 @@ class _BodyState extends State<_Body> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(t.regexp.testStringTitle),
-                    BlocBuilder<RegExpCubit, RegExpState>(
-                      buildWhen: (prev, curr) =>
-                          prev.matches?.length != curr.matches?.length,
-                      builder: (context, state) => Text(t.regexp.matchesCount(
-                        n: state.matches?.length ?? 0,
-                        count: state.matches?.length ?? 0,
-                      )),
-                    ),
+                    const _MatchCounter(),
                   ],
                 ),
               ),
@@ -318,5 +311,20 @@ class _RegExpExampleTextEditingController extends TextEditingController {
     }
 
     return TextSpan(children: spans);
+  }
+}
+
+class _MatchCounter extends StatelessWidget {
+  const _MatchCounter();
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Translations.of(context);
+    return BlocSelector<RegExpCubit, RegExpState, int>(
+      selector: (state) => state.matches?.length ?? 0,
+      builder: (context, count) {
+        return Text(t.regexp.matchesCount(n: count, count: count));
+      },
+    );
   }
 }
