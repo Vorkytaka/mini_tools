@@ -1,5 +1,19 @@
 import 'package:flutter/painting.dart';
 
+String? colorToHexString(Color? color) => color?.toHexString;
+
+String? colorToArgbHexString(Color? color) => color?.toArgbHexString;
+
+String? colorToRgbString(Color? color) => color?.toRgbString;
+
+String? colorToRgbaString(Color? color) => color?.toRgbaString;
+
+String? colorToHslString(Color? color) => color?.toHslString;
+
+String? colorToHsbString(Color? color) => color?.toHsbString;
+
+String? colorToHwbString(Color? color) => color?.toHwbString;
+
 extension ColorUtils on Color {
   String get toHexString {
     return '#${value.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}';
