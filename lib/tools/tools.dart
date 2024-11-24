@@ -9,7 +9,7 @@ import 'json_formatter.dart';
 import 'material_colors_tool.dart';
 import 'number_base_converter.dart';
 import 'percentages_tool.dart';
-import 'reg_exp_tool.dart';
+import 'regexp/regexp_tool.dart';
 import 'sqlite/sqlite_tool.dart';
 
 final tools = <Tool>[
