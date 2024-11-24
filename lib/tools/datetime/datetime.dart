@@ -62,7 +62,7 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
 
     final cubit = context.watch<DatetimeCubit>();
     final input = cubit.state.input;
-    if(input != _inputController.text) {
+    if (input != _inputController.text) {
       _inputController.text = input;
     }
   }
@@ -353,7 +353,7 @@ class _DateItem extends StatelessWidget {
   final TZDateTime? datetime;
   final _DateItemMapper mapper;
 
-  const  _DateItem({
+  const _DateItem({
     required this.title,
     required this.datetime,
     required this.mapper,
