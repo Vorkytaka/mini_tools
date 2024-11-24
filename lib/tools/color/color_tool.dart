@@ -1,18 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart';
 import 'package:macos_ui/macos_ui.dart';
 
-import '../common/color.dart';
-import '../common/macos_read_only_field.dart';
-import '../i18n/strings.g.dart';
-import '../tool/base_tool.dart';
+import '../../common/color.dart';
+import '../../common/macos_read_only_field.dart';
+import '../../i18n/strings.g.dart';
+import '../../tool/bloc_tool.dart';
+import 'color_cubit.dart';
 
-final colorTool = BaseTool(
+final colorTool = BlocTool(
   titleBuilder: (context) => Translations.of(context).color.title,
   icon: Icons.color_lens_outlined,
   screenBuilder: (context) => const ColorTool(),
+  bloc: ColorCubit(),
 );
 
 class ColorTool extends StatelessWidget {
@@ -47,12 +50,16 @@ class _Body extends StatefulWidget {
 
 class _BodyState extends State<_Body> {
   final _inputController = TextEditingController();
-  Color? _color;
 
   @override
   void initState() {
     super.initState();
+
     _inputController.addListener(_onInputUpdate);
+
+    final cubit = context.read<ColorCubit>();
+    final state = cubit.state;
+    _inputController.text = state.input;
   }
 
   @override
@@ -73,17 +80,15 @@ class _BodyState extends State<_Body> {
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _ColorButton(
-              onChanged: (color) {
-                setState(() {
-                  if (color.alpha == 255) {
-                    _inputController.text = color.toHexString;
-                  } else {
-                    _inputController.text = color.toArgbHexString;
-                  }
-                });
+            BlocSelector<ColorCubit, ColorState, Color?>(
+              selector: (state) => state.color,
+              builder: (context, color) {
+                return _ColorButton(
+                  onChanged: (color) =>
+                      context.read<ColorCubit>().setColor(color),
+                  color: color,
+                );
               },
-              color: _color,
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -98,7 +103,7 @@ class _BodyState extends State<_Body> {
                       PushButton(
                         controlSize: ControlSize.regular,
                         secondary: true,
-                        onPressed: () => _inputController.text = '',
+                        onPressed: () => context.read<ColorCubit>().clear(),
                         child: Text(t.common.clear),
                       ),
                     ],
@@ -118,78 +123,71 @@ class _BodyState extends State<_Body> {
           ],
         ),
         const SizedBox(height: 24),
-        Expanded(
-          child: Column(
-            children: [
-              _Item(
-                title: t.color.titles.hex,
-                value: _color?.toHexString,
-              ),
-              separator,
-              _Item(
-                title: t.color.titles.hexWithAlpha,
-                value: _color?.toArgbHexString,
-              ),
-              separator,
-              _Item(
-                title: t.color.titles.rgb,
-                value: _color?.toRgbString,
-              ),
-              separator,
-              _Item(
-                title: t.color.titles.rgba,
-                value: _color?.toRgbaString,
-              ),
-              separator,
-              _Item(
-                title: t.color.titles.hsl,
-                value: _color?.toHslString,
-              ),
-              separator,
-              _Item(
-                title: t.color.titles.hsb,
-                value: _color?.toHsbString,
-              ),
-              separator,
-              _Item(
-                title: t.color.titles.hwb,
-                value: _color?.toHwbString,
-              ),
-            ],
-          ),
+        Column(
+          children: [
+            _ItemBuilder(
+              title: t.color.titles.hex,
+              mapper: colorToHexString,
+            ),
+            separator,
+            _ItemBuilder(
+              title: t.color.titles.hexWithAlpha,
+              mapper: colorToArgbHexString,
+            ),
+            separator,
+            _ItemBuilder(
+              title: t.color.titles.rgb,
+              mapper: colorToRgbString,
+            ),
+            separator,
+            _ItemBuilder(
+              title: t.color.titles.rgba,
+              mapper: colorToRgbaString,
+            ),
+            separator,
+            _ItemBuilder(
+              title: t.color.titles.hsl,
+              mapper: colorToHslString,
+            ),
+            separator,
+            _ItemBuilder(
+              title: t.color.titles.hsb,
+              mapper: colorToHsbString,
+            ),
+            separator,
+            _ItemBuilder(
+              title: t.color.titles.hwb,
+              mapper: colorToHwbString,
+            ),
+          ],
         ),
       ],
     );
   }
 
   void _onInputUpdate() {
-    final color = parseColor(_inputController.text);
-    setState(() {
-      _color = color;
-    });
+    context.read<ColorCubit>().updateInput(_inputController.text);
   }
+}
 
-  static Color? parseColor(String input) {
-    final hexRegex = RegExp(r'^#?([0-9a-fA-F]{3}){1,2}$');
-    final alphaHexRegex = RegExp(r'^#?([0-9a-fA-F]{8})$');
+class _ItemBuilder extends StatelessWidget {
+  final String title;
+  final String? Function(Color? color) mapper;
 
-    if (hexRegex.hasMatch(input)) {
-      input = input.replaceFirst('#', '');
+  const _ItemBuilder({
+    required this.title,
+    required this.mapper,
+  });
 
-      if (input.length == 3) {
-        input = input.split('').map((char) => '$char$char').join('');
-      }
-
-      input = 'FF$input';
-
-      return Color(int.parse(input, radix: 16));
-    } else if (alphaHexRegex.hasMatch(input)) {
-      input = input.replaceFirst('#', '');
-
-      return Color(int.parse(input, radix: 16));
-    }
-
-    return null;
+  @override
+  Widget build(BuildContext context) {
+    return BlocSelector<ColorCubit, ColorState, Color?>(
+      selector: (state) => state.color,
+      builder: (context, color) => _Item(
+        title: title,
+        value: mapper(color),
+      ),
+    );
   }
 }
 

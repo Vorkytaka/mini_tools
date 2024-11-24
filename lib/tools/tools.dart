@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../tool/base_tool.dart';
 import '../tool/tool.dart';
-import 'color_tool.dart';
+import 'color/color_tool.dart';
 import 'datetime/datetime_tool.dart';
 import 'hash/hash_tool.dart';
 import 'json_formatter.dart';
