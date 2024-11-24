@@ -19,7 +19,12 @@ class DatetimeCubit extends Cubit<DatetimeState> {
   }
 
   void clear() {
-    emit(const DatetimeState.init());
+    emit(DatetimeState(
+      datetime: null,
+      input: '',
+      inputType: state.inputType,
+      format: state.format,
+    ));
   }
 
   void onInputUpdate(String inputText, Location timezone) {
