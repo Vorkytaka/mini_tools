@@ -443,10 +443,13 @@ String formatRFC2822(TZDateTime? dateTime) {
     return '';
   }
 
-  final tz = _formatTimeZoneOffset(dateTime);
-
   final string = DateFormat('EEE, d MMM y HH:mm:ss').format(dateTime);
-  return '$string $tz';
+  if (dateTime.timeZoneOffset != Duration.zero) {
+    final tz = _formatTimeZoneOffset(dateTime);
+    return '$string $tz';
+  }
+
+  return string;
 }
 
 String _formatTimeZoneOffset(DateTime dateTime) {
