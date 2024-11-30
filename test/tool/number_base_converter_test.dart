@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tools/i18n/strings.g.dart';
-import 'package:mini_tools/tools/number_base_converter.dart';
+import 'package:mini_tools/tools/number_base_converter/number_base_converter.dart';
 
 void main() {
   testWidgets('Inputs update each other', (tester) async {

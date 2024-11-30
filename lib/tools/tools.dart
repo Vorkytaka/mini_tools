@@ -7,7 +7,7 @@ import 'datetime/datetime_tool.dart';
 import 'hash/hash_tool.dart';
 import 'json/json_formatter.dart';
 import 'material_colors_tool.dart';
-import 'number_base_converter.dart';
+import 'number_base_converter/number_base_converter_tool.dart';
 import 'percentages_tool.dart';
 import 'regexp/regexp_tool.dart';
 import 'sqlite/sqlite_tool.dart';

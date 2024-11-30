@@ -4,8 +4,11 @@ import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'effect_handler.dart';
+
 part 'feature_impl.dart';
+
 part 'next.dart';
+
 part 'update.dart';
 
 /// An interface for building features.
@@ -50,7 +53,7 @@ abstract interface class Feature<State, Event, Effect, News> {
   factory Feature({
     required State initialState,
     required Update<State, Event, Effect, News> update,
-    required List<EffectHandler<Effect, Event>> effectHandlers,
+    List<EffectHandler<Effect, Event>> effectHandlers = const [],
     List<Effect> initialEffects = const [],
   }) =>
       _FeatureImpl(

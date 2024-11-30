@@ -1,16 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 
-import '../i18n/strings.g.dart';
-import '../tool/base_tool.dart';
-
-final numberBaseConverterTool = BaseTool(
-  titleBuilder: (context) => Translations.of(context).numberConverter.title,
-  icon: Icons.numbers,
-  screenBuilder: (context) => const NumberBaseConverter(),
-);
+import '../../i18n/strings.g.dart';
+import 'feature/number_base_feature.dart';
+import 'number_base_feature_utils.dart';
 
 class NumberBaseConverter extends StatelessWidget {
   const NumberBaseConverter({super.key});
@@ -52,6 +46,27 @@ class _BodyState extends State<_Body> {
   final _base8Controller = TextEditingController();
   final _base10Controller = TextEditingController();
   final _base16Controller = TextEditingController();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final feature = context.numberBaseFeature(context, listen: true);
+    final state = feature.state;
+
+    if (_base2Controller.text != state.base2) {
+      _base2Controller.text = state.base2;
+    }
+    if (_base8Controller.text != state.base8) {
+      _base8Controller.text = state.base8;
+    }
+    if (_base10Controller.text != state.base10) {
+      _base10Controller.text = state.base10;
+    }
+    if (_base16Controller.text != state.base16) {
+      _base16Controller.text = state.base16;
+    }
+  }
 
   @override
   void dispose() {
@@ -100,44 +115,19 @@ class _BodyState extends State<_Body> {
   }
 
   void _base2Changed(String value) {
-    final integer = BigInt.tryParse(value, radix: 2);
-    _updateValues(value: integer, updateBase2: false);
+    context.numberBaseFeature(context).accept(UpdateBase2Event(value));
   }
 
   void _base8Changed(String value) {
-    final integer = BigInt.tryParse(value, radix: 8);
-    _updateValues(value: integer, updateBase8: false);
+    context.numberBaseFeature(context).accept(UpdateBase8Event(value));
   }
 
   void _base10Changed(String value) {
-    final integer = BigInt.tryParse(value, radix: 10);
-    _updateValues(value: integer, updateBase10: false);
+    context.numberBaseFeature(context).accept(UpdateBase10Event(value));
   }
 
   void _base16Changed(String value) {
-    final integer = BigInt.tryParse(value, radix: 16);
-    _updateValues(value: integer, updateBase16: false);
-  }
-
-  void _updateValues({
-    required BigInt? value,
-    bool updateBase2 = true,
-    bool updateBase8 = true,
-    bool updateBase10 = true,
-    bool updateBase16 = true,
-  }) {
-    if (updateBase2) {
-      _base2Controller.text = value?.toRadixString(2) ?? '';
-    }
-    if (updateBase8) {
-      _base8Controller.text = value?.toRadixString(8) ?? '';
-    }
-    if (updateBase10) {
-      _base10Controller.text = value?.toRadixString(10) ?? '';
-    }
-    if (updateBase16) {
-      _base16Controller.text = value?.toRadixString(16) ?? '';
-    }
+    context.numberBaseFeature(context).accept(UpdateBase16Event(value));
   }
 }
 
