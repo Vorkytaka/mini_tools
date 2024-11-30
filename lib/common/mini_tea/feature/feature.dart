@@ -2,7 +2,10 @@ import 'dart:async';
 
 import 'package:rxdart/rxdart.dart';
 
+part 'effect_handler.dart';
 part 'feature_impl.dart';
+part 'next.dart';
+part 'update.dart';
 
 /// An interface for building features.
 /// Inspired by The Elm Architecture.
@@ -80,37 +83,3 @@ abstract interface class Feature<State, Event, Effect, News> {
   /// the feature. It may perform asynchronous clean-up operations.
   FutureOr<void> dispose();
 }
-
-/// A type representing the result of handling an event with update, including:
-/// - [State]: The next state to transition to, or null to indicate no state change.
-/// - [List<Effect>]: A list of side effects to be processed.
-/// - [List<News>]: A list of news messages to be sent.
-typedef Next<State, Effect, News> = (State?, List<Effect>, List<News>);
-
-/// A function type that updates the state based on an event.
-///
-/// This function takes the current state and an event as input, and returns
-/// a Next object that includes the new state, a list of effects to trigger,
-/// and a list of news messages.
-///
-/// This must be a pure function.
-typedef Update<State, Event, Effect, News> = Next<State, Effect, News> Function(
-  State state,
-  Event event,
-);
-
-/// A function type for emitting events.
-///
-/// This type is used to trigger events, typically in effect handlers.
-typedef EventEmitter<Event> = void Function(Event event);
-
-/// A function type for handling effects.
-///
-/// This function is responsible for executing side effects that might result
-/// from event processing. It can emit new events based on the completion of the effect.
-///
-/// [emit] can be used to send any count of events to the feature.
-typedef EffectHandler<Effect, Event> = FutureOr<void> Function(
-  Effect effect,
-  EventEmitter<Event> emit,
-);

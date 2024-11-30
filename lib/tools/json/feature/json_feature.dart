@@ -4,7 +4,7 @@ import 'dart:isolate';
 import 'package:flutter/cupertino.dart';
 import 'package:json_path/json_path.dart';
 
-import '../../../common/mini_tea/mini_tea.dart';
+import '../../../common/mini_tea/feature/feature.dart';
 
 part 'json_effect.dart';
 

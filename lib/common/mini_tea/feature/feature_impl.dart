@@ -1,4 +1,4 @@
-part of 'mini_tea.dart';
+part of 'feature.dart';
 
 final class _FeatureImpl<State, Event, Effect, News>
     implements Feature<State, Event, Effect, News> {

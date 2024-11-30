@@ -2,7 +2,7 @@ import 'dart:isolate';
 
 import 'package:meta/meta.dart';
 
-import 'mini_tea.dart';
+import '../feature/feature.dart';
 
 /// Experimental effect handler, that perform specified [handler] with [Isolate.run].
 @experimental

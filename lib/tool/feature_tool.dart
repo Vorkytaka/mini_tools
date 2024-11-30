@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-import '../common/mini_tea/flutter.dart';
-import '../common/mini_tea/mini_tea.dart';
+import '../common/mini_tea/flutter/flutter.dart';
+import '../common/mini_tea/feature/feature.dart';
 import 'base_tool.dart';
 
 class FeatureTool<F extends Feature<S, Ev, Ef, N>, S, Ev, Ef, N>
