@@ -29,6 +29,22 @@ part 'update.dart';
 ///     );
 /// ```
 abstract interface class Feature<State, Event, Effect, News> {
+  /// Creates a new `Feature` instance.
+  ///
+  /// - [initialState]: The starting state of the feature. This is a required
+  ///   parameter, defining the initial conditions of the feature.
+  ///
+  /// - [update]: A function or class that takes the current state, an event,
+  ///   an effect, and news. It defines the logic for state transitions
+  ///   in response to the events. Must be a pure function.
+  ///
+  /// - [effectHandlers]: A list of handlers for processing side effects. Each
+  ///   `EffectHandler` is responsible for handling specific effects and
+  ///   potentially generating new events to influence state changes.
+  ///
+  /// - [initialEffect]: An optional list of effects to be executed initially
+  ///   when the feature is instantiated. Defaults to an empty list if not
+  ///   specified.
   factory Feature({
     required State initialState,
     required Update<State, Event, Effect, News> update,
