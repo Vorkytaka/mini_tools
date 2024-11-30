@@ -1,6 +1,5 @@
 part of 'json_feature.dart';
 
-
 sealed class JsonEvent {
   const JsonEvent._();
 }

@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 
 import '../../feature/feature.dart';
 
-
 typedef FeatureWidgetListener<S> = void Function(BuildContext context, S state);
 typedef FeatureStateCondition<S> = bool Function(S previous, S current);
 
@@ -88,7 +87,9 @@ class _FeatureListenerState<F extends Feature<S, Ev, Ef, N>, S, Ev, Ef, N>
   void _subscribe() {
     _subscription = _feature.stateStream.listen((state) {
       if (widget.listenWhen?.call(_previousState, state) ?? true) {
-        widget.listener(context, state);
+        if (mounted) {
+          widget.listener(context, state);
+        }
       }
       _previousState = state;
     });
