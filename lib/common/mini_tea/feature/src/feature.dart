@@ -51,13 +51,13 @@ abstract interface class Feature<State, Event, Effect, News> {
     required State initialState,
     required Update<State, Event, Effect, News> update,
     required List<EffectHandler<Effect, Event>> effectHandlers,
-    List<Effect> initialEffect = const [],
+    List<Effect> initialEffects = const [],
   }) =>
       _FeatureImpl(
         initialState: initialState,
         update: update,
         effectHandlers: effectHandlers,
-        initialEffect: initialEffect,
+        initialEffects: initialEffects,
       );
 
   /// A stream that provides updates to the state.

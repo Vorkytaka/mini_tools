@@ -10,11 +10,11 @@ final class _FeatureImpl<State, Event, Effect, News>
     required State initialState,
     required Update<State, Event, Effect, News> update,
     required List<EffectHandler<Effect, Event>> effectHandlers,
-    List<Effect> initialEffect = const [],
+    List<Effect> initialEffects = const [],
   })  : _stateSubject = BehaviorSubject.seeded(initialState, sync: true),
         _update = update,
         _effectHandlers = List.unmodifiable(effectHandlers),
-        _initialEffects = initialEffect;
+        _initialEffects = List.unmodifiable(initialEffects);
 
   final BehaviorSubject<State> _stateSubject;
   final _newsController = StreamController<News>.broadcast(sync: true);

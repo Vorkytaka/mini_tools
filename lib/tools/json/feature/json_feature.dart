@@ -4,6 +4,7 @@ import 'dart:isolate';
 import 'package:flutter/cupertino.dart';
 import 'package:json_path/json_path.dart';
 
+import '../../../common/mini_tea/effect_handler/debounce_effect_handler.dart';
 import '../../../common/mini_tea/feature/feature.dart';
 
 part 'json_effect.dart';
@@ -22,5 +23,5 @@ JsonFeature jsonFeatureFactory() => JsonFeature(
       initialState: const JsonState.init(),
       update: _jsonUpdate,
       effectHandlers: [_jsonEffectHandler],
-      initialEffect: const [],
+      initialEffects: const [],
     );
