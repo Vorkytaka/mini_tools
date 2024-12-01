@@ -18,7 +18,6 @@ Next<JsonState, JsonEffect, Object> _jsonUpdate(
         const [],
       );
     case OutputUpdateEvent():
-      return next();
       return (
         state.copyWith(output: event.output),
         const [],
