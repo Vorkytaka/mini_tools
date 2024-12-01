@@ -11,3 +11,8 @@ typedef Update<State, Event, Effect, News> = Next<State, Effect, News> Function(
   State state,
   Event event,
 );
+
+// ignore: one_member_abstracts
+abstract interface class IUpdate<State, Event, Effect, News> {
+  Next<State, Effect, News> call(State state, Event event);
+}

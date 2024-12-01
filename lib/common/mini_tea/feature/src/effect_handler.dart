@@ -15,3 +15,12 @@ typedef EffectHandler<Effect, Event> = FutureOr<void> Function(
   Effect effect,
   EventEmitter<Event> emit,
 );
+
+/// An interface that can be used as interface for class-based [EffectHandler].
+///
+/// Objects of classes that implements this interface can be used as [EffectHandler].
+//
+// ignore: one_member_abstracts
+abstract interface class IEffectHandler<Effect, Event> {
+  FutureOr<void> call(Effect effect, EventEmitter<Event> emit);
+}

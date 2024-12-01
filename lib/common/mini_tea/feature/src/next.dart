@@ -5,3 +5,15 @@ part of 'feature.dart';
 /// - [List<Effect>]: A list of side effects to be processed.
 /// - [List<News>]: A list of news messages to be sent.
 typedef Next<State, Effect, News> = (State?, List<Effect>, List<News>);
+
+/// Helper function to send [Next].
+///
+/// Just some sugar, so instead of  `return (null, const [], const []);`
+/// we will have                    `return next();`
+@pragma('vm:prefer-inline')
+(State?, List<Effect>, List<News>) next<State, Effect, News>({
+  State? state,
+  List<Effect> effects = const [],
+  List<News> news = const [],
+}) =>
+    (state, effects, news);

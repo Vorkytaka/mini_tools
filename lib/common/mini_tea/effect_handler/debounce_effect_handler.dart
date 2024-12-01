@@ -11,7 +11,8 @@ import '../feature/feature.dart';
 /// where effects are triggered in quick succession, and only the most recent
 /// effect needs to be processed after a delay.
 @experimental
-final class DebounceEffectHandler<Effect, Event> {
+final class DebounceEffectHandler<Effect, Event>
+    implements IEffectHandler<Effect, Event> {
   /// The duration for which effect handling should be delayed.
   final Duration duration;
 
@@ -39,7 +40,8 @@ final class DebounceEffectHandler<Effect, Event> {
   /// Parameters:
   /// - [effect]: The effect to be handled.
   /// - [emit]: A function to emit events as a result of handling the effect.
-  void handle(
+  @override
+  void call(
     Effect effect,
     EventEmitter<Event> emit,
   ) {
