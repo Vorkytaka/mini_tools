@@ -5,13 +5,13 @@ import 'package:cross_file/cross_file.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 import '../../common/file_drop_widget.dart';
 import '../../common/macos_read_only_field.dart';
 import '../../i18n/strings.g.dart';
-import 'hash_bloc.dart';
+import 'feature/hash_feature.dart';
+import 'hash_feature_utils.dart';
 
 extension on HashFormat {
   String format(BuildContext context) {
@@ -64,17 +64,39 @@ class _HashToolState extends State<HashTool> {
                 padding: const EdgeInsets.symmetric(horizontal: 4),
                 child: Row(
                   children: [
-                    BlocBuilder<HashCubit, HashState>(
+                    HashFeatureBuilder(
                       buildWhen: (prev, curr) =>
-                          prev.bytesCount != curr.bytesCount,
+                          prev.inputBytes != curr.inputBytes,
                       builder: (context, state) =>
-                          Text(s.hash.bytesCount(n: state.bytesCount)),
+                          Text(s.hash.bytesCount(n: state.inputBytes)),
                     ),
                     const Spacer(),
-                    BlocBuilder<HashCubit, HashState>(
+                    HashFeatureBuilder(
                       builder: (context, state) {
                         return MacosPopupButton(
-                          value: state.hashFormat,
+                          value: state.algorithm,
+                          items: HashAlgorithm.values
+                              .map(
+                                (algorithm) => MacosPopupMenuItem(
+                                  value: algorithm,
+                                  child: Text(algorithm.name),
+                                ),
+                              )
+                              .toList(growable: false),
+                          onChanged: (algorithm) {
+                            if (algorithm != null) {
+                              context
+                                  .hashFeature()
+                                  .accept(HashEvent.updateAlgorithm(algorithm));
+                            }
+                          },
+                        );
+                      },
+                    ),
+                    HashFeatureBuilder(
+                      builder: (context, state) {
+                        return MacosPopupButton(
+                          value: state.format,
                           items: HashFormat.values
                               .map(
                                 (type) => MacosPopupMenuItem(
@@ -84,8 +106,10 @@ class _HashToolState extends State<HashTool> {
                               )
                               .toList(growable: false),
                           onChanged: (format) {
-                            if (format != null && format != state.hashFormat) {
-                              context.read<HashCubit>().setFormat(format);
+                            if (format != null && format != state.format) {
+                              context
+                                  .hashFeature()
+                                  .accept(HashEvent.updateFormat(format));
                             }
                           },
                         );
@@ -95,17 +119,16 @@ class _HashToolState extends State<HashTool> {
                 ),
               ),
               const SizedBox(height: 16),
-              BlocBuilder<HashCubit, HashState>(
+              HashFeatureBuilder(
                 builder: (context, state) {
                   return Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      for (final hash in state.hashes)
-                        _DigestItem(
-                          digestName: hash.$1,
-                          bytes: hash.$2,
-                          codec: state.hashFormat.codec,
-                        ),
+                      _DigestItem(
+                        digestName: state.algorithm.name,
+                        bytes: state.hash,
+                        codec: state.format.codec,
+                      ),
                     ],
                   );
                 },
@@ -133,9 +156,9 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final s = Translations.of(context);
 
-    final pathToFile = context.watch<HashCubit>().state.input.fold(
-          ifLeft: (_) => null,
-          ifRight: (path) => path,
+    final pathToFile = context.hashFeature(listen: true).state.input.map(
+          text: (value) => null,
+          file: (value) => value.path,
         );
     final field = pathToFile != null
         ? MacosReadonlyField(
@@ -188,7 +211,7 @@ class _BodyState extends State<_Body> {
   }
 
   void _onTextChanged(String text) {
-    context.read<HashCubit>().onInputTextChanged(text);
+    context.hashFeature().accept(HashEvent.updateText(text));
   }
 
   Future<void> _onFilePicked() async {
@@ -200,11 +223,11 @@ class _BodyState extends State<_Body> {
   }
 
   void _dropFile() {
-    context.read<HashCubit>().dropFile();
+    context.hashFeature().accept(const HashEvent.dropFile());
   }
 
   void _update(XFile file) {
-    context.read<HashCubit>().onFileChanged(file.path);
+    context.hashFeature().accept(HashEvent.setFile(file.path));
   }
 }
 
