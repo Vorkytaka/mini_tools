@@ -18,6 +18,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   flutter_hsvcolor_picker: ^1.5.1
   flutter_timezone: ^2.1.0
+  freezed_annotation: ^2.4.4
   google_fonts: ^6.2.1
   intl: ^0.19.0
   json_path: ^0.7.4
@@ -38,9 +39,12 @@ dependencies:
   window_manager: ^0.4.0
 
 dev_dependencies:
+  build_runner: ^2.4.13
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
+  freezed: ^2.5.7
+  mocktail: ^1.0.4
 
 flutter:
   uses-material-design: true

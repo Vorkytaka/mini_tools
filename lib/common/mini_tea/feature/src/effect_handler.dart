@@ -5,6 +5,11 @@ part of 'feature.dart';
 /// This type is used to trigger events, typically in effect handlers.
 typedef EventEmitter<Event> = void Function(Event event);
 
+// ignore: one_member_abstracts
+abstract interface class IEventEmitter<Event> {
+  void call(Event event);
+}
+
 /// A function type for handling effects.
 ///
 /// This function is responsible for executing side effects that might result

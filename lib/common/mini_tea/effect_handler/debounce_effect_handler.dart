@@ -41,7 +41,7 @@ final class DebounceEffectHandler<Effect, Event>
   /// - [effect]: The effect to be handled.
   /// - [emit]: A function to emit events as a result of handling the effect.
   @override
-  void call(
+  FutureOr<void> call(
     Effect effect,
     EventEmitter<Event> emit,
   ) {
