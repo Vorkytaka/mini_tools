@@ -9,15 +9,14 @@ import '../event/hash_event.dart';
 import '../hash_feature.dart';
 
 final class IsolateHashEffectHandler
-    extends IsolateEffectHandler<HashEffect, HashEvent> {
+    extends IsolateEffectHandler<IsolateHashEffect, HashEvent> {
   const IsolateHashEffectHandler();
 
   @override
-  Future<void> handle(HashEffect effect, EventEmitter<HashEvent> emit) async {
-    if (effect is! IsolateHashEffect) {
-      return;
-    }
-
+  Future<void> handle(
+    IsolateHashEffect effect,
+    EventEmitter<HashEvent> emit,
+  ) async {
     switch (effect) {
       case CountFileHashEffect():
         await _fileHash(effect, emit);

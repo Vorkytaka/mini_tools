@@ -17,18 +17,6 @@ void main() {
   group('SyncHashEffectHandler Tests', () {
     const handler = SyncHashEffectHandler();
 
-    test('Ignores non-SyncHashEffect', () {
-      final mockEmitter = MockEventEmitter();
-
-      handler.handle(
-        const CountFileHashEffect('path', HashAlgorithm.sha1),
-        mockEmitter,
-      );
-
-      // Ensure nothing was emitted
-      verifyNever(() => mockEmitter(any()));
-    });
-
     test('Handles CountTextHashEffect with non-empty text', () {
       final mockEmitter = MockEventEmitter();
       const effect = CountTextHashEffect(
