@@ -3,24 +3,19 @@
 import 'package:pointycastle/export.dart';
 
 import '../../../../common/mini_tea/feature/feature.dart';
-import 'effect/hash_effect.dart';
-import 'effect_handler/isolate_hash_effect_handler.dart';
-import 'effect_handler/sync_hash_effect_handler.dart';
-import 'event/hash_event.dart';
-import 'state/hash_state.dart';
+import '../hash_feature.dart';
 
 part 'hash_update.dart';
 
 typedef HashFeature = Feature<HashState, HashEvent, HashEffect, void>;
 
-HashFeature hashFeatureFactory() => Feature(
+HashFeature hashFeatureFactory() =>
+    Feature<HashState, HashEvent, HashEffect, void>(
       initialState: HashState.init,
       update: const HashUpdate(),
-      effectHandlers: [
-        const SyncHashEffectHandler(),
-        const IsolateHashEffectHandler(),
-      ],
-    );
+    )
+        .wrap<IsolateHashEffect>(const IsolateHashEffectHandler())
+        .wrap<SyncHashEffect>(const SyncHashEffectHandler());
 
 extension HashAlgorithmUtils on HashAlgorithm {
   Digest get digest {

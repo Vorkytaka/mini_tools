@@ -7,15 +7,11 @@ import '../event/hash_event.dart';
 import '../hash_feature.dart';
 
 final class SyncHashEffectHandler
-    extends SyncEffectHandler<HashEffect, HashEvent> {
+    extends SyncEffectHandler<SyncHashEffect, HashEvent> {
   const SyncHashEffectHandler();
 
   @override
-  void handle(HashEffect effect, EventEmitter<HashEvent> emit) {
-    if (effect is! SyncHashEffect) {
-      return;
-    }
-
+  void handle(SyncHashEffect effect, EventEmitter<HashEvent> emit) {
     switch (effect) {
       case CountTextHashEffect():
         _textHash(effect, emit);
