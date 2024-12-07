@@ -11,14 +11,14 @@ final class _FeatureImpl<State, Event, Effect, News>
     required Update<State, Event, Effect, News> update,
     required List<EffectHandler<Effect, Event>> effectHandlers,
     List<Effect> initialEffects = const [],
-  })  : _stateSubject = BehaviorSubject.seeded(initialState, sync: true),
+  })  : _stateSubject = BehaviorSubject.seeded(initialState),
         _update = update,
         _effectHandlers = List.unmodifiable(effectHandlers),
         _initialEffects = List.unmodifiable(initialEffects);
 
   final BehaviorSubject<State> _stateSubject;
-  final _newsController = StreamController<News>.broadcast(sync: true);
-  final _effectsController = StreamController<Effect>.broadcast(sync: true);
+  final _newsController = StreamController<News>.broadcast();
+  final _effectsController = StreamController<Effect>.broadcast();
   final _handlersSubscriptions = CompositeSubscription();
 
   @override

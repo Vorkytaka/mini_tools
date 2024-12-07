@@ -4,8 +4,11 @@ import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'effect_handler.dart';
+part 'effect_handler_wrapper.dart';
 part 'feature_impl.dart';
+part 'feature_observer.dart';
 part 'next.dart';
+part 'proxy_feature.dart';
 part 'update.dart';
 
 /// An interface for building features.

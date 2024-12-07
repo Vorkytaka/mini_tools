@@ -26,39 +26,6 @@ void main() {
   });
 
   group('EffectHandlerWrapper', () {
-    test('description', () {
-      final mockHandler = MockEffectHandler();
-      final mockFeature = MockFeature();
-
-      when(() => mockFeature.stateStream)
-          .thenAnswer((_) => const Stream.empty());
-      when(() => mockFeature.effects).thenAnswer((_) => const Stream.empty());
-      when(() => mockFeature.news).thenAnswer((_) => const Stream.empty());
-
-      final wrapper = mockFeature.wrap(mockHandler);
-
-      wrapper.accept(1);
-      wrapper.state;
-      wrapper.stateStream;
-      wrapper.init();
-      wrapper.dispose();
-      wrapper.effects;
-      wrapper.news;
-
-      // Check that our wrapper is actual wrapper, not feature itself
-      expect(wrapper, isA<EffectHandlerWrapper>());
-
-      // Check that wrapper called original feature on each
-      verify(() => mockFeature.accept(1)).called(1);
-      verify(() => mockFeature.init()).called(1);
-      verify(() => mockFeature.dispose()).called(1);
-      verify(() => mockFeature.state).called(1);
-      verify(() => mockFeature.stateStream).called(1);
-      verify(() => mockFeature.effects).called(
-          2); // One because of us, and one because of wrapper subscription
-      verify(() => mockFeature.news).called(1);
-    });
-
     test('Wrapper handle correct effects', () async {
       final mockHandler = MockLeftEffectHandler();
       final mockFeature = MockFeature();

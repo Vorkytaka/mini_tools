@@ -9,8 +9,7 @@ part 'hash_update.dart';
 
 typedef HashFeature = Feature<HashState, HashEvent, HashEffect, void>;
 
-HashFeature hashFeatureFactory() =>
-    Feature<HashState, HashEvent, HashEffect, void>(
+HashFeature hashFeatureFactory() => HashFeature(
       initialState: HashState.init,
       update: const HashUpdate(),
     )

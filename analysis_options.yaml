@@ -3,6 +3,7 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
   exclude:
     - lib/i18n/**
+    - lib/**.freezed.dart
 
 # https://dart.dev/guides/language/analysis-options
 linter:

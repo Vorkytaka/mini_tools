@@ -1,17 +1,16 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:re_editor/re_editor.dart';
 import 'package:re_highlight/languages/sql.dart';
 
 import '../../common/code_themes.dart';
-import '../../common/either.dart';
 import '../../common/file_drop_widget.dart';
 import '../../common/macos_code_editor.dart';
 import '../../common/text_styles.dart';
 import '../../i18n/strings.g.dart';
-import 'sqlite_bloc.dart';
+import 'feature/sqlite_feature.dart';
+import 'sqlite_feature_utils.dart';
 
 class SqliteTool extends StatefulWidget {
   const SqliteTool({super.key});
@@ -36,7 +35,8 @@ class _SqliteToolState extends State<SqliteTool> {
     return FileDropWidget(
       onFileDropped: (file) {
         if (file != null) {
-          context.read<SqliteCubit>().importDatabase(file);
+          final path = file.path;
+          context.sqliteFeature().accept(SqliteEvent.importDb(path));
         }
       },
       child: MacosScaffold(
@@ -59,7 +59,9 @@ class _SqliteToolState extends State<SqliteTool> {
                         onTap: () {
                           final query = _queryController.text;
                           if (query.isNotEmpty) {
-                            context.read<SqliteCubit>().execute(query);
+                            context
+                                .sqliteFeature()
+                                .accept(SqliteEvent.execute(query));
                           }
                         },
                       ),
@@ -124,11 +126,12 @@ class _DropDatabaseButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = Translations.of(context);
 
-    return BlocBuilder<SqliteCubit, SqliteState>(
-      buildWhen: (prev, curr) => prev.databaseStatus != curr.databaseStatus,
+    return SqliteFeatureBuilder(
+      buildWhen: (prev, curr) => prev.connection != curr.connection,
       builder: (context, state) => PushButton(
-        onPressed: state.databaseStatus == SqliteDatabaseStatus.connected
-            ? () => context.read<SqliteCubit>().dropTable()
+        onPressed: state.isConnected
+            ? () =>
+                context.sqliteFeature().accept(const SqliteEvent.dropTable())
             : null,
         controlSize: ControlSize.regular,
         secondary: true,
@@ -149,16 +152,16 @@ class _TableInfoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = MacosTheme.of(context);
 
-    return BlocBuilder<SqliteCubit, SqliteState>(
-      buildWhen: (prev, curr) => prev.tablesInfo != curr.tablesInfo,
+    return SqliteFeatureBuilder(
+      buildWhen: (prev, curr) => prev.tables != curr.tables,
       builder: (context, state) {
         return ListView.separated(
           controller: controller,
-          itemCount: state.tablesInfo.length,
+          itemCount: state.tables.length,
           padding: const EdgeInsets.all(8),
           separatorBuilder: (context, i) => const SizedBox(height: 8),
           itemBuilder: (context, i) {
-            final info = state.tablesInfo[i];
+            final info = state.tables[i];
             return Card(
               margin: EdgeInsets.zero,
               elevation: 0,
@@ -222,23 +225,25 @@ class _History extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SqliteCubit, SqliteState>(builder: (context, state) {
-      return ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-        controller: controller,
-        itemCount: state.history.length,
-        separatorBuilder: (context, _) => const SizedBox(height: 8),
-        itemBuilder: (context, i) => _HistoryItem(
-          result: state.history[i],
-          onEdit: onItemEdit,
-        ),
-      );
-    });
+    return SqliteFeatureBuilder(
+      builder: (context, state) {
+        return ListView.separated(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+          controller: controller,
+          itemCount: state.results.length,
+          separatorBuilder: (context, _) => const SizedBox(height: 8),
+          itemBuilder: (context, i) => _HistoryItem(
+            result: state.results[i],
+            onEdit: onItemEdit,
+          ),
+        );
+      },
+    );
   }
 }
 
 class _HistoryItem extends StatelessWidget {
-  final QueryResult result;
+  final Result result;
   final ValueChanged<String> onEdit;
 
   const _HistoryItem({
@@ -248,12 +253,13 @@ class _HistoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final materialTheme = Theme.of(context);
     final theme = MacosTheme.of(context);
     final t = Translations.of(context);
 
-    final showResult = result.result.fold(
-      ifLeft: (_) => true,
-      ifRight: (result) => result.isNotEmpty,
+    final showResult = result.map(
+      failure: (_) => true,
+      success: (result) => result.result.isNotEmpty,
     );
 
     return Card(
@@ -273,7 +279,9 @@ class _HistoryItem extends StatelessWidget {
               children: [
                 _RunButton(
                   onTap: () {
-                    context.read<SqliteCubit>().execute(result.query);
+                    context
+                        .sqliteFeature()
+                        .accept(SqliteEvent.execute(result.query));
                   },
                 ),
                 const SizedBox(width: 8),
@@ -300,7 +308,20 @@ class _HistoryItem extends StatelessWidget {
                 Expanded(child: Text(result.query)),
                 if (showResult) ...[
                   const SizedBox(width: 8),
-                  Expanded(child: _Result(result: result.result)),
+                  Expanded(
+                    child: result.map(
+                      failure: (exc) => DefaultTextStyle.merge(
+                        style:
+                            TextStyle(color: materialTheme.colorScheme.error),
+                        child: Text(exc.error),
+                      ),
+                      success: (result) => Text(
+                        t.sqlite.rowAffected(
+                          count: result.result.length,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ],
             ),
@@ -329,28 +350,6 @@ class _HistoryItem extends StatelessWidget {
   }
 }
 
-class _Result extends StatelessWidget {
-  final Either<String, Iterable<dynamic>> result;
-
-  const _Result({
-    required this.result,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final t = Translations.of(context);
-
-    return result.fold(
-      ifLeft: (exc) => DefaultTextStyle.merge(
-        style: TextStyle(color: theme.colorScheme.error),
-        child: Text(exc),
-      ),
-      ifRight: (result) => Text(t.sqlite.rowAffected(count: result.length)),
-    );
-  }
-}
-
 class _ExportDatabaseButton extends StatelessWidget {
   const _ExportDatabaseButton();
 
@@ -358,18 +357,25 @@ class _ExportDatabaseButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = Translations.of(context);
 
-    return BlocBuilder<SqliteCubit, SqliteState>(
+    return SqliteFeatureBuilder(
       builder: (context, state) {
         return PushButton(
-          onPressed: state.databaseStatus == SqliteDatabaseStatus.connected
+          onPressed: state.isConnected
               ? () async {
-                  final cubit = context.read<SqliteCubit>();
+                  final cubit = context.sqliteFeature();
+
+                  final initialPath =
+                      state.connection.mapOrNull(file: (f) => f.folder);
+                  final name =
+                      state.connection.mapOrNull(file: (f) => f.name) ??
+                          'database.sqlite3';
+
                   final path = await FilePicker.platform.saveFile(
-                    fileName: state.fileInfo?.name ?? 'database.sqlite3',
-                    initialDirectory: state.fileInfo?.folder,
+                    fileName: name,
+                    initialDirectory: initialPath,
                   );
                   if (path != null) {
-                    cubit.exportDatabase(path);
+                    cubit.accept(SqliteEvent.exportDb(path));
                   }
                 }
               : null,
@@ -404,17 +410,17 @@ class _ImportDatabaseButton extends StatelessWidget {
   }
 
   static Future<void> onTap({required BuildContext context}) async {
-    final cubit = context.read<SqliteCubit>();
+    final cubit = context.sqliteFeature();
     final result = await FilePicker.platform.pickFiles();
     if (result != null && result.isSinglePick && result.xFiles.isNotEmpty) {
-      if (context.mounted &&
-          cubit.state.databaseStatus == SqliteDatabaseStatus.connected) {
+      if (context.mounted && cubit.state.isConnected) {
         final confirm = await confirmOverride(context: context);
         if (!confirm) {
           return;
         }
       }
-      await cubit.importDatabase(result.xFiles.first);
+      final path = result.xFiles.first.path;
+      cubit.accept(SqliteEvent.importDb(path));
     }
   }
 
