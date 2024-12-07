@@ -1,60 +1,77 @@
 import 'dart:async';
 
+import 'package:rxdart/rxdart.dart';
 import 'package:sqlite3/sqlite3.dart';
 
 import '../../common/either.dart';
 
-abstract interface class DatabaseHolder {
-  static DatabaseHolder factory() => DatabaseHolderImpl();
+sealed class DatabaseHolderConnection {
+  const DatabaseHolderConnection._();
+}
 
-  Stream<Database?> get databaseStream;
+final class Disconnect implements DatabaseHolderConnection {
+  const Disconnect();
+}
 
-  Stream<bool> get isConnectedStream;
+sealed class Connected implements DatabaseHolderConnection {
+  final Database database;
 
-  Database get database;
+  const Connected({required this.database});
+}
 
-  bool get isConnected;
+final class InMemory extends Connected {
+  const InMemory({required super.database});
+}
 
-  void setDatabase(Database database);
+final class File extends Connected {
+  final String path;
+
+  const File({required super.database, required this.path});
+}
+
+abstract interface class NewDatabaseHolder {
+  Stream<DatabaseHolderConnection> get connection;
+
+  Stream<Database?> get database;
 
   void disposeDatabase();
 
-  Future<bool> setDatabaseFromPath(String path);
+  Future<bool> fromPath(String path);
 
   Either<SqliteException, Iterable<dynamic>> execute(String query);
+
+  ResultSet rawExecute(String query);
 }
 
-class DatabaseHolderImpl implements DatabaseHolder {
-  Database? _database;
-  final _streamController = StreamController<Database?>.broadcast();
-
-  DatabaseHolderImpl();
+final class NewDatabaseHolderImpl implements NewDatabaseHolder {
+  final _subject =
+      BehaviorSubject<DatabaseHolderConnection>.seeded(const Disconnect());
 
   @override
-  Stream<Database?> get databaseStream => _streamController.stream;
+  Stream<DatabaseHolderConnection> get connection => _subject.stream;
 
   @override
-  Stream<bool> get isConnectedStream =>
-      _streamController.stream.map((db) => db != null);
+  Stream<Database?> get database => _subject.stream.map(_fromConnection);
+
+  Database? _fromConnection(DatabaseHolderConnection conn) => conn.toDatabase;
 
   @override
-  Database get database {
-    if (_database == null) {
-      setDatabase(sqlite3.openInMemory());
+  void disposeDatabase() {
+    final db = _subject.value.toDatabase;
+    if (db != null) {
+      db.dispose();
+      _subject.add(const Disconnect());
     }
-    return _database!;
   }
 
   @override
-  bool get isConnected => _database != null;
-
-  @override
-  Future<bool> setDatabaseFromPath(String path) async {
+  Future<bool> fromPath(String path) async {
     final fileConn = sqlite3.open(path);
     final inMemConn = sqlite3.openInMemory();
     try {
       await fileConn.backup(inMemConn, nPage: 1024).drain();
-      setDatabase(inMemConn);
+      final conn = File(database: inMemConn, path: path);
+      _setDatabase(conn);
       return true;
     } on SqliteException catch (_) {
       inMemConn.dispose();
@@ -65,29 +82,46 @@ class DatabaseHolderImpl implements DatabaseHolder {
   }
 
   @override
-  void setDatabase(Database database) {
-    if (_database != null) {
-      disposeDatabase();
-    }
-    _database = database;
-    _streamController.add(_database);
-  }
-
-  @override
-  void disposeDatabase() {
-    _database?.dispose();
-    _database = null;
-    _streamController.add(null);
-  }
-
-  @override
   Either<SqliteException, Iterable> execute(String query) {
     assert(query.isNotEmpty);
 
     try {
+      final database = _getDatabase();
       return Either.right(database.select(query).toList(growable: false));
     } on SqliteException catch (e) {
       return Either.left(e);
     }
+  }
+
+  // Can throw [SqliteException]
+  @override
+  ResultSet rawExecute(String query) {
+    final database = _getDatabase();
+    return database.select(query);
+  }
+
+  void _setDatabase(DatabaseHolderConnection conn) {
+    disposeDatabase();
+    _subject.add(conn);
+  }
+
+  Database _getDatabase() {
+    Database? database = _subject.value.toDatabase;
+    if (database == null) {
+      database = sqlite3.openInMemory();
+      _subject.value = InMemory(database: database);
+    }
+    return database;
+  }
+}
+
+extension on DatabaseHolderConnection {
+  Database? get toDatabase {
+    final conn = this;
+    return switch (conn) {
+      Disconnect() => null,
+      InMemory() => conn.database,
+      File() => conn.database,
+    };
   }
 }

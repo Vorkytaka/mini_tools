@@ -19,6 +19,7 @@ class FeatureTool<F extends Feature<S, Ev, Ef, N>, S, Ev, Ef, N>
   Widget buildScreen(BuildContext context) {
     return FeatureProvider.value(
       value: feature,
+      lazy: true,
       child: Builder(builder: screenBuilder),
     );
   }

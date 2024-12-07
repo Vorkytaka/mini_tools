@@ -6,25 +6,40 @@ import '../../feature/feature.dart';
 typedef CreateFeature<F extends Feature<S, Ev, Ef, N>, S, Ev, Ef, N> = F
     Function(BuildContext context);
 
+typedef DisposeFeature<F extends Feature<S, Ev, Ef, N>, S, Ev, Ef, N> = void
+    Function(F feature);
+
 class FeatureProvider<F extends Feature<S, Ev, Ef, N>, S, Ev, Ef, N>
     extends StatelessWidget {
   final F? _value;
   final CreateFeature<F, S, Ev, Ef, N>? _create;
+
+  /// This callback will called right before [Feature.dispose].
+  ///
+  /// You can use it to send last events to clean some resources.
+  final DisposeFeature<F, S, Ev, Ef, N>? _onDispose;
   final Widget child;
+
+  final bool lazy;
 
   const FeatureProvider.create({
     required CreateFeature<F, S, Ev, Ef, N> create,
     required this.child,
+    DisposeFeature<F, S, Ev, Ef, N>? onDispose,
+    this.lazy = false,
     super.key,
   })  : _value = null,
-        _create = create;
+        _create = create,
+        _onDispose = onDispose;
 
   const FeatureProvider.value({
     required F value,
     required this.child,
+    this.lazy = false,
     super.key,
   })  : _value = value,
-        _create = null;
+        _create = null,
+        _onDispose = null;
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +51,17 @@ class FeatureProvider<F extends Feature<S, Ev, Ef, N>, S, Ev, Ef, N>
         ? InheritedProvider<F>.value(
             value: value,
             startListening: _startListening,
-            lazy: false,
+            lazy: lazy,
             child: child,
           )
         : InheritedProvider<F>(
             create: _create,
             startListening: _startListening,
-            dispose: (_, feature) => feature.dispose(),
-            lazy: false,
+            dispose: (_, feature) {
+              _onDispose?.call(feature);
+              feature.dispose();
+            },
+            lazy: lazy,
             child: child,
           );
   }
