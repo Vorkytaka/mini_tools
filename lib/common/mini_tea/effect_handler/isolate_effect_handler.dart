@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 import '../feature/feature.dart';
 
 @experimental
-abstract class IsolateEffectHandler<Effect, Msg>
+abstract base class IsolateEffectHandler<Effect, Msg>
     implements IEffectHandler<Effect, Msg> {
   const IsolateEffectHandler();
 

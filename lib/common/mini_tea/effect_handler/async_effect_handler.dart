@@ -3,7 +3,7 @@ import 'package:meta/meta.dart';
 import '../feature/feature.dart';
 
 @experimental
-abstract class AsyncEffectHandler<Effect, Msg>
+abstract base class AsyncEffectHandler<Effect, Msg>
     implements IEffectHandler<Effect, Msg> {
   const AsyncEffectHandler();
 
