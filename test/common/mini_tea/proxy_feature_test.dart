@@ -17,7 +17,6 @@ void main() {
 
     when(() => mockFeature.stateStream).thenAnswer((_) => const Stream.empty());
     when(() => mockFeature.effects).thenAnswer((_) => const Stream.empty());
-    when(() => mockFeature.news).thenAnswer((_) => const Stream.empty());
 
     proxyFeature.accept(1);
     proxyFeature.state;
@@ -25,7 +24,6 @@ void main() {
     proxyFeature.init();
     proxyFeature.dispose();
     proxyFeature.effects;
-    proxyFeature.news;
 
     verify(() => mockFeature.accept(1)).called(1);
     verify(() => mockFeature.init()).called(1);
@@ -33,6 +31,5 @@ void main() {
     verify(() => mockFeature.state).called(1);
     verify(() => mockFeature.stateStream).called(1);
     verify(() => mockFeature.effects).called(1);
-    verify(() => mockFeature.news).called(1);
   });
 }

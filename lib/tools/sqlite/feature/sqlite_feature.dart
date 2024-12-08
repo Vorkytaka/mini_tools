@@ -13,7 +13,7 @@ export 'src/sqlite_effect_handler.dart';
 export 'src/sqlite_update.dart';
 export 'src/state/sqlite_state.dart';
 
-typedef SqliteFeature = Feature<SqliteState, SqliteEvent, SqliteEffect, void>;
+typedef SqliteFeature = Feature<SqliteState, SqliteEvent, SqliteEffect>;
 
 SqliteFeature sqliteFeatureFactory() => SqliteFeature(
       initialState: SqliteState.init,

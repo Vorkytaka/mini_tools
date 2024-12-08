@@ -2,18 +2,20 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:rxdart/rxdart.dart';
 
 import '../../feature/feature.dart';
+import '../../feature/src/feature.dart';
 import '../flutter.dart';
 import 'feature_listener.dart';
 
-class FeatureNewsListener<F extends Feature<S, Ev, Ef, N>, S, Ev, Ef, N>
-    extends StatefulWidget {
-  final FeatureWidgetListener<N> listener;
+class FeatureEffectListener<F extends Feature<S, Ev, Ef>, S, Ev, Ef,
+    E extends Ef> extends StatefulWidget {
+  final FeatureWidgetListener<E> listener;
   final F? feature;
   final Widget child;
 
-  const FeatureNewsListener({
+  const FeatureEffectListener({
     required this.listener,
     required this.child,
     this.feature,
@@ -22,12 +24,12 @@ class FeatureNewsListener<F extends Feature<S, Ev, Ef, N>, S, Ev, Ef, N>
 
   @override
   State<StatefulWidget> createState() {
-    return _FeatureNewsListener<F, S, Ev, Ef, N>();
+    return _FeatureEffectListener<F, S, Ev, Ef, E>();
   }
 }
 
-class _FeatureNewsListener<F extends Feature<S, Ev, Ef, N>, S, Ev, Ef, N>
-    extends State<FeatureNewsListener<F, S, Ev, Ef, N>> {
+class _FeatureEffectListener<F extends Feature<S, Ev, Ef>, S, Ev, Ef,
+    E extends Ef> extends State<FeatureEffectListener<F, S, Ev, Ef, E>> {
   late F _feature;
   StreamSubscription? _subscription;
 
@@ -53,7 +55,7 @@ class _FeatureNewsListener<F extends Feature<S, Ev, Ef, N>, S, Ev, Ef, N>
 
   @override
   void didUpdateWidget(
-    covariant FeatureNewsListener<F, S, Ev, Ef, N> oldWidget,
+    covariant FeatureEffectListener<F, S, Ev, Ef, E> oldWidget,
   ) {
     super.didUpdateWidget(oldWidget);
 
@@ -72,7 +74,7 @@ class _FeatureNewsListener<F extends Feature<S, Ev, Ef, N>, S, Ev, Ef, N>
   }
 
   void _subscribe() {
-    _subscription = _feature.news.listen((news) {
+    _subscription = _feature.effects.whereType<E>().listen((news) {
       if (mounted) {
         widget.listener(context, news);
       }

@@ -10,8 +10,7 @@ class LeftEffect implements Effect {}
 
 class RightEffect implements Effect {}
 
-class MockFeature extends Mock
-    implements Feature<dynamic, dynamic, Effect, dynamic> {}
+class MockFeature extends Mock implements Feature<dynamic, dynamic, Effect> {}
 
 class MockEffectHandler extends Mock
     implements IEffectHandler<Effect, dynamic> {}

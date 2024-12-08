@@ -3,7 +3,7 @@ import 'effect/sqlite_effect.dart';
 import 'event/sqlite_event.dart';
 import 'state/sqlite_state.dart';
 
-Next<SqliteState, SqliteEffect, void> sqliteUpdate(
+Next<SqliteState, SqliteEffect> sqliteUpdate(
   SqliteState state,
   SqliteEvent event,
 ) {

@@ -10,4 +10,4 @@ extension HashBuildContext on BuildContext {
 }
 
 typedef HashFeatureBuilder
-    = FeatureBuilder<HashFeature, HashState, HashEvent, HashEffect, void>;
+    = FeatureBuilder<HashFeature, HashState, HashEvent, HashEffect>;

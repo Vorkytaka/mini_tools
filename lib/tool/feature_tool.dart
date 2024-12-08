@@ -4,8 +4,7 @@ import '../common/mini_tea/feature/feature.dart';
 import '../common/mini_tea/flutter/flutter.dart';
 import 'base_tool.dart';
 
-class FeatureTool<F extends Feature<S, Ev, Ef, N>, S, Ev, Ef, N>
-    extends BaseTool {
+class FeatureTool<F extends Feature<S, Ev, Ef>, S, Ev, Ef> extends BaseTool {
   final F feature;
 
   const FeatureTool({

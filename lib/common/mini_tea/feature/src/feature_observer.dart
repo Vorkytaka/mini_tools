@@ -1,7 +1,7 @@
 part of 'feature.dart';
 
-abstract class FeatureObserver<S, Ev, Ef, N> {
-  void onCreate(Feature<S, Ev, Ef, N> feature) {}
+abstract class FeatureObserver<S, Ev, Ef> {
+  void onCreate(Feature<S, Ev, Ef> feature) {}
 
   void onInit() {}
 
@@ -12,13 +12,10 @@ abstract class FeatureObserver<S, Ev, Ef, N> {
   void onEvent(Ev event) {}
 
   void onEffect(Ef effect) {}
-
-  void onNews(N news) {}
 }
 
-final class FeatureObserverWrapper<S, Ev, Ef, N>
-    extends ProxyFeature<S, Ev, Ef, N> {
-  final FeatureObserver<S, Ev, Ef, N> observer;
+final class FeatureObserverWrapper<S, Ev, Ef> extends ProxyFeature<S, Ev, Ef> {
+  final FeatureObserver<S, Ev, Ef> observer;
   final _subscription = CompositeSubscription();
 
   FeatureObserverWrapper({
@@ -39,7 +36,6 @@ final class FeatureObserverWrapper<S, Ev, Ef, N>
     observer.onInit();
     stateStream.listen(observer.onState).addTo(_subscription);
     effects.listen(observer.onEffect).addTo(_subscription);
-    news.listen(observer.onNews).addTo(_subscription);
     return super.init();
   }
 

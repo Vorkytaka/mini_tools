@@ -13,7 +13,7 @@ part 'json_event.dart';
 part 'json_state.dart';
 part 'json_update.dart';
 
-typedef JsonFeature = Feature<JsonState, JsonEvent, JsonEffect, void>;
+typedef JsonFeature = Feature<JsonState, JsonEvent, JsonEffect>;
 
 JsonFeature jsonFeatureFactory() => JsonFeature(
       initialState: const JsonState.init(),

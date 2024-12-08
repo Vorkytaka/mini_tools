@@ -3,14 +3,15 @@ import 'package:flutter/widgets.dart';
 import '../../../common/mini_tea/feature/feature.dart';
 
 part 'number_base_event.dart';
+
 part 'number_base_state.dart';
+
 part 'number_base_update.dart';
 
-typedef NumberBaseFeature
-    = Feature<NumberBaseState, NumberBaseEvent, void, void>;
+typedef NumberBaseFeature = Feature<NumberBaseState, NumberBaseEvent, void>;
 
 NumberBaseFeature numberBaseFeatureFactory() =>
-    Feature<NumberBaseState, NumberBaseEvent, void, void>(
+    Feature<NumberBaseState, NumberBaseEvent, void>(
       initialState: const NumberBaseState.init(),
       update: _updateNumberBase,
     );
