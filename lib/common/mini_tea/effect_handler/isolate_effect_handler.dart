@@ -6,23 +6,23 @@ import 'package:meta/meta.dart';
 import '../feature/feature.dart';
 
 @experimental
-abstract class IsolateEffectHandler<Effect, Event>
-    implements IEffectHandler<Effect, Event> {
+abstract class IsolateEffectHandler<Effect, Msg>
+    implements IEffectHandler<Effect, Msg> {
   const IsolateEffectHandler();
 
-  FutureOr<void> handle(Effect effect, EventEmitter<Event> emit);
+  FutureOr<void> handle(Effect effect, MsgEmitter<Msg> emit);
 
   @override
-  Future<void> call(Effect effect, EventEmitter<Event> emit) async {
+  Future<void> call(Effect effect, MsgEmitter<Msg> emit) async {
     final receivePort = ReceivePort();
 
     final isolate = await Isolate.spawn(
-      _runInIsolate<Effect, Event>,
+      _runInIsolate<Effect, Msg>,
       _IsolateParams(effect, receivePort.sendPort, handle),
     );
 
     await for (final message in receivePort) {
-      if (message is Event) {
+      if (message is Msg) {
         emit(message);
       } else if (message == _doneEvent) {
         receivePort.close();
@@ -32,12 +32,12 @@ abstract class IsolateEffectHandler<Effect, Event>
     }
   }
 
-  static Future<void> _runInIsolate<Effect, Event>(
-    _IsolateParams<Effect, Event> params,
+  static Future<void> _runInIsolate<Effect, Msg>(
+    _IsolateParams<Effect, Msg> params,
   ) async {
     // Imitate emit, so, given handler will work as is
-    void isolateEmit(Event event) {
-      params.sendPort.send(event);
+    void isolateEmit(Msg message) {
+      params.sendPort.send(message);
     }
 
     await params.handler(params.effect, isolateEmit);
@@ -49,10 +49,10 @@ abstract class IsolateEffectHandler<Effect, Event>
 }
 
 // Helper class to pass everything we need to an isolate
-class _IsolateParams<Effect, Event> {
+class _IsolateParams<Effect, Msg> {
   final Effect effect;
   final SendPort sendPort;
-  final EffectHandler<Effect, Event> handler;
+  final EffectHandler<Effect, Msg> handler;
 
   const _IsolateParams(
     this.effect,

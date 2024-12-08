@@ -3,14 +3,14 @@ import 'package:meta/meta.dart';
 import '../feature/feature.dart';
 
 @experimental
-abstract class AsyncEffectHandler<Effect, Event>
-    implements IEffectHandler<Effect, Event> {
+abstract class AsyncEffectHandler<Effect, Msg>
+    implements IEffectHandler<Effect, Msg> {
   const AsyncEffectHandler();
 
-  Future<void> handle(Effect effect, EventEmitter<Event> emit);
+  Future<void> handle(Effect effect, MsgEmitter<Msg> emit);
 
   @override
-  Future<void> call(Effect effect, EventEmitter<Event> emit) async {
+  Future<void> call(Effect effect, MsgEmitter<Msg> emit) async {
     return handle(effect, emit);
   }
 }

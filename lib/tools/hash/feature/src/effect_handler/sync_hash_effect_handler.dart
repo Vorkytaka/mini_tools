@@ -11,7 +11,7 @@ final class SyncHashEffectHandler
   const SyncHashEffectHandler();
 
   @override
-  void handle(SyncHashEffect effect, EventEmitter<HashEvent> emit) {
+  void handle(SyncHashEffect effect, MsgEmitter<HashEvent> emit) {
     switch (effect) {
       case CountTextHashEffect():
         _textHash(effect, emit);
@@ -21,7 +21,7 @@ final class SyncHashEffectHandler
 
   static void _textHash(
     CountTextHashEffect effect,
-    EventEmitter<HashEvent> emit,
+    MsgEmitter<HashEvent> emit,
   ) {
     final Uint8List? hash;
     if (effect.text.isEmpty) {

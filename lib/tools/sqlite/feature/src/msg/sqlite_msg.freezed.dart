@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'sqlite_event.dart';
+part of 'sqlite_msg.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$SqliteEvent {
+mixin _$SqliteMsg {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String query) execute,
@@ -55,89 +55,88 @@ mixin _$SqliteEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteEvent value) execute,
-    required TResult Function(QueryResultEvent value) queryResult,
-    required TResult Function(ImportDbEvent value) importDb,
-    required TResult Function(ExportDbEvent value) exportDb,
-    required TResult Function(DropTable value) dropTable,
-    required TResult Function(TableInfoEvent value) tableInfo,
-    required TResult Function(ConnectionChangedEvent value) connectionChanged,
-    required TResult Function(DisposeEvent value) dispose,
+    required TResult Function(ExecuteMsg value) execute,
+    required TResult Function(QueryResultMsg value) queryResult,
+    required TResult Function(ImportDbMsg value) importDb,
+    required TResult Function(ExportDbMsg value) exportDb,
+    required TResult Function(DropTableMsg value) dropTable,
+    required TResult Function(TableInfoMsg value) tableInfo,
+    required TResult Function(ConnectionChangedMsg value) connectionChanged,
+    required TResult Function(DisposeMsg value) dispose,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteEvent value)? execute,
-    TResult? Function(QueryResultEvent value)? queryResult,
-    TResult? Function(ImportDbEvent value)? importDb,
-    TResult? Function(ExportDbEvent value)? exportDb,
-    TResult? Function(DropTable value)? dropTable,
-    TResult? Function(TableInfoEvent value)? tableInfo,
-    TResult? Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult? Function(DisposeEvent value)? dispose,
+    TResult? Function(ExecuteMsg value)? execute,
+    TResult? Function(QueryResultMsg value)? queryResult,
+    TResult? Function(ImportDbMsg value)? importDb,
+    TResult? Function(ExportDbMsg value)? exportDb,
+    TResult? Function(DropTableMsg value)? dropTable,
+    TResult? Function(TableInfoMsg value)? tableInfo,
+    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult? Function(DisposeMsg value)? dispose,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteEvent value)? execute,
-    TResult Function(QueryResultEvent value)? queryResult,
-    TResult Function(ImportDbEvent value)? importDb,
-    TResult Function(ExportDbEvent value)? exportDb,
-    TResult Function(DropTable value)? dropTable,
-    TResult Function(TableInfoEvent value)? tableInfo,
-    TResult Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult Function(DisposeEvent value)? dispose,
+    TResult Function(ExecuteMsg value)? execute,
+    TResult Function(QueryResultMsg value)? queryResult,
+    TResult Function(ImportDbMsg value)? importDb,
+    TResult Function(ExportDbMsg value)? exportDb,
+    TResult Function(DropTableMsg value)? dropTable,
+    TResult Function(TableInfoMsg value)? tableInfo,
+    TResult Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult Function(DisposeMsg value)? dispose,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SqliteEventCopyWith<$Res> {
-  factory $SqliteEventCopyWith(
-          SqliteEvent value, $Res Function(SqliteEvent) then) =
-      _$SqliteEventCopyWithImpl<$Res, SqliteEvent>;
+abstract class $SqliteMsgCopyWith<$Res> {
+  factory $SqliteMsgCopyWith(SqliteMsg value, $Res Function(SqliteMsg) then) =
+      _$SqliteMsgCopyWithImpl<$Res, SqliteMsg>;
 }
 
 /// @nodoc
-class _$SqliteEventCopyWithImpl<$Res, $Val extends SqliteEvent>
-    implements $SqliteEventCopyWith<$Res> {
-  _$SqliteEventCopyWithImpl(this._value, this._then);
+class _$SqliteMsgCopyWithImpl<$Res, $Val extends SqliteMsg>
+    implements $SqliteMsgCopyWith<$Res> {
+  _$SqliteMsgCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
-abstract class _$$ExecuteEventImplCopyWith<$Res> {
-  factory _$$ExecuteEventImplCopyWith(
-          _$ExecuteEventImpl value, $Res Function(_$ExecuteEventImpl) then) =
-      __$$ExecuteEventImplCopyWithImpl<$Res>;
+abstract class _$$ExecuteMsgImplCopyWith<$Res> {
+  factory _$$ExecuteMsgImplCopyWith(
+          _$ExecuteMsgImpl value, $Res Function(_$ExecuteMsgImpl) then) =
+      __$$ExecuteMsgImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String query});
 }
 
 /// @nodoc
-class __$$ExecuteEventImplCopyWithImpl<$Res>
-    extends _$SqliteEventCopyWithImpl<$Res, _$ExecuteEventImpl>
-    implements _$$ExecuteEventImplCopyWith<$Res> {
-  __$$ExecuteEventImplCopyWithImpl(
-      _$ExecuteEventImpl _value, $Res Function(_$ExecuteEventImpl) _then)
+class __$$ExecuteMsgImplCopyWithImpl<$Res>
+    extends _$SqliteMsgCopyWithImpl<$Res, _$ExecuteMsgImpl>
+    implements _$$ExecuteMsgImplCopyWith<$Res> {
+  __$$ExecuteMsgImplCopyWithImpl(
+      _$ExecuteMsgImpl _value, $Res Function(_$ExecuteMsgImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? query = null,
   }) {
-    return _then(_$ExecuteEventImpl(
+    return _then(_$ExecuteMsgImpl(
       null == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
@@ -148,35 +147,35 @@ class __$$ExecuteEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ExecuteEventImpl implements ExecuteEvent {
-  const _$ExecuteEventImpl(this.query);
+class _$ExecuteMsgImpl implements ExecuteMsg {
+  const _$ExecuteMsgImpl(this.query);
 
   @override
   final String query;
 
   @override
   String toString() {
-    return 'SqliteEvent.execute(query: $query)';
+    return 'SqliteMsg.execute(query: $query)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ExecuteEventImpl &&
+            other is _$ExecuteMsgImpl &&
             (identical(other.query, query) || other.query == query));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, query);
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ExecuteEventImplCopyWith<_$ExecuteEventImpl> get copyWith =>
-      __$$ExecuteEventImplCopyWithImpl<_$ExecuteEventImpl>(this, _$identity);
+  _$$ExecuteMsgImplCopyWith<_$ExecuteMsgImpl> get copyWith =>
+      __$$ExecuteMsgImplCopyWithImpl<_$ExecuteMsgImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -230,14 +229,14 @@ class _$ExecuteEventImpl implements ExecuteEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteEvent value) execute,
-    required TResult Function(QueryResultEvent value) queryResult,
-    required TResult Function(ImportDbEvent value) importDb,
-    required TResult Function(ExportDbEvent value) exportDb,
-    required TResult Function(DropTable value) dropTable,
-    required TResult Function(TableInfoEvent value) tableInfo,
-    required TResult Function(ConnectionChangedEvent value) connectionChanged,
-    required TResult Function(DisposeEvent value) dispose,
+    required TResult Function(ExecuteMsg value) execute,
+    required TResult Function(QueryResultMsg value) queryResult,
+    required TResult Function(ImportDbMsg value) importDb,
+    required TResult Function(ExportDbMsg value) exportDb,
+    required TResult Function(DropTableMsg value) dropTable,
+    required TResult Function(TableInfoMsg value) tableInfo,
+    required TResult Function(ConnectionChangedMsg value) connectionChanged,
+    required TResult Function(DisposeMsg value) dispose,
   }) {
     return execute(this);
   }
@@ -245,14 +244,14 @@ class _$ExecuteEventImpl implements ExecuteEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteEvent value)? execute,
-    TResult? Function(QueryResultEvent value)? queryResult,
-    TResult? Function(ImportDbEvent value)? importDb,
-    TResult? Function(ExportDbEvent value)? exportDb,
-    TResult? Function(DropTable value)? dropTable,
-    TResult? Function(TableInfoEvent value)? tableInfo,
-    TResult? Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult? Function(DisposeEvent value)? dispose,
+    TResult? Function(ExecuteMsg value)? execute,
+    TResult? Function(QueryResultMsg value)? queryResult,
+    TResult? Function(ImportDbMsg value)? importDb,
+    TResult? Function(ExportDbMsg value)? exportDb,
+    TResult? Function(DropTableMsg value)? dropTable,
+    TResult? Function(TableInfoMsg value)? tableInfo,
+    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult? Function(DisposeMsg value)? dispose,
   }) {
     return execute?.call(this);
   }
@@ -260,14 +259,14 @@ class _$ExecuteEventImpl implements ExecuteEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteEvent value)? execute,
-    TResult Function(QueryResultEvent value)? queryResult,
-    TResult Function(ImportDbEvent value)? importDb,
-    TResult Function(ExportDbEvent value)? exportDb,
-    TResult Function(DropTable value)? dropTable,
-    TResult Function(TableInfoEvent value)? tableInfo,
-    TResult Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult Function(DisposeEvent value)? dispose,
+    TResult Function(ExecuteMsg value)? execute,
+    TResult Function(QueryResultMsg value)? queryResult,
+    TResult Function(ImportDbMsg value)? importDb,
+    TResult Function(ExportDbMsg value)? exportDb,
+    TResult Function(DropTableMsg value)? dropTable,
+    TResult Function(TableInfoMsg value)? tableInfo,
+    TResult Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult Function(DisposeMsg value)? dispose,
     required TResult orElse(),
   }) {
     if (execute != null) {
@@ -277,23 +276,23 @@ class _$ExecuteEventImpl implements ExecuteEvent {
   }
 }
 
-abstract class ExecuteEvent implements SqliteEvent {
-  const factory ExecuteEvent(final String query) = _$ExecuteEventImpl;
+abstract class ExecuteMsg implements SqliteMsg {
+  const factory ExecuteMsg(final String query) = _$ExecuteMsgImpl;
 
   String get query;
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ExecuteEventImplCopyWith<_$ExecuteEventImpl> get copyWith =>
+  _$$ExecuteMsgImplCopyWith<_$ExecuteMsgImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$QueryResultEventImplCopyWith<$Res> {
-  factory _$$QueryResultEventImplCopyWith(_$QueryResultEventImpl value,
-          $Res Function(_$QueryResultEventImpl) then) =
-      __$$QueryResultEventImplCopyWithImpl<$Res>;
+abstract class _$$QueryResultMsgImplCopyWith<$Res> {
+  factory _$$QueryResultMsgImplCopyWith(_$QueryResultMsgImpl value,
+          $Res Function(_$QueryResultMsgImpl) then) =
+      __$$QueryResultMsgImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Result result});
 
@@ -301,21 +300,21 @@ abstract class _$$QueryResultEventImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$QueryResultEventImplCopyWithImpl<$Res>
-    extends _$SqliteEventCopyWithImpl<$Res, _$QueryResultEventImpl>
-    implements _$$QueryResultEventImplCopyWith<$Res> {
-  __$$QueryResultEventImplCopyWithImpl(_$QueryResultEventImpl _value,
-      $Res Function(_$QueryResultEventImpl) _then)
+class __$$QueryResultMsgImplCopyWithImpl<$Res>
+    extends _$SqliteMsgCopyWithImpl<$Res, _$QueryResultMsgImpl>
+    implements _$$QueryResultMsgImplCopyWith<$Res> {
+  __$$QueryResultMsgImplCopyWithImpl(
+      _$QueryResultMsgImpl _value, $Res Function(_$QueryResultMsgImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$QueryResultEventImpl(
+    return _then(_$QueryResultMsgImpl(
       null == result
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
@@ -323,7 +322,7 @@ class __$$QueryResultEventImplCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -336,35 +335,35 @@ class __$$QueryResultEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$QueryResultEventImpl implements QueryResultEvent {
-  const _$QueryResultEventImpl(this.result);
+class _$QueryResultMsgImpl implements QueryResultMsg {
+  const _$QueryResultMsgImpl(this.result);
 
   @override
   final Result result;
 
   @override
   String toString() {
-    return 'SqliteEvent.queryResult(result: $result)';
+    return 'SqliteMsg.queryResult(result: $result)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$QueryResultEventImpl &&
+            other is _$QueryResultMsgImpl &&
             (identical(other.result, result) || other.result == result));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, result);
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$QueryResultEventImplCopyWith<_$QueryResultEventImpl> get copyWith =>
-      __$$QueryResultEventImplCopyWithImpl<_$QueryResultEventImpl>(
+  _$$QueryResultMsgImplCopyWith<_$QueryResultMsgImpl> get copyWith =>
+      __$$QueryResultMsgImplCopyWithImpl<_$QueryResultMsgImpl>(
           this, _$identity);
 
   @override
@@ -419,14 +418,14 @@ class _$QueryResultEventImpl implements QueryResultEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteEvent value) execute,
-    required TResult Function(QueryResultEvent value) queryResult,
-    required TResult Function(ImportDbEvent value) importDb,
-    required TResult Function(ExportDbEvent value) exportDb,
-    required TResult Function(DropTable value) dropTable,
-    required TResult Function(TableInfoEvent value) tableInfo,
-    required TResult Function(ConnectionChangedEvent value) connectionChanged,
-    required TResult Function(DisposeEvent value) dispose,
+    required TResult Function(ExecuteMsg value) execute,
+    required TResult Function(QueryResultMsg value) queryResult,
+    required TResult Function(ImportDbMsg value) importDb,
+    required TResult Function(ExportDbMsg value) exportDb,
+    required TResult Function(DropTableMsg value) dropTable,
+    required TResult Function(TableInfoMsg value) tableInfo,
+    required TResult Function(ConnectionChangedMsg value) connectionChanged,
+    required TResult Function(DisposeMsg value) dispose,
   }) {
     return queryResult(this);
   }
@@ -434,14 +433,14 @@ class _$QueryResultEventImpl implements QueryResultEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteEvent value)? execute,
-    TResult? Function(QueryResultEvent value)? queryResult,
-    TResult? Function(ImportDbEvent value)? importDb,
-    TResult? Function(ExportDbEvent value)? exportDb,
-    TResult? Function(DropTable value)? dropTable,
-    TResult? Function(TableInfoEvent value)? tableInfo,
-    TResult? Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult? Function(DisposeEvent value)? dispose,
+    TResult? Function(ExecuteMsg value)? execute,
+    TResult? Function(QueryResultMsg value)? queryResult,
+    TResult? Function(ImportDbMsg value)? importDb,
+    TResult? Function(ExportDbMsg value)? exportDb,
+    TResult? Function(DropTableMsg value)? dropTable,
+    TResult? Function(TableInfoMsg value)? tableInfo,
+    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult? Function(DisposeMsg value)? dispose,
   }) {
     return queryResult?.call(this);
   }
@@ -449,14 +448,14 @@ class _$QueryResultEventImpl implements QueryResultEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteEvent value)? execute,
-    TResult Function(QueryResultEvent value)? queryResult,
-    TResult Function(ImportDbEvent value)? importDb,
-    TResult Function(ExportDbEvent value)? exportDb,
-    TResult Function(DropTable value)? dropTable,
-    TResult Function(TableInfoEvent value)? tableInfo,
-    TResult Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult Function(DisposeEvent value)? dispose,
+    TResult Function(ExecuteMsg value)? execute,
+    TResult Function(QueryResultMsg value)? queryResult,
+    TResult Function(ImportDbMsg value)? importDb,
+    TResult Function(ExportDbMsg value)? exportDb,
+    TResult Function(DropTableMsg value)? dropTable,
+    TResult Function(TableInfoMsg value)? tableInfo,
+    TResult Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult Function(DisposeMsg value)? dispose,
     required TResult orElse(),
   }) {
     if (queryResult != null) {
@@ -466,43 +465,43 @@ class _$QueryResultEventImpl implements QueryResultEvent {
   }
 }
 
-abstract class QueryResultEvent implements SqliteEvent {
-  const factory QueryResultEvent(final Result result) = _$QueryResultEventImpl;
+abstract class QueryResultMsg implements SqliteMsg {
+  const factory QueryResultMsg(final Result result) = _$QueryResultMsgImpl;
 
   Result get result;
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$QueryResultEventImplCopyWith<_$QueryResultEventImpl> get copyWith =>
+  _$$QueryResultMsgImplCopyWith<_$QueryResultMsgImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ImportDbEventImplCopyWith<$Res> {
-  factory _$$ImportDbEventImplCopyWith(
-          _$ImportDbEventImpl value, $Res Function(_$ImportDbEventImpl) then) =
-      __$$ImportDbEventImplCopyWithImpl<$Res>;
+abstract class _$$ImportDbMsgImplCopyWith<$Res> {
+  factory _$$ImportDbMsgImplCopyWith(
+          _$ImportDbMsgImpl value, $Res Function(_$ImportDbMsgImpl) then) =
+      __$$ImportDbMsgImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String path});
 }
 
 /// @nodoc
-class __$$ImportDbEventImplCopyWithImpl<$Res>
-    extends _$SqliteEventCopyWithImpl<$Res, _$ImportDbEventImpl>
-    implements _$$ImportDbEventImplCopyWith<$Res> {
-  __$$ImportDbEventImplCopyWithImpl(
-      _$ImportDbEventImpl _value, $Res Function(_$ImportDbEventImpl) _then)
+class __$$ImportDbMsgImplCopyWithImpl<$Res>
+    extends _$SqliteMsgCopyWithImpl<$Res, _$ImportDbMsgImpl>
+    implements _$$ImportDbMsgImplCopyWith<$Res> {
+  __$$ImportDbMsgImplCopyWithImpl(
+      _$ImportDbMsgImpl _value, $Res Function(_$ImportDbMsgImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? path = null,
   }) {
-    return _then(_$ImportDbEventImpl(
+    return _then(_$ImportDbMsgImpl(
       null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -513,35 +512,35 @@ class __$$ImportDbEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ImportDbEventImpl implements ImportDbEvent {
-  const _$ImportDbEventImpl(this.path);
+class _$ImportDbMsgImpl implements ImportDbMsg {
+  const _$ImportDbMsgImpl(this.path);
 
   @override
   final String path;
 
   @override
   String toString() {
-    return 'SqliteEvent.importDb(path: $path)';
+    return 'SqliteMsg.importDb(path: $path)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ImportDbEventImpl &&
+            other is _$ImportDbMsgImpl &&
             (identical(other.path, path) || other.path == path));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, path);
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ImportDbEventImplCopyWith<_$ImportDbEventImpl> get copyWith =>
-      __$$ImportDbEventImplCopyWithImpl<_$ImportDbEventImpl>(this, _$identity);
+  _$$ImportDbMsgImplCopyWith<_$ImportDbMsgImpl> get copyWith =>
+      __$$ImportDbMsgImplCopyWithImpl<_$ImportDbMsgImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -595,14 +594,14 @@ class _$ImportDbEventImpl implements ImportDbEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteEvent value) execute,
-    required TResult Function(QueryResultEvent value) queryResult,
-    required TResult Function(ImportDbEvent value) importDb,
-    required TResult Function(ExportDbEvent value) exportDb,
-    required TResult Function(DropTable value) dropTable,
-    required TResult Function(TableInfoEvent value) tableInfo,
-    required TResult Function(ConnectionChangedEvent value) connectionChanged,
-    required TResult Function(DisposeEvent value) dispose,
+    required TResult Function(ExecuteMsg value) execute,
+    required TResult Function(QueryResultMsg value) queryResult,
+    required TResult Function(ImportDbMsg value) importDb,
+    required TResult Function(ExportDbMsg value) exportDb,
+    required TResult Function(DropTableMsg value) dropTable,
+    required TResult Function(TableInfoMsg value) tableInfo,
+    required TResult Function(ConnectionChangedMsg value) connectionChanged,
+    required TResult Function(DisposeMsg value) dispose,
   }) {
     return importDb(this);
   }
@@ -610,14 +609,14 @@ class _$ImportDbEventImpl implements ImportDbEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteEvent value)? execute,
-    TResult? Function(QueryResultEvent value)? queryResult,
-    TResult? Function(ImportDbEvent value)? importDb,
-    TResult? Function(ExportDbEvent value)? exportDb,
-    TResult? Function(DropTable value)? dropTable,
-    TResult? Function(TableInfoEvent value)? tableInfo,
-    TResult? Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult? Function(DisposeEvent value)? dispose,
+    TResult? Function(ExecuteMsg value)? execute,
+    TResult? Function(QueryResultMsg value)? queryResult,
+    TResult? Function(ImportDbMsg value)? importDb,
+    TResult? Function(ExportDbMsg value)? exportDb,
+    TResult? Function(DropTableMsg value)? dropTable,
+    TResult? Function(TableInfoMsg value)? tableInfo,
+    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult? Function(DisposeMsg value)? dispose,
   }) {
     return importDb?.call(this);
   }
@@ -625,14 +624,14 @@ class _$ImportDbEventImpl implements ImportDbEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteEvent value)? execute,
-    TResult Function(QueryResultEvent value)? queryResult,
-    TResult Function(ImportDbEvent value)? importDb,
-    TResult Function(ExportDbEvent value)? exportDb,
-    TResult Function(DropTable value)? dropTable,
-    TResult Function(TableInfoEvent value)? tableInfo,
-    TResult Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult Function(DisposeEvent value)? dispose,
+    TResult Function(ExecuteMsg value)? execute,
+    TResult Function(QueryResultMsg value)? queryResult,
+    TResult Function(ImportDbMsg value)? importDb,
+    TResult Function(ExportDbMsg value)? exportDb,
+    TResult Function(DropTableMsg value)? dropTable,
+    TResult Function(TableInfoMsg value)? tableInfo,
+    TResult Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult Function(DisposeMsg value)? dispose,
     required TResult orElse(),
   }) {
     if (importDb != null) {
@@ -642,43 +641,43 @@ class _$ImportDbEventImpl implements ImportDbEvent {
   }
 }
 
-abstract class ImportDbEvent implements SqliteEvent {
-  const factory ImportDbEvent(final String path) = _$ImportDbEventImpl;
+abstract class ImportDbMsg implements SqliteMsg {
+  const factory ImportDbMsg(final String path) = _$ImportDbMsgImpl;
 
   String get path;
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ImportDbEventImplCopyWith<_$ImportDbEventImpl> get copyWith =>
+  _$$ImportDbMsgImplCopyWith<_$ImportDbMsgImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ExportDbEventImplCopyWith<$Res> {
-  factory _$$ExportDbEventImplCopyWith(
-          _$ExportDbEventImpl value, $Res Function(_$ExportDbEventImpl) then) =
-      __$$ExportDbEventImplCopyWithImpl<$Res>;
+abstract class _$$ExportDbMsgImplCopyWith<$Res> {
+  factory _$$ExportDbMsgImplCopyWith(
+          _$ExportDbMsgImpl value, $Res Function(_$ExportDbMsgImpl) then) =
+      __$$ExportDbMsgImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String path});
 }
 
 /// @nodoc
-class __$$ExportDbEventImplCopyWithImpl<$Res>
-    extends _$SqliteEventCopyWithImpl<$Res, _$ExportDbEventImpl>
-    implements _$$ExportDbEventImplCopyWith<$Res> {
-  __$$ExportDbEventImplCopyWithImpl(
-      _$ExportDbEventImpl _value, $Res Function(_$ExportDbEventImpl) _then)
+class __$$ExportDbMsgImplCopyWithImpl<$Res>
+    extends _$SqliteMsgCopyWithImpl<$Res, _$ExportDbMsgImpl>
+    implements _$$ExportDbMsgImplCopyWith<$Res> {
+  __$$ExportDbMsgImplCopyWithImpl(
+      _$ExportDbMsgImpl _value, $Res Function(_$ExportDbMsgImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? path = null,
   }) {
-    return _then(_$ExportDbEventImpl(
+    return _then(_$ExportDbMsgImpl(
       null == path
           ? _value.path
           : path // ignore: cast_nullable_to_non_nullable
@@ -689,35 +688,35 @@ class __$$ExportDbEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ExportDbEventImpl implements ExportDbEvent {
-  const _$ExportDbEventImpl(this.path);
+class _$ExportDbMsgImpl implements ExportDbMsg {
+  const _$ExportDbMsgImpl(this.path);
 
   @override
   final String path;
 
   @override
   String toString() {
-    return 'SqliteEvent.exportDb(path: $path)';
+    return 'SqliteMsg.exportDb(path: $path)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ExportDbEventImpl &&
+            other is _$ExportDbMsgImpl &&
             (identical(other.path, path) || other.path == path));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, path);
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ExportDbEventImplCopyWith<_$ExportDbEventImpl> get copyWith =>
-      __$$ExportDbEventImplCopyWithImpl<_$ExportDbEventImpl>(this, _$identity);
+  _$$ExportDbMsgImplCopyWith<_$ExportDbMsgImpl> get copyWith =>
+      __$$ExportDbMsgImplCopyWithImpl<_$ExportDbMsgImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -771,14 +770,14 @@ class _$ExportDbEventImpl implements ExportDbEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteEvent value) execute,
-    required TResult Function(QueryResultEvent value) queryResult,
-    required TResult Function(ImportDbEvent value) importDb,
-    required TResult Function(ExportDbEvent value) exportDb,
-    required TResult Function(DropTable value) dropTable,
-    required TResult Function(TableInfoEvent value) tableInfo,
-    required TResult Function(ConnectionChangedEvent value) connectionChanged,
-    required TResult Function(DisposeEvent value) dispose,
+    required TResult Function(ExecuteMsg value) execute,
+    required TResult Function(QueryResultMsg value) queryResult,
+    required TResult Function(ImportDbMsg value) importDb,
+    required TResult Function(ExportDbMsg value) exportDb,
+    required TResult Function(DropTableMsg value) dropTable,
+    required TResult Function(TableInfoMsg value) tableInfo,
+    required TResult Function(ConnectionChangedMsg value) connectionChanged,
+    required TResult Function(DisposeMsg value) dispose,
   }) {
     return exportDb(this);
   }
@@ -786,14 +785,14 @@ class _$ExportDbEventImpl implements ExportDbEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteEvent value)? execute,
-    TResult? Function(QueryResultEvent value)? queryResult,
-    TResult? Function(ImportDbEvent value)? importDb,
-    TResult? Function(ExportDbEvent value)? exportDb,
-    TResult? Function(DropTable value)? dropTable,
-    TResult? Function(TableInfoEvent value)? tableInfo,
-    TResult? Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult? Function(DisposeEvent value)? dispose,
+    TResult? Function(ExecuteMsg value)? execute,
+    TResult? Function(QueryResultMsg value)? queryResult,
+    TResult? Function(ImportDbMsg value)? importDb,
+    TResult? Function(ExportDbMsg value)? exportDb,
+    TResult? Function(DropTableMsg value)? dropTable,
+    TResult? Function(TableInfoMsg value)? tableInfo,
+    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult? Function(DisposeMsg value)? dispose,
   }) {
     return exportDb?.call(this);
   }
@@ -801,14 +800,14 @@ class _$ExportDbEventImpl implements ExportDbEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteEvent value)? execute,
-    TResult Function(QueryResultEvent value)? queryResult,
-    TResult Function(ImportDbEvent value)? importDb,
-    TResult Function(ExportDbEvent value)? exportDb,
-    TResult Function(DropTable value)? dropTable,
-    TResult Function(TableInfoEvent value)? tableInfo,
-    TResult Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult Function(DisposeEvent value)? dispose,
+    TResult Function(ExecuteMsg value)? execute,
+    TResult Function(QueryResultMsg value)? queryResult,
+    TResult Function(ImportDbMsg value)? importDb,
+    TResult Function(ExportDbMsg value)? exportDb,
+    TResult Function(DropTableMsg value)? dropTable,
+    TResult Function(TableInfoMsg value)? tableInfo,
+    TResult Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult Function(DisposeMsg value)? dispose,
     required TResult orElse(),
   }) {
     if (exportDb != null) {
@@ -818,51 +817,51 @@ class _$ExportDbEventImpl implements ExportDbEvent {
   }
 }
 
-abstract class ExportDbEvent implements SqliteEvent {
-  const factory ExportDbEvent(final String path) = _$ExportDbEventImpl;
+abstract class ExportDbMsg implements SqliteMsg {
+  const factory ExportDbMsg(final String path) = _$ExportDbMsgImpl;
 
   String get path;
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ExportDbEventImplCopyWith<_$ExportDbEventImpl> get copyWith =>
+  _$$ExportDbMsgImplCopyWith<_$ExportDbMsgImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DropTableImplCopyWith<$Res> {
-  factory _$$DropTableImplCopyWith(
-          _$DropTableImpl value, $Res Function(_$DropTableImpl) then) =
-      __$$DropTableImplCopyWithImpl<$Res>;
+abstract class _$$DropTableMsgImplCopyWith<$Res> {
+  factory _$$DropTableMsgImplCopyWith(
+          _$DropTableMsgImpl value, $Res Function(_$DropTableMsgImpl) then) =
+      __$$DropTableMsgImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$DropTableImplCopyWithImpl<$Res>
-    extends _$SqliteEventCopyWithImpl<$Res, _$DropTableImpl>
-    implements _$$DropTableImplCopyWith<$Res> {
-  __$$DropTableImplCopyWithImpl(
-      _$DropTableImpl _value, $Res Function(_$DropTableImpl) _then)
+class __$$DropTableMsgImplCopyWithImpl<$Res>
+    extends _$SqliteMsgCopyWithImpl<$Res, _$DropTableMsgImpl>
+    implements _$$DropTableMsgImplCopyWith<$Res> {
+  __$$DropTableMsgImplCopyWithImpl(
+      _$DropTableMsgImpl _value, $Res Function(_$DropTableMsgImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$DropTableImpl implements DropTable {
-  const _$DropTableImpl();
+class _$DropTableMsgImpl implements DropTableMsg {
+  const _$DropTableMsgImpl();
 
   @override
   String toString() {
-    return 'SqliteEvent.dropTable()';
+    return 'SqliteMsg.dropTable()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$DropTableImpl);
+        (other.runtimeType == runtimeType && other is _$DropTableMsgImpl);
   }
 
   @override
@@ -920,14 +919,14 @@ class _$DropTableImpl implements DropTable {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteEvent value) execute,
-    required TResult Function(QueryResultEvent value) queryResult,
-    required TResult Function(ImportDbEvent value) importDb,
-    required TResult Function(ExportDbEvent value) exportDb,
-    required TResult Function(DropTable value) dropTable,
-    required TResult Function(TableInfoEvent value) tableInfo,
-    required TResult Function(ConnectionChangedEvent value) connectionChanged,
-    required TResult Function(DisposeEvent value) dispose,
+    required TResult Function(ExecuteMsg value) execute,
+    required TResult Function(QueryResultMsg value) queryResult,
+    required TResult Function(ImportDbMsg value) importDb,
+    required TResult Function(ExportDbMsg value) exportDb,
+    required TResult Function(DropTableMsg value) dropTable,
+    required TResult Function(TableInfoMsg value) tableInfo,
+    required TResult Function(ConnectionChangedMsg value) connectionChanged,
+    required TResult Function(DisposeMsg value) dispose,
   }) {
     return dropTable(this);
   }
@@ -935,14 +934,14 @@ class _$DropTableImpl implements DropTable {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteEvent value)? execute,
-    TResult? Function(QueryResultEvent value)? queryResult,
-    TResult? Function(ImportDbEvent value)? importDb,
-    TResult? Function(ExportDbEvent value)? exportDb,
-    TResult? Function(DropTable value)? dropTable,
-    TResult? Function(TableInfoEvent value)? tableInfo,
-    TResult? Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult? Function(DisposeEvent value)? dispose,
+    TResult? Function(ExecuteMsg value)? execute,
+    TResult? Function(QueryResultMsg value)? queryResult,
+    TResult? Function(ImportDbMsg value)? importDb,
+    TResult? Function(ExportDbMsg value)? exportDb,
+    TResult? Function(DropTableMsg value)? dropTable,
+    TResult? Function(TableInfoMsg value)? tableInfo,
+    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult? Function(DisposeMsg value)? dispose,
   }) {
     return dropTable?.call(this);
   }
@@ -950,14 +949,14 @@ class _$DropTableImpl implements DropTable {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteEvent value)? execute,
-    TResult Function(QueryResultEvent value)? queryResult,
-    TResult Function(ImportDbEvent value)? importDb,
-    TResult Function(ExportDbEvent value)? exportDb,
-    TResult Function(DropTable value)? dropTable,
-    TResult Function(TableInfoEvent value)? tableInfo,
-    TResult Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult Function(DisposeEvent value)? dispose,
+    TResult Function(ExecuteMsg value)? execute,
+    TResult Function(QueryResultMsg value)? queryResult,
+    TResult Function(ImportDbMsg value)? importDb,
+    TResult Function(ExportDbMsg value)? exportDb,
+    TResult Function(DropTableMsg value)? dropTable,
+    TResult Function(TableInfoMsg value)? tableInfo,
+    TResult Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult Function(DisposeMsg value)? dispose,
     required TResult orElse(),
   }) {
     if (dropTable != null) {
@@ -967,35 +966,35 @@ class _$DropTableImpl implements DropTable {
   }
 }
 
-abstract class DropTable implements SqliteEvent {
-  const factory DropTable() = _$DropTableImpl;
+abstract class DropTableMsg implements SqliteMsg {
+  const factory DropTableMsg() = _$DropTableMsgImpl;
 }
 
 /// @nodoc
-abstract class _$$TableInfoEventImplCopyWith<$Res> {
-  factory _$$TableInfoEventImplCopyWith(_$TableInfoEventImpl value,
-          $Res Function(_$TableInfoEventImpl) then) =
-      __$$TableInfoEventImplCopyWithImpl<$Res>;
+abstract class _$$TableInfoMsgImplCopyWith<$Res> {
+  factory _$$TableInfoMsgImplCopyWith(
+          _$TableInfoMsgImpl value, $Res Function(_$TableInfoMsgImpl) then) =
+      __$$TableInfoMsgImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<TableInfo> tables});
 }
 
 /// @nodoc
-class __$$TableInfoEventImplCopyWithImpl<$Res>
-    extends _$SqliteEventCopyWithImpl<$Res, _$TableInfoEventImpl>
-    implements _$$TableInfoEventImplCopyWith<$Res> {
-  __$$TableInfoEventImplCopyWithImpl(
-      _$TableInfoEventImpl _value, $Res Function(_$TableInfoEventImpl) _then)
+class __$$TableInfoMsgImplCopyWithImpl<$Res>
+    extends _$SqliteMsgCopyWithImpl<$Res, _$TableInfoMsgImpl>
+    implements _$$TableInfoMsgImplCopyWith<$Res> {
+  __$$TableInfoMsgImplCopyWithImpl(
+      _$TableInfoMsgImpl _value, $Res Function(_$TableInfoMsgImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? tables = null,
   }) {
-    return _then(_$TableInfoEventImpl(
+    return _then(_$TableInfoMsgImpl(
       null == tables
           ? _value._tables
           : tables // ignore: cast_nullable_to_non_nullable
@@ -1006,8 +1005,8 @@ class __$$TableInfoEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$TableInfoEventImpl implements TableInfoEvent {
-  const _$TableInfoEventImpl(final List<TableInfo> tables) : _tables = tables;
+class _$TableInfoMsgImpl implements TableInfoMsg {
+  const _$TableInfoMsgImpl(final List<TableInfo> tables) : _tables = tables;
 
   final List<TableInfo> _tables;
   @override
@@ -1019,14 +1018,14 @@ class _$TableInfoEventImpl implements TableInfoEvent {
 
   @override
   String toString() {
-    return 'SqliteEvent.tableInfo(tables: $tables)';
+    return 'SqliteMsg.tableInfo(tables: $tables)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TableInfoEventImpl &&
+            other is _$TableInfoMsgImpl &&
             const DeepCollectionEquality().equals(other._tables, _tables));
   }
 
@@ -1034,14 +1033,13 @@ class _$TableInfoEventImpl implements TableInfoEvent {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_tables));
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TableInfoEventImplCopyWith<_$TableInfoEventImpl> get copyWith =>
-      __$$TableInfoEventImplCopyWithImpl<_$TableInfoEventImpl>(
-          this, _$identity);
+  _$$TableInfoMsgImplCopyWith<_$TableInfoMsgImpl> get copyWith =>
+      __$$TableInfoMsgImplCopyWithImpl<_$TableInfoMsgImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1095,14 +1093,14 @@ class _$TableInfoEventImpl implements TableInfoEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteEvent value) execute,
-    required TResult Function(QueryResultEvent value) queryResult,
-    required TResult Function(ImportDbEvent value) importDb,
-    required TResult Function(ExportDbEvent value) exportDb,
-    required TResult Function(DropTable value) dropTable,
-    required TResult Function(TableInfoEvent value) tableInfo,
-    required TResult Function(ConnectionChangedEvent value) connectionChanged,
-    required TResult Function(DisposeEvent value) dispose,
+    required TResult Function(ExecuteMsg value) execute,
+    required TResult Function(QueryResultMsg value) queryResult,
+    required TResult Function(ImportDbMsg value) importDb,
+    required TResult Function(ExportDbMsg value) exportDb,
+    required TResult Function(DropTableMsg value) dropTable,
+    required TResult Function(TableInfoMsg value) tableInfo,
+    required TResult Function(ConnectionChangedMsg value) connectionChanged,
+    required TResult Function(DisposeMsg value) dispose,
   }) {
     return tableInfo(this);
   }
@@ -1110,14 +1108,14 @@ class _$TableInfoEventImpl implements TableInfoEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteEvent value)? execute,
-    TResult? Function(QueryResultEvent value)? queryResult,
-    TResult? Function(ImportDbEvent value)? importDb,
-    TResult? Function(ExportDbEvent value)? exportDb,
-    TResult? Function(DropTable value)? dropTable,
-    TResult? Function(TableInfoEvent value)? tableInfo,
-    TResult? Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult? Function(DisposeEvent value)? dispose,
+    TResult? Function(ExecuteMsg value)? execute,
+    TResult? Function(QueryResultMsg value)? queryResult,
+    TResult? Function(ImportDbMsg value)? importDb,
+    TResult? Function(ExportDbMsg value)? exportDb,
+    TResult? Function(DropTableMsg value)? dropTable,
+    TResult? Function(TableInfoMsg value)? tableInfo,
+    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult? Function(DisposeMsg value)? dispose,
   }) {
     return tableInfo?.call(this);
   }
@@ -1125,14 +1123,14 @@ class _$TableInfoEventImpl implements TableInfoEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteEvent value)? execute,
-    TResult Function(QueryResultEvent value)? queryResult,
-    TResult Function(ImportDbEvent value)? importDb,
-    TResult Function(ExportDbEvent value)? exportDb,
-    TResult Function(DropTable value)? dropTable,
-    TResult Function(TableInfoEvent value)? tableInfo,
-    TResult Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult Function(DisposeEvent value)? dispose,
+    TResult Function(ExecuteMsg value)? execute,
+    TResult Function(QueryResultMsg value)? queryResult,
+    TResult Function(ImportDbMsg value)? importDb,
+    TResult Function(ExportDbMsg value)? exportDb,
+    TResult Function(DropTableMsg value)? dropTable,
+    TResult Function(TableInfoMsg value)? tableInfo,
+    TResult Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult Function(DisposeMsg value)? dispose,
     required TResult orElse(),
   }) {
     if (tableInfo != null) {
@@ -1142,25 +1140,23 @@ class _$TableInfoEventImpl implements TableInfoEvent {
   }
 }
 
-abstract class TableInfoEvent implements SqliteEvent {
-  const factory TableInfoEvent(final List<TableInfo> tables) =
-      _$TableInfoEventImpl;
+abstract class TableInfoMsg implements SqliteMsg {
+  const factory TableInfoMsg(final List<TableInfo> tables) = _$TableInfoMsgImpl;
 
   List<TableInfo> get tables;
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TableInfoEventImplCopyWith<_$TableInfoEventImpl> get copyWith =>
+  _$$TableInfoMsgImplCopyWith<_$TableInfoMsgImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ConnectionChangedEventImplCopyWith<$Res> {
-  factory _$$ConnectionChangedEventImplCopyWith(
-          _$ConnectionChangedEventImpl value,
-          $Res Function(_$ConnectionChangedEventImpl) then) =
-      __$$ConnectionChangedEventImplCopyWithImpl<$Res>;
+abstract class _$$ConnectionChangedMsgImplCopyWith<$Res> {
+  factory _$$ConnectionChangedMsgImplCopyWith(_$ConnectionChangedMsgImpl value,
+          $Res Function(_$ConnectionChangedMsgImpl) then) =
+      __$$ConnectionChangedMsgImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DatabaseConnection connection});
 
@@ -1168,22 +1164,21 @@ abstract class _$$ConnectionChangedEventImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ConnectionChangedEventImplCopyWithImpl<$Res>
-    extends _$SqliteEventCopyWithImpl<$Res, _$ConnectionChangedEventImpl>
-    implements _$$ConnectionChangedEventImplCopyWith<$Res> {
-  __$$ConnectionChangedEventImplCopyWithImpl(
-      _$ConnectionChangedEventImpl _value,
-      $Res Function(_$ConnectionChangedEventImpl) _then)
+class __$$ConnectionChangedMsgImplCopyWithImpl<$Res>
+    extends _$SqliteMsgCopyWithImpl<$Res, _$ConnectionChangedMsgImpl>
+    implements _$$ConnectionChangedMsgImplCopyWith<$Res> {
+  __$$ConnectionChangedMsgImplCopyWithImpl(_$ConnectionChangedMsgImpl _value,
+      $Res Function(_$ConnectionChangedMsgImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? connection = null,
   }) {
-    return _then(_$ConnectionChangedEventImpl(
+    return _then(_$ConnectionChangedMsgImpl(
       null == connection
           ? _value.connection
           : connection // ignore: cast_nullable_to_non_nullable
@@ -1191,7 +1186,7 @@ class __$$ConnectionChangedEventImplCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -1204,22 +1199,22 @@ class __$$ConnectionChangedEventImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ConnectionChangedEventImpl implements ConnectionChangedEvent {
-  const _$ConnectionChangedEventImpl(this.connection);
+class _$ConnectionChangedMsgImpl implements ConnectionChangedMsg {
+  const _$ConnectionChangedMsgImpl(this.connection);
 
   @override
   final DatabaseConnection connection;
 
   @override
   String toString() {
-    return 'SqliteEvent.connectionChanged(connection: $connection)';
+    return 'SqliteMsg.connectionChanged(connection: $connection)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ConnectionChangedEventImpl &&
+            other is _$ConnectionChangedMsgImpl &&
             (identical(other.connection, connection) ||
                 other.connection == connection));
   }
@@ -1227,14 +1222,15 @@ class _$ConnectionChangedEventImpl implements ConnectionChangedEvent {
   @override
   int get hashCode => Object.hash(runtimeType, connection);
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ConnectionChangedEventImplCopyWith<_$ConnectionChangedEventImpl>
-      get copyWith => __$$ConnectionChangedEventImplCopyWithImpl<
-          _$ConnectionChangedEventImpl>(this, _$identity);
+  _$$ConnectionChangedMsgImplCopyWith<_$ConnectionChangedMsgImpl>
+      get copyWith =>
+          __$$ConnectionChangedMsgImplCopyWithImpl<_$ConnectionChangedMsgImpl>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1288,14 +1284,14 @@ class _$ConnectionChangedEventImpl implements ConnectionChangedEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteEvent value) execute,
-    required TResult Function(QueryResultEvent value) queryResult,
-    required TResult Function(ImportDbEvent value) importDb,
-    required TResult Function(ExportDbEvent value) exportDb,
-    required TResult Function(DropTable value) dropTable,
-    required TResult Function(TableInfoEvent value) tableInfo,
-    required TResult Function(ConnectionChangedEvent value) connectionChanged,
-    required TResult Function(DisposeEvent value) dispose,
+    required TResult Function(ExecuteMsg value) execute,
+    required TResult Function(QueryResultMsg value) queryResult,
+    required TResult Function(ImportDbMsg value) importDb,
+    required TResult Function(ExportDbMsg value) exportDb,
+    required TResult Function(DropTableMsg value) dropTable,
+    required TResult Function(TableInfoMsg value) tableInfo,
+    required TResult Function(ConnectionChangedMsg value) connectionChanged,
+    required TResult Function(DisposeMsg value) dispose,
   }) {
     return connectionChanged(this);
   }
@@ -1303,14 +1299,14 @@ class _$ConnectionChangedEventImpl implements ConnectionChangedEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteEvent value)? execute,
-    TResult? Function(QueryResultEvent value)? queryResult,
-    TResult? Function(ImportDbEvent value)? importDb,
-    TResult? Function(ExportDbEvent value)? exportDb,
-    TResult? Function(DropTable value)? dropTable,
-    TResult? Function(TableInfoEvent value)? tableInfo,
-    TResult? Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult? Function(DisposeEvent value)? dispose,
+    TResult? Function(ExecuteMsg value)? execute,
+    TResult? Function(QueryResultMsg value)? queryResult,
+    TResult? Function(ImportDbMsg value)? importDb,
+    TResult? Function(ExportDbMsg value)? exportDb,
+    TResult? Function(DropTableMsg value)? dropTable,
+    TResult? Function(TableInfoMsg value)? tableInfo,
+    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult? Function(DisposeMsg value)? dispose,
   }) {
     return connectionChanged?.call(this);
   }
@@ -1318,14 +1314,14 @@ class _$ConnectionChangedEventImpl implements ConnectionChangedEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteEvent value)? execute,
-    TResult Function(QueryResultEvent value)? queryResult,
-    TResult Function(ImportDbEvent value)? importDb,
-    TResult Function(ExportDbEvent value)? exportDb,
-    TResult Function(DropTable value)? dropTable,
-    TResult Function(TableInfoEvent value)? tableInfo,
-    TResult Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult Function(DisposeEvent value)? dispose,
+    TResult Function(ExecuteMsg value)? execute,
+    TResult Function(QueryResultMsg value)? queryResult,
+    TResult Function(ImportDbMsg value)? importDb,
+    TResult Function(ExportDbMsg value)? exportDb,
+    TResult Function(DropTableMsg value)? dropTable,
+    TResult Function(TableInfoMsg value)? tableInfo,
+    TResult Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult Function(DisposeMsg value)? dispose,
     required TResult orElse(),
   }) {
     if (connectionChanged != null) {
@@ -1335,52 +1331,52 @@ class _$ConnectionChangedEventImpl implements ConnectionChangedEvent {
   }
 }
 
-abstract class ConnectionChangedEvent implements SqliteEvent {
-  const factory ConnectionChangedEvent(final DatabaseConnection connection) =
-      _$ConnectionChangedEventImpl;
+abstract class ConnectionChangedMsg implements SqliteMsg {
+  const factory ConnectionChangedMsg(final DatabaseConnection connection) =
+      _$ConnectionChangedMsgImpl;
 
   DatabaseConnection get connection;
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ConnectionChangedEventImplCopyWith<_$ConnectionChangedEventImpl>
+  _$$ConnectionChangedMsgImplCopyWith<_$ConnectionChangedMsgImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$DisposeEventImplCopyWith<$Res> {
-  factory _$$DisposeEventImplCopyWith(
-          _$DisposeEventImpl value, $Res Function(_$DisposeEventImpl) then) =
-      __$$DisposeEventImplCopyWithImpl<$Res>;
+abstract class _$$DisposeMsgImplCopyWith<$Res> {
+  factory _$$DisposeMsgImplCopyWith(
+          _$DisposeMsgImpl value, $Res Function(_$DisposeMsgImpl) then) =
+      __$$DisposeMsgImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$DisposeEventImplCopyWithImpl<$Res>
-    extends _$SqliteEventCopyWithImpl<$Res, _$DisposeEventImpl>
-    implements _$$DisposeEventImplCopyWith<$Res> {
-  __$$DisposeEventImplCopyWithImpl(
-      _$DisposeEventImpl _value, $Res Function(_$DisposeEventImpl) _then)
+class __$$DisposeMsgImplCopyWithImpl<$Res>
+    extends _$SqliteMsgCopyWithImpl<$Res, _$DisposeMsgImpl>
+    implements _$$DisposeMsgImplCopyWith<$Res> {
+  __$$DisposeMsgImplCopyWithImpl(
+      _$DisposeMsgImpl _value, $Res Function(_$DisposeMsgImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SqliteEvent
+  /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$DisposeEventImpl implements DisposeEvent {
-  const _$DisposeEventImpl();
+class _$DisposeMsgImpl implements DisposeMsg {
+  const _$DisposeMsgImpl();
 
   @override
   String toString() {
-    return 'SqliteEvent.dispose()';
+    return 'SqliteMsg.dispose()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$DisposeEventImpl);
+        (other.runtimeType == runtimeType && other is _$DisposeMsgImpl);
   }
 
   @override
@@ -1438,14 +1434,14 @@ class _$DisposeEventImpl implements DisposeEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteEvent value) execute,
-    required TResult Function(QueryResultEvent value) queryResult,
-    required TResult Function(ImportDbEvent value) importDb,
-    required TResult Function(ExportDbEvent value) exportDb,
-    required TResult Function(DropTable value) dropTable,
-    required TResult Function(TableInfoEvent value) tableInfo,
-    required TResult Function(ConnectionChangedEvent value) connectionChanged,
-    required TResult Function(DisposeEvent value) dispose,
+    required TResult Function(ExecuteMsg value) execute,
+    required TResult Function(QueryResultMsg value) queryResult,
+    required TResult Function(ImportDbMsg value) importDb,
+    required TResult Function(ExportDbMsg value) exportDb,
+    required TResult Function(DropTableMsg value) dropTable,
+    required TResult Function(TableInfoMsg value) tableInfo,
+    required TResult Function(ConnectionChangedMsg value) connectionChanged,
+    required TResult Function(DisposeMsg value) dispose,
   }) {
     return dispose(this);
   }
@@ -1453,14 +1449,14 @@ class _$DisposeEventImpl implements DisposeEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteEvent value)? execute,
-    TResult? Function(QueryResultEvent value)? queryResult,
-    TResult? Function(ImportDbEvent value)? importDb,
-    TResult? Function(ExportDbEvent value)? exportDb,
-    TResult? Function(DropTable value)? dropTable,
-    TResult? Function(TableInfoEvent value)? tableInfo,
-    TResult? Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult? Function(DisposeEvent value)? dispose,
+    TResult? Function(ExecuteMsg value)? execute,
+    TResult? Function(QueryResultMsg value)? queryResult,
+    TResult? Function(ImportDbMsg value)? importDb,
+    TResult? Function(ExportDbMsg value)? exportDb,
+    TResult? Function(DropTableMsg value)? dropTable,
+    TResult? Function(TableInfoMsg value)? tableInfo,
+    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult? Function(DisposeMsg value)? dispose,
   }) {
     return dispose?.call(this);
   }
@@ -1468,14 +1464,14 @@ class _$DisposeEventImpl implements DisposeEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteEvent value)? execute,
-    TResult Function(QueryResultEvent value)? queryResult,
-    TResult Function(ImportDbEvent value)? importDb,
-    TResult Function(ExportDbEvent value)? exportDb,
-    TResult Function(DropTable value)? dropTable,
-    TResult Function(TableInfoEvent value)? tableInfo,
-    TResult Function(ConnectionChangedEvent value)? connectionChanged,
-    TResult Function(DisposeEvent value)? dispose,
+    TResult Function(ExecuteMsg value)? execute,
+    TResult Function(QueryResultMsg value)? queryResult,
+    TResult Function(ImportDbMsg value)? importDb,
+    TResult Function(ExportDbMsg value)? exportDb,
+    TResult Function(DropTableMsg value)? dropTable,
+    TResult Function(TableInfoMsg value)? tableInfo,
+    TResult Function(ConnectionChangedMsg value)? connectionChanged,
+    TResult Function(DisposeMsg value)? dispose,
     required TResult orElse(),
   }) {
     if (dispose != null) {
@@ -1485,6 +1481,6 @@ class _$DisposeEventImpl implements DisposeEvent {
   }
 }
 
-abstract class DisposeEvent implements SqliteEvent {
-  const factory DisposeEvent() = _$DisposeEventImpl;
+abstract class DisposeMsg implements SqliteMsg {
+  const factory DisposeMsg() = _$DisposeMsgImpl;
 }

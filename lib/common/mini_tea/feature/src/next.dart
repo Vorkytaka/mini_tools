@@ -1,6 +1,6 @@
 part of 'feature.dart';
 
-/// A type representing the result of handling an event with update, including:
+/// A type representing the result of handling an message with update, including:
 /// - [State]: The next state to transition to, or null to indicate no state change.
 /// - [List<Effect>]: A list of side effects to be processed.
 typedef Next<State, Effect> = (State?, List<Effect>);

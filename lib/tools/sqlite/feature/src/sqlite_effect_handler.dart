@@ -6,18 +6,18 @@ import 'package:sqlite3/sqlite3.dart';
 import '../../../../common/mini_tea/feature/feature.dart';
 import '../../database_holder.dart';
 import 'effect/sqlite_effect.dart';
-import 'event/sqlite_event.dart';
+import 'msg/sqlite_msg.dart';
 import 'state/sqlite_state.dart';
 
 final class SqliteEffectHandler
-    implements IEffectHandler<SqliteEffect, SqliteEvent> {
+    implements IEffectHandler<SqliteEffect, SqliteMsg> {
   final NewDatabaseHolder _databaseHolder = NewDatabaseHolderImpl();
   StreamSubscription? _subscription;
 
   @override
   Future<void> call(
     SqliteEffect effect,
-    EventEmitter<SqliteEvent> emit,
+    MsgEmitter<SqliteMsg> emit,
   ) async {
     switch (effect) {
       case ExecuteEffect():
@@ -39,7 +39,7 @@ final class SqliteEffectHandler
 
   Future<void> _exportDb(
     ExportDbEffect effect,
-    EventEmitter<SqliteEvent> emit,
+    MsgEmitter<SqliteMsg> emit,
   ) async {
     final database = await _databaseHolder.database.first;
     if (database != null) {
@@ -53,14 +53,14 @@ final class SqliteEffectHandler
 
   Future<void> _dropTable(
     DropTableEffect effect,
-    EventEmitter<SqliteEvent> emit,
+    MsgEmitter<SqliteMsg> emit,
   ) async {
     _databaseHolder.disposeDatabase();
   }
 
   Future<void> _subscribeDb(
     SubscribeDbEffect effect,
-    EventEmitter<SqliteEvent> emit,
+    MsgEmitter<SqliteMsg> emit,
   ) async {
     _subscription = _databaseHolder.connection.listen((conn) {
       final stateConn = switch (conn) {
@@ -72,13 +72,13 @@ final class SqliteEffectHandler
           ),
       };
 
-      emit(SqliteEvent.connectionChanged(stateConn));
+      emit(SqliteMsg.connectionChanged(stateConn));
     });
   }
 
   Future<void> _unsubscribeDb(
     UnsubscribeDbEffect effect,
-    EventEmitter<SqliteEvent> emit,
+    MsgEmitter<SqliteMsg> emit,
   ) async {
     await _subscription?.cancel();
     _subscription = null;
@@ -86,14 +86,14 @@ final class SqliteEffectHandler
 
   Future<void> _importDb(
     ImportDbEffect effect,
-    EventEmitter<SqliteEvent> emit,
+    MsgEmitter<SqliteMsg> emit,
   ) async {
     await _databaseHolder.fromPath(effect.path);
   }
 
   Future<void> _execute(
     ExecuteEffect effect,
-    EventEmitter<SqliteEvent> emit,
+    MsgEmitter<SqliteMsg> emit,
   ) async {
     final query = effect.query;
     final datetime = DateTime.now();
@@ -112,12 +112,12 @@ final class SqliteEffectHandler
           ),
         );
 
-    emit(SqliteEvent.queryResult(result));
+    emit(SqliteMsg.queryResult(result));
   }
 
   Future<void> _updateTables(
     UpdateTablesEffect effect,
-    EventEmitter<SqliteEvent> emit,
+    MsgEmitter<SqliteMsg> emit,
   ) async {
     final tables = _databaseHolder
         .rawExecute(_tablesQuery)
@@ -131,7 +131,7 @@ final class SqliteEffectHandler
         .map(_getTableInfo)
         .toList(growable: false);
 
-    emit(SqliteEvent.tableInfo(tables));
+    emit(SqliteMsg.tableInfo(tables));
   }
 
   static String _formatException(SqliteException exception) {

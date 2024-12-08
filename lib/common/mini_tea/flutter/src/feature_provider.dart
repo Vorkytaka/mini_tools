@@ -3,29 +3,29 @@ import 'package:provider/provider.dart';
 
 import '../../feature/feature.dart';
 
-typedef CreateFeature<F extends Feature<S, Ev, Ef>, S, Ev, Ef> = F Function(
+typedef CreateFeature<F extends Feature<S, M, E>, S, M, E> = F Function(
     BuildContext context);
 
-typedef DisposeFeature<F extends Feature<S, Ev, Ef>, S, Ev, Ef> = void Function(
+typedef DisposeFeature<F extends Feature<S, M, E>, S, M, E> = void Function(
     F feature);
 
-class FeatureProvider<F extends Feature<S, Ev, Ef>, S, Ev, Ef>
+class FeatureProvider<F extends Feature<S, M, E>, S, M, E>
     extends StatelessWidget {
   final F? _value;
-  final CreateFeature<F, S, Ev, Ef>? _create;
+  final CreateFeature<F, S, M, E>? _create;
 
   /// This callback will called right before [Feature.dispose].
   ///
-  /// You can use it to send last events to clean some resources.
-  final DisposeFeature<F, S, Ev, Ef>? _onDispose;
+  /// You can use it to send last messages to clean some resources.
+  final DisposeFeature<F, S, M, E>? _onDispose;
   final Widget child;
 
   final bool lazy;
 
   const FeatureProvider.create({
-    required CreateFeature<F, S, Ev, Ef> create,
+    required CreateFeature<F, S, M, E> create,
     required this.child,
-    DisposeFeature<F, S, Ev, Ef>? onDispose,
+    DisposeFeature<F, S, M, E>? onDispose,
     this.lazy = false,
     super.key,
   })  : _value = null,
@@ -66,7 +66,7 @@ class FeatureProvider<F extends Feature<S, Ev, Ef>, S, Ev, Ef>
           );
   }
 
-  static F of<F extends Feature<S, Ev, Ef>, S, Ev, Ef>(
+  static F of<F extends Feature<S, M, E>, S, M, E>(
     BuildContext context, {
     bool listen = false,
   }) {

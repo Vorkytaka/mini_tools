@@ -19,7 +19,7 @@ extension on JsonOutputFormat {
 
 Future<void> _jsonEffectHandler(
   JsonEffect effect,
-  EventEmitter<JsonEvent> emit,
+  MsgEmitter<JsonEvent> emit,
 ) async {
   switch (effect) {
     case FormatOutputEffect():
@@ -29,7 +29,7 @@ Future<void> _jsonEffectHandler(
 
 Future<void> _formatOutputHandle(
   FormatOutputEffect effect,
-  EventEmitter<JsonEvent> emit,
+  MsgEmitter<JsonEvent> emit,
 ) async {
   final input = effect.input;
   final format = effect.format;

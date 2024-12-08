@@ -47,7 +47,7 @@ void main() {
       const event = 'testEvent';
       wrapper.accept(event);
 
-      verify(() => observer.onEvent(event)).called(1);
+      verify(() => observer.onMsg(event)).called(1);
     });
 
     test('onState is called when state changes', () async {
