@@ -1,8 +1,8 @@
 part of 'feature.dart';
 
-final class EffectHandlerWrapper<State, Event, Effect, E extends Effect>
-    extends ProxyFeature<State, Event, Effect> {
-  final EffectHandler<E, Event> handler;
+final class EffectHandlerWrapper<State, Msg, Effect, E extends Effect>
+    extends ProxyFeature<State, Msg, Effect> {
+  final EffectHandler<E, Msg> handler;
 
   StreamSubscription? _subscription;
 
@@ -27,10 +27,10 @@ final class EffectHandlerWrapper<State, Event, Effect, E extends Effect>
   }
 }
 
-extension EffectHandlerWrapperUtils<State, Event, Effect>
-    on Feature<State, Event, Effect> {
-  Feature<State, Event, Effect> wrap<E extends Effect>(
-    EffectHandler<E, Event> handler,
+extension EffectHandlerWrapperUtils<State, Msg, Effect>
+    on Feature<State, Msg, Effect> {
+  Feature<State, Msg, Effect> wrap<E extends Effect>(
+    EffectHandler<E, Msg> handler,
   ) =>
       EffectHandlerWrapper(
         feature: this,

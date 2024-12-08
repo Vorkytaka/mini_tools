@@ -1,32 +1,32 @@
 import '../../../../common/mini_tea/feature/feature.dart';
 import 'effect/sqlite_effect.dart';
-import 'event/sqlite_event.dart';
+import 'msg/sqlite_msg.dart';
 import 'state/sqlite_state.dart';
 
 Next<SqliteState, SqliteEffect> sqliteUpdate(
   SqliteState state,
-  SqliteEvent event,
+  SqliteMsg message,
 ) {
-  switch (event) {
-    case ExecuteEvent():
-      return next(effects: [SqliteEffect.execute(event.query)]);
-    case QueryResultEvent():
+  switch (message) {
+    case ExecuteMsg():
+      return next(effects: [SqliteEffect.execute(message.query)]);
+    case QueryResultMsg():
       return next(
-        state: state.copyWith(results: [event.result, ...state.results]),
+        state: state.copyWith(results: [message.result, ...state.results]),
         effects: [const SqliteEffect.updateTables()],
       );
-    case ImportDbEvent():
-      return next(effects: [ImportDbEffect(event.path)]);
-    case ExportDbEvent():
-      return next(effects: [SqliteEffect.exportDb(event.path)]);
-    case DropTable():
+    case ImportDbMsg():
+      return next(effects: [ImportDbEffect(message.path)]);
+    case ExportDbMsg():
+      return next(effects: [SqliteEffect.exportDb(message.path)]);
+    case DropTableMsg():
       return next(effects: [const SqliteEffect.dropTable()]);
-    case TableInfoEvent():
-      return next(state: state.copyWith(tables: event.tables));
-    case ConnectionChangedEvent():
-      final isConnected = event.connection.isConnected;
+    case TableInfoMsg():
+      return next(state: state.copyWith(tables: message.tables));
+    case ConnectionChangedMsg():
+      final isConnected = message.connection.isConnected;
       final newState = isConnected
-          ? state.copyWith(connection: event.connection)
+          ? state.copyWith(connection: message.connection)
           : SqliteState.init;
 
       return next(
@@ -35,7 +35,7 @@ Next<SqliteState, SqliteEffect> sqliteUpdate(
           if (isConnected) const SqliteEffect.updateTables(),
         ],
       );
-    case DisposeEvent():
+    case DisposeMsg():
       return next(
         effects: [const SqliteEffect.unsubscribeDb()],
       );

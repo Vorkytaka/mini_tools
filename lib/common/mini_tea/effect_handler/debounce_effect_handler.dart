@@ -11,13 +11,13 @@ import '../feature/feature.dart';
 /// where effects are triggered in quick succession, and only the most recent
 /// effect needs to be processed after a delay.
 @experimental
-final class DebounceEffectHandler<Effect, Event>
-    implements IEffectHandler<Effect, Event> {
+final class DebounceEffectHandler<Effect, Msg>
+    implements IEffectHandler<Effect, Msg> {
   /// The duration for which effect handling should be delayed.
   final Duration duration;
 
   /// The underlying effect handler that processes the effects.
-  final EffectHandler<Effect, Event> _handler;
+  final EffectHandler<Effect, Msg> _handler;
 
   Timer? _timer;
 
@@ -28,7 +28,7 @@ final class DebounceEffectHandler<Effect, Event>
   /// - [handler]: The effect handler to be wrapped with debouncing logic.
   DebounceEffectHandler({
     required this.duration,
-    required EffectHandler<Effect, Event> handler,
+    required EffectHandler<Effect, Msg> handler,
   }) : _handler = handler;
 
   /// Schedules the handling of an effect by delaying it according to [duration].
@@ -39,11 +39,11 @@ final class DebounceEffectHandler<Effect, Event>
   ///
   /// Parameters:
   /// - [effect]: The effect to be handled.
-  /// - [emit]: A function to emit events as a result of handling the effect.
+  /// - [emit]: A function to emit messages as a result of handling the effect.
   @override
   FutureOr<void> call(
     Effect effect,
-    EventEmitter<Event> emit,
+    MsgEmitter<Msg> emit,
   ) {
     cancel();
     _timer = Timer(duration, () => _handler(effect, emit));

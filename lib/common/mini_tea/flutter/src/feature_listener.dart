@@ -8,7 +8,7 @@ import '../../feature/feature.dart';
 typedef FeatureWidgetListener<S> = void Function(BuildContext context, S state);
 typedef FeatureStateCondition<S> = bool Function(S previous, S current);
 
-class FeatureListener<F extends Feature<S, Ev, Ef>, S, Ev, Ef>
+class FeatureListener<F extends Feature<S, M, E>, S, M, E>
     extends StatefulWidget {
   final FeatureWidgetListener<S> listener;
   final Widget child;
@@ -25,12 +25,12 @@ class FeatureListener<F extends Feature<S, Ev, Ef>, S, Ev, Ef>
 
   @override
   State<StatefulWidget> createState() {
-    return _FeatureListenerState<F, S, Ev, Ef>();
+    return _FeatureListenerState<F, S, M, E>();
   }
 }
 
-class _FeatureListenerState<F extends Feature<S, Ev, Ef>, S, Ev, Ef>
-    extends State<FeatureListener<F, S, Ev, Ef>> {
+class _FeatureListenerState<F extends Feature<S, M, E>, S, M, E>
+    extends State<FeatureListener<F, S, M, E>> {
   late F _feature;
   late S _previousState;
   StreamSubscription? _subscription;
@@ -59,7 +59,7 @@ class _FeatureListenerState<F extends Feature<S, Ev, Ef>, S, Ev, Ef>
   }
 
   @override
-  void didUpdateWidget(covariant FeatureListener<F, S, Ev, Ef> oldWidget) {
+  void didUpdateWidget(covariant FeatureListener<F, S, M, E> oldWidget) {
     super.didUpdateWidget(oldWidget);
     final oldFeature = oldWidget.feature ?? context.read<F>();
     final feature = widget.feature ?? oldFeature;

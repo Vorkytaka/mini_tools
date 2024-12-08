@@ -1,21 +1,22 @@
 part of 'feature.dart';
 
-abstract class FeatureObserver<S, Ev, Ef> {
-  void onCreate(Feature<S, Ev, Ef> feature) {}
+abstract class FeatureObserver<State, Msg, Effect> {
+  void onCreate(Feature<State, Msg, Effect> feature) {}
 
   void onInit() {}
 
   void onDispose() {}
 
-  void onState(S state) {}
+  void onState(State state) {}
 
-  void onEvent(Ev event) {}
+  void onMsg(Msg message) {}
 
-  void onEffect(Ef effect) {}
+  void onEffect(Effect effect) {}
 }
 
-final class FeatureObserverWrapper<S, Ev, Ef> extends ProxyFeature<S, Ev, Ef> {
-  final FeatureObserver<S, Ev, Ef> observer;
+final class FeatureObserverWrapper<State, Msg, Effect>
+    extends ProxyFeature<State, Msg, Effect> {
+  final FeatureObserver<State, Msg, Effect> observer;
   final _subscription = CompositeSubscription();
 
   FeatureObserverWrapper({
@@ -26,9 +27,9 @@ final class FeatureObserverWrapper<S, Ev, Ef> extends ProxyFeature<S, Ev, Ef> {
   }
 
   @override
-  void accept(Ev event) {
-    observer.onEvent(event);
-    super.accept(event);
+  void accept(Msg message) {
+    observer.onMsg(message);
+    super.accept(message);
   }
 
   @override

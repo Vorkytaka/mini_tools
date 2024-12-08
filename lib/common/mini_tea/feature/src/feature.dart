@@ -22,13 +22,14 @@ part 'update.dart';
 ///
 /// This interface defines the core components required for a feature:
 /// - [State] represents the current state of the feature.
-/// - [Event] represents actions or occurrences that can change the state.
-/// - [Effect] represents side effects triggered by events that do not directly modify state.
+/// - [Msg] represents actions or occurrences that can change the state.
+/// - [Effect] represents side effects triggered by messages
+///   that do not directly modify state.
 ///
 /// Because of so many generics, this interface and everything around it is not very user friendly as is.
 /// The best way is to define a set of aliases and helper functions, for example:
 /// ```dart
-/// typedef JsonFeature = Feature<JsonState, JsonEvent, JsonEffect, void>;
+/// typedef JsonFeature = Feature<JsonState, JsonMsg, JsonEffect, void>;
 ///
 /// JsonFeature jsonFeatureFactory() => JsonFeature(
 ///       initialState: const JsonState.init(),
@@ -38,26 +39,26 @@ part 'update.dart';
 ///     );
 /// ```
 @experimental
-abstract interface class Feature<State, Event, Effect> {
+abstract interface class Feature<State, Msg, Effect> {
   /// Creates a new `Feature` instance.
   ///
   /// - [initialState]: The starting state of the feature. This is a required
   ///   parameter, defining the initial conditions of the feature.
   ///
-  /// - [update]: A function or class that takes the current state, an event and an effect. It defines the logic for state transitions
-  ///   in response to the events. Must be a pure function.
+  /// - [update]: A function or class that takes the current state, a message and an effect. It defines the logic for state transitions
+  ///   in response to the messages. Must be a pure function.
   ///
   /// - [effectHandlers]: A list of handlers for processing side effects. Each
   ///   `EffectHandler` is responsible for handling specific effects and
-  ///   potentially generating new events to influence state changes.
+  ///   potentially generating new messages to influence state changes.
   ///
   /// - [initialEffect]: An optional list of effects to be executed initially
   ///   when the feature is instantiated. Defaults to an empty list if not
   ///   specified.
   factory Feature({
     required State initialState,
-    required Update<State, Event, Effect> update,
-    List<EffectHandler<Effect, Event>> effectHandlers = const [],
+    required Update<State, Msg, Effect> update,
+    List<EffectHandler<Effect, Msg>> effectHandlers = const [],
     List<Effect> initialEffects = const [],
   }) =>
       _FeatureImpl(
@@ -84,11 +85,11 @@ abstract interface class Feature<State, Event, Effect> {
   /// persistent storage. They do not affect the state directly.
   Stream<Effect> get effects;
 
-  // Accepts an event to be processed by the feature.
+  // Accepts a message to be processed by the feature.
   ///
-  /// This method is called whenever an event occurs that should be handled by
+  /// This method is called whenever an message occurs that should be handled by
   /// the feature's update logic.
-  void accept(Event event);
+  void accept(Msg message);
 
   /// Initializes the feature and prepares it for usage.
   ///

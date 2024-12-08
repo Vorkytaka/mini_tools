@@ -36,7 +36,7 @@ class _SqliteToolState extends State<SqliteTool> {
       onFileDropped: (file) {
         if (file != null) {
           final path = file.path;
-          context.sqliteFeature().accept(SqliteEvent.importDb(path));
+          context.sqliteFeature().accept(SqliteMsg.importDb(path));
         }
       },
       child: MacosScaffold(
@@ -61,7 +61,7 @@ class _SqliteToolState extends State<SqliteTool> {
                           if (query.isNotEmpty) {
                             context
                                 .sqliteFeature()
-                                .accept(SqliteEvent.execute(query));
+                                .accept(SqliteMsg.execute(query));
                           }
                         },
                       ),
@@ -130,8 +130,7 @@ class _DropDatabaseButton extends StatelessWidget {
       buildWhen: (prev, curr) => prev.connection != curr.connection,
       builder: (context, state) => PushButton(
         onPressed: state.isConnected
-            ? () =>
-                context.sqliteFeature().accept(const SqliteEvent.dropTable())
+            ? () => context.sqliteFeature().accept(const SqliteMsg.dropTable())
             : null,
         controlSize: ControlSize.regular,
         secondary: true,
@@ -281,7 +280,7 @@ class _HistoryItem extends StatelessWidget {
                   onTap: () {
                     context
                         .sqliteFeature()
-                        .accept(SqliteEvent.execute(result.query));
+                        .accept(SqliteMsg.execute(result.query));
                   },
                 ),
                 const SizedBox(width: 8),
@@ -375,7 +374,7 @@ class _ExportDatabaseButton extends StatelessWidget {
                     initialDirectory: initialPath,
                   );
                   if (path != null) {
-                    cubit.accept(SqliteEvent.exportDb(path));
+                    cubit.accept(SqliteMsg.exportDb(path));
                   }
                 }
               : null,
@@ -420,7 +419,7 @@ class _ImportDatabaseButton extends StatelessWidget {
         }
       }
       final path = result.xFiles.first.path;
-      cubit.accept(SqliteEvent.importDb(path));
+      cubit.accept(SqliteMsg.importDb(path));
     }
   }
 

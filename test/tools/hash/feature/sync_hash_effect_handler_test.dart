@@ -7,7 +7,7 @@ import 'package:mini_tools/common/mini_tea/feature/feature.dart';
 import 'package:mini_tools/tools/hash/feature/hash_feature.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockEventEmitter extends Mock implements IEventEmitter<HashEvent> {}
+class MockEventEmitter extends Mock implements IMsgEmitter<HashEvent> {}
 
 void main() {
   setUpAll(() {

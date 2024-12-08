@@ -15,7 +15,7 @@ final class IsolateHashEffectHandler
   @override
   Future<void> handle(
     IsolateHashEffect effect,
-    EventEmitter<HashEvent> emit,
+    MsgEmitter<HashEvent> emit,
   ) async {
     switch (effect) {
       case CountFileHashEffect():
@@ -25,7 +25,7 @@ final class IsolateHashEffectHandler
 
   static FutureOr<void> _fileHash(
     CountFileHashEffect effect,
-    EventEmitter<HashEvent> emit,
+    MsgEmitter<HashEvent> emit,
   ) async {
     final digest = effect.algorithm.digest;
     final path = effect.path;

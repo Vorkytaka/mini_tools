@@ -1,15 +1,15 @@
 part of 'feature.dart';
 
-final class _FeatureImpl<State, Event, Effect>
-    implements Feature<State, Event, Effect> {
-  final Update<State, Event, Effect> _update;
-  final List<EffectHandler<Effect, Event>> _effectHandlers;
+final class _FeatureImpl<State, Msg, Effect>
+    implements Feature<State, Msg, Effect> {
+  final Update<State, Msg, Effect> _update;
+  final List<EffectHandler<Effect, Msg>> _effectHandlers;
   final List<Effect> _initialEffects;
 
   _FeatureImpl({
     required State initialState,
-    required Update<State, Event, Effect> update,
-    required List<EffectHandler<Effect, Event>> effectHandlers,
+    required Update<State, Msg, Effect> update,
+    required List<EffectHandler<Effect, Msg>> effectHandlers,
     List<Effect> initialEffects = const [],
   })  : _stateSubject = BehaviorSubject.seeded(initialState),
         _update = update,
@@ -30,8 +30,8 @@ final class _FeatureImpl<State, Event, Effect>
   Stream<Effect> get effects => _effectsController.stream;
 
   @override
-  void accept(Event event) {
-    final (newState, effects) = _update(_stateSubject.value, event);
+  void accept(Msg message) {
+    final (newState, effects) = _update(_stateSubject.value, message);
     if (newState != null) {
       _stateSubject.add(newState);
     }

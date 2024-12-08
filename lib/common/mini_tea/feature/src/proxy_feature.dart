@@ -1,25 +1,26 @@
 part of 'feature.dart';
 
-abstract base class ProxyFeature<S, Ev, Ef> implements Feature<S, Ev, Ef> {
-  final Feature<S, Ev, Ef> feature;
+abstract base class ProxyFeature<State, Msg, Effect>
+    implements Feature<State, Msg, Effect> {
+  final Feature<State, Msg, Effect> feature;
 
   const ProxyFeature({required this.feature});
 
   @override
-  void accept(Ev event) => feature.accept(event);
+  void accept(Msg message) => feature.accept(message);
 
   @override
   FutureOr<void> dispose() => feature.dispose();
 
   @override
-  Stream<Ef> get effects => feature.effects;
+  Stream<Effect> get effects => feature.effects;
 
   @override
   FutureOr<void> init() => feature.init();
 
   @override
-  S get state => feature.state;
+  State get state => feature.state;
 
   @override
-  Stream<S> get stateStream => feature.stateStream;
+  Stream<State> get stateStream => feature.stateStream;
 }

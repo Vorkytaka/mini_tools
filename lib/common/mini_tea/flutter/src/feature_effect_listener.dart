@@ -9,9 +9,9 @@ import '../../feature/src/feature.dart';
 import '../flutter.dart';
 import 'feature_listener.dart';
 
-class FeatureEffectListener<F extends Feature<S, Ev, Ef>, S, Ev, Ef,
-    E extends Ef> extends StatefulWidget {
-  final FeatureWidgetListener<E> listener;
+class FeatureEffectListener<F extends Feature<S, M, E>, S, M, E,
+    Effect extends E> extends StatefulWidget {
+  final FeatureWidgetListener<Effect> listener;
   final F? feature;
   final Widget child;
 
@@ -24,12 +24,12 @@ class FeatureEffectListener<F extends Feature<S, Ev, Ef>, S, Ev, Ef,
 
   @override
   State<StatefulWidget> createState() {
-    return _FeatureEffectListener<F, S, Ev, Ef, E>();
+    return _FeatureEffectListener<F, S, M, E, Effect>();
   }
 }
 
-class _FeatureEffectListener<F extends Feature<S, Ev, Ef>, S, Ev, Ef,
-    E extends Ef> extends State<FeatureEffectListener<F, S, Ev, Ef, E>> {
+class _FeatureEffectListener<F extends Feature<S, M, E>, S, M, E,
+    Effect extends E> extends State<FeatureEffectListener<F, S, M, E, Effect>> {
   late F _feature;
   StreamSubscription? _subscription;
 
@@ -55,7 +55,7 @@ class _FeatureEffectListener<F extends Feature<S, Ev, Ef>, S, Ev, Ef,
 
   @override
   void didUpdateWidget(
-    covariant FeatureEffectListener<F, S, Ev, Ef, E> oldWidget,
+    covariant FeatureEffectListener<F, S, M, E, Effect> oldWidget,
   ) {
     super.didUpdateWidget(oldWidget);
 
@@ -74,7 +74,7 @@ class _FeatureEffectListener<F extends Feature<S, Ev, Ef>, S, Ev, Ef,
   }
 
   void _subscribe() {
-    _subscription = _feature.effects.whereType<E>().listen((news) {
+    _subscription = _feature.effects.whereType<Effect>().listen((news) {
       if (mounted) {
         widget.listener(context, news);
       }
