@@ -1,11 +1,10 @@
 part of 'hash_feature.dart';
 
-final class HashUpdate
-    implements IUpdate<HashState, HashEvent, HashEffect, void> {
+final class HashUpdate implements IUpdate<HashState, HashEvent, HashEffect> {
   const HashUpdate();
 
   @override
-  Next<HashState, HashEffect, void> call(
+  Next<HashState, HashEffect> call(
     HashState state,
     HashEvent event,
   ) {

@@ -1,6 +1,6 @@
 part of 'json_feature.dart';
 
-Next<JsonState, JsonEffect, Object> _jsonUpdate(
+Next<JsonState, JsonEffect> _jsonUpdate(
   JsonState state,
   JsonEvent event,
 ) {
@@ -15,12 +15,10 @@ Next<JsonState, JsonEffect, Object> _jsonUpdate(
             jsonPath: state.jsonPath,
           ),
         ],
-        const [],
       );
     case OutputUpdateEvent():
       return (
         state.copyWith(output: event.output),
-        const [],
         const [],
       );
     case FormatUpdateEvent():
@@ -33,7 +31,6 @@ Next<JsonState, JsonEffect, Object> _jsonUpdate(
             jsonPath: state.jsonPath,
           ),
         ],
-        const [],
       );
     case JsonPathUpdateEvent():
       final jsonPath = _maybeJsonPath(event.jsonPath);
@@ -48,7 +45,6 @@ Next<JsonState, JsonEffect, Object> _jsonUpdate(
             jsonPath: jsonPath,
           ),
         ],
-        const [],
       );
   }
 }

@@ -4,11 +4,17 @@ import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 
 part 'effect_handler.dart';
+
 part 'effect_handler_wrapper.dart';
+
 part 'feature_impl.dart';
+
 part 'feature_observer.dart';
+
 part 'next.dart';
+
 part 'proxy_feature.dart';
+
 part 'update.dart';
 
 /// An interface for building features.
@@ -18,7 +24,6 @@ part 'update.dart';
 /// - [State] represents the current state of the feature.
 /// - [Event] represents actions or occurrences that can change the state.
 /// - [Effect] represents side effects triggered by events that do not directly modify state.
-/// - [News] represents one-time messages,
 ///
 /// Because of so many generics, this interface and everything around it is not very user friendly as is.
 /// The best way is to define a set of aliases and helper functions, for example:
@@ -33,14 +38,13 @@ part 'update.dart';
 ///     );
 /// ```
 @experimental
-abstract interface class Feature<State, Event, Effect, News> {
+abstract interface class Feature<State, Event, Effect> {
   /// Creates a new `Feature` instance.
   ///
   /// - [initialState]: The starting state of the feature. This is a required
   ///   parameter, defining the initial conditions of the feature.
   ///
-  /// - [update]: A function or class that takes the current state, an event,
-  ///   an effect, and news. It defines the logic for state transitions
+  /// - [update]: A function or class that takes the current state, an event and an effect. It defines the logic for state transitions
   ///   in response to the events. Must be a pure function.
   ///
   /// - [effectHandlers]: A list of handlers for processing side effects. Each
@@ -52,7 +56,7 @@ abstract interface class Feature<State, Event, Effect, News> {
   ///   specified.
   factory Feature({
     required State initialState,
-    required Update<State, Event, Effect, News> update,
+    required Update<State, Event, Effect> update,
     List<EffectHandler<Effect, Event>> effectHandlers = const [],
     List<Effect> initialEffects = const [],
   }) =>
@@ -73,12 +77,6 @@ abstract interface class Feature<State, Event, Effect, News> {
   ///
   /// This provides a snapshot of the model's state at any given time.
   State get state;
-
-  /// A stream of news items for one-time messages.
-  ///
-  /// These messages are typically used to inform the UI about events such as
-  /// navigation actions or displaying dialogs, without affecting the state.
-  Stream<News> get news;
 
   // A stream representing side effects.
   ///

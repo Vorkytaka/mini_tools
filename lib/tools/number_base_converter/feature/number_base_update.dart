@@ -1,6 +1,6 @@
 part of 'number_base_feature.dart';
 
-Next<NumberBaseState, void, void> _updateNumberBase(
+Next<NumberBaseState, void> _updateNumberBase(
   NumberBaseState state,
   NumberBaseEvent event,
 ) {
@@ -10,7 +10,7 @@ Next<NumberBaseState, void, void> _updateNumberBase(
   }
 }
 
-Next<NumberBaseState, void, void> _updateInputHandle(
+Next<NumberBaseState, void> _updateInputHandle(
   NumberBaseState state,
   UpdateInputEvent event,
 ) {
@@ -66,5 +66,5 @@ Next<NumberBaseState, void, void> _updateInputHandle(
           value: bigInt,
         );
 
-  return (newState, const [], const []);
+  return (newState, const []);
 }

@@ -1,14 +1,14 @@
 part of 'feature.dart';
 
-final class _FeatureImpl<State, Event, Effect, News>
-    implements Feature<State, Event, Effect, News> {
-  final Update<State, Event, Effect, News> _update;
+final class _FeatureImpl<State, Event, Effect>
+    implements Feature<State, Event, Effect> {
+  final Update<State, Event, Effect> _update;
   final List<EffectHandler<Effect, Event>> _effectHandlers;
   final List<Effect> _initialEffects;
 
   _FeatureImpl({
     required State initialState,
-    required Update<State, Event, Effect, News> update,
+    required Update<State, Event, Effect> update,
     required List<EffectHandler<Effect, Event>> effectHandlers,
     List<Effect> initialEffects = const [],
   })  : _stateSubject = BehaviorSubject.seeded(initialState),
@@ -17,7 +17,6 @@ final class _FeatureImpl<State, Event, Effect, News>
         _initialEffects = List.unmodifiable(initialEffects);
 
   final BehaviorSubject<State> _stateSubject;
-  final _newsController = StreamController<News>.broadcast();
   final _effectsController = StreamController<Effect>.broadcast();
   final _handlersSubscriptions = CompositeSubscription();
 
@@ -28,22 +27,16 @@ final class _FeatureImpl<State, Event, Effect, News>
   State get state => _stateSubject.value;
 
   @override
-  Stream<News> get news => _newsController.stream;
-
-  @override
   Stream<Effect> get effects => _effectsController.stream;
 
   @override
   void accept(Event event) {
-    final (newState, effects, news) = _update(_stateSubject.value, event);
+    final (newState, effects) = _update(_stateSubject.value, event);
     if (newState != null) {
       _stateSubject.add(newState);
     }
     if (effects.isNotEmpty) {
       effects.forEach(_effectsController.add);
-    }
-    if (news.isNotEmpty) {
-      news.forEach(_newsController.add);
     }
   }
 
@@ -60,7 +53,6 @@ final class _FeatureImpl<State, Event, Effect, News>
   Future<void> dispose() async {
     await _handlersSubscriptions.clear();
     await _stateSubject.close();
-    await _newsController.close();
     await _effectsController.close();
   }
 

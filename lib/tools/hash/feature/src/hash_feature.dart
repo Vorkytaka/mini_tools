@@ -7,7 +7,7 @@ import '../hash_feature.dart';
 
 part 'hash_update.dart';
 
-typedef HashFeature = Feature<HashState, HashEvent, HashEffect, void>;
+typedef HashFeature = Feature<HashState, HashEvent, HashEffect>;
 
 HashFeature hashFeatureFactory() => HashFeature(
       initialState: HashState.init,
