@@ -12,7 +12,7 @@ import '../feature/feature.dart';
 /// effect needs to be processed after a delay.
 @experimental
 final class DebounceEffectHandler<Effect, Msg>
-    implements IEffectHandler<Effect, Msg> {
+    implements IEffectHandler<Effect, Msg>, Disposable {
   /// The duration for which effect handling should be delayed.
   final Duration duration;
 
@@ -45,7 +45,7 @@ final class DebounceEffectHandler<Effect, Msg>
     Effect effect,
     MsgEmitter<Msg> emit,
   ) {
-    cancel();
+    _cancelTimer();
     _timer = Timer(duration, () => _handler(effect, emit));
   }
 
@@ -53,9 +53,13 @@ final class DebounceEffectHandler<Effect, Msg>
   ///
   /// This is typically used to prevent the handling of a previously scheduled effect
   /// if a new effect has been scheduled for handling or if effect handling is no longer required.
-  //
-  // TODO(Vorkytaka): Think about how we can do it with our features
-  void cancel() {
+  @override
+  Future<void> dispose() async {
+    _cancelTimer();
+  }
+
+  void _cancelTimer() {
     _timer?.cancel();
+    _timer = null;
   }
 }
