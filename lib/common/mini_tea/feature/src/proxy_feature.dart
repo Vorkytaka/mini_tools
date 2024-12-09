@@ -7,10 +7,16 @@ abstract base class ProxyFeature<State, Msg, Effect>
   const ProxyFeature({required this.feature});
 
   @override
+  List<Effect> get initialEffects => feature.initialEffects;
+
+  @override
+  List<Effect> get disposableEffects => feature.disposableEffects;
+
+  @override
   void accept(Msg message) => feature.accept(message);
 
   @override
-  FutureOr<void> dispose() => feature.dispose();
+  Future<void> dispose() => feature.dispose();
 
   @override
   Stream<Effect> get effects => feature.effects;
