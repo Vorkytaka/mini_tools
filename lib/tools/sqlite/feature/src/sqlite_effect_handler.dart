@@ -10,7 +10,7 @@ import 'msg/sqlite_msg.dart';
 import 'state/sqlite_state.dart';
 
 final class SqliteEffectHandler
-    implements IEffectHandler<SqliteEffect, SqliteMsg> {
+    implements EffectHandler<SqliteEffect, SqliteMsg> {
   final NewDatabaseHolder _databaseHolder = NewDatabaseHolderImpl();
   StreamSubscription? _subscription;
 

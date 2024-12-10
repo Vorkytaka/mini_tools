@@ -3,77 +3,79 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mini_tools/tools/hash/feature/hash_feature.dart';
 
+import '../../../common/mini_tea/helper/helper.dart';
+
 void main() {
   group('HashUpdate Tests', () {
     const hashUpdate = HashUpdate();
 
     test('UpdateTextEvent updates state and triggers effects', () {
-      const initialState = HashState(
-        input: HashInput.text(text: ''),
-        format: HashFormat.base64,
-        algorithm: HashAlgorithm.md5,
-        hash: null,
-        inputBytes: 0,
-      );
-
-      const event = UpdateTextEvent('Hello, World!');
-      final result = hashUpdate.call(initialState, event);
-
-      final expectedState = initialState.copyWith(
-        input: HashInput.text(text: event.text),
-        inputBytes: event.text.length,
-      );
-
-      expect(result.$1, equals(expectedState));
-      expect(
-        result.$2,
-        contains(CountTextHashEffect(event.text, initialState.algorithm)),
+      hashUpdate.test(
+        state: const HashState(
+          input: HashInput.text(text: ''),
+          format: HashFormat.base64,
+          algorithm: HashAlgorithm.md5,
+          hash: null,
+          inputBytes: 0,
+        ),
+        message: const UpdateTextEvent('Hello, World!'),
+        expectedState: const HashState(
+          input: HashInput.text(text: 'Hello, World!'),
+          format: HashFormat.base64,
+          algorithm: HashAlgorithm.md5,
+          hash: null,
+          inputBytes: 13,
+        ),
+        expectedEffects: [
+          const CountTextHashEffect(
+            'Hello, World!',
+            HashAlgorithm.md5,
+          ),
+        ],
       );
     });
 
     test('SetFileEvent updates state and triggers effects', () {
-      const initialState = HashState(
-        input: HashInput.text(text: ''),
-        format: HashFormat.base64,
-        algorithm: HashAlgorithm.md5,
-        hash: null,
-        inputBytes: 0,
-      );
-
-      const event = SetFileEvent('/path/to/file');
-      final result = hashUpdate.call(initialState, event);
-
-      final expectedState = initialState.copyWith(
-        input: HashInput.file(path: event.path),
-      );
-
-      expect(result.$1, equals(expectedState));
-      expect(
-        result.$2,
-        contains(CountFileHashEffect(event.path, initialState.algorithm)),
+      hashUpdate.test(
+        state: const HashState(
+          input: HashInput.text(text: ''),
+          format: HashFormat.base64,
+          algorithm: HashAlgorithm.md5,
+          hash: null,
+          inputBytes: 0,
+        ),
+        message: const SetFileEvent('/path/to/file'),
+        expectedState: const HashState(
+          input: HashInput.file(path: '/path/to/file'),
+          format: HashFormat.base64,
+          algorithm: HashAlgorithm.md5,
+          hash: null,
+          inputBytes: 0,
+        ),
+        expectedEffects: [
+          const CountFileHashEffect('/path/to/file', HashAlgorithm.md5),
+        ],
       );
     });
 
     test('DropFileEvent resets state to text input and clears hash', () {
-      final initialState = HashState(
-        input: const HashInput.file(path: '/path/to/file'),
-        format: HashFormat.base64,
-        algorithm: HashAlgorithm.md5,
-        hash: Uint8List.fromList([1, 2, 3]),
-        inputBytes: 100,
+      hashUpdate.test(
+        state: HashState(
+          input: const HashInput.file(path: '/path/to/file'),
+          format: HashFormat.base64,
+          algorithm: HashAlgorithm.md5,
+          hash: Uint8List.fromList([1, 2, 3]),
+          inputBytes: 100,
+        ),
+        message: const DropFileEvent(),
+        expectedState: const HashState(
+          input: HashInput.text(text: ''),
+          format: HashFormat.base64,
+          algorithm: HashAlgorithm.md5,
+          hash: null,
+          inputBytes: 0,
+        ),
       );
-
-      const event = DropFileEvent();
-      final result = hashUpdate.call(initialState, event);
-
-      final expectedState = initialState.copyWith(
-        input: const HashInput.text(text: ''),
-        inputBytes: 0,
-        hash: null,
-      );
-
-      expect(result.$1, equals(expectedState));
-      expect(result.$2, isEmpty);
     });
 
     test('UpdateFormatEvent updates format', () {

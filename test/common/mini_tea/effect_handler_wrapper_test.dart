@@ -13,10 +13,13 @@ class RightEffect implements Effect {}
 class MockFeature extends Mock implements Feature<dynamic, dynamic, Effect> {}
 
 class MockEffectHandler extends Mock
-    implements IEffectHandler<Effect, dynamic> {}
+    implements EffectHandler<Effect, dynamic> {}
+
+class MockDisposableEffectHandler extends Mock
+    implements EffectHandler<Effect, dynamic>, Disposable {}
 
 class MockLeftEffectHandler extends Mock
-    implements IEffectHandler<LeftEffect, dynamic> {}
+    implements EffectHandler<LeftEffect, dynamic> {}
 
 void main() {
   setUpAll(() {
@@ -30,8 +33,10 @@ void main() {
       final mockFeature = MockFeature();
       final leftEffect = LeftEffect();
 
+      when(() => mockFeature.dispose()).thenAnswer((_) => Future.value());
       when(() => mockFeature.effects)
           .thenAnswer((_) => Stream.value(leftEffect));
+      when(() => mockFeature.initialEffects).thenReturn(const []);
 
       final wrapper = mockFeature.wrap<LeftEffect>(mockHandler);
       wrapper.init();
@@ -45,8 +50,10 @@ void main() {
       final mockFeature = MockFeature();
       final rightEffect = RightEffect();
 
+      when(() => mockFeature.dispose()).thenAnswer((_) => Future.value());
       when(() => mockFeature.effects)
           .thenAnswer((_) => Stream.value(rightEffect));
+      when(() => mockFeature.initialEffects).thenReturn(const []);
 
       final wrapper = mockFeature.wrap<LeftEffect>(mockHandler);
       wrapper.init();
@@ -61,8 +68,10 @@ void main() {
       final mockHandler2 = MockLeftEffectHandler();
       final leftEffect = LeftEffect();
 
+      when(() => mockFeature.dispose()).thenAnswer((_) => Future.value());
       when(() => mockFeature.effects)
           .thenAnswer((_) => Stream.value(leftEffect));
+      when(() => mockFeature.initialEffects).thenReturn(const []);
 
       final wrapper = mockFeature
           .wrap<LeftEffect>(mockHandler1)
@@ -72,6 +81,20 @@ void main() {
 
       verify(() => mockHandler1.call(leftEffect, any())).called(1);
       verify(() => mockHandler2.call(leftEffect, any())).called(1);
+    });
+
+    test('Disposable Effect Handler disposed with the feature', () async {
+      final mockHandler = MockDisposableEffectHandler();
+      final mockFeature = MockFeature();
+
+      when(() => mockFeature.disposableEffects).thenReturn(const []);
+      when(() => mockFeature.dispose()).thenAnswer((_) => Future.value());
+      when(() => mockHandler.dispose()).thenAnswer((_) => Future.value());
+
+      final wrapper = mockFeature.wrap(mockHandler);
+      await wrapper.dispose();
+
+      verify(() => mockHandler.dispose()).called(1);
     });
   });
 }
