@@ -4,7 +4,7 @@ import '../feature/feature.dart';
 
 @experimental
 abstract base class SyncEffectHandler<Effect, Msg>
-    implements IEffectHandler<Effect, Msg> {
+    implements EffectHandler<Effect, Msg> {
   const SyncEffectHandler();
 
   /// We use [Null] as return type

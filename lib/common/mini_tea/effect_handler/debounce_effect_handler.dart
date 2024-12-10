@@ -12,7 +12,7 @@ import '../feature/feature.dart';
 /// effect needs to be processed after a delay.
 @experimental
 final class DebounceEffectHandler<Effect, Msg>
-    implements IEffectHandler<Effect, Msg>, Disposable {
+    implements EffectHandler<Effect, Msg>, Disposable {
   /// The duration for which effect handling should be delayed.
   final Duration duration;
 

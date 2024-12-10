@@ -4,7 +4,7 @@ import '../feature/feature.dart';
 
 @experimental
 abstract base class AsyncEffectHandler<Effect, Msg>
-    implements IEffectHandler<Effect, Msg> {
+    implements EffectHandler<Effect, Msg> {
   const AsyncEffectHandler();
 
   Future<void> handle(Effect effect, MsgEmitter<Msg> emit);
