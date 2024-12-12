@@ -3,11 +3,14 @@ import 'package:meta/meta.dart';
 import '../feature/feature.dart';
 
 @experimental
-abstract class SyncEffectHandler<Effect, Msg>
-    implements IEffectHandler<Effect, Msg> {
+abstract base class SyncEffectHandler<Effect, Msg>
+    implements EffectHandler<Effect, Msg> {
   const SyncEffectHandler();
 
-  void handle(Effect effect, MsgEmitter<Msg> emit);
+  /// We use [Null] as return type
+  /// to be sure that this method is not async.
+  // ignore: prefer_void_to_null
+  Null handle(Effect effect, MsgEmitter<Msg> emit);
 
   @override
   void call(Effect effect, MsgEmitter<Msg> emit) {

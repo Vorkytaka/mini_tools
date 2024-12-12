@@ -17,49 +17,53 @@ extension on JsonOutputFormat {
   }
 }
 
-Future<void> _jsonEffectHandler(
-  JsonEffect effect,
-  MsgEmitter<JsonEvent> emit,
-) async {
-  switch (effect) {
-    case FormatOutputEffect():
-      return _formatOutputHandle(effect, emit);
-  }
-}
+final class JsonEffectHandler
+    extends AsyncEffectHandler<JsonEffect, JsonEvent> {
+  const JsonEffectHandler();
 
-Future<void> _formatOutputHandle(
-  FormatOutputEffect effect,
-  MsgEmitter<JsonEvent> emit,
-) async {
-  final input = effect.input;
-  final format = effect.format;
-  final jsonPath = effect.jsonPath;
-
-  final String? outputJson;
-  if (input.length <= _kIsolateThreshold) {
-    outputJson = _formatJson(input, format, jsonPath);
-  } else {
-    outputJson = await Isolate.run(() => _formatJson(input, format, jsonPath));
-  }
-
-  if (outputJson != null) {
-    emit(OutputUpdateEvent(outputJson));
-  }
-}
-
-String? _formatJson(
-  String input,
-  JsonOutputFormat format,
-  JsonPath? jsonPath,
-) {
-  try {
-    dynamic json = jsonDecode(input);
-    if (jsonPath != null) {
-      json = jsonPath.read(json).map((e) => e.value).toList(growable: false);
+  @override
+  Future<void> handle(JsonEffect effect, MsgEmitter<JsonEvent> emit) {
+    switch (effect) {
+      case FormatOutputEffect():
+        return _formatOutputHandle(effect, emit);
     }
-    final encoder = format.encoder;
-    return encoder.convert(json);
-  } on Exception catch (_) {
-    return null;
+  }
+
+  static Future<void> _formatOutputHandle(
+    FormatOutputEffect effect,
+    MsgEmitter<JsonEvent> emit,
+  ) async {
+    final input = effect.input;
+    final format = effect.format;
+    final jsonPath = effect.jsonPath;
+
+    final String? outputJson;
+    if (input.length <= _kIsolateThreshold) {
+      outputJson = _formatJson(input, format, jsonPath);
+    } else {
+      outputJson =
+          await Isolate.run(() => _formatJson(input, format, jsonPath));
+    }
+
+    if (outputJson != null) {
+      emit(OutputUpdateEvent(outputJson));
+    }
+  }
+
+  static String? _formatJson(
+    String input,
+    JsonOutputFormat format,
+    JsonPath? jsonPath,
+  ) {
+    try {
+      dynamic json = jsonDecode(input);
+      if (jsonPath != null) {
+        json = jsonPath.read(json).map((e) => e.value).toList(growable: false);
+      }
+      final encoder = format.encoder;
+      return encoder.convert(json);
+    } on Exception catch (_) {
+      return null;
+    }
   }
 }

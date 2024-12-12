@@ -38,6 +38,8 @@ void main() {
     });
 
     test('onDispose is called during dispose', () async {
+      when(() => feature.dispose()).thenAnswer((_) => Future.value());
+
       await wrapper.dispose();
 
       verify(() => observer.onDispose()).called(1);

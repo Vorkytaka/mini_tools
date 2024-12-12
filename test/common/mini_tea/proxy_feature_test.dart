@@ -15,6 +15,7 @@ void main() {
     final mockFeature = MockFeature();
     final proxyFeature = TestProxyFeature(feature: mockFeature);
 
+    when(() => mockFeature.dispose()).thenAnswer((_) => Future.value());
     when(() => mockFeature.stateStream).thenAnswer((_) => const Stream.empty());
     when(() => mockFeature.effects).thenAnswer((_) => const Stream.empty());
 

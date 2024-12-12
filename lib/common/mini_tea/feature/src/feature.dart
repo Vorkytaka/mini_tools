@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 
+part 'disposable.dart';
+
 part 'effect_handler.dart';
 
-part 'effect_handler_wrapper.dart';
+part 'feature_effect_wrapper.dart';
 
 part 'feature_impl.dart';
 
@@ -39,7 +41,7 @@ part 'update.dart';
 ///     );
 /// ```
 @experimental
-abstract interface class Feature<State, Msg, Effect> {
+abstract interface class Feature<State, Msg, Effect> implements Disposable {
   /// Creates a new `Feature` instance.
   ///
   /// - [initialState]: The starting state of the feature. This is a required
@@ -60,13 +62,19 @@ abstract interface class Feature<State, Msg, Effect> {
     required Update<State, Msg, Effect> update,
     List<EffectHandler<Effect, Msg>> effectHandlers = const [],
     List<Effect> initialEffects = const [],
+    List<Effect> disposableEffects = const [],
   }) =>
       _FeatureImpl(
         initialState: initialState,
         update: update,
         effectHandlers: effectHandlers,
         initialEffects: initialEffects,
+        disposableEffects: disposableEffects,
       );
+
+  List<Effect> get initialEffects;
+
+  List<Effect> get disposableEffects;
 
   /// A stream that provides updates to the state.
   ///
@@ -101,5 +109,6 @@ abstract interface class Feature<State, Msg, Effect> {
   ///
   /// Called when the feature is no longer used or the application is disposing
   /// the feature. It may perform asynchronous clean-up operations.
-  FutureOr<void> dispose();
+  @override
+  Future<void> dispose();
 }

@@ -6,8 +6,8 @@ import 'package:meta/meta.dart';
 import '../feature/feature.dart';
 
 @experimental
-abstract class IsolateEffectHandler<Effect, Msg>
-    implements IEffectHandler<Effect, Msg> {
+abstract base class IsolateEffectHandler<Effect, Msg>
+    implements EffectHandler<Effect, Msg> {
   const IsolateEffectHandler();
 
   FutureOr<void> handle(Effect effect, MsgEmitter<Msg> emit);
@@ -52,7 +52,7 @@ abstract class IsolateEffectHandler<Effect, Msg>
 class _IsolateParams<Effect, Msg> {
   final Effect effect;
   final SendPort sendPort;
-  final EffectHandler<Effect, Msg> handler;
+  final FunEffectHandler<Effect, Msg> handler;
 
   const _IsolateParams(
     this.effect,

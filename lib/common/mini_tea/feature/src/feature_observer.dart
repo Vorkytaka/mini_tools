@@ -41,9 +41,17 @@ final class FeatureObserverWrapper<State, Msg, Effect>
   }
 
   @override
-  FutureOr<void> dispose() {
+  Future<void> dispose() {
     observer.onDispose();
     _subscription.dispose();
     return super.dispose();
   }
+}
+
+extension FeatureObserverWrapperHelper<S, M, E> on Feature<S, M, E> {
+  Feature<S, M, E> observe(FeatureObserver<S, M, E> observer) =>
+      FeatureObserverWrapper(
+        feature: this,
+        observer: observer,
+      );
 }
