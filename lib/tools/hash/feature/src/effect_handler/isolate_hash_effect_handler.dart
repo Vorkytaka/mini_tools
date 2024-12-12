@@ -2,8 +2,9 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
-import '../../../../../common/mini_tea/effect_handler/isolate_effect_handler.dart';
-import '../../../../../common/mini_tea/feature/feature.dart';
+import 'package:mini_tea/effect_handlers.dart';
+import 'package:mini_tea/feature.dart';
+
 import '../effect/hash_effect.dart';
 import '../event/hash_event.dart';
 import '../hash_feature.dart';

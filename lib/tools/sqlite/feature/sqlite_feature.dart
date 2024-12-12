@@ -1,6 +1,7 @@
 // ignore_for_file: implicit_call_tearoffs
 
-import '../../../common/mini_tea/feature/feature.dart';
+import 'package:mini_tea/feature.dart';
+
 import 'src/effect/sqlite_effect.dart';
 import 'src/msg/sqlite_msg.dart';
 import 'src/sqlite_effect_handler.dart';

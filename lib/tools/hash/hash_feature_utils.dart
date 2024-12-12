@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../common/mini_tea/flutter/flutter.dart';
 import 'feature/hash_feature.dart';
 
 extension HashBuildContext on BuildContext {

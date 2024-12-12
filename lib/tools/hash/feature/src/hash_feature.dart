@@ -1,8 +1,8 @@
 // ignore_for_file: implicit_call_tearoffs
 
+import 'package:mini_tea/feature.dart';
 import 'package:pointycastle/export.dart';
 
-import '../../../../common/mini_tea/feature/feature.dart';
 import '../hash_feature.dart';
 
 part 'hash_update.dart';

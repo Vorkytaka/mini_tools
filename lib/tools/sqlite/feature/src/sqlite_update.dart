@@ -1,4 +1,5 @@
-import '../../../../common/mini_tea/feature/feature.dart';
+import 'package:mini_tea/feature.dart';
+
 import 'effect/sqlite_effect.dart';
 import 'msg/sqlite_msg.dart';
 import 'state/sqlite_state.dart';

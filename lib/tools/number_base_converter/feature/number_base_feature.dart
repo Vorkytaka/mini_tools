@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
-
-import '../../../common/mini_tea/feature/feature.dart';
+import 'package:mini_tea/feature.dart';
 
 part 'number_base_event.dart';
 
