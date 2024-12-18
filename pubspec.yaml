@@ -24,6 +24,8 @@ dependencies:
   json_path: ^0.7.4
   macos_ui: ^2.0.8
   meta: ^1.15.0
+  mini_tea: ^0.1.0
+  mini_tea_flutter: ^0.1.0
   path: ^1.9.0
   pointycastle: ^3.9.1
   provider: ^6.1.2
@@ -44,6 +46,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.5.7
+  mini_tea_test: ^0.1.0
   mocktail: ^1.0.4
 
 flutter:

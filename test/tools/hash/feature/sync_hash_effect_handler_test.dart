@@ -3,9 +3,8 @@
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mini_tea_test/mini_tea_test.dart';
 import 'package:mini_tools/tools/hash/feature/hash_feature.dart';
-
-import '../../../common/mini_tea/helper/helper.dart';
 
 void main() {
   group('SyncHashEffectHandler Tests', () {

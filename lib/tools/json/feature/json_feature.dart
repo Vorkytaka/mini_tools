@@ -4,9 +4,8 @@ import 'dart:isolate';
 
 import 'package:flutter/cupertino.dart';
 import 'package:json_path/json_path.dart';
-
-import '../../../common/mini_tea/effect_handler/async_effect_handler.dart';
-import '../../../common/mini_tea/feature/feature.dart';
+import 'package:mini_tea/effect_handlers.dart';
+import 'package:mini_tea/feature.dart';
 
 part 'json_effect.dart';
 

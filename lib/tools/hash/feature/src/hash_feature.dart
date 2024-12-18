@@ -1,8 +1,8 @@
 // ignore_for_file: implicit_call_tearoffs
 
+import 'package:mini_tea/feature.dart';
 import 'package:pointycastle/export.dart';
 
-import '../../../../common/mini_tea/feature/feature.dart';
 import '../hash_feature.dart';
 
 part 'hash_update.dart';
@@ -13,8 +13,8 @@ HashFeature hashFeatureFactory() => HashFeature(
       initialState: HashState.init,
       update: const HashUpdate(),
     )
-        .wrap<IsolateHashEffect>(const IsolateHashEffectHandler())
-        .wrap<SyncHashEffect>(const SyncHashEffectHandler());
+        .wrapEffects<IsolateHashEffect>(const IsolateHashEffectHandler())
+        .wrapEffects<SyncHashEffect>(const SyncHashEffectHandler());
 
 extension HashAlgorithmUtils on HashAlgorithm {
   Digest get digest {

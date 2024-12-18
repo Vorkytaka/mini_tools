@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
+import 'package:mini_tea/feature.dart';
+import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 
-import '../common/mini_tea/feature/feature.dart';
-import '../common/mini_tea/flutter/flutter.dart';
 import 'base_tool.dart';
 
 class FeatureTool<F extends Feature<S, Ev, Ef>, S, Ev, Ef> extends BaseTool {
@@ -16,7 +16,7 @@ class FeatureTool<F extends Feature<S, Ev, Ef>, S, Ev, Ef> extends BaseTool {
 
   @override
   Widget buildScreen(BuildContext context) {
-    return FeatureProvider.value(
+    return FeatureProvider<F>.value(
       value: feature,
       lazy: true,
       child: Builder(builder: screenBuilder),
