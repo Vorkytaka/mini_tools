@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mini_tools/tools/hash/feature/hash_feature.dart';
 import 'package:mini_tea_test/mini_tea_test.dart';
+import 'package:mini_tools/tools/hash/feature/hash_feature.dart';
 
 void main() {
   group('HashUpdate Tests', () {

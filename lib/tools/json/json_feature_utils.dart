@@ -4,8 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'feature/json_feature.dart';
 
-typedef JsonFeatureBuilder
-    = FeatureBuilder<JsonFeature, JsonState>;
+typedef JsonFeatureBuilder = FeatureBuilder<JsonFeature, JsonState>;
 
 extension JsonFeatureContext on BuildContext {
   JsonFeature jsonFeature(BuildContext context, {bool listen = false}) {

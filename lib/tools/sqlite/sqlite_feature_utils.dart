@@ -4,8 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'feature/sqlite_feature.dart';
 
-typedef SqliteFeatureBuilder
-    = FeatureBuilder<SqliteFeature, SqliteState>;
+typedef SqliteFeatureBuilder = FeatureBuilder<SqliteFeature, SqliteState>;
 
 extension SqliteFeatureContext on BuildContext {
   SqliteFeature sqliteFeature({bool listen = false}) =>
