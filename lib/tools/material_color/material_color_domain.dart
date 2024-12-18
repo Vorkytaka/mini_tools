@@ -1,18 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:macos_ui/macos_ui.dart';
-import 'package:responsive_grid/responsive_grid.dart';
+part of 'material_colors_tool.dart';
 
-import '../common/color.dart';
-import '../i18n/strings.g.dart';
-import '../tool/base_tool.dart';
-
-final materialColorTool = BaseTool(
-  titleBuilder: (context) => Translations.of(context).materialColors.title,
-  icon: Icons.invert_colors_sharp,
-  screenBuilder: (context) => const MaterialColorTool(),
-);
-
+/// Just a wrapper for the Material Colors and their accent colors.
 class _MaterialAndAccentColor {
   final String title;
   final MaterialColor color;
@@ -25,6 +13,7 @@ class _MaterialAndAccentColor {
   ]);
 }
 
+/// List of Material Colors with their accent colors.
 const _materialAndAccentColors = [
   _MaterialAndAccentColor(
     'Red',
@@ -132,98 +121,8 @@ final _materialColorItems = _materialAndAccentColors
     )
     .toList(growable: false);
 
-class MaterialColorTool extends StatelessWidget {
-  const MaterialColorTool({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final t = Translations.of(context);
-
-    return MacosScaffold(
-      toolBar: ToolBar(
-        title: Text(t.materialColors.title),
-        centerTitle: true,
-      ),
-      children: [
-        ContentArea(
-          builder: (context, controller) => _Body(controller: controller),
-        ),
-      ],
-    );
-  }
-}
-
-class _Body extends StatelessWidget {
-  final ScrollController? controller;
-
-  const _Body({
-    this.controller,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ResponsiveGridList(
-      desiredItemWidth: 200,
-      minSpacing: 10,
-      children: _materialColorItems
-          .map((colors) => _MaterialColor(collection: colors))
-          .toList(growable: false),
-    );
-  }
-}
-
-class _MaterialColor extends StatelessWidget {
-  final _ColorCollection collection;
-
-  const _MaterialColor({
-    required this.collection,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = collection.colors;
-
-    return Column(
-      children: [
-        for (int i = 0; i < colors.length; i++)
-          MouseRegion(
-            cursor: SystemMouseCursors.click,
-            child: GestureDetector(
-              onTap: () {
-                Clipboard.setData(ClipboardData(text: colors[i].hex));
-              },
-              child: Container(
-                width: 200,
-                height: 50,
-                color: colors[i].color,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: DefaultTextStyle.merge(
-                    style: TextStyle(
-                      color: colors[i].brightness == Brightness.dark
-                          ? Colors.white
-                          : Colors.black,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(i == 0
-                            ? '${collection.name} ${colors[i].title}'
-                            : colors[i].title),
-                        Text(colors[i].hex)
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          )
-      ],
-    );
-  }
-}
-
 const _materialColorsValues = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+const _materialAccentColorsValues = [100, 200, 400, 700];
 
 extension on MaterialColor {
   List<_ColorItem> get items {
@@ -243,8 +142,6 @@ extension on MaterialColor {
     );
   }
 }
-
-const _materialAccentColorsValues = [100, 200, 400, 700];
 
 extension on MaterialAccentColor {
   List<_ColorItem> get items {
