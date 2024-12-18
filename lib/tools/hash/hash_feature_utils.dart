@@ -9,5 +9,4 @@ extension HashBuildContext on BuildContext {
       Provider.of<HashFeature>(this, listen: listen);
 }
 
-typedef HashFeatureBuilder
-    = FeatureBuilder<HashFeature, HashState, HashEvent, HashEffect>;
+typedef HashFeatureBuilder = FeatureBuilder<HashFeature, HashState>;

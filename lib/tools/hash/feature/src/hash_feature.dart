@@ -13,8 +13,8 @@ HashFeature hashFeatureFactory() => HashFeature(
       initialState: HashState.init,
       update: const HashUpdate(),
     )
-        .wrap<IsolateHashEffect>(const IsolateHashEffectHandler())
-        .wrap<SyncHashEffect>(const SyncHashEffectHandler());
+        .wrapEffects<IsolateHashEffect>(const IsolateHashEffectHandler())
+        .wrapEffects<SyncHashEffect>(const SyncHashEffectHandler());
 
 extension HashAlgorithmUtils on HashAlgorithm {
   Digest get digest {

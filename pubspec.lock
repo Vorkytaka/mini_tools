@@ -595,21 +595,21 @@ packages:
       path: "../mini_tea/packages/mini_tea"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.1.0"
   mini_tea_flutter:
     dependency: "direct main"
     description:
       path: "../mini_tea/packages/mini_tea_flutter"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.1.0"
   mini_tea_test:
     dependency: "direct dev"
     description:
       path: "../mini_tea/packages/mini_tea_test"
       relative: true
     source: path
-    version: "0.0.1"
+    version: "0.1.0"
   mocktail:
     dependency: "direct dev"
     description:

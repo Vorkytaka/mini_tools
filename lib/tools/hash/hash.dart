@@ -6,6 +6,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 
 import '../../common/file_drop_widget.dart';
 import '../../common/macos_read_only_field.dart';
@@ -64,7 +65,7 @@ class _HashToolState extends State<HashTool> {
                 padding: const EdgeInsets.symmetric(horizontal: 4),
                 child: Row(
                   children: [
-                    HashFeatureBuilder(
+                    FeatureBuilder<HashFeature, HashState>(
                       buildWhen: (prev, curr) =>
                           prev.inputBytes != curr.inputBytes,
                       builder: (context, state) =>

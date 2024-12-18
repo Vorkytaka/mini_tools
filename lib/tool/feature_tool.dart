@@ -16,7 +16,7 @@ class FeatureTool<F extends Feature<S, Ev, Ef>, S, Ev, Ef> extends BaseTool {
 
   @override
   Widget buildScreen(BuildContext context) {
-    return FeatureProvider.value(
+    return FeatureProvider<F>.value(
       value: feature,
       lazy: true,
       child: Builder(builder: screenBuilder),
