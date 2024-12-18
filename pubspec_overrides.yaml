@@ -1,8 +1,0 @@
-# melos_managed_dependency_overrides: mini_tea
-dependency_overrides:
-  mini_tea:
-    path: ../mini_tea/packages/mini_tea
-  mini_tea_flutter:
-    path: ../mini_tea/packages/mini_tea_flutter
-  mini_tea_test:
-    path: ../mini_tea/packages/mini_tea_test
