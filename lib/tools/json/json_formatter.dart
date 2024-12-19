@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:re_editor/re_editor.dart';
 import 'package:re_highlight/languages/json.dart';
 
@@ -10,6 +11,7 @@ import '../../common/text_styles.dart';
 import '../../i18n/strings.g.dart';
 import '../../tool/feature_tool.dart';
 import 'feature/json_feature.dart';
+import 'feature/state/json_state.dart';
 import 'json_feature_utils.dart';
 
 final jsonFormatterTool = FeatureTool(
@@ -83,14 +85,15 @@ class _BodyState extends State<_Body> {
     super.didChangeDependencies();
 
     final feature = context.jsonFeature(context, listen: true);
-    if (_outputController.text != feature.state.output) {
-      _outputController.text = feature.state.output;
+    final output = feature.state.output ?? '';
+    if (_outputController.text != output) {
+      _outputController.text = output;
     }
     if (_inputController.text != feature.state.input) {
       _inputController.text = feature.state.input;
     }
-    if (_jsonPathController.text != feature.state.jsonPathInput) {
-      _jsonPathController.text = feature.state.jsonPathInput;
+    if (_jsonPathController.text != feature.state.jsonPath.input) {
+      _jsonPathController.text = feature.state.jsonPath.input;
     }
   }
 
@@ -149,7 +152,7 @@ class _BodyState extends State<_Body> {
                         child: Text(t.common.copy),
                       ),
                       const SizedBox(width: 8),
-                      JsonFeatureBuilder(
+                      FeatureBuilder<JsonFeature, JsonState>(
                         buildWhen: (prev, curr) => prev.format != curr.format,
                         builder: (context, state) {
                           return MacosPopupButton(
