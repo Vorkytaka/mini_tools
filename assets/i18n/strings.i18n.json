@@ -9,7 +9,8 @@
     "question_mark": "?",
     "percent": "%",
     "file_drop_title": "Drop file here",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "paste": "Paste"
   },
   "unix_timestamp": {
     "title": "Unix timestamp",

@@ -179,7 +179,7 @@ final class _InputSide extends StatelessWidget {
                     }
                   });
                 },
-                child: Text('Paste'),
+                child: Text(t.common.paste),
               )
             ],
           ),
