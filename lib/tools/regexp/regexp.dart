@@ -13,6 +13,7 @@ class RegExpTool extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = MacosTheme.of(context);
     final t = Translations.of(context);
 
     return MacosScaffold(
@@ -25,13 +26,19 @@ class RegExpTool extends StatelessWidget {
           builder: (context, _) => const _Body(),
         ),
         ResizablePane(
-          builder: (context, controller) => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(t.regexp.matchInfoTitle),
-              const SizedBox(height: 8),
-              const Expanded(child: _MatchInformation()),
-            ],
+          builder: (context, controller) => Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  t.regexp.matchInfoTitle,
+                  style: theme.typography.headline,
+                ),
+                const SizedBox(height: 8),
+                const Expanded(child: _MatchInformation()),
+              ],
+            ),
           ),
           minSize: 300,
           maxSize: 400,
@@ -143,8 +150,9 @@ class _MatchInformation extends StatelessWidget {
           return Text('No matches found');
         }
 
-        return ListView.builder(
+        return ListView.separated(
           itemCount: matches.length,
+          separatorBuilder: (context, i) => const MacosPulldownMenuDivider(),
           itemBuilder: (context, i) => _MatchWidget(
             position: i + 1,
             match: matches[i],
@@ -166,13 +174,58 @@ class _MatchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = MacosTheme.of(context);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text(
+              'Match #$position',
+              style: const TextStyle(decoration: TextDecoration.underline),
+            ),
+            const SizedBox(width: 8),
+            Text(
+              '${match.start}-${match.end}',
+              style: theme.typography.footnote,
+            ),
+            const Spacer(),
+            Text(match.group(0)!),
+          ],
+        ),
+        for (int i = 1; i <= match.groupCount; i++)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            child: _GroupWidget(
+              position: i,
+              value: match.group(i),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+class _GroupWidget extends StatelessWidget {
+  final int position;
+  final String? value;
+
+  const _GroupWidget({
+    required this.position,
+    this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return Row(
       children: [
-        Text('Match #$position'),
-        const SizedBox(width: 8),
-        Text('${match.start}-${match.end}'),
+        Text(
+          'Group #$position',
+          style: const TextStyle(decoration: TextDecoration.underline),
+        ),
         const Spacer(),
-        Text(match.group(0)!),
+        Text(value ?? ''),
       ],
     );
   }
