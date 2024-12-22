@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../i18n/strings.g.dart';
-import '../../tool/bloc_tool.dart';
+import '../../tool/feature_tool.dart';
+import 'feature/regexp_feature.dart';
 import 'regexp.dart';
-import 'regexp_cubit.dart';
 
-final regExpTool = BlocTool(
+final regExpTool = FeatureTool(
   titleBuilder: (context) => Translations.of(context).regexp.title,
   icon: Icons.manage_search,
   screenBuilder: (context) => const RegExpTool(),
-  bloc: RegExpCubit(),
+  feature: regExpFeatureFactory()..init(),
 );

@@ -1,11 +1,12 @@
 // ignore_for_file: always_put_required_named_parameters_first
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:mini_tea_flutter/mini_tea_flutter.dart';
+import 'package:provider/provider.dart';
 
 import '../../i18n/strings.g.dart';
-import 'regexp_cubit.dart';
+import 'feature/regexp_feature.dart';
 
 class RegExpTool extends StatelessWidget {
   const RegExpTool({super.key});
@@ -37,34 +38,34 @@ class _Body extends StatefulWidget {
 
 class _BodyState extends State<_Body> {
   final _regExpController = TextEditingController();
-  final _exampleController = _RegExpExampleTextEditingController();
+  final _testStringController = _RegExpExampleTextEditingController();
 
   @override
   void initState() {
     super.initState();
 
     _regExpController.addListener(_regExpUpdate);
-    _exampleController.addListener(_exampleUpdate);
+    _testStringController.addListener(_exampleUpdate);
 
-    final cubit = context.read<RegExpCubit>();
+    final cubit = context.read<RegExpFeature>();
     final state = cubit.state;
-    _regExpController.text = state.regexp?.pattern ?? '';
-    _exampleController.text = state.example;
+    _regExpController.text = state.input;
+    _testStringController.text = state.testString;
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    final cubit = context.watch<RegExpCubit>();
+    final cubit = context.watch<RegExpFeature>();
     final state = cubit.state;
-    _exampleController.matches = state.matches;
+    _testStringController.matches = state.matches;
   }
 
   @override
   void dispose() {
     _regExpController.dispose();
-    _exampleController.dispose();
+    _testStringController.dispose();
     super.dispose();
   }
 
@@ -96,7 +97,7 @@ class _BodyState extends State<_Body> {
               const SizedBox(height: 8),
               Expanded(
                 child: MacosTextField(
-                  controller: _exampleController,
+                  controller: _testStringController,
                   textAlignVertical: const TextAlignVertical(y: -1),
                   maxLines: 10,
                 ),
@@ -127,11 +128,13 @@ class _BodyState extends State<_Body> {
     );
   }
 
-  void _regExpUpdate() =>
-      context.read<RegExpCubit>().updateRegExp(_regExpController.text);
+  void _regExpUpdate() => context
+      .read<RegExpFeature>()
+      .accept(RegExpMessage.updateInput(_regExpController.text));
 
-  void _exampleUpdate() =>
-      context.read<RegExpCubit>().updateExample(_exampleController.text);
+  void _exampleUpdate() => context
+      .read<RegExpFeature>()
+      .accept(RegExpMessage.updateTestString(_testStringController.text));
 }
 
 class _MatchInformation extends StatelessWidget {
@@ -142,7 +145,7 @@ class _MatchInformation extends StatelessWidget {
     final theme = MacosTheme.of(context);
     final t = Translations.of(context);
 
-    return BlocBuilder<RegExpCubit, RegExpState>(
+    return FeatureBuilder<RegExpFeature, RegExpState>(
       buildWhen: (prev, curr) => prev.matches != curr.matches,
       builder: (context, state) {
         final matches = state.matches;
@@ -312,9 +315,10 @@ class _MatchCounter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = Translations.of(context);
-    return BlocSelector<RegExpCubit, RegExpState, int>(
-      selector: (state) => state.matches?.length ?? 0,
-      builder: (context, count) {
+    return FeatureBuilder<RegExpFeature, RegExpState>(
+      buildWhen: (prev, curr) => prev.matches?.length != curr.matches?.length,
+      builder: (context, state) {
+        final count = state.matches?.length ?? 0;
         return Text(t.regexp.matchesCount(n: count, count: count));
       },
     );
