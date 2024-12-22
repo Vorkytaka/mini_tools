@@ -31,9 +31,15 @@ class RegExpTool extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  t.regexp.matchInfoTitle,
-                  style: theme.typography.headline,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      t.regexp.matchInfoTitle,
+                      style: theme.typography.headline,
+                    ),
+                    const _MatchCounter(),
+                  ],
                 ),
                 const SizedBox(height: 8),
                 const Expanded(child: _MatchInformation()),
@@ -94,42 +100,60 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final t = Translations.of(context);
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        MacosTextField(
-          controller: _regExpController,
-          placeholder: t.regexp.regexpHint,
-        ),
-        const SizedBox(height: 2),
-        const Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            _GlobalCheckbox(),
-            SizedBox(width: 8),
-            _MultilineCheckbox(),
-          ],
-        ),
-        const SizedBox(height: 12),
-        Padding(
-          padding: const EdgeInsetsDirectional.symmetric(horizontal: 12),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(t.regexp.testStringTitle),
-              const _MatchCounter(),
-            ],
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          MacosTextField(
+            controller: _regExpController,
+            placeholder: t.regexp.regexpHint,
           ),
-        ),
-        const SizedBox(height: 8),
-        Expanded(
-          child: MacosTextField(
-            controller: _testStringController,
-            textAlignVertical: const TextAlignVertical(y: -1),
-            maxLines: 10,
+          const SizedBox(height: 4),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(t.regexp.testStringTitle),
+                const Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        _GlobalCheckbox(),
+                        SizedBox(width: 12),
+                        _MultilineCheckbox(),
+                        SizedBox(width: 12),
+                        _CaseSensitiveCheckbox(),
+                      ],
+                    ),
+                    SizedBox(height: 4),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        _UnicodeCheckbox(),
+                        SizedBox(width: 12),
+                        _DotAllCheckbox(),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+          const SizedBox(height: 4),
+          Expanded(
+            child: MacosTextField(
+              controller: _testStringController,
+              textAlignVertical: const TextAlignVertical(y: -1),
+              maxLines: 10,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -182,6 +206,66 @@ class _MultilineCheckbox extends StatelessWidget {
   }
 }
 
+class _CaseSensitiveCheckbox extends StatelessWidget {
+  const _CaseSensitiveCheckbox();
+
+  @override
+  Widget build(BuildContext context) {
+    return FeatureBuilder<RegExpFeature, RegExpState>(
+      buildWhen: (prev, curr) => prev.isCaseSensitive != curr.isCaseSensitive,
+      builder: (context, state) {
+        return LabeledCheckbox(
+          value: state.isCaseSensitive,
+          onChanged: (isCaseSensitive) => context
+              .read<RegExpFeature>()
+              .accept(RegExpMessage.updateCaseSensitive(isCaseSensitive)),
+          label: 'Case Sensitive',
+        );
+      },
+    );
+  }
+}
+
+class _UnicodeCheckbox extends StatelessWidget {
+  const _UnicodeCheckbox();
+
+  @override
+  Widget build(BuildContext context) {
+    return FeatureBuilder<RegExpFeature, RegExpState>(
+      buildWhen: (prev, curr) => prev.isUnicode != curr.isUnicode,
+      builder: (context, state) {
+        return LabeledCheckbox(
+          value: state.isUnicode,
+          onChanged: (isUnicode) => context
+              .read<RegExpFeature>()
+              .accept(RegExpMessage.updateUnicode(isUnicode)),
+          label: 'Unicode',
+        );
+      },
+    );
+  }
+}
+
+class _DotAllCheckbox extends StatelessWidget {
+  const _DotAllCheckbox();
+
+  @override
+  Widget build(BuildContext context) {
+    return FeatureBuilder<RegExpFeature, RegExpState>(
+      buildWhen: (prev, curr) => prev.isDotAll != curr.isDotAll,
+      builder: (context, state) {
+        return LabeledCheckbox(
+          value: state.isDotAll,
+          onChanged: (isDotAll) => context
+              .read<RegExpFeature>()
+              .accept(RegExpMessage.updateDotAll(isDotAll)),
+          label: 'Single Line',
+        );
+      },
+    );
+  }
+}
+
 class LabeledCheckbox extends StatelessWidget {
   final String label;
   final bool? value;
@@ -196,15 +280,24 @@ class LabeledCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        MacosCheckbox(
-          value: value,
-          onChanged: onChanged,
-        ),
-        const SizedBox(width: 4),
-        Text(label),
-      ],
+    return GestureDetector(
+      onTap: () {
+        if (value == null || value == false) {
+          onChanged?.call(true);
+        } else {
+          onChanged?.call(false);
+        }
+      },
+      child: Row(
+        children: [
+          MacosCheckbox(
+            value: value,
+            onChanged: onChanged,
+          ),
+          const SizedBox(width: 4),
+          Text(label),
+        ],
+      ),
     );
   }
 }
@@ -253,6 +346,7 @@ class _MatchWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'Match #$position',
@@ -263,10 +357,15 @@ class _MatchWidget extends StatelessWidget {
               '${match.start}-${match.end}',
               style: theme.typography.footnote,
             ),
-            const Spacer(),
-            Text(match.group(0)!),
+            Expanded(
+              child: Text(
+                match.group(0)!,
+                textAlign: TextAlign.end,
+              ),
+            ),
           ],
         ),
+        const SizedBox(height: 4),
         for (int i = 1; i <= match.groupCount; i++)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -292,13 +391,18 @@ class _GroupWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Group #$position',
           style: const TextStyle(decoration: TextDecoration.underline),
         ),
-        const Spacer(),
-        Text(value ?? ''),
+        Expanded(
+          child: Text(
+            value ?? '',
+            textAlign: TextAlign.end,
+          ),
+        ),
       ],
     );
   }
@@ -343,8 +447,8 @@ class _RegExpExampleTextEditingController extends TextEditingController {
         spans.add(TextSpan(
           text: matchText,
           style: style?.copyWith(
-            color: Colors.black,
-            backgroundColor: Colors.green,
+            // color: Colors.black,
+            backgroundColor: Colors.green.withOpacity(0.3),
           ),
         ));
       }

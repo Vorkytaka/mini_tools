@@ -13,6 +13,9 @@ Next<RegExpState, RegExpEffect> regExpUpdate(
         RegExpEffect.parseRegExp(
           input: input,
           isMultiline: state.isMultiline,
+          isCaseSensitive: state.isCaseSensitive,
+          isUnicode: state.isUnicode,
+          isDotAll: state.isDotAll,
         ),
       ],
     ),
@@ -53,6 +56,45 @@ Next<RegExpState, RegExpEffect> regExpUpdate(
         RegExpEffect.parseRegExp(
           input: state.input,
           isMultiline: isMultiline,
+          isCaseSensitive: state.isCaseSensitive,
+          isUnicode: state.isUnicode,
+          isDotAll: state.isDotAll,
+        ),
+      ],
+    ),
+    updateCaseSensitive: (isCaseSensitive) => next(
+      state: state.copyWith(isCaseSensitive: isCaseSensitive),
+      effects: [
+        RegExpEffect.parseRegExp(
+          input: state.input,
+          isMultiline: state.isMultiline,
+          isCaseSensitive: isCaseSensitive,
+          isUnicode: state.isUnicode,
+          isDotAll: state.isDotAll,
+        ),
+      ],
+    ),
+    updateUnicode: (isUnicode) => next(
+      state: state.copyWith(isUnicode: isUnicode),
+      effects: [
+        RegExpEffect.parseRegExp(
+          input: state.input,
+          isMultiline: state.isMultiline,
+          isCaseSensitive: state.isCaseSensitive,
+          isUnicode: isUnicode,
+          isDotAll: state.isDotAll,
+        ),
+      ],
+    ),
+    updateDotAll: (isDotAll) => next(
+      state: state.copyWith(isDotAll: isDotAll),
+      effects: [
+        RegExpEffect.parseRegExp(
+          input: state.input,
+          isMultiline: state.isMultiline,
+          isCaseSensitive: state.isCaseSensitive,
+          isUnicode: state.isUnicode,
+          isDotAll: isDotAll,
         ),
       ],
     ),

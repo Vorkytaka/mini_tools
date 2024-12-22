@@ -11,7 +11,18 @@ sealed class RegExpMessage with _$RegExpMessage {
   const factory RegExpMessage.updateGlobal(bool isGlobal) = _UpdateGlobal;
 
   // ignore:avoid_positional_boolean_parameters
-  const factory RegExpMessage.updateMultiline(bool isMultiline) = _UpdateMultiline;
+  const factory RegExpMessage.updateMultiline(bool isMultiline) =
+      _UpdateMultiline;
+
+  // ignore:avoid_positional_boolean_parameters
+  const factory RegExpMessage.updateCaseSensitive(bool isCaseSensitive) =
+      _UpdateCaseSensitive;
+
+  // ignore:avoid_positional_boolean_parameters
+  const factory RegExpMessage.updateUnicode(bool isUnicode) = _UpdateUnicode;
+
+  // ignore:avoid_positional_boolean_parameters
+  const factory RegExpMessage.updateDotAll(bool isDotAll) = _UpdateDotAll;
 
   const factory RegExpMessage.updateTestString(String testString) =
       _UpdateTestString;

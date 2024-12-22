@@ -21,6 +21,9 @@ mixin _$RegExpMessage {
     required TResult Function(String input) updateInput,
     required TResult Function(bool isGlobal) updateGlobal,
     required TResult Function(bool isMultiline) updateMultiline,
+    required TResult Function(bool isCaseSensitive) updateCaseSensitive,
+    required TResult Function(bool isUnicode) updateUnicode,
+    required TResult Function(bool isDotAll) updateDotAll,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
     required TResult Function(List<RegExpMatch>? matches) updateMatches,
@@ -31,6 +34,9 @@ mixin _$RegExpMessage {
     TResult? Function(String input)? updateInput,
     TResult? Function(bool isGlobal)? updateGlobal,
     TResult? Function(bool isMultiline)? updateMultiline,
+    TResult? Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult? Function(bool isUnicode)? updateUnicode,
+    TResult? Function(bool isDotAll)? updateDotAll,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
     TResult? Function(List<RegExpMatch>? matches)? updateMatches,
@@ -41,6 +47,9 @@ mixin _$RegExpMessage {
     TResult Function(String input)? updateInput,
     TResult Function(bool isGlobal)? updateGlobal,
     TResult Function(bool isMultiline)? updateMultiline,
+    TResult Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult Function(bool isUnicode)? updateUnicode,
+    TResult Function(bool isDotAll)? updateDotAll,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
     TResult Function(List<RegExpMatch>? matches)? updateMatches,
@@ -52,6 +61,9 @@ mixin _$RegExpMessage {
     required TResult Function(_UpdateInput value) updateInput,
     required TResult Function(_UpdateGlobal value) updateGlobal,
     required TResult Function(_UpdateMultiline value) updateMultiline,
+    required TResult Function(_UpdateCaseSensitive value) updateCaseSensitive,
+    required TResult Function(_UpdateUnicode value) updateUnicode,
+    required TResult Function(_UpdateDotAll value) updateDotAll,
     required TResult Function(_UpdateTestString value) updateTestString,
     required TResult Function(_UpdateRegExp value) updateRegExp,
     required TResult Function(_UpdateMatches value) updateMatches,
@@ -62,6 +74,9 @@ mixin _$RegExpMessage {
     TResult? Function(_UpdateInput value)? updateInput,
     TResult? Function(_UpdateGlobal value)? updateGlobal,
     TResult? Function(_UpdateMultiline value)? updateMultiline,
+    TResult? Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult? Function(_UpdateUnicode value)? updateUnicode,
+    TResult? Function(_UpdateDotAll value)? updateDotAll,
     TResult? Function(_UpdateTestString value)? updateTestString,
     TResult? Function(_UpdateRegExp value)? updateRegExp,
     TResult? Function(_UpdateMatches value)? updateMatches,
@@ -72,6 +87,9 @@ mixin _$RegExpMessage {
     TResult Function(_UpdateInput value)? updateInput,
     TResult Function(_UpdateGlobal value)? updateGlobal,
     TResult Function(_UpdateMultiline value)? updateMultiline,
+    TResult Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult Function(_UpdateUnicode value)? updateUnicode,
+    TResult Function(_UpdateDotAll value)? updateDotAll,
     TResult Function(_UpdateTestString value)? updateTestString,
     TResult Function(_UpdateRegExp value)? updateRegExp,
     TResult Function(_UpdateMatches value)? updateMatches,
@@ -172,6 +190,9 @@ class _$UpdateInputImpl implements _UpdateInput {
     required TResult Function(String input) updateInput,
     required TResult Function(bool isGlobal) updateGlobal,
     required TResult Function(bool isMultiline) updateMultiline,
+    required TResult Function(bool isCaseSensitive) updateCaseSensitive,
+    required TResult Function(bool isUnicode) updateUnicode,
+    required TResult Function(bool isDotAll) updateDotAll,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
     required TResult Function(List<RegExpMatch>? matches) updateMatches,
@@ -185,6 +206,9 @@ class _$UpdateInputImpl implements _UpdateInput {
     TResult? Function(String input)? updateInput,
     TResult? Function(bool isGlobal)? updateGlobal,
     TResult? Function(bool isMultiline)? updateMultiline,
+    TResult? Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult? Function(bool isUnicode)? updateUnicode,
+    TResult? Function(bool isDotAll)? updateDotAll,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
     TResult? Function(List<RegExpMatch>? matches)? updateMatches,
@@ -198,6 +222,9 @@ class _$UpdateInputImpl implements _UpdateInput {
     TResult Function(String input)? updateInput,
     TResult Function(bool isGlobal)? updateGlobal,
     TResult Function(bool isMultiline)? updateMultiline,
+    TResult Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult Function(bool isUnicode)? updateUnicode,
+    TResult Function(bool isDotAll)? updateDotAll,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
     TResult Function(List<RegExpMatch>? matches)? updateMatches,
@@ -215,6 +242,9 @@ class _$UpdateInputImpl implements _UpdateInput {
     required TResult Function(_UpdateInput value) updateInput,
     required TResult Function(_UpdateGlobal value) updateGlobal,
     required TResult Function(_UpdateMultiline value) updateMultiline,
+    required TResult Function(_UpdateCaseSensitive value) updateCaseSensitive,
+    required TResult Function(_UpdateUnicode value) updateUnicode,
+    required TResult Function(_UpdateDotAll value) updateDotAll,
     required TResult Function(_UpdateTestString value) updateTestString,
     required TResult Function(_UpdateRegExp value) updateRegExp,
     required TResult Function(_UpdateMatches value) updateMatches,
@@ -228,6 +258,9 @@ class _$UpdateInputImpl implements _UpdateInput {
     TResult? Function(_UpdateInput value)? updateInput,
     TResult? Function(_UpdateGlobal value)? updateGlobal,
     TResult? Function(_UpdateMultiline value)? updateMultiline,
+    TResult? Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult? Function(_UpdateUnicode value)? updateUnicode,
+    TResult? Function(_UpdateDotAll value)? updateDotAll,
     TResult? Function(_UpdateTestString value)? updateTestString,
     TResult? Function(_UpdateRegExp value)? updateRegExp,
     TResult? Function(_UpdateMatches value)? updateMatches,
@@ -241,6 +274,9 @@ class _$UpdateInputImpl implements _UpdateInput {
     TResult Function(_UpdateInput value)? updateInput,
     TResult Function(_UpdateGlobal value)? updateGlobal,
     TResult Function(_UpdateMultiline value)? updateMultiline,
+    TResult Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult Function(_UpdateUnicode value)? updateUnicode,
+    TResult Function(_UpdateDotAll value)? updateDotAll,
     TResult Function(_UpdateTestString value)? updateTestString,
     TResult Function(_UpdateRegExp value)? updateRegExp,
     TResult Function(_UpdateMatches value)? updateMatches,
@@ -337,6 +373,9 @@ class _$UpdateGlobalImpl implements _UpdateGlobal {
     required TResult Function(String input) updateInput,
     required TResult Function(bool isGlobal) updateGlobal,
     required TResult Function(bool isMultiline) updateMultiline,
+    required TResult Function(bool isCaseSensitive) updateCaseSensitive,
+    required TResult Function(bool isUnicode) updateUnicode,
+    required TResult Function(bool isDotAll) updateDotAll,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
     required TResult Function(List<RegExpMatch>? matches) updateMatches,
@@ -350,6 +389,9 @@ class _$UpdateGlobalImpl implements _UpdateGlobal {
     TResult? Function(String input)? updateInput,
     TResult? Function(bool isGlobal)? updateGlobal,
     TResult? Function(bool isMultiline)? updateMultiline,
+    TResult? Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult? Function(bool isUnicode)? updateUnicode,
+    TResult? Function(bool isDotAll)? updateDotAll,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
     TResult? Function(List<RegExpMatch>? matches)? updateMatches,
@@ -363,6 +405,9 @@ class _$UpdateGlobalImpl implements _UpdateGlobal {
     TResult Function(String input)? updateInput,
     TResult Function(bool isGlobal)? updateGlobal,
     TResult Function(bool isMultiline)? updateMultiline,
+    TResult Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult Function(bool isUnicode)? updateUnicode,
+    TResult Function(bool isDotAll)? updateDotAll,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
     TResult Function(List<RegExpMatch>? matches)? updateMatches,
@@ -380,6 +425,9 @@ class _$UpdateGlobalImpl implements _UpdateGlobal {
     required TResult Function(_UpdateInput value) updateInput,
     required TResult Function(_UpdateGlobal value) updateGlobal,
     required TResult Function(_UpdateMultiline value) updateMultiline,
+    required TResult Function(_UpdateCaseSensitive value) updateCaseSensitive,
+    required TResult Function(_UpdateUnicode value) updateUnicode,
+    required TResult Function(_UpdateDotAll value) updateDotAll,
     required TResult Function(_UpdateTestString value) updateTestString,
     required TResult Function(_UpdateRegExp value) updateRegExp,
     required TResult Function(_UpdateMatches value) updateMatches,
@@ -393,6 +441,9 @@ class _$UpdateGlobalImpl implements _UpdateGlobal {
     TResult? Function(_UpdateInput value)? updateInput,
     TResult? Function(_UpdateGlobal value)? updateGlobal,
     TResult? Function(_UpdateMultiline value)? updateMultiline,
+    TResult? Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult? Function(_UpdateUnicode value)? updateUnicode,
+    TResult? Function(_UpdateDotAll value)? updateDotAll,
     TResult? Function(_UpdateTestString value)? updateTestString,
     TResult? Function(_UpdateRegExp value)? updateRegExp,
     TResult? Function(_UpdateMatches value)? updateMatches,
@@ -406,6 +457,9 @@ class _$UpdateGlobalImpl implements _UpdateGlobal {
     TResult Function(_UpdateInput value)? updateInput,
     TResult Function(_UpdateGlobal value)? updateGlobal,
     TResult Function(_UpdateMultiline value)? updateMultiline,
+    TResult Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult Function(_UpdateUnicode value)? updateUnicode,
+    TResult Function(_UpdateDotAll value)? updateDotAll,
     TResult Function(_UpdateTestString value)? updateTestString,
     TResult Function(_UpdateRegExp value)? updateRegExp,
     TResult Function(_UpdateMatches value)? updateMatches,
@@ -503,6 +557,9 @@ class _$UpdateMultilineImpl implements _UpdateMultiline {
     required TResult Function(String input) updateInput,
     required TResult Function(bool isGlobal) updateGlobal,
     required TResult Function(bool isMultiline) updateMultiline,
+    required TResult Function(bool isCaseSensitive) updateCaseSensitive,
+    required TResult Function(bool isUnicode) updateUnicode,
+    required TResult Function(bool isDotAll) updateDotAll,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
     required TResult Function(List<RegExpMatch>? matches) updateMatches,
@@ -516,6 +573,9 @@ class _$UpdateMultilineImpl implements _UpdateMultiline {
     TResult? Function(String input)? updateInput,
     TResult? Function(bool isGlobal)? updateGlobal,
     TResult? Function(bool isMultiline)? updateMultiline,
+    TResult? Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult? Function(bool isUnicode)? updateUnicode,
+    TResult? Function(bool isDotAll)? updateDotAll,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
     TResult? Function(List<RegExpMatch>? matches)? updateMatches,
@@ -529,6 +589,9 @@ class _$UpdateMultilineImpl implements _UpdateMultiline {
     TResult Function(String input)? updateInput,
     TResult Function(bool isGlobal)? updateGlobal,
     TResult Function(bool isMultiline)? updateMultiline,
+    TResult Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult Function(bool isUnicode)? updateUnicode,
+    TResult Function(bool isDotAll)? updateDotAll,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
     TResult Function(List<RegExpMatch>? matches)? updateMatches,
@@ -546,6 +609,9 @@ class _$UpdateMultilineImpl implements _UpdateMultiline {
     required TResult Function(_UpdateInput value) updateInput,
     required TResult Function(_UpdateGlobal value) updateGlobal,
     required TResult Function(_UpdateMultiline value) updateMultiline,
+    required TResult Function(_UpdateCaseSensitive value) updateCaseSensitive,
+    required TResult Function(_UpdateUnicode value) updateUnicode,
+    required TResult Function(_UpdateDotAll value) updateDotAll,
     required TResult Function(_UpdateTestString value) updateTestString,
     required TResult Function(_UpdateRegExp value) updateRegExp,
     required TResult Function(_UpdateMatches value) updateMatches,
@@ -559,6 +625,9 @@ class _$UpdateMultilineImpl implements _UpdateMultiline {
     TResult? Function(_UpdateInput value)? updateInput,
     TResult? Function(_UpdateGlobal value)? updateGlobal,
     TResult? Function(_UpdateMultiline value)? updateMultiline,
+    TResult? Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult? Function(_UpdateUnicode value)? updateUnicode,
+    TResult? Function(_UpdateDotAll value)? updateDotAll,
     TResult? Function(_UpdateTestString value)? updateTestString,
     TResult? Function(_UpdateRegExp value)? updateRegExp,
     TResult? Function(_UpdateMatches value)? updateMatches,
@@ -572,6 +641,9 @@ class _$UpdateMultilineImpl implements _UpdateMultiline {
     TResult Function(_UpdateInput value)? updateInput,
     TResult Function(_UpdateGlobal value)? updateGlobal,
     TResult Function(_UpdateMultiline value)? updateMultiline,
+    TResult Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult Function(_UpdateUnicode value)? updateUnicode,
+    TResult Function(_UpdateDotAll value)? updateDotAll,
     TResult Function(_UpdateTestString value)? updateTestString,
     TResult Function(_UpdateRegExp value)? updateRegExp,
     TResult Function(_UpdateMatches value)? updateMatches,
@@ -594,6 +666,557 @@ abstract class _UpdateMultiline implements RegExpMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateMultilineImplCopyWith<_$UpdateMultilineImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateCaseSensitiveImplCopyWith<$Res> {
+  factory _$$UpdateCaseSensitiveImplCopyWith(_$UpdateCaseSensitiveImpl value,
+          $Res Function(_$UpdateCaseSensitiveImpl) then) =
+      __$$UpdateCaseSensitiveImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isCaseSensitive});
+}
+
+/// @nodoc
+class __$$UpdateCaseSensitiveImplCopyWithImpl<$Res>
+    extends _$RegExpMessageCopyWithImpl<$Res, _$UpdateCaseSensitiveImpl>
+    implements _$$UpdateCaseSensitiveImplCopyWith<$Res> {
+  __$$UpdateCaseSensitiveImplCopyWithImpl(_$UpdateCaseSensitiveImpl _value,
+      $Res Function(_$UpdateCaseSensitiveImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isCaseSensitive = null,
+  }) {
+    return _then(_$UpdateCaseSensitiveImpl(
+      null == isCaseSensitive
+          ? _value.isCaseSensitive
+          : isCaseSensitive // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateCaseSensitiveImpl implements _UpdateCaseSensitive {
+  const _$UpdateCaseSensitiveImpl(this.isCaseSensitive);
+
+  @override
+  final bool isCaseSensitive;
+
+  @override
+  String toString() {
+    return 'RegExpMessage.updateCaseSensitive(isCaseSensitive: $isCaseSensitive)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateCaseSensitiveImpl &&
+            (identical(other.isCaseSensitive, isCaseSensitive) ||
+                other.isCaseSensitive == isCaseSensitive));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isCaseSensitive);
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateCaseSensitiveImplCopyWith<_$UpdateCaseSensitiveImpl> get copyWith =>
+      __$$UpdateCaseSensitiveImplCopyWithImpl<_$UpdateCaseSensitiveImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String input) updateInput,
+    required TResult Function(bool isGlobal) updateGlobal,
+    required TResult Function(bool isMultiline) updateMultiline,
+    required TResult Function(bool isCaseSensitive) updateCaseSensitive,
+    required TResult Function(bool isUnicode) updateUnicode,
+    required TResult Function(bool isDotAll) updateDotAll,
+    required TResult Function(String testString) updateTestString,
+    required TResult Function(RegExp? regexp) updateRegExp,
+    required TResult Function(List<RegExpMatch>? matches) updateMatches,
+  }) {
+    return updateCaseSensitive(isCaseSensitive);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String input)? updateInput,
+    TResult? Function(bool isGlobal)? updateGlobal,
+    TResult? Function(bool isMultiline)? updateMultiline,
+    TResult? Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult? Function(bool isUnicode)? updateUnicode,
+    TResult? Function(bool isDotAll)? updateDotAll,
+    TResult? Function(String testString)? updateTestString,
+    TResult? Function(RegExp? regexp)? updateRegExp,
+    TResult? Function(List<RegExpMatch>? matches)? updateMatches,
+  }) {
+    return updateCaseSensitive?.call(isCaseSensitive);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String input)? updateInput,
+    TResult Function(bool isGlobal)? updateGlobal,
+    TResult Function(bool isMultiline)? updateMultiline,
+    TResult Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult Function(bool isUnicode)? updateUnicode,
+    TResult Function(bool isDotAll)? updateDotAll,
+    TResult Function(String testString)? updateTestString,
+    TResult Function(RegExp? regexp)? updateRegExp,
+    TResult Function(List<RegExpMatch>? matches)? updateMatches,
+    required TResult orElse(),
+  }) {
+    if (updateCaseSensitive != null) {
+      return updateCaseSensitive(isCaseSensitive);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateInput value) updateInput,
+    required TResult Function(_UpdateGlobal value) updateGlobal,
+    required TResult Function(_UpdateMultiline value) updateMultiline,
+    required TResult Function(_UpdateCaseSensitive value) updateCaseSensitive,
+    required TResult Function(_UpdateUnicode value) updateUnicode,
+    required TResult Function(_UpdateDotAll value) updateDotAll,
+    required TResult Function(_UpdateTestString value) updateTestString,
+    required TResult Function(_UpdateRegExp value) updateRegExp,
+    required TResult Function(_UpdateMatches value) updateMatches,
+  }) {
+    return updateCaseSensitive(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateInput value)? updateInput,
+    TResult? Function(_UpdateGlobal value)? updateGlobal,
+    TResult? Function(_UpdateMultiline value)? updateMultiline,
+    TResult? Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult? Function(_UpdateUnicode value)? updateUnicode,
+    TResult? Function(_UpdateDotAll value)? updateDotAll,
+    TResult? Function(_UpdateTestString value)? updateTestString,
+    TResult? Function(_UpdateRegExp value)? updateRegExp,
+    TResult? Function(_UpdateMatches value)? updateMatches,
+  }) {
+    return updateCaseSensitive?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateInput value)? updateInput,
+    TResult Function(_UpdateGlobal value)? updateGlobal,
+    TResult Function(_UpdateMultiline value)? updateMultiline,
+    TResult Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult Function(_UpdateUnicode value)? updateUnicode,
+    TResult Function(_UpdateDotAll value)? updateDotAll,
+    TResult Function(_UpdateTestString value)? updateTestString,
+    TResult Function(_UpdateRegExp value)? updateRegExp,
+    TResult Function(_UpdateMatches value)? updateMatches,
+    required TResult orElse(),
+  }) {
+    if (updateCaseSensitive != null) {
+      return updateCaseSensitive(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateCaseSensitive implements RegExpMessage {
+  const factory _UpdateCaseSensitive(final bool isCaseSensitive) =
+      _$UpdateCaseSensitiveImpl;
+
+  bool get isCaseSensitive;
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateCaseSensitiveImplCopyWith<_$UpdateCaseSensitiveImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateUnicodeImplCopyWith<$Res> {
+  factory _$$UpdateUnicodeImplCopyWith(
+          _$UpdateUnicodeImpl value, $Res Function(_$UpdateUnicodeImpl) then) =
+      __$$UpdateUnicodeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isUnicode});
+}
+
+/// @nodoc
+class __$$UpdateUnicodeImplCopyWithImpl<$Res>
+    extends _$RegExpMessageCopyWithImpl<$Res, _$UpdateUnicodeImpl>
+    implements _$$UpdateUnicodeImplCopyWith<$Res> {
+  __$$UpdateUnicodeImplCopyWithImpl(
+      _$UpdateUnicodeImpl _value, $Res Function(_$UpdateUnicodeImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isUnicode = null,
+  }) {
+    return _then(_$UpdateUnicodeImpl(
+      null == isUnicode
+          ? _value.isUnicode
+          : isUnicode // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateUnicodeImpl implements _UpdateUnicode {
+  const _$UpdateUnicodeImpl(this.isUnicode);
+
+  @override
+  final bool isUnicode;
+
+  @override
+  String toString() {
+    return 'RegExpMessage.updateUnicode(isUnicode: $isUnicode)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateUnicodeImpl &&
+            (identical(other.isUnicode, isUnicode) ||
+                other.isUnicode == isUnicode));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isUnicode);
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateUnicodeImplCopyWith<_$UpdateUnicodeImpl> get copyWith =>
+      __$$UpdateUnicodeImplCopyWithImpl<_$UpdateUnicodeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String input) updateInput,
+    required TResult Function(bool isGlobal) updateGlobal,
+    required TResult Function(bool isMultiline) updateMultiline,
+    required TResult Function(bool isCaseSensitive) updateCaseSensitive,
+    required TResult Function(bool isUnicode) updateUnicode,
+    required TResult Function(bool isDotAll) updateDotAll,
+    required TResult Function(String testString) updateTestString,
+    required TResult Function(RegExp? regexp) updateRegExp,
+    required TResult Function(List<RegExpMatch>? matches) updateMatches,
+  }) {
+    return updateUnicode(isUnicode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String input)? updateInput,
+    TResult? Function(bool isGlobal)? updateGlobal,
+    TResult? Function(bool isMultiline)? updateMultiline,
+    TResult? Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult? Function(bool isUnicode)? updateUnicode,
+    TResult? Function(bool isDotAll)? updateDotAll,
+    TResult? Function(String testString)? updateTestString,
+    TResult? Function(RegExp? regexp)? updateRegExp,
+    TResult? Function(List<RegExpMatch>? matches)? updateMatches,
+  }) {
+    return updateUnicode?.call(isUnicode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String input)? updateInput,
+    TResult Function(bool isGlobal)? updateGlobal,
+    TResult Function(bool isMultiline)? updateMultiline,
+    TResult Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult Function(bool isUnicode)? updateUnicode,
+    TResult Function(bool isDotAll)? updateDotAll,
+    TResult Function(String testString)? updateTestString,
+    TResult Function(RegExp? regexp)? updateRegExp,
+    TResult Function(List<RegExpMatch>? matches)? updateMatches,
+    required TResult orElse(),
+  }) {
+    if (updateUnicode != null) {
+      return updateUnicode(isUnicode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateInput value) updateInput,
+    required TResult Function(_UpdateGlobal value) updateGlobal,
+    required TResult Function(_UpdateMultiline value) updateMultiline,
+    required TResult Function(_UpdateCaseSensitive value) updateCaseSensitive,
+    required TResult Function(_UpdateUnicode value) updateUnicode,
+    required TResult Function(_UpdateDotAll value) updateDotAll,
+    required TResult Function(_UpdateTestString value) updateTestString,
+    required TResult Function(_UpdateRegExp value) updateRegExp,
+    required TResult Function(_UpdateMatches value) updateMatches,
+  }) {
+    return updateUnicode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateInput value)? updateInput,
+    TResult? Function(_UpdateGlobal value)? updateGlobal,
+    TResult? Function(_UpdateMultiline value)? updateMultiline,
+    TResult? Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult? Function(_UpdateUnicode value)? updateUnicode,
+    TResult? Function(_UpdateDotAll value)? updateDotAll,
+    TResult? Function(_UpdateTestString value)? updateTestString,
+    TResult? Function(_UpdateRegExp value)? updateRegExp,
+    TResult? Function(_UpdateMatches value)? updateMatches,
+  }) {
+    return updateUnicode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateInput value)? updateInput,
+    TResult Function(_UpdateGlobal value)? updateGlobal,
+    TResult Function(_UpdateMultiline value)? updateMultiline,
+    TResult Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult Function(_UpdateUnicode value)? updateUnicode,
+    TResult Function(_UpdateDotAll value)? updateDotAll,
+    TResult Function(_UpdateTestString value)? updateTestString,
+    TResult Function(_UpdateRegExp value)? updateRegExp,
+    TResult Function(_UpdateMatches value)? updateMatches,
+    required TResult orElse(),
+  }) {
+    if (updateUnicode != null) {
+      return updateUnicode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateUnicode implements RegExpMessage {
+  const factory _UpdateUnicode(final bool isUnicode) = _$UpdateUnicodeImpl;
+
+  bool get isUnicode;
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateUnicodeImplCopyWith<_$UpdateUnicodeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateDotAllImplCopyWith<$Res> {
+  factory _$$UpdateDotAllImplCopyWith(
+          _$UpdateDotAllImpl value, $Res Function(_$UpdateDotAllImpl) then) =
+      __$$UpdateDotAllImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isDotAll});
+}
+
+/// @nodoc
+class __$$UpdateDotAllImplCopyWithImpl<$Res>
+    extends _$RegExpMessageCopyWithImpl<$Res, _$UpdateDotAllImpl>
+    implements _$$UpdateDotAllImplCopyWith<$Res> {
+  __$$UpdateDotAllImplCopyWithImpl(
+      _$UpdateDotAllImpl _value, $Res Function(_$UpdateDotAllImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isDotAll = null,
+  }) {
+    return _then(_$UpdateDotAllImpl(
+      null == isDotAll
+          ? _value.isDotAll
+          : isDotAll // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateDotAllImpl implements _UpdateDotAll {
+  const _$UpdateDotAllImpl(this.isDotAll);
+
+  @override
+  final bool isDotAll;
+
+  @override
+  String toString() {
+    return 'RegExpMessage.updateDotAll(isDotAll: $isDotAll)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateDotAllImpl &&
+            (identical(other.isDotAll, isDotAll) ||
+                other.isDotAll == isDotAll));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isDotAll);
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateDotAllImplCopyWith<_$UpdateDotAllImpl> get copyWith =>
+      __$$UpdateDotAllImplCopyWithImpl<_$UpdateDotAllImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String input) updateInput,
+    required TResult Function(bool isGlobal) updateGlobal,
+    required TResult Function(bool isMultiline) updateMultiline,
+    required TResult Function(bool isCaseSensitive) updateCaseSensitive,
+    required TResult Function(bool isUnicode) updateUnicode,
+    required TResult Function(bool isDotAll) updateDotAll,
+    required TResult Function(String testString) updateTestString,
+    required TResult Function(RegExp? regexp) updateRegExp,
+    required TResult Function(List<RegExpMatch>? matches) updateMatches,
+  }) {
+    return updateDotAll(isDotAll);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String input)? updateInput,
+    TResult? Function(bool isGlobal)? updateGlobal,
+    TResult? Function(bool isMultiline)? updateMultiline,
+    TResult? Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult? Function(bool isUnicode)? updateUnicode,
+    TResult? Function(bool isDotAll)? updateDotAll,
+    TResult? Function(String testString)? updateTestString,
+    TResult? Function(RegExp? regexp)? updateRegExp,
+    TResult? Function(List<RegExpMatch>? matches)? updateMatches,
+  }) {
+    return updateDotAll?.call(isDotAll);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String input)? updateInput,
+    TResult Function(bool isGlobal)? updateGlobal,
+    TResult Function(bool isMultiline)? updateMultiline,
+    TResult Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult Function(bool isUnicode)? updateUnicode,
+    TResult Function(bool isDotAll)? updateDotAll,
+    TResult Function(String testString)? updateTestString,
+    TResult Function(RegExp? regexp)? updateRegExp,
+    TResult Function(List<RegExpMatch>? matches)? updateMatches,
+    required TResult orElse(),
+  }) {
+    if (updateDotAll != null) {
+      return updateDotAll(isDotAll);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateInput value) updateInput,
+    required TResult Function(_UpdateGlobal value) updateGlobal,
+    required TResult Function(_UpdateMultiline value) updateMultiline,
+    required TResult Function(_UpdateCaseSensitive value) updateCaseSensitive,
+    required TResult Function(_UpdateUnicode value) updateUnicode,
+    required TResult Function(_UpdateDotAll value) updateDotAll,
+    required TResult Function(_UpdateTestString value) updateTestString,
+    required TResult Function(_UpdateRegExp value) updateRegExp,
+    required TResult Function(_UpdateMatches value) updateMatches,
+  }) {
+    return updateDotAll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateInput value)? updateInput,
+    TResult? Function(_UpdateGlobal value)? updateGlobal,
+    TResult? Function(_UpdateMultiline value)? updateMultiline,
+    TResult? Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult? Function(_UpdateUnicode value)? updateUnicode,
+    TResult? Function(_UpdateDotAll value)? updateDotAll,
+    TResult? Function(_UpdateTestString value)? updateTestString,
+    TResult? Function(_UpdateRegExp value)? updateRegExp,
+    TResult? Function(_UpdateMatches value)? updateMatches,
+  }) {
+    return updateDotAll?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateInput value)? updateInput,
+    TResult Function(_UpdateGlobal value)? updateGlobal,
+    TResult Function(_UpdateMultiline value)? updateMultiline,
+    TResult Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult Function(_UpdateUnicode value)? updateUnicode,
+    TResult Function(_UpdateDotAll value)? updateDotAll,
+    TResult Function(_UpdateTestString value)? updateTestString,
+    TResult Function(_UpdateRegExp value)? updateRegExp,
+    TResult Function(_UpdateMatches value)? updateMatches,
+    required TResult orElse(),
+  }) {
+    if (updateDotAll != null) {
+      return updateDotAll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateDotAll implements RegExpMessage {
+  const factory _UpdateDotAll(final bool isDotAll) = _$UpdateDotAllImpl;
+
+  bool get isDotAll;
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateDotAllImplCopyWith<_$UpdateDotAllImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -670,6 +1293,9 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
     required TResult Function(String input) updateInput,
     required TResult Function(bool isGlobal) updateGlobal,
     required TResult Function(bool isMultiline) updateMultiline,
+    required TResult Function(bool isCaseSensitive) updateCaseSensitive,
+    required TResult Function(bool isUnicode) updateUnicode,
+    required TResult Function(bool isDotAll) updateDotAll,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
     required TResult Function(List<RegExpMatch>? matches) updateMatches,
@@ -683,6 +1309,9 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
     TResult? Function(String input)? updateInput,
     TResult? Function(bool isGlobal)? updateGlobal,
     TResult? Function(bool isMultiline)? updateMultiline,
+    TResult? Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult? Function(bool isUnicode)? updateUnicode,
+    TResult? Function(bool isDotAll)? updateDotAll,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
     TResult? Function(List<RegExpMatch>? matches)? updateMatches,
@@ -696,6 +1325,9 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
     TResult Function(String input)? updateInput,
     TResult Function(bool isGlobal)? updateGlobal,
     TResult Function(bool isMultiline)? updateMultiline,
+    TResult Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult Function(bool isUnicode)? updateUnicode,
+    TResult Function(bool isDotAll)? updateDotAll,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
     TResult Function(List<RegExpMatch>? matches)? updateMatches,
@@ -713,6 +1345,9 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
     required TResult Function(_UpdateInput value) updateInput,
     required TResult Function(_UpdateGlobal value) updateGlobal,
     required TResult Function(_UpdateMultiline value) updateMultiline,
+    required TResult Function(_UpdateCaseSensitive value) updateCaseSensitive,
+    required TResult Function(_UpdateUnicode value) updateUnicode,
+    required TResult Function(_UpdateDotAll value) updateDotAll,
     required TResult Function(_UpdateTestString value) updateTestString,
     required TResult Function(_UpdateRegExp value) updateRegExp,
     required TResult Function(_UpdateMatches value) updateMatches,
@@ -726,6 +1361,9 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
     TResult? Function(_UpdateInput value)? updateInput,
     TResult? Function(_UpdateGlobal value)? updateGlobal,
     TResult? Function(_UpdateMultiline value)? updateMultiline,
+    TResult? Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult? Function(_UpdateUnicode value)? updateUnicode,
+    TResult? Function(_UpdateDotAll value)? updateDotAll,
     TResult? Function(_UpdateTestString value)? updateTestString,
     TResult? Function(_UpdateRegExp value)? updateRegExp,
     TResult? Function(_UpdateMatches value)? updateMatches,
@@ -739,6 +1377,9 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
     TResult Function(_UpdateInput value)? updateInput,
     TResult Function(_UpdateGlobal value)? updateGlobal,
     TResult Function(_UpdateMultiline value)? updateMultiline,
+    TResult Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult Function(_UpdateUnicode value)? updateUnicode,
+    TResult Function(_UpdateDotAll value)? updateDotAll,
     TResult Function(_UpdateTestString value)? updateTestString,
     TResult Function(_UpdateRegExp value)? updateRegExp,
     TResult Function(_UpdateMatches value)? updateMatches,
@@ -835,6 +1476,9 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
     required TResult Function(String input) updateInput,
     required TResult Function(bool isGlobal) updateGlobal,
     required TResult Function(bool isMultiline) updateMultiline,
+    required TResult Function(bool isCaseSensitive) updateCaseSensitive,
+    required TResult Function(bool isUnicode) updateUnicode,
+    required TResult Function(bool isDotAll) updateDotAll,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
     required TResult Function(List<RegExpMatch>? matches) updateMatches,
@@ -848,6 +1492,9 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
     TResult? Function(String input)? updateInput,
     TResult? Function(bool isGlobal)? updateGlobal,
     TResult? Function(bool isMultiline)? updateMultiline,
+    TResult? Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult? Function(bool isUnicode)? updateUnicode,
+    TResult? Function(bool isDotAll)? updateDotAll,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
     TResult? Function(List<RegExpMatch>? matches)? updateMatches,
@@ -861,6 +1508,9 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
     TResult Function(String input)? updateInput,
     TResult Function(bool isGlobal)? updateGlobal,
     TResult Function(bool isMultiline)? updateMultiline,
+    TResult Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult Function(bool isUnicode)? updateUnicode,
+    TResult Function(bool isDotAll)? updateDotAll,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
     TResult Function(List<RegExpMatch>? matches)? updateMatches,
@@ -878,6 +1528,9 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
     required TResult Function(_UpdateInput value) updateInput,
     required TResult Function(_UpdateGlobal value) updateGlobal,
     required TResult Function(_UpdateMultiline value) updateMultiline,
+    required TResult Function(_UpdateCaseSensitive value) updateCaseSensitive,
+    required TResult Function(_UpdateUnicode value) updateUnicode,
+    required TResult Function(_UpdateDotAll value) updateDotAll,
     required TResult Function(_UpdateTestString value) updateTestString,
     required TResult Function(_UpdateRegExp value) updateRegExp,
     required TResult Function(_UpdateMatches value) updateMatches,
@@ -891,6 +1544,9 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
     TResult? Function(_UpdateInput value)? updateInput,
     TResult? Function(_UpdateGlobal value)? updateGlobal,
     TResult? Function(_UpdateMultiline value)? updateMultiline,
+    TResult? Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult? Function(_UpdateUnicode value)? updateUnicode,
+    TResult? Function(_UpdateDotAll value)? updateDotAll,
     TResult? Function(_UpdateTestString value)? updateTestString,
     TResult? Function(_UpdateRegExp value)? updateRegExp,
     TResult? Function(_UpdateMatches value)? updateMatches,
@@ -904,6 +1560,9 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
     TResult Function(_UpdateInput value)? updateInput,
     TResult Function(_UpdateGlobal value)? updateGlobal,
     TResult Function(_UpdateMultiline value)? updateMultiline,
+    TResult Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult Function(_UpdateUnicode value)? updateUnicode,
+    TResult Function(_UpdateDotAll value)? updateDotAll,
     TResult Function(_UpdateTestString value)? updateTestString,
     TResult Function(_UpdateRegExp value)? updateRegExp,
     TResult Function(_UpdateMatches value)? updateMatches,
@@ -1008,6 +1667,9 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
     required TResult Function(String input) updateInput,
     required TResult Function(bool isGlobal) updateGlobal,
     required TResult Function(bool isMultiline) updateMultiline,
+    required TResult Function(bool isCaseSensitive) updateCaseSensitive,
+    required TResult Function(bool isUnicode) updateUnicode,
+    required TResult Function(bool isDotAll) updateDotAll,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
     required TResult Function(List<RegExpMatch>? matches) updateMatches,
@@ -1021,6 +1683,9 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
     TResult? Function(String input)? updateInput,
     TResult? Function(bool isGlobal)? updateGlobal,
     TResult? Function(bool isMultiline)? updateMultiline,
+    TResult? Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult? Function(bool isUnicode)? updateUnicode,
+    TResult? Function(bool isDotAll)? updateDotAll,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
     TResult? Function(List<RegExpMatch>? matches)? updateMatches,
@@ -1034,6 +1699,9 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
     TResult Function(String input)? updateInput,
     TResult Function(bool isGlobal)? updateGlobal,
     TResult Function(bool isMultiline)? updateMultiline,
+    TResult Function(bool isCaseSensitive)? updateCaseSensitive,
+    TResult Function(bool isUnicode)? updateUnicode,
+    TResult Function(bool isDotAll)? updateDotAll,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
     TResult Function(List<RegExpMatch>? matches)? updateMatches,
@@ -1051,6 +1719,9 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
     required TResult Function(_UpdateInput value) updateInput,
     required TResult Function(_UpdateGlobal value) updateGlobal,
     required TResult Function(_UpdateMultiline value) updateMultiline,
+    required TResult Function(_UpdateCaseSensitive value) updateCaseSensitive,
+    required TResult Function(_UpdateUnicode value) updateUnicode,
+    required TResult Function(_UpdateDotAll value) updateDotAll,
     required TResult Function(_UpdateTestString value) updateTestString,
     required TResult Function(_UpdateRegExp value) updateRegExp,
     required TResult Function(_UpdateMatches value) updateMatches,
@@ -1064,6 +1735,9 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
     TResult? Function(_UpdateInput value)? updateInput,
     TResult? Function(_UpdateGlobal value)? updateGlobal,
     TResult? Function(_UpdateMultiline value)? updateMultiline,
+    TResult? Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult? Function(_UpdateUnicode value)? updateUnicode,
+    TResult? Function(_UpdateDotAll value)? updateDotAll,
     TResult? Function(_UpdateTestString value)? updateTestString,
     TResult? Function(_UpdateRegExp value)? updateRegExp,
     TResult? Function(_UpdateMatches value)? updateMatches,
@@ -1077,6 +1751,9 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
     TResult Function(_UpdateInput value)? updateInput,
     TResult Function(_UpdateGlobal value)? updateGlobal,
     TResult Function(_UpdateMultiline value)? updateMultiline,
+    TResult Function(_UpdateCaseSensitive value)? updateCaseSensitive,
+    TResult Function(_UpdateUnicode value)? updateUnicode,
+    TResult Function(_UpdateDotAll value)? updateDotAll,
     TResult Function(_UpdateTestString value)? updateTestString,
     TResult Function(_UpdateRegExp value)? updateRegExp,
     TResult Function(_UpdateMatches value)? updateMatches,

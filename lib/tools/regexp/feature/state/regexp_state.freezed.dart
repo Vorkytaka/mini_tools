@@ -20,6 +20,9 @@ mixin _$RegExpState {
   String get testString => throw _privateConstructorUsedError;
   bool get isGlobal => throw _privateConstructorUsedError;
   bool get isMultiline => throw _privateConstructorUsedError;
+  bool get isCaseSensitive => throw _privateConstructorUsedError;
+  bool get isUnicode => throw _privateConstructorUsedError;
+  bool get isDotAll => throw _privateConstructorUsedError;
   RegExp? get regexp => throw _privateConstructorUsedError;
   List<RegExpMatch>? get matches => throw _privateConstructorUsedError;
 
@@ -41,6 +44,9 @@ abstract class $RegExpStateCopyWith<$Res> {
       String testString,
       bool isGlobal,
       bool isMultiline,
+      bool isCaseSensitive,
+      bool isUnicode,
+      bool isDotAll,
       RegExp? regexp,
       List<RegExpMatch>? matches});
 }
@@ -64,6 +70,9 @@ class _$RegExpStateCopyWithImpl<$Res, $Val extends RegExpState>
     Object? testString = null,
     Object? isGlobal = null,
     Object? isMultiline = null,
+    Object? isCaseSensitive = null,
+    Object? isUnicode = null,
+    Object? isDotAll = null,
     Object? regexp = freezed,
     Object? matches = freezed,
   }) {
@@ -83,6 +92,18 @@ class _$RegExpStateCopyWithImpl<$Res, $Val extends RegExpState>
       isMultiline: null == isMultiline
           ? _value.isMultiline
           : isMultiline // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCaseSensitive: null == isCaseSensitive
+          ? _value.isCaseSensitive
+          : isCaseSensitive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUnicode: null == isUnicode
+          ? _value.isUnicode
+          : isUnicode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDotAll: null == isDotAll
+          ? _value.isDotAll
+          : isDotAll // ignore: cast_nullable_to_non_nullable
               as bool,
       regexp: freezed == regexp
           ? _value.regexp
@@ -109,6 +130,9 @@ abstract class _$$RegExpStateImplCopyWith<$Res>
       String testString,
       bool isGlobal,
       bool isMultiline,
+      bool isCaseSensitive,
+      bool isUnicode,
+      bool isDotAll,
       RegExp? regexp,
       List<RegExpMatch>? matches});
 }
@@ -130,6 +154,9 @@ class __$$RegExpStateImplCopyWithImpl<$Res>
     Object? testString = null,
     Object? isGlobal = null,
     Object? isMultiline = null,
+    Object? isCaseSensitive = null,
+    Object? isUnicode = null,
+    Object? isDotAll = null,
     Object? regexp = freezed,
     Object? matches = freezed,
   }) {
@@ -149,6 +176,18 @@ class __$$RegExpStateImplCopyWithImpl<$Res>
       isMultiline: null == isMultiline
           ? _value.isMultiline
           : isMultiline // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isCaseSensitive: null == isCaseSensitive
+          ? _value.isCaseSensitive
+          : isCaseSensitive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isUnicode: null == isUnicode
+          ? _value.isUnicode
+          : isUnicode // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDotAll: null == isDotAll
+          ? _value.isDotAll
+          : isDotAll // ignore: cast_nullable_to_non_nullable
               as bool,
       regexp: freezed == regexp
           ? _value.regexp
@@ -170,6 +209,9 @@ class _$RegExpStateImpl implements _RegExpState {
       required this.testString,
       required this.isGlobal,
       required this.isMultiline,
+      required this.isCaseSensitive,
+      required this.isUnicode,
+      required this.isDotAll,
       required this.regexp,
       required final List<RegExpMatch>? matches})
       : _matches = matches;
@@ -182,6 +224,12 @@ class _$RegExpStateImpl implements _RegExpState {
   final bool isGlobal;
   @override
   final bool isMultiline;
+  @override
+  final bool isCaseSensitive;
+  @override
+  final bool isUnicode;
+  @override
+  final bool isDotAll;
   @override
   final RegExp? regexp;
   final List<RegExpMatch>? _matches;
@@ -196,7 +244,7 @@ class _$RegExpStateImpl implements _RegExpState {
 
   @override
   String toString() {
-    return 'RegExpState(input: $input, testString: $testString, isGlobal: $isGlobal, isMultiline: $isMultiline, regexp: $regexp, matches: $matches)';
+    return 'RegExpState(input: $input, testString: $testString, isGlobal: $isGlobal, isMultiline: $isMultiline, isCaseSensitive: $isCaseSensitive, isUnicode: $isUnicode, isDotAll: $isDotAll, regexp: $regexp, matches: $matches)';
   }
 
   @override
@@ -211,13 +259,28 @@ class _$RegExpStateImpl implements _RegExpState {
                 other.isGlobal == isGlobal) &&
             (identical(other.isMultiline, isMultiline) ||
                 other.isMultiline == isMultiline) &&
+            (identical(other.isCaseSensitive, isCaseSensitive) ||
+                other.isCaseSensitive == isCaseSensitive) &&
+            (identical(other.isUnicode, isUnicode) ||
+                other.isUnicode == isUnicode) &&
+            (identical(other.isDotAll, isDotAll) ||
+                other.isDotAll == isDotAll) &&
             (identical(other.regexp, regexp) || other.regexp == regexp) &&
             const DeepCollectionEquality().equals(other._matches, _matches));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, input, testString, isGlobal,
-      isMultiline, regexp, const DeepCollectionEquality().hash(_matches));
+  int get hashCode => Object.hash(
+      runtimeType,
+      input,
+      testString,
+      isGlobal,
+      isMultiline,
+      isCaseSensitive,
+      isUnicode,
+      isDotAll,
+      regexp,
+      const DeepCollectionEquality().hash(_matches));
 
   /// Create a copy of RegExpState
   /// with the given fields replaced by the non-null parameter values.
@@ -234,6 +297,9 @@ abstract class _RegExpState implements RegExpState {
       required final String testString,
       required final bool isGlobal,
       required final bool isMultiline,
+      required final bool isCaseSensitive,
+      required final bool isUnicode,
+      required final bool isDotAll,
       required final RegExp? regexp,
       required final List<RegExpMatch>? matches}) = _$RegExpStateImpl;
 
@@ -245,6 +311,12 @@ abstract class _RegExpState implements RegExpState {
   bool get isGlobal;
   @override
   bool get isMultiline;
+  @override
+  bool get isCaseSensitive;
+  @override
+  bool get isUnicode;
+  @override
+  bool get isDotAll;
   @override
   RegExp? get regexp;
   @override

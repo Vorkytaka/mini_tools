@@ -10,6 +10,9 @@ class RegExpState with _$RegExpState {
     required String testString,
     required bool isGlobal,
     required bool isMultiline,
+    required bool isCaseSensitive,
+    required bool isUnicode,
+    required bool isDotAll,
     required RegExp? regexp,
     required List<RegExpMatch>? matches,
   }) = _RegExpState;
@@ -19,6 +22,9 @@ class RegExpState with _$RegExpState {
         testString: '',
         isGlobal: true,
         isMultiline: true,
+        isCaseSensitive: true,
+        isUnicode: false,
+        isDotAll: false,
         regexp: null,
         matches: null,
       );
