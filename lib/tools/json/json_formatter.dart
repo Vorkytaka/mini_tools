@@ -107,8 +107,6 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
-    final t = Translations.of(context);
-
     return Row(
       children: [
         Expanded(

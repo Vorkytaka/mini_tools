@@ -24,13 +24,14 @@ dependencies:
   json_path: ^0.7.4
   macos_ui: ^2.0.8
   meta: ^1.15.0
-  mini_tea: ^0.1.0
-  mini_tea_flutter: ^0.1.0
+  mini_tea: ^0.1.2
+  mini_tea_flutter: ^0.2.0
   path: ^1.9.0
   pointycastle: ^3.9.1
   provider: ^6.1.2
   re_editor: ^0.3.1
   re_highlight: ^0.0.3
+  responsive_grid: ^2.4.4
   rxdart: ^0.28.0
   slang: ^3.31.1
   slang_flutter: ^3.31.0
@@ -40,15 +41,13 @@ dependencies:
   timezone: ^0.9.4
   window_manager: ^0.4.0
 
-  responsive_grid: ^2.4.4
-
 dev_dependencies:
   build_runner: ^2.4.13
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
   freezed: ^2.5.7
-  mini_tea_test: ^0.1.0
+  mini_tea_test: ^0.1.1
   mocktail: ^1.0.4
 
 flutter:
