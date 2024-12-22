@@ -18,20 +18,23 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RegExpEffect {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String input) parseRegExp,
-    required TResult Function(RegExp? regexp, String testString) findMatches,
+    required TResult Function(String input, bool isMultiline) parseRegExp,
+    required TResult Function(RegExp? regexp, String testString, bool isGlobal)
+        findMatches,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String input)? parseRegExp,
-    TResult? Function(RegExp? regexp, String testString)? findMatches,
+    TResult? Function(String input, bool isMultiline)? parseRegExp,
+    TResult? Function(RegExp? regexp, String testString, bool isGlobal)?
+        findMatches,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String input)? parseRegExp,
-    TResult Function(RegExp? regexp, String testString)? findMatches,
+    TResult Function(String input, bool isMultiline)? parseRegExp,
+    TResult Function(RegExp? regexp, String testString, bool isGlobal)?
+        findMatches,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -83,7 +86,7 @@ abstract class _$$ParseRegExpImplCopyWith<$Res> {
           _$ParseRegExpImpl value, $Res Function(_$ParseRegExpImpl) then) =
       __$$ParseRegExpImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String input});
+  $Res call({String input, bool isMultiline});
 }
 
 /// @nodoc
@@ -100,12 +103,17 @@ class __$$ParseRegExpImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? input = null,
+    Object? isMultiline = null,
   }) {
     return _then(_$ParseRegExpImpl(
-      null == input
+      input: null == input
           ? _value.input
           : input // ignore: cast_nullable_to_non_nullable
               as String,
+      isMultiline: null == isMultiline
+          ? _value.isMultiline
+          : isMultiline // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -113,14 +121,16 @@ class __$$ParseRegExpImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ParseRegExpImpl implements _ParseRegExp {
-  const _$ParseRegExpImpl(this.input);
+  const _$ParseRegExpImpl({required this.input, required this.isMultiline});
 
   @override
   final String input;
+  @override
+  final bool isMultiline;
 
   @override
   String toString() {
-    return 'RegExpEffect.parseRegExp(input: $input)';
+    return 'RegExpEffect.parseRegExp(input: $input, isMultiline: $isMultiline)';
   }
 
   @override
@@ -128,11 +138,13 @@ class _$ParseRegExpImpl implements _ParseRegExp {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ParseRegExpImpl &&
-            (identical(other.input, input) || other.input == input));
+            (identical(other.input, input) || other.input == input) &&
+            (identical(other.isMultiline, isMultiline) ||
+                other.isMultiline == isMultiline));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, input);
+  int get hashCode => Object.hash(runtimeType, input, isMultiline);
 
   /// Create a copy of RegExpEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -145,30 +157,33 @@ class _$ParseRegExpImpl implements _ParseRegExp {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String input) parseRegExp,
-    required TResult Function(RegExp? regexp, String testString) findMatches,
+    required TResult Function(String input, bool isMultiline) parseRegExp,
+    required TResult Function(RegExp? regexp, String testString, bool isGlobal)
+        findMatches,
   }) {
-    return parseRegExp(input);
+    return parseRegExp(input, isMultiline);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String input)? parseRegExp,
-    TResult? Function(RegExp? regexp, String testString)? findMatches,
+    TResult? Function(String input, bool isMultiline)? parseRegExp,
+    TResult? Function(RegExp? regexp, String testString, bool isGlobal)?
+        findMatches,
   }) {
-    return parseRegExp?.call(input);
+    return parseRegExp?.call(input, isMultiline);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String input)? parseRegExp,
-    TResult Function(RegExp? regexp, String testString)? findMatches,
+    TResult Function(String input, bool isMultiline)? parseRegExp,
+    TResult Function(RegExp? regexp, String testString, bool isGlobal)?
+        findMatches,
     required TResult orElse(),
   }) {
     if (parseRegExp != null) {
-      return parseRegExp(input);
+      return parseRegExp(input, isMultiline);
     }
     return orElse();
   }
@@ -206,9 +221,12 @@ class _$ParseRegExpImpl implements _ParseRegExp {
 }
 
 abstract class _ParseRegExp implements RegExpEffect {
-  const factory _ParseRegExp(final String input) = _$ParseRegExpImpl;
+  const factory _ParseRegExp(
+      {required final String input,
+      required final bool isMultiline}) = _$ParseRegExpImpl;
 
   String get input;
+  bool get isMultiline;
 
   /// Create a copy of RegExpEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -223,7 +241,7 @@ abstract class _$$FindMatchesImplCopyWith<$Res> {
           _$FindMatchesImpl value, $Res Function(_$FindMatchesImpl) then) =
       __$$FindMatchesImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({RegExp? regexp, String testString});
+  $Res call({RegExp? regexp, String testString, bool isGlobal});
 }
 
 /// @nodoc
@@ -241,6 +259,7 @@ class __$$FindMatchesImplCopyWithImpl<$Res>
   $Res call({
     Object? regexp = freezed,
     Object? testString = null,
+    Object? isGlobal = null,
   }) {
     return _then(_$FindMatchesImpl(
       regexp: freezed == regexp
@@ -251,6 +270,10 @@ class __$$FindMatchesImplCopyWithImpl<$Res>
           ? _value.testString
           : testString // ignore: cast_nullable_to_non_nullable
               as String,
+      isGlobal: null == isGlobal
+          ? _value.isGlobal
+          : isGlobal // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -258,16 +281,19 @@ class __$$FindMatchesImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$FindMatchesImpl implements _FindMatches {
-  const _$FindMatchesImpl({required this.regexp, required this.testString});
+  const _$FindMatchesImpl(
+      {required this.regexp, required this.testString, required this.isGlobal});
 
   @override
   final RegExp? regexp;
   @override
   final String testString;
+  @override
+  final bool isGlobal;
 
   @override
   String toString() {
-    return 'RegExpEffect.findMatches(regexp: $regexp, testString: $testString)';
+    return 'RegExpEffect.findMatches(regexp: $regexp, testString: $testString, isGlobal: $isGlobal)';
   }
 
   @override
@@ -277,11 +303,13 @@ class _$FindMatchesImpl implements _FindMatches {
             other is _$FindMatchesImpl &&
             (identical(other.regexp, regexp) || other.regexp == regexp) &&
             (identical(other.testString, testString) ||
-                other.testString == testString));
+                other.testString == testString) &&
+            (identical(other.isGlobal, isGlobal) ||
+                other.isGlobal == isGlobal));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, regexp, testString);
+  int get hashCode => Object.hash(runtimeType, regexp, testString, isGlobal);
 
   /// Create a copy of RegExpEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -294,30 +322,33 @@ class _$FindMatchesImpl implements _FindMatches {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String input) parseRegExp,
-    required TResult Function(RegExp? regexp, String testString) findMatches,
+    required TResult Function(String input, bool isMultiline) parseRegExp,
+    required TResult Function(RegExp? regexp, String testString, bool isGlobal)
+        findMatches,
   }) {
-    return findMatches(regexp, testString);
+    return findMatches(regexp, testString, isGlobal);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String input)? parseRegExp,
-    TResult? Function(RegExp? regexp, String testString)? findMatches,
+    TResult? Function(String input, bool isMultiline)? parseRegExp,
+    TResult? Function(RegExp? regexp, String testString, bool isGlobal)?
+        findMatches,
   }) {
-    return findMatches?.call(regexp, testString);
+    return findMatches?.call(regexp, testString, isGlobal);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String input)? parseRegExp,
-    TResult Function(RegExp? regexp, String testString)? findMatches,
+    TResult Function(String input, bool isMultiline)? parseRegExp,
+    TResult Function(RegExp? regexp, String testString, bool isGlobal)?
+        findMatches,
     required TResult orElse(),
   }) {
     if (findMatches != null) {
-      return findMatches(regexp, testString);
+      return findMatches(regexp, testString, isGlobal);
     }
     return orElse();
   }
@@ -357,10 +388,12 @@ class _$FindMatchesImpl implements _FindMatches {
 abstract class _FindMatches implements RegExpEffect {
   const factory _FindMatches(
       {required final RegExp? regexp,
-      required final String testString}) = _$FindMatchesImpl;
+      required final String testString,
+      required final bool isGlobal}) = _$FindMatchesImpl;
 
   RegExp? get regexp;
   String get testString;
+  bool get isGlobal;
 
   /// Create a copy of RegExpEffect
   /// with the given fields replaced by the non-null parameter values.

@@ -19,6 +19,8 @@ mixin _$RegExpMessage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String input) updateInput,
+    required TResult Function(bool isGlobal) updateGlobal,
+    required TResult Function(bool isMultiline) updateMultiline,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
     required TResult Function(List<RegExpMatch>? matches) updateMatches,
@@ -27,6 +29,8 @@ mixin _$RegExpMessage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String input)? updateInput,
+    TResult? Function(bool isGlobal)? updateGlobal,
+    TResult? Function(bool isMultiline)? updateMultiline,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
     TResult? Function(List<RegExpMatch>? matches)? updateMatches,
@@ -35,6 +39,8 @@ mixin _$RegExpMessage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String input)? updateInput,
+    TResult Function(bool isGlobal)? updateGlobal,
+    TResult Function(bool isMultiline)? updateMultiline,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
     TResult Function(List<RegExpMatch>? matches)? updateMatches,
@@ -44,6 +50,8 @@ mixin _$RegExpMessage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UpdateInput value) updateInput,
+    required TResult Function(_UpdateGlobal value) updateGlobal,
+    required TResult Function(_UpdateMultiline value) updateMultiline,
     required TResult Function(_UpdateTestString value) updateTestString,
     required TResult Function(_UpdateRegExp value) updateRegExp,
     required TResult Function(_UpdateMatches value) updateMatches,
@@ -52,6 +60,8 @@ mixin _$RegExpMessage {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_UpdateInput value)? updateInput,
+    TResult? Function(_UpdateGlobal value)? updateGlobal,
+    TResult? Function(_UpdateMultiline value)? updateMultiline,
     TResult? Function(_UpdateTestString value)? updateTestString,
     TResult? Function(_UpdateRegExp value)? updateRegExp,
     TResult? Function(_UpdateMatches value)? updateMatches,
@@ -60,6 +70,8 @@ mixin _$RegExpMessage {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UpdateInput value)? updateInput,
+    TResult Function(_UpdateGlobal value)? updateGlobal,
+    TResult Function(_UpdateMultiline value)? updateMultiline,
     TResult Function(_UpdateTestString value)? updateTestString,
     TResult Function(_UpdateRegExp value)? updateRegExp,
     TResult Function(_UpdateMatches value)? updateMatches,
@@ -158,6 +170,8 @@ class _$UpdateInputImpl implements _UpdateInput {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String input) updateInput,
+    required TResult Function(bool isGlobal) updateGlobal,
+    required TResult Function(bool isMultiline) updateMultiline,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
     required TResult Function(List<RegExpMatch>? matches) updateMatches,
@@ -169,6 +183,8 @@ class _$UpdateInputImpl implements _UpdateInput {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String input)? updateInput,
+    TResult? Function(bool isGlobal)? updateGlobal,
+    TResult? Function(bool isMultiline)? updateMultiline,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
     TResult? Function(List<RegExpMatch>? matches)? updateMatches,
@@ -180,6 +196,8 @@ class _$UpdateInputImpl implements _UpdateInput {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String input)? updateInput,
+    TResult Function(bool isGlobal)? updateGlobal,
+    TResult Function(bool isMultiline)? updateMultiline,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
     TResult Function(List<RegExpMatch>? matches)? updateMatches,
@@ -195,6 +213,8 @@ class _$UpdateInputImpl implements _UpdateInput {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UpdateInput value) updateInput,
+    required TResult Function(_UpdateGlobal value) updateGlobal,
+    required TResult Function(_UpdateMultiline value) updateMultiline,
     required TResult Function(_UpdateTestString value) updateTestString,
     required TResult Function(_UpdateRegExp value) updateRegExp,
     required TResult Function(_UpdateMatches value) updateMatches,
@@ -206,6 +226,8 @@ class _$UpdateInputImpl implements _UpdateInput {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_UpdateInput value)? updateInput,
+    TResult? Function(_UpdateGlobal value)? updateGlobal,
+    TResult? Function(_UpdateMultiline value)? updateMultiline,
     TResult? Function(_UpdateTestString value)? updateTestString,
     TResult? Function(_UpdateRegExp value)? updateRegExp,
     TResult? Function(_UpdateMatches value)? updateMatches,
@@ -217,6 +239,8 @@ class _$UpdateInputImpl implements _UpdateInput {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UpdateInput value)? updateInput,
+    TResult Function(_UpdateGlobal value)? updateGlobal,
+    TResult Function(_UpdateMultiline value)? updateMultiline,
     TResult Function(_UpdateTestString value)? updateTestString,
     TResult Function(_UpdateRegExp value)? updateRegExp,
     TResult Function(_UpdateMatches value)? updateMatches,
@@ -238,6 +262,338 @@ abstract class _UpdateInput implements RegExpMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateInputImplCopyWith<_$UpdateInputImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateGlobalImplCopyWith<$Res> {
+  factory _$$UpdateGlobalImplCopyWith(
+          _$UpdateGlobalImpl value, $Res Function(_$UpdateGlobalImpl) then) =
+      __$$UpdateGlobalImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isGlobal});
+}
+
+/// @nodoc
+class __$$UpdateGlobalImplCopyWithImpl<$Res>
+    extends _$RegExpMessageCopyWithImpl<$Res, _$UpdateGlobalImpl>
+    implements _$$UpdateGlobalImplCopyWith<$Res> {
+  __$$UpdateGlobalImplCopyWithImpl(
+      _$UpdateGlobalImpl _value, $Res Function(_$UpdateGlobalImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isGlobal = null,
+  }) {
+    return _then(_$UpdateGlobalImpl(
+      null == isGlobal
+          ? _value.isGlobal
+          : isGlobal // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateGlobalImpl implements _UpdateGlobal {
+  const _$UpdateGlobalImpl(this.isGlobal);
+
+  @override
+  final bool isGlobal;
+
+  @override
+  String toString() {
+    return 'RegExpMessage.updateGlobal(isGlobal: $isGlobal)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateGlobalImpl &&
+            (identical(other.isGlobal, isGlobal) ||
+                other.isGlobal == isGlobal));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isGlobal);
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateGlobalImplCopyWith<_$UpdateGlobalImpl> get copyWith =>
+      __$$UpdateGlobalImplCopyWithImpl<_$UpdateGlobalImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String input) updateInput,
+    required TResult Function(bool isGlobal) updateGlobal,
+    required TResult Function(bool isMultiline) updateMultiline,
+    required TResult Function(String testString) updateTestString,
+    required TResult Function(RegExp? regexp) updateRegExp,
+    required TResult Function(List<RegExpMatch>? matches) updateMatches,
+  }) {
+    return updateGlobal(isGlobal);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String input)? updateInput,
+    TResult? Function(bool isGlobal)? updateGlobal,
+    TResult? Function(bool isMultiline)? updateMultiline,
+    TResult? Function(String testString)? updateTestString,
+    TResult? Function(RegExp? regexp)? updateRegExp,
+    TResult? Function(List<RegExpMatch>? matches)? updateMatches,
+  }) {
+    return updateGlobal?.call(isGlobal);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String input)? updateInput,
+    TResult Function(bool isGlobal)? updateGlobal,
+    TResult Function(bool isMultiline)? updateMultiline,
+    TResult Function(String testString)? updateTestString,
+    TResult Function(RegExp? regexp)? updateRegExp,
+    TResult Function(List<RegExpMatch>? matches)? updateMatches,
+    required TResult orElse(),
+  }) {
+    if (updateGlobal != null) {
+      return updateGlobal(isGlobal);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateInput value) updateInput,
+    required TResult Function(_UpdateGlobal value) updateGlobal,
+    required TResult Function(_UpdateMultiline value) updateMultiline,
+    required TResult Function(_UpdateTestString value) updateTestString,
+    required TResult Function(_UpdateRegExp value) updateRegExp,
+    required TResult Function(_UpdateMatches value) updateMatches,
+  }) {
+    return updateGlobal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateInput value)? updateInput,
+    TResult? Function(_UpdateGlobal value)? updateGlobal,
+    TResult? Function(_UpdateMultiline value)? updateMultiline,
+    TResult? Function(_UpdateTestString value)? updateTestString,
+    TResult? Function(_UpdateRegExp value)? updateRegExp,
+    TResult? Function(_UpdateMatches value)? updateMatches,
+  }) {
+    return updateGlobal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateInput value)? updateInput,
+    TResult Function(_UpdateGlobal value)? updateGlobal,
+    TResult Function(_UpdateMultiline value)? updateMultiline,
+    TResult Function(_UpdateTestString value)? updateTestString,
+    TResult Function(_UpdateRegExp value)? updateRegExp,
+    TResult Function(_UpdateMatches value)? updateMatches,
+    required TResult orElse(),
+  }) {
+    if (updateGlobal != null) {
+      return updateGlobal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateGlobal implements RegExpMessage {
+  const factory _UpdateGlobal(final bool isGlobal) = _$UpdateGlobalImpl;
+
+  bool get isGlobal;
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateGlobalImplCopyWith<_$UpdateGlobalImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateMultilineImplCopyWith<$Res> {
+  factory _$$UpdateMultilineImplCopyWith(_$UpdateMultilineImpl value,
+          $Res Function(_$UpdateMultilineImpl) then) =
+      __$$UpdateMultilineImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isMultiline});
+}
+
+/// @nodoc
+class __$$UpdateMultilineImplCopyWithImpl<$Res>
+    extends _$RegExpMessageCopyWithImpl<$Res, _$UpdateMultilineImpl>
+    implements _$$UpdateMultilineImplCopyWith<$Res> {
+  __$$UpdateMultilineImplCopyWithImpl(
+      _$UpdateMultilineImpl _value, $Res Function(_$UpdateMultilineImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isMultiline = null,
+  }) {
+    return _then(_$UpdateMultilineImpl(
+      null == isMultiline
+          ? _value.isMultiline
+          : isMultiline // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateMultilineImpl implements _UpdateMultiline {
+  const _$UpdateMultilineImpl(this.isMultiline);
+
+  @override
+  final bool isMultiline;
+
+  @override
+  String toString() {
+    return 'RegExpMessage.updateMultiline(isMultiline: $isMultiline)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateMultilineImpl &&
+            (identical(other.isMultiline, isMultiline) ||
+                other.isMultiline == isMultiline));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isMultiline);
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateMultilineImplCopyWith<_$UpdateMultilineImpl> get copyWith =>
+      __$$UpdateMultilineImplCopyWithImpl<_$UpdateMultilineImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String input) updateInput,
+    required TResult Function(bool isGlobal) updateGlobal,
+    required TResult Function(bool isMultiline) updateMultiline,
+    required TResult Function(String testString) updateTestString,
+    required TResult Function(RegExp? regexp) updateRegExp,
+    required TResult Function(List<RegExpMatch>? matches) updateMatches,
+  }) {
+    return updateMultiline(isMultiline);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String input)? updateInput,
+    TResult? Function(bool isGlobal)? updateGlobal,
+    TResult? Function(bool isMultiline)? updateMultiline,
+    TResult? Function(String testString)? updateTestString,
+    TResult? Function(RegExp? regexp)? updateRegExp,
+    TResult? Function(List<RegExpMatch>? matches)? updateMatches,
+  }) {
+    return updateMultiline?.call(isMultiline);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String input)? updateInput,
+    TResult Function(bool isGlobal)? updateGlobal,
+    TResult Function(bool isMultiline)? updateMultiline,
+    TResult Function(String testString)? updateTestString,
+    TResult Function(RegExp? regexp)? updateRegExp,
+    TResult Function(List<RegExpMatch>? matches)? updateMatches,
+    required TResult orElse(),
+  }) {
+    if (updateMultiline != null) {
+      return updateMultiline(isMultiline);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UpdateInput value) updateInput,
+    required TResult Function(_UpdateGlobal value) updateGlobal,
+    required TResult Function(_UpdateMultiline value) updateMultiline,
+    required TResult Function(_UpdateTestString value) updateTestString,
+    required TResult Function(_UpdateRegExp value) updateRegExp,
+    required TResult Function(_UpdateMatches value) updateMatches,
+  }) {
+    return updateMultiline(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UpdateInput value)? updateInput,
+    TResult? Function(_UpdateGlobal value)? updateGlobal,
+    TResult? Function(_UpdateMultiline value)? updateMultiline,
+    TResult? Function(_UpdateTestString value)? updateTestString,
+    TResult? Function(_UpdateRegExp value)? updateRegExp,
+    TResult? Function(_UpdateMatches value)? updateMatches,
+  }) {
+    return updateMultiline?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UpdateInput value)? updateInput,
+    TResult Function(_UpdateGlobal value)? updateGlobal,
+    TResult Function(_UpdateMultiline value)? updateMultiline,
+    TResult Function(_UpdateTestString value)? updateTestString,
+    TResult Function(_UpdateRegExp value)? updateRegExp,
+    TResult Function(_UpdateMatches value)? updateMatches,
+    required TResult orElse(),
+  }) {
+    if (updateMultiline != null) {
+      return updateMultiline(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateMultiline implements RegExpMessage {
+  const factory _UpdateMultiline(final bool isMultiline) =
+      _$UpdateMultilineImpl;
+
+  bool get isMultiline;
+
+  /// Create a copy of RegExpMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateMultilineImplCopyWith<_$UpdateMultilineImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -312,6 +668,8 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String input) updateInput,
+    required TResult Function(bool isGlobal) updateGlobal,
+    required TResult Function(bool isMultiline) updateMultiline,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
     required TResult Function(List<RegExpMatch>? matches) updateMatches,
@@ -323,6 +681,8 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String input)? updateInput,
+    TResult? Function(bool isGlobal)? updateGlobal,
+    TResult? Function(bool isMultiline)? updateMultiline,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
     TResult? Function(List<RegExpMatch>? matches)? updateMatches,
@@ -334,6 +694,8 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String input)? updateInput,
+    TResult Function(bool isGlobal)? updateGlobal,
+    TResult Function(bool isMultiline)? updateMultiline,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
     TResult Function(List<RegExpMatch>? matches)? updateMatches,
@@ -349,6 +711,8 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UpdateInput value) updateInput,
+    required TResult Function(_UpdateGlobal value) updateGlobal,
+    required TResult Function(_UpdateMultiline value) updateMultiline,
     required TResult Function(_UpdateTestString value) updateTestString,
     required TResult Function(_UpdateRegExp value) updateRegExp,
     required TResult Function(_UpdateMatches value) updateMatches,
@@ -360,6 +724,8 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_UpdateInput value)? updateInput,
+    TResult? Function(_UpdateGlobal value)? updateGlobal,
+    TResult? Function(_UpdateMultiline value)? updateMultiline,
     TResult? Function(_UpdateTestString value)? updateTestString,
     TResult? Function(_UpdateRegExp value)? updateRegExp,
     TResult? Function(_UpdateMatches value)? updateMatches,
@@ -371,6 +737,8 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UpdateInput value)? updateInput,
+    TResult Function(_UpdateGlobal value)? updateGlobal,
+    TResult Function(_UpdateMultiline value)? updateMultiline,
     TResult Function(_UpdateTestString value)? updateTestString,
     TResult Function(_UpdateRegExp value)? updateRegExp,
     TResult Function(_UpdateMatches value)? updateMatches,
@@ -465,6 +833,8 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String input) updateInput,
+    required TResult Function(bool isGlobal) updateGlobal,
+    required TResult Function(bool isMultiline) updateMultiline,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
     required TResult Function(List<RegExpMatch>? matches) updateMatches,
@@ -476,6 +846,8 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String input)? updateInput,
+    TResult? Function(bool isGlobal)? updateGlobal,
+    TResult? Function(bool isMultiline)? updateMultiline,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
     TResult? Function(List<RegExpMatch>? matches)? updateMatches,
@@ -487,6 +859,8 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String input)? updateInput,
+    TResult Function(bool isGlobal)? updateGlobal,
+    TResult Function(bool isMultiline)? updateMultiline,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
     TResult Function(List<RegExpMatch>? matches)? updateMatches,
@@ -502,6 +876,8 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UpdateInput value) updateInput,
+    required TResult Function(_UpdateGlobal value) updateGlobal,
+    required TResult Function(_UpdateMultiline value) updateMultiline,
     required TResult Function(_UpdateTestString value) updateTestString,
     required TResult Function(_UpdateRegExp value) updateRegExp,
     required TResult Function(_UpdateMatches value) updateMatches,
@@ -513,6 +889,8 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_UpdateInput value)? updateInput,
+    TResult? Function(_UpdateGlobal value)? updateGlobal,
+    TResult? Function(_UpdateMultiline value)? updateMultiline,
     TResult? Function(_UpdateTestString value)? updateTestString,
     TResult? Function(_UpdateRegExp value)? updateRegExp,
     TResult? Function(_UpdateMatches value)? updateMatches,
@@ -524,6 +902,8 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UpdateInput value)? updateInput,
+    TResult Function(_UpdateGlobal value)? updateGlobal,
+    TResult Function(_UpdateMultiline value)? updateMultiline,
     TResult Function(_UpdateTestString value)? updateTestString,
     TResult Function(_UpdateRegExp value)? updateRegExp,
     TResult Function(_UpdateMatches value)? updateMatches,
@@ -626,6 +1006,8 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String input) updateInput,
+    required TResult Function(bool isGlobal) updateGlobal,
+    required TResult Function(bool isMultiline) updateMultiline,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
     required TResult Function(List<RegExpMatch>? matches) updateMatches,
@@ -637,6 +1019,8 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String input)? updateInput,
+    TResult? Function(bool isGlobal)? updateGlobal,
+    TResult? Function(bool isMultiline)? updateMultiline,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
     TResult? Function(List<RegExpMatch>? matches)? updateMatches,
@@ -648,6 +1032,8 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String input)? updateInput,
+    TResult Function(bool isGlobal)? updateGlobal,
+    TResult Function(bool isMultiline)? updateMultiline,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
     TResult Function(List<RegExpMatch>? matches)? updateMatches,
@@ -663,6 +1049,8 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UpdateInput value) updateInput,
+    required TResult Function(_UpdateGlobal value) updateGlobal,
+    required TResult Function(_UpdateMultiline value) updateMultiline,
     required TResult Function(_UpdateTestString value) updateTestString,
     required TResult Function(_UpdateRegExp value) updateRegExp,
     required TResult Function(_UpdateMatches value) updateMatches,
@@ -674,6 +1062,8 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_UpdateInput value)? updateInput,
+    TResult? Function(_UpdateGlobal value)? updateGlobal,
+    TResult? Function(_UpdateMultiline value)? updateMultiline,
     TResult? Function(_UpdateTestString value)? updateTestString,
     TResult? Function(_UpdateRegExp value)? updateRegExp,
     TResult? Function(_UpdateMatches value)? updateMatches,
@@ -685,6 +1075,8 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UpdateInput value)? updateInput,
+    TResult Function(_UpdateGlobal value)? updateGlobal,
+    TResult Function(_UpdateMultiline value)? updateMultiline,
     TResult Function(_UpdateTestString value)? updateTestString,
     TResult Function(_UpdateRegExp value)? updateRegExp,
     TResult Function(_UpdateMatches value)? updateMatches,

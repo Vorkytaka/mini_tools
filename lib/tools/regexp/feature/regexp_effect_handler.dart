@@ -12,28 +12,37 @@ final class RegExpEffectHandler
   @override
   FutureOr<void> call(RegExpEffect effect, MsgEmitter<RegExpMessage> emit) {
     effect.when(
-      parseRegExp: (input) {
-        final regexp = fromString(input);
+      parseRegExp: (input, isMultiline) {
+        final regexp = fromString(input, isMultiline: isMultiline);
         emit(RegExpMessage.updateRegExp(regexp));
       },
-      findMatches: (regexp, testString) {
+      findMatches: (regexp, testString, isGlobal) {
         if (regexp == null) {
           emit(const RegExpMessage.updateMatches(null));
         } else {
-          final matches = regexp.allMatches(testString);
-          emit(RegExpMessage.updateMatches(matches.toList(growable: false)));
+          final List<RegExpMatch> matches;
+          if (isGlobal) {
+            matches = regexp.allMatches(testString).toList(growable: false);
+          } else {
+            final match = regexp.firstMatch(testString);
+            matches = [if (match != null) match];
+          }
+          emit(RegExpMessage.updateMatches(matches));
         }
       },
     );
   }
 
-  static RegExp? fromString(String? input) {
+  static RegExp? fromString(
+    String? input, {
+    required bool isMultiline,
+  }) {
     if (input == null || input.isEmpty) {
       return null;
     }
 
     try {
-      return RegExp(input);
+      return RegExp(input, multiLine: isMultiline);
     } on FormatException catch (_) {
       return null;
     }

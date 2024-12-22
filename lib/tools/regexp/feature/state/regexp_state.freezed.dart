@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$RegExpState {
   String get input => throw _privateConstructorUsedError;
   String get testString => throw _privateConstructorUsedError;
+  bool get isGlobal => throw _privateConstructorUsedError;
+  bool get isMultiline => throw _privateConstructorUsedError;
   RegExp? get regexp => throw _privateConstructorUsedError;
   List<RegExpMatch>? get matches => throw _privateConstructorUsedError;
 
@@ -37,6 +39,8 @@ abstract class $RegExpStateCopyWith<$Res> {
   $Res call(
       {String input,
       String testString,
+      bool isGlobal,
+      bool isMultiline,
       RegExp? regexp,
       List<RegExpMatch>? matches});
 }
@@ -58,6 +62,8 @@ class _$RegExpStateCopyWithImpl<$Res, $Val extends RegExpState>
   $Res call({
     Object? input = null,
     Object? testString = null,
+    Object? isGlobal = null,
+    Object? isMultiline = null,
     Object? regexp = freezed,
     Object? matches = freezed,
   }) {
@@ -70,6 +76,14 @@ class _$RegExpStateCopyWithImpl<$Res, $Val extends RegExpState>
           ? _value.testString
           : testString // ignore: cast_nullable_to_non_nullable
               as String,
+      isGlobal: null == isGlobal
+          ? _value.isGlobal
+          : isGlobal // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isMultiline: null == isMultiline
+          ? _value.isMultiline
+          : isMultiline // ignore: cast_nullable_to_non_nullable
+              as bool,
       regexp: freezed == regexp
           ? _value.regexp
           : regexp // ignore: cast_nullable_to_non_nullable
@@ -93,6 +107,8 @@ abstract class _$$RegExpStateImplCopyWith<$Res>
   $Res call(
       {String input,
       String testString,
+      bool isGlobal,
+      bool isMultiline,
       RegExp? regexp,
       List<RegExpMatch>? matches});
 }
@@ -112,6 +128,8 @@ class __$$RegExpStateImplCopyWithImpl<$Res>
   $Res call({
     Object? input = null,
     Object? testString = null,
+    Object? isGlobal = null,
+    Object? isMultiline = null,
     Object? regexp = freezed,
     Object? matches = freezed,
   }) {
@@ -124,6 +142,14 @@ class __$$RegExpStateImplCopyWithImpl<$Res>
           ? _value.testString
           : testString // ignore: cast_nullable_to_non_nullable
               as String,
+      isGlobal: null == isGlobal
+          ? _value.isGlobal
+          : isGlobal // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isMultiline: null == isMultiline
+          ? _value.isMultiline
+          : isMultiline // ignore: cast_nullable_to_non_nullable
+              as bool,
       regexp: freezed == regexp
           ? _value.regexp
           : regexp // ignore: cast_nullable_to_non_nullable
@@ -142,6 +168,8 @@ class _$RegExpStateImpl implements _RegExpState {
   const _$RegExpStateImpl(
       {required this.input,
       required this.testString,
+      required this.isGlobal,
+      required this.isMultiline,
       required this.regexp,
       required final List<RegExpMatch>? matches})
       : _matches = matches;
@@ -150,6 +178,10 @@ class _$RegExpStateImpl implements _RegExpState {
   final String input;
   @override
   final String testString;
+  @override
+  final bool isGlobal;
+  @override
+  final bool isMultiline;
   @override
   final RegExp? regexp;
   final List<RegExpMatch>? _matches;
@@ -164,7 +196,7 @@ class _$RegExpStateImpl implements _RegExpState {
 
   @override
   String toString() {
-    return 'RegExpState(input: $input, testString: $testString, regexp: $regexp, matches: $matches)';
+    return 'RegExpState(input: $input, testString: $testString, isGlobal: $isGlobal, isMultiline: $isMultiline, regexp: $regexp, matches: $matches)';
   }
 
   @override
@@ -175,13 +207,17 @@ class _$RegExpStateImpl implements _RegExpState {
             (identical(other.input, input) || other.input == input) &&
             (identical(other.testString, testString) ||
                 other.testString == testString) &&
+            (identical(other.isGlobal, isGlobal) ||
+                other.isGlobal == isGlobal) &&
+            (identical(other.isMultiline, isMultiline) ||
+                other.isMultiline == isMultiline) &&
             (identical(other.regexp, regexp) || other.regexp == regexp) &&
             const DeepCollectionEquality().equals(other._matches, _matches));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, input, testString, regexp,
-      const DeepCollectionEquality().hash(_matches));
+  int get hashCode => Object.hash(runtimeType, input, testString, isGlobal,
+      isMultiline, regexp, const DeepCollectionEquality().hash(_matches));
 
   /// Create a copy of RegExpState
   /// with the given fields replaced by the non-null parameter values.
@@ -196,6 +232,8 @@ abstract class _RegExpState implements RegExpState {
   const factory _RegExpState(
       {required final String input,
       required final String testString,
+      required final bool isGlobal,
+      required final bool isMultiline,
       required final RegExp? regexp,
       required final List<RegExpMatch>? matches}) = _$RegExpStateImpl;
 
@@ -203,6 +241,10 @@ abstract class _RegExpState implements RegExpState {
   String get input;
   @override
   String get testString;
+  @override
+  bool get isGlobal;
+  @override
+  bool get isMultiline;
   @override
   RegExp? get regexp;
   @override

@@ -101,6 +101,15 @@ class _BodyState extends State<_Body> {
           controller: _regExpController,
           placeholder: t.regexp.regexpHint,
         ),
+        const SizedBox(height: 2),
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            _GlobalCheckbox(),
+            SizedBox(width: 8),
+            _MultilineCheckbox(),
+          ],
+        ),
         const SizedBox(height: 12),
         Padding(
           padding: const EdgeInsetsDirectional.symmetric(horizontal: 12),
@@ -133,14 +142,78 @@ class _BodyState extends State<_Body> {
       .accept(RegExpMessage.updateTestString(_testStringController.text));
 }
 
+class _GlobalCheckbox extends StatelessWidget {
+  const _GlobalCheckbox();
+
+  @override
+  Widget build(BuildContext context) {
+    return FeatureBuilder<RegExpFeature, RegExpState>(
+      buildWhen: (prev, curr) => prev.isGlobal != curr.isGlobal,
+      builder: (context, state) {
+        return LabeledCheckbox(
+          value: state.isGlobal,
+          onChanged: (isGlobal) => context
+              .read<RegExpFeature>()
+              .accept(RegExpMessage.updateGlobal(isGlobal)),
+          label: 'Global',
+        );
+      },
+    );
+  }
+}
+
+class _MultilineCheckbox extends StatelessWidget {
+  const _MultilineCheckbox();
+
+  @override
+  Widget build(BuildContext context) {
+    return FeatureBuilder<RegExpFeature, RegExpState>(
+      buildWhen: (prev, curr) => prev.isMultiline != curr.isMultiline,
+      builder: (context, state) {
+        return LabeledCheckbox(
+          value: state.isMultiline,
+          onChanged: (isMultiline) => context
+              .read<RegExpFeature>()
+              .accept(RegExpMessage.updateMultiline(isMultiline)),
+          label: 'Multiline',
+        );
+      },
+    );
+  }
+}
+
+class LabeledCheckbox extends StatelessWidget {
+  final String label;
+  final bool? value;
+  final ValueChanged<bool>? onChanged;
+
+  const LabeledCheckbox({
+    super.key,
+    required this.value,
+    required this.label,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        MacosCheckbox(
+          value: value,
+          onChanged: onChanged,
+        ),
+        const SizedBox(width: 4),
+        Text(label),
+      ],
+    );
+  }
+}
+
 class _MatchInformation extends StatelessWidget {
   const _MatchInformation();
 
   @override
   Widget build(BuildContext context) {
-    final theme = MacosTheme.of(context);
-    final t = Translations.of(context);
-
     return FeatureBuilder<RegExpFeature, RegExpState>(
       buildWhen: (prev, curr) => prev.matches != curr.matches,
       builder: (context, state) {
