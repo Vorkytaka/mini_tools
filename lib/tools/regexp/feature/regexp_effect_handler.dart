@@ -21,7 +21,7 @@ final class RegExpEffectHandler
           emit(const RegExpMessage.updateMatches(null));
         } else {
           final matches = regexp.allMatches(testString);
-          emit(RegExpMessage.updateMatches(matches));
+          emit(RegExpMessage.updateMatches(matches.toList(growable: false)));
         }
       },
     );

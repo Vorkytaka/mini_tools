@@ -19,7 +19,7 @@ mixin _$RegExpState {
   String get input => throw _privateConstructorUsedError;
   String get testString => throw _privateConstructorUsedError;
   RegExp? get regexp => throw _privateConstructorUsedError;
-  Iterable<RegExpMatch>? get matches => throw _privateConstructorUsedError;
+  List<RegExpMatch>? get matches => throw _privateConstructorUsedError;
 
   /// Create a copy of RegExpState
   /// with the given fields replaced by the non-null parameter values.
@@ -38,7 +38,7 @@ abstract class $RegExpStateCopyWith<$Res> {
       {String input,
       String testString,
       RegExp? regexp,
-      Iterable<RegExpMatch>? matches});
+      List<RegExpMatch>? matches});
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ class _$RegExpStateCopyWithImpl<$Res, $Val extends RegExpState>
       matches: freezed == matches
           ? _value.matches
           : matches // ignore: cast_nullable_to_non_nullable
-              as Iterable<RegExpMatch>?,
+              as List<RegExpMatch>?,
     ) as $Val);
   }
 }
@@ -94,7 +94,7 @@ abstract class _$$RegExpStateImplCopyWith<$Res>
       {String input,
       String testString,
       RegExp? regexp,
-      Iterable<RegExpMatch>? matches});
+      List<RegExpMatch>? matches});
 }
 
 /// @nodoc
@@ -129,9 +129,9 @@ class __$$RegExpStateImplCopyWithImpl<$Res>
           : regexp // ignore: cast_nullable_to_non_nullable
               as RegExp?,
       matches: freezed == matches
-          ? _value.matches
+          ? _value._matches
           : matches // ignore: cast_nullable_to_non_nullable
-              as Iterable<RegExpMatch>?,
+              as List<RegExpMatch>?,
     ));
   }
 }
@@ -143,7 +143,8 @@ class _$RegExpStateImpl implements _RegExpState {
       {required this.input,
       required this.testString,
       required this.regexp,
-      required this.matches});
+      required final List<RegExpMatch>? matches})
+      : _matches = matches;
 
   @override
   final String input;
@@ -151,8 +152,15 @@ class _$RegExpStateImpl implements _RegExpState {
   final String testString;
   @override
   final RegExp? regexp;
+  final List<RegExpMatch>? _matches;
   @override
-  final Iterable<RegExpMatch>? matches;
+  List<RegExpMatch>? get matches {
+    final value = _matches;
+    if (value == null) return null;
+    if (_matches is EqualUnmodifiableListView) return _matches;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -168,12 +176,12 @@ class _$RegExpStateImpl implements _RegExpState {
             (identical(other.testString, testString) ||
                 other.testString == testString) &&
             (identical(other.regexp, regexp) || other.regexp == regexp) &&
-            const DeepCollectionEquality().equals(other.matches, matches));
+            const DeepCollectionEquality().equals(other._matches, _matches));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, input, testString, regexp,
-      const DeepCollectionEquality().hash(matches));
+      const DeepCollectionEquality().hash(_matches));
 
   /// Create a copy of RegExpState
   /// with the given fields replaced by the non-null parameter values.
@@ -189,7 +197,7 @@ abstract class _RegExpState implements RegExpState {
       {required final String input,
       required final String testString,
       required final RegExp? regexp,
-      required final Iterable<RegExpMatch>? matches}) = _$RegExpStateImpl;
+      required final List<RegExpMatch>? matches}) = _$RegExpStateImpl;
 
   @override
   String get input;
@@ -198,7 +206,7 @@ abstract class _RegExpState implements RegExpState {
   @override
   RegExp? get regexp;
   @override
-  Iterable<RegExpMatch>? get matches;
+  List<RegExpMatch>? get matches;
 
   /// Create a copy of RegExpState
   /// with the given fields replaced by the non-null parameter values.

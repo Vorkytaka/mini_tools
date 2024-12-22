@@ -21,7 +21,7 @@ mixin _$RegExpMessage {
     required TResult Function(String input) updateInput,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
-    required TResult Function(Iterable<RegExpMatch>? matches) updateMatches,
+    required TResult Function(List<RegExpMatch>? matches) updateMatches,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$RegExpMessage {
     TResult? Function(String input)? updateInput,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
-    TResult? Function(Iterable<RegExpMatch>? matches)? updateMatches,
+    TResult? Function(List<RegExpMatch>? matches)? updateMatches,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$RegExpMessage {
     TResult Function(String input)? updateInput,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
-    TResult Function(Iterable<RegExpMatch>? matches)? updateMatches,
+    TResult Function(List<RegExpMatch>? matches)? updateMatches,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -160,7 +160,7 @@ class _$UpdateInputImpl implements _UpdateInput {
     required TResult Function(String input) updateInput,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
-    required TResult Function(Iterable<RegExpMatch>? matches) updateMatches,
+    required TResult Function(List<RegExpMatch>? matches) updateMatches,
   }) {
     return updateInput(input);
   }
@@ -171,7 +171,7 @@ class _$UpdateInputImpl implements _UpdateInput {
     TResult? Function(String input)? updateInput,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
-    TResult? Function(Iterable<RegExpMatch>? matches)? updateMatches,
+    TResult? Function(List<RegExpMatch>? matches)? updateMatches,
   }) {
     return updateInput?.call(input);
   }
@@ -182,7 +182,7 @@ class _$UpdateInputImpl implements _UpdateInput {
     TResult Function(String input)? updateInput,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
-    TResult Function(Iterable<RegExpMatch>? matches)? updateMatches,
+    TResult Function(List<RegExpMatch>? matches)? updateMatches,
     required TResult orElse(),
   }) {
     if (updateInput != null) {
@@ -314,7 +314,7 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
     required TResult Function(String input) updateInput,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
-    required TResult Function(Iterable<RegExpMatch>? matches) updateMatches,
+    required TResult Function(List<RegExpMatch>? matches) updateMatches,
   }) {
     return updateTestString(testString);
   }
@@ -325,7 +325,7 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
     TResult? Function(String input)? updateInput,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
-    TResult? Function(Iterable<RegExpMatch>? matches)? updateMatches,
+    TResult? Function(List<RegExpMatch>? matches)? updateMatches,
   }) {
     return updateTestString?.call(testString);
   }
@@ -336,7 +336,7 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
     TResult Function(String input)? updateInput,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
-    TResult Function(Iterable<RegExpMatch>? matches)? updateMatches,
+    TResult Function(List<RegExpMatch>? matches)? updateMatches,
     required TResult orElse(),
   }) {
     if (updateTestString != null) {
@@ -467,7 +467,7 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
     required TResult Function(String input) updateInput,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
-    required TResult Function(Iterable<RegExpMatch>? matches) updateMatches,
+    required TResult Function(List<RegExpMatch>? matches) updateMatches,
   }) {
     return updateRegExp(regexp);
   }
@@ -478,7 +478,7 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
     TResult? Function(String input)? updateInput,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
-    TResult? Function(Iterable<RegExpMatch>? matches)? updateMatches,
+    TResult? Function(List<RegExpMatch>? matches)? updateMatches,
   }) {
     return updateRegExp?.call(regexp);
   }
@@ -489,7 +489,7 @@ class _$UpdateRegExpImpl implements _UpdateRegExp {
     TResult Function(String input)? updateInput,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
-    TResult Function(Iterable<RegExpMatch>? matches)? updateMatches,
+    TResult Function(List<RegExpMatch>? matches)? updateMatches,
     required TResult orElse(),
   }) {
     if (updateRegExp != null) {
@@ -554,7 +554,7 @@ abstract class _$$UpdateMatchesImplCopyWith<$Res> {
           _$UpdateMatchesImpl value, $Res Function(_$UpdateMatchesImpl) then) =
       __$$UpdateMatchesImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Iterable<RegExpMatch>? matches});
+  $Res call({List<RegExpMatch>? matches});
 }
 
 /// @nodoc
@@ -574,9 +574,9 @@ class __$$UpdateMatchesImplCopyWithImpl<$Res>
   }) {
     return _then(_$UpdateMatchesImpl(
       freezed == matches
-          ? _value.matches
+          ? _value._matches
           : matches // ignore: cast_nullable_to_non_nullable
-              as Iterable<RegExpMatch>?,
+              as List<RegExpMatch>?,
     ));
   }
 }
@@ -584,10 +584,18 @@ class __$$UpdateMatchesImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UpdateMatchesImpl implements _UpdateMatches {
-  const _$UpdateMatchesImpl(this.matches);
+  const _$UpdateMatchesImpl(final List<RegExpMatch>? matches)
+      : _matches = matches;
 
+  final List<RegExpMatch>? _matches;
   @override
-  final Iterable<RegExpMatch>? matches;
+  List<RegExpMatch>? get matches {
+    final value = _matches;
+    if (value == null) return null;
+    if (_matches is EqualUnmodifiableListView) return _matches;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -599,12 +607,12 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UpdateMatchesImpl &&
-            const DeepCollectionEquality().equals(other.matches, matches));
+            const DeepCollectionEquality().equals(other._matches, _matches));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(matches));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_matches));
 
   /// Create a copy of RegExpMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -620,7 +628,7 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
     required TResult Function(String input) updateInput,
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
-    required TResult Function(Iterable<RegExpMatch>? matches) updateMatches,
+    required TResult Function(List<RegExpMatch>? matches) updateMatches,
   }) {
     return updateMatches(matches);
   }
@@ -631,7 +639,7 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
     TResult? Function(String input)? updateInput,
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
-    TResult? Function(Iterable<RegExpMatch>? matches)? updateMatches,
+    TResult? Function(List<RegExpMatch>? matches)? updateMatches,
   }) {
     return updateMatches?.call(matches);
   }
@@ -642,7 +650,7 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
     TResult Function(String input)? updateInput,
     TResult Function(String testString)? updateTestString,
     TResult Function(RegExp? regexp)? updateRegExp,
-    TResult Function(Iterable<RegExpMatch>? matches)? updateMatches,
+    TResult Function(List<RegExpMatch>? matches)? updateMatches,
     required TResult orElse(),
   }) {
     if (updateMatches != null) {
@@ -690,10 +698,10 @@ class _$UpdateMatchesImpl implements _UpdateMatches {
 }
 
 abstract class _UpdateMatches implements RegExpMessage {
-  const factory _UpdateMatches(final Iterable<RegExpMatch>? matches) =
+  const factory _UpdateMatches(final List<RegExpMatch>? matches) =
       _$UpdateMatchesImpl;
 
-  Iterable<RegExpMatch>? get matches;
+  List<RegExpMatch>? get matches;
 
   /// Create a copy of RegExpMessage
   /// with the given fields replaced by the non-null parameter values.

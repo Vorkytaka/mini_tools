@@ -12,6 +12,6 @@ sealed class RegExpMessage with _$RegExpMessage {
 
   const factory RegExpMessage.updateRegExp(RegExp? regexp) = _UpdateRegExp;
 
-  const factory RegExpMessage.updateMatches(Iterable<RegExpMatch>? matches) =
+  const factory RegExpMessage.updateMatches(List<RegExpMatch>? matches) =
       _UpdateMatches;
 }

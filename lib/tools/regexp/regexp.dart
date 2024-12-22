@@ -24,6 +24,20 @@ class RegExpTool extends StatelessWidget {
         ContentArea(
           builder: (context, _) => const _Body(),
         ),
+        ResizablePane(
+          builder: (context, controller) => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(t.regexp.matchInfoTitle),
+              const SizedBox(height: 8),
+              const Expanded(child: _MatchInformation()),
+            ],
+          ),
+          minSize: 300,
+          maxSize: 400,
+          resizableSide: ResizableSide.left,
+          startSize: 300,
+        ),
       ],
     );
   }
@@ -74,55 +88,30 @@ class _BodyState extends State<_Body> {
     final t = Translations.of(context);
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Flexible(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        MacosTextField(
+          controller: _regExpController,
+          placeholder: t.regexp.regexpHint,
+        ),
+        const SizedBox(height: 12),
+        Padding(
+          padding: const EdgeInsetsDirectional.symmetric(horizontal: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              MacosTextField(
-                controller: _regExpController,
-                placeholder: t.regexp.regexpHint,
-              ),
-              const SizedBox(height: 12),
-              Padding(
-                padding: const EdgeInsetsDirectional.symmetric(horizontal: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(t.regexp.testStringTitle),
-                    const _MatchCounter(),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 8),
-              Expanded(
-                child: MacosTextField(
-                  controller: _testStringController,
-                  textAlignVertical: const TextAlignVertical(y: -1),
-                  maxLines: 10,
-                ),
-              ),
+              Text(t.regexp.testStringTitle),
+              const _MatchCounter(),
             ],
           ),
         ),
-        ResizablePane(
-          builder: (context, controller) => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(t.regexp.matchInfoTitle),
-              const SizedBox(height: 8),
-              Expanded(
-                child: SingleChildScrollView(
-                  controller: controller,
-                  child: const _MatchInformation(),
-                ),
-              ),
-            ],
+        const SizedBox(height: 8),
+        Expanded(
+          child: MacosTextField(
+            controller: _testStringController,
+            textAlignVertical: const TextAlignVertical(y: -1),
+            maxLines: 10,
           ),
-          minSize: 100,
-          maxSize: 300,
-          resizableSide: ResizableSide.top,
-          startSize: 100,
         ),
       ],
     );
@@ -150,102 +139,41 @@ class _MatchInformation extends StatelessWidget {
       builder: (context, state) {
         final matches = state.matches;
 
-        const cellPadding = EdgeInsets.all(8);
-        // This variable mutate later
-        // We use this to not cast [matches] to List
-        int matchCounter = 0;
-
-        TableRow? result;
         if (matches == null || matches.isEmpty) {
-          result = TableRow(
-            children: [
-              const TableCell(
-                child: Padding(
-                  padding: cellPadding,
-                  child: Text(' '),
-                ),
-              ),
-              TableCell(
-                child: Padding(
-                  padding: cellPadding,
-                  child: Text(t.regexp.matchInfoNothing),
-                ),
-              ),
-              const TableCell(
-                child: Padding(
-                  padding: cellPadding,
-                  child: Text(' '),
-                ),
-              ),
-            ],
-          );
-        } else {}
+          return Text('No matches found');
+        }
 
-        return Table(
-          defaultColumnWidth: const IntrinsicColumnWidth(),
-          border: TableBorder.all(
-            color: theme.dividerColor,
+        return ListView.builder(
+          itemCount: matches.length,
+          itemBuilder: (context, i) => _MatchWidget(
+            position: i + 1,
+            match: matches[i],
           ),
-          children: [
-            TableRow(
-              children: [
-                TableCell(
-                  child: Padding(
-                    padding: cellPadding,
-                    child: DefaultTextStyle.merge(
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                      child: Text(t.regexp.matchInfoNumber),
-                    ),
-                  ),
-                ),
-                TableCell(
-                  child: Padding(
-                    padding: cellPadding,
-                    child: DefaultTextStyle.merge(
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                      child: Text(t.regexp.matchInfoValue),
-                    ),
-                  ),
-                ),
-                TableCell(
-                  child: Padding(
-                    padding: cellPadding,
-                    child: DefaultTextStyle.merge(
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                      child: Text(t.regexp.matchInfoPosition),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            if (result != null) result,
-            if (matches != null)
-              for (final match in matches)
-                TableRow(
-                  children: [
-                    TableCell(
-                      child: Padding(
-                        padding: cellPadding,
-                        child: Text('${matchCounter++}'),
-                      ),
-                    ),
-                    TableCell(
-                      child: Padding(
-                        padding: cellPadding,
-                        child: SelectableText(match.group(0)!),
-                      ),
-                    ),
-                    TableCell(
-                      child: Padding(
-                        padding: cellPadding,
-                        child: Text('${match.start}-${match.end}'),
-                      ),
-                    ),
-                  ],
-                ),
-          ],
         );
       },
+    );
+  }
+}
+
+class _MatchWidget extends StatelessWidget {
+  final int position;
+  final RegExpMatch match;
+
+  const _MatchWidget({
+    required this.position,
+    required this.match,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text('Match #$position'),
+        const SizedBox(width: 8),
+        Text('${match.start}-${match.end}'),
+        const Spacer(),
+        Text(match.group(0)!),
+      ],
     );
   }
 }

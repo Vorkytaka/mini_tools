@@ -9,7 +9,7 @@ class RegExpState with _$RegExpState {
     required String input,
     required String testString,
     required RegExp? regexp,
-    required Iterable<RegExpMatch>? matches,
+    required List<RegExpMatch>? matches,
   }) = _RegExpState;
 
   factory RegExpState.init() => const RegExpState(
