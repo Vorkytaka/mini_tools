@@ -108,6 +108,9 @@ class _BodyState extends State<_Body> {
           MacosTextField(
             controller: _regExpController,
             placeholder: t.regexp.regexpHint,
+            maxLines: 5,
+            minLines: 1,
+            keyboardType: TextInputType.text,
           ),
           const SizedBox(height: 4),
           Padding(
@@ -348,14 +351,20 @@ class _MatchWidget extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'Match #$position',
-              style: const TextStyle(decoration: TextDecoration.underline),
-            ),
-            const SizedBox(width: 8),
-            Text(
-              '${match.start}-${match.end}',
-              style: theme.typography.footnote,
+            Text.rich(
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: 'Match #$position',
+                  ),
+                  TextSpan(
+                    text: ' (${match.start}-${match.end})',
+                    style: theme.typography.footnote.copyWith(
+                      color: theme.searchFieldTheme.highlightColor,
+                    )
+                  ),
+                ],
+              ),
             ),
             Expanded(
               child: Text(
