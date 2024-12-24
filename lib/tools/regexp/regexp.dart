@@ -168,6 +168,14 @@ class _BodyState extends State<_Body> {
               const SizedBox(width: 8),
             ],
           ),
+          const SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Text(
+              t.regexp.testStringTitle,
+              style: theme.typography.headline,
+            ),
+          ),
           const SizedBox(height: 4),
           Expanded(
             child: MacosTextField(
