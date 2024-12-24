@@ -1,6 +1,7 @@
 // ignore_for_file: always_put_required_named_parameters_first
 
 import 'package:flutter/material.dart';
+import 'package:flutter_popup/flutter_popup.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
@@ -99,53 +100,73 @@ class _BodyState extends State<_Body> {
   @override
   Widget build(BuildContext context) {
     final t = Translations.of(context);
+    final theme = MacosTheme.of(context);
 
     return Padding(
       padding: const EdgeInsets.all(12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          MacosTextField(
-            controller: _regExpController,
-            placeholder: t.regexp.regexpHint,
-            maxLines: 5,
-            minLines: 1,
-            keyboardType: TextInputType.text,
-          ),
-          const SizedBox(height: 4),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(t.regexp.testStringTitle),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        _GlobalCheckbox(),
-                        SizedBox(width: 12),
-                        _MultilineCheckbox(),
-                        SizedBox(width: 12),
-                        _CaseSensitiveCheckbox(),
-                      ],
-                    ),
-                    SizedBox(height: 4),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        _UnicodeCheckbox(),
-                        SizedBox(width: 12),
-                        _DotAllCheckbox(),
-                      ],
-                    ),
-                  ],
+          Row(
+            children: [
+              Expanded(
+                child: MacosTextField(
+                  controller: _regExpController,
+                  placeholder: t.regexp.regexpHint,
+                  maxLines: 5,
+                  minLines: 1,
+                  keyboardType: TextInputType.text,
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(width: 8),
+              CustomPopup(
+                arrowColor: theme.popupButtonTheme.popupColor,
+                backgroundColor: theme.popupButtonTheme.popupColor,
+                content: FeatureProvider.value(
+                  value: context.read<RegExpFeature>(),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const _GlobalCheckbox(),
+                      Text(
+                        'Search for all matches',
+                        style: theme.typography.footnote,
+                      ),
+                      const SizedBox(height: 8),
+                      const _MultilineCheckbox(),
+                      Text(
+                        r'^ and $ match the start/end of each line',
+                        style: theme.typography.footnote,
+                      ),
+                      const SizedBox(height: 8),
+                      const _CaseSensitiveCheckbox(),
+                      Text(
+                        'Case sensitive search',
+                        style: theme.typography.footnote,
+                      ),
+                      const SizedBox(height: 8),
+                      const _UnicodeCheckbox(),
+                      Text(
+                        'Enable all Unicode features',
+                        style: theme.typography.footnote,
+                      ),
+                      const SizedBox(height: 8),
+                      const _DotAllCheckbox(),
+                      Text(
+                        'Dot matches all characters,\nincluding line terminators',
+                        style: theme.typography.footnote,
+                      ),
+                    ],
+                  ),
+                ),
+                child: const MacosIcon(
+                  Icons.tune,
+                  size: 16,
+                ),
+              ),
+              const SizedBox(width: 8),
+            ],
           ),
           const SizedBox(height: 4),
           Expanded(
@@ -292,6 +313,7 @@ class LabeledCheckbox extends StatelessWidget {
         }
       },
       child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
           MacosCheckbox(
             value: value,
@@ -358,11 +380,10 @@ class _MatchWidget extends StatelessWidget {
                     text: 'Match #$position',
                   ),
                   TextSpan(
-                    text: ' (${match.start}-${match.end})',
-                    style: theme.typography.footnote.copyWith(
-                      color: theme.searchFieldTheme.highlightColor,
-                    )
-                  ),
+                      text: ' (${match.start}-${match.end})',
+                      style: theme.typography.footnote.copyWith(
+                        color: theme.searchFieldTheme.highlightColor,
+                      )),
                 ],
               ),
             ),
