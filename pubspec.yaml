@@ -47,7 +47,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.5.7
-  mini_tea_test: ^0.1.1
+  mini_tea_test: ^0.2.0
   mocktail: ^1.0.4
 
 flutter:
