@@ -51,20 +51,13 @@ Next<NumberBaseState, void> _updateInputHandle(
       break;
   }
 
-  final newState = bigInt == null
-      ? state.clearValue(
-          base2: base2,
-          base8: base8,
-          base10: base10,
-          base16: base16,
-        )
-      : state.copyWith(
-          base2: base2,
-          base8: base8,
-          base10: base10,
-          base16: base16,
-          value: bigInt,
-        );
+  final newState = state.copyWith(
+    base2: base2,
+    base8: base8,
+    base10: base10,
+    base16: base16,
+    value: bigInt,
+  );
 
   return (newState, const []);
 }
