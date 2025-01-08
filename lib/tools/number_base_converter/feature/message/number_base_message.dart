@@ -19,4 +19,17 @@ sealed class UpdateInputMessage
   const factory UpdateInputMessage.base10(String input) = UpdateBase10Message;
 
   const factory UpdateInputMessage.base16(String input) = UpdateBase16Message;
+
+  const factory UpdateInputMessage.custom(String input) = UpdateCustomMessage;
+}
+
+@freezed
+@immutable
+class UpdateCustomBaseMessage
+    with _$UpdateCustomBaseMessage
+    implements NumberBaseMessage {
+  @Assert('base >= 2 && base <= 36')
+  const factory UpdateCustomBaseMessage({
+    required int base,
+  }) = _UpdateCustomBaseMessage;
 }

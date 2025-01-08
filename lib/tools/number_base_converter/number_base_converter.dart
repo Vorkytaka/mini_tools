@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 
 import '../../i18n/strings.g.dart';
 import 'feature/number_base_feature.dart';
@@ -46,6 +47,7 @@ class _BodyState extends State<_Body> {
   final _base8Controller = TextEditingController();
   final _base10Controller = TextEditingController();
   final _base16Controller = TextEditingController();
+  final _customController = TextEditingController();
 
   @override
   void didChangeDependencies() {
@@ -66,6 +68,9 @@ class _BodyState extends State<_Body> {
     if (_base16Controller.text != state.base16) {
       _base16Controller.text = state.base16;
     }
+    if (_customController.text != state.customBaseValue) {
+      _customController.text = state.customBaseValue;
+    }
   }
 
   @override
@@ -74,6 +79,7 @@ class _BodyState extends State<_Body> {
     _base8Controller.dispose();
     _base10Controller.dispose();
     _base16Controller.dispose();
+    _customController.dispose();
     super.dispose();
   }
 
@@ -87,27 +93,59 @@ class _BodyState extends State<_Body> {
       child: Column(
         children: [
           _Item(
-            title: t.numberConverter.binary,
+            title: Text(t.numberConverter.binary),
             controller: _base2Controller,
             onChanged: _base2Changed,
           ),
           const SizedBox(height: 12),
           _Item(
-            title: t.numberConverter.octal,
+            title: Text(t.numberConverter.octal),
             controller: _base8Controller,
             onChanged: _base8Changed,
           ),
           const SizedBox(height: 12),
           _Item(
-            title: t.numberConverter.decimal,
+            title: Text(t.numberConverter.decimal),
             controller: _base10Controller,
             onChanged: _base10Changed,
           ),
           const SizedBox(height: 12),
           _Item(
-            title: t.numberConverter.hex,
+            title: Text(t.numberConverter.hex),
             controller: _base16Controller,
             onChanged: _base16Changed,
+          ),
+          const SizedBox(height: 12),
+          _Item(
+            title: Row(
+              children: [
+                const Text('Custom:'),
+                FeatureBuilder<NumberBaseFeature, NumberBaseState>(
+                  buildWhen: (prev, curr) => prev.customBase != curr.customBase,
+                  builder: (context, state) {
+                    return MacosPopupButton<int>(
+                      value: state.customBase,
+                      items: [
+                        for (int i = 2; i <= 36; i++)
+                          MacosPopupMenuItem(
+                            value: i,
+                            child: Text('$i'),
+                          ),
+                      ],
+                      onChanged: (customBase) {
+                        if (customBase != null &&
+                            customBase != state.customBase) {
+                          context.numberBaseFeature(context).accept(
+                              UpdateCustomBaseMessage(base: customBase));
+                        }
+                      },
+                    );
+                  },
+                ),
+              ],
+            ),
+            controller: _customController,
+            onChanged: _customChanged,
           ),
         ],
       ),
@@ -129,10 +167,14 @@ class _BodyState extends State<_Body> {
   void _base16Changed(String value) {
     context.numberBaseFeature(context).accept(UpdateBase16Message(value));
   }
+
+  void _customChanged(String value) {
+    context.numberBaseFeature(context).accept(UpdateInputMessage.custom(value));
+  }
 }
 
 class _Item extends StatelessWidget {
-  final String title;
+  final Widget title;
   final TextEditingController controller;
   final ValueChanged<String> onChanged;
 
@@ -150,7 +192,7 @@ class _Item extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(title),
+        title,
         const SizedBox(height: 4),
         Row(
           children: [

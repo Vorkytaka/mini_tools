@@ -23,6 +23,7 @@ mixin _$UpdateInputMessage {
     required TResult Function(String input) base8,
     required TResult Function(String input) base10,
     required TResult Function(String input) base16,
+    required TResult Function(String input) custom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,6 +32,7 @@ mixin _$UpdateInputMessage {
     TResult? Function(String input)? base8,
     TResult? Function(String input)? base10,
     TResult? Function(String input)? base16,
+    TResult? Function(String input)? custom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,6 +41,7 @@ mixin _$UpdateInputMessage {
     TResult Function(String input)? base8,
     TResult Function(String input)? base10,
     TResult Function(String input)? base16,
+    TResult Function(String input)? custom,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +51,7 @@ mixin _$UpdateInputMessage {
     required TResult Function(UpdateBase8Message value) base8,
     required TResult Function(UpdateBase10Message value) base10,
     required TResult Function(UpdateBase16Message value) base16,
+    required TResult Function(UpdateCustomMessage value) custom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +60,7 @@ mixin _$UpdateInputMessage {
     TResult? Function(UpdateBase8Message value)? base8,
     TResult? Function(UpdateBase10Message value)? base10,
     TResult? Function(UpdateBase16Message value)? base16,
+    TResult? Function(UpdateCustomMessage value)? custom,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +69,7 @@ mixin _$UpdateInputMessage {
     TResult Function(UpdateBase8Message value)? base8,
     TResult Function(UpdateBase10Message value)? base10,
     TResult Function(UpdateBase16Message value)? base16,
+    TResult Function(UpdateCustomMessage value)? custom,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -185,6 +191,7 @@ class _$UpdateBase2MessageImpl implements UpdateBase2Message {
     required TResult Function(String input) base8,
     required TResult Function(String input) base10,
     required TResult Function(String input) base16,
+    required TResult Function(String input) custom,
   }) {
     return base2(input);
   }
@@ -196,6 +203,7 @@ class _$UpdateBase2MessageImpl implements UpdateBase2Message {
     TResult? Function(String input)? base8,
     TResult? Function(String input)? base10,
     TResult? Function(String input)? base16,
+    TResult? Function(String input)? custom,
   }) {
     return base2?.call(input);
   }
@@ -207,6 +215,7 @@ class _$UpdateBase2MessageImpl implements UpdateBase2Message {
     TResult Function(String input)? base8,
     TResult Function(String input)? base10,
     TResult Function(String input)? base16,
+    TResult Function(String input)? custom,
     required TResult orElse(),
   }) {
     if (base2 != null) {
@@ -222,6 +231,7 @@ class _$UpdateBase2MessageImpl implements UpdateBase2Message {
     required TResult Function(UpdateBase8Message value) base8,
     required TResult Function(UpdateBase10Message value) base10,
     required TResult Function(UpdateBase16Message value) base16,
+    required TResult Function(UpdateCustomMessage value) custom,
   }) {
     return base2(this);
   }
@@ -233,6 +243,7 @@ class _$UpdateBase2MessageImpl implements UpdateBase2Message {
     TResult? Function(UpdateBase8Message value)? base8,
     TResult? Function(UpdateBase10Message value)? base10,
     TResult? Function(UpdateBase16Message value)? base16,
+    TResult? Function(UpdateCustomMessage value)? custom,
   }) {
     return base2?.call(this);
   }
@@ -244,6 +255,7 @@ class _$UpdateBase2MessageImpl implements UpdateBase2Message {
     TResult Function(UpdateBase8Message value)? base8,
     TResult Function(UpdateBase10Message value)? base10,
     TResult Function(UpdateBase16Message value)? base16,
+    TResult Function(UpdateCustomMessage value)? custom,
     required TResult orElse(),
   }) {
     if (base2 != null) {
@@ -343,6 +355,7 @@ class _$UpdateBase8MessageImpl implements UpdateBase8Message {
     required TResult Function(String input) base8,
     required TResult Function(String input) base10,
     required TResult Function(String input) base16,
+    required TResult Function(String input) custom,
   }) {
     return base8(input);
   }
@@ -354,6 +367,7 @@ class _$UpdateBase8MessageImpl implements UpdateBase8Message {
     TResult? Function(String input)? base8,
     TResult? Function(String input)? base10,
     TResult? Function(String input)? base16,
+    TResult? Function(String input)? custom,
   }) {
     return base8?.call(input);
   }
@@ -365,6 +379,7 @@ class _$UpdateBase8MessageImpl implements UpdateBase8Message {
     TResult Function(String input)? base8,
     TResult Function(String input)? base10,
     TResult Function(String input)? base16,
+    TResult Function(String input)? custom,
     required TResult orElse(),
   }) {
     if (base8 != null) {
@@ -380,6 +395,7 @@ class _$UpdateBase8MessageImpl implements UpdateBase8Message {
     required TResult Function(UpdateBase8Message value) base8,
     required TResult Function(UpdateBase10Message value) base10,
     required TResult Function(UpdateBase16Message value) base16,
+    required TResult Function(UpdateCustomMessage value) custom,
   }) {
     return base8(this);
   }
@@ -391,6 +407,7 @@ class _$UpdateBase8MessageImpl implements UpdateBase8Message {
     TResult? Function(UpdateBase8Message value)? base8,
     TResult? Function(UpdateBase10Message value)? base10,
     TResult? Function(UpdateBase16Message value)? base16,
+    TResult? Function(UpdateCustomMessage value)? custom,
   }) {
     return base8?.call(this);
   }
@@ -402,6 +419,7 @@ class _$UpdateBase8MessageImpl implements UpdateBase8Message {
     TResult Function(UpdateBase8Message value)? base8,
     TResult Function(UpdateBase10Message value)? base10,
     TResult Function(UpdateBase16Message value)? base16,
+    TResult Function(UpdateCustomMessage value)? custom,
     required TResult orElse(),
   }) {
     if (base8 != null) {
@@ -501,6 +519,7 @@ class _$UpdateBase10MessageImpl implements UpdateBase10Message {
     required TResult Function(String input) base8,
     required TResult Function(String input) base10,
     required TResult Function(String input) base16,
+    required TResult Function(String input) custom,
   }) {
     return base10(input);
   }
@@ -512,6 +531,7 @@ class _$UpdateBase10MessageImpl implements UpdateBase10Message {
     TResult? Function(String input)? base8,
     TResult? Function(String input)? base10,
     TResult? Function(String input)? base16,
+    TResult? Function(String input)? custom,
   }) {
     return base10?.call(input);
   }
@@ -523,6 +543,7 @@ class _$UpdateBase10MessageImpl implements UpdateBase10Message {
     TResult Function(String input)? base8,
     TResult Function(String input)? base10,
     TResult Function(String input)? base16,
+    TResult Function(String input)? custom,
     required TResult orElse(),
   }) {
     if (base10 != null) {
@@ -538,6 +559,7 @@ class _$UpdateBase10MessageImpl implements UpdateBase10Message {
     required TResult Function(UpdateBase8Message value) base8,
     required TResult Function(UpdateBase10Message value) base10,
     required TResult Function(UpdateBase16Message value) base16,
+    required TResult Function(UpdateCustomMessage value) custom,
   }) {
     return base10(this);
   }
@@ -549,6 +571,7 @@ class _$UpdateBase10MessageImpl implements UpdateBase10Message {
     TResult? Function(UpdateBase8Message value)? base8,
     TResult? Function(UpdateBase10Message value)? base10,
     TResult? Function(UpdateBase16Message value)? base16,
+    TResult? Function(UpdateCustomMessage value)? custom,
   }) {
     return base10?.call(this);
   }
@@ -560,6 +583,7 @@ class _$UpdateBase10MessageImpl implements UpdateBase10Message {
     TResult Function(UpdateBase8Message value)? base8,
     TResult Function(UpdateBase10Message value)? base10,
     TResult Function(UpdateBase16Message value)? base16,
+    TResult Function(UpdateCustomMessage value)? custom,
     required TResult orElse(),
   }) {
     if (base10 != null) {
@@ -659,6 +683,7 @@ class _$UpdateBase16MessageImpl implements UpdateBase16Message {
     required TResult Function(String input) base8,
     required TResult Function(String input) base10,
     required TResult Function(String input) base16,
+    required TResult Function(String input) custom,
   }) {
     return base16(input);
   }
@@ -670,6 +695,7 @@ class _$UpdateBase16MessageImpl implements UpdateBase16Message {
     TResult? Function(String input)? base8,
     TResult? Function(String input)? base10,
     TResult? Function(String input)? base16,
+    TResult? Function(String input)? custom,
   }) {
     return base16?.call(input);
   }
@@ -681,6 +707,7 @@ class _$UpdateBase16MessageImpl implements UpdateBase16Message {
     TResult Function(String input)? base8,
     TResult Function(String input)? base10,
     TResult Function(String input)? base16,
+    TResult Function(String input)? custom,
     required TResult orElse(),
   }) {
     if (base16 != null) {
@@ -696,6 +723,7 @@ class _$UpdateBase16MessageImpl implements UpdateBase16Message {
     required TResult Function(UpdateBase8Message value) base8,
     required TResult Function(UpdateBase10Message value) base10,
     required TResult Function(UpdateBase16Message value) base16,
+    required TResult Function(UpdateCustomMessage value) custom,
   }) {
     return base16(this);
   }
@@ -707,6 +735,7 @@ class _$UpdateBase16MessageImpl implements UpdateBase16Message {
     TResult? Function(UpdateBase8Message value)? base8,
     TResult? Function(UpdateBase10Message value)? base10,
     TResult? Function(UpdateBase16Message value)? base16,
+    TResult? Function(UpdateCustomMessage value)? custom,
   }) {
     return base16?.call(this);
   }
@@ -718,6 +747,7 @@ class _$UpdateBase16MessageImpl implements UpdateBase16Message {
     TResult Function(UpdateBase8Message value)? base8,
     TResult Function(UpdateBase10Message value)? base10,
     TResult Function(UpdateBase16Message value)? base16,
+    TResult Function(UpdateCustomMessage value)? custom,
     required TResult orElse(),
   }) {
     if (base16 != null) {
@@ -740,4 +770,303 @@ abstract class UpdateBase16Message implements UpdateInputMessage {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateBase16MessageImplCopyWith<_$UpdateBase16MessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateCustomMessageImplCopyWith<$Res>
+    implements $UpdateInputMessageCopyWith<$Res> {
+  factory _$$UpdateCustomMessageImplCopyWith(_$UpdateCustomMessageImpl value,
+          $Res Function(_$UpdateCustomMessageImpl) then) =
+      __$$UpdateCustomMessageImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String input});
+}
+
+/// @nodoc
+class __$$UpdateCustomMessageImplCopyWithImpl<$Res>
+    extends _$UpdateInputMessageCopyWithImpl<$Res, _$UpdateCustomMessageImpl>
+    implements _$$UpdateCustomMessageImplCopyWith<$Res> {
+  __$$UpdateCustomMessageImplCopyWithImpl(_$UpdateCustomMessageImpl _value,
+      $Res Function(_$UpdateCustomMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UpdateInputMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? input = null,
+  }) {
+    return _then(_$UpdateCustomMessageImpl(
+      null == input
+          ? _value.input
+          : input // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateCustomMessageImpl implements UpdateCustomMessage {
+  const _$UpdateCustomMessageImpl(this.input);
+
+  @override
+  final String input;
+
+  @override
+  String toString() {
+    return 'UpdateInputMessage.custom(input: $input)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateCustomMessageImpl &&
+            (identical(other.input, input) || other.input == input));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, input);
+
+  /// Create a copy of UpdateInputMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateCustomMessageImplCopyWith<_$UpdateCustomMessageImpl> get copyWith =>
+      __$$UpdateCustomMessageImplCopyWithImpl<_$UpdateCustomMessageImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String input) base2,
+    required TResult Function(String input) base8,
+    required TResult Function(String input) base10,
+    required TResult Function(String input) base16,
+    required TResult Function(String input) custom,
+  }) {
+    return custom(input);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String input)? base2,
+    TResult? Function(String input)? base8,
+    TResult? Function(String input)? base10,
+    TResult? Function(String input)? base16,
+    TResult? Function(String input)? custom,
+  }) {
+    return custom?.call(input);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String input)? base2,
+    TResult Function(String input)? base8,
+    TResult Function(String input)? base10,
+    TResult Function(String input)? base16,
+    TResult Function(String input)? custom,
+    required TResult orElse(),
+  }) {
+    if (custom != null) {
+      return custom(input);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdateBase2Message value) base2,
+    required TResult Function(UpdateBase8Message value) base8,
+    required TResult Function(UpdateBase10Message value) base10,
+    required TResult Function(UpdateBase16Message value) base16,
+    required TResult Function(UpdateCustomMessage value) custom,
+  }) {
+    return custom(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UpdateBase2Message value)? base2,
+    TResult? Function(UpdateBase8Message value)? base8,
+    TResult? Function(UpdateBase10Message value)? base10,
+    TResult? Function(UpdateBase16Message value)? base16,
+    TResult? Function(UpdateCustomMessage value)? custom,
+  }) {
+    return custom?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdateBase2Message value)? base2,
+    TResult Function(UpdateBase8Message value)? base8,
+    TResult Function(UpdateBase10Message value)? base10,
+    TResult Function(UpdateBase16Message value)? base16,
+    TResult Function(UpdateCustomMessage value)? custom,
+    required TResult orElse(),
+  }) {
+    if (custom != null) {
+      return custom(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateCustomMessage implements UpdateInputMessage {
+  const factory UpdateCustomMessage(final String input) =
+      _$UpdateCustomMessageImpl;
+
+  @override
+  String get input;
+
+  /// Create a copy of UpdateInputMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateCustomMessageImplCopyWith<_$UpdateCustomMessageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$UpdateCustomBaseMessage {
+  int get base => throw _privateConstructorUsedError;
+
+  /// Create a copy of UpdateCustomBaseMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $UpdateCustomBaseMessageCopyWith<UpdateCustomBaseMessage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UpdateCustomBaseMessageCopyWith<$Res> {
+  factory $UpdateCustomBaseMessageCopyWith(UpdateCustomBaseMessage value,
+          $Res Function(UpdateCustomBaseMessage) then) =
+      _$UpdateCustomBaseMessageCopyWithImpl<$Res, UpdateCustomBaseMessage>;
+  @useResult
+  $Res call({int base});
+}
+
+/// @nodoc
+class _$UpdateCustomBaseMessageCopyWithImpl<$Res,
+        $Val extends UpdateCustomBaseMessage>
+    implements $UpdateCustomBaseMessageCopyWith<$Res> {
+  _$UpdateCustomBaseMessageCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of UpdateCustomBaseMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? base = null,
+  }) {
+    return _then(_value.copyWith(
+      base: null == base
+          ? _value.base
+          : base // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$UpdateCustomBaseMessageImplCopyWith<$Res>
+    implements $UpdateCustomBaseMessageCopyWith<$Res> {
+  factory _$$UpdateCustomBaseMessageImplCopyWith(
+          _$UpdateCustomBaseMessageImpl value,
+          $Res Function(_$UpdateCustomBaseMessageImpl) then) =
+      __$$UpdateCustomBaseMessageImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int base});
+}
+
+/// @nodoc
+class __$$UpdateCustomBaseMessageImplCopyWithImpl<$Res>
+    extends _$UpdateCustomBaseMessageCopyWithImpl<$Res,
+        _$UpdateCustomBaseMessageImpl>
+    implements _$$UpdateCustomBaseMessageImplCopyWith<$Res> {
+  __$$UpdateCustomBaseMessageImplCopyWithImpl(
+      _$UpdateCustomBaseMessageImpl _value,
+      $Res Function(_$UpdateCustomBaseMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UpdateCustomBaseMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? base = null,
+  }) {
+    return _then(_$UpdateCustomBaseMessageImpl(
+      base: null == base
+          ? _value.base
+          : base // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateCustomBaseMessageImpl implements _UpdateCustomBaseMessage {
+  const _$UpdateCustomBaseMessageImpl({required this.base})
+      : assert(base >= 2 && base <= 36);
+
+  @override
+  final int base;
+
+  @override
+  String toString() {
+    return 'UpdateCustomBaseMessage(base: $base)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateCustomBaseMessageImpl &&
+            (identical(other.base, base) || other.base == base));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, base);
+
+  /// Create a copy of UpdateCustomBaseMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateCustomBaseMessageImplCopyWith<_$UpdateCustomBaseMessageImpl>
+      get copyWith => __$$UpdateCustomBaseMessageImplCopyWithImpl<
+          _$UpdateCustomBaseMessageImpl>(this, _$identity);
+}
+
+abstract class _UpdateCustomBaseMessage implements UpdateCustomBaseMessage {
+  const factory _UpdateCustomBaseMessage({required final int base}) =
+      _$UpdateCustomBaseMessageImpl;
+
+  @override
+  int get base;
+
+  /// Create a copy of UpdateCustomBaseMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateCustomBaseMessageImplCopyWith<_$UpdateCustomBaseMessageImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
