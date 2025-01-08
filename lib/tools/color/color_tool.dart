@@ -68,7 +68,7 @@ class _BodyState extends State<_Body> {
 
     final cubit = context.watch<ColorCubit>();
     final state = cubit.state;
-    if(_inputController.text != state.input) {
+    if (_inputController.text != state.input) {
       _inputController.text = state.input;
     }
   }
