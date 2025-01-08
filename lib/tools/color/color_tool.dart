@@ -63,6 +63,17 @@ class _BodyState extends State<_Body> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final cubit = context.watch<ColorCubit>();
+    final state = cubit.state;
+    if (_inputController.text != state.input) {
+      _inputController.text = state.input;
+    }
+  }
+
+  @override
   void dispose() {
     _inputController.dispose();
     super.dispose();
