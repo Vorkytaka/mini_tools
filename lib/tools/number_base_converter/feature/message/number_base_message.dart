@@ -1,0 +1,22 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'number_base_message.freezed.dart';
+
+@immutable
+sealed class NumberBaseMessage {
+  const NumberBaseMessage._();
+}
+
+@freezed
+@immutable
+sealed class UpdateInputMessage
+    with _$UpdateInputMessage
+    implements NumberBaseMessage {
+  const factory UpdateInputMessage.base2(String input) = UpdateBase2Message;
+
+  const factory UpdateInputMessage.base8(String input) = UpdateBase8Message;
+
+  const factory UpdateInputMessage.base10(String input) = UpdateBase10Message;
+
+  const factory UpdateInputMessage.base16(String input) = UpdateBase16Message;
+}

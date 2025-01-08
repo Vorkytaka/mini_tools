@@ -115,19 +115,19 @@ class _BodyState extends State<_Body> {
   }
 
   void _base2Changed(String value) {
-    context.numberBaseFeature(context).accept(UpdateBase2Event(value));
+    context.numberBaseFeature(context).accept(UpdateBase2Message(value));
   }
 
   void _base8Changed(String value) {
-    context.numberBaseFeature(context).accept(UpdateBase8Event(value));
+    context.numberBaseFeature(context).accept(UpdateBase8Message(value));
   }
 
   void _base10Changed(String value) {
-    context.numberBaseFeature(context).accept(UpdateBase10Event(value));
+    context.numberBaseFeature(context).accept(UpdateBase10Message(value));
   }
 
   void _base16Changed(String value) {
-    context.numberBaseFeature(context).accept(UpdateBase16Event(value));
+    context.numberBaseFeature(context).accept(UpdateBase16Message(value));
   }
 }
 

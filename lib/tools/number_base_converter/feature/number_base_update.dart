@@ -2,23 +2,23 @@ part of 'number_base_feature.dart';
 
 Next<NumberBaseState, void> _updateNumberBase(
   NumberBaseState state,
-  NumberBaseEvent event,
+  NumberBaseMessage event,
 ) {
   switch (event) {
-    case UpdateInputEvent():
+    case UpdateInputMessage():
       return _updateInputHandle(state, event);
   }
 }
 
 Next<NumberBaseState, void> _updateInputHandle(
   NumberBaseState state,
-  UpdateInputEvent event,
+  UpdateInputMessage event,
 ) {
   final bigInt = switch (event) {
-    UpdateBase2Event() => BigInt.tryParse(event.input, radix: 2),
-    UpdateBase8Event() => BigInt.tryParse(event.input, radix: 8),
-    UpdateBase10Event() => BigInt.tryParse(event.input, radix: 10),
-    UpdateBase16Event() => BigInt.tryParse(event.input, radix: 16),
+    UpdateBase2Message() => BigInt.tryParse(event.input, radix: 2),
+    UpdateBase8Message() => BigInt.tryParse(event.input, radix: 8),
+    UpdateBase10Message() => BigInt.tryParse(event.input, radix: 10),
+    UpdateBase16Message() => BigInt.tryParse(event.input, radix: 16),
   };
 
   String base2, base8, base10, base16;
@@ -37,16 +37,16 @@ Next<NumberBaseState, void> _updateInputHandle(
   // We need this, so currently focused input field will save any input
   // Even wrong one
   switch (event) {
-    case UpdateBase2Event():
+    case UpdateBase2Message():
       base2 = event.input;
       break;
-    case UpdateBase8Event():
+    case UpdateBase8Message():
       base8 = event.input;
       break;
-    case UpdateBase10Event():
+    case UpdateBase10Message():
       base10 = event.input;
       break;
-    case UpdateBase16Event():
+    case UpdateBase16Message():
       base16 = event.input;
       break;
   }
