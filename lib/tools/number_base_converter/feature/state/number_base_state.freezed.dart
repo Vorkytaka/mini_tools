@@ -20,6 +20,8 @@ mixin _$NumberBaseState {
   String get base8 => throw _privateConstructorUsedError;
   String get base10 => throw _privateConstructorUsedError;
   String get base16 => throw _privateConstructorUsedError;
+  int get customBase => throw _privateConstructorUsedError;
+  String get customBaseValue => throw _privateConstructorUsedError;
   BigInt? get value => throw _privateConstructorUsedError;
 
   /// Create a copy of NumberBaseState
@@ -40,6 +42,8 @@ abstract class $NumberBaseStateCopyWith<$Res> {
       String base8,
       String base10,
       String base16,
+      int customBase,
+      String customBaseValue,
       BigInt? value});
 }
 
@@ -62,6 +66,8 @@ class _$NumberBaseStateCopyWithImpl<$Res, $Val extends NumberBaseState>
     Object? base8 = null,
     Object? base10 = null,
     Object? base16 = null,
+    Object? customBase = null,
+    Object? customBaseValue = null,
     Object? value = freezed,
   }) {
     return _then(_value.copyWith(
@@ -80,6 +86,14 @@ class _$NumberBaseStateCopyWithImpl<$Res, $Val extends NumberBaseState>
       base16: null == base16
           ? _value.base16
           : base16 // ignore: cast_nullable_to_non_nullable
+              as String,
+      customBase: null == customBase
+          ? _value.customBase
+          : customBase // ignore: cast_nullable_to_non_nullable
+              as int,
+      customBaseValue: null == customBaseValue
+          ? _value.customBaseValue
+          : customBaseValue // ignore: cast_nullable_to_non_nullable
               as String,
       value: freezed == value
           ? _value.value
@@ -102,6 +116,8 @@ abstract class _$$NumberBaseStateImplCopyWith<$Res>
       String base8,
       String base10,
       String base16,
+      int customBase,
+      String customBaseValue,
       BigInt? value});
 }
 
@@ -122,6 +138,8 @@ class __$$NumberBaseStateImplCopyWithImpl<$Res>
     Object? base8 = null,
     Object? base10 = null,
     Object? base16 = null,
+    Object? customBase = null,
+    Object? customBaseValue = null,
     Object? value = freezed,
   }) {
     return _then(_$NumberBaseStateImpl(
@@ -141,6 +159,14 @@ class __$$NumberBaseStateImplCopyWithImpl<$Res>
           ? _value.base16
           : base16 // ignore: cast_nullable_to_non_nullable
               as String,
+      customBase: null == customBase
+          ? _value.customBase
+          : customBase // ignore: cast_nullable_to_non_nullable
+              as int,
+      customBaseValue: null == customBaseValue
+          ? _value.customBaseValue
+          : customBaseValue // ignore: cast_nullable_to_non_nullable
+              as String,
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
@@ -157,7 +183,10 @@ class _$NumberBaseStateImpl implements _NumberBaseState {
       required this.base8,
       required this.base10,
       required this.base16,
-      required this.value});
+      required this.customBase,
+      required this.customBaseValue,
+      required this.value})
+      : assert(customBase >= 2 && customBase <= 36);
 
   @override
   final String base2;
@@ -168,11 +197,15 @@ class _$NumberBaseStateImpl implements _NumberBaseState {
   @override
   final String base16;
   @override
+  final int customBase;
+  @override
+  final String customBaseValue;
+  @override
   final BigInt? value;
 
   @override
   String toString() {
-    return 'NumberBaseState(base2: $base2, base8: $base8, base10: $base10, base16: $base16, value: $value)';
+    return 'NumberBaseState(base2: $base2, base8: $base8, base10: $base10, base16: $base16, customBase: $customBase, customBaseValue: $customBaseValue, value: $value)';
   }
 
   @override
@@ -184,12 +217,16 @@ class _$NumberBaseStateImpl implements _NumberBaseState {
             (identical(other.base8, base8) || other.base8 == base8) &&
             (identical(other.base10, base10) || other.base10 == base10) &&
             (identical(other.base16, base16) || other.base16 == base16) &&
+            (identical(other.customBase, customBase) ||
+                other.customBase == customBase) &&
+            (identical(other.customBaseValue, customBaseValue) ||
+                other.customBaseValue == customBaseValue) &&
             (identical(other.value, value) || other.value == value));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, base2, base8, base10, base16, value);
+  int get hashCode => Object.hash(runtimeType, base2, base8, base10, base16,
+      customBase, customBaseValue, value);
 
   /// Create a copy of NumberBaseState
   /// with the given fields replaced by the non-null parameter values.
@@ -207,6 +244,8 @@ abstract class _NumberBaseState implements NumberBaseState {
       required final String base8,
       required final String base10,
       required final String base16,
+      required final int customBase,
+      required final String customBaseValue,
       required final BigInt? value}) = _$NumberBaseStateImpl;
 
   @override
@@ -217,6 +256,10 @@ abstract class _NumberBaseState implements NumberBaseState {
   String get base10;
   @override
   String get base16;
+  @override
+  int get customBase;
+  @override
+  String get customBaseValue;
   @override
   BigInt? get value;
 
