@@ -130,31 +130,31 @@ class _BodyState extends State<_Body> {
                     children: [
                       const _GlobalCheckbox(),
                       Text(
-                        'Search for all matches',
+                        t.regexp.settings.globalDesc,
                         style: theme.typography.footnote,
                       ),
                       const SizedBox(height: 8),
                       const _MultilineCheckbox(),
                       Text(
-                        r'^ and $ match the start/end of each line',
+                        t.regexp.settings.multilineDesc,
                         style: theme.typography.footnote,
                       ),
                       const SizedBox(height: 8),
                       const _CaseSensitiveCheckbox(),
                       Text(
-                        'Case sensitive search',
+                        t.regexp.settings.caseSensitiveDesc,
                         style: theme.typography.footnote,
                       ),
                       const SizedBox(height: 8),
                       const _UnicodeCheckbox(),
                       Text(
-                        'Enable all Unicode features',
+                        t.regexp.settings.unicodeDesc,
                         style: theme.typography.footnote,
                       ),
                       const SizedBox(height: 8),
                       const _DotAllCheckbox(),
                       Text(
-                        'Dot matches all characters,\nincluding line terminators',
+                        t.regexp.settings.dotAllDesk,
                         style: theme.typography.footnote,
                       ),
                     ],
@@ -203,6 +203,8 @@ class _GlobalCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return FeatureBuilder<RegExpFeature, RegExpState>(
       buildWhen: (prev, curr) => prev.isGlobal != curr.isGlobal,
       builder: (context, state) {
@@ -211,7 +213,7 @@ class _GlobalCheckbox extends StatelessWidget {
           onChanged: (isGlobal) => context
               .read<RegExpFeature>()
               .accept(RegExpMessage.updateGlobal(isGlobal)),
-          label: 'Global',
+          label: t.regexp.settings.global,
         );
       },
     );
@@ -223,6 +225,8 @@ class _MultilineCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return FeatureBuilder<RegExpFeature, RegExpState>(
       buildWhen: (prev, curr) => prev.isMultiline != curr.isMultiline,
       builder: (context, state) {
@@ -231,7 +235,7 @@ class _MultilineCheckbox extends StatelessWidget {
           onChanged: (isMultiline) => context
               .read<RegExpFeature>()
               .accept(RegExpMessage.updateMultiline(isMultiline)),
-          label: 'Multiline',
+          label: t.regexp.settings.multiline,
         );
       },
     );
@@ -243,6 +247,8 @@ class _CaseSensitiveCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return FeatureBuilder<RegExpFeature, RegExpState>(
       buildWhen: (prev, curr) => prev.isCaseSensitive != curr.isCaseSensitive,
       builder: (context, state) {
@@ -251,7 +257,7 @@ class _CaseSensitiveCheckbox extends StatelessWidget {
           onChanged: (isCaseSensitive) => context
               .read<RegExpFeature>()
               .accept(RegExpMessage.updateCaseSensitive(isCaseSensitive)),
-          label: 'Case Sensitive',
+          label: t.regexp.settings.caseSensitive,
         );
       },
     );
@@ -263,6 +269,8 @@ class _UnicodeCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return FeatureBuilder<RegExpFeature, RegExpState>(
       buildWhen: (prev, curr) => prev.isUnicode != curr.isUnicode,
       builder: (context, state) {
@@ -271,7 +279,7 @@ class _UnicodeCheckbox extends StatelessWidget {
           onChanged: (isUnicode) => context
               .read<RegExpFeature>()
               .accept(RegExpMessage.updateUnicode(isUnicode)),
-          label: 'Unicode',
+          label: t.regexp.settings.unicode,
         );
       },
     );
@@ -283,6 +291,8 @@ class _DotAllCheckbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return FeatureBuilder<RegExpFeature, RegExpState>(
       buildWhen: (prev, curr) => prev.isDotAll != curr.isDotAll,
       builder: (context, state) {
@@ -291,7 +301,7 @@ class _DotAllCheckbox extends StatelessWidget {
           onChanged: (isDotAll) => context
               .read<RegExpFeature>()
               .accept(RegExpMessage.updateDotAll(isDotAll)),
-          label: 'Single Line',
+          label: t.regexp.settings.dotAll,
         );
       },
     );
@@ -340,13 +350,15 @@ class _MatchInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return FeatureBuilder<RegExpFeature, RegExpState>(
       buildWhen: (prev, curr) => prev.matches != curr.matches,
       builder: (context, state) {
         final matches = state.matches;
 
         if (matches == null || matches.isEmpty) {
-          return Text('No matches found');
+          return Text(t.regexp.matchInfoNothing);
         }
 
         return ListView.separated(
@@ -384,14 +396,17 @@ class _MatchWidget extends StatelessWidget {
             Text.rich(
               TextSpan(
                 children: [
+                  TextSpan(text: t.regexp.matchInfoMatch(position: position)),
+                  const TextSpan(text: ' '),
                   TextSpan(
-                    text: 'Match #$position',
+                    text: t.regexp.matchInfoIndexes(
+                      start: match.start,
+                      end: match.end,
+                    ),
+                    style: theme.typography.footnote.copyWith(
+                      color: theme.searchFieldTheme.highlightColor,
+                    ),
                   ),
-                  TextSpan(
-                      text: ' (${match.start}-${match.end})',
-                      style: theme.typography.footnote.copyWith(
-                        color: theme.searchFieldTheme.highlightColor,
-                      )),
                 ],
               ),
             ),
@@ -419,25 +434,27 @@ class _MatchWidget extends StatelessWidget {
 
 class _GroupWidget extends StatelessWidget {
   final int position;
-  final String? value;
+  final String value;
 
   const _GroupWidget({
     required this.position,
-    this.value,
-  });
+    String? value,
+  }) : value = value ?? '';
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Group #$position',
+          t.regexp.matchInfoGroup(position: position),
           style: const TextStyle(decoration: TextDecoration.underline),
         ),
         Expanded(
           child: Text(
-            value ?? '',
+            value,
             textAlign: TextAlign.end,
           ),
         ),

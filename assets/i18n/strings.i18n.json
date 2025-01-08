@@ -51,10 +51,22 @@
       "other": "$count matches"
     },
     "match_info_title": "Match information:",
-    "match_info_number": "#",
-    "match_info_value": "Match",
-    "match_info_position": "Position",
-    "match_info_nothing": "Nothing found"
+    "match_info_match": "Match #$position",
+    "match_info_group": "Group #$position",
+    "match_info_indexes": "($start-$end)",
+    "match_info_nothing": "No matches found",
+    "settings": {
+      "global": "Global",
+      "global_desc": "Search for all matches",
+      "multiline": "Multiline",
+      "multiline_desc": "^ and $ match the start/end of each line",
+      "case_sensitive": "Case sensitive",
+      "case_sensitive_desc": "Case sensitive search",
+      "unicode": "Unicode",
+      "unicode_desc": "Enable all Unicode features",
+      "dot_all": "Dot all",
+      "dot_all_desk": "Dot matches all characters,\nincluding line terminators"
+    }
   },
   "json_formatter": {
     "title": "JSON Formatter",
