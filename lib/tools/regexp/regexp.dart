@@ -6,6 +6,7 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../../common/padding.dart';
 import '../../i18n/strings.g.dart';
 import 'feature/regexp_feature.dart';
 
@@ -14,7 +15,6 @@ class RegExpTool extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = MacosTheme.of(context);
     final t = Translations.of(context);
 
     return MacosScaffold(
@@ -28,21 +28,18 @@ class RegExpTool extends StatelessWidget {
         ),
         ResizablePane(
           builder: (context, controller) => Padding(
-            padding: const EdgeInsets.all(12),
+            padding: panePadding,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      t.regexp.matchInfoTitle,
-                      style: theme.typography.headline,
-                    ),
+                    Text(t.regexp.matchInfoTitle),
                     const _MatchCounter(),
                   ],
                 ),
-                const SizedBox(height: 8),
+                itemSpaceV,
                 const Expanded(child: _MatchInformation()),
               ],
             ),
@@ -103,7 +100,7 @@ class _BodyState extends State<_Body> {
     final theme = MacosTheme.of(context);
 
     return Padding(
-      padding: const EdgeInsets.all(12),
+      padding: panePadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -133,25 +130,25 @@ class _BodyState extends State<_Body> {
                         t.regexp.settings.globalDesc,
                         style: theme.typography.footnote,
                       ),
-                      const SizedBox(height: 8),
+                      itemSpaceV,
                       const _MultilineCheckbox(),
                       Text(
                         t.regexp.settings.multilineDesc,
                         style: theme.typography.footnote,
                       ),
-                      const SizedBox(height: 8),
+                      itemSpaceV,
                       const _CaseSensitiveCheckbox(),
                       Text(
                         t.regexp.settings.caseSensitiveDesc,
                         style: theme.typography.footnote,
                       ),
-                      const SizedBox(height: 8),
+                      itemSpaceV,
                       const _UnicodeCheckbox(),
                       Text(
                         t.regexp.settings.unicodeDesc,
                         style: theme.typography.footnote,
                       ),
-                      const SizedBox(height: 8),
+                      itemSpaceV,
                       const _DotAllCheckbox(),
                       Text(
                         t.regexp.settings.dotAllDesk,
@@ -168,13 +165,10 @@ class _BodyState extends State<_Body> {
               const SizedBox(width: 8),
             ],
           ),
-          const SizedBox(height: 8),
+          const SizedBox(height: 12),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Text(
-              t.regexp.testStringTitle,
-              style: theme.typography.headline,
-            ),
+            padding: headlinePadding,
+            child: Text(t.regexp.testStringTitle),
           ),
           const SizedBox(height: 4),
           Expanded(

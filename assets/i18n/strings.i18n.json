@@ -40,7 +40,8 @@
     "binary": "Base 2 (Binary):",
     "octal": "Base 8 (Octal):",
     "decimal": "Base 10 (Decimal):",
-    "hex": "Base 16 (Hex):"
+    "hex": "Base 16 (Hex):",
+    "custom": "Select base:"
   },
   "regexp": {
     "title": "RegExp tester",
