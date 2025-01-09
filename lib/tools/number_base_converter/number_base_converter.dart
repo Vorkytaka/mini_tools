@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 
+import '../../common/padding.dart';
 import '../../i18n/strings.g.dart';
 import 'feature/number_base_feature.dart';
 import 'number_base_feature_utils.dart';
@@ -89,7 +90,7 @@ class _BodyState extends State<_Body> {
 
     return SingleChildScrollView(
       controller: widget.controller,
-      padding: const EdgeInsets.all(16),
+      padding: panePadding,
       child: Column(
         children: [
           _Item(
@@ -193,7 +194,10 @@ class _Item extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        title,
+        Padding(
+          padding: headlinePadding,
+          child: title,
+        ),
         const SizedBox(height: 4),
         Row(
           children: [
@@ -203,7 +207,7 @@ class _Item extends StatelessWidget {
                 onChanged: onChanged,
               ),
             ),
-            const SizedBox(width: 4),
+            itemSpaceH,
             MacosIconButton(
               onPressed: () {
                 if (controller.text.isEmpty) {
