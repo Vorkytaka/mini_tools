@@ -119,7 +119,8 @@ class _BodyState extends State<_Body> {
           _Item(
             title: Row(
               children: [
-                const Text('Custom:'),
+                Text(t.numberConverter.custom),
+                const SizedBox(width: 8),
                 FeatureBuilder<NumberBaseFeature, NumberBaseState>(
                   buildWhen: (prev, curr) => prev.customBase != curr.customBase,
                   builder: (context, state) {
