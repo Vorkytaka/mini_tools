@@ -138,20 +138,7 @@ class _BodyState extends State<_Body> {
             const SizedBox(height: 8),
             Expanded(child: field),
             const SizedBox(height: 8),
-            HashFeatureBuilder(
-              builder: (context, state) {
-                return Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _DigestItem(
-                      digestName: state.algorithm.name,
-                      bytes: state.hash,
-                      codec: state.format.codec,
-                    ),
-                  ],
-                );
-              },
-            ),
+            const _HashOutputField(),
           ],
         ),
       ),
@@ -276,6 +263,28 @@ class _HashFormatSelector extends StatelessWidget {
               context.hashFeature().accept(HashEvent.updateFormat(format));
             }
           },
+        );
+      },
+    );
+  }
+}
+
+class _HashOutputField extends StatelessWidget {
+  const _HashOutputField();
+
+  @override
+  Widget build(BuildContext context) {
+    return HashFeatureBuilder(
+      builder: (context, state) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _DigestItem(
+              digestName: state.algorithm.name,
+              bytes: state.hash,
+              codec: state.format.codec,
+            ),
+          ],
         );
       },
     );
