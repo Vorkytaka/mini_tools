@@ -4,12 +4,14 @@ import 'package:convert/convert.dart';
 import 'package:cross_file/cross_file.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 
 import '../../common/file_drop_widget.dart';
 import '../../common/macos_read_only_field.dart';
+import '../../common/padding.dart';
 import '../../i18n/strings.g.dart';
 import 'feature/hash_feature.dart';
 import 'hash_feature_utils.dart';
@@ -56,90 +58,6 @@ class _HashToolState extends State<HashTool> {
         ContentArea(
           builder: (context, controller) => const _Body(),
         ),
-        ResizablePane(
-          builder: (context, controller) => ListView(
-            padding: const EdgeInsets.all(8),
-            controller: controller,
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4),
-                child: Row(
-                  children: [
-                    FeatureBuilder<HashFeature, HashState>(
-                      buildWhen: (prev, curr) =>
-                          prev.inputBytes != curr.inputBytes,
-                      builder: (context, state) =>
-                          Text(s.hash.bytesCount(n: state.inputBytes)),
-                    ),
-                    const Spacer(),
-                    HashFeatureBuilder(
-                      builder: (context, state) {
-                        return MacosPopupButton(
-                          value: state.algorithm,
-                          items: HashAlgorithm.values
-                              .map(
-                                (algorithm) => MacosPopupMenuItem(
-                                  value: algorithm,
-                                  child: Text(algorithm.name),
-                                ),
-                              )
-                              .toList(growable: false),
-                          onChanged: (algorithm) {
-                            if (algorithm != null) {
-                              context
-                                  .hashFeature()
-                                  .accept(HashEvent.updateAlgorithm(algorithm));
-                            }
-                          },
-                        );
-                      },
-                    ),
-                    HashFeatureBuilder(
-                      builder: (context, state) {
-                        return MacosPopupButton(
-                          value: state.format,
-                          items: HashFormat.values
-                              .map(
-                                (type) => MacosPopupMenuItem(
-                                  value: type,
-                                  child: Text(type.format(context)),
-                                ),
-                              )
-                              .toList(growable: false),
-                          onChanged: (format) {
-                            if (format != null && format != state.format) {
-                              context
-                                  .hashFeature()
-                                  .accept(HashEvent.updateFormat(format));
-                            }
-                          },
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 16),
-              HashFeatureBuilder(
-                builder: (context, state) {
-                  return Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      _DigestItem(
-                        digestName: state.algorithm.name,
-                        bytes: state.hash,
-                        codec: state.format.codec,
-                      ),
-                    ],
-                  );
-                },
-              ),
-            ],
-          ),
-          minSize: 200,
-          resizableSide: ResizableSide.left,
-          startSize: 300,
-        ),
       ],
     );
   }
@@ -185,9 +103,11 @@ class _BodyState extends State<_Body> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
+              padding: headlinePadding,
               child: Row(
                 children: [
+                  Text(s.common.input),
+                  const SizedBox(width: 8),
                   PushButton(
                     onPressed: _onFilePicked,
                     controlSize: ControlSize.regular,
@@ -200,11 +120,80 @@ class _BodyState extends State<_Body> {
                     secondary: true,
                     child: Text(s.hash.dropFile),
                   ),
+                  const SizedBox(width: 8),
+                  HashFeatureBuilder(
+                    builder: (context, state) {
+                      return MacosPopupButton(
+                        value: state.algorithm,
+                        items: HashAlgorithm.values
+                            .map(
+                              (algorithm) => MacosPopupMenuItem(
+                                value: algorithm,
+                                child: Text(algorithm.name.toUpperCase()),
+                              ),
+                            )
+                            .toList(growable: false),
+                        onChanged: (algorithm) {
+                          if (algorithm != null) {
+                            context
+                                .hashFeature()
+                                .accept(HashEvent.updateAlgorithm(algorithm));
+                          }
+                        },
+                      );
+                    },
+                  ),
+                  const SizedBox(width: 8),
+                  HashFeatureBuilder(
+                    builder: (context, state) {
+                      return MacosPopupButton(
+                        value: state.format,
+                        items: HashFormat.values
+                            .map(
+                              (type) => MacosPopupMenuItem(
+                                value: type,
+                                child: Text(type.format(context)),
+                              ),
+                            )
+                            .toList(growable: false),
+                        onChanged: (format) {
+                          if (format != null && format != state.format) {
+                            context
+                                .hashFeature()
+                                .accept(HashEvent.updateFormat(format));
+                          }
+                        },
+                      );
+                    },
+                  ),
+                  const Spacer(),
+                  FeatureBuilder<HashFeature, HashState>(
+                    buildWhen: (prev, curr) =>
+                        prev.inputBytes != curr.inputBytes,
+                    builder: (context, state) => SelectableText(
+                      s.hash.bytesCount(n: state.inputBytes),
+                    ),
+                  ),
                 ],
               ),
             ),
-            const SizedBox(height: 4),
+            const SizedBox(height: 8),
             Expanded(child: field),
+            const SizedBox(height: 8),
+            HashFeatureBuilder(
+              builder: (context, state) {
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _DigestItem(
+                      digestName: state.algorithm.name,
+                      bytes: state.hash,
+                      codec: state.format.codec,
+                    ),
+                  ],
+                );
+              },
+            ),
           ],
         ),
       ),
@@ -247,33 +236,22 @@ class _DigestItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final value = _countDigest();
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
-          child: Text(digestName),
+        Expanded(
+          child: MacosReadonlyField(
+            text: value,
+            maxLines: 1,
+          ),
         ),
-        const SizedBox(height: 4),
-        Row(
-          children: [
-            Expanded(
-              child: MacosReadonlyField(
-                text: value,
-                maxLines: 1,
-              ),
-            ),
-            const SizedBox(width: 4),
-            MacosIconButton(
-              onPressed: () {
-                if (value.isNotEmpty) {
-                  Clipboard.setData(ClipboardData(text: value));
-                }
-              },
-              icon: const MacosIcon(CupertinoIcons.doc_on_clipboard_fill),
-            ),
-          ],
+        const SizedBox(width: 4),
+        MacosIconButton(
+          onPressed: () {
+            if (value.isNotEmpty) {
+              Clipboard.setData(ClipboardData(text: value));
+            }
+          },
+          icon: const MacosIcon(CupertinoIcons.doc_on_clipboard_fill),
         ),
       ],
     );
