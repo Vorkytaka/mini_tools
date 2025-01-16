@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 113
+/// Strings: 114
 ///
-/// Built on 2025-01-08 at 20:18 UTC
+/// Built on 2025-01-09 at 22:58 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -294,6 +294,8 @@ class _StringsNumberConverterEn {
   String get decimal => 'Base 10 (Decimal):';
 
   String get hex => 'Base 16 (Hex):';
+
+  String get custom => 'Select base:';
 }
 
 // Path: regexp
@@ -699,6 +701,8 @@ extension on Translations {
         return 'Base 10 (Decimal):';
       case 'numberConverter.hex':
         return 'Base 16 (Hex):';
+      case 'numberConverter.custom':
+        return 'Select base:';
       case 'regexp.title':
         return 'RegExp tester';
       case 'regexp.regexpHint':
