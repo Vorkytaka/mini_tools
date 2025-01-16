@@ -93,7 +93,7 @@ class _BodyState extends State<_Body> {
           );
 
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: panePadding,
       child: FileDropWidget(
         onFileDropped: (file) {
           if (file != null) {
@@ -121,51 +121,9 @@ class _BodyState extends State<_Body> {
                     child: Text(s.hash.dropFile),
                   ),
                   const SizedBox(width: 8),
-                  HashFeatureBuilder(
-                    builder: (context, state) {
-                      return MacosPopupButton(
-                        value: state.algorithm,
-                        items: HashAlgorithm.values
-                            .map(
-                              (algorithm) => MacosPopupMenuItem(
-                                value: algorithm,
-                                child: Text(algorithm.name.toUpperCase()),
-                              ),
-                            )
-                            .toList(growable: false),
-                        onChanged: (algorithm) {
-                          if (algorithm != null) {
-                            context
-                                .hashFeature()
-                                .accept(HashEvent.updateAlgorithm(algorithm));
-                          }
-                        },
-                      );
-                    },
-                  ),
+                  const _AlgorithmSelector(),
                   const SizedBox(width: 8),
-                  HashFeatureBuilder(
-                    builder: (context, state) {
-                      return MacosPopupButton(
-                        value: state.format,
-                        items: HashFormat.values
-                            .map(
-                              (type) => MacosPopupMenuItem(
-                                value: type,
-                                child: Text(type.format(context)),
-                              ),
-                            )
-                            .toList(growable: false),
-                        onChanged: (format) {
-                          if (format != null && format != state.format) {
-                            context
-                                .hashFeature()
-                                .accept(HashEvent.updateFormat(format));
-                          }
-                        },
-                      );
-                    },
-                  ),
+                  const _HashFormatSelector(),
                   const Spacer(),
                   FeatureBuilder<HashFeature, HashState>(
                     buildWhen: (prev, curr) =>
@@ -263,5 +221,63 @@ class _DigestItem extends StatelessWidget {
       return '';
     }
     return codec.encode(bytes);
+  }
+}
+
+class _AlgorithmSelector extends StatelessWidget {
+  const _AlgorithmSelector();
+
+  @override
+  Widget build(BuildContext context) {
+    return HashFeatureBuilder(
+      builder: (context, state) {
+        return MacosPopupButton(
+          value: state.algorithm,
+          items: HashAlgorithm.values
+              .map(
+                (algorithm) => MacosPopupMenuItem(
+                  value: algorithm,
+                  child: Text(algorithm.name.toUpperCase()),
+                ),
+              )
+              .toList(growable: false),
+          onChanged: (algorithm) {
+            if (algorithm != null) {
+              context
+                  .hashFeature()
+                  .accept(HashEvent.updateAlgorithm(algorithm));
+            }
+          },
+        );
+      },
+    );
+  }
+}
+
+class _HashFormatSelector extends StatelessWidget {
+  const _HashFormatSelector();
+
+  @override
+  Widget build(BuildContext context) {
+    return HashFeatureBuilder(
+      builder: (context, state) {
+        return MacosPopupButton(
+          value: state.format,
+          items: HashFormat.values
+              .map(
+                (type) => MacosPopupMenuItem(
+                  value: type,
+                  child: Text(type.format(context)),
+                ),
+              )
+              .toList(growable: false),
+          onChanged: (format) {
+            if (format != null && format != state.format) {
+              context.hashFeature().accept(HashEvent.updateFormat(format));
+            }
+          },
+        );
+      },
+    );
   }
 }
