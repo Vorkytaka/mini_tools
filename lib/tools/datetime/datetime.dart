@@ -6,6 +6,7 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:timezone/timezone.dart';
 
 import '../../common/macos_read_only_field.dart';
+import '../../common/padding.dart';
 import '../../common/text_styles.dart';
 import '../../common/timezone_holder.dart';
 import '../../i18n/strings.g.dart';
@@ -87,28 +88,30 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
           builder: (context, controller) => SingleChildScrollView(
             controller: controller,
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: panePadding,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      const SizedBox(width: 12),
-                      Text(t.common.input),
-                      const SizedBox(width: 12),
-                      PushButton(
-                        controlSize: ControlSize.regular,
-                        onPressed: _setNow,
-                        child: Text(t.unixTimestamp.now),
-                      ),
-                      const SizedBox(width: 12),
-                      PushButton(
-                        controlSize: ControlSize.regular,
-                        onPressed: _clear,
-                        secondary: true,
-                        child: Text(t.common.clear),
-                      ),
-                    ],
+                  Padding(
+                    padding: headlinePadding,
+                    child: Row(
+                      children: [
+                        Text(t.common.input),
+                        const SizedBox(width: 8),
+                        PushButton(
+                          controlSize: ControlSize.regular,
+                          onPressed: _setNow,
+                          child: Text(t.unixTimestamp.now),
+                        ),
+                        const SizedBox(width: 8),
+                        PushButton(
+                          controlSize: ControlSize.regular,
+                          onPressed: _clear,
+                          secondary: true,
+                          child: Text(t.common.clear),
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 8),
                   Row(
@@ -128,9 +131,9 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
                       const _InputTypeSelector(),
                     ],
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 8),
                   const MacosPulldownMenuDivider(),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 8),
                   const _DateTimeOutput(),
                 ],
               ),
@@ -174,58 +177,61 @@ class _DateTimeOutput extends StatelessWidget {
       builder: (context, state) {
         final datetime = state.datetime;
 
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: _DateTimeLocalUTCOutput(datetime: datetime),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _DateItem(
-                    title: t.unixTimestamp.weekday,
-                    datetime: datetime,
-                    mapper: _weekdayFormat.format,
-                  ),
-                  const SizedBox(height: 12),
-                  _DateItem(
-                    title: t.unixTimestamp.weekOfTheYear,
-                    datetime: datetime,
-                    mapper: (datetime) => '${weekNumber(datetime)}',
-                  ),
-                  const SizedBox(height: 12),
-                  _DateItem(
-                    title: t.unixTimestamp.dayOfTheYear,
-                    datetime: datetime,
-                    mapper: (datetime) => '${dayNumber(datetime)}',
-                  ),
-                  const SizedBox(height: 12),
-                  _DateItem(
-                    title: t.unixTimestamp.leapYear,
-                    datetime: datetime,
-                    mapper: (datetime) =>
-                        isLeapYear(datetime) ? t.common.yes : t.common.no,
-                  ),
-                  const SizedBox(height: 12),
-                  _DateItem(
-                    title: t.unixTimestamp.dateOnly,
-                    datetime: datetime,
-                    mapper: _dateFormat.format,
-                  ),
-                  const SizedBox(height: 12),
-                  _DateItem(
-                    title: t.unixTimestamp.timeOnly,
-                    datetime: datetime,
-                    mapper: _timeFormat.format,
-                  ),
-                ],
+        return Padding(
+          padding: headlinePadding,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: _DateTimeLocalUTCOutput(datetime: datetime),
               ),
-            ),
-          ],
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _DateItem(
+                      title: t.unixTimestamp.weekday,
+                      datetime: datetime,
+                      mapper: _weekdayFormat.format,
+                    ),
+                    const SizedBox(height: 12),
+                    _DateItem(
+                      title: t.unixTimestamp.weekOfTheYear,
+                      datetime: datetime,
+                      mapper: (datetime) => '${weekNumber(datetime)}',
+                    ),
+                    const SizedBox(height: 12),
+                    _DateItem(
+                      title: t.unixTimestamp.dayOfTheYear,
+                      datetime: datetime,
+                      mapper: (datetime) => '${dayNumber(datetime)}',
+                    ),
+                    const SizedBox(height: 12),
+                    _DateItem(
+                      title: t.unixTimestamp.leapYear,
+                      datetime: datetime,
+                      mapper: (datetime) =>
+                          isLeapYear(datetime) ? t.common.yes : t.common.no,
+                    ),
+                    const SizedBox(height: 12),
+                    _DateItem(
+                      title: t.unixTimestamp.dateOnly,
+                      datetime: datetime,
+                      mapper: _dateFormat.format,
+                    ),
+                    const SizedBox(height: 12),
+                    _DateItem(
+                      title: t.unixTimestamp.timeOnly,
+                      datetime: datetime,
+                      mapper: _timeFormat.format,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         );
       },
     );
