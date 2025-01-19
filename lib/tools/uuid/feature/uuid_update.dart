@@ -19,5 +19,21 @@ Next<UuidState, UuidEffect> uuidUpdate(UuidState state, UuidMessage message) {
       ]);
     case SetIdsMessage():
       return next(state: state.copyWith(ids: message.ids));
+    case UpdateNamespaceMessage():
+      final version = state.version.map(
+        v1: (_) => throw Exception(),
+        v4: (_) => throw Exception(),
+        v5: (version) => version.copyWith(namespace: message.namespace.value),
+      );
+
+      return next(state: state.copyWith(version: version));
+    case UpdateNameMessage():
+      final version = state.version.map(
+        v1: (_) => throw Exception(),
+        v4: (_) => throw Exception(),
+        v5: (version) => version.copyWith(name: message.name),
+      );
+
+      return next(state: state.copyWith(version: version));
   }
 }

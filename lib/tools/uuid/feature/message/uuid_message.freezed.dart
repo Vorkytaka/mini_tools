@@ -22,6 +22,8 @@ mixin _$UuidMessage {
     required TResult Function(int count) updateCount,
     required TResult Function() generate,
     required TResult Function(List<String> ids) setIds,
+    required TResult Function(Namespace namespace) updateNamespace,
+    required TResult Function(String name) updateName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +32,8 @@ mixin _$UuidMessage {
     TResult? Function(int count)? updateCount,
     TResult? Function()? generate,
     TResult? Function(List<String> ids)? setIds,
+    TResult? Function(Namespace namespace)? updateNamespace,
+    TResult? Function(String name)? updateName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +42,8 @@ mixin _$UuidMessage {
     TResult Function(int count)? updateCount,
     TResult Function()? generate,
     TResult Function(List<String> ids)? setIds,
+    TResult Function(Namespace namespace)? updateNamespace,
+    TResult Function(String name)? updateName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +53,8 @@ mixin _$UuidMessage {
     required TResult Function(UpdateCountMessage value) updateCount,
     required TResult Function(GenerateMessage value) generate,
     required TResult Function(SetIdsMessage value) setIds,
+    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
+    required TResult Function(UpdateNameMessage value) updateName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +63,8 @@ mixin _$UuidMessage {
     TResult? Function(UpdateCountMessage value)? updateCount,
     TResult? Function(GenerateMessage value)? generate,
     TResult? Function(SetIdsMessage value)? setIds,
+    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult? Function(UpdateNameMessage value)? updateName,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +73,8 @@ mixin _$UuidMessage {
     TResult Function(UpdateCountMessage value)? updateCount,
     TResult Function(GenerateMessage value)? generate,
     TResult Function(SetIdsMessage value)? setIds,
+    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult Function(UpdateNameMessage value)? updateName,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -175,6 +187,8 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     required TResult Function(int count) updateCount,
     required TResult Function() generate,
     required TResult Function(List<String> ids) setIds,
+    required TResult Function(Namespace namespace) updateNamespace,
+    required TResult Function(String name) updateName,
   }) {
     return updateVersion(version);
   }
@@ -186,6 +200,8 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     TResult? Function(int count)? updateCount,
     TResult? Function()? generate,
     TResult? Function(List<String> ids)? setIds,
+    TResult? Function(Namespace namespace)? updateNamespace,
+    TResult? Function(String name)? updateName,
   }) {
     return updateVersion?.call(version);
   }
@@ -197,6 +213,8 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     TResult Function(int count)? updateCount,
     TResult Function()? generate,
     TResult Function(List<String> ids)? setIds,
+    TResult Function(Namespace namespace)? updateNamespace,
+    TResult Function(String name)? updateName,
     required TResult orElse(),
   }) {
     if (updateVersion != null) {
@@ -212,6 +230,8 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     required TResult Function(UpdateCountMessage value) updateCount,
     required TResult Function(GenerateMessage value) generate,
     required TResult Function(SetIdsMessage value) setIds,
+    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
+    required TResult Function(UpdateNameMessage value) updateName,
   }) {
     return updateVersion(this);
   }
@@ -223,6 +243,8 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     TResult? Function(UpdateCountMessage value)? updateCount,
     TResult? Function(GenerateMessage value)? generate,
     TResult? Function(SetIdsMessage value)? setIds,
+    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult? Function(UpdateNameMessage value)? updateName,
   }) {
     return updateVersion?.call(this);
   }
@@ -234,6 +256,8 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     TResult Function(UpdateCountMessage value)? updateCount,
     TResult Function(GenerateMessage value)? generate,
     TResult Function(SetIdsMessage value)? setIds,
+    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult Function(UpdateNameMessage value)? updateName,
     required TResult orElse(),
   }) {
     if (updateVersion != null) {
@@ -329,6 +353,8 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     required TResult Function(int count) updateCount,
     required TResult Function() generate,
     required TResult Function(List<String> ids) setIds,
+    required TResult Function(Namespace namespace) updateNamespace,
+    required TResult Function(String name) updateName,
   }) {
     return updateCount(count);
   }
@@ -340,6 +366,8 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     TResult? Function(int count)? updateCount,
     TResult? Function()? generate,
     TResult? Function(List<String> ids)? setIds,
+    TResult? Function(Namespace namespace)? updateNamespace,
+    TResult? Function(String name)? updateName,
   }) {
     return updateCount?.call(count);
   }
@@ -351,6 +379,8 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     TResult Function(int count)? updateCount,
     TResult Function()? generate,
     TResult Function(List<String> ids)? setIds,
+    TResult Function(Namespace namespace)? updateNamespace,
+    TResult Function(String name)? updateName,
     required TResult orElse(),
   }) {
     if (updateCount != null) {
@@ -366,6 +396,8 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     required TResult Function(UpdateCountMessage value) updateCount,
     required TResult Function(GenerateMessage value) generate,
     required TResult Function(SetIdsMessage value) setIds,
+    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
+    required TResult Function(UpdateNameMessage value) updateName,
   }) {
     return updateCount(this);
   }
@@ -377,6 +409,8 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     TResult? Function(UpdateCountMessage value)? updateCount,
     TResult? Function(GenerateMessage value)? generate,
     TResult? Function(SetIdsMessage value)? setIds,
+    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult? Function(UpdateNameMessage value)? updateName,
   }) {
     return updateCount?.call(this);
   }
@@ -388,6 +422,8 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     TResult Function(UpdateCountMessage value)? updateCount,
     TResult Function(GenerateMessage value)? generate,
     TResult Function(SetIdsMessage value)? setIds,
+    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult Function(UpdateNameMessage value)? updateName,
     required TResult orElse(),
   }) {
     if (updateCount != null) {
@@ -454,6 +490,8 @@ class _$GenerateMessageImpl implements GenerateMessage {
     required TResult Function(int count) updateCount,
     required TResult Function() generate,
     required TResult Function(List<String> ids) setIds,
+    required TResult Function(Namespace namespace) updateNamespace,
+    required TResult Function(String name) updateName,
   }) {
     return generate();
   }
@@ -465,6 +503,8 @@ class _$GenerateMessageImpl implements GenerateMessage {
     TResult? Function(int count)? updateCount,
     TResult? Function()? generate,
     TResult? Function(List<String> ids)? setIds,
+    TResult? Function(Namespace namespace)? updateNamespace,
+    TResult? Function(String name)? updateName,
   }) {
     return generate?.call();
   }
@@ -476,6 +516,8 @@ class _$GenerateMessageImpl implements GenerateMessage {
     TResult Function(int count)? updateCount,
     TResult Function()? generate,
     TResult Function(List<String> ids)? setIds,
+    TResult Function(Namespace namespace)? updateNamespace,
+    TResult Function(String name)? updateName,
     required TResult orElse(),
   }) {
     if (generate != null) {
@@ -491,6 +533,8 @@ class _$GenerateMessageImpl implements GenerateMessage {
     required TResult Function(UpdateCountMessage value) updateCount,
     required TResult Function(GenerateMessage value) generate,
     required TResult Function(SetIdsMessage value) setIds,
+    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
+    required TResult Function(UpdateNameMessage value) updateName,
   }) {
     return generate(this);
   }
@@ -502,6 +546,8 @@ class _$GenerateMessageImpl implements GenerateMessage {
     TResult? Function(UpdateCountMessage value)? updateCount,
     TResult? Function(GenerateMessage value)? generate,
     TResult? Function(SetIdsMessage value)? setIds,
+    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult? Function(UpdateNameMessage value)? updateName,
   }) {
     return generate?.call(this);
   }
@@ -513,6 +559,8 @@ class _$GenerateMessageImpl implements GenerateMessage {
     TResult Function(UpdateCountMessage value)? updateCount,
     TResult Function(GenerateMessage value)? generate,
     TResult Function(SetIdsMessage value)? setIds,
+    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult Function(UpdateNameMessage value)? updateName,
     required TResult orElse(),
   }) {
     if (generate != null) {
@@ -604,6 +652,8 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     required TResult Function(int count) updateCount,
     required TResult Function() generate,
     required TResult Function(List<String> ids) setIds,
+    required TResult Function(Namespace namespace) updateNamespace,
+    required TResult Function(String name) updateName,
   }) {
     return setIds(ids);
   }
@@ -615,6 +665,8 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     TResult? Function(int count)? updateCount,
     TResult? Function()? generate,
     TResult? Function(List<String> ids)? setIds,
+    TResult? Function(Namespace namespace)? updateNamespace,
+    TResult? Function(String name)? updateName,
   }) {
     return setIds?.call(ids);
   }
@@ -626,6 +678,8 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     TResult Function(int count)? updateCount,
     TResult Function()? generate,
     TResult Function(List<String> ids)? setIds,
+    TResult Function(Namespace namespace)? updateNamespace,
+    TResult Function(String name)? updateName,
     required TResult orElse(),
   }) {
     if (setIds != null) {
@@ -641,6 +695,8 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     required TResult Function(UpdateCountMessage value) updateCount,
     required TResult Function(GenerateMessage value) generate,
     required TResult Function(SetIdsMessage value) setIds,
+    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
+    required TResult Function(UpdateNameMessage value) updateName,
   }) {
     return setIds(this);
   }
@@ -652,6 +708,8 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     TResult? Function(UpdateCountMessage value)? updateCount,
     TResult? Function(GenerateMessage value)? generate,
     TResult? Function(SetIdsMessage value)? setIds,
+    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult? Function(UpdateNameMessage value)? updateName,
   }) {
     return setIds?.call(this);
   }
@@ -663,6 +721,8 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     TResult Function(UpdateCountMessage value)? updateCount,
     TResult Function(GenerateMessage value)? generate,
     TResult Function(SetIdsMessage value)? setIds,
+    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult Function(UpdateNameMessage value)? updateName,
     required TResult orElse(),
   }) {
     if (setIds != null) {
@@ -681,5 +741,339 @@ abstract class SetIdsMessage implements UuidMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetIdsMessageImplCopyWith<_$SetIdsMessageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateNamespaceMessageImplCopyWith<$Res> {
+  factory _$$UpdateNamespaceMessageImplCopyWith(
+          _$UpdateNamespaceMessageImpl value,
+          $Res Function(_$UpdateNamespaceMessageImpl) then) =
+      __$$UpdateNamespaceMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Namespace namespace});
+}
+
+/// @nodoc
+class __$$UpdateNamespaceMessageImplCopyWithImpl<$Res>
+    extends _$UuidMessageCopyWithImpl<$Res, _$UpdateNamespaceMessageImpl>
+    implements _$$UpdateNamespaceMessageImplCopyWith<$Res> {
+  __$$UpdateNamespaceMessageImplCopyWithImpl(
+      _$UpdateNamespaceMessageImpl _value,
+      $Res Function(_$UpdateNamespaceMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UuidMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? namespace = null,
+  }) {
+    return _then(_$UpdateNamespaceMessageImpl(
+      null == namespace
+          ? _value.namespace
+          : namespace // ignore: cast_nullable_to_non_nullable
+              as Namespace,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateNamespaceMessageImpl implements UpdateNamespaceMessage {
+  const _$UpdateNamespaceMessageImpl(this.namespace);
+
+  @override
+  final Namespace namespace;
+
+  @override
+  String toString() {
+    return 'UuidMessage.updateNamespace(namespace: $namespace)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateNamespaceMessageImpl &&
+            (identical(other.namespace, namespace) ||
+                other.namespace == namespace));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, namespace);
+
+  /// Create a copy of UuidMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateNamespaceMessageImplCopyWith<_$UpdateNamespaceMessageImpl>
+      get copyWith => __$$UpdateNamespaceMessageImplCopyWithImpl<
+          _$UpdateNamespaceMessageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(UuidVersion version) updateVersion,
+    required TResult Function(int count) updateCount,
+    required TResult Function() generate,
+    required TResult Function(List<String> ids) setIds,
+    required TResult Function(Namespace namespace) updateNamespace,
+    required TResult Function(String name) updateName,
+  }) {
+    return updateNamespace(namespace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(UuidVersion version)? updateVersion,
+    TResult? Function(int count)? updateCount,
+    TResult? Function()? generate,
+    TResult? Function(List<String> ids)? setIds,
+    TResult? Function(Namespace namespace)? updateNamespace,
+    TResult? Function(String name)? updateName,
+  }) {
+    return updateNamespace?.call(namespace);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UuidVersion version)? updateVersion,
+    TResult Function(int count)? updateCount,
+    TResult Function()? generate,
+    TResult Function(List<String> ids)? setIds,
+    TResult Function(Namespace namespace)? updateNamespace,
+    TResult Function(String name)? updateName,
+    required TResult orElse(),
+  }) {
+    if (updateNamespace != null) {
+      return updateNamespace(namespace);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdateVersionMessage value) updateVersion,
+    required TResult Function(UpdateCountMessage value) updateCount,
+    required TResult Function(GenerateMessage value) generate,
+    required TResult Function(SetIdsMessage value) setIds,
+    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
+    required TResult Function(UpdateNameMessage value) updateName,
+  }) {
+    return updateNamespace(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UpdateVersionMessage value)? updateVersion,
+    TResult? Function(UpdateCountMessage value)? updateCount,
+    TResult? Function(GenerateMessage value)? generate,
+    TResult? Function(SetIdsMessage value)? setIds,
+    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult? Function(UpdateNameMessage value)? updateName,
+  }) {
+    return updateNamespace?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdateVersionMessage value)? updateVersion,
+    TResult Function(UpdateCountMessage value)? updateCount,
+    TResult Function(GenerateMessage value)? generate,
+    TResult Function(SetIdsMessage value)? setIds,
+    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult Function(UpdateNameMessage value)? updateName,
+    required TResult orElse(),
+  }) {
+    if (updateNamespace != null) {
+      return updateNamespace(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateNamespaceMessage implements UuidMessage {
+  const factory UpdateNamespaceMessage(final Namespace namespace) =
+      _$UpdateNamespaceMessageImpl;
+
+  Namespace get namespace;
+
+  /// Create a copy of UuidMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateNamespaceMessageImplCopyWith<_$UpdateNamespaceMessageImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateNameMessageImplCopyWith<$Res> {
+  factory _$$UpdateNameMessageImplCopyWith(_$UpdateNameMessageImpl value,
+          $Res Function(_$UpdateNameMessageImpl) then) =
+      __$$UpdateNameMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String name});
+}
+
+/// @nodoc
+class __$$UpdateNameMessageImplCopyWithImpl<$Res>
+    extends _$UuidMessageCopyWithImpl<$Res, _$UpdateNameMessageImpl>
+    implements _$$UpdateNameMessageImplCopyWith<$Res> {
+  __$$UpdateNameMessageImplCopyWithImpl(_$UpdateNameMessageImpl _value,
+      $Res Function(_$UpdateNameMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UuidMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? name = null,
+  }) {
+    return _then(_$UpdateNameMessageImpl(
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateNameMessageImpl implements UpdateNameMessage {
+  const _$UpdateNameMessageImpl(this.name);
+
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'UuidMessage.updateName(name: $name)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateNameMessageImpl &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, name);
+
+  /// Create a copy of UuidMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateNameMessageImplCopyWith<_$UpdateNameMessageImpl> get copyWith =>
+      __$$UpdateNameMessageImplCopyWithImpl<_$UpdateNameMessageImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(UuidVersion version) updateVersion,
+    required TResult Function(int count) updateCount,
+    required TResult Function() generate,
+    required TResult Function(List<String> ids) setIds,
+    required TResult Function(Namespace namespace) updateNamespace,
+    required TResult Function(String name) updateName,
+  }) {
+    return updateName(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(UuidVersion version)? updateVersion,
+    TResult? Function(int count)? updateCount,
+    TResult? Function()? generate,
+    TResult? Function(List<String> ids)? setIds,
+    TResult? Function(Namespace namespace)? updateNamespace,
+    TResult? Function(String name)? updateName,
+  }) {
+    return updateName?.call(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UuidVersion version)? updateVersion,
+    TResult Function(int count)? updateCount,
+    TResult Function()? generate,
+    TResult Function(List<String> ids)? setIds,
+    TResult Function(Namespace namespace)? updateNamespace,
+    TResult Function(String name)? updateName,
+    required TResult orElse(),
+  }) {
+    if (updateName != null) {
+      return updateName(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdateVersionMessage value) updateVersion,
+    required TResult Function(UpdateCountMessage value) updateCount,
+    required TResult Function(GenerateMessage value) generate,
+    required TResult Function(SetIdsMessage value) setIds,
+    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
+    required TResult Function(UpdateNameMessage value) updateName,
+  }) {
+    return updateName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UpdateVersionMessage value)? updateVersion,
+    TResult? Function(UpdateCountMessage value)? updateCount,
+    TResult? Function(GenerateMessage value)? generate,
+    TResult? Function(SetIdsMessage value)? setIds,
+    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult? Function(UpdateNameMessage value)? updateName,
+  }) {
+    return updateName?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdateVersionMessage value)? updateVersion,
+    TResult Function(UpdateCountMessage value)? updateCount,
+    TResult Function(GenerateMessage value)? generate,
+    TResult Function(SetIdsMessage value)? setIds,
+    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult Function(UpdateNameMessage value)? updateName,
+    required TResult orElse(),
+  }) {
+    if (updateName != null) {
+      return updateName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateNameMessage implements UuidMessage {
+  const factory UpdateNameMessage(final String name) = _$UpdateNameMessageImpl;
+
+  String get name;
+
+  /// Create a copy of UuidMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateNameMessageImplCopyWith<_$UpdateNameMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
