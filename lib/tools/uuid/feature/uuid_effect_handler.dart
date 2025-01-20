@@ -42,7 +42,11 @@ final class UuidEffectHandler
   ) async {
     final ids = List.generate(
       effect.count,
-      (i) => effect.version.generate(_uuid),
+      (i) => effect.version.generate(
+        generator: _uuid,
+        namespace: effect.namespace,
+        name: effect.name,
+      ),
       growable: false,
     );
 
@@ -51,15 +55,19 @@ final class UuidEffectHandler
 }
 
 extension on UuidVersion {
-  String generate(Uuid generator) {
+  String generate({
+    required Uuid generator,
+    required String namespace,
+    required String name,
+  }) {
     final version = this;
     switch (version) {
-      case UuidV1():
+      case UuidVersion.v1:
         return generator.v1();
-      case UuidV4():
+      case UuidVersion.v4:
         return generator.v4();
-      case UuidV5():
-        return generator.v5(version.namespace, version.name);
+      case UuidVersion.v5:
+        return generator.v5(namespace, name);
     }
   }
 }

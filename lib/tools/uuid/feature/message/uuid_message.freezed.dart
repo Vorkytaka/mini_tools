@@ -22,7 +22,7 @@ mixin _$UuidMessage {
     required TResult Function(int count) updateCount,
     required TResult Function() generate,
     required TResult Function(List<String> ids) setIds,
-    required TResult Function(Namespace namespace) updateNamespace,
+    required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,7 +32,7 @@ mixin _$UuidMessage {
     TResult? Function(int count)? updateCount,
     TResult? Function()? generate,
     TResult? Function(List<String> ids)? setIds,
-    TResult? Function(Namespace namespace)? updateNamespace,
+    TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
   }) =>
       throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ mixin _$UuidMessage {
     TResult Function(int count)? updateCount,
     TResult Function()? generate,
     TResult Function(List<String> ids)? setIds,
-    TResult Function(Namespace namespace)? updateNamespace,
+    TResult Function(String namespace)? updateNamespace,
     TResult Function(String name)? updateName,
     required TResult orElse(),
   }) =>
@@ -108,8 +108,6 @@ abstract class _$$UpdateVersionMessageImplCopyWith<$Res> {
       __$$UpdateVersionMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({UuidVersion version});
-
-  $UuidVersionCopyWith<$Res> get version;
 }
 
 /// @nodoc
@@ -133,16 +131,6 @@ class __$$UpdateVersionMessageImplCopyWithImpl<$Res>
           : version // ignore: cast_nullable_to_non_nullable
               as UuidVersion,
     ));
-  }
-
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UuidVersionCopyWith<$Res> get version {
-    return $UuidVersionCopyWith<$Res>(_value.version, (value) {
-      return _then(_value.copyWith(version: value));
-    });
   }
 }
 
@@ -187,7 +175,7 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     required TResult Function(int count) updateCount,
     required TResult Function() generate,
     required TResult Function(List<String> ids) setIds,
-    required TResult Function(Namespace namespace) updateNamespace,
+    required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
   }) {
     return updateVersion(version);
@@ -200,7 +188,7 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     TResult? Function(int count)? updateCount,
     TResult? Function()? generate,
     TResult? Function(List<String> ids)? setIds,
-    TResult? Function(Namespace namespace)? updateNamespace,
+    TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
   }) {
     return updateVersion?.call(version);
@@ -213,7 +201,7 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     TResult Function(int count)? updateCount,
     TResult Function()? generate,
     TResult Function(List<String> ids)? setIds,
-    TResult Function(Namespace namespace)? updateNamespace,
+    TResult Function(String namespace)? updateNamespace,
     TResult Function(String name)? updateName,
     required TResult orElse(),
   }) {
@@ -353,7 +341,7 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     required TResult Function(int count) updateCount,
     required TResult Function() generate,
     required TResult Function(List<String> ids) setIds,
-    required TResult Function(Namespace namespace) updateNamespace,
+    required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
   }) {
     return updateCount(count);
@@ -366,7 +354,7 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     TResult? Function(int count)? updateCount,
     TResult? Function()? generate,
     TResult? Function(List<String> ids)? setIds,
-    TResult? Function(Namespace namespace)? updateNamespace,
+    TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
   }) {
     return updateCount?.call(count);
@@ -379,7 +367,7 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     TResult Function(int count)? updateCount,
     TResult Function()? generate,
     TResult Function(List<String> ids)? setIds,
-    TResult Function(Namespace namespace)? updateNamespace,
+    TResult Function(String namespace)? updateNamespace,
     TResult Function(String name)? updateName,
     required TResult orElse(),
   }) {
@@ -490,7 +478,7 @@ class _$GenerateMessageImpl implements GenerateMessage {
     required TResult Function(int count) updateCount,
     required TResult Function() generate,
     required TResult Function(List<String> ids) setIds,
-    required TResult Function(Namespace namespace) updateNamespace,
+    required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
   }) {
     return generate();
@@ -503,7 +491,7 @@ class _$GenerateMessageImpl implements GenerateMessage {
     TResult? Function(int count)? updateCount,
     TResult? Function()? generate,
     TResult? Function(List<String> ids)? setIds,
-    TResult? Function(Namespace namespace)? updateNamespace,
+    TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
   }) {
     return generate?.call();
@@ -516,7 +504,7 @@ class _$GenerateMessageImpl implements GenerateMessage {
     TResult Function(int count)? updateCount,
     TResult Function()? generate,
     TResult Function(List<String> ids)? setIds,
-    TResult Function(Namespace namespace)? updateNamespace,
+    TResult Function(String namespace)? updateNamespace,
     TResult Function(String name)? updateName,
     required TResult orElse(),
   }) {
@@ -652,7 +640,7 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     required TResult Function(int count) updateCount,
     required TResult Function() generate,
     required TResult Function(List<String> ids) setIds,
-    required TResult Function(Namespace namespace) updateNamespace,
+    required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
   }) {
     return setIds(ids);
@@ -665,7 +653,7 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     TResult? Function(int count)? updateCount,
     TResult? Function()? generate,
     TResult? Function(List<String> ids)? setIds,
-    TResult? Function(Namespace namespace)? updateNamespace,
+    TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
   }) {
     return setIds?.call(ids);
@@ -678,7 +666,7 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     TResult Function(int count)? updateCount,
     TResult Function()? generate,
     TResult Function(List<String> ids)? setIds,
-    TResult Function(Namespace namespace)? updateNamespace,
+    TResult Function(String namespace)? updateNamespace,
     TResult Function(String name)? updateName,
     required TResult orElse(),
   }) {
@@ -751,7 +739,7 @@ abstract class _$$UpdateNamespaceMessageImplCopyWith<$Res> {
           $Res Function(_$UpdateNamespaceMessageImpl) then) =
       __$$UpdateNamespaceMessageImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Namespace namespace});
+  $Res call({String namespace});
 }
 
 /// @nodoc
@@ -774,7 +762,7 @@ class __$$UpdateNamespaceMessageImplCopyWithImpl<$Res>
       null == namespace
           ? _value.namespace
           : namespace // ignore: cast_nullable_to_non_nullable
-              as Namespace,
+              as String,
     ));
   }
 }
@@ -785,7 +773,7 @@ class _$UpdateNamespaceMessageImpl implements UpdateNamespaceMessage {
   const _$UpdateNamespaceMessageImpl(this.namespace);
 
   @override
-  final Namespace namespace;
+  final String namespace;
 
   @override
   String toString() {
@@ -820,7 +808,7 @@ class _$UpdateNamespaceMessageImpl implements UpdateNamespaceMessage {
     required TResult Function(int count) updateCount,
     required TResult Function() generate,
     required TResult Function(List<String> ids) setIds,
-    required TResult Function(Namespace namespace) updateNamespace,
+    required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
   }) {
     return updateNamespace(namespace);
@@ -833,7 +821,7 @@ class _$UpdateNamespaceMessageImpl implements UpdateNamespaceMessage {
     TResult? Function(int count)? updateCount,
     TResult? Function()? generate,
     TResult? Function(List<String> ids)? setIds,
-    TResult? Function(Namespace namespace)? updateNamespace,
+    TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
   }) {
     return updateNamespace?.call(namespace);
@@ -846,7 +834,7 @@ class _$UpdateNamespaceMessageImpl implements UpdateNamespaceMessage {
     TResult Function(int count)? updateCount,
     TResult Function()? generate,
     TResult Function(List<String> ids)? setIds,
-    TResult Function(Namespace namespace)? updateNamespace,
+    TResult Function(String namespace)? updateNamespace,
     TResult Function(String name)? updateName,
     required TResult orElse(),
   }) {
@@ -901,10 +889,10 @@ class _$UpdateNamespaceMessageImpl implements UpdateNamespaceMessage {
 }
 
 abstract class UpdateNamespaceMessage implements UuidMessage {
-  const factory UpdateNamespaceMessage(final Namespace namespace) =
+  const factory UpdateNamespaceMessage(final String namespace) =
       _$UpdateNamespaceMessageImpl;
 
-  Namespace get namespace;
+  String get namespace;
 
   /// Create a copy of UuidMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -986,7 +974,7 @@ class _$UpdateNameMessageImpl implements UpdateNameMessage {
     required TResult Function(int count) updateCount,
     required TResult Function() generate,
     required TResult Function(List<String> ids) setIds,
-    required TResult Function(Namespace namespace) updateNamespace,
+    required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
   }) {
     return updateName(name);
@@ -999,7 +987,7 @@ class _$UpdateNameMessageImpl implements UpdateNameMessage {
     TResult? Function(int count)? updateCount,
     TResult? Function()? generate,
     TResult? Function(List<String> ids)? setIds,
-    TResult? Function(Namespace namespace)? updateNamespace,
+    TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
   }) {
     return updateName?.call(name);
@@ -1012,7 +1000,7 @@ class _$UpdateNameMessageImpl implements UpdateNameMessage {
     TResult Function(int count)? updateCount,
     TResult Function()? generate,
     TResult Function(List<String> ids)? setIds,
-    TResult Function(Namespace namespace)? updateNamespace,
+    TResult Function(String namespace)? updateNamespace,
     TResult Function(String name)? updateName,
     required TResult orElse(),
   }) {

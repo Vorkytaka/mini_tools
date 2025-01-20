@@ -18,7 +18,7 @@ sealed class UuidMessage with _$UuidMessage {
   const factory UuidMessage.setIds(List<String> ids) = SetIdsMessage;
 
   /// Should be used only when selected version is 5
-  const factory UuidMessage.updateNamespace(Namespace namespace) =
+  const factory UuidMessage.updateNamespace(String namespace) =
       UpdateNamespaceMessage;
 
   /// Should be used only when selected version is 5

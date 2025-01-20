@@ -19,19 +19,25 @@ mixin _$UuidEffect {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(UuidVersion version, int count) generate,
+    required TResult Function(
+            UuidVersion version, int count, String namespace, String name)
+        generate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(UuidVersion version, int count)? generate,
+    TResult? Function(
+            UuidVersion version, int count, String namespace, String name)?
+        generate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(UuidVersion version, int count)? generate,
+    TResult Function(
+            UuidVersion version, int count, String namespace, String name)?
+        generate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,7 +125,9 @@ class _$InitEffectImpl implements InitEffect {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(UuidVersion version, int count) generate,
+    required TResult Function(
+            UuidVersion version, int count, String namespace, String name)
+        generate,
   }) {
     return init();
   }
@@ -128,7 +136,9 @@ class _$InitEffectImpl implements InitEffect {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(UuidVersion version, int count)? generate,
+    TResult? Function(
+            UuidVersion version, int count, String namespace, String name)?
+        generate,
   }) {
     return init?.call();
   }
@@ -137,7 +147,9 @@ class _$InitEffectImpl implements InitEffect {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(UuidVersion version, int count)? generate,
+    TResult Function(
+            UuidVersion version, int count, String namespace, String name)?
+        generate,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -188,9 +200,7 @@ abstract class _$$GenerateEffectImplCopyWith<$Res> {
           $Res Function(_$GenerateEffectImpl) then) =
       __$$GenerateEffectImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({UuidVersion version, int count});
-
-  $UuidVersionCopyWith<$Res> get version;
+  $Res call({UuidVersion version, int count, String namespace, String name});
 }
 
 /// @nodoc
@@ -208,6 +218,8 @@ class __$$GenerateEffectImplCopyWithImpl<$Res>
   $Res call({
     Object? version = null,
     Object? count = null,
+    Object? namespace = null,
+    Object? name = null,
   }) {
     return _then(_$GenerateEffectImpl(
       version: null == version
@@ -218,33 +230,39 @@ class __$$GenerateEffectImplCopyWithImpl<$Res>
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
+      namespace: null == namespace
+          ? _value.namespace
+          : namespace // ignore: cast_nullable_to_non_nullable
+              as String,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
-  }
-
-  /// Create a copy of UuidEffect
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $UuidVersionCopyWith<$Res> get version {
-    return $UuidVersionCopyWith<$Res>(_value.version, (value) {
-      return _then(_value.copyWith(version: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$GenerateEffectImpl implements GenerateEffect {
-  const _$GenerateEffectImpl({required this.version, required this.count});
+  const _$GenerateEffectImpl(
+      {required this.version,
+      required this.count,
+      required this.namespace,
+      required this.name});
 
   @override
   final UuidVersion version;
   @override
   final int count;
+  @override
+  final String namespace;
+  @override
+  final String name;
 
   @override
   String toString() {
-    return 'UuidEffect.generate(version: $version, count: $count)';
+    return 'UuidEffect.generate(version: $version, count: $count, namespace: $namespace, name: $name)';
   }
 
   @override
@@ -253,11 +271,14 @@ class _$GenerateEffectImpl implements GenerateEffect {
         (other.runtimeType == runtimeType &&
             other is _$GenerateEffectImpl &&
             (identical(other.version, version) || other.version == version) &&
-            (identical(other.count, count) || other.count == count));
+            (identical(other.count, count) || other.count == count) &&
+            (identical(other.namespace, namespace) ||
+                other.namespace == namespace) &&
+            (identical(other.name, name) || other.name == name));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, version, count);
+  int get hashCode => Object.hash(runtimeType, version, count, namespace, name);
 
   /// Create a copy of UuidEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -272,29 +293,35 @@ class _$GenerateEffectImpl implements GenerateEffect {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() init,
-    required TResult Function(UuidVersion version, int count) generate,
+    required TResult Function(
+            UuidVersion version, int count, String namespace, String name)
+        generate,
   }) {
-    return generate(version, count);
+    return generate(version, count, namespace, name);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? init,
-    TResult? Function(UuidVersion version, int count)? generate,
+    TResult? Function(
+            UuidVersion version, int count, String namespace, String name)?
+        generate,
   }) {
-    return generate?.call(version, count);
+    return generate?.call(version, count, namespace, name);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
-    TResult Function(UuidVersion version, int count)? generate,
+    TResult Function(
+            UuidVersion version, int count, String namespace, String name)?
+        generate,
     required TResult orElse(),
   }) {
     if (generate != null) {
-      return generate(version, count);
+      return generate(version, count, namespace, name);
     }
     return orElse();
   }
@@ -334,10 +361,14 @@ class _$GenerateEffectImpl implements GenerateEffect {
 abstract class GenerateEffect implements UuidEffect {
   const factory GenerateEffect(
       {required final UuidVersion version,
-      required final int count}) = _$GenerateEffectImpl;
+      required final int count,
+      required final String namespace,
+      required final String name}) = _$GenerateEffectImpl;
 
   UuidVersion get version;
   int get count;
+  String get namespace;
+  String get name;
 
   /// Create a copy of UuidEffect
   /// with the given fields replaced by the non-null parameter values.

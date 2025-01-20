@@ -13,7 +13,7 @@ export 'state/uuid_state.dart';
 typedef UuidFeature = Feature<UuidState, UuidMessage, UuidEffect>;
 
 UuidFeature uuidFeatureFactory() => Feature<UuidState, UuidMessage, UuidEffect>(
-      initialState: const UuidState(version: UuidVersion.v4(), count: 1, ids: []),
+      initialState: UuidState.init(),
       update: uuidUpdate,
       effectHandlers: [UuidEffectHandler()],
       initialEffects: [const UuidEffect.init()],

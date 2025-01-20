@@ -12,5 +12,7 @@ sealed class UuidEffect with _$UuidEffect {
   const factory UuidEffect.generate({
     required UuidVersion version,
     required int count,
+    required String namespace,
+    required String name,
   }) = GenerateEffect;
 }
