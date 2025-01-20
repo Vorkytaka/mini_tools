@@ -20,20 +20,27 @@ Next<UuidState, UuidEffect> uuidUpdate(UuidState state, UuidMessage message) {
     case SetIdsMessage():
       return next(state: state.copyWith(ids: message.ids));
     case UpdateNamespaceMessage():
-      final version = state.version.map(
-        v1: (_) => throw Exception(),
-        v4: (_) => throw Exception(),
-        v5: (version) => version.copyWith(namespace: message.namespace.value),
+      final version = state.version.updateV5(
+        mapper: (version) =>
+            version.copyWith(namespace: message.namespace.value),
       );
 
       return next(state: state.copyWith(version: version));
     case UpdateNameMessage():
-      final version = state.version.map(
-        v1: (_) => throw Exception(),
-        v4: (_) => throw Exception(),
-        v5: (version) => version.copyWith(name: message.name),
+      final version = state.version.updateV5(
+        mapper: (version) => version.copyWith(name: message.name),
       );
 
       return next(state: state.copyWith(version: version));
+  }
+}
+
+extension on UuidVersion {
+  UuidVersion updateV5({required UuidVersion Function(UuidV5) mapper}) {
+    return map(
+      v1: (_) => throw Exception(),
+      v4: (_) => throw Exception(),
+      v5: mapper,
+    );
   }
 }
