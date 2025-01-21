@@ -18,6 +18,7 @@ abstract class UuidState with _$UuidState {
     required String name,
     required int count,
     required List<String> ids,
+    required bool isLowerCase,
   }) = _UuidState;
 
   factory UuidState.init() => const UuidState(
@@ -26,5 +27,6 @@ abstract class UuidState with _$UuidState {
         name: '',
         count: 1,
         ids: [],
+        isLowerCase: false,
       );
 }

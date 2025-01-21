@@ -31,21 +31,27 @@ class _Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Padding(
       padding: panePadding,
-      children: const [
-        Padding(
-          padding: headlinePadding,
-          child: Row(
-            children: [
-              Text('Generate IDs:'),
-              SizedBox(width: 8),
-              _UuidVersionSelector(),
-            ],
+      child: const Column(
+        children: [
+          Padding(
+            padding: headlinePadding,
+            child: Row(
+              children: [
+                Text('Generate IDs:'),
+                SizedBox(width: 8),
+                _UuidVersionSelector(),
+                Text('x'),
+                SizedBox(width: 100, child: _CountField()),
+              ],
+            ),
           ),
-        ),
-        _UuidV5Inputs(),
-      ],
+          _UuidV5Inputs(),
+          _GenerateRow(),
+          Expanded(child: _IdsOutputField()),
+        ],
+      ),
     );
   }
 }
@@ -82,6 +88,47 @@ class _UuidVersionSelector extends StatelessWidget {
             ),
           ],
         );
+      },
+    );
+  }
+}
+
+class _CountField extends StatefulWidget {
+  const _CountField();
+
+  @override
+  State<_CountField> createState() => _CountFieldState();
+}
+
+class _CountFieldState extends State<_CountField> {
+  final _controller = TextEditingController();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final feature = context.read<UuidFeature>();
+    final state = feature.state;
+    if (_controller.text != state.count.toString()) {
+      _controller.text = state.count.toString();
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MacosTextField(
+      controller: _controller,
+      onChanged: (text) {
+        final count = int.tryParse(text);
+        if (count != null && count > 0) {
+          context.read<UuidFeature>().accept(UuidMessage.updateCount(count));
+        }
       },
     );
   }
@@ -200,7 +247,7 @@ class _UuidV5NamespaceInputState extends State<_UuidV5NamespaceInput> {
 
     final feature = context.watch<UuidFeature>();
     final state = feature.state;
-    if(_controller.text != state.namespace) {
+    if (_controller.text != state.namespace) {
       _controller.text = state.namespace;
     }
   }
@@ -222,5 +269,98 @@ class _UuidV5NamespaceInputState extends State<_UuidV5NamespaceInput> {
   void _onUpdate() {
     final namespace = _controller.text;
     context.read<UuidFeature>().accept(UuidMessage.updateNamespace(namespace));
+  }
+}
+
+class _GenerateRow extends StatelessWidget {
+  const _GenerateRow();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        PushButton(
+          onPressed: () {
+            context.read<UuidFeature>().accept(const UuidMessage.generate());
+          },
+          controlSize: ControlSize.regular,
+          child: Text('Generate'),
+        ),
+        Spacer(),
+        _IsLowerCase(),
+      ],
+    );
+  }
+}
+
+class _IsLowerCase extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return FeatureBuilder<UuidFeature, UuidState>(
+      buildWhen: (prev, curr) => prev.isLowerCase != curr.isLowerCase,
+      builder: (context, state) {
+        return GestureDetector(
+          onTap: () {
+            final isLowerCase = !state.isLowerCase;
+            context
+                .read<UuidFeature>()
+                .accept(UuidMessage.updateLowerCase(isLowerCase));
+          },
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              MacosCheckbox(
+                value: state.isLowerCase,
+                onChanged: (value) {
+                  if (state.isLowerCase != value) {
+                    context
+                        .read<UuidFeature>()
+                        .accept(UuidMessage.updateLowerCase(value));
+                  }
+                },
+              ),
+              Text('Lowercased'),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _IdsOutputField extends StatefulWidget {
+  const _IdsOutputField();
+
+  @override
+  State<_IdsOutputField> createState() => _IdsOutputFieldState();
+}
+
+class _IdsOutputFieldState extends State<_IdsOutputField> {
+  final _controller = TextEditingController();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final feature = context.watch<UuidFeature>();
+    final state = feature.state;
+    final ids = state.ids
+        .map((e) => state.isLowerCase ? e.toLowerCase() : e.toUpperCase())
+        .join('\n');
+    if (_controller.text != ids) {
+      _controller.text = ids;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MacosTextField(
+      style: const TextStyle(fontFamily: 'Fira Code'),
+      readOnly: true,
+      textAlignVertical: const TextAlignVertical(y: -1),
+      controller: _controller,
+      minLines: null,
+      maxLines: null,
+    );
   }
 }

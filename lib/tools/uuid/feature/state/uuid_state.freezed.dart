@@ -21,6 +21,7 @@ mixin _$UuidState {
   String get name => throw _privateConstructorUsedError;
   int get count => throw _privateConstructorUsedError;
   List<String> get ids => throw _privateConstructorUsedError;
+  bool get isLowerCase => throw _privateConstructorUsedError;
 
   /// Create a copy of UuidState
   /// with the given fields replaced by the non-null parameter values.
@@ -39,7 +40,8 @@ abstract class $UuidStateCopyWith<$Res> {
       String namespace,
       String name,
       int count,
-      List<String> ids});
+      List<String> ids,
+      bool isLowerCase});
 }
 
 /// @nodoc
@@ -62,6 +64,7 @@ class _$UuidStateCopyWithImpl<$Res, $Val extends UuidState>
     Object? name = null,
     Object? count = null,
     Object? ids = null,
+    Object? isLowerCase = null,
   }) {
     return _then(_value.copyWith(
       version: null == version
@@ -84,6 +87,10 @@ class _$UuidStateCopyWithImpl<$Res, $Val extends UuidState>
           ? _value.ids
           : ids // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      isLowerCase: null == isLowerCase
+          ? _value.isLowerCase
+          : isLowerCase // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -101,7 +108,8 @@ abstract class _$$UuidStateImplCopyWith<$Res>
       String namespace,
       String name,
       int count,
-      List<String> ids});
+      List<String> ids,
+      bool isLowerCase});
 }
 
 /// @nodoc
@@ -122,6 +130,7 @@ class __$$UuidStateImplCopyWithImpl<$Res>
     Object? name = null,
     Object? count = null,
     Object? ids = null,
+    Object? isLowerCase = null,
   }) {
     return _then(_$UuidStateImpl(
       version: null == version
@@ -144,6 +153,10 @@ class __$$UuidStateImplCopyWithImpl<$Res>
           ? _value._ids
           : ids // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      isLowerCase: null == isLowerCase
+          ? _value.isLowerCase
+          : isLowerCase // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -156,7 +169,8 @@ class _$UuidStateImpl implements _UuidState {
       required this.namespace,
       required this.name,
       required this.count,
-      required final List<String> ids})
+      required final List<String> ids,
+      required this.isLowerCase})
       : assert(count > 0),
         _ids = ids;
 
@@ -177,8 +191,11 @@ class _$UuidStateImpl implements _UuidState {
   }
 
   @override
+  final bool isLowerCase;
+
+  @override
   String toString() {
-    return 'UuidState(version: $version, namespace: $namespace, name: $name, count: $count, ids: $ids)';
+    return 'UuidState(version: $version, namespace: $namespace, name: $name, count: $count, ids: $ids, isLowerCase: $isLowerCase)';
   }
 
   @override
@@ -191,12 +208,14 @@ class _$UuidStateImpl implements _UuidState {
                 other.namespace == namespace) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.count, count) || other.count == count) &&
-            const DeepCollectionEquality().equals(other._ids, _ids));
+            const DeepCollectionEquality().equals(other._ids, _ids) &&
+            (identical(other.isLowerCase, isLowerCase) ||
+                other.isLowerCase == isLowerCase));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, version, namespace, name, count,
-      const DeepCollectionEquality().hash(_ids));
+      const DeepCollectionEquality().hash(_ids), isLowerCase);
 
   /// Create a copy of UuidState
   /// with the given fields replaced by the non-null parameter values.
@@ -213,7 +232,8 @@ abstract class _UuidState implements UuidState {
       required final String namespace,
       required final String name,
       required final int count,
-      required final List<String> ids}) = _$UuidStateImpl;
+      required final List<String> ids,
+      required final bool isLowerCase}) = _$UuidStateImpl;
 
   @override
   UuidVersion get version;
@@ -225,6 +245,8 @@ abstract class _UuidState implements UuidState {
   int get count;
   @override
   List<String> get ids;
+  @override
+  bool get isLowerCase;
 
   /// Create a copy of UuidState
   /// with the given fields replaced by the non-null parameter values.

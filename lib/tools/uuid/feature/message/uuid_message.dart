@@ -23,4 +23,7 @@ sealed class UuidMessage with _$UuidMessage {
 
   /// Should be used only when selected version is 5
   const factory UuidMessage.updateName(String name) = UpdateNameMessage;
+
+  // ignore:avoid_positional_boolean_parameters
+  const factory UuidMessage.updateLowerCase(bool isLowerCase) = UpdateLowerCase;
 }

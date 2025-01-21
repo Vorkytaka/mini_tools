@@ -8,5 +8,5 @@ final uuidTool = FeatureTool(
   titleBuilder: (context) => 'UUID Generator',
   icon: Icons.perm_identity,
   screenBuilder: (context) => const UuidToolScreen(),
-  feature: uuidFeatureFactory(),
+  feature: uuidFeatureFactory()..init(),
 );

@@ -24,6 +24,7 @@ mixin _$UuidMessage {
     required TResult Function(List<String> ids) setIds,
     required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
+    required TResult Function(bool isLowerCase) updateLowerCase,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$UuidMessage {
     TResult? Function(List<String> ids)? setIds,
     TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
+    TResult? Function(bool isLowerCase)? updateLowerCase,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$UuidMessage {
     TResult Function(List<String> ids)? setIds,
     TResult Function(String namespace)? updateNamespace,
     TResult Function(String name)? updateName,
+    TResult Function(bool isLowerCase)? updateLowerCase,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,7 @@ mixin _$UuidMessage {
     required TResult Function(SetIdsMessage value) setIds,
     required TResult Function(UpdateNamespaceMessage value) updateNamespace,
     required TResult Function(UpdateNameMessage value) updateName,
+    required TResult Function(UpdateLowerCase value) updateLowerCase,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$UuidMessage {
     TResult? Function(SetIdsMessage value)? setIds,
     TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult? Function(UpdateNameMessage value)? updateName,
+    TResult? Function(UpdateLowerCase value)? updateLowerCase,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$UuidMessage {
     TResult Function(SetIdsMessage value)? setIds,
     TResult Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult Function(UpdateNameMessage value)? updateName,
+    TResult Function(UpdateLowerCase value)? updateLowerCase,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -177,6 +183,7 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     required TResult Function(List<String> ids) setIds,
     required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
+    required TResult Function(bool isLowerCase) updateLowerCase,
   }) {
     return updateVersion(version);
   }
@@ -190,6 +197,7 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     TResult? Function(List<String> ids)? setIds,
     TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
+    TResult? Function(bool isLowerCase)? updateLowerCase,
   }) {
     return updateVersion?.call(version);
   }
@@ -203,6 +211,7 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     TResult Function(List<String> ids)? setIds,
     TResult Function(String namespace)? updateNamespace,
     TResult Function(String name)? updateName,
+    TResult Function(bool isLowerCase)? updateLowerCase,
     required TResult orElse(),
   }) {
     if (updateVersion != null) {
@@ -220,6 +229,7 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     required TResult Function(SetIdsMessage value) setIds,
     required TResult Function(UpdateNamespaceMessage value) updateNamespace,
     required TResult Function(UpdateNameMessage value) updateName,
+    required TResult Function(UpdateLowerCase value) updateLowerCase,
   }) {
     return updateVersion(this);
   }
@@ -233,6 +243,7 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     TResult? Function(SetIdsMessage value)? setIds,
     TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult? Function(UpdateNameMessage value)? updateName,
+    TResult? Function(UpdateLowerCase value)? updateLowerCase,
   }) {
     return updateVersion?.call(this);
   }
@@ -246,6 +257,7 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
     TResult Function(SetIdsMessage value)? setIds,
     TResult Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult Function(UpdateNameMessage value)? updateName,
+    TResult Function(UpdateLowerCase value)? updateLowerCase,
     required TResult orElse(),
   }) {
     if (updateVersion != null) {
@@ -343,6 +355,7 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     required TResult Function(List<String> ids) setIds,
     required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
+    required TResult Function(bool isLowerCase) updateLowerCase,
   }) {
     return updateCount(count);
   }
@@ -356,6 +369,7 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     TResult? Function(List<String> ids)? setIds,
     TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
+    TResult? Function(bool isLowerCase)? updateLowerCase,
   }) {
     return updateCount?.call(count);
   }
@@ -369,6 +383,7 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     TResult Function(List<String> ids)? setIds,
     TResult Function(String namespace)? updateNamespace,
     TResult Function(String name)? updateName,
+    TResult Function(bool isLowerCase)? updateLowerCase,
     required TResult orElse(),
   }) {
     if (updateCount != null) {
@@ -386,6 +401,7 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     required TResult Function(SetIdsMessage value) setIds,
     required TResult Function(UpdateNamespaceMessage value) updateNamespace,
     required TResult Function(UpdateNameMessage value) updateName,
+    required TResult Function(UpdateLowerCase value) updateLowerCase,
   }) {
     return updateCount(this);
   }
@@ -399,6 +415,7 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     TResult? Function(SetIdsMessage value)? setIds,
     TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult? Function(UpdateNameMessage value)? updateName,
+    TResult? Function(UpdateLowerCase value)? updateLowerCase,
   }) {
     return updateCount?.call(this);
   }
@@ -412,6 +429,7 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
     TResult Function(SetIdsMessage value)? setIds,
     TResult Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult Function(UpdateNameMessage value)? updateName,
+    TResult Function(UpdateLowerCase value)? updateLowerCase,
     required TResult orElse(),
   }) {
     if (updateCount != null) {
@@ -480,6 +498,7 @@ class _$GenerateMessageImpl implements GenerateMessage {
     required TResult Function(List<String> ids) setIds,
     required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
+    required TResult Function(bool isLowerCase) updateLowerCase,
   }) {
     return generate();
   }
@@ -493,6 +512,7 @@ class _$GenerateMessageImpl implements GenerateMessage {
     TResult? Function(List<String> ids)? setIds,
     TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
+    TResult? Function(bool isLowerCase)? updateLowerCase,
   }) {
     return generate?.call();
   }
@@ -506,6 +526,7 @@ class _$GenerateMessageImpl implements GenerateMessage {
     TResult Function(List<String> ids)? setIds,
     TResult Function(String namespace)? updateNamespace,
     TResult Function(String name)? updateName,
+    TResult Function(bool isLowerCase)? updateLowerCase,
     required TResult orElse(),
   }) {
     if (generate != null) {
@@ -523,6 +544,7 @@ class _$GenerateMessageImpl implements GenerateMessage {
     required TResult Function(SetIdsMessage value) setIds,
     required TResult Function(UpdateNamespaceMessage value) updateNamespace,
     required TResult Function(UpdateNameMessage value) updateName,
+    required TResult Function(UpdateLowerCase value) updateLowerCase,
   }) {
     return generate(this);
   }
@@ -536,6 +558,7 @@ class _$GenerateMessageImpl implements GenerateMessage {
     TResult? Function(SetIdsMessage value)? setIds,
     TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult? Function(UpdateNameMessage value)? updateName,
+    TResult? Function(UpdateLowerCase value)? updateLowerCase,
   }) {
     return generate?.call(this);
   }
@@ -549,6 +572,7 @@ class _$GenerateMessageImpl implements GenerateMessage {
     TResult Function(SetIdsMessage value)? setIds,
     TResult Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult Function(UpdateNameMessage value)? updateName,
+    TResult Function(UpdateLowerCase value)? updateLowerCase,
     required TResult orElse(),
   }) {
     if (generate != null) {
@@ -642,6 +666,7 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     required TResult Function(List<String> ids) setIds,
     required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
+    required TResult Function(bool isLowerCase) updateLowerCase,
   }) {
     return setIds(ids);
   }
@@ -655,6 +680,7 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     TResult? Function(List<String> ids)? setIds,
     TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
+    TResult? Function(bool isLowerCase)? updateLowerCase,
   }) {
     return setIds?.call(ids);
   }
@@ -668,6 +694,7 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     TResult Function(List<String> ids)? setIds,
     TResult Function(String namespace)? updateNamespace,
     TResult Function(String name)? updateName,
+    TResult Function(bool isLowerCase)? updateLowerCase,
     required TResult orElse(),
   }) {
     if (setIds != null) {
@@ -685,6 +712,7 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     required TResult Function(SetIdsMessage value) setIds,
     required TResult Function(UpdateNamespaceMessage value) updateNamespace,
     required TResult Function(UpdateNameMessage value) updateName,
+    required TResult Function(UpdateLowerCase value) updateLowerCase,
   }) {
     return setIds(this);
   }
@@ -698,6 +726,7 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     TResult? Function(SetIdsMessage value)? setIds,
     TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult? Function(UpdateNameMessage value)? updateName,
+    TResult? Function(UpdateLowerCase value)? updateLowerCase,
   }) {
     return setIds?.call(this);
   }
@@ -711,6 +740,7 @@ class _$SetIdsMessageImpl implements SetIdsMessage {
     TResult Function(SetIdsMessage value)? setIds,
     TResult Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult Function(UpdateNameMessage value)? updateName,
+    TResult Function(UpdateLowerCase value)? updateLowerCase,
     required TResult orElse(),
   }) {
     if (setIds != null) {
@@ -810,6 +840,7 @@ class _$UpdateNamespaceMessageImpl implements UpdateNamespaceMessage {
     required TResult Function(List<String> ids) setIds,
     required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
+    required TResult Function(bool isLowerCase) updateLowerCase,
   }) {
     return updateNamespace(namespace);
   }
@@ -823,6 +854,7 @@ class _$UpdateNamespaceMessageImpl implements UpdateNamespaceMessage {
     TResult? Function(List<String> ids)? setIds,
     TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
+    TResult? Function(bool isLowerCase)? updateLowerCase,
   }) {
     return updateNamespace?.call(namespace);
   }
@@ -836,6 +868,7 @@ class _$UpdateNamespaceMessageImpl implements UpdateNamespaceMessage {
     TResult Function(List<String> ids)? setIds,
     TResult Function(String namespace)? updateNamespace,
     TResult Function(String name)? updateName,
+    TResult Function(bool isLowerCase)? updateLowerCase,
     required TResult orElse(),
   }) {
     if (updateNamespace != null) {
@@ -853,6 +886,7 @@ class _$UpdateNamespaceMessageImpl implements UpdateNamespaceMessage {
     required TResult Function(SetIdsMessage value) setIds,
     required TResult Function(UpdateNamespaceMessage value) updateNamespace,
     required TResult Function(UpdateNameMessage value) updateName,
+    required TResult Function(UpdateLowerCase value) updateLowerCase,
   }) {
     return updateNamespace(this);
   }
@@ -866,6 +900,7 @@ class _$UpdateNamespaceMessageImpl implements UpdateNamespaceMessage {
     TResult? Function(SetIdsMessage value)? setIds,
     TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult? Function(UpdateNameMessage value)? updateName,
+    TResult? Function(UpdateLowerCase value)? updateLowerCase,
   }) {
     return updateNamespace?.call(this);
   }
@@ -879,6 +914,7 @@ class _$UpdateNamespaceMessageImpl implements UpdateNamespaceMessage {
     TResult Function(SetIdsMessage value)? setIds,
     TResult Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult Function(UpdateNameMessage value)? updateName,
+    TResult Function(UpdateLowerCase value)? updateLowerCase,
     required TResult orElse(),
   }) {
     if (updateNamespace != null) {
@@ -976,6 +1012,7 @@ class _$UpdateNameMessageImpl implements UpdateNameMessage {
     required TResult Function(List<String> ids) setIds,
     required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
+    required TResult Function(bool isLowerCase) updateLowerCase,
   }) {
     return updateName(name);
   }
@@ -989,6 +1026,7 @@ class _$UpdateNameMessageImpl implements UpdateNameMessage {
     TResult? Function(List<String> ids)? setIds,
     TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
+    TResult? Function(bool isLowerCase)? updateLowerCase,
   }) {
     return updateName?.call(name);
   }
@@ -1002,6 +1040,7 @@ class _$UpdateNameMessageImpl implements UpdateNameMessage {
     TResult Function(List<String> ids)? setIds,
     TResult Function(String namespace)? updateNamespace,
     TResult Function(String name)? updateName,
+    TResult Function(bool isLowerCase)? updateLowerCase,
     required TResult orElse(),
   }) {
     if (updateName != null) {
@@ -1019,6 +1058,7 @@ class _$UpdateNameMessageImpl implements UpdateNameMessage {
     required TResult Function(SetIdsMessage value) setIds,
     required TResult Function(UpdateNamespaceMessage value) updateNamespace,
     required TResult Function(UpdateNameMessage value) updateName,
+    required TResult Function(UpdateLowerCase value) updateLowerCase,
   }) {
     return updateName(this);
   }
@@ -1032,6 +1072,7 @@ class _$UpdateNameMessageImpl implements UpdateNameMessage {
     TResult? Function(SetIdsMessage value)? setIds,
     TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult? Function(UpdateNameMessage value)? updateName,
+    TResult? Function(UpdateLowerCase value)? updateLowerCase,
   }) {
     return updateName?.call(this);
   }
@@ -1045,6 +1086,7 @@ class _$UpdateNameMessageImpl implements UpdateNameMessage {
     TResult Function(SetIdsMessage value)? setIds,
     TResult Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult Function(UpdateNameMessage value)? updateName,
+    TResult Function(UpdateLowerCase value)? updateLowerCase,
     required TResult orElse(),
   }) {
     if (updateName != null) {
@@ -1063,5 +1105,177 @@ abstract class UpdateNameMessage implements UuidMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateNameMessageImplCopyWith<_$UpdateNameMessageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateLowerCaseImplCopyWith<$Res> {
+  factory _$$UpdateLowerCaseImplCopyWith(_$UpdateLowerCaseImpl value,
+          $Res Function(_$UpdateLowerCaseImpl) then) =
+      __$$UpdateLowerCaseImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isLowerCase});
+}
+
+/// @nodoc
+class __$$UpdateLowerCaseImplCopyWithImpl<$Res>
+    extends _$UuidMessageCopyWithImpl<$Res, _$UpdateLowerCaseImpl>
+    implements _$$UpdateLowerCaseImplCopyWith<$Res> {
+  __$$UpdateLowerCaseImplCopyWithImpl(
+      _$UpdateLowerCaseImpl _value, $Res Function(_$UpdateLowerCaseImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UuidMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLowerCase = null,
+  }) {
+    return _then(_$UpdateLowerCaseImpl(
+      null == isLowerCase
+          ? _value.isLowerCase
+          : isLowerCase // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateLowerCaseImpl implements UpdateLowerCase {
+  const _$UpdateLowerCaseImpl(this.isLowerCase);
+
+  @override
+  final bool isLowerCase;
+
+  @override
+  String toString() {
+    return 'UuidMessage.updateLowerCase(isLowerCase: $isLowerCase)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateLowerCaseImpl &&
+            (identical(other.isLowerCase, isLowerCase) ||
+                other.isLowerCase == isLowerCase));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isLowerCase);
+
+  /// Create a copy of UuidMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateLowerCaseImplCopyWith<_$UpdateLowerCaseImpl> get copyWith =>
+      __$$UpdateLowerCaseImplCopyWithImpl<_$UpdateLowerCaseImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(UuidVersion version) updateVersion,
+    required TResult Function(int count) updateCount,
+    required TResult Function() generate,
+    required TResult Function(List<String> ids) setIds,
+    required TResult Function(String namespace) updateNamespace,
+    required TResult Function(String name) updateName,
+    required TResult Function(bool isLowerCase) updateLowerCase,
+  }) {
+    return updateLowerCase(isLowerCase);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(UuidVersion version)? updateVersion,
+    TResult? Function(int count)? updateCount,
+    TResult? Function()? generate,
+    TResult? Function(List<String> ids)? setIds,
+    TResult? Function(String namespace)? updateNamespace,
+    TResult? Function(String name)? updateName,
+    TResult? Function(bool isLowerCase)? updateLowerCase,
+  }) {
+    return updateLowerCase?.call(isLowerCase);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UuidVersion version)? updateVersion,
+    TResult Function(int count)? updateCount,
+    TResult Function()? generate,
+    TResult Function(List<String> ids)? setIds,
+    TResult Function(String namespace)? updateNamespace,
+    TResult Function(String name)? updateName,
+    TResult Function(bool isLowerCase)? updateLowerCase,
+    required TResult orElse(),
+  }) {
+    if (updateLowerCase != null) {
+      return updateLowerCase(isLowerCase);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdateVersionMessage value) updateVersion,
+    required TResult Function(UpdateCountMessage value) updateCount,
+    required TResult Function(GenerateMessage value) generate,
+    required TResult Function(SetIdsMessage value) setIds,
+    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
+    required TResult Function(UpdateNameMessage value) updateName,
+    required TResult Function(UpdateLowerCase value) updateLowerCase,
+  }) {
+    return updateLowerCase(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UpdateVersionMessage value)? updateVersion,
+    TResult? Function(UpdateCountMessage value)? updateCount,
+    TResult? Function(GenerateMessage value)? generate,
+    TResult? Function(SetIdsMessage value)? setIds,
+    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult? Function(UpdateNameMessage value)? updateName,
+    TResult? Function(UpdateLowerCase value)? updateLowerCase,
+  }) {
+    return updateLowerCase?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdateVersionMessage value)? updateVersion,
+    TResult Function(UpdateCountMessage value)? updateCount,
+    TResult Function(GenerateMessage value)? generate,
+    TResult Function(SetIdsMessage value)? setIds,
+    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
+    TResult Function(UpdateNameMessage value)? updateName,
+    TResult Function(UpdateLowerCase value)? updateLowerCase,
+    required TResult orElse(),
+  }) {
+    if (updateLowerCase != null) {
+      return updateLowerCase(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateLowerCase implements UuidMessage {
+  const factory UpdateLowerCase(final bool isLowerCase) = _$UpdateLowerCaseImpl;
+
+  bool get isLowerCase;
+
+  /// Create a copy of UuidMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateLowerCaseImplCopyWith<_$UpdateLowerCaseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

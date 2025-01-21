@@ -25,5 +25,7 @@ Next<UuidState, UuidEffect> uuidUpdate(UuidState state, UuidMessage message) {
       return next(state: state.copyWith(namespace: message.namespace));
     case UpdateNameMessage():
       return next(state: state.copyWith(name: message.name));
+    case UpdateLowerCase():
+      return next(state: state.copyWith(isLowerCase: message.isLowerCase));
   }
 }
