@@ -11,6 +11,7 @@ import 'number_base_converter/number_base_converter_tool.dart';
 import 'percentages_tool.dart';
 import 'regexp/regexp_tool.dart';
 import 'sqlite/sqlite_tool.dart';
+import 'uuid/uuid_tool.dart';
 
 final tools = <Tool>[
   debugTool,
@@ -23,6 +24,7 @@ final tools = <Tool>[
   materialColorTool,
   hashTool,
   sqliteTool,
+  uuidTool,
 ];
 
 final debugTool = BaseTool(

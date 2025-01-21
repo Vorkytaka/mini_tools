@@ -154,5 +154,26 @@
     },
     "edit": "Edit",
     "row_affected": "$count row affected"
+  },
+  "uuid_generator": {
+    "title": "UUID Generator",
+    "hint": "Generate IDs:",
+    "types": {
+      "uuidV1": "UUID v1",
+      "uuidV4": "UUID v4",
+      "uuidV5": "UUID v5"
+    },
+    "namespace": "Namespace:",
+    "name": "Name:",
+    "namespaces": {
+      "dns": "DNS",
+      "url": "URL",
+      "oid": "OID",
+      "x500": "x500",
+      "nil": "NIL",
+      "max": "MAX"
+    },
+    "generate": "Generate",
+    "lowercase": "Lowercase"
   }
 }
