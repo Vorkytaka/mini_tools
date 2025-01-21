@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:uuid/enums.dart';
 
 import '../state/uuid_state.dart';
 
