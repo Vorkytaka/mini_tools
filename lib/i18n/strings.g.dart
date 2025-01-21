@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 114
+/// Strings: 129
 ///
-/// Built on 2025-01-09 at 22:58 UTC
+/// Built on 2025-01-21 at 21:42 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -14,7 +14,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:slang/builder/model/node.dart';
 import 'package:slang_flutter/slang_flutter.dart';
-
 export 'package:slang_flutter/slang_flutter.dart';
 
 const AppLocale _baseLocale = AppLocale.en;
@@ -102,26 +101,19 @@ class LocaleSettings
 
   // static aliases (checkout base methods for documentation)
   static AppLocale get currentLocale => instance.currentLocale;
-
   static Stream<AppLocale> getLocaleStream() => instance.getLocaleStream();
-
   static AppLocale setLocale(AppLocale locale,
           {bool? listenToDeviceLocale = false}) =>
       instance.setLocale(locale, listenToDeviceLocale: listenToDeviceLocale);
-
   static AppLocale setLocaleRaw(String rawLocale,
           {bool? listenToDeviceLocale = false}) =>
       instance.setLocaleRaw(rawLocale,
           listenToDeviceLocale: listenToDeviceLocale);
-
   static AppLocale useDeviceLocale() => instance.useDeviceLocale();
-
   @Deprecated('Use [AppLocaleUtils.supportedLocales]')
   static List<Locale> get supportedLocales => instance.supportedLocales;
-
   @Deprecated('Use [AppLocaleUtils.supportedLocalesRaw]')
   static List<String> get supportedLocalesRaw => instance.supportedLocalesRaw;
-
   static void setPluralResolver(
           {String? language,
           AppLocale? locale,
@@ -144,7 +136,6 @@ class AppLocaleUtils extends BaseAppLocaleUtils<AppLocale, Translations> {
 
   // static aliases (checkout base methods for documentation)
   static AppLocale parse(String rawLocale) => instance.parse(rawLocale);
-
   static AppLocale parseLocaleParts(
           {required String languageCode,
           String? scriptCode,
@@ -153,11 +144,8 @@ class AppLocaleUtils extends BaseAppLocaleUtils<AppLocale, Translations> {
           languageCode: languageCode,
           scriptCode: scriptCode,
           countryCode: countryCode);
-
   static AppLocale findDeviceLocale() => instance.findDeviceLocale();
-
   static List<Locale> get supportedLocales => instance.supportedLocales;
-
   static List<String> get supportedLocalesRaw => instance.supportedLocalesRaw;
 }
 
@@ -214,6 +202,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
       _StringsMaterialColorsEn._(_root);
   late final _StringsHashEn hash = _StringsHashEn._(_root);
   late final _StringsSqliteEn sqlite = _StringsSqliteEn._(_root);
+  late final _StringsUuidGeneratorEn uuidGenerator =
+      _StringsUuidGeneratorEn._(_root);
 }
 
 // Path: common
@@ -224,25 +214,15 @@ class _StringsCommonEn {
 
   // Translations
   String get input => 'Input:';
-
   String get output => 'Output:';
-
   String get clear => 'Clear';
-
   String get yes => 'Yes';
-
   String get no => 'No';
-
   String get copy => 'Copy';
-
   String get questionMark => '?';
-
   String get percent => '%';
-
   String get fileDropTitle => 'Drop file here';
-
   String get cancel => 'Cancel';
-
   String get paste => 'Paste';
 }
 
@@ -258,23 +238,14 @@ class _StringsUnixTimestampEn {
       _StringsUnixTimestampInputTypeEn._(_root);
   late final _StringsUnixTimestampDatetimeFormatEn datetimeFormat =
       _StringsUnixTimestampDatetimeFormatEn._(_root);
-
   String get now => 'Now';
-
   String get local => 'Local time';
-
   String get utc => 'UTC time';
-
   String get weekday => 'Weekday';
-
   String get weekOfTheYear => 'Week of the year';
-
   String get dayOfTheYear => 'Day of the year';
-
   String get leapYear => 'Leap year';
-
   String get dateOnly => 'Date only';
-
   String get timeOnly => 'Time only';
 }
 
@@ -286,15 +257,10 @@ class _StringsNumberConverterEn {
 
   // Translations
   String get title => 'Number base converter';
-
   String get binary => 'Base 2 (Binary):';
-
   String get octal => 'Base 8 (Octal):';
-
   String get decimal => 'Base 10 (Decimal):';
-
   String get hex => 'Base 16 (Hex):';
-
   String get custom => 'Select base:';
 }
 
@@ -306,27 +272,19 @@ class _StringsRegexpEn {
 
   // Translations
   String get title => 'RegExp tester';
-
   String get regexpHint => 'RegExp (e.g. [^0-9])';
-
   String get testStringTitle => 'Test string:';
-
   String matchesCount({required num n, required Object count}) =>
       (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(
         n,
         one: '${count} match',
         other: '${count} matches',
       );
-
   String get matchInfoTitle => 'Match information:';
-
   String matchInfoMatch({required Object position}) => 'Match #${position}';
-
   String matchInfoGroup({required Object position}) => 'Group #${position}';
-
   String matchInfoIndexes({required Object start, required Object end}) =>
       '(${start}-${end})';
-
   String get matchInfoNothing => 'No matches found';
   late final _StringsRegexpSettingsEn settings =
       _StringsRegexpSettingsEn._(_root);
@@ -340,11 +298,9 @@ class _StringsJsonFormatterEn {
 
   // Translations
   String get title => 'JSON Formatter';
-
   String get inputHint => '{"key": "value"}';
   late final _StringsJsonFormatterJsonFormatEn jsonFormat =
       _StringsJsonFormatterJsonFormatEn._(_root);
-
   String get jsonPathHint => 'JSONPath (e.g. \$.order.products[*].title)';
 }
 
@@ -370,7 +326,6 @@ class _StringsColorEn {
 
   // Translations
   String get title => 'Color converter';
-
   String get inputPlaceholder => '#FFFFFF';
   late final _StringsColorTitlesEn titles = _StringsColorTitlesEn._(_root);
 }
@@ -395,17 +350,12 @@ class _StringsHashEn {
 
   // Translations
   String get title => 'Hash calculator';
-
   String get loadFile => 'Load file';
-
   String get dropFile => 'Drop file';
-
   String get textInputHint => 'Input any text here';
-
   String bytesCount({required Object n}) => '${n} bytes';
   late final _StringsHashHashFormatEn hashFormat =
       _StringsHashHashFormatEn._(_root);
-
   String hashOfFile({required Object path}) => 'Hash of file: ${path}';
 }
 
@@ -417,24 +367,35 @@ class _StringsSqliteEn {
 
   // Translations
   String get title => 'SQLite Editor';
-
   String get run => 'Run';
-
   String get import => 'Import';
-
   String get export => 'Export';
-
   String get drop => 'Drop';
-
   String get tables => 'Tables';
-
   String get history => 'History';
   late final _StringsSqliteOverrideEn override =
       _StringsSqliteOverrideEn._(_root);
-
   String get edit => 'Edit';
-
   String rowAffected({required Object count}) => '${count} row affected';
+}
+
+// Path: uuidGenerator
+class _StringsUuidGeneratorEn {
+  _StringsUuidGeneratorEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'UUID Generator';
+  String get hint => 'Generate IDs:';
+  late final _StringsUuidGeneratorTypesEn types =
+      _StringsUuidGeneratorTypesEn._(_root);
+  String get namespace => 'Namespace:';
+  String get name => 'Name:';
+  late final _StringsUuidGeneratorNamespacesEn namespaces =
+      _StringsUuidGeneratorNamespacesEn._(_root);
+  String get generate => 'Generate';
+  String get lowercase => 'Lowercase';
 }
 
 // Path: unixTimestamp.inputType
@@ -445,11 +406,8 @@ class _StringsUnixTimestampInputTypeEn {
 
   // Translations
   String get sec => 'Seconds since epoch';
-
   String get ms => 'Milliseconds since epoch';
-
   String get us => 'Microseconds since epoch';
-
   String get iso => 'ISO 8601';
 }
 
@@ -461,9 +419,7 @@ class _StringsUnixTimestampDatetimeFormatEn {
 
   // Translations
   String get hint => 'Datetime format:';
-
   String get iso => 'ISO 8601';
-
   String get rfc => 'RFC 2822';
 }
 
@@ -475,23 +431,14 @@ class _StringsRegexpSettingsEn {
 
   // Translations
   String get global => 'Global';
-
   String get globalDesc => 'Search for all matches';
-
   String get multiline => 'Multiline';
-
   String get multilineDesc => '^ and \$ match the start/end of each line';
-
   String get caseSensitive => 'Case sensitive';
-
   String get caseSensitiveDesc => 'Case sensitive search';
-
   String get unicode => 'Unicode';
-
   String get unicodeDesc => 'Enable all Unicode features';
-
   String get dotAll => 'Dot all';
-
   String get dotAllDesk =>
       'Dot matches all characters,\nincluding line terminators';
 }
@@ -504,11 +451,8 @@ class _StringsJsonFormatterJsonFormatEn {
 
   // Translations
   String get min => 'Minify';
-
   String get two => '2 spaces';
-
   String get four => '4 spaces';
-
   String get tab => 'Tab';
 }
 
@@ -520,7 +464,6 @@ class _StringsPercentageCalculatorPercentFromValueEn {
 
   // Translations
   String get whatIs => 'What is ';
-
   String get of => ' of ';
 }
 
@@ -542,17 +485,11 @@ class _StringsColorTitlesEn {
 
   // Translations
   String get hex => 'HEX:';
-
   String get hexWithAlpha => 'HEX with alpha:';
-
   String get rgb => 'RGB:';
-
   String get rgba => 'RGBA:';
-
   String get hsl => 'HSL:';
-
   String get hsb => 'HSB';
-
   String get hwb => 'HWB';
 }
 
@@ -564,41 +501,23 @@ class _StringsMaterialColorsColorsEn {
 
   // Translations
   String get red => 'Red';
-
   String get pink => 'Pink';
-
   String get purple => 'Purple';
-
   String get deepPurple => 'Deep Purple';
-
   String get indigo => 'Indigo';
-
   String get blue => 'Blue';
-
   String get lightBlue => 'Light Blue';
-
   String get cyan => 'Cyan';
-
   String get teal => 'Teal';
-
   String get green => 'Green';
-
   String get lightGreen => 'Light Green';
-
   String get lime => 'Lime';
-
   String get yellow => 'Yellow';
-
   String get amber => 'Amber';
-
   String get orange => 'Orange';
-
   String get deepOrange => 'Deep Orange';
-
   String get brown => 'Brown';
-
   String get grey => 'Grey';
-
   String get blueGrey => 'Blue Grey';
 }
 
@@ -610,7 +529,6 @@ class _StringsHashHashFormatEn {
 
   // Translations
   String get hex => 'HEX';
-
   String get base64 => 'Base64';
 }
 
@@ -622,11 +540,36 @@ class _StringsSqliteOverrideEn {
 
   // Translations
   String get title => 'Override current database?';
-
   String get message =>
       'This action will override your current snapshot. It cannot be undone. Do you want to continue?';
-
   String get confirm => 'Override';
+}
+
+// Path: uuidGenerator.types
+class _StringsUuidGeneratorTypesEn {
+  _StringsUuidGeneratorTypesEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get uuidV1 => 'UUID v1';
+  String get uuidV4 => 'UUID v4';
+  String get uuidV5 => 'UUID v5';
+}
+
+// Path: uuidGenerator.namespaces
+class _StringsUuidGeneratorNamespacesEn {
+  _StringsUuidGeneratorNamespacesEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get dns => 'DNS';
+  String get url => 'URL';
+  String get oid => 'OID';
+  String get x500 => 'x500';
+  String get nil => 'NIL';
+  String get max => 'MAX';
 }
 
 /// Flat map(s) containing all translations.
@@ -867,6 +810,36 @@ extension on Translations {
         return 'Edit';
       case 'sqlite.rowAffected':
         return ({required Object count}) => '${count} row affected';
+      case 'uuidGenerator.title':
+        return 'UUID Generator';
+      case 'uuidGenerator.hint':
+        return 'Generate IDs:';
+      case 'uuidGenerator.types.uuidV1':
+        return 'UUID v1';
+      case 'uuidGenerator.types.uuidV4':
+        return 'UUID v4';
+      case 'uuidGenerator.types.uuidV5':
+        return 'UUID v5';
+      case 'uuidGenerator.namespace':
+        return 'Namespace:';
+      case 'uuidGenerator.name':
+        return 'Name:';
+      case 'uuidGenerator.namespaces.dns':
+        return 'DNS';
+      case 'uuidGenerator.namespaces.url':
+        return 'URL';
+      case 'uuidGenerator.namespaces.oid':
+        return 'OID';
+      case 'uuidGenerator.namespaces.x500':
+        return 'x500';
+      case 'uuidGenerator.namespaces.nil':
+        return 'NIL';
+      case 'uuidGenerator.namespaces.max':
+        return 'MAX';
+      case 'uuidGenerator.generate':
+        return 'Generate';
+      case 'uuidGenerator.lowercase':
+        return 'Lowercase';
       default:
         return null;
     }

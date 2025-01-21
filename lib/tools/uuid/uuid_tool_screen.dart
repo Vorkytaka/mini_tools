@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:uuid/enums.dart';
 
 import '../../common/padding.dart';
+import '../../i18n/strings.g.dart';
 import 'feature/uuid_feature.dart';
 
 class UuidToolScreen extends StatelessWidget {
@@ -12,10 +13,12 @@ class UuidToolScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return MacosScaffold(
-      toolBar: const ToolBar(
+      toolBar: ToolBar(
         centerTitle: true,
-        title: Text('UUID Generator'),
+        title: Text(t.uuidGenerator.title),
       ),
       children: [
         ContentArea(
@@ -31,25 +34,31 @@ class _Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Padding(
       padding: panePadding,
-      child: const Column(
+      child: Column(
         children: [
           Padding(
             padding: headlinePadding,
             child: Row(
               children: [
-                Text('Generate IDs:'),
-                SizedBox(width: 8),
-                _UuidVersionSelector(),
-                Text('x'),
-                SizedBox(width: 100, child: _CountField()),
+                Text(t.uuidGenerator.hint),
+                const SizedBox(width: 8),
+                const _UuidVersionSelector(),
+                const SizedBox(width: 8),
+                const Text('x'),
+                const SizedBox(width: 8),
+                const SizedBox(width: 50, child: _CountField()),
               ],
             ),
           ),
-          _UuidV5Inputs(),
-          _GenerateRow(),
-          Expanded(child: _IdsOutputField()),
+          const _UuidV5Inputs(),
+          const SizedBox(height: 16),
+          const Padding(padding: headlinePadding, child: _GenerateRow()),
+          const SizedBox(height: 8),
+          const Expanded(child: _IdsOutputField()),
         ],
       ),
     );
@@ -73,23 +82,28 @@ class _UuidVersionSelector extends StatelessWidget {
                   .accept(UuidMessage.updateVersion(version));
             }
           },
-          items: const [
-            MacosPopupMenuItem(
-              value: UuidVersion.v1,
-              child: Text('UUID v1'),
-            ),
-            MacosPopupMenuItem(
-              value: UuidVersion.v4,
-              child: Text('UUID v4'),
-            ),
-            MacosPopupMenuItem(
-              value: UuidVersion.v5,
-              child: Text('UUID v5'),
-            ),
+          items: [
+            for (final version in UuidVersion.values)
+              MacosPopupMenuItem(
+                value: version,
+                child: Text(version.format(context)),
+              ),
           ],
         );
       },
     );
+  }
+}
+
+extension on UuidVersion {
+  String format(BuildContext context) {
+    final t = Translations.of(context);
+
+    return switch (this) {
+      UuidVersion.v1 => t.uuidGenerator.types.uuidV1,
+      UuidVersion.v4 => t.uuidGenerator.types.uuidV4,
+      UuidVersion.v5 => t.uuidGenerator.types.uuidV5,
+    };
   }
 }
 
@@ -123,6 +137,7 @@ class _CountFieldState extends State<_CountField> {
   @override
   Widget build(BuildContext context) {
     return MacosTextField(
+      textAlign: TextAlign.end,
       controller: _controller,
       onChanged: (text) {
         final count = int.tryParse(text);
@@ -151,11 +166,14 @@ class _UuidV5Inputs extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 8),
             const _UuidV5Namespace(),
+            const SizedBox(height: 8),
             const Padding(
               padding: headlinePadding,
               child: Text('Name:'),
             ),
+            const SizedBox(height: 4),
             MacosTextField(
               onChanged: (name) {
                 context
@@ -175,7 +193,9 @@ class _UuidV5Namespace extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    final t = Translations.of(context);
+
+    return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -184,15 +204,24 @@ class _UuidV5Namespace extends StatelessWidget {
           padding: headlinePadding,
           child: Row(
             children: [
-              Text('Namespace: '),
-              _UuidV5NamespaceItem(namespace: Namespace.dns),
-              _UuidV5NamespaceItem(namespace: Namespace.url),
-              _UuidV5NamespaceItem(namespace: Namespace.oid),
-              _UuidV5NamespaceItem(namespace: Namespace.x500),
+              Text(t.uuidGenerator.namespace),
+              const SizedBox(width: 8),
+              const _UuidV5NamespaceItem(namespace: Namespace.dns),
+              const SizedBox(width: 8),
+              const _UuidV5NamespaceItem(namespace: Namespace.url),
+              const SizedBox(width: 8),
+              const _UuidV5NamespaceItem(namespace: Namespace.oid),
+              const SizedBox(width: 8),
+              const _UuidV5NamespaceItem(namespace: Namespace.x500),
+              const SizedBox(width: 8),
+              const _UuidV5NamespaceItem(namespace: Namespace.nil),
+              const SizedBox(width: 8),
+              const _UuidV5NamespaceItem(namespace: Namespace.max),
             ],
           ),
         ),
-        _UuidV5NamespaceInput(),
+        const SizedBox(height: 4),
+        const _UuidV5NamespaceInput(),
       ],
     );
   }
@@ -218,10 +247,26 @@ class _UuidV5NamespaceItem extends StatelessWidget {
                 .accept(UuidMessage.updateNamespace(namespace.value));
           },
           controlSize: ControlSize.regular,
-          child: Text(namespace.name),
+          child: Text(namespace.format(context)),
         );
       },
     );
+  }
+}
+
+extension on Namespace {
+  String format(BuildContext context) {
+    final t = Translations.of(context);
+
+    return switch (this) {
+      Namespace.dns => t.uuidGenerator.namespaces.dns,
+      Namespace.url => t.uuidGenerator.namespaces.url,
+      Namespace.oid => t.uuidGenerator.namespaces.oid,
+      Namespace.x500 => t.uuidGenerator.namespaces.x500,
+      Namespace.nil => t.uuidGenerator.namespaces.nil,
+      Namespace.max => t.uuidGenerator.namespaces.max,
+      _ => throw Exception(),
+    };
   }
 }
 
@@ -277,6 +322,8 @@ class _GenerateRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Row(
       children: [
         PushButton(
@@ -284,9 +331,9 @@ class _GenerateRow extends StatelessWidget {
             context.read<UuidFeature>().accept(const UuidMessage.generate());
           },
           controlSize: ControlSize.regular,
-          child: Text('Generate'),
+          child: Text(t.uuidGenerator.generate),
         ),
-        Spacer(),
+        const Spacer(),
         _IsLowerCase(),
       ],
     );
@@ -296,6 +343,8 @@ class _GenerateRow extends StatelessWidget {
 class _IsLowerCase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return FeatureBuilder<UuidFeature, UuidState>(
       buildWhen: (prev, curr) => prev.isLowerCase != curr.isLowerCase,
       builder: (context, state) {
@@ -319,7 +368,8 @@ class _IsLowerCase extends StatelessWidget {
                   }
                 },
               ),
-              Text('Lowercased'),
+              const SizedBox(width: 4),
+              Text(t.uuidGenerator.lowercase),
             ],
           ),
         );
