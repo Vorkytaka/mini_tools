@@ -600,23 +600,26 @@ packages:
   mini_tea:
     dependency: "direct main"
     description:
-      path: "../mini_tea/packages/mini_tea"
-      relative: true
-    source: path
+      name: mini_tea
+      sha256: b667eb70afa0b7a6fd9fc03db7afa9e8964cd6c709b386b387d20a782021d9c9
+      url: "https://pub.dev"
+    source: hosted
     version: "0.1.2"
   mini_tea_flutter:
     dependency: "direct main"
     description:
-      path: "../mini_tea/packages/mini_tea_flutter"
-      relative: true
-    source: path
+      name: mini_tea_flutter
+      sha256: "9bf3c3ad3b5cdf89c551e9171575c818da6b30fdca92d4f0abf3346e1fd6bb96"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.2.0"
   mini_tea_test:
     dependency: "direct dev"
     description:
-      path: "../mini_tea/packages/mini_tea_test"
-      relative: true
-    source: path
+      name: mini_tea_test
+      sha256: "4a24ffff99594a2ac5353dbce9a432b3b6cadb38cd166eefec58c601a580a62d"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.2.0"
   mocktail:
     dependency: "direct dev"
