@@ -28,7 +28,7 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _CronInput(),
+        SizedBox(width: 300, child: _CronInput()),
       ],
     );
   }
