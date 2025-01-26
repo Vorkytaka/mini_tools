@@ -2,6 +2,41 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'cron_parser.freezed.dart';
 
+final _monthsRegExp = RegExp(
+  'JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC',
+  caseSensitive: false,
+);
+
+final _weekdayRegExp = RegExp(
+  'SUN|MON|TUE|WED|THU|FRI|SAT',
+  caseSensitive: false,
+);
+
+const _monthNames = {
+  'JAN': '1',
+  'FEB': '2',
+  'MAR': '3',
+  'APR': '4',
+  'MAY': '5',
+  'JUN': '6',
+  'JUL': '7',
+  'AUG': '8',
+  'SEP': '9',
+  'OCT': '10',
+  'NOV': '11',
+  'DEC': '12'
+};
+
+const _weekdayNames = {
+  'SUN': '0',
+  'MON': '1',
+  'TUE': '2',
+  'WED': '3',
+  'THU': '4',
+  'FRI': '5',
+  'SAT': '6'
+};
+
 enum CronPart {
   minutes,
   hours,
@@ -22,28 +57,16 @@ extension on CronPart {
 
     switch (this) {
       case CronPart.minutes:
-        if (number <= 59) {
-          return true;
-        }
+        return number <= 59;
       case CronPart.hours:
-        if (number <= 23) {
-          return true;
-        }
+        return number <= 23;
       case CronPart.days:
-        if (number <= 31) {
-          return true;
-        }
+        return number <= 31;
       case CronPart.months:
-        if (number <= 12) {
-          return true;
-        }
+        return number > 0 && number <= 12;
       case CronPart.weekdays:
-        if (number <= 7) {
-          return true;
-        }
+        return number <= 7;
     }
-
-    return false;
   }
 
   String normalized(String expression) {
@@ -53,9 +76,13 @@ extension on CronPart {
       case CronPart.days:
         return expression;
       case CronPart.months:
-        return expression;
+        return expression.replaceAllMapped(_monthsRegExp, (match) {
+          return _monthNames[match.group(0)!]!;
+        });
       case CronPart.weekdays:
-        return expression;
+        return expression.replaceAllMapped(_weekdayRegExp, (match) {
+          return _weekdayNames[match.group(0)!]!;
+        });
     }
   }
 }
