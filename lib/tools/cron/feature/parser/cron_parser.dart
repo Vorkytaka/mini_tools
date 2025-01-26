@@ -192,3 +192,93 @@ CronExpression parseExpression(String expression, CronPart part) {
 
   throw const FormatException();
 }
+
+extension CronExpressionMatcher on CronExpression {
+  bool matches(int value) {
+    return when(
+      any: () => true,
+      single: (v) => value == v,
+      range: (from, to) => value >= from && value <= to,
+      list: (values) => values.contains(value),
+      step: (v, step) => value >= v && (value - v) % step == 0,
+    );
+  }
+}
+
+DateTime? nextRun(Cron cron, DateTime from) {
+  // Add one minute, so we ignore this exact time
+  DateTime current = from.add(const Duration(minutes: 1));
+
+  while (true) {
+    // Match each field starting from the most granular (minute) to the least granular (month)
+    if (!cron.minutes.matches(current.minute)) {
+      current = _nextValidMinute(cron.minutes, current);
+      continue;
+    }
+
+    if (!cron.hours.matches(current.hour)) {
+      current = _nextValidHour(cron.hours, current);
+      continue;
+    }
+
+    if (!cron.days.matches(current.day) || !cron.weekdays.matches(current.weekday)) {
+      current = _nextValidDay(cron, current);
+      continue;
+    }
+
+    if (!cron.months.matches(current.month)) {
+      current = _nextValidMonth(cron.months, current);
+      continue;
+    }
+
+    // All fields match
+    return current;
+  }
+}
+
+/// Finds the next valid minute
+DateTime _nextValidMinute(CronExpression minutes, DateTime current) {
+  for (int minute = current.minute; minute < 60; minute++) {
+    if (minutes.matches(minute)) {
+      return DateTime(
+        current.year,
+        current.month,
+        current.day,
+        current.hour,
+        minute,
+      );
+    }
+  }
+  return DateTime(current.year, current.month, current.day, current.hour + 1);
+}
+
+/// Finds the next valid hour
+DateTime _nextValidHour(CronExpression hours, DateTime current) {
+  for (int hour = current.hour; hour < 24; hour++) {
+    if (hours.matches(hour)) {
+      return DateTime(current.year, current.month, current.day, hour);
+    }
+  }
+  return DateTime(current.year, current.month, current.day + 1);
+}
+
+/// Finds the next valid day (accounting for month and weekdays)
+DateTime _nextValidDay(Cron cron, DateTime current) {
+  while (true) {
+    if (cron.days.matches(current.day) && cron.weekdays.matches(current.weekday)) {
+      return current;
+    }
+    current = current.add(const Duration(days: 1));
+    current = DateTime(current.year, current.month, current.day); // Reset time to midnight
+  }
+}
+
+/// Finds the next valid month
+DateTime _nextValidMonth(CronExpression months, DateTime current) {
+  for (int month = current.month; month <= 12; month++) {
+    if (months.matches(month)) {
+      return DateTime(current.year, month, 1);
+    }
+  }
+  return DateTime(current.year + 1, 1, 1);
+}
