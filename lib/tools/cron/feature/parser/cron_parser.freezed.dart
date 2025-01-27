@@ -323,29 +323,29 @@ mixin _$CronExpression {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Any value) any,
-    required TResult Function(_Single value) single,
-    required TResult Function(_Range value) range,
-    required TResult Function(_List value) list,
-    required TResult Function(_Step value) step,
+    required TResult Function(Any value) any,
+    required TResult Function(Single value) single,
+    required TResult Function(Range value) range,
+    required TResult Function(ValuesList value) list,
+    required TResult Function(Step value) step,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Any value)? any,
-    TResult? Function(_Single value)? single,
-    TResult? Function(_Range value)? range,
-    TResult? Function(_List value)? list,
-    TResult? Function(_Step value)? step,
+    TResult? Function(Any value)? any,
+    TResult? Function(Single value)? single,
+    TResult? Function(Range value)? range,
+    TResult? Function(ValuesList value)? list,
+    TResult? Function(Step value)? step,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Any value)? any,
-    TResult Function(_Single value)? single,
-    TResult Function(_Range value)? range,
-    TResult Function(_List value)? list,
-    TResult Function(_Step value)? step,
+    TResult Function(Any value)? any,
+    TResult Function(Single value)? single,
+    TResult Function(Range value)? range,
+    TResult Function(ValuesList value)? list,
+    TResult Function(Step value)? step,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -391,7 +391,7 @@ class __$$AnyImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$AnyImpl implements _Any {
+class _$AnyImpl implements Any {
   const _$AnyImpl();
 
   @override
@@ -451,11 +451,11 @@ class _$AnyImpl implements _Any {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Any value) any,
-    required TResult Function(_Single value) single,
-    required TResult Function(_Range value) range,
-    required TResult Function(_List value) list,
-    required TResult Function(_Step value) step,
+    required TResult Function(Any value) any,
+    required TResult Function(Single value) single,
+    required TResult Function(Range value) range,
+    required TResult Function(ValuesList value) list,
+    required TResult Function(Step value) step,
   }) {
     return any(this);
   }
@@ -463,11 +463,11 @@ class _$AnyImpl implements _Any {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Any value)? any,
-    TResult? Function(_Single value)? single,
-    TResult? Function(_Range value)? range,
-    TResult? Function(_List value)? list,
-    TResult? Function(_Step value)? step,
+    TResult? Function(Any value)? any,
+    TResult? Function(Single value)? single,
+    TResult? Function(Range value)? range,
+    TResult? Function(ValuesList value)? list,
+    TResult? Function(Step value)? step,
   }) {
     return any?.call(this);
   }
@@ -475,11 +475,11 @@ class _$AnyImpl implements _Any {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Any value)? any,
-    TResult Function(_Single value)? single,
-    TResult Function(_Range value)? range,
-    TResult Function(_List value)? list,
-    TResult Function(_Step value)? step,
+    TResult Function(Any value)? any,
+    TResult Function(Single value)? single,
+    TResult Function(Range value)? range,
+    TResult Function(ValuesList value)? list,
+    TResult Function(Step value)? step,
     required TResult orElse(),
   }) {
     if (any != null) {
@@ -489,8 +489,8 @@ class _$AnyImpl implements _Any {
   }
 }
 
-abstract class _Any implements CronExpression {
-  const factory _Any() = _$AnyImpl;
+abstract class Any implements CronExpression {
+  const factory Any() = _$AnyImpl;
 }
 
 /// @nodoc
@@ -528,7 +528,7 @@ class __$$SingleImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SingleImpl implements _Single {
+class _$SingleImpl implements Single {
   const _$SingleImpl(this.value);
 
   @override
@@ -601,11 +601,11 @@ class _$SingleImpl implements _Single {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Any value) any,
-    required TResult Function(_Single value) single,
-    required TResult Function(_Range value) range,
-    required TResult Function(_List value) list,
-    required TResult Function(_Step value) step,
+    required TResult Function(Any value) any,
+    required TResult Function(Single value) single,
+    required TResult Function(Range value) range,
+    required TResult Function(ValuesList value) list,
+    required TResult Function(Step value) step,
   }) {
     return single(this);
   }
@@ -613,11 +613,11 @@ class _$SingleImpl implements _Single {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Any value)? any,
-    TResult? Function(_Single value)? single,
-    TResult? Function(_Range value)? range,
-    TResult? Function(_List value)? list,
-    TResult? Function(_Step value)? step,
+    TResult? Function(Any value)? any,
+    TResult? Function(Single value)? single,
+    TResult? Function(Range value)? range,
+    TResult? Function(ValuesList value)? list,
+    TResult? Function(Step value)? step,
   }) {
     return single?.call(this);
   }
@@ -625,11 +625,11 @@ class _$SingleImpl implements _Single {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Any value)? any,
-    TResult Function(_Single value)? single,
-    TResult Function(_Range value)? range,
-    TResult Function(_List value)? list,
-    TResult Function(_Step value)? step,
+    TResult Function(Any value)? any,
+    TResult Function(Single value)? single,
+    TResult Function(Range value)? range,
+    TResult Function(ValuesList value)? list,
+    TResult Function(Step value)? step,
     required TResult orElse(),
   }) {
     if (single != null) {
@@ -639,8 +639,8 @@ class _$SingleImpl implements _Single {
   }
 }
 
-abstract class _Single implements CronExpression {
-  const factory _Single(final int value) = _$SingleImpl;
+abstract class Single implements CronExpression {
+  const factory Single(final int value) = _$SingleImpl;
 
   int get value;
 
@@ -691,7 +691,7 @@ class __$$RangeImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RangeImpl implements _Range {
+class _$RangeImpl implements Range {
   const _$RangeImpl({required this.from, required this.to});
 
   @override
@@ -767,11 +767,11 @@ class _$RangeImpl implements _Range {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Any value) any,
-    required TResult Function(_Single value) single,
-    required TResult Function(_Range value) range,
-    required TResult Function(_List value) list,
-    required TResult Function(_Step value) step,
+    required TResult Function(Any value) any,
+    required TResult Function(Single value) single,
+    required TResult Function(Range value) range,
+    required TResult Function(ValuesList value) list,
+    required TResult Function(Step value) step,
   }) {
     return range(this);
   }
@@ -779,11 +779,11 @@ class _$RangeImpl implements _Range {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Any value)? any,
-    TResult? Function(_Single value)? single,
-    TResult? Function(_Range value)? range,
-    TResult? Function(_List value)? list,
-    TResult? Function(_Step value)? step,
+    TResult? Function(Any value)? any,
+    TResult? Function(Single value)? single,
+    TResult? Function(Range value)? range,
+    TResult? Function(ValuesList value)? list,
+    TResult? Function(Step value)? step,
   }) {
     return range?.call(this);
   }
@@ -791,11 +791,11 @@ class _$RangeImpl implements _Range {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Any value)? any,
-    TResult Function(_Single value)? single,
-    TResult Function(_Range value)? range,
-    TResult Function(_List value)? list,
-    TResult Function(_Step value)? step,
+    TResult Function(Any value)? any,
+    TResult Function(Single value)? single,
+    TResult Function(Range value)? range,
+    TResult Function(ValuesList value)? list,
+    TResult Function(Step value)? step,
     required TResult orElse(),
   }) {
     if (range != null) {
@@ -805,8 +805,8 @@ class _$RangeImpl implements _Range {
   }
 }
 
-abstract class _Range implements CronExpression {
-  const factory _Range({required final int from, required final int to}) =
+abstract class Range implements CronExpression {
+  const factory Range({required final int from, required final int to}) =
       _$RangeImpl;
 
   int get from;
@@ -820,19 +820,20 @@ abstract class _Range implements CronExpression {
 }
 
 /// @nodoc
-abstract class _$$ListImplCopyWith<$Res> {
-  factory _$$ListImplCopyWith(
-          _$ListImpl value, $Res Function(_$ListImpl) then) =
-      __$$ListImplCopyWithImpl<$Res>;
+abstract class _$$ValuesListImplCopyWith<$Res> {
+  factory _$$ValuesListImplCopyWith(
+          _$ValuesListImpl value, $Res Function(_$ValuesListImpl) then) =
+      __$$ValuesListImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<int> values});
 }
 
 /// @nodoc
-class __$$ListImplCopyWithImpl<$Res>
-    extends _$CronExpressionCopyWithImpl<$Res, _$ListImpl>
-    implements _$$ListImplCopyWith<$Res> {
-  __$$ListImplCopyWithImpl(_$ListImpl _value, $Res Function(_$ListImpl) _then)
+class __$$ValuesListImplCopyWithImpl<$Res>
+    extends _$CronExpressionCopyWithImpl<$Res, _$ValuesListImpl>
+    implements _$$ValuesListImplCopyWith<$Res> {
+  __$$ValuesListImplCopyWithImpl(
+      _$ValuesListImpl _value, $Res Function(_$ValuesListImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CronExpression
@@ -842,7 +843,7 @@ class __$$ListImplCopyWithImpl<$Res>
   $Res call({
     Object? values = null,
   }) {
-    return _then(_$ListImpl(
+    return _then(_$ValuesListImpl(
       null == values
           ? _value._values
           : values // ignore: cast_nullable_to_non_nullable
@@ -853,8 +854,8 @@ class __$$ListImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ListImpl implements _List {
-  const _$ListImpl(final List<int> values) : _values = values;
+class _$ValuesListImpl implements ValuesList {
+  const _$ValuesListImpl(final List<int> values) : _values = values;
 
   final List<int> _values;
   @override
@@ -873,7 +874,7 @@ class _$ListImpl implements _List {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ListImpl &&
+            other is _$ValuesListImpl &&
             const DeepCollectionEquality().equals(other._values, _values));
   }
 
@@ -886,8 +887,8 @@ class _$ListImpl implements _List {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ListImplCopyWith<_$ListImpl> get copyWith =>
-      __$$ListImplCopyWithImpl<_$ListImpl>(this, _$identity);
+  _$$ValuesListImplCopyWith<_$ValuesListImpl> get copyWith =>
+      __$$ValuesListImplCopyWithImpl<_$ValuesListImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -932,11 +933,11 @@ class _$ListImpl implements _List {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Any value) any,
-    required TResult Function(_Single value) single,
-    required TResult Function(_Range value) range,
-    required TResult Function(_List value) list,
-    required TResult Function(_Step value) step,
+    required TResult Function(Any value) any,
+    required TResult Function(Single value) single,
+    required TResult Function(Range value) range,
+    required TResult Function(ValuesList value) list,
+    required TResult Function(Step value) step,
   }) {
     return list(this);
   }
@@ -944,11 +945,11 @@ class _$ListImpl implements _List {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Any value)? any,
-    TResult? Function(_Single value)? single,
-    TResult? Function(_Range value)? range,
-    TResult? Function(_List value)? list,
-    TResult? Function(_Step value)? step,
+    TResult? Function(Any value)? any,
+    TResult? Function(Single value)? single,
+    TResult? Function(Range value)? range,
+    TResult? Function(ValuesList value)? list,
+    TResult? Function(Step value)? step,
   }) {
     return list?.call(this);
   }
@@ -956,11 +957,11 @@ class _$ListImpl implements _List {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Any value)? any,
-    TResult Function(_Single value)? single,
-    TResult Function(_Range value)? range,
-    TResult Function(_List value)? list,
-    TResult Function(_Step value)? step,
+    TResult Function(Any value)? any,
+    TResult Function(Single value)? single,
+    TResult Function(Range value)? range,
+    TResult Function(ValuesList value)? list,
+    TResult Function(Step value)? step,
     required TResult orElse(),
   }) {
     if (list != null) {
@@ -970,15 +971,15 @@ class _$ListImpl implements _List {
   }
 }
 
-abstract class _List implements CronExpression {
-  const factory _List(final List<int> values) = _$ListImpl;
+abstract class ValuesList implements CronExpression {
+  const factory ValuesList(final List<int> values) = _$ValuesListImpl;
 
   List<int> get values;
 
   /// Create a copy of CronExpression
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ListImplCopyWith<_$ListImpl> get copyWith =>
+  _$$ValuesListImplCopyWith<_$ValuesListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1021,7 +1022,7 @@ class __$$StepImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StepImpl implements _Step {
+class _$StepImpl implements Step {
   const _$StepImpl({required this.value, required this.step});
 
   @override
@@ -1097,11 +1098,11 @@ class _$StepImpl implements _Step {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Any value) any,
-    required TResult Function(_Single value) single,
-    required TResult Function(_Range value) range,
-    required TResult Function(_List value) list,
-    required TResult Function(_Step value) step,
+    required TResult Function(Any value) any,
+    required TResult Function(Single value) single,
+    required TResult Function(Range value) range,
+    required TResult Function(ValuesList value) list,
+    required TResult Function(Step value) step,
   }) {
     return step(this);
   }
@@ -1109,11 +1110,11 @@ class _$StepImpl implements _Step {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Any value)? any,
-    TResult? Function(_Single value)? single,
-    TResult? Function(_Range value)? range,
-    TResult? Function(_List value)? list,
-    TResult? Function(_Step value)? step,
+    TResult? Function(Any value)? any,
+    TResult? Function(Single value)? single,
+    TResult? Function(Range value)? range,
+    TResult? Function(ValuesList value)? list,
+    TResult? Function(Step value)? step,
   }) {
     return step?.call(this);
   }
@@ -1121,11 +1122,11 @@ class _$StepImpl implements _Step {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Any value)? any,
-    TResult Function(_Single value)? single,
-    TResult Function(_Range value)? range,
-    TResult Function(_List value)? list,
-    TResult Function(_Step value)? step,
+    TResult Function(Any value)? any,
+    TResult Function(Single value)? single,
+    TResult Function(Range value)? range,
+    TResult Function(ValuesList value)? list,
+    TResult Function(Step value)? step,
     required TResult orElse(),
   }) {
     if (step != null) {
@@ -1135,8 +1136,8 @@ class _$StepImpl implements _Step {
   }
 }
 
-abstract class _Step implements CronExpression {
-  const factory _Step({required final int value, required final int step}) =
+abstract class Step implements CronExpression {
+  const factory Step({required final int value, required final int step}) =
       _$StepImpl;
 
   int get value;

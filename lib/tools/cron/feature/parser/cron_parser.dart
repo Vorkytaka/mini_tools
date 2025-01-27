@@ -102,19 +102,20 @@ class Cron with _$Cron {
 @freezed
 @immutable
 sealed class CronExpression with _$CronExpression {
-  const factory CronExpression.any() = _Any;
+  const factory CronExpression.any() = Any;
 
-  const factory CronExpression.single(int value) = _Single;
+  const factory CronExpression.single(int value) = Single;
 
   const factory CronExpression.range({required int from, required int to}) =
-      _Range;
+      Range;
 
-  const factory CronExpression.list(List<int> values) = _List;
+  const factory CronExpression.list(List<int> values) = ValuesList;
 
+  // TODO: Looks like value must be inner CronExpression except step one?
   const factory CronExpression.step({
     required int value,
     required int step,
-  }) = _Step;
+  }) = Step;
 }
 
 final _whitespacesRegExp = RegExp(r'\s+');

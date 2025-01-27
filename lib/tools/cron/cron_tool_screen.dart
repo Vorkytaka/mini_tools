@@ -3,6 +3,7 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
 
+import 'cron_format.dart';
 import 'feature/cron_feature.dart';
 import 'feature/parser/cron_parser.dart';
 
@@ -28,9 +29,10 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
         _CronInput(),
+        _HumanReadCron(),
         _NextAt(),
       ],
     );
@@ -76,6 +78,26 @@ class _CronInputState extends State<_CronInput> {
   void _onUpdate() {
     final text = _controller.text;
     context.read<CronFeature>().accept(CronMessage.inputUpdate(text));
+  }
+}
+
+class _HumanReadCron extends StatelessWidget {
+  const _HumanReadCron();
+
+  @override
+  Widget build(BuildContext context) {
+    return FeatureBuilder<CronFeature, CronState>(
+      buildWhen: (prev, curr) => prev.cron != curr.cron,
+      builder: (context, state) {
+        final cron = state.cron;
+
+        if(cron == null) {
+          return const SizedBox();
+        }
+
+        return Text(cron.format(context));
+      },
+    );
   }
 }
 
