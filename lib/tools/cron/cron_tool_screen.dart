@@ -88,12 +88,27 @@ class _NextAt extends StatelessWidget {
       builder: (context, state) {
         final cron = state.cron;
 
-        if(cron == null) {
-          return Text('no cron');
+        if (cron == null) {
+          return const SizedBox();
         }
 
-        final now = DateTime.now();
-        return Text(nextRun(cron, now)?.toIso8601String() ?? 'no cron 2');
+        final nexts = <DateTime>[];
+        for (int i = 0; i < 5; i++) {
+          final prev = nexts.isNotEmpty && nexts.length >= i
+              ? nexts[i - 1]
+              : DateTime.now();
+          final next = cron.nextRun(prev);
+          nexts.add(next);
+        }
+
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            for (final next in nexts) Text(next.toIso8601String()),
+          ],
+        );
       },
     );
   }

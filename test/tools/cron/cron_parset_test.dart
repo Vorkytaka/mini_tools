@@ -13,7 +13,7 @@ void main() {
       );
 
       final now = DateTime(2025, 1, 27, 12, 0); // 12:00 PM
-      final next = nextRun(cron, now);
+      final next = cron.nextRun(now);
 
       expect(next, DateTime(2025, 1, 27, 12, 1)); // Next minute
     });
@@ -28,7 +28,7 @@ void main() {
       );
 
       final now = DateTime(2025, 1, 27, 12, 15); // 12:15 PM
-      final next = nextRun(cron, now);
+      final next = cron.nextRun(now);
 
       expect(next, DateTime(2025, 1, 27, 13, 0)); // Next hour at 1:00 PM
     });
@@ -43,7 +43,7 @@ void main() {
       );
 
       final now = DateTime(2025, 1, 27, 13, 45); // 1:45 PM
-      final next = nextRun(cron, now);
+      final next = cron.nextRun(now);
 
       expect(next, DateTime(2025, 1, 27, 14, 30)); // Today at 2:30 PM
     });
@@ -58,7 +58,7 @@ void main() {
       );
 
       final now = DateTime(2025, 1, 27, 10, 0); // January 27th, 10:00 AM
-      final next = nextRun(cron, now);
+      final next = cron.nextRun(now);
 
       expect(next, DateTime(2025, 2, 1, 10, 15)); // February 1st at 10:15 AM
     });
@@ -73,7 +73,7 @@ void main() {
       );
 
       final now = DateTime(2025, 1, 27, 11, 45); // Monday, 11:45 AM
-      final next = nextRun(cron, now);
+      final next = cron.nextRun(now);
 
       expect(next, DateTime(2025, 1, 27, 12, 0)); // Today at 12:00 PM
     });
@@ -88,7 +88,7 @@ void main() {
       );
 
       final now = DateTime(2025, 6, 15, 12, 0); // June 15th, 2025
-      final next = nextRun(cron, now);
+      final next = cron.nextRun(now);
 
       expect(next, DateTime(2026, 1, 1, 0, 0)); // January 1st, 2026
     });
@@ -103,7 +103,7 @@ void main() {
       );
 
       final now = DateTime(2025, 1, 27, 10, 30); // 10:30 AM
-      final next = nextRun(cron, now);
+      final next = cron.nextRun(now);
 
       expect(next, DateTime(2025, 1, 27, 11, 0)); // Next valid time at 11:00 AM
     });
@@ -119,7 +119,7 @@ void main() {
       );
 
       final now = DateTime(2025, 1, 27, 12, 30); // January 27th (Monday)
-      final next = nextRun(cron, now);
+      final next = cron.nextRun(now);
 
       expect(next, DateTime(2025, 2, 3, 0, 0)); // First Monday in February
     });
@@ -135,7 +135,7 @@ void main() {
       );
 
       final now = DateTime(2025, 1, 1, 0, 0); // January 1st, 2025
-      final next = nextRun(cron, now);
+      final next = cron.nextRun(now);
 
       expect(next, DateTime(2028, 2, 29, 14, 15)); // February 29th, 2028
     });

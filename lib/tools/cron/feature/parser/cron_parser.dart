@@ -232,80 +232,89 @@ extension CronExpressionMatcher on CronExpression {
   }
 }
 
-DateTime? nextRun(Cron cron, DateTime from) {
-  // Add one minute, so we ignore this exact time
-  DateTime current = from.add(const Duration(minutes: 1));
-
-  while (true) {
-    // Match each field starting from the most granular (minute) to the least granular (month)
-    if (!cron.minutes.matches(current.minute)) {
-      current = _nextValidMinute(cron.minutes, current);
-      continue;
+extension CronUtils on Cron {
+  DateTime nextRun(DateTime from) {
+    // Add one minute, so we ignore this exact time
+    DateTime current = from.add(const Duration(minutes: 1));
+    if (current.second != 0 ||
+        current.millisecond != 0 ||
+        current.microsecond != 0) {
+      current = current.copyWith(second: 0, millisecond: 0, microsecond: 0);
     }
 
-    if (!cron.hours.matches(current.hour)) {
-      current = _nextValidHour(cron.hours, current);
-      continue;
-    }
+    while (true) {
+      // Match each field starting from the most granular (minute) to the least granular (month)
+      if (!minutes.matches(current.minute)) {
+        current = _nextValidMinute(minutes, current);
+        continue;
+      }
 
-    if (!cron.days.matches(current.day) || !cron.weekdays.matches(current.weekday)) {
-      current = _nextValidDay(cron, current);
-      continue;
-    }
+      if (!hours.matches(current.hour)) {
+        current = _nextValidHour(hours, current);
+        continue;
+      }
 
-    if (!cron.months.matches(current.month)) {
-      current = _nextValidMonth(cron.months, current);
-      continue;
-    }
+      if (!days.matches(current.day) || !weekdays.matches(current.weekday)) {
+        current = _nextValidDay(this, current);
+        continue;
+      }
 
-    // All fields match
-    return current;
-  }
-}
+      if (!months.matches(current.month)) {
+        current = _nextValidMonth(months, current);
+        continue;
+      }
 
-/// Finds the next valid minute
-DateTime _nextValidMinute(CronExpression minutes, DateTime current) {
-  for (int minute = current.minute; minute < 60; minute++) {
-    if (minutes.matches(minute)) {
-      return DateTime(
-        current.year,
-        current.month,
-        current.day,
-        current.hour,
-        minute,
-      );
-    }
-  }
-  return DateTime(current.year, current.month, current.day, current.hour + 1);
-}
-
-/// Finds the next valid hour
-DateTime _nextValidHour(CronExpression hours, DateTime current) {
-  for (int hour = current.hour; hour < 24; hour++) {
-    if (hours.matches(hour)) {
-      return DateTime(current.year, current.month, current.day, hour);
-    }
-  }
-  return DateTime(current.year, current.month, current.day + 1);
-}
-
-/// Finds the next valid day (accounting for month and weekdays)
-DateTime _nextValidDay(Cron cron, DateTime current) {
-  while (true) {
-    if (cron.days.matches(current.day) && cron.weekdays.matches(current.weekday)) {
+      // All fields match
       return current;
     }
-    current = current.add(const Duration(days: 1));
-    current = DateTime(current.year, current.month, current.day); // Reset time to midnight
   }
-}
 
-/// Finds the next valid month
-DateTime _nextValidMonth(CronExpression months, DateTime current) {
-  for (int month = current.month; month <= 12; month++) {
-    if (months.matches(month)) {
-      return DateTime(current.year, month, 1);
+  /// Finds the next valid minute
+  DateTime _nextValidMinute(CronExpression minutes, DateTime current) {
+    for (int minute = current.minute; minute < 60; minute++) {
+      if (minutes.matches(minute)) {
+        return DateTime(
+          current.year,
+          current.month,
+          current.day,
+          current.hour,
+          minute,
+        );
+      }
+    }
+    return DateTime(current.year, current.month, current.day, current.hour + 1);
+  }
+
+  /// Finds the next valid hour
+  DateTime _nextValidHour(CronExpression hours, DateTime current) {
+    for (int hour = current.hour; hour < 24; hour++) {
+      if (hours.matches(hour)) {
+        return DateTime(current.year, current.month, current.day, hour);
+      }
+    }
+    return DateTime(current.year, current.month, current.day + 1);
+  }
+
+  /// Finds the next valid day (accounting for month and weekdays)
+  DateTime _nextValidDay(Cron cron, DateTime current) {
+    while (true) {
+      if (cron.days.matches(current.day) &&
+          cron.weekdays.matches(current.weekday)) {
+        return current;
+      }
+      current = current.add(const Duration(days: 1));
+      current = DateTime(
+          current.year, current.month, current.day); // Reset time to midnight
     }
   }
-  return DateTime(current.year + 1, 1, 1);
+
+  /// Finds the next valid month
+  DateTime _nextValidMonth(CronExpression months, DateTime current) {
+    for (int month = current.month; month <= 12; month++) {
+      if (months.matches(month)) {
+        return DateTime(current.year, month, 1);
+      }
+    }
+    return DateTime(current.year + 1, 1, 1);
+  }
 }
