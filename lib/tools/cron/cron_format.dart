@@ -55,7 +55,7 @@ extension on CronExpression {
       single: (value) => 'minute $value',
       range: (from, to) => 'every minute from $from to $to',
       list: (values) => 'minute ${values.join(', ')}',
-      step: (_, __) => throw Exception(),
+      step: (base, step) => 'every $step minute ${base.formatMinutes(t)}',
     );
   }
 
@@ -65,7 +65,7 @@ extension on CronExpression {
       single: (value) => 'past hour $value',
       range: (from, to) => 'past every hour from $from through $to',
       list: (values) => 'past hour ${values.join(', ')}',
-      step: (_, __) => throw Exception(),
+      step: (base, step) => 'every $step hour ${base.formatHours(t)}',
     );
   }
 

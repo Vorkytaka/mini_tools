@@ -299,7 +299,7 @@ mixin _$CronExpression {
     required TResult Function(int value) single,
     required TResult Function(int from, int to) range,
     required TResult Function(List<int> values) list,
-    required TResult Function(int value, int step) step,
+    required TResult Function(CronExpression base, int step) step,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -308,7 +308,7 @@ mixin _$CronExpression {
     TResult? Function(int value)? single,
     TResult? Function(int from, int to)? range,
     TResult? Function(List<int> values)? list,
-    TResult? Function(int value, int step)? step,
+    TResult? Function(CronExpression base, int step)? step,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -317,7 +317,7 @@ mixin _$CronExpression {
     TResult Function(int value)? single,
     TResult Function(int from, int to)? range,
     TResult Function(List<int> values)? list,
-    TResult Function(int value, int step)? step,
+    TResult Function(CronExpression base, int step)? step,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -415,7 +415,7 @@ class _$AnyImpl implements Any {
     required TResult Function(int value) single,
     required TResult Function(int from, int to) range,
     required TResult Function(List<int> values) list,
-    required TResult Function(int value, int step) step,
+    required TResult Function(CronExpression base, int step) step,
   }) {
     return any();
   }
@@ -427,7 +427,7 @@ class _$AnyImpl implements Any {
     TResult? Function(int value)? single,
     TResult? Function(int from, int to)? range,
     TResult? Function(List<int> values)? list,
-    TResult? Function(int value, int step)? step,
+    TResult? Function(CronExpression base, int step)? step,
   }) {
     return any?.call();
   }
@@ -439,7 +439,7 @@ class _$AnyImpl implements Any {
     TResult Function(int value)? single,
     TResult Function(int from, int to)? range,
     TResult Function(List<int> values)? list,
-    TResult Function(int value, int step)? step,
+    TResult Function(CronExpression base, int step)? step,
     required TResult orElse(),
   }) {
     if (any != null) {
@@ -565,7 +565,7 @@ class _$SingleImpl implements Single {
     required TResult Function(int value) single,
     required TResult Function(int from, int to) range,
     required TResult Function(List<int> values) list,
-    required TResult Function(int value, int step) step,
+    required TResult Function(CronExpression base, int step) step,
   }) {
     return single(value);
   }
@@ -577,7 +577,7 @@ class _$SingleImpl implements Single {
     TResult? Function(int value)? single,
     TResult? Function(int from, int to)? range,
     TResult? Function(List<int> values)? list,
-    TResult? Function(int value, int step)? step,
+    TResult? Function(CronExpression base, int step)? step,
   }) {
     return single?.call(value);
   }
@@ -589,7 +589,7 @@ class _$SingleImpl implements Single {
     TResult Function(int value)? single,
     TResult Function(int from, int to)? range,
     TResult Function(List<int> values)? list,
-    TResult Function(int value, int step)? step,
+    TResult Function(CronExpression base, int step)? step,
     required TResult orElse(),
   }) {
     if (single != null) {
@@ -731,7 +731,7 @@ class _$RangeImpl implements Range {
     required TResult Function(int value) single,
     required TResult Function(int from, int to) range,
     required TResult Function(List<int> values) list,
-    required TResult Function(int value, int step) step,
+    required TResult Function(CronExpression base, int step) step,
   }) {
     return range(from, to);
   }
@@ -743,7 +743,7 @@ class _$RangeImpl implements Range {
     TResult? Function(int value)? single,
     TResult? Function(int from, int to)? range,
     TResult? Function(List<int> values)? list,
-    TResult? Function(int value, int step)? step,
+    TResult? Function(CronExpression base, int step)? step,
   }) {
     return range?.call(from, to);
   }
@@ -755,7 +755,7 @@ class _$RangeImpl implements Range {
     TResult Function(int value)? single,
     TResult Function(int from, int to)? range,
     TResult Function(List<int> values)? list,
-    TResult Function(int value, int step)? step,
+    TResult Function(CronExpression base, int step)? step,
     required TResult orElse(),
   }) {
     if (range != null) {
@@ -897,7 +897,7 @@ class _$ValuesListImpl implements ValuesList {
     required TResult Function(int value) single,
     required TResult Function(int from, int to) range,
     required TResult Function(List<int> values) list,
-    required TResult Function(int value, int step) step,
+    required TResult Function(CronExpression base, int step) step,
   }) {
     return list(values);
   }
@@ -909,7 +909,7 @@ class _$ValuesListImpl implements ValuesList {
     TResult? Function(int value)? single,
     TResult? Function(int from, int to)? range,
     TResult? Function(List<int> values)? list,
-    TResult? Function(int value, int step)? step,
+    TResult? Function(CronExpression base, int step)? step,
   }) {
     return list?.call(values);
   }
@@ -921,7 +921,7 @@ class _$ValuesListImpl implements ValuesList {
     TResult Function(int value)? single,
     TResult Function(int from, int to)? range,
     TResult Function(List<int> values)? list,
-    TResult Function(int value, int step)? step,
+    TResult Function(CronExpression base, int step)? step,
     required TResult orElse(),
   }) {
     if (list != null) {
@@ -989,7 +989,9 @@ abstract class _$$StepImplCopyWith<$Res> {
           _$StepImpl value, $Res Function(_$StepImpl) then) =
       __$$StepImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int value, int step});
+  $Res call({CronExpression base, int step});
+
+  $CronExpressionCopyWith<$Res> get base;
 }
 
 /// @nodoc
@@ -1004,35 +1006,45 @@ class __$$StepImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = null,
+    Object? base = null,
     Object? step = null,
   }) {
     return _then(_$StepImpl(
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
+      base: null == base
+          ? _value.base
+          : base // ignore: cast_nullable_to_non_nullable
+              as CronExpression,
       step: null == step
           ? _value.step
           : step // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
+
+  /// Create a copy of CronExpression
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CronExpressionCopyWith<$Res> get base {
+    return $CronExpressionCopyWith<$Res>(_value.base, (value) {
+      return _then(_value.copyWith(base: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$StepImpl implements Step {
-  const _$StepImpl({required this.value, required this.step});
+  const _$StepImpl({required this.base, required this.step});
 
   @override
-  final int value;
+  final CronExpression base;
   @override
   final int step;
 
   @override
   String toString() {
-    return 'CronExpression.step(value: $value, step: $step)';
+    return 'CronExpression.step(base: $base, step: $step)';
   }
 
   @override
@@ -1040,12 +1052,12 @@ class _$StepImpl implements Step {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StepImpl &&
-            (identical(other.value, value) || other.value == value) &&
+            (identical(other.base, base) || other.base == base) &&
             (identical(other.step, step) || other.step == step));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, value, step);
+  int get hashCode => Object.hash(runtimeType, base, step);
 
   /// Create a copy of CronExpression
   /// with the given fields replaced by the non-null parameter values.
@@ -1062,9 +1074,9 @@ class _$StepImpl implements Step {
     required TResult Function(int value) single,
     required TResult Function(int from, int to) range,
     required TResult Function(List<int> values) list,
-    required TResult Function(int value, int step) step,
+    required TResult Function(CronExpression base, int step) step,
   }) {
-    return step(value, this.step);
+    return step(base, this.step);
   }
 
   @override
@@ -1074,9 +1086,9 @@ class _$StepImpl implements Step {
     TResult? Function(int value)? single,
     TResult? Function(int from, int to)? range,
     TResult? Function(List<int> values)? list,
-    TResult? Function(int value, int step)? step,
+    TResult? Function(CronExpression base, int step)? step,
   }) {
-    return step?.call(value, this.step);
+    return step?.call(base, this.step);
   }
 
   @override
@@ -1086,11 +1098,11 @@ class _$StepImpl implements Step {
     TResult Function(int value)? single,
     TResult Function(int from, int to)? range,
     TResult Function(List<int> values)? list,
-    TResult Function(int value, int step)? step,
+    TResult Function(CronExpression base, int step)? step,
     required TResult orElse(),
   }) {
     if (step != null) {
-      return step(value, this.step);
+      return step(base, this.step);
     }
     return orElse();
   }
@@ -1137,10 +1149,11 @@ class _$StepImpl implements Step {
 }
 
 abstract class Step implements CronExpression {
-  const factory Step({required final int value, required final int step}) =
-      _$StepImpl;
+  const factory Step(
+      {required final CronExpression base,
+      required final int step}) = _$StepImpl;
 
-  int get value;
+  CronExpression get base;
   int get step;
 
   /// Create a copy of CronExpression

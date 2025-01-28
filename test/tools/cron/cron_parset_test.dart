@@ -96,7 +96,7 @@ void main() {
     test('Cron: 0 9-17/2 * * * (Every 2 hours between 9 AM and 5 PM)', () {
       const cron = Cron(
         minutes: CronExpression.single(0),
-        hours: CronExpression.step(value: 9, step: 2),
+        hours: CronExpression.step(base: CronExpression.single(9), step: 2),
         days: CronExpression.any(),
         months: CronExpression.any(),
         weekdays: CronExpression.any(),

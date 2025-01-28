@@ -69,6 +69,26 @@ extension on CronPart {
     }
   }
 
+  int get minValue {
+    return switch (this) {
+      CronPart.minutes => 0,
+      CronPart.hours => 0,
+      CronPart.days => 0,
+      CronPart.months => 1,
+      CronPart.weekdays => 0,
+    };
+  }
+
+  int get maxValue {
+    return switch (this) {
+      CronPart.minutes => 59,
+      CronPart.hours => 23,
+      CronPart.days => 31,
+      CronPart.months => 12,
+      CronPart.weekdays => 7,
+    };
+  }
+
   String normalized(String expression) {
     switch (this) {
       case CronPart.minutes:
@@ -113,7 +133,7 @@ sealed class CronExpression with _$CronExpression {
 
   // TODO: Looks like value must be inner CronExpression except step one?
   const factory CronExpression.step({
-    required int value,
+    required CronExpression base,
     required int step,
   }) = Step;
 }
@@ -206,15 +226,35 @@ CronExpression parseExpression(String expression, CronPart part) {
       throw const FormatException();
     }
 
-    final value = int.tryParse(parts[0]);
     final step = int.tryParse(parts[1]);
-
-    if (value != null && step != null) {
-      if (!part.checkNumbers([value, step])) {
+    if (step != null) {
+      if (!part.checkNumber(step)) {
         throw const FormatException();
       }
 
-      return CronExpression.step(value: value, step: step);
+      CronExpression base = parseExpression(parts[0], part);
+
+      // N/M cron means from N to max value every M step
+      // e.g. with minutes `30/5` means every 5 minute from 30 to 59.
+      if (base is Single) {
+        base = CronExpression.range(from: base.value, to: part.maxValue);
+      }
+
+      // Step expression only can handle * and -
+      // As say before – single value just mapped into range
+      final isValidBase = switch (base) {
+        Any() => true,
+        Single() => false,
+        Range() => true,
+        ValuesList() => false,
+        Step() => false,
+      };
+
+      if (!isValidBase) {
+        throw const FormatException();
+      }
+
+      return CronExpression.step(base: base, step: step);
     }
   }
 
@@ -228,7 +268,20 @@ extension CronExpressionMatcher on CronExpression {
       single: (v) => value == v,
       range: (from, to) => value >= from && value <= to,
       list: (values) => values.contains(value),
-      step: (v, step) => value >= v && (value - v) % step == 0,
+      step: (v, step) => v.stepMatches(value, step),
+    );
+  }
+
+  // 0 9-17/2 * * *
+  // 9, 11, 13, 15, 17
+  bool stepMatches(int value, int step) {
+    return when(
+      any: () => value % step == 0,
+      single: (v) => value >= v && (value - v) % step == 0,
+      range: (from, to) =>
+          value >= from && value <= to && (value - from) % step == 0,
+      list: (_) => throw Exception(),
+      step: (_, __) => throw Exception(),
     );
   }
 }
