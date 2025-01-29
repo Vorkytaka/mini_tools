@@ -54,7 +54,8 @@ extension on CronExpression {
       any: () => 'every minute',
       single: (value) => 'minute $value',
       range: (from, to) => 'every minute from $from to $to',
-      list: (values) => 'minute ${values.join(', ')}',
+      list: (values) =>
+          'minute ${values.map((value) => value.formatMinutes(t)).join(', ')}',
       step: (base, step) => 'every $step minute ${base.formatMinutes(t)}',
     );
   }
@@ -85,7 +86,7 @@ extension on CronExpression {
       single: (value) => 'in ${value.formatMonth(t)}',
       range: (from, to) =>
           'in every month from ${from.formatMonth(t)} through ${to.formatMonth(t)}',
-      list: (values) => 'in ${values.map((e) => e.formatMonth(t)).join(', ')}',
+      list: (values) => 'in ${values.join(', ')}',
       step: (_, __) => throw Exception(),
     );
   }

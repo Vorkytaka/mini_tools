@@ -129,9 +129,8 @@ sealed class CronExpression with _$CronExpression {
   const factory CronExpression.range({required int from, required int to}) =
       Range;
 
-  const factory CronExpression.list(List<int> values) = ValuesList;
+  const factory CronExpression.list(List<CronExpression> values) = ValuesList;
 
-  // TODO: Looks like value must be inner CronExpression except step one?
   const factory CronExpression.step({
     required CronExpression base,
     required int step,
@@ -179,6 +178,23 @@ CronExpression parseExpression(String expression, CronPart part) {
     return CronExpression.single(singleValue);
   }
 
+  if (expression.contains(',')) {
+    final values = expression.split(',');
+
+    final parts = <CronExpression>[];
+    for (final value in values) {
+      final cronValue = parseExpression(value, part);
+
+      if (cronValue is Any) {
+        throw const FormatException();
+      }
+
+      parts.add(cronValue);
+    }
+
+    return CronExpression.list(parts);
+  }
+
   if (expression.contains('-')) {
     final rangeValues = expression.split('-');
 
@@ -200,23 +216,6 @@ CronExpression parseExpression(String expression, CronPart part) {
 
       return CronExpression.range(from: from, to: to);
     }
-  }
-
-  if (expression.contains(',')) {
-    final values = expression.split(',');
-
-    final intValues = <int>[];
-    for (final value in values) {
-      final intValue = int.tryParse(value);
-
-      if (intValue == null || !part.checkNumber(intValue)) {
-        throw const FormatException();
-      }
-
-      intValues.add(intValue);
-    }
-
-    return CronExpression.list(intValues);
   }
 
   if (expression.contains('/')) {
@@ -267,7 +266,7 @@ extension CronExpressionMatcher on CronExpression {
       any: () => true,
       single: (v) => value == v,
       range: (from, to) => value >= from && value <= to,
-      list: (values) => values.contains(value),
+      list: (values) => values.any((v) => v.matches(value)),
       step: (v, step) => v.stepMatches(value, step),
     );
   }
