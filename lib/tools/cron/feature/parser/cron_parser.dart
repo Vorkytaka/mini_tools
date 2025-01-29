@@ -51,22 +51,11 @@ extension on CronPart {
   }
 
   bool checkNumber(int? number) {
-    if (number == null || number < 0) {
+    if (number == null) {
       return false;
     }
 
-    switch (this) {
-      case CronPart.minutes:
-        return number <= 59;
-      case CronPart.hours:
-        return number <= 23;
-      case CronPart.days:
-        return number <= 31;
-      case CronPart.months:
-        return number > 0 && number <= 12;
-      case CronPart.weekdays:
-        return number <= 7;
-    }
+    return number >= minValue && number <= maxValue;
   }
 
   int get minValue {
@@ -227,7 +216,7 @@ CronExpression parseExpression(String expression, CronPart part) {
 
     final step = int.tryParse(parts[1]);
     if (step != null) {
-      if (!part.checkNumber(step)) {
+      if (!part.checkNumber(step) || step == 0) {
         throw const FormatException();
       }
 
