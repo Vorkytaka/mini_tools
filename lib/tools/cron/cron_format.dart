@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../../i18n/strings.g.dart';
 import 'feature/parser/cron_parser.dart';
@@ -9,99 +9,128 @@ extension CronFormat on Cron {
     final buffer = StringBuffer();
 
     buffer.write('At ');
+
+    // Handle time (minutes and hours)
     if (minutes is Single && hours is Single) {
-      final minutes = this.minutes as Single;
-      final hours = this.hours as Single;
-
-      final m = minutes.value.toString().padLeft(2, '0');
-      final h = hours.value.toString().padLeft(2, '0');
-
-      buffer.write('$h:$m');
+      final m = (minutes as Single).value;
+      final h = (hours as Single).value;
+      final time = TimeOfDay(hour: m, minute: h);
+      buffer.write(time.format(context));
     } else {
       buffer.write(minutes.formatMinutes(t));
-
-      final hours = this.hours.formatHours(t);
-      if (hours != null) {
-        buffer.write(' $hours');
+      final hoursFormatted = hours.formatHours(t);
+      if (hoursFormatted != null) {
+        buffer.write(' $hoursFormatted');
       }
     }
 
-    final days = this.days.formatDays(t);
-    if (days != null) {
-      buffer.write(' $days');
-    }
-
-    final weekdays = this.weekdays.formatWeekday(t);
-    if (weekdays != null) {
-      if (days != null) {
-        buffer.write(' and');
+    // Days and weekdays
+    final daysFormatted = days.formatDays(t);
+    final weekdaysFormatted = weekdays.formatWeekdays(t);
+    if (daysFormatted != null || weekdaysFormatted != null) {
+      buffer.write(' on');
+      if (daysFormatted != null) {
+        buffer.write(' $daysFormatted');
       }
-      buffer.write(' $weekdays');
+      if (weekdaysFormatted != null) {
+        if (daysFormatted != null) {
+          buffer.write(' and');
+        }
+        buffer.write(' $weekdaysFormatted');
+      }
     }
 
-    final months = this.months.formatMonths(t);
-    if (months != null) {
-      buffer.write(' $months');
+    // Months
+    final monthsFormatted = months.formatMonths(t);
+    if (monthsFormatted != null) {
+      buffer.write(' in $monthsFormatted');
     }
 
-    return buffer.toString();
+    return buffer.toString().replaceAll(RegExp(' +'), ' ').trim();
   }
 }
 
-extension on CronExpression {
+extension CronExpressionFormatting on CronExpression {
   String formatMinutes(Translations t) {
     return when(
-      any: () => 'every minute',
-      single: (value) => 'minute $value',
-      range: (from, to) => 'every minute from $from to $to',
-      list: (values) =>
-          'minute ${values.map((value) => value.formatMinutes(t)).join(', ')}',
-      step: (base, step) => 'every $step minute ${base.formatMinutes(t)}',
+      any: () => 'Every minute',
+      single: (v) => 'minute $v',
+      range: (f, t) => 'every minute from $f to $t',
+      list: (values) => _formatList(values, _formatMinutePart),
+      step: (base, step) => _formatStep(base, step, 'minute', 'minutes', t),
     );
   }
 
   String? formatHours(Translations t) {
     return when(
       any: () => null,
-      single: (value) => 'past hour $value',
-      range: (from, to) => 'past every hour from $from through $to',
-      list: (values) => 'past hour ${values.join(', ')}',
-      step: (base, step) => 'every $step hour ${base.formatHours(t)}',
+      single: (v) => 'hour $v',
+      range: (f, t) => 'every hour from $f to $t',
+      list: (values) => 'hours ${_formatList(values, _formatHourPart)}',
+      step: (base, step) => _formatStep(base, step, 'hour', 'hours', t),
     );
   }
 
   String? formatDays(Translations t) {
     return when(
       any: () => null,
-      single: (value) => 'on day-of-month $value',
-      range: (from, to) => 'on every day-of-month from $from through $to',
-      list: (values) => 'on day-of-month ${values.join(', ')}',
-      step: (_, __) => throw Exception(),
+      single: (v) => 'day $v',
+      range: (f, t) => 'every day from $f to $t',
+      list: (values) => 'days ${_formatList(values, _formatDayPart)}',
+      step: (base, step) => _formatStep(base, step, 'day', 'days', t),
     );
   }
 
   String? formatMonths(Translations t) {
     return when(
       any: () => null,
-      single: (value) => 'in ${value.formatMonth(t)}',
-      range: (from, to) =>
-          'in every month from ${from.formatMonth(t)} through ${to.formatMonth(t)}',
-      list: (values) => 'in ${values.join(', ')}',
-      step: (_, __) => throw Exception(),
+      single: (v) => v.formatMonth(t),
+      range: (f, step) => 'from ${f.formatMonth(t)} to ${step.formatMonth(t)}',
+      list: (values) => _formatList(values, (e) => e.formatMonths(t)!),
+      step: (base, step) => _formatStep(base, step, 'month', 'months', t),
     );
   }
 
-  String? formatWeekday(Translations t) {
+  String? formatWeekdays(Translations t) {
     return when(
       any: () => null,
-      single: (value) => 'on ${value.formatWeekday(t)}',
-      range: (from, to) =>
-          'on every day-of-week from ${from.formatWeekday(t)} through ${to.formatWeekday(t)}',
-      list: (values) =>
-          'on ${values.map((e) => e.formatWeekday(t)).join(', ')}',
-      step: (_, __) => throw Exception(),
+      single: (v) => v.formatWeekday(t),
+      range: (f, step) => '${f.formatWeekday(t)} to ${step.formatWeekday(t)}',
+      list: (values) => _formatList(values, (e) => e.formatWeekdays(t)!),
+      step: (base, step) => _formatStep(base, step, 'weekday', 'weekdays', t),
     );
   }
+
+  String _formatStep(
+    CronExpression base,
+    int step,
+    String singular,
+    String plural,
+    Translations t,
+  ) {
+    final stepText = step == 1 ? 'every $singular' : 'every $step $plural';
+    final baseText = base.when(
+      any: () => '',
+      single: (v) => 'starting from $v',
+      range: (r, to) => 'between $r and $to',
+      list: (_) => '',
+      step: (_, __) => '',
+    );
+    return [stepText, baseText].where((s) => s.isNotEmpty).join(' ');
+  }
+
+  String _formatList(
+    List<CronExpression> values,
+    String Function(CronExpression) formatter,
+  ) {
+    return values.map(formatter).join(', ');
+  }
+
+  String _formatMinutePart(CronExpression e) => e.formatMinutes(t);
+
+  String _formatHourPart(CronExpression e) => e.formatHours(t) ?? '';
+
+  String _formatDayPart(CronExpression e) => e.formatDays(t) ?? '';
 }
 
 extension on int {
