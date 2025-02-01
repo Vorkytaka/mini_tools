@@ -352,7 +352,7 @@ extension CronUtils on Cron {
         continue;
       }
 
-      if (!days.matches(current.day) ||
+      if (!days.matches(current.day) &&
           !weekdays.matches(current.weekday % DateTime.daysPerWeek)) {
         current = _nextValidDay(this, current);
         continue;
@@ -397,7 +397,7 @@ extension CronUtils on Cron {
   /// Finds the next valid day (accounting for month and weekdays)
   DateTime _nextValidDay(Cron cron, DateTime current) {
     while (true) {
-      if (cron.days.matches(current.day) &&
+      if (cron.days.matches(current.day) ||
           cron.weekdays.matches(current.weekday % DateTime.daysPerWeek)) {
         return current;
       }
