@@ -14,7 +14,7 @@ extension CronFormat on Cron {
     if (minutes is Single && hours is Single) {
       final m = (minutes as Single).value;
       final h = (hours as Single).value;
-      final time = TimeOfDay(hour: m, minute: h);
+      final time = TimeOfDay(hour: h, minute: m);
       buffer.write(time.format(context));
     } else {
       buffer.write(minutes.formatMinutes(t));
@@ -57,7 +57,7 @@ extension CronExpressionFormatting on CronExpression {
       single: (v) => 'minute $v',
       range: (f, t) => 'every minute from $f to $t',
       list: (values) => _formatList(values, _formatMinutePart),
-      step: (base, step) => _formatStep(base, step, 'minute', 'minutes', t),
+      step: (base, step) => _formatStep(base, 'every $step minutes', t),
     );
   }
 
@@ -67,17 +67,17 @@ extension CronExpressionFormatting on CronExpression {
       single: (v) => 'hour $v',
       range: (f, t) => 'every hour from $f to $t',
       list: (values) => 'hours ${_formatList(values, _formatHourPart)}',
-      step: (base, step) => _formatStep(base, step, 'hour', 'hours', t),
+      step: (base, step) => _formatStep(base, 'every $step hours', t),
     );
   }
 
   String? formatDays(Translations t) {
     return when(
       any: () => null,
-      single: (v) => 'day $v',
-      range: (f, t) => 'every day from $f to $t',
-      list: (values) => 'days ${_formatList(values, _formatDayPart)}',
-      step: (base, step) => _formatStep(base, step, 'day', 'days', t),
+      single: (v) => 'day-of-month $v',
+      range: (f, t) => 'every day-of-month from $f to $t',
+      list: (values) => _formatList(values, _formatDayPart),
+      step: (base, step) => _formatStep(base, 'every $step days', t),
     );
   }
 
@@ -87,28 +87,26 @@ extension CronExpressionFormatting on CronExpression {
       single: (v) => v.formatMonth(t),
       range: (f, step) => 'from ${f.formatMonth(t)} to ${step.formatMonth(t)}',
       list: (values) => _formatList(values, (e) => e.formatMonths(t)!),
-      step: (base, step) => _formatStep(base, step, 'month', 'months', t),
+      step: (base, step) => _formatStep(base, 'every $step months', t),
     );
   }
 
   String? formatWeekdays(Translations t) {
     return when(
       any: () => null,
-      single: (v) => v.formatWeekday(t),
-      range: (f, step) => '${f.formatWeekday(t)} to ${step.formatWeekday(t)}',
+      single: (v) => 'on ${v.formatWeekday(t)}',
+      range: (f, step) =>
+          'every day-of-week from ${f.formatWeekday(t)} to ${step.formatWeekday(t)}',
       list: (values) => _formatList(values, (e) => e.formatWeekdays(t)!),
-      step: (base, step) => _formatStep(base, step, 'weekday', 'weekdays', t),
+      step: (base, step) => _formatStep(base, 'every $step day-of-week', t),
     );
   }
 
   String _formatStep(
     CronExpression base,
-    int step,
-    String singular,
-    String plural,
+    String stepText,
     Translations t,
   ) {
-    final stepText = step == 1 ? 'every $singular' : 'every $step $plural';
     final baseText = base.when(
       any: () => '',
       single: (v) => 'starting from $v',

@@ -2,15 +2,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'cron_parser.freezed.dart';
 
-final _monthsRegExp = RegExp(
-  'JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC',
-  caseSensitive: false,
-);
+final _monthsRegExp = RegExp('JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC');
 
-final _weekdayRegExp = RegExp(
-  'SUN|MON|TUE|WED|THU|FRI|SAT',
-  caseSensitive: false,
-);
+final _weekdayRegExp = RegExp('SUN|MON|TUE|WED|THU|FRI|SAT');
 
 const _monthNames = {
   'JAN': '1',
@@ -35,6 +29,57 @@ const _weekdayNames = {
   'THU': '4',
   'FRI': '5',
   'SAT': '6'
+};
+
+const _nonStandard = {
+  // 0 * * * *
+  '@hourly': Cron(
+    minutes: CronExpression.single(0),
+    hours: CronExpression.any(),
+    days: CronExpression.any(),
+    months: CronExpression.any(),
+    weekdays: CronExpression.any(),
+  ),
+  // 0 0 * * *
+  '@daily': Cron(
+    minutes: CronExpression.single(0),
+    hours: CronExpression.single(0),
+    days: CronExpression.any(),
+    months: CronExpression.any(),
+    weekdays: CronExpression.any(),
+  ),
+  // 0 0 * * 0
+  '@weekly': Cron(
+    minutes: CronExpression.single(0),
+    hours: CronExpression.single(0),
+    days: CronExpression.any(),
+    months: CronExpression.any(),
+    weekdays: CronExpression.single(0),
+  ),
+  // 0 0 1 * *
+  '@monthly': Cron(
+    minutes: CronExpression.single(0),
+    hours: CronExpression.single(0),
+    days: CronExpression.single(1),
+    months: CronExpression.any(),
+    weekdays: CronExpression.any(),
+  ),
+  // 0 0 1 * *
+  '@annually': Cron(
+    minutes: CronExpression.single(0),
+    hours: CronExpression.single(0),
+    days: CronExpression.single(1),
+    months: CronExpression.single(1),
+    weekdays: CronExpression.any(),
+  ),
+  // 0 0 1 * *
+  '@yearly': Cron(
+    minutes: CronExpression.single(0),
+    hours: CronExpression.single(0),
+    days: CronExpression.single(1),
+    months: CronExpression.single(1),
+    weekdays: CronExpression.any(),
+  ),
 };
 
 enum CronPart {
@@ -62,7 +107,7 @@ extension on CronPart {
     return switch (this) {
       CronPart.minutes => 0,
       CronPart.hours => 0,
-      CronPart.days => 0,
+      CronPart.days => 1,
       CronPart.months => 1,
       CronPart.weekdays => 0,
     };
@@ -74,7 +119,7 @@ extension on CronPart {
       CronPart.hours => 23,
       CronPart.days => 31,
       CronPart.months => 12,
-      CronPart.weekdays => 7,
+      CronPart.weekdays => 6,
     };
   }
 
@@ -89,9 +134,10 @@ extension on CronPart {
           return _monthNames[match.group(0)!]!;
         });
       case CronPart.weekdays:
-        return expression.replaceAllMapped(_weekdayRegExp, (match) {
-          return _weekdayNames[match.group(0)!]!;
-        });
+        return expression
+            .replaceAllMapped(
+                _weekdayRegExp, (match) => _weekdayNames[match.group(0)!]!)
+            .replaceAll('7', '0');
     }
   }
 }
@@ -129,8 +175,14 @@ sealed class CronExpression with _$CronExpression {
 final _whitespacesRegExp = RegExp(r'\s+');
 
 Cron parseCron(String cron) {
-  // todo: non-standard
+  cron = cron.trim();
 
+  final nonStandard = _nonStandard[cron];
+  if (nonStandard != null) {
+    return nonStandard;
+  }
+
+  cron = cron.toUpperCase();
   final parts = cron.split(_whitespacesRegExp);
 
   if (parts.length != 5) {
@@ -228,6 +280,10 @@ CronExpression parseExpression(String expression, CronPart part) {
         base = CronExpression.range(from: base.value, to: part.maxValue);
       }
 
+      if (step == 1) {
+        return base;
+      }
+
       // Step expression only can handle * and -
       // As say before – single value just mapped into range
       final isValidBase = switch (base) {
@@ -296,7 +352,8 @@ extension CronUtils on Cron {
         continue;
       }
 
-      if (!days.matches(current.day) || !weekdays.matches(current.weekday)) {
+      if (!days.matches(current.day) ||
+          !weekdays.matches(current.weekday % DateTime.daysPerWeek)) {
         current = _nextValidDay(this, current);
         continue;
       }
@@ -341,7 +398,7 @@ extension CronUtils on Cron {
   DateTime _nextValidDay(Cron cron, DateTime current) {
     while (true) {
       if (cron.days.matches(current.day) &&
-          cron.weekdays.matches(current.weekday)) {
+          cron.weekdays.matches(current.weekday % DateTime.daysPerWeek)) {
         return current;
       }
       current = current.add(const Duration(days: 1));
