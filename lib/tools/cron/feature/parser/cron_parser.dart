@@ -352,8 +352,26 @@ extension CronUtils on Cron {
         continue;
       }
 
-      if (!days.matches(current.day) &&
-          !weekdays.matches(current.weekday % DateTime.daysPerWeek)) {
+      // Check if either days or weekdays are specified and if the current day matches
+      final bool daysIsAny = days is Any;
+      final bool weekdaysIsAny = weekdays is Any;
+      final bool dayMatches;
+
+      if (!daysIsAny && !weekdaysIsAny) {
+        // Both are specified: day must match either
+        dayMatches = days.matches(current.day) ||
+            weekdays.matches(current.weekday % DateTime.daysPerWeek);
+      } else if (!daysIsAny) {
+        // Only days are specified
+        dayMatches = days.matches(current.day);
+      } else if (!weekdaysIsAny) {
+        // Only weekdays are specified
+        dayMatches = weekdays.matches(current.weekday % DateTime.daysPerWeek);
+      } else {
+        dayMatches = true;
+      }
+
+      if (!dayMatches) {
         current = _nextValidDay(this, current);
         continue;
       }
@@ -397,8 +415,25 @@ extension CronUtils on Cron {
   /// Finds the next valid day (accounting for month and weekdays)
   DateTime _nextValidDay(Cron cron, DateTime current) {
     while (true) {
-      if (cron.days.matches(current.day) ||
-          cron.weekdays.matches(current.weekday % DateTime.daysPerWeek)) {
+      final bool daysIsAny = cron.days is Any;
+      final bool weekdaysIsAny = cron.weekdays is Any;
+      final bool dayMatches;
+
+      if (!daysIsAny && !weekdaysIsAny) {
+        // Both are specified: day must match either
+        dayMatches = days.matches(current.day) ||
+            weekdays.matches(current.weekday % DateTime.daysPerWeek);
+      } else if (!daysIsAny) {
+        // Only days are specified
+        dayMatches = days.matches(current.day);
+      } else if (!weekdaysIsAny) {
+        // Only weekdays are specified
+        dayMatches = weekdays.matches(current.weekday % DateTime.daysPerWeek);
+      } else {
+        dayMatches = true;
+      }
+
+      if (dayMatches) {
         return current;
       }
       current = current.add(const Duration(days: 1));
