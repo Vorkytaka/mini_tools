@@ -3,6 +3,8 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../../common/datetime.dart';
+import '../../common/padding.dart';
 import 'cron_format.dart';
 import 'feature/cron_feature.dart';
 import 'feature/parser/cron_parser.dart';
@@ -29,12 +31,33 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        _CronInput(),
-        _HumanReadCron(),
-        _NextAt(),
-      ],
+    return Padding(
+      padding: panePadding,
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: headlinePadding,
+            child: Row(
+              children: [
+                Text('Input:'),
+              ],
+            ),
+          ),
+          const SizedBox(height: 8),
+          _CronInput(),
+          const SizedBox(height: 16),
+          Padding(
+            padding: headlinePadding,
+            child: _HumanReadCron(),
+          ),
+          const SizedBox(height: 8),
+          Padding(
+            padding: headlinePadding,
+            child: _NextAt(),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -91,7 +114,7 @@ class _HumanReadCron extends StatelessWidget {
       builder: (context, state) {
         final cron = state.cron;
 
-        if(cron == null) {
+        if (cron == null) {
           return const SizedBox();
         }
 
@@ -103,6 +126,22 @@ class _HumanReadCron extends StatelessWidget {
 
 class _NextAt extends StatelessWidget {
   const _NextAt();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Next at:'),
+        const SizedBox(width: 8),
+        Expanded(child: _NextAtList()),
+      ],
+    );
+  }
+}
+
+class _NextAtList extends StatelessWidget {
+  const _NextAtList();
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +167,7 @@ class _NextAt extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            for (final next in nexts) Text(next.toIso8601String()),
+            for (final next in nexts) Text(next.toRfc2822String()),
           ],
         );
       },

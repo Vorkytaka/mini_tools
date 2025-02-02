@@ -8,6 +8,7 @@ extension CronFormat on Cron {
     final t = Translations.of(context);
     final buffer = StringBuffer();
 
+    buffer.write('“');
     buffer.write('At ');
 
     // Handle time (minutes and hours)
@@ -45,6 +46,8 @@ extension CronFormat on Cron {
     if (monthsFormatted != null) {
       buffer.write(' in $monthsFormatted');
     }
+
+    buffer.write('“');
 
     return buffer.toString().replaceAll(RegExp(' +'), ' ').trim();
   }
