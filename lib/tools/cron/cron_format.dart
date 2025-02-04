@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../common/list_utils.dart';
 import '../../i18n/strings.g.dart';
 import 'feature/parser/cron_parser.dart';
 
@@ -7,9 +8,6 @@ extension CronFormat on Cron {
   String format(BuildContext context) {
     final t = Translations.of(context);
     final buffer = StringBuffer();
-
-    buffer.write('“');
-    buffer.write('At ');
 
     // Handle time (minutes and hours)
     if (minutes is Single && hours is Single) {
@@ -29,13 +27,13 @@ extension CronFormat on Cron {
     final daysFormatted = days.formatDays(t);
     final weekdaysFormatted = weekdays.formatWeekdays(t);
     if (daysFormatted != null || weekdaysFormatted != null) {
-      buffer.write(' on');
+      buffer.write(' ${t.common.on}');
       if (daysFormatted != null) {
         buffer.write(' $daysFormatted');
       }
       if (weekdaysFormatted != null) {
         if (daysFormatted != null) {
-          buffer.write(' and');
+          buffer.write(' ${t.common.and}');
         }
         buffer.write(' $weekdaysFormatted');
       }
@@ -44,87 +42,120 @@ extension CronFormat on Cron {
     // Months
     final monthsFormatted = months.formatMonths(t);
     if (monthsFormatted != null) {
-      buffer.write(' in $monthsFormatted');
+      buffer.write(' ${t.common.inWord} $monthsFormatted');
     }
 
-    buffer.write('“');
-
-    return buffer.toString().replaceAll(RegExp(' +'), ' ').trim();
+    return t.cron.cronFormat
+        .atWhatTime(str: buffer.toString())
+        .replaceAll(RegExp(' +'), ' ')
+        .trim();
   }
 }
 
 extension CronExpressionFormatting on CronExpression {
   String formatMinutes(Translations t) {
+    String rangeMapper(int from, int to) => t.cron.cronFormat.minutes.range(
+          from: from,
+          to: to,
+        );
+
     return when(
-      any: () => 'Every minute',
-      single: (v) => 'minute $v',
-      range: (f, t) => 'every minute from $f to $t',
-      list: (values) => _formatList(values, _formatMinutePart),
-      step: (base, step) => _formatStep(base, 'every $step minutes', t),
+      any: () => t.cron.cronFormat.minutes.any,
+      single: (value) => t.cron.cronFormat.minutes.single(minute: value),
+      range: rangeMapper,
+      list: (values) => _formatList(values, _formatMinutePart, t),
+      step: (base, step) => _formatStep(
+        base.rangeMap(rangeMapper),
+        t.cron.cronFormat.minutes.step(n: step, step: step),
+      ),
     );
   }
 
   String? formatHours(Translations t) {
+    String rangeMapper(int from, int to) => t.cron.cronFormat.hours.range(
+          from: from,
+          to: to,
+        );
+
     return when(
       any: () => null,
-      single: (v) => 'hour $v',
-      range: (f, t) => 'every hour from $f to $t',
-      list: (values) => 'hours ${_formatList(values, _formatHourPart)}',
-      step: (base, step) => _formatStep(base, 'every $step hours', t),
+      single: (value) => t.cron.cronFormat.hours.single(hour: value),
+      range: rangeMapper,
+      list: (values) => _formatList(values, _formatHourPart, t),
+      step: (base, step) => _formatStep(
+        base.rangeMap(rangeMapper),
+        t.cron.cronFormat.hours.step(n: step, step: step),
+      ),
     );
   }
 
   String? formatDays(Translations t) {
+    String rangeMapper(int from, int to) => t.cron.cronFormat.days.range(
+          from: from,
+          to: to,
+        );
+
     return when(
       any: () => null,
-      single: (v) => 'day-of-month $v',
-      range: (f, t) => 'every day-of-month from $f to $t',
-      list: (values) => _formatList(values, _formatDayPart),
-      step: (base, step) => _formatStep(base, 'every $step days', t),
+      single: (value) => t.cron.cronFormat.days.single(day: value),
+      range: rangeMapper,
+      list: (values) => _formatList(values, _formatDayPart, t),
+      step: (base, step) => _formatStep(
+        base.rangeMap(rangeMapper),
+        t.cron.cronFormat.days.step(n: step, step: step),
+      ),
     );
   }
 
   String? formatMonths(Translations t) {
+    String rangeMapper(int from, int to) => t.cron.cronFormat.months.range(
+          from: from.formatMonth(t),
+          to: to.formatMonth(t),
+        );
     return when(
       any: () => null,
       single: (v) => v.formatMonth(t),
-      range: (f, step) => 'from ${f.formatMonth(t)} to ${step.formatMonth(t)}',
-      list: (values) => _formatList(values, (e) => e.formatMonths(t)!),
-      step: (base, step) => _formatStep(base, 'every $step months', t),
+      range: rangeMapper,
+      list: (values) => _formatList(values, (e) => e.formatMonths(t)!, t),
+      step: (base, step) => _formatStep(
+        base.rangeMap(rangeMapper),
+        t.cron.cronFormat.months.step(n: step, step: step),
+      ),
     );
   }
 
   String? formatWeekdays(Translations t) {
+    String rangeMapper(int from, int to) => t.cron.cronFormat.daysOfWeek.range(
+          from: from.formatWeekday(t),
+          to: to.formatWeekday(t),
+        );
     return when(
       any: () => null,
-      single: (v) => 'on ${v.formatWeekday(t)}',
-      range: (f, step) =>
-          'every day-of-week from ${f.formatWeekday(t)} to ${step.formatWeekday(t)}',
-      list: (values) => _formatList(values, (e) => e.formatWeekdays(t)!),
-      step: (base, step) => _formatStep(base, 'every $step day-of-week', t),
+      single: (v) => v.formatWeekday(t),
+      range: rangeMapper,
+      list: (values) => _formatList(values, (e) => e.formatWeekdays(t)!, t),
+      step: (base, step) => _formatStep(
+        base.rangeMap(rangeMapper),
+        t.cron.cronFormat.daysOfWeek.step(n: step, step: step),
+      ),
     );
   }
 
   String _formatStep(
-    CronExpression base,
+    String baseText,
     String stepText,
-    Translations t,
   ) {
-    final baseText = base.when(
-      any: () => '',
-      single: (v) => 'starting from $v',
-      range: (r, to) => 'between $r and $to',
-      list: (_) => '',
-      step: (_, __) => '',
-    );
     return [stepText, baseText].where((s) => s.isNotEmpty).join(' ');
   }
 
   String _formatList(
     List<CronExpression> values,
     String Function(CronExpression) formatter,
+    Translations t,
   ) {
-    return values.map(formatter).join(', ');
+    return values
+        .map(formatter)
+        .joinWithLast(t.common.textSeparator, ' ${t.common.and} ');
   }
 
   String _formatMinutePart(CronExpression e) => e.formatMinutes(t);
@@ -136,34 +167,20 @@ extension CronExpressionFormatting on CronExpression {
 
 extension on int {
   String formatMonth(Translations t) {
-    return switch (this) {
-      1 => 'JUN',
-      2 => 'FEB',
-      3 => 'MAR',
-      4 => 'APR',
-      5 => 'MAY',
-      6 => 'JUN',
-      7 => 'JUL',
-      8 => 'AUG',
-      9 => 'SEP',
-      10 => 'OCT',
-      11 => 'NOV',
-      12 => 'DEC',
-      _ => throw Exception(),
-    };
+    return t.common.months.full[this - 1];
   }
 
   String formatWeekday(Translations t) {
-    return switch (this) {
-      0 => 'SUN',
-      1 => 'MON',
-      2 => 'TUE',
-      3 => 'WED',
-      4 => 'THU',
-      5 => 'FRI',
-      6 => 'SAT',
-      7 => 'SUN',
-      _ => throw Exception(),
-    };
+    return t.common.dayOfWeek.full[this];
+  }
+}
+
+extension on CronExpression {
+  // Dirty hack for step cases
+  T rangeMap<T>(T Function(int from, int to) map) {
+    return maybeWhen(
+      range: map,
+      orElse: () => throw const FormatException(),
+    );
   }
 }

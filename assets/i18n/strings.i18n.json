@@ -10,7 +10,39 @@
     "percent": "%",
     "file_drop_title": "Drop file here",
     "cancel": "Cancel",
-    "paste": "Paste"
+    "paste": "Paste",
+    "and": "and",
+    "on": "on",
+    "inWord": "in",
+    "text_separator": ", ",
+    "dayOfWeek": {
+      "full": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ]
+    },
+    "months": {
+      "full": [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ]
+    }
   },
   "unix_timestamp": {
     "title": "Unix timestamp",
@@ -175,5 +207,60 @@
     },
     "generate": "Generate",
     "lowercase": "Lowercase"
+  },
+  "cron": {
+    "cron_format": {
+      "at_what_time": "“At $str“",
+      "minutes": {
+        "any": "every minute",
+        "single": "minute $minute",
+        "range": "every minute from $from to $to",
+        "step(ordinal)": {
+          "one": "every minute",
+          "two": "every ${step}nd minutes",
+          "few": "every ${step}rd minutes",
+          "other": "every ${step}th minutes"
+        }
+      },
+      "hours": {
+        "single": "hour $hour",
+        "range": "every hour from $from to $to",
+        "step(ordinal)": {
+          "one": "every hour",
+          "two": "every ${step}nd hours",
+          "few": "every ${step}rd hours",
+          "other": "every ${step}th hours"
+        }
+      },
+      "days": {
+        "single": "day-of-month $day",
+        "range": "every day-of-month from $from to $to",
+        "step(ordinal)": {
+          "one": "every day-of-month",
+          "two": "every ${step}nd day-of-month",
+          "few": "every ${step}rd day-of-month",
+          "other": "every ${step}th day-of-month"
+        }
+      },
+      "months": {
+        "range": "from $from to $to",
+        "step(ordinal)": {
+          "one": "every month",
+          "two": "every ${step}nd month",
+          "few": "every ${step}rd month",
+          "other": "every ${step}th month"
+        }
+      },
+      "daysOfWeek": {
+        "range": "every day-of-week from $from to $to",
+        "step(ordinal)": {
+          "one": "every day-of-week",
+          "two": "every ${step}nd day-of-week",
+          "few": "every ${step}rd day-of-week",
+          "other": "every ${step}th day-of-week"
+        }
+      },
+      "step": "between $from to $to"
+    }
   }
 }

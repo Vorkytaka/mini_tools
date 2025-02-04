@@ -70,7 +70,7 @@ class _CronInput extends StatefulWidget {
 }
 
 class _CronInputState extends State<_CronInput> {
-  final _controller = TextEditingController();
+  final _controller = _CronTextEditingController();
 
   @override
   void initState() {
@@ -172,5 +172,14 @@ class _NextAtList extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+class _CronTextEditingController extends TextEditingController {
+  @override
+  set selection(TextSelection newSelection) {
+    super.selection = newSelection;
+
+    print(selection);
   }
 }
