@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../common/regexp.dart';
+
 part 'cron_parser.freezed.dart';
 
 final _monthsRegExp = RegExp('JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC');
@@ -172,8 +174,6 @@ sealed class CronExpression with _$CronExpression {
   }) = Step;
 }
 
-final _whitespacesRegExp = RegExp(r'\s+');
-
 Cron parseCron(String cron) {
   cron = cron.trim();
 
@@ -183,7 +183,7 @@ Cron parseCron(String cron) {
   }
 
   cron = cron.toUpperCase();
-  final parts = cron.split(_whitespacesRegExp);
+  final parts = cron.split(RegExps.whitespacesRegExp);
 
   if (parts.length != 5) {
     throw const FormatException();
@@ -220,7 +220,7 @@ CronExpression parseExpression(String expression, CronPart part) {
   }
 
   if (expression.contains(',')) {
-    final values = expression.split(',');
+    final values = expression.split(',').toSet();
 
     final parts = <CronExpression>[];
     for (final value in values) {
