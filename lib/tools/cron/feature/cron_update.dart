@@ -14,7 +14,7 @@ Next<CronState, void> cronUpdate(CronState state, CronMessage message) {
       Cron? cron;
       try {
         cron = parseCron(message.input);
-      } on FormatException catch (e, s) {
+      } on FormatException catch (_) {
         cron = null;
       }
       return next(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../common/list_utils.dart';
+import '../../common/regexp.dart';
 import '../../i18n/strings.g.dart';
 import 'feature/parser/cron_parser.dart';
 
@@ -47,7 +48,7 @@ extension CronFormat on Cron {
 
     return t.cron.cronFormat
         .atWhatTime(str: buffer.toString())
-        .replaceAll(RegExp(' +'), ' ')
+        .replaceAll(RegExps.whitespacesRegExp, ' ')
         .trim();
   }
 }
@@ -177,8 +178,9 @@ extension on int {
 
 extension on CronExpression {
   // Dirty hack for step cases
-  T rangeMap<T>(T Function(int from, int to) map) {
+  String rangeMap(String Function(int from, int to) map) {
     return maybeWhen(
+      any: () => '',
       range: map,
       orElse: () => throw const FormatException(),
     );

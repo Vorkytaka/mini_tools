@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../common/datetime.dart';
 import '../../common/padding.dart';
+import '../../i18n/strings.g.dart';
 import 'cron_format.dart';
 import 'feature/cron_feature.dart';
 import 'feature/parser/cron_parser.dart';
@@ -14,10 +15,12 @@ class CronToolScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return MacosScaffold(
       toolBar: ToolBar(
         centerTitle: true,
-        title: Text('Cron parser'),
+        title: Text(t.cron.title),
       ),
       children: [
         ContentArea(builder: (context, _) => const _Body()),
@@ -31,28 +34,33 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Padding(
       padding: panePadding,
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: headlinePadding,
             child: Row(
               children: [
-                Text('Input:'),
+                Text(t.common.input),
               ],
             ),
           ),
           const SizedBox(height: 8),
-          _CronInput(),
+          const SizedBox(
+            width: 300,
+            child: _CronInput(),
+          ),
           const SizedBox(height: 16),
-          Padding(
+          const Padding(
             padding: headlinePadding,
             child: _HumanReadCron(),
           ),
           const SizedBox(height: 8),
-          Padding(
+          const Padding(
             padding: headlinePadding,
             child: _NextAt(),
           ),
@@ -70,7 +78,7 @@ class _CronInput extends StatefulWidget {
 }
 
 class _CronInputState extends State<_CronInput> {
-  final _controller = _CronTextEditingController();
+  final _controller = TextEditingController();
 
   @override
   void initState() {
@@ -93,8 +101,13 @@ class _CronInputState extends State<_CronInput> {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return MacosTextField(
       controller: _controller,
+      minLines: 1,
+      maxLines: 1,
+      placeholder: t.cron.cronHint,
     );
   }
 
@@ -129,13 +142,26 @@ class _NextAt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text('Next at:'),
-        const SizedBox(width: 8),
-        Expanded(child: _NextAtList()),
-      ],
+    final t = Translations.of(context);
+
+    return FeatureBuilder<CronFeature, CronState>(
+      buildWhen: (prev, curr) => prev.cron != curr.cron,
+      builder: (context, state) {
+        final cron = state.cron;
+
+        if (cron == null) {
+          return const SizedBox();
+        }
+
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(t.cron.nextAt),
+            const SizedBox(width: 8),
+            const Expanded(child: _NextAtList()),
+          ],
+        );
+      },
     );
   }
 }
@@ -162,24 +188,18 @@ class _NextAtList extends StatelessWidget {
           nexts.add(next);
         }
 
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            for (final next in nexts) Text(next.toRfc2822String()),
-          ],
+        return DefaultTextStyle.merge(
+          style: const TextStyle(fontFamily: 'Fira Code'),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (final next in nexts) Text(next.toRfc2822String()),
+            ],
+          ),
         );
       },
     );
-  }
-}
-
-class _CronTextEditingController extends TextEditingController {
-  @override
-  set selection(TextSelection newSelection) {
-    super.selection = newSelection;
-
-    print(selection);
   }
 }

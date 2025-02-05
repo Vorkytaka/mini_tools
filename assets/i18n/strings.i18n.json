@@ -209,6 +209,9 @@
     "lowercase": "Lowercase"
   },
   "cron": {
+    "title": "Cron Parser",
+    "next_at": "Next at:",
+    "cron_hint": "* * * * *",
     "cron_format": {
       "at_what_time": "“At $str“",
       "minutes": {
