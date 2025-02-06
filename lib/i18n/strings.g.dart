@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 129
+/// Strings: 187
 ///
-/// Built on 2025-01-21 at 21:42 UTC
+/// Built on 2025-02-05 at 22:33 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -204,6 +204,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
   late final _StringsSqliteEn sqlite = _StringsSqliteEn._(_root);
   late final _StringsUuidGeneratorEn uuidGenerator =
       _StringsUuidGeneratorEn._(_root);
+  late final _StringsCronEn cron = _StringsCronEn._(_root);
 }
 
 // Path: common
@@ -224,6 +225,13 @@ class _StringsCommonEn {
   String get fileDropTitle => 'Drop file here';
   String get cancel => 'Cancel';
   String get paste => 'Paste';
+  String get and => 'and';
+  String get on => 'on';
+  String get inWord => 'in';
+  String get textSeparator => ', ';
+  late final _StringsCommonDayOfWeekEn dayOfWeek =
+      _StringsCommonDayOfWeekEn._(_root);
+  late final _StringsCommonMonthsEn months = _StringsCommonMonthsEn._(_root);
 }
 
 // Path: unixTimestamp
@@ -396,6 +404,62 @@ class _StringsUuidGeneratorEn {
       _StringsUuidGeneratorNamespacesEn._(_root);
   String get generate => 'Generate';
   String get lowercase => 'Lowercase';
+}
+
+// Path: cron
+class _StringsCronEn {
+  _StringsCronEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Cron Parser';
+  String get nextAt => 'Next at:';
+  String get cronHint => '* * * * *';
+  late final _StringsCronCronFormatEn cronFormat =
+      _StringsCronCronFormatEn._(_root);
+}
+
+// Path: common.dayOfWeek
+class _StringsCommonDayOfWeekEn {
+  _StringsCommonDayOfWeekEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  List<String> get full => [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ];
+}
+
+// Path: common.months
+class _StringsCommonMonthsEn {
+  _StringsCommonMonthsEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  List<String> get full => [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ];
 }
 
 // Path: unixTimestamp.inputType
@@ -572,6 +636,127 @@ class _StringsUuidGeneratorNamespacesEn {
   String get max => 'MAX';
 }
 
+// Path: cron.cronFormat
+class _StringsCronCronFormatEn {
+  _StringsCronCronFormatEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String atWhatTime({required Object str}) => '“At ${str}“';
+  late final _StringsCronCronFormatMinutesEn minutes =
+      _StringsCronCronFormatMinutesEn._(_root);
+  late final _StringsCronCronFormatHoursEn hours =
+      _StringsCronCronFormatHoursEn._(_root);
+  late final _StringsCronCronFormatDaysEn days =
+      _StringsCronCronFormatDaysEn._(_root);
+  late final _StringsCronCronFormatMonthsEn months =
+      _StringsCronCronFormatMonthsEn._(_root);
+  late final _StringsCronCronFormatDaysOfWeekEn daysOfWeek =
+      _StringsCronCronFormatDaysOfWeekEn._(_root);
+  String step({required Object from, required Object to}) =>
+      'between ${from} to ${to}';
+}
+
+// Path: cron.cronFormat.minutes
+class _StringsCronCronFormatMinutesEn {
+  _StringsCronCronFormatMinutesEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get any => 'every minute';
+  String single({required Object minute}) => 'minute ${minute}';
+  String range({required Object from, required Object to}) =>
+      'every minute from ${from} to ${to}';
+  String step({required num n, required Object step}) =>
+      (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
+        n,
+        one: 'every minute',
+        two: 'every ${step}nd minutes',
+        few: 'every ${step}rd minutes',
+        other: 'every ${step}th minutes',
+      );
+}
+
+// Path: cron.cronFormat.hours
+class _StringsCronCronFormatHoursEn {
+  _StringsCronCronFormatHoursEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String single({required Object hour}) => 'hour ${hour}';
+  String range({required Object from, required Object to}) =>
+      'every hour from ${from} to ${to}';
+  String step({required num n, required Object step}) =>
+      (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
+        n,
+        one: 'every hour',
+        two: 'every ${step}nd hours',
+        few: 'every ${step}rd hours',
+        other: 'every ${step}th hours',
+      );
+}
+
+// Path: cron.cronFormat.days
+class _StringsCronCronFormatDaysEn {
+  _StringsCronCronFormatDaysEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String single({required Object day}) => 'day-of-month ${day}';
+  String range({required Object from, required Object to}) =>
+      'every day-of-month from ${from} to ${to}';
+  String step({required num n, required Object step}) =>
+      (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
+        n,
+        one: 'every day-of-month',
+        two: 'every ${step}nd day-of-month',
+        few: 'every ${step}rd day-of-month',
+        other: 'every ${step}th day-of-month',
+      );
+}
+
+// Path: cron.cronFormat.months
+class _StringsCronCronFormatMonthsEn {
+  _StringsCronCronFormatMonthsEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String range({required Object from, required Object to}) =>
+      'from ${from} to ${to}';
+  String step({required num n, required Object step}) =>
+      (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
+        n,
+        one: 'every month',
+        two: 'every ${step}nd month',
+        few: 'every ${step}rd month',
+        other: 'every ${step}th month',
+      );
+}
+
+// Path: cron.cronFormat.daysOfWeek
+class _StringsCronCronFormatDaysOfWeekEn {
+  _StringsCronCronFormatDaysOfWeekEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String range({required Object from, required Object to}) =>
+      'every day-of-week from ${from} to ${to}';
+  String step({required num n, required Object step}) =>
+      (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
+        n,
+        one: 'every day-of-week',
+        two: 'every ${step}nd day-of-week',
+        few: 'every ${step}rd day-of-week',
+        other: 'every ${step}th day-of-week',
+      );
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -600,6 +785,54 @@ extension on Translations {
         return 'Cancel';
       case 'common.paste':
         return 'Paste';
+      case 'common.and':
+        return 'and';
+      case 'common.on':
+        return 'on';
+      case 'common.inWord':
+        return 'in';
+      case 'common.textSeparator':
+        return ', ';
+      case 'common.dayOfWeek.full.0':
+        return 'Sunday';
+      case 'common.dayOfWeek.full.1':
+        return 'Monday';
+      case 'common.dayOfWeek.full.2':
+        return 'Tuesday';
+      case 'common.dayOfWeek.full.3':
+        return 'Wednesday';
+      case 'common.dayOfWeek.full.4':
+        return 'Thursday';
+      case 'common.dayOfWeek.full.5':
+        return 'Friday';
+      case 'common.dayOfWeek.full.6':
+        return 'Saturday';
+      case 'common.dayOfWeek.full.7':
+        return 'Sunday';
+      case 'common.months.full.0':
+        return 'January';
+      case 'common.months.full.1':
+        return 'February';
+      case 'common.months.full.2':
+        return 'March';
+      case 'common.months.full.3':
+        return 'April';
+      case 'common.months.full.4':
+        return 'May';
+      case 'common.months.full.5':
+        return 'June';
+      case 'common.months.full.6':
+        return 'July';
+      case 'common.months.full.7':
+        return 'August';
+      case 'common.months.full.8':
+        return 'September';
+      case 'common.months.full.9':
+        return 'October';
+      case 'common.months.full.10':
+        return 'November';
+      case 'common.months.full.11':
+        return 'December';
       case 'unixTimestamp.title':
         return 'Unix timestamp';
       case 'unixTimestamp.inputType.sec':
@@ -840,6 +1073,85 @@ extension on Translations {
         return 'Generate';
       case 'uuidGenerator.lowercase':
         return 'Lowercase';
+      case 'cron.title':
+        return 'Cron Parser';
+      case 'cron.nextAt':
+        return 'Next at:';
+      case 'cron.cronHint':
+        return '* * * * *';
+      case 'cron.cronFormat.atWhatTime':
+        return ({required Object str}) => '“At ${str}“';
+      case 'cron.cronFormat.minutes.any':
+        return 'every minute';
+      case 'cron.cronFormat.minutes.single':
+        return ({required Object minute}) => 'minute ${minute}';
+      case 'cron.cronFormat.minutes.range':
+        return ({required Object from, required Object to}) =>
+            'every minute from ${from} to ${to}';
+      case 'cron.cronFormat.minutes.step':
+        return ({required num n, required Object step}) =>
+            (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
+              n,
+              one: 'every minute',
+              two: 'every ${step}nd minutes',
+              few: 'every ${step}rd minutes',
+              other: 'every ${step}th minutes',
+            );
+      case 'cron.cronFormat.hours.single':
+        return ({required Object hour}) => 'hour ${hour}';
+      case 'cron.cronFormat.hours.range':
+        return ({required Object from, required Object to}) =>
+            'every hour from ${from} to ${to}';
+      case 'cron.cronFormat.hours.step':
+        return ({required num n, required Object step}) =>
+            (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
+              n,
+              one: 'every hour',
+              two: 'every ${step}nd hours',
+              few: 'every ${step}rd hours',
+              other: 'every ${step}th hours',
+            );
+      case 'cron.cronFormat.days.single':
+        return ({required Object day}) => 'day-of-month ${day}';
+      case 'cron.cronFormat.days.range':
+        return ({required Object from, required Object to}) =>
+            'every day-of-month from ${from} to ${to}';
+      case 'cron.cronFormat.days.step':
+        return ({required num n, required Object step}) =>
+            (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
+              n,
+              one: 'every day-of-month',
+              two: 'every ${step}nd day-of-month',
+              few: 'every ${step}rd day-of-month',
+              other: 'every ${step}th day-of-month',
+            );
+      case 'cron.cronFormat.months.range':
+        return ({required Object from, required Object to}) =>
+            'from ${from} to ${to}';
+      case 'cron.cronFormat.months.step':
+        return ({required num n, required Object step}) =>
+            (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
+              n,
+              one: 'every month',
+              two: 'every ${step}nd month',
+              few: 'every ${step}rd month',
+              other: 'every ${step}th month',
+            );
+      case 'cron.cronFormat.daysOfWeek.range':
+        return ({required Object from, required Object to}) =>
+            'every day-of-week from ${from} to ${to}';
+      case 'cron.cronFormat.daysOfWeek.step':
+        return ({required num n, required Object step}) =>
+            (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
+              n,
+              one: 'every day-of-week',
+              two: 'every ${step}nd day-of-week',
+              few: 'every ${step}rd day-of-week',
+              other: 'every ${step}th day-of-week',
+            );
+      case 'cron.cronFormat.step':
+        return ({required Object from, required Object to}) =>
+            'between ${from} to ${to}';
       default:
         return null;
     }

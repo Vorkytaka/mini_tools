@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:timezone/timezone.dart';
 
+import '../../common/datetime.dart';
 import '../../common/macos_read_only_field.dart';
 import '../../common/padding.dart';
 import '../../common/text_styles.dart';
@@ -318,7 +319,7 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
       case DatetimeFormat.iso8601:
         return datetime.toIso8601String();
       case DatetimeFormat.rfc2822:
-        return formatRFC2822(datetime);
+        return datetime.toRfc2822String();
     }
   }
 }
@@ -443,26 +444,3 @@ int weekNumber(TZDateTime date) {
 
 bool isLeapYear(TZDateTime date) =>
     (date.year % 4 == 0) && ((date.year % 100 != 0) || (date.year % 400 == 0));
-
-String formatRFC2822(TZDateTime? dateTime) {
-  if (dateTime == null) {
-    return '';
-  }
-
-  final string = DateFormat('EEE, d MMM y HH:mm:ss').format(dateTime);
-  if (dateTime.timeZoneOffset != Duration.zero) {
-    final tz = _formatTimeZoneOffset(dateTime);
-    return '$string $tz';
-  }
-
-  return string;
-}
-
-String _formatTimeZoneOffset(DateTime dateTime) {
-  final offset = dateTime.timeZoneOffset;
-  final hours = offset.inHours.abs().toString().padLeft(2, '0');
-  final minutes = (offset.inMinutes.abs() % 60).toString().padLeft(2, '0');
-  final sign = offset.isNegative ? '-' : '+';
-
-  return '$sign$hours$minutes';
-}
