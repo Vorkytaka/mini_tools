@@ -10,6 +10,6 @@ export 'state/cron_state.dart';
 typedef CronFeature = Feature<CronState, CronMessage, void>;
 
 CronFeature cronFeatureFactory() => CronFeature(
-      initialState: const CronState(input: '', cron: null),
+      initialState: CronState.init(),
       update: cronUpdate,
     );
