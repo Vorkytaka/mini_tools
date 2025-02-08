@@ -9,6 +9,7 @@ import '../../i18n/strings.g.dart';
 import 'cron_format.dart';
 import 'feature/cron_feature.dart';
 import 'feature/parser/cron_parser.dart';
+import 'feature/parser/exception/cron_exception.dart';
 
 class CronToolScreen extends StatelessWidget {
   const CronToolScreen({super.key});
@@ -54,6 +55,7 @@ class _Body extends StatelessWidget {
             width: 300,
             child: _CronInput(),
           ),
+          const _Errors(),
           const SizedBox(height: 16),
           const Padding(
             padding: headlinePadding,
@@ -201,5 +203,92 @@ class _NextAtList extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+class _Errors extends StatelessWidget {
+  const _Errors();
+
+  @override
+  Widget build(BuildContext context) {
+    return FeatureBuilder<CronFeature, CronState>(
+      builder: (context, state) {
+        final err = state.result.maybeWhen(
+          failure: (e) => e,
+          orElse: () => null,
+        );
+
+        if (err == null) {
+          return const SizedBox();
+        }
+
+        return Text(err.format(t));
+      },
+    );
+  }
+}
+
+extension on CronException {
+  String format(Translations t) {
+    final err = this;
+    return switch(err) {
+      EmptyCronException() => 'Empty cron part',
+      CustomCronException() => 'Something goes wrong',
+      InvalidValueException() => 'Value must be ${err.part.minValue} to ${err
+          .part.maxValue}, but got ${err.value}',
+      InvalidRangeLengthException() => 'Range must be in format N-M',
+      InvalidRangeException() => '${err.from} is bigger than ${err.to}',
+      InvalidStepLengthException() => 'Step must be in format N-M/X or */X',
+      InvalidStepException() => 'Step must be 1 to ${err.part.maxValue}',
+      InvalidCronPartException() => err.format(t),
+    };
+  }
+}
+
+extension on InvalidCronPartException {
+  String format(Translations t) {
+    final buffer = StringBuffer();
+
+    final minutes = this.minutes;
+    if (minutes != null) {
+      if(buffer.isNotEmpty) {
+        buffer.write(', ');
+      }
+      buffer.write(minutes.format(t));
+    }
+
+    final hours = this.hours;
+    if(hours != null) {
+      if(buffer.isNotEmpty) {
+        buffer.write(', ');
+      }
+      buffer.write(hours.format(t));
+    }
+
+    final daysOfMonth = this.daysOfMonth;
+    if(daysOfMonth != null) {
+      if(buffer.isNotEmpty) {
+        buffer.write(', ');
+      }
+      buffer.write(daysOfMonth.format(t));
+    }
+
+    final months = this.months;
+    if(months != null) {
+      if(buffer.isNotEmpty) {
+        buffer.write(', ');
+      }
+      buffer.write(months.format(t));
+    }
+
+    final daysOfWeek = this.daysOfWeek;
+    if(daysOfWeek != null) {
+      if(buffer.isNotEmpty) {
+        buffer.write(', ');
+      }
+      buffer.write(daysOfWeek.format(t));
+    }
+
+    return buffer.toString();
   }
 }
