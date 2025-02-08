@@ -66,8 +66,92 @@ class _Body extends StatelessWidget {
             padding: headlinePadding,
             child: _NextAt(),
           ),
+          Padding(
+            padding: headlinePadding,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (final part in CronPart.values) _CronPartValues(part: part),
+              ],
+            ),
+          ),
         ],
       ),
+    );
+  }
+}
+
+extension CronExpressionUtils on CronExpression {
+  String formatToList({
+    required Translations t,
+    required CronPart part,
+  }) {
+    if (this is Any) {
+      return 'All';
+    }
+
+    final list = getAll(part);
+    return list.map((i) => part.formatInt(t: t, num: i)).join(', ');
+  }
+}
+
+extension on CronPart {
+  String format(Translations t) {
+    // TODO
+    return name;
+
+    return switch(this) {
+      CronPart.minutes => throw UnimplementedError(),
+      CronPart.hours => throw UnimplementedError(),
+      CronPart.days => throw UnimplementedError(),
+      CronPart.months => throw UnimplementedError(),
+      CronPart.weekdays => throw UnimplementedError(),
+    };
+  }
+
+  String formatInt({
+    required Translations t,
+    required int num,
+  }) {
+    return switch (this) {
+      CronPart.minutes => ':${num.toString().padLeft(2, '0')}',
+      CronPart.hours => '${num.toString().padLeft(2, '0')}:',
+      CronPart.days => num.toString().padLeft(2, '0'),
+      CronPart.months => t.common.months.full[num - 1],
+      CronPart.weekdays => t.common.dayOfWeek.full[num],
+    };
+  }
+}
+
+class _CronPartValues extends StatelessWidget {
+  final CronPart part;
+
+  const _CronPartValues({
+    required this.part,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
+    return FeatureBuilder<CronFeature, CronState>(
+      buildWhen: (prev, curr) => prev.cron != curr.cron,
+      builder: (context, state) {
+        final cron = state.cron;
+        final expression = switch (part) {
+          CronPart.minutes => cron?.minutes,
+          CronPart.hours => cron?.hours,
+          CronPart.days => cron?.days,
+          CronPart.months => cron?.months,
+          CronPart.weekdays => cron?.weekdays,
+        };
+
+        final text = expression != null ? expression.formatToList(part: part, t: t) : '';
+
+        return Text('${part.format(t)}: $text');
+      },
     );
   }
 }
@@ -231,11 +315,11 @@ class _Errors extends StatelessWidget {
 extension on CronException {
   String format(Translations t) {
     final err = this;
-    return switch(err) {
+    return switch (err) {
       EmptyCronException() => 'Empty cron part',
       CustomCronException() => 'Something goes wrong',
-      InvalidValueException() => 'Value must be ${err.part.minValue} to ${err
-          .part.maxValue}, but got ${err.value}',
+      InvalidValueException() =>
+        'Value must be ${err.part.minValue} to ${err.part.maxValue}, but got ${err.value}',
       InvalidRangeLengthException() => 'Range must be in format N-M',
       InvalidRangeException() => '${err.from} is bigger than ${err.to}',
       InvalidStepLengthException() => 'Step must be in format N-M/X or */X',
@@ -251,39 +335,39 @@ extension on InvalidCronPartException {
 
     final minutes = this.minutes;
     if (minutes != null) {
-      if(buffer.isNotEmpty) {
+      if (buffer.isNotEmpty) {
         buffer.write(', ');
       }
       buffer.write(minutes.format(t));
     }
 
     final hours = this.hours;
-    if(hours != null) {
-      if(buffer.isNotEmpty) {
+    if (hours != null) {
+      if (buffer.isNotEmpty) {
         buffer.write(', ');
       }
       buffer.write(hours.format(t));
     }
 
     final daysOfMonth = this.daysOfMonth;
-    if(daysOfMonth != null) {
-      if(buffer.isNotEmpty) {
+    if (daysOfMonth != null) {
+      if (buffer.isNotEmpty) {
         buffer.write(', ');
       }
       buffer.write(daysOfMonth.format(t));
     }
 
     final months = this.months;
-    if(months != null) {
-      if(buffer.isNotEmpty) {
+    if (months != null) {
+      if (buffer.isNotEmpty) {
         buffer.write(', ');
       }
       buffer.write(months.format(t));
     }
 
     final daysOfWeek = this.daysOfWeek;
-    if(daysOfWeek != null) {
-      if(buffer.isNotEmpty) {
+    if (daysOfWeek != null) {
+      if (buffer.isNotEmpty) {
         buffer.write(', ');
       }
       buffer.write(daysOfWeek.format(t));
