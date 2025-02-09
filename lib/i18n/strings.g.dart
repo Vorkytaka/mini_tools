@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 192
+/// Strings: 200
 ///
-/// Built on 2025-02-09 at 17:23 UTC
+/// Built on 2025-02-09 at 17:58 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -361,6 +361,8 @@ class _StringsCronEn {
 	String get daysOfMonth => 'Day-of-month:';
 	String get months => 'Months:';
 	String get daysOfWeek => 'Day-of-week:';
+	String get all => '(All)';
+	late final _StringsCronErrorsEn errors = _StringsCronErrorsEn._(_root);
 }
 
 // Path: common.dayOfWeek
@@ -591,6 +593,22 @@ class _StringsCronCronFormatEn {
 	late final _StringsCronCronFormatMonthsEn months = _StringsCronCronFormatMonthsEn._(_root);
 	late final _StringsCronCronFormatDaysOfWeekEn daysOfWeek = _StringsCronCronFormatDaysOfWeekEn._(_root);
 	String step({required Object from, required Object to}) => 'between ${from} to ${to}';
+}
+
+// Path: cron.errors
+class _StringsCronErrorsEn {
+	_StringsCronErrorsEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get empty => 'Empty cron part';
+	String get custom => 'Something goes wrong';
+	String invalidValue({required Object from, required Object to, required Object value}) => 'Value must be ${from} to ${to}, but got ${value}';
+	String get rangeLength => 'Range must be in format N-M';
+	String range({required Object from, required Object to}) => '${from} must be less than ${to}';
+	String get stepLength => 'Step must be in format N-M/X, N/X or */X';
+	String invalidStep({required Object to, required Object value}) => 'Step must be 1 to ${to}, but got ${value}';
 }
 
 // Path: cron.cronFormat.minutes
@@ -887,6 +905,14 @@ extension on Translations {
 			case 'cron.daysOfMonth': return 'Day-of-month:';
 			case 'cron.months': return 'Months:';
 			case 'cron.daysOfWeek': return 'Day-of-week:';
+			case 'cron.all': return '(All)';
+			case 'cron.errors.empty': return 'Empty cron part';
+			case 'cron.errors.custom': return 'Something goes wrong';
+			case 'cron.errors.invalidValue': return ({required Object from, required Object to, required Object value}) => 'Value must be ${from} to ${to}, but got ${value}';
+			case 'cron.errors.rangeLength': return 'Range must be in format N-M';
+			case 'cron.errors.range': return ({required Object from, required Object to}) => '${from} must be less than ${to}';
+			case 'cron.errors.stepLength': return 'Step must be in format N-M/X, N/X or */X';
+			case 'cron.errors.invalidStep': return ({required Object to, required Object value}) => 'Step must be 1 to ${to}, but got ${value}';
 			default: return null;
 		}
 	}

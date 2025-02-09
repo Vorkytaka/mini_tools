@@ -14,8 +14,12 @@ Next<CronState, void> cronUpdate(CronState state, CronMessage message) {
 
       CronResult result;
       try {
-        final cron = parseCron(message.input);
-        result = CronResult.success(cron);
+        if(message.input.isEmpty) {
+          result = const CronResult.idle();
+        } else {
+          final cron = parseCron(message.input);
+          result = CronResult.success(cron);
+        }
       } on CronException catch (e) {
         result = CronResult.failure(e);
       }

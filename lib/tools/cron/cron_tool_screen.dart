@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
@@ -55,7 +55,6 @@ class _Body extends StatelessWidget {
             width: 300,
             child: _CronInput(),
           ),
-          const _Errors(),
           const SizedBox(height: 16),
           const Padding(
             padding: headlinePadding,
@@ -92,7 +91,7 @@ extension CronExpressionUtils on CronExpression {
     required CronPart part,
   }) {
     if (this is Any) {
-      return 'All';
+      return t.cron.all;
     }
 
     final list = getAll(part);
@@ -137,7 +136,7 @@ class _CronPartValues extends StatelessWidget {
     final t = Translations.of(context);
 
     return FeatureBuilder<CronFeature, CronState>(
-      buildWhen: (prev, curr) => prev.cron != curr.cron,
+      buildWhen: (prev, curr) => prev.result != curr.result,
       builder: (context, state) {
         final cron = state.cron;
         final expression = switch (part) {
@@ -147,9 +146,30 @@ class _CronPartValues extends StatelessWidget {
           CronPart.months => cron?.months,
           CronPart.weekdays => cron?.weekdays,
         };
+        final exception = state.result.maybeWhen(
+          failure: (e) => switch (e) {
+            InvalidCronPartException() => switch (part) {
+                CronPart.minutes => e.minutes,
+                CronPart.hours => e.hours,
+                CronPart.days => e.daysOfMonth,
+                CronPart.months => e.months,
+                CronPart.weekdays => e.daysOfWeek,
+              },
+            _ => null,
+          },
+          orElse: () => null,
+        );
 
-        final text =
-            expression != null ? expression.formatToList(part: part, t: t) : '';
+        final String text;
+        Color? textColor;
+        if (expression != null) {
+          text = expression.formatToList(t: t, part: part);
+        } else if (exception != null) {
+          text = exception.format(t);
+          textColor = Colors.red;
+        } else {
+          text = '-';
+        }
 
         return Text.rich(
           TextSpan(
@@ -158,7 +178,10 @@ class _CronPartValues extends StatelessWidget {
               const TextSpan(text: '  '),
               TextSpan(
                 text: text,
-                style: const TextStyle(fontFamily: 'Fira Code'),
+                style: TextStyle(
+                  fontFamily: 'Fira Code',
+                  color: textColor,
+                ),
               ),
             ],
           ),
@@ -302,40 +325,27 @@ class _NextAtList extends StatelessWidget {
   }
 }
 
-class _Errors extends StatelessWidget {
-  const _Errors();
-
-  @override
-  Widget build(BuildContext context) {
-    return FeatureBuilder<CronFeature, CronState>(
-      builder: (context, state) {
-        final err = state.result.maybeWhen(
-          failure: (e) => e,
-          orElse: () => null,
-        );
-
-        if (err == null) {
-          return const SizedBox();
-        }
-
-        return Text(err.format(t));
-      },
-    );
-  }
-}
-
 extension on CronException {
   String format(Translations t) {
     final err = this;
     return switch (err) {
-      EmptyCronException() => 'Empty cron part',
-      CustomCronException() => 'Something goes wrong',
-      InvalidValueException() =>
-        'Value must be ${err.part.minValue} to ${err.part.maxValue}, but got ${err.value}',
-      InvalidRangeLengthException() => 'Range must be in format N-M',
-      InvalidRangeException() => '${err.from} is bigger than ${err.to}',
-      InvalidStepLengthException() => 'Step must be in format N-M/X or */X',
-      InvalidStepException() => 'Step must be 1 to ${err.part.maxValue}',
+      EmptyCronException() => t.cron.errors.empty,
+      CustomCronException() => t.cron.errors.custom,
+      InvalidValueException() => t.cron.errors.invalidValue(
+          from: err.part.minValue,
+          to: err.part.maxValue,
+          value: err.value,
+        ),
+      InvalidRangeLengthException() => t.cron.errors.rangeLength,
+      InvalidRangeException() => t.cron.errors.range(
+          from: err.from,
+          to: err.to,
+        ),
+      InvalidStepLengthException() => t.cron.errors.stepLength,
+      InvalidStepException() => t.cron.errors.invalidStep(
+          to: err.part.maxValue,
+          value: err.step,
+        ),
       InvalidCronPartException() => err.format(t),
     };
   }
