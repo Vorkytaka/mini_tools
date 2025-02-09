@@ -73,7 +73,10 @@ class _Body extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                for (final part in CronPart.values) _CronPartValues(part: part),
+                for (final part in CronPart.values) ...[
+                  const SizedBox(height: 4),
+                  _CronPartValues(part: part),
+                ],
               ],
             ),
           ),
@@ -99,15 +102,12 @@ extension CronExpressionUtils on CronExpression {
 
 extension on CronPart {
   String format(Translations t) {
-    // TODO
-    return name;
-
-    return switch(this) {
-      CronPart.minutes => throw UnimplementedError(),
-      CronPart.hours => throw UnimplementedError(),
-      CronPart.days => throw UnimplementedError(),
-      CronPart.months => throw UnimplementedError(),
-      CronPart.weekdays => throw UnimplementedError(),
+    return switch (this) {
+      CronPart.minutes => t.cron.minutes,
+      CronPart.hours => t.cron.hours,
+      CronPart.days => t.cron.daysOfMonth,
+      CronPart.months => t.cron.months,
+      CronPart.weekdays => t.cron.daysOfWeek,
     };
   }
 
@@ -148,9 +148,21 @@ class _CronPartValues extends StatelessWidget {
           CronPart.weekdays => cron?.weekdays,
         };
 
-        final text = expression != null ? expression.formatToList(part: part, t: t) : '';
+        final text =
+            expression != null ? expression.formatToList(part: part, t: t) : '';
 
-        return Text('${part.format(t)}: $text');
+        return Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(text: part.format(t)),
+              const TextSpan(text: '  '),
+              TextSpan(
+                text: text,
+                style: const TextStyle(fontFamily: 'Fira Code'),
+              ),
+            ],
+          ),
+        );
       },
     );
   }

@@ -264,6 +264,11 @@
         }
       },
       "step": "between $from to $to"
-    }
+    },
+    "minutes": "Minutes:",
+    "hours": "Hours:",
+    "daysOfMonth": "Day-of-month:",
+    "months": "Months:",
+    "daysOfWeek": "Day-of-week:"
   }
 }
