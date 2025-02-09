@@ -264,6 +264,21 @@
         }
       },
       "step": "between $from to $to"
+    },
+    "minutes": "Minutes:",
+    "hours": "Hours:",
+    "daysOfMonth": "Day-of-month:",
+    "months": "Months:",
+    "daysOfWeek": "Day-of-week:",
+    "all": "(All)",
+    "errors": {
+      "empty": "Empty cron part",
+      "custom": "Something goes wrong",
+      "invalid_value": "Value must be $from to $to, but got $value",
+      "range_length": "Range must be in format N-M",
+      "range": "$from must be less than $to",
+      "step_length": "Step must be in format N-M/X, N/X or */X",
+      "invalid_step": "Step must be 1 to $to, but got $value"
     }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../common/regexp.dart';
+import 'exception/cron_exception.dart';
 
 part 'cron_parser.freezed.dart';
 
@@ -92,7 +93,24 @@ enum CronPart {
   weekdays,
 }
 
-extension on CronPart {
+extension CronExpressionUtils on CronExpression {
+  List<int> getAll(CronPart part) {
+    return when(
+      any: () => [for (int i = part.minValue; i <= part.maxValue; i++) i],
+      single: (value) => [value],
+      range: (from, to) => [for (int i = from; i <= to; i++) i],
+      list: (values) => [
+        for (final value in values) ...value.getAll(part),
+      ],
+      step: (base, step) => base
+          .getAll(part)
+          .where((i) => base.stepMatches(i, step))
+          .toList(growable: false),
+    );
+  }
+}
+
+extension CronPartUtils on CronPart {
   bool checkNumbers(List<int?> number) {
     return number.every(checkNumber);
   }
@@ -185,15 +203,56 @@ Cron parseCron(String cron) {
   cron = cron.toUpperCase();
   final parts = cron.split(RegExps.whitespacesRegExp);
 
-  if (parts.length != 5) {
-    throw const FormatException();
+  if (parts.length > 5) {
+    throw const CronException.custom();
   }
 
-  final minutes = parseExpression(parts[0], CronPart.minutes);
-  final hours = parseExpression(parts[1], CronPart.hours);
-  final days = parseExpression(parts[2], CronPart.days);
-  final months = parseExpression(parts[3], CronPart.months);
-  final weekdays = parseExpression(parts[4], CronPart.weekdays);
+  CronExpression? minutes, hours, days, months, weekdays;
+  CronException? eMinutes, eHours, eDays, eMonths, eWeekdays;
+
+  try {
+    minutes = parseExpression(parts.elementAtOrNull(0), CronPart.minutes);
+  } on CronException catch (e) {
+    eMinutes = e;
+  }
+
+  try {
+    hours = parseExpression(parts.elementAtOrNull(1), CronPart.hours);
+  } on CronException catch (e) {
+    eHours = e;
+  }
+
+  try {
+    days = parseExpression(parts.elementAtOrNull(2), CronPart.days);
+  } on CronException catch (e) {
+    eDays = e;
+  }
+
+  try {
+    months = parseExpression(parts.elementAtOrNull(3), CronPart.months);
+  } on CronException catch (e) {
+    eMonths = e;
+  }
+
+  try {
+    weekdays = parseExpression(parts.elementAtOrNull(4), CronPart.weekdays);
+  } on CronException catch (e) {
+    eWeekdays = e;
+  }
+
+  if (minutes == null ||
+      hours == null ||
+      days == null ||
+      months == null ||
+      weekdays == null) {
+    throw CronException.partly(
+      minutes: eMinutes,
+      hours: eHours,
+      daysOfMonth: eDays,
+      months: eMonths,
+      daysOfWeek: eWeekdays,
+    );
+  }
 
   return Cron(
     minutes: minutes,
@@ -204,7 +263,11 @@ Cron parseCron(String cron) {
   );
 }
 
-CronExpression parseExpression(String expression, CronPart part) {
+CronExpression parseExpression(String? expression, CronPart part) {
+  if (expression == null || expression.isEmpty) {
+    throw const CronException.empty();
+  }
+
   expression = part.normalized(expression);
 
   if (expression == '*') {
@@ -214,7 +277,10 @@ CronExpression parseExpression(String expression, CronPart part) {
   final singleValue = int.tryParse(expression);
   if (singleValue != null) {
     if (!part.checkNumber(singleValue)) {
-      throw const FormatException();
+      throw CronException.value(
+        value: singleValue,
+        part: part,
+      );
     }
     return CronExpression.single(singleValue);
   }
@@ -227,7 +293,7 @@ CronExpression parseExpression(String expression, CronPart part) {
       final cronValue = parseExpression(value, part);
 
       if (cronValue is Any) {
-        throw const FormatException();
+        throw const CronException.custom();
       }
 
       parts.add(cronValue);
@@ -239,8 +305,10 @@ CronExpression parseExpression(String expression, CronPart part) {
   if (expression.contains('-')) {
     final rangeValues = expression.split('-');
 
-    if (rangeValues.length != 2) {
-      throw const FormatException();
+    if (rangeValues.length != 2 ||
+        rangeValues[0].isEmpty ||
+        rangeValues[1].isEmpty) {
+      throw const CronException.rangeLength();
     }
 
     final from = int.tryParse(rangeValues[0]);
@@ -248,11 +316,21 @@ CronExpression parseExpression(String expression, CronPart part) {
 
     if (from != null && to != null) {
       if (from >= to) {
-        throw const FormatException();
+        throw CronException.range(from: from, to: to);
       }
 
-      if (!part.checkNumbers([from, to])) {
-        throw const FormatException();
+      if (!part.checkNumber(from)) {
+        throw CronException.value(
+          value: from,
+          part: part,
+        );
+      }
+
+      if (!part.checkNumber(to)) {
+        throw CronException.value(
+          value: to,
+          part: part,
+        );
       }
 
       return CronExpression.range(from: from, to: to);
@@ -262,14 +340,17 @@ CronExpression parseExpression(String expression, CronPart part) {
   if (expression.contains('/')) {
     final parts = expression.split('/');
 
-    if (parts.length != 2) {
-      throw const FormatException();
+    if (parts.length != 2 || parts[0].isEmpty || parts[1].isEmpty) {
+      throw const CronException.stepLength();
     }
 
     final step = int.tryParse(parts[1]);
     if (step != null) {
       if (!part.checkNumber(step) || step == 0) {
-        throw const FormatException();
+        throw CronException.step(
+          step: step,
+          part: part,
+        );
       }
 
       CronExpression base = parseExpression(parts[0], part);
@@ -295,14 +376,14 @@ CronExpression parseExpression(String expression, CronPart part) {
       };
 
       if (!isValidBase) {
-        throw const FormatException();
+        throw const CronException.custom();
       }
 
       return CronExpression.step(base: base, step: step);
     }
   }
 
-  throw const FormatException();
+  throw const CronException.custom();
 }
 
 extension CronExpressionMatcher on CronExpression {
