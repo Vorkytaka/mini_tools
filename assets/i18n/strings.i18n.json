@@ -214,6 +214,8 @@
     "cron_hint": "* * * * *",
     "cron_format": {
       "at_what_time": "“At $str“",
+      "at_begin": "“At ",
+      "at_end": "“",
       "minutes": {
         "any": "every minute",
         "single": "minute $minute",
