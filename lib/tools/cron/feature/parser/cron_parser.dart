@@ -293,7 +293,6 @@ CronExpression parseExpression(String? expression, CronPart part) {
       final cronValue = parseExpression(value, part);
 
       if (cronValue is Any) {
-        // TODO
         throw const CronException.custom();
       }
 

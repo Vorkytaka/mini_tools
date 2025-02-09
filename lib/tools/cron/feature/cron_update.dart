@@ -14,7 +14,7 @@ Next<CronState, void> cronUpdate(CronState state, CronMessage message) {
 
       CronResult result;
       try {
-        if(message.input.isEmpty) {
+        if (message.input.isEmpty) {
           result = const CronResult.idle();
         } else {
           final cron = parseCron(message.input);

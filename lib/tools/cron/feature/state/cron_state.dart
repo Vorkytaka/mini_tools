@@ -21,9 +21,9 @@ class CronState with _$CronState {
 
 extension CronStateUtils on CronState {
   Cron? get cron => result.maybeWhen(
-    success: (cron) => cron,
-    orElse: () => null,
-  );
+        success: (cron) => cron,
+        orElse: () => null,
+      );
 }
 
 @freezed
