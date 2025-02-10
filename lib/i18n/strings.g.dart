@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 200
+/// Strings: 202
 ///
-/// Built on 2025-02-09 at 17:58 UTC
+/// Built on 2025-02-09 at 23:24 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -651,6 +651,8 @@ class _StringsCronCronFormatEn {
 
   // Translations
   String atWhatTime({required Object str}) => '“At ${str}“';
+  String get atBegin => '“At ';
+  String get atEnd => '“';
   late final _StringsCronCronFormatMinutesEn minutes =
       _StringsCronCronFormatMinutesEn._(_root);
   late final _StringsCronCronFormatHoursEn hours =
@@ -1108,6 +1110,10 @@ extension on Translations {
         return '* * * * *';
       case 'cron.cronFormat.atWhatTime':
         return ({required Object str}) => '“At ${str}“';
+      case 'cron.cronFormat.atBegin':
+        return '“At ';
+      case 'cron.cronFormat.atEnd':
+        return '“';
       case 'cron.cronFormat.minutes.any':
         return 'every minute';
       case 'cron.cronFormat.minutes.single':
