@@ -1,7 +1,9 @@
 import 'package:diff_match_patch/diff_match_patch.dart';
-import 'package:diff_match_patch/src/diff.dart';
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:provider/provider.dart';
+
+import 'feature/text_diff_feature.dart';
 
 class TextDiffScreen extends StatelessWidget {
   const TextDiffScreen({super.key});
@@ -28,14 +30,47 @@ class _Body extends StatefulWidget {
 class _BodyState extends State<_Body> {
   final _oldTextController = DiffTextEditorController();
   final _newTextController = DiffTextEditorController();
-  final _diffMatchPatch = DiffMatchPatch();
 
   @override
   void initState() {
     super.initState();
 
-    _oldTextController.addListener(_onUpdate);
-    _newTextController.addListener(_onUpdate);
+    final feature = context.read<TextDiffFeature>();
+    final state = feature.state;
+    _newTextController.text = state.newText;
+    _oldTextController.text = state.oldText;
+
+    _newTextController.addListener(() {
+      context
+          .read<TextDiffFeature>()
+          .accept(TextDiffMessage.updateNewText(_newTextController.text));
+    });
+
+    _oldTextController.addListener(() {
+      context
+          .read<TextDiffFeature>()
+          .accept(TextDiffMessage.updateOldText(_oldTextController.text));
+    });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final feature = context.watch<TextDiffFeature>();
+    final state = feature.state;
+    if (_newTextController.diffs != state.newDiffs ||
+        _oldTextController.diffs != state.oldDiffs) {
+      _newTextController.diffs = state.newDiffs;
+      _oldTextController.diffs = state.oldDiffs;
+    }
+  }
+
+  @override
+  void dispose() {
+    _newTextController.dispose();
+    _oldTextController.dispose();
+    super.dispose();
   }
 
   @override
@@ -68,36 +103,10 @@ class _BodyState extends State<_Body> {
       ],
     );
   }
-
-  void _onUpdate() {
-    final oldText = _oldTextController.text;
-    final newText = _newTextController.text;
-
-    // _diffMatchPatch.patchMargin = 0;
-    _diffMatchPatch.matchThreshold = 0;
-
-    final diffs = _diffMatchPatch.diff(oldText, newText);
-    cleanupSemanticLossless(diffs);
-    // _diffMatchPatch.diffCleanupSemantic(diffs);
-    // _diffMatchPatch.diffCleanupEfficiency(diffs);
-    final appendDiffs = diffs
-        .where((diff) => diff.operation != DIFF_DELETE)
-        .toList(growable: false);
-    final deleteDiffs = diffs
-        .where((diff) => diff.operation != DIFF_INSERT)
-        .toList(growable: false);
-
-    _oldTextController.setDiffs(deleteDiffs);
-    _newTextController.setDiffs(appendDiffs);
-  }
 }
 
 class DiffTextEditorController extends TextEditingController {
-  List<Diff>? _diffs;
-
-  void setDiffs(List<Diff>? diffs) {
-    _diffs = diffs;
-  }
+  List<Diff>? diffs;
 
   @override
   TextSpan buildTextSpan({
@@ -105,7 +114,7 @@ class DiffTextEditorController extends TextEditingController {
     TextStyle? style,
     required bool withComposing,
   }) {
-    final diffs = _diffs;
+    final diffs = this.diffs;
     if (diffs != null) {
       return TextSpan(
         children: diffs
