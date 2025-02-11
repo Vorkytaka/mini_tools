@@ -1,5 +1,6 @@
 import 'package:diff_match_patch/diff_match_patch.dart';
 import 'package:flutter/material.dart';
+import 'package:linked_scroll_controller/linked_scroll_controller.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:provider/provider.dart';
 
@@ -31,9 +32,16 @@ class _BodyState extends State<_Body> {
   final _oldTextController = DiffTextEditorController();
   final _newTextController = DiffTextEditorController();
 
+  final _scrollControllers = LinkedScrollControllerGroup();
+  late final ScrollController? _newScrollController;
+  late final ScrollController? _oldScrollController;
+
   @override
   void initState() {
     super.initState();
+
+    _newScrollController = _scrollControllers.addAndGet();
+    _oldScrollController = _scrollControllers.addAndGet();
 
     final feature = context.read<TextDiffFeature>();
     final state = feature.state;
@@ -70,6 +78,10 @@ class _BodyState extends State<_Body> {
   void dispose() {
     _newTextController.dispose();
     _oldTextController.dispose();
+
+    _newScrollController?.dispose();
+    _oldScrollController?.dispose();
+
     super.dispose();
   }
 
@@ -82,6 +94,7 @@ class _BodyState extends State<_Body> {
           child: SizedBox(
             height: double.infinity,
             child: MacosTextField(
+              scrollController: _oldScrollController,
               textAlignVertical: const TextAlignVertical(y: -1),
               minLines: null,
               maxLines: null,
@@ -93,6 +106,7 @@ class _BodyState extends State<_Body> {
           child: SizedBox(
             height: double.infinity,
             child: MacosTextField(
+              scrollController: _newScrollController,
               textAlignVertical: const TextAlignVertical(y: -1),
               minLines: null,
               maxLines: null,
