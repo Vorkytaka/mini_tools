@@ -73,6 +73,7 @@ class _Body extends StatelessWidget {
             padding: headlinePadding,
             child: _HumanReadCron(),
           ),
+          const SizedBox(height: 4),
           Padding(
             padding: headlinePadding,
             child: Column(
@@ -290,7 +291,7 @@ class _HumanReadCron extends StatelessWidget {
           return const SizedBox();
         }
 
-        return Text(cron.format(context));
+        return Text.rich(cron.formatTextSpan(context));
       },
     );
   }

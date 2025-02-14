@@ -6,6 +6,115 @@ import '../../i18n/strings.g.dart';
 import 'feature/parser/cron_parser.dart';
 
 extension CronFormat on Cron {
+  TextSpan formatTextSpan(BuildContext context) {
+    final t = Translations.of(context);
+    final selectedParts = SharedAppData.getValue<String, List<CronPart>>(
+      context,
+      'cron/selected/parts',
+      () => const [],
+    );
+
+    const selectedColor = Colors.yellow;
+    final isMinutesSelected = selectedParts.contains(CronPart.minutes);
+    final isHoursSelected = selectedParts.contains(CronPart.hours);
+    final isDaysOfMonthSelected = selectedParts.contains(CronPart.days);
+    final isMonthsSelected = selectedParts.contains(CronPart.months);
+    final isDaysOfWeekSelected = selectedParts.contains(CronPart.weekdays);
+
+    final spans = <TextSpan>[TextSpan(text: t.cron.cronFormat.atBegin)];
+
+    // Handle time (minutes and hours)
+    if (minutes is Single && hours is Single) {
+      final m = (minutes as Single).value;
+      final h = (hours as Single).value;
+      final time = TimeOfDay(hour: h, minute: m);
+      spans.add(
+        TextSpan(
+          text: time.format(context),
+          style: TextStyle(
+            color: isMinutesSelected || isHoursSelected ? selectedColor : null,
+          ),
+        ),
+      );
+      // buffer.write(time.format(context));
+    } else {
+      // buffer.write(minutes.formatMinutes(t));
+      spans.add(
+        TextSpan(
+          text: minutes.formatMinutes(t),
+          style: TextStyle(
+            color: isMinutesSelected ? selectedColor : null,
+          ),
+        ),
+      );
+      final hoursFormatted = hours.formatHours(t);
+      if (hoursFormatted != null) {
+        spans.add(const TextSpan(text: ' '));
+        spans.add(
+          TextSpan(
+            text: hoursFormatted,
+            style: TextStyle(
+              color: isHoursSelected ? selectedColor : null,
+            ),
+          ),
+        );
+      }
+    }
+
+    // Days and weekdays
+    final daysFormatted = days.formatDays(t);
+    final weekdaysFormatted = weekdays.formatWeekdays(t);
+    if (daysFormatted != null || weekdaysFormatted != null) {
+      spans.add(TextSpan(text: ' ${t.common.on}'));
+      if (daysFormatted != null) {
+        spans.add(const TextSpan(text: ' '));
+        spans.add(
+          TextSpan(
+            text: daysFormatted,
+            style: TextStyle(
+              color: isDaysOfMonthSelected ? selectedColor : null,
+            ),
+          ),
+        );
+      }
+      if (weekdaysFormatted != null) {
+        if (daysFormatted != null) {
+          spans.add(TextSpan(text: ' ${t.common.and}'));
+        }
+        spans.add(const TextSpan(text: ' '));
+        spans.add(
+          TextSpan(
+            text: weekdaysFormatted,
+            style: TextStyle(
+              color: isDaysOfWeekSelected ? selectedColor : null,
+            ),
+          ),
+        );
+      }
+    }
+
+    // Months
+    final monthsFormatted = months.formatMonths(t);
+    if (monthsFormatted != null) {
+      spans.add(TextSpan(text: ' ${t.common.inWord} '));
+      spans.add(
+        TextSpan(
+          text: monthsFormatted,
+          style: TextStyle(color: isMonthsSelected ? selectedColor : null),
+        ),
+      );
+    }
+
+    spans.add(TextSpan(text: t.cron.cronFormat.atEnd));
+
+    return TextSpan(children: spans);
+
+    // return t.cron.cronFormat
+    //     .atWhatTime(str: buffer.toString())
+    //     .replaceAll(RegExps.whitespacesRegExp, ' ')
+    //     .trim();
+  }
+
   String format(BuildContext context) {
     final t = Translations.of(context);
     final buffer = StringBuffer();
