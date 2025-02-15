@@ -3,7 +3,11 @@ import 'package:meta/meta.dart';
 import 'package:timezone/timezone.dart';
 
 class DatetimeCubit extends Cubit<DatetimeState> {
-  DatetimeCubit() : super(const DatetimeState.init());
+  DatetimeCubit({
+    TZDateTime? initialDateTime,
+  }) : super(initialDateTime != null
+            ? DatetimeState.withDateTime(initialDateTime)
+            : const DatetimeState.init());
 
   void setNow(Location timezone) {
     TZDateTime now = TZDateTime.now(timezone);
@@ -21,6 +25,7 @@ class DatetimeCubit extends Cubit<DatetimeState> {
   void clear() {
     emit(DatetimeState(
       datetime: null,
+      isReadOnly: state.isReadOnly,
       input: '',
       inputType: state.inputType,
       format: state.format,
@@ -129,12 +134,14 @@ enum DatetimeFormat {
 @immutable
 class DatetimeState {
   final TZDateTime? datetime;
+  final bool isReadOnly;
   final String input;
   final InputType inputType;
   final DatetimeFormat format;
 
   const DatetimeState({
     required this.datetime,
+    required this.isReadOnly,
     required this.input,
     required this.inputType,
     required this.format,
@@ -142,7 +149,14 @@ class DatetimeState {
 
   const DatetimeState.init()
       : datetime = null,
+        isReadOnly = false,
         input = '',
+        inputType = InputType.sec,
+        format = DatetimeFormat.iso8601;
+
+  DatetimeState.withDateTime(TZDateTime this.datetime)
+      : isReadOnly = true,
+        input = '${datetime.millisecondsSinceEpoch ~/ 1000}',
         inputType = InputType.sec,
         format = DatetimeFormat.iso8601;
 
@@ -154,6 +168,7 @@ class DatetimeState {
   }) {
     return DatetimeState(
       datetime: datetime ?? this.datetime,
+      isReadOnly: isReadOnly,
       input: input ?? this.input,
       inputType: inputType ?? this.inputType,
       format: format ?? this.format,
@@ -166,13 +181,14 @@ class DatetimeState {
       other is DatetimeState &&
           runtimeType == other.runtimeType &&
           datetime == other.datetime &&
+          isReadOnly == other.isReadOnly &&
           input == other.input &&
           inputType == other.inputType &&
           format == other.format;
 
   @override
   int get hashCode =>
-      datetime.hashCode ^ input.hashCode ^ inputType.hashCode ^ format.hashCode;
+      Object.hash(datetime, isReadOnly, input, inputType, format);
 }
 
 extension on TZDateTime {
