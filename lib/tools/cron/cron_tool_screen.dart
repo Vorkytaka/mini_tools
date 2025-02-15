@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:timezone/timezone.dart';
 
 import '../../common/datetime.dart';
+import '../../common/datetime_inherited_model.dart';
 import '../../common/padding.dart';
 import '../../common/regexp.dart';
 import '../../common/timezone_holder.dart';
@@ -344,11 +345,13 @@ class _NextAtList extends StatelessWidget {
           return const SizedBox();
         }
 
+        final now = DatetimeHolder.of(context, type: DatetimeHolderType.min);
+
         final nexts = <TZDateTime>[];
         for (int i = 0; i < 5; i++) {
           final prev = nexts.isNotEmpty && nexts.length >= i
               ? nexts[i - 1]
-              : TZDateTime.now(timezone);
+              : TZDateTime.from(now, timezone);
           final next = TZDateTime.from(cron.nextRun(prev), timezone);
           nexts.add(next);
         }
