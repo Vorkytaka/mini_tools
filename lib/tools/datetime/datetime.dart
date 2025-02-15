@@ -41,39 +41,8 @@ extension on DatetimeFormat {
   }
 }
 
-class UnixTimestampToolWidget extends StatefulWidget {
+class UnixTimestampToolWidget extends StatelessWidget {
   const UnixTimestampToolWidget({super.key});
-
-  @override
-  State<UnixTimestampToolWidget> createState() =>
-      _UnixTimestampToolWidgetState();
-}
-
-class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
-  final _inputController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    _inputController.addListener(_onInputChange);
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    final cubit = context.watch<DatetimeCubit>();
-    final input = cubit.state.input;
-    if (input != _inputController.text) {
-      _inputController.text = input;
-    }
-  }
-
-  @override
-  void dispose() {
-    _inputController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,18 +68,9 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
                       children: [
                         Text(t.common.input),
                         const SizedBox(width: 8),
-                        PushButton(
-                          controlSize: ControlSize.regular,
-                          onPressed: _setNow,
-                          child: Text(t.unixTimestamp.now),
-                        ),
+                        const _NowButton(),
                         const SizedBox(width: 8),
-                        PushButton(
-                          controlSize: ControlSize.regular,
-                          onPressed: _clear,
-                          secondary: true,
-                          child: Text(t.common.clear),
-                        ),
+                        const _ClearButton(),
                       ],
                     ),
                   ),
@@ -120,13 +80,7 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
                     children: [
                       ConstrainedBox(
                         constraints: const BoxConstraints(maxWidth: 260),
-                        child: MacosTextField(
-                          keyboardType: const TextInputType.numberWithOptions(
-                            decimal: false,
-                            signed: false,
-                          ),
-                          controller: _inputController,
-                        ),
+                        child: const _InputField(),
                       ),
                       const SizedBox(width: 8),
                       const _InputTypeSelector(),
@@ -144,14 +98,102 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
       ],
     );
   }
+}
 
-  void _setNow() {
-    final timezone = TimezoneHolder.of(context);
-    context.read<DatetimeCubit>().setNow(timezone);
+class _NowButton extends StatelessWidget {
+  const _NowButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<DatetimeCubit, DatetimeState>(
+        buildWhen: (prev, curr) => prev.isReadOnly != curr.isReadOnly,
+        builder: (context, state) {
+          return PushButton(
+            controlSize: ControlSize.regular,
+            onPressed: state.isReadOnly
+                ? null
+                : () {
+                    final timezone = TimezoneHolder.of(context);
+                    context.read<DatetimeCubit>().setNow(timezone);
+                  },
+            child: Text(t.unixTimestamp.now),
+          );
+        });
+  }
+}
+
+class _ClearButton extends StatelessWidget {
+  const _ClearButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<DatetimeCubit, DatetimeState>(
+      buildWhen: (prev, curr) => prev.isReadOnly != curr.isReadOnly,
+      builder: (context, state) {
+        return PushButton(
+          controlSize: ControlSize.regular,
+          onPressed:
+              state.isReadOnly ? null : context.read<DatetimeCubit>().clear,
+          secondary: true,
+          child: Text(t.common.clear),
+        );
+      },
+    );
+  }
+}
+
+class _InputField extends StatefulWidget {
+  const _InputField();
+
+  @override
+  State<_InputField> createState() => _InputFieldState();
+}
+
+class _InputFieldState extends State<_InputField> {
+  final _inputController = TextEditingController();
+  bool _isReadOnly = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    final cubit = context.read<DatetimeCubit>();
+    final state = cubit.state;
+    if (state.input != _inputController.text) {
+      _inputController.text = state.input;
+    }
+    _isReadOnly = state.isReadOnly;
+
+    _inputController.addListener(_onInputChange);
   }
 
-  void _clear() {
-    context.read<DatetimeCubit>().clear();
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final cubit = context.watch<DatetimeCubit>();
+    final input = cubit.state.input;
+    if (input != _inputController.text) {
+      _inputController.text = input;
+    }
+  }
+
+  @override
+  void dispose() {
+    _inputController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MacosTextField(
+      readOnly: _isReadOnly,
+      keyboardType: const TextInputType.numberWithOptions(
+        decimal: false,
+        signed: false,
+      ),
+      controller: _inputController,
+    );
   }
 
   void _onInputChange() {
