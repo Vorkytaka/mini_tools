@@ -6,6 +6,8 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:timezone/timezone.dart';
 
 import '../../common/datetime.dart';
+import '../../common/datetime_inherited_model.dart';
+import '../../common/duration.dart';
 import '../../common/macos_read_only_field.dart';
 import '../../common/padding.dart';
 import '../../common/text_styles.dart';
@@ -71,6 +73,7 @@ class UnixTimestampToolWidget extends StatelessWidget {
                         const _NowButton(),
                         const SizedBox(width: 8),
                         const _ClearButton(),
+                        const SizedBox(width: 8),
                       ],
                     ),
                   ),
@@ -352,6 +355,47 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
             );
           },
         ),
+        const SizedBox(height: 12),
+        BlocBuilder<DatetimeCubit, DatetimeState>(
+          buildWhen: (prev, curr) => prev.datetime != curr.datetime,
+          builder: (context, state) {
+            final t = Translations.of(context);
+            final datetime = state.datetime;
+
+            if (datetime == null) {
+              return _DateItem(
+                title: t.unixTimestamp.relative,
+                datetime: datetime,
+                mapper: (datetime) => '',
+              );
+            }
+
+            final now =
+                DatetimeHolder.of(context, type: DatetimeHolderType.sec);
+            final diff = now.difference(datetime);
+
+            return _DateItem(
+              title: t.unixTimestamp.relative,
+              datetime: datetime,
+              mapper: (datetime) => diff.format(
+                onZero: t.unixTimestamp.relativeFormat.rightNow,
+                onDays: (days) =>
+                    t.unixTimestamp.relativeFormat.days(days: days),
+                onHours: (hours) =>
+                    t.unixTimestamp.relativeFormat.hours(hours: hours),
+                onMinutes: (min) =>
+                    t.unixTimestamp.relativeFormat.minutes(minutes: min),
+                onSeconds: (sec) =>
+                    t.unixTimestamp.relativeFormat.seconds(seconds: sec),
+                positiveWrapper: (str) =>
+                    t.unixTimestamp.relativeFormat.positive(str: str),
+                negativeWrapper: (str) =>
+                    t.unixTimestamp.relativeFormat.negative(str: str),
+                separator: t.common.textSeparator,
+              ),
+            );
+          },
+        )
       ],
     );
   }

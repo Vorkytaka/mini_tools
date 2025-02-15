@@ -65,7 +65,17 @@
     "day_of_the_year": "Day of the year",
     "leap_year": "Leap year",
     "date_only": "Date only",
-    "time_only": "Time only"
+    "time_only": "Time only",
+    "relative": "Relative",
+    "relative_format": {
+      "right_now": "Right now",
+      "days": "${days}d",
+      "hours": "${hours}h",
+      "minutes": "${minutes}m",
+      "seconds": "${seconds}s",
+      "positive": "$str ago",
+      "negative": "In $str"
+    }
   },
   "number_converter": {
     "title": "Number base converter",
