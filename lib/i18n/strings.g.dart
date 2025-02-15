@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 202
+/// Strings: 210
 ///
-/// Built on 2025-02-09 at 23:24 UTC
+/// Built on 2025-02-15 at 21:54 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -255,6 +255,9 @@ class _StringsUnixTimestampEn {
   String get leapYear => 'Leap year';
   String get dateOnly => 'Date only';
   String get timeOnly => 'Time only';
+  String get relative => 'Relative';
+  late final _StringsUnixTimestampRelativeFormatEn relativeFormat =
+      _StringsUnixTimestampRelativeFormatEn._(_root);
 }
 
 // Path: numberConverter
@@ -492,6 +495,22 @@ class _StringsUnixTimestampDatetimeFormatEn {
   String get hint => 'Datetime format:';
   String get iso => 'ISO 8601';
   String get rfc => 'RFC 2822';
+}
+
+// Path: unixTimestamp.relativeFormat
+class _StringsUnixTimestampRelativeFormatEn {
+  _StringsUnixTimestampRelativeFormatEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get rightNow => 'Right now';
+  String days({required Object days}) => '${days}d';
+  String hours({required Object hours}) => '${hours}h';
+  String minutes({required Object minutes}) => '${minutes}m';
+  String seconds({required Object seconds}) => '${seconds}s';
+  String positive({required Object str}) => '${str} ago';
+  String negative({required Object str}) => 'In ${str}';
 }
 
 // Path: regexp.settings
@@ -896,6 +915,22 @@ extension on Translations {
         return 'Date only';
       case 'unixTimestamp.timeOnly':
         return 'Time only';
+      case 'unixTimestamp.relative':
+        return 'Relative';
+      case 'unixTimestamp.relativeFormat.rightNow':
+        return 'Right now';
+      case 'unixTimestamp.relativeFormat.days':
+        return ({required Object days}) => '${days}d';
+      case 'unixTimestamp.relativeFormat.hours':
+        return ({required Object hours}) => '${hours}h';
+      case 'unixTimestamp.relativeFormat.minutes':
+        return ({required Object minutes}) => '${minutes}m';
+      case 'unixTimestamp.relativeFormat.seconds':
+        return ({required Object seconds}) => '${seconds}s';
+      case 'unixTimestamp.relativeFormat.positive':
+        return ({required Object str}) => '${str} ago';
+      case 'unixTimestamp.relativeFormat.negative':
+        return ({required Object str}) => 'In ${str}';
       case 'numberConverter.title':
         return 'Number base converter';
       case 'numberConverter.binary':

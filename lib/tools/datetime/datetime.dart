@@ -359,11 +359,12 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
         BlocBuilder<DatetimeCubit, DatetimeState>(
           buildWhen: (prev, curr) => prev.datetime != curr.datetime,
           builder: (context, state) {
+            final t = Translations.of(context);
             final datetime = state.datetime;
 
             if (datetime == null) {
               return _DateItem(
-                title: 'Jopa',
+                title: t.unixTimestamp.relative,
                 datetime: datetime,
                 mapper: (datetime) => '',
               );
@@ -374,25 +375,24 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
             final diff = now.difference(datetime);
 
             return _DateItem(
-              title: 'Jopa 2',
+              title: t.unixTimestamp.relative,
               datetime: datetime,
-              mapper: (datetime) => diff.isNegative
-                  ? diff.negativeFormat(
-                      onZero: 'Right now',
-                      onDays: (days) => '$days d',
-                      onHours: (hours) => '$hours h',
-                      onMinutes: (min) => '$min m',
-                      onSeconds: (sec) => '$sec s',
-                      wrapper: (str) => 'in $str',
-                    )
-                  : diff.format(
-                      onZero: 'Right now',
-                      onDays: (days) => '$days d',
-                      onHours: (hours) => '$hours h',
-                      onMinutes: (min) => '$min m',
-                      onSeconds: (sec) => '$sec s',
-                      wrapper: (str) => '$str ago',
-                    ),
+              mapper: (datetime) => diff.format(
+                onZero: t.unixTimestamp.relativeFormat.rightNow,
+                onDays: (days) =>
+                    t.unixTimestamp.relativeFormat.days(days: days),
+                onHours: (hours) =>
+                    t.unixTimestamp.relativeFormat.hours(hours: hours),
+                onMinutes: (min) =>
+                    t.unixTimestamp.relativeFormat.minutes(minutes: min),
+                onSeconds: (sec) =>
+                    t.unixTimestamp.relativeFormat.seconds(seconds: sec),
+                positiveWrapper: (str) =>
+                    t.unixTimestamp.relativeFormat.positive(str: str),
+                negativeWrapper: (str) =>
+                    t.unixTimestamp.relativeFormat.negative(str: str),
+                separator: t.common.textSeparator,
+              ),
             );
           },
         )

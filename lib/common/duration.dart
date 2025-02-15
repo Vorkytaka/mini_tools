@@ -1,20 +1,23 @@
 extension DurationUtils on Duration {
-  /// Return as many days in this
+  /// Return as many days in this.
   int get days => inDays;
 
   /// Return as many hours in this, except days
   ///
-  /// Value will be between 0 and 24.
+  /// Value will be between 0 and 23.
   int get hours => inHours - days * Duration.hoursPerDay;
 
   /// Return as many minutes in this, except days and hours
   ///
-  /// Value will be between 0 and 60
+  /// Value will be between 0 and 59
   int get minutes =>
       inMinutes -
       days * Duration.minutesPerDay -
       hours * Duration.minutesPerHour;
 
+  /// Return as many seconds in this, except days, hours and minutes.
+  ///
+  /// Value will be between 0 and 59
   int get seconds =>
       inSeconds -
       days * Duration.secondsPerDay -
@@ -31,12 +34,42 @@ extension DurationUtils on Duration {
     required String Function(int hours) onHours,
     required String Function(int minutes) onMinutes,
     required String Function(int seconds) onSeconds,
-    String Function(String str)? wrapper,
+    String Function(String str)? positiveWrapper,
+    String Function(String str)? negativeWrapper,
     String separator = ' ',
   }) {
     if (inSeconds == 0) {
       return onZero;
+    } else if (isNegative) {
+      return _negativeFormat(
+        onDays: onDays,
+        onHours: onHours,
+        onMinutes: onMinutes,
+        onSeconds: onSeconds,
+        separator: separator,
+        wrapper: negativeWrapper,
+      );
+    } else {
+      return _positiveFormat(
+        onDays: onDays,
+        onHours: onHours,
+        onMinutes: onMinutes,
+        onSeconds: onSeconds,
+        wrapper: positiveWrapper,
+        separator: separator,
+      );
     }
+  }
+
+  String _positiveFormat({
+    required String Function(int days) onDays,
+    required String Function(int hours) onHours,
+    required String Function(int minutes) onMinutes,
+    required String Function(int seconds) onSeconds,
+    String Function(String str)? wrapper,
+    String separator = ' ',
+  }) {
+    assert(!isNegative);
 
     final buffer = StringBuffer();
     if (days > 0) {
@@ -64,8 +97,7 @@ extension DurationUtils on Duration {
     return wrapper != null ? wrapper(buffer.toString()) : buffer.toString();
   }
 
-  String negativeFormat({
-    required String onZero,
+  String _negativeFormat({
     required String Function(int days) onDays,
     required String Function(int hours) onHours,
     required String Function(int minutes) onMinutes,
@@ -73,9 +105,10 @@ extension DurationUtils on Duration {
     String Function(String str)? wrapper,
     String separator = ' ',
   }) {
+    assert(isNegative);
+
     final negative = -this;
-    return negative.format(
-      onZero: onZero,
+    return negative._positiveFormat(
       onDays: onDays,
       onHours: onHours,
       onMinutes: onMinutes,
