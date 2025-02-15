@@ -6,6 +6,8 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:timezone/timezone.dart';
 
 import '../../common/datetime.dart';
+import '../../common/datetime_inherited_model.dart';
+import '../../common/duration.dart';
 import '../../common/macos_read_only_field.dart';
 import '../../common/padding.dart';
 import '../../common/text_styles.dart';
@@ -71,6 +73,7 @@ class UnixTimestampToolWidget extends StatelessWidget {
                         const _NowButton(),
                         const SizedBox(width: 8),
                         const _ClearButton(),
+                        const SizedBox(width: 8),
                       ],
                     ),
                   ),
@@ -352,6 +355,47 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
             );
           },
         ),
+        const SizedBox(height: 12),
+        BlocBuilder<DatetimeCubit, DatetimeState>(
+          buildWhen: (prev, curr) => prev.datetime != curr.datetime,
+          builder: (context, state) {
+            final datetime = state.datetime;
+
+            if (datetime == null) {
+              return _DateItem(
+                title: 'Jopa',
+                datetime: datetime,
+                mapper: (datetime) => '',
+              );
+            }
+
+            final now =
+                DatetimeHolder.of(context, type: DatetimeHolderType.sec);
+            final diff = now.difference(datetime);
+
+            return _DateItem(
+              title: 'Jopa 2',
+              datetime: datetime,
+              mapper: (datetime) => diff.isNegative
+                  ? diff.negativeFormat(
+                      onZero: 'Right now',
+                      onDays: (days) => '$days d',
+                      onHours: (hours) => '$hours h',
+                      onMinutes: (min) => '$min m',
+                      onSeconds: (sec) => '$sec s',
+                      wrapper: (str) => 'in $str',
+                    )
+                  : diff.format(
+                      onZero: 'Right now',
+                      onDays: (days) => '$days d',
+                      onHours: (hours) => '$hours h',
+                      onMinutes: (min) => '$min m',
+                      onSeconds: (sec) => '$sec s',
+                      wrapper: (str) => '$str ago',
+                    ),
+            );
+          },
+        )
       ],
     );
   }
