@@ -14,7 +14,6 @@ class _DatetimeModel extends InheritedModel<DatetimeHolderType> {
   const _DatetimeModel({
     required this.datetime,
     required super.child,
-    super.key,
   });
 
   @override
