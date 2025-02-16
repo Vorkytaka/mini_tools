@@ -26,7 +26,11 @@ Future<void> showDatetimeConverterSheet({
         initialDatetime: datetime,
       ),
       child: const MacosSheet(
-        child: DatetimeConverterScreen(),
+        child: ClipRRect(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          clipBehavior: Clip.hardEdge,
+          child: DatetimeConverterScreen(),
+        ),
       ),
     ),
   );
