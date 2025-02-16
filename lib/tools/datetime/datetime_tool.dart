@@ -8,7 +8,7 @@ import 'datetime.dart';
 import 'datetime_cubit.dart';
 
 final datetimeTool = BlocTool(
-  titleBuilder: (context) => Translations.of(context).unixTimestamp.title,
+  titleBuilder: (context) => Translations.of(context).datetimeConverter.title,
   icon: Icons.timelapse,
   screenBuilder: (context) => const UnixTimestampToolWidget(),
   bloc: DatetimeCubit(),

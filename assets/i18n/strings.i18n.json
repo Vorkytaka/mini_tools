@@ -44,8 +44,8 @@
       ]
     }
   },
-  "unix_timestamp": {
-    "title": "Unix timestamp",
+  "datetime_converter": {
+    "title": "Datetime Converter",
     "input_type": {
       "sec": "Seconds since epoch",
       "ms": "Milliseconds since epoch",

@@ -20,13 +20,13 @@ extension on InputType {
     final t = Translations.of(context);
     switch (this) {
       case InputType.sec:
-        return t.unixTimestamp.inputType.sec;
+        return t.datetimeConverter.inputType.sec;
       case InputType.ms:
-        return t.unixTimestamp.inputType.ms;
+        return t.datetimeConverter.inputType.ms;
       case InputType.us:
-        return t.unixTimestamp.inputType.us;
+        return t.datetimeConverter.inputType.us;
       case InputType.iso:
-        return t.unixTimestamp.inputType.iso;
+        return t.datetimeConverter.inputType.iso;
     }
   }
 }
@@ -36,9 +36,9 @@ extension on DatetimeFormat {
     final t = Translations.of(context);
     switch (this) {
       case DatetimeFormat.iso8601:
-        return t.unixTimestamp.datetimeFormat.iso;
+        return t.datetimeConverter.datetimeFormat.iso;
       case DatetimeFormat.rfc2822:
-        return t.unixTimestamp.datetimeFormat.rfc;
+        return t.datetimeConverter.datetimeFormat.rfc;
     }
   }
 }
@@ -53,7 +53,7 @@ class UnixTimestampToolWidget extends StatelessWidget {
     return MacosScaffold(
       toolBar: ToolBar(
         centerTitle: true,
-        title: Text(t.unixTimestamp.title),
+        title: Text(t.datetimeConverter.title),
       ),
       children: [
         ContentArea(
@@ -119,7 +119,7 @@ class _NowButton extends StatelessWidget {
                     final timezone = TimezoneHolder.of(context);
                     context.read<DatetimeCubit>().setNow(timezone);
                   },
-            child: Text(t.unixTimestamp.now),
+            child: Text(t.datetimeConverter.now),
           );
         });
   }
@@ -238,38 +238,38 @@ class _DateTimeOutput extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _DateItem(
-                      title: t.unixTimestamp.weekday,
+                      title: t.datetimeConverter.weekday,
                       datetime: datetime,
                       mapper: _weekdayFormat.format,
                     ),
                     const SizedBox(height: 12),
                     _DateItem(
-                      title: t.unixTimestamp.weekOfTheYear,
+                      title: t.datetimeConverter.weekOfTheYear,
                       datetime: datetime,
                       mapper: (datetime) => '${weekNumber(datetime)}',
                     ),
                     const SizedBox(height: 12),
                     _DateItem(
-                      title: t.unixTimestamp.dayOfTheYear,
+                      title: t.datetimeConverter.dayOfTheYear,
                       datetime: datetime,
                       mapper: (datetime) => '${dayNumber(datetime)}',
                     ),
                     const SizedBox(height: 12),
                     _DateItem(
-                      title: t.unixTimestamp.leapYear,
+                      title: t.datetimeConverter.leapYear,
                       datetime: datetime,
                       mapper: (datetime) =>
                           isLeapYear(datetime) ? t.common.yes : t.common.no,
                     ),
                     const SizedBox(height: 12),
                     _DateItem(
-                      title: t.unixTimestamp.dateOnly,
+                      title: t.datetimeConverter.dateOnly,
                       datetime: datetime,
                       mapper: _dateFormat.format,
                     ),
                     const SizedBox(height: 12),
                     _DateItem(
-                      title: t.unixTimestamp.timeOnly,
+                      title: t.datetimeConverter.timeOnly,
                       datetime: datetime,
                       mapper: _timeFormat.format,
                     ),
@@ -306,7 +306,7 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
       children: [
         Row(
           children: [
-            Text(t.unixTimestamp.datetimeFormat.hint),
+            Text(t.datetimeConverter.datetimeFormat.hint),
             const SizedBox(width: 8),
             BlocBuilder<DatetimeCubit, DatetimeState>(
               buildWhen: (prev, curr) => prev.format != curr.format,
@@ -338,7 +338,7 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
           builder: (context, state) {
             final format = state.format;
             return _DateItem(
-              title: t.unixTimestamp.local,
+              title: t.datetimeConverter.local,
               datetime: widget.datetime,
               mapper: (datetime) => _formatDatetime(datetime, format),
             );
@@ -349,7 +349,7 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
           builder: (context, state) {
             final format = state.format;
             return _DateItem(
-              title: t.unixTimestamp.utc,
+              title: t.datetimeConverter.utc,
               datetime: widget.datetime,
               mapper: (datetime) => _formatDatetime(datetime.toUtc(), format),
             );
@@ -364,7 +364,7 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
 
             if (datetime == null) {
               return _DateItem(
-                title: t.unixTimestamp.relative,
+                title: t.datetimeConverter.relative,
                 datetime: datetime,
                 mapper: (datetime) => '',
               );
@@ -375,22 +375,22 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
             final diff = now.difference(datetime);
 
             return _DateItem(
-              title: t.unixTimestamp.relative,
+              title: t.datetimeConverter.relative,
               datetime: datetime,
               mapper: (datetime) => diff.format(
-                onZero: t.unixTimestamp.relativeFormat.rightNow,
+                onZero: t.datetimeConverter.relativeFormat.rightNow,
                 onDays: (days) =>
-                    t.unixTimestamp.relativeFormat.days(days: days),
+                    t.datetimeConverter.relativeFormat.days(days: days),
                 onHours: (hours) =>
-                    t.unixTimestamp.relativeFormat.hours(hours: hours),
+                    t.datetimeConverter.relativeFormat.hours(hours: hours),
                 onMinutes: (min) =>
-                    t.unixTimestamp.relativeFormat.minutes(minutes: min),
+                    t.datetimeConverter.relativeFormat.minutes(minutes: min),
                 onSeconds: (sec) =>
-                    t.unixTimestamp.relativeFormat.seconds(seconds: sec),
+                    t.datetimeConverter.relativeFormat.seconds(seconds: sec),
                 positiveWrapper: (str) =>
-                    t.unixTimestamp.relativeFormat.positive(str: str),
+                    t.datetimeConverter.relativeFormat.positive(str: str),
                 negativeWrapper: (str) =>
-                    t.unixTimestamp.relativeFormat.negative(str: str),
+                    t.datetimeConverter.relativeFormat.negative(str: str),
                 separator: t.common.textSeparator,
               ),
             );
