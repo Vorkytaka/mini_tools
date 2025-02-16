@@ -11,7 +11,7 @@ import '../../common/padding.dart';
 import '../../common/regexp.dart';
 import '../../common/timezone_holder.dart';
 import '../../i18n/strings.g.dart';
-import '../datetime/datetime_tool.dart';
+import '../datetime_converter/datetime_converter_tool.dart';
 import 'cron_format.dart';
 import 'feature/cron_feature.dart';
 import 'feature/parser/cron_parser.dart';
@@ -368,12 +368,9 @@ class _NextAtList extends StatelessWidget {
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                     onTap: () {
-                      showMacosSheet(
+                      showDatetimeConverterSheet(
                         context: context,
-                        barrierDismissible: true,
-                        builder: (context) => MacosSheet(
-                          child: buildDatetimeTool(next),
-                        ),
+                        datetime: next,
                       );
                     },
                     child: Text(
