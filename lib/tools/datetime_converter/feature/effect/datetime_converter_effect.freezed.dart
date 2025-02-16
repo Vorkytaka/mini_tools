@@ -20,18 +20,21 @@ mixin _$DatetimeConverterEffect {
   TResult when<TResult extends Object?>({
     required TResult Function() getNow,
     required TResult Function(String input, InputType type) parse,
+    required TResult Function(DateTime datetime) setInitialDatetime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getNow,
     TResult? Function(String input, InputType type)? parse,
+    TResult? Function(DateTime datetime)? setInitialDatetime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getNow,
     TResult Function(String input, InputType type)? parse,
+    TResult Function(DateTime datetime)? setInitialDatetime,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,22 @@ mixin _$DatetimeConverterEffect {
   TResult map<TResult extends Object?>({
     required TResult Function(GetNowEffect value) getNow,
     required TResult Function(ParseEffect value) parse,
+    required TResult Function(SetInitialDatetimeEffect value)
+        setInitialDatetime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetNowEffect value)? getNow,
     TResult? Function(ParseEffect value)? parse,
+    TResult? Function(SetInitialDatetimeEffect value)? setInitialDatetime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetNowEffect value)? getNow,
     TResult Function(ParseEffect value)? parse,
+    TResult Function(SetInitialDatetimeEffect value)? setInitialDatetime,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +128,7 @@ class _$GetNowEffectImpl implements GetNowEffect {
   TResult when<TResult extends Object?>({
     required TResult Function() getNow,
     required TResult Function(String input, InputType type) parse,
+    required TResult Function(DateTime datetime) setInitialDatetime,
   }) {
     return getNow();
   }
@@ -130,6 +138,7 @@ class _$GetNowEffectImpl implements GetNowEffect {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getNow,
     TResult? Function(String input, InputType type)? parse,
+    TResult? Function(DateTime datetime)? setInitialDatetime,
   }) {
     return getNow?.call();
   }
@@ -139,6 +148,7 @@ class _$GetNowEffectImpl implements GetNowEffect {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getNow,
     TResult Function(String input, InputType type)? parse,
+    TResult Function(DateTime datetime)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (getNow != null) {
@@ -152,6 +162,8 @@ class _$GetNowEffectImpl implements GetNowEffect {
   TResult map<TResult extends Object?>({
     required TResult Function(GetNowEffect value) getNow,
     required TResult Function(ParseEffect value) parse,
+    required TResult Function(SetInitialDatetimeEffect value)
+        setInitialDatetime,
   }) {
     return getNow(this);
   }
@@ -161,6 +173,7 @@ class _$GetNowEffectImpl implements GetNowEffect {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetNowEffect value)? getNow,
     TResult? Function(ParseEffect value)? parse,
+    TResult? Function(SetInitialDatetimeEffect value)? setInitialDatetime,
   }) {
     return getNow?.call(this);
   }
@@ -170,6 +183,7 @@ class _$GetNowEffectImpl implements GetNowEffect {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetNowEffect value)? getNow,
     TResult Function(ParseEffect value)? parse,
+    TResult Function(SetInitialDatetimeEffect value)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (getNow != null) {
@@ -261,6 +275,7 @@ class _$ParseEffectImpl implements ParseEffect {
   TResult when<TResult extends Object?>({
     required TResult Function() getNow,
     required TResult Function(String input, InputType type) parse,
+    required TResult Function(DateTime datetime) setInitialDatetime,
   }) {
     return parse(input, type);
   }
@@ -270,6 +285,7 @@ class _$ParseEffectImpl implements ParseEffect {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getNow,
     TResult? Function(String input, InputType type)? parse,
+    TResult? Function(DateTime datetime)? setInitialDatetime,
   }) {
     return parse?.call(input, type);
   }
@@ -279,6 +295,7 @@ class _$ParseEffectImpl implements ParseEffect {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getNow,
     TResult Function(String input, InputType type)? parse,
+    TResult Function(DateTime datetime)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (parse != null) {
@@ -292,6 +309,8 @@ class _$ParseEffectImpl implements ParseEffect {
   TResult map<TResult extends Object?>({
     required TResult Function(GetNowEffect value) getNow,
     required TResult Function(ParseEffect value) parse,
+    required TResult Function(SetInitialDatetimeEffect value)
+        setInitialDatetime,
   }) {
     return parse(this);
   }
@@ -301,6 +320,7 @@ class _$ParseEffectImpl implements ParseEffect {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetNowEffect value)? getNow,
     TResult? Function(ParseEffect value)? parse,
+    TResult? Function(SetInitialDatetimeEffect value)? setInitialDatetime,
   }) {
     return parse?.call(this);
   }
@@ -310,6 +330,7 @@ class _$ParseEffectImpl implements ParseEffect {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetNowEffect value)? getNow,
     TResult Function(ParseEffect value)? parse,
+    TResult Function(SetInitialDatetimeEffect value)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (parse != null) {
@@ -332,4 +353,157 @@ abstract class ParseEffect implements DatetimeConverterEffect {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ParseEffectImplCopyWith<_$ParseEffectImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetInitialDatetimeEffectImplCopyWith<$Res> {
+  factory _$$SetInitialDatetimeEffectImplCopyWith(
+          _$SetInitialDatetimeEffectImpl value,
+          $Res Function(_$SetInitialDatetimeEffectImpl) then) =
+      __$$SetInitialDatetimeEffectImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime datetime});
+}
+
+/// @nodoc
+class __$$SetInitialDatetimeEffectImplCopyWithImpl<$Res>
+    extends _$DatetimeConverterEffectCopyWithImpl<$Res,
+        _$SetInitialDatetimeEffectImpl>
+    implements _$$SetInitialDatetimeEffectImplCopyWith<$Res> {
+  __$$SetInitialDatetimeEffectImplCopyWithImpl(
+      _$SetInitialDatetimeEffectImpl _value,
+      $Res Function(_$SetInitialDatetimeEffectImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DatetimeConverterEffect
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? datetime = null,
+  }) {
+    return _then(_$SetInitialDatetimeEffectImpl(
+      null == datetime
+          ? _value.datetime
+          : datetime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetInitialDatetimeEffectImpl implements SetInitialDatetimeEffect {
+  const _$SetInitialDatetimeEffectImpl(this.datetime);
+
+  @override
+  final DateTime datetime;
+
+  @override
+  String toString() {
+    return 'DatetimeConverterEffect.setInitialDatetime(datetime: $datetime)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetInitialDatetimeEffectImpl &&
+            (identical(other.datetime, datetime) ||
+                other.datetime == datetime));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, datetime);
+
+  /// Create a copy of DatetimeConverterEffect
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetInitialDatetimeEffectImplCopyWith<_$SetInitialDatetimeEffectImpl>
+      get copyWith => __$$SetInitialDatetimeEffectImplCopyWithImpl<
+          _$SetInitialDatetimeEffectImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getNow,
+    required TResult Function(String input, InputType type) parse,
+    required TResult Function(DateTime datetime) setInitialDatetime,
+  }) {
+    return setInitialDatetime(datetime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getNow,
+    TResult? Function(String input, InputType type)? parse,
+    TResult? Function(DateTime datetime)? setInitialDatetime,
+  }) {
+    return setInitialDatetime?.call(datetime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getNow,
+    TResult Function(String input, InputType type)? parse,
+    TResult Function(DateTime datetime)? setInitialDatetime,
+    required TResult orElse(),
+  }) {
+    if (setInitialDatetime != null) {
+      return setInitialDatetime(datetime);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetNowEffect value) getNow,
+    required TResult Function(ParseEffect value) parse,
+    required TResult Function(SetInitialDatetimeEffect value)
+        setInitialDatetime,
+  }) {
+    return setInitialDatetime(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetNowEffect value)? getNow,
+    TResult? Function(ParseEffect value)? parse,
+    TResult? Function(SetInitialDatetimeEffect value)? setInitialDatetime,
+  }) {
+    return setInitialDatetime?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetNowEffect value)? getNow,
+    TResult Function(ParseEffect value)? parse,
+    TResult Function(SetInitialDatetimeEffect value)? setInitialDatetime,
+    required TResult orElse(),
+  }) {
+    if (setInitialDatetime != null) {
+      return setInitialDatetime(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetInitialDatetimeEffect implements DatetimeConverterEffect {
+  const factory SetInitialDatetimeEffect(final DateTime datetime) =
+      _$SetInitialDatetimeEffectImpl;
+
+  DateTime get datetime;
+
+  /// Create a copy of DatetimeConverterEffect
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetInitialDatetimeEffectImplCopyWith<_$SetInitialDatetimeEffectImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

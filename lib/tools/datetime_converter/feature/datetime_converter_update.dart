@@ -55,6 +55,18 @@ Next<DatetimeConverterState, DatetimeConverterEffect> datetimeConverterUpdate(
               state.input,
         ),
       );
+    case SetInitialDatetimeMessage():
+      return next(
+        state: state.copyWith(
+          datetime: message.datetime,
+          isReadOnly: true,
+          input: updateInputByInputType(
+                message.datetime,
+                state.inputType,
+              ) ??
+              state.input,
+        ),
+      );
   }
 }
 

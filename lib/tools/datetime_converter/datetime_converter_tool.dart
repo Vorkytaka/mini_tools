@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:macos_ui/macos_ui.dart';
+import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:timezone/timezone.dart';
 
 import '../../i18n/strings.g.dart';
@@ -26,5 +28,16 @@ Future<void> showDatetimeConverterSheet({
   required BuildContext context,
   required DateTime datetime,
 }) {
-  throw Exception();
+  return showMacosSheet(
+    context: context,
+    barrierDismissible: true,
+    builder: (context) => FeatureProvider.create(
+      create: (context) => datetimeConverterFeatureFactory(
+        initialDatetime: datetime,
+      ),
+      child: const MacosSheet(
+        child: DatetimeConverterScreen(),
+      ),
+    ),
+  );
 }

@@ -13,9 +13,15 @@ export 'state/datetime_converter_state.dart';
 typedef DatetimeConverterFeature = Feature<DatetimeConverterState,
     DatetimeConverterMessage, DatetimeConverterEffect>;
 
-DatetimeConverterFeature datetimeConverterFeatureFactory() =>
+DatetimeConverterFeature datetimeConverterFeatureFactory({
+  DateTime? initialDatetime,
+}) =>
     DatetimeConverterFeature(
       initialState: DatetimeConverterState.defaultValue(),
       update: datetimeConverterUpdate,
       effectHandlers: const [DatetimeConverterEffectHandler()],
+      initialEffects: [
+        if (initialDatetime != null)
+          DatetimeConverterEffect.setInitialDatetime(initialDatetime),
+      ],
     );

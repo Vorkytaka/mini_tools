@@ -13,4 +13,7 @@ sealed class DatetimeConverterEffect with _$DatetimeConverterEffect {
     required String input,
     required InputType type,
   }) = ParseEffect;
+
+  const factory DatetimeConverterEffect.setInitialDatetime(DateTime datetime) =
+      SetInitialDatetimeEffect;
 }

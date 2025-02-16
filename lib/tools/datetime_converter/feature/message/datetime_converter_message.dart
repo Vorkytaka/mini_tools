@@ -26,4 +26,7 @@ sealed class DatetimeConverterMessage with _$DatetimeConverterMessage {
 
   const factory DatetimeConverterMessage.setNow(TZDateTime datetime) =
       SetNowMessage;
+
+  const factory DatetimeConverterMessage.setInitialDatetime(
+      TZDateTime datetime) = SetInitialDatetimeMessage;
 }

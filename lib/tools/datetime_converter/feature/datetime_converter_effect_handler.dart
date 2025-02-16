@@ -18,6 +18,8 @@ final class DatetimeConverterEffectHandler
         return _getNow(effect, emit);
       case ParseEffect():
         return _parse(effect, emit);
+      case SetInitialDatetimeEffect():
+        return _setInitialDatetime(effect, emit);
     }
   }
 
@@ -73,5 +75,14 @@ final class DatetimeConverterEffectHandler
     if (datetime != null) {
       emit(DatetimeConverterMessage.updateDatetime(datetime));
     }
+  }
+
+  void _setInitialDatetime(
+    SetInitialDatetimeEffect effect,
+    MsgEmitter<DatetimeConverterMessage> emit,
+  ) {
+    final timezone = local;
+    final datetime = TZDateTime.from(effect.datetime, timezone);
+    emit(DatetimeConverterMessage.setInitialDatetime(datetime));
   }
 }

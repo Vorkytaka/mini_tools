@@ -368,12 +368,9 @@ class _NextAtList extends StatelessWidget {
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                     onTap: () {
-                      showMacosSheet(
+                      showDatetimeConverterSheet(
                         context: context,
-                        barrierDismissible: true,
-                        builder: (context) => MacosSheet(
-                          child: buildDatetimeTool(next),
-                        ),
+                        datetime: next,
                       );
                     },
                     child: Text(

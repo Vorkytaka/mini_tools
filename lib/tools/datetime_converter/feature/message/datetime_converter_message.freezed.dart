@@ -25,6 +25,7 @@ mixin _$DatetimeConverterMessage {
     required TResult Function() clear,
     required TResult Function() getNow,
     required TResult Function(TZDateTime datetime) setNow,
+    required TResult Function(TZDateTime datetime) setInitialDatetime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +37,7 @@ mixin _$DatetimeConverterMessage {
     TResult? Function()? clear,
     TResult? Function()? getNow,
     TResult? Function(TZDateTime datetime)? setNow,
+    TResult? Function(TZDateTime datetime)? setInitialDatetime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +49,7 @@ mixin _$DatetimeConverterMessage {
     TResult Function()? clear,
     TResult Function()? getNow,
     TResult Function(TZDateTime datetime)? setNow,
+    TResult Function(TZDateTime datetime)? setInitialDatetime,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,6 +63,8 @@ mixin _$DatetimeConverterMessage {
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
+    required TResult Function(SetInitialDatetimeMessage value)
+        setInitialDatetime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +76,7 @@ mixin _$DatetimeConverterMessage {
     TResult? Function(ClearMessage value)? clear,
     TResult? Function(GetNowMessage value)? getNow,
     TResult? Function(SetNowMessage value)? setNow,
+    TResult? Function(SetInitialDatetimeMessage value)? setInitialDatetime,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -82,6 +88,7 @@ mixin _$DatetimeConverterMessage {
     TResult Function(ClearMessage value)? clear,
     TResult Function(GetNowMessage value)? getNow,
     TResult Function(SetNowMessage value)? setNow,
+    TResult Function(SetInitialDatetimeMessage value)? setInitialDatetime,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -186,6 +193,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     required TResult Function() clear,
     required TResult Function() getNow,
     required TResult Function(TZDateTime datetime) setNow,
+    required TResult Function(TZDateTime datetime) setInitialDatetime,
   }) {
     return updateInput(input);
   }
@@ -200,6 +208,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult? Function()? clear,
     TResult? Function()? getNow,
     TResult? Function(TZDateTime datetime)? setNow,
+    TResult? Function(TZDateTime datetime)? setInitialDatetime,
   }) {
     return updateInput?.call(input);
   }
@@ -214,6 +223,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult Function()? clear,
     TResult Function()? getNow,
     TResult Function(TZDateTime datetime)? setNow,
+    TResult Function(TZDateTime datetime)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (updateInput != null) {
@@ -233,6 +243,8 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
+    required TResult Function(SetInitialDatetimeMessage value)
+        setInitialDatetime,
   }) {
     return updateInput(this);
   }
@@ -247,6 +259,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult? Function(ClearMessage value)? clear,
     TResult? Function(GetNowMessage value)? getNow,
     TResult? Function(SetNowMessage value)? setNow,
+    TResult? Function(SetInitialDatetimeMessage value)? setInitialDatetime,
   }) {
     return updateInput?.call(this);
   }
@@ -261,6 +274,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult Function(ClearMessage value)? clear,
     TResult Function(GetNowMessage value)? getNow,
     TResult Function(SetNowMessage value)? setNow,
+    TResult Function(SetInitialDatetimeMessage value)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (updateInput != null) {
@@ -362,6 +376,7 @@ class _$UpdateDatetimeMessageImpl implements UpdateDatetimeMessage {
     required TResult Function() clear,
     required TResult Function() getNow,
     required TResult Function(TZDateTime datetime) setNow,
+    required TResult Function(TZDateTime datetime) setInitialDatetime,
   }) {
     return updateDatetime(datetime);
   }
@@ -376,6 +391,7 @@ class _$UpdateDatetimeMessageImpl implements UpdateDatetimeMessage {
     TResult? Function()? clear,
     TResult? Function()? getNow,
     TResult? Function(TZDateTime datetime)? setNow,
+    TResult? Function(TZDateTime datetime)? setInitialDatetime,
   }) {
     return updateDatetime?.call(datetime);
   }
@@ -390,6 +406,7 @@ class _$UpdateDatetimeMessageImpl implements UpdateDatetimeMessage {
     TResult Function()? clear,
     TResult Function()? getNow,
     TResult Function(TZDateTime datetime)? setNow,
+    TResult Function(TZDateTime datetime)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (updateDatetime != null) {
@@ -409,6 +426,8 @@ class _$UpdateDatetimeMessageImpl implements UpdateDatetimeMessage {
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
+    required TResult Function(SetInitialDatetimeMessage value)
+        setInitialDatetime,
   }) {
     return updateDatetime(this);
   }
@@ -423,6 +442,7 @@ class _$UpdateDatetimeMessageImpl implements UpdateDatetimeMessage {
     TResult? Function(ClearMessage value)? clear,
     TResult? Function(GetNowMessage value)? getNow,
     TResult? Function(SetNowMessage value)? setNow,
+    TResult? Function(SetInitialDatetimeMessage value)? setInitialDatetime,
   }) {
     return updateDatetime?.call(this);
   }
@@ -437,6 +457,7 @@ class _$UpdateDatetimeMessageImpl implements UpdateDatetimeMessage {
     TResult Function(ClearMessage value)? clear,
     TResult Function(GetNowMessage value)? getNow,
     TResult Function(SetNowMessage value)? setNow,
+    TResult Function(SetInitialDatetimeMessage value)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (updateDatetime != null) {
@@ -538,6 +559,7 @@ class _$UpdateInputTypeMessageImpl implements UpdateInputTypeMessage {
     required TResult Function() clear,
     required TResult Function() getNow,
     required TResult Function(TZDateTime datetime) setNow,
+    required TResult Function(TZDateTime datetime) setInitialDatetime,
   }) {
     return updateInputType(type);
   }
@@ -552,6 +574,7 @@ class _$UpdateInputTypeMessageImpl implements UpdateInputTypeMessage {
     TResult? Function()? clear,
     TResult? Function()? getNow,
     TResult? Function(TZDateTime datetime)? setNow,
+    TResult? Function(TZDateTime datetime)? setInitialDatetime,
   }) {
     return updateInputType?.call(type);
   }
@@ -566,6 +589,7 @@ class _$UpdateInputTypeMessageImpl implements UpdateInputTypeMessage {
     TResult Function()? clear,
     TResult Function()? getNow,
     TResult Function(TZDateTime datetime)? setNow,
+    TResult Function(TZDateTime datetime)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (updateInputType != null) {
@@ -585,6 +609,8 @@ class _$UpdateInputTypeMessageImpl implements UpdateInputTypeMessage {
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
+    required TResult Function(SetInitialDatetimeMessage value)
+        setInitialDatetime,
   }) {
     return updateInputType(this);
   }
@@ -599,6 +625,7 @@ class _$UpdateInputTypeMessageImpl implements UpdateInputTypeMessage {
     TResult? Function(ClearMessage value)? clear,
     TResult? Function(GetNowMessage value)? getNow,
     TResult? Function(SetNowMessage value)? setNow,
+    TResult? Function(SetInitialDatetimeMessage value)? setInitialDatetime,
   }) {
     return updateInputType?.call(this);
   }
@@ -613,6 +640,7 @@ class _$UpdateInputTypeMessageImpl implements UpdateInputTypeMessage {
     TResult Function(ClearMessage value)? clear,
     TResult Function(GetNowMessage value)? getNow,
     TResult Function(SetNowMessage value)? setNow,
+    TResult Function(SetInitialDatetimeMessage value)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (updateInputType != null) {
@@ -714,6 +742,7 @@ class _$UpdateDatetimeFormatMessageImpl implements UpdateDatetimeFormatMessage {
     required TResult Function() clear,
     required TResult Function() getNow,
     required TResult Function(TZDateTime datetime) setNow,
+    required TResult Function(TZDateTime datetime) setInitialDatetime,
   }) {
     return updateDatetimeFormat(format);
   }
@@ -728,6 +757,7 @@ class _$UpdateDatetimeFormatMessageImpl implements UpdateDatetimeFormatMessage {
     TResult? Function()? clear,
     TResult? Function()? getNow,
     TResult? Function(TZDateTime datetime)? setNow,
+    TResult? Function(TZDateTime datetime)? setInitialDatetime,
   }) {
     return updateDatetimeFormat?.call(format);
   }
@@ -742,6 +772,7 @@ class _$UpdateDatetimeFormatMessageImpl implements UpdateDatetimeFormatMessage {
     TResult Function()? clear,
     TResult Function()? getNow,
     TResult Function(TZDateTime datetime)? setNow,
+    TResult Function(TZDateTime datetime)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (updateDatetimeFormat != null) {
@@ -761,6 +792,8 @@ class _$UpdateDatetimeFormatMessageImpl implements UpdateDatetimeFormatMessage {
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
+    required TResult Function(SetInitialDatetimeMessage value)
+        setInitialDatetime,
   }) {
     return updateDatetimeFormat(this);
   }
@@ -775,6 +808,7 @@ class _$UpdateDatetimeFormatMessageImpl implements UpdateDatetimeFormatMessage {
     TResult? Function(ClearMessage value)? clear,
     TResult? Function(GetNowMessage value)? getNow,
     TResult? Function(SetNowMessage value)? setNow,
+    TResult? Function(SetInitialDatetimeMessage value)? setInitialDatetime,
   }) {
     return updateDatetimeFormat?.call(this);
   }
@@ -789,6 +823,7 @@ class _$UpdateDatetimeFormatMessageImpl implements UpdateDatetimeFormatMessage {
     TResult Function(ClearMessage value)? clear,
     TResult Function(GetNowMessage value)? getNow,
     TResult Function(SetNowMessage value)? setNow,
+    TResult Function(SetInitialDatetimeMessage value)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (updateDatetimeFormat != null) {
@@ -859,6 +894,7 @@ class _$ClearMessageImpl implements ClearMessage {
     required TResult Function() clear,
     required TResult Function() getNow,
     required TResult Function(TZDateTime datetime) setNow,
+    required TResult Function(TZDateTime datetime) setInitialDatetime,
   }) {
     return clear();
   }
@@ -873,6 +909,7 @@ class _$ClearMessageImpl implements ClearMessage {
     TResult? Function()? clear,
     TResult? Function()? getNow,
     TResult? Function(TZDateTime datetime)? setNow,
+    TResult? Function(TZDateTime datetime)? setInitialDatetime,
   }) {
     return clear?.call();
   }
@@ -887,6 +924,7 @@ class _$ClearMessageImpl implements ClearMessage {
     TResult Function()? clear,
     TResult Function()? getNow,
     TResult Function(TZDateTime datetime)? setNow,
+    TResult Function(TZDateTime datetime)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (clear != null) {
@@ -906,6 +944,8 @@ class _$ClearMessageImpl implements ClearMessage {
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
+    required TResult Function(SetInitialDatetimeMessage value)
+        setInitialDatetime,
   }) {
     return clear(this);
   }
@@ -920,6 +960,7 @@ class _$ClearMessageImpl implements ClearMessage {
     TResult? Function(ClearMessage value)? clear,
     TResult? Function(GetNowMessage value)? getNow,
     TResult? Function(SetNowMessage value)? setNow,
+    TResult? Function(SetInitialDatetimeMessage value)? setInitialDatetime,
   }) {
     return clear?.call(this);
   }
@@ -934,6 +975,7 @@ class _$ClearMessageImpl implements ClearMessage {
     TResult Function(ClearMessage value)? clear,
     TResult Function(GetNowMessage value)? getNow,
     TResult Function(SetNowMessage value)? setNow,
+    TResult Function(SetInitialDatetimeMessage value)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (clear != null) {
@@ -995,6 +1037,7 @@ class _$GetNowMessageImpl implements GetNowMessage {
     required TResult Function() clear,
     required TResult Function() getNow,
     required TResult Function(TZDateTime datetime) setNow,
+    required TResult Function(TZDateTime datetime) setInitialDatetime,
   }) {
     return getNow();
   }
@@ -1009,6 +1052,7 @@ class _$GetNowMessageImpl implements GetNowMessage {
     TResult? Function()? clear,
     TResult? Function()? getNow,
     TResult? Function(TZDateTime datetime)? setNow,
+    TResult? Function(TZDateTime datetime)? setInitialDatetime,
   }) {
     return getNow?.call();
   }
@@ -1023,6 +1067,7 @@ class _$GetNowMessageImpl implements GetNowMessage {
     TResult Function()? clear,
     TResult Function()? getNow,
     TResult Function(TZDateTime datetime)? setNow,
+    TResult Function(TZDateTime datetime)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (getNow != null) {
@@ -1042,6 +1087,8 @@ class _$GetNowMessageImpl implements GetNowMessage {
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
+    required TResult Function(SetInitialDatetimeMessage value)
+        setInitialDatetime,
   }) {
     return getNow(this);
   }
@@ -1056,6 +1103,7 @@ class _$GetNowMessageImpl implements GetNowMessage {
     TResult? Function(ClearMessage value)? clear,
     TResult? Function(GetNowMessage value)? getNow,
     TResult? Function(SetNowMessage value)? setNow,
+    TResult? Function(SetInitialDatetimeMessage value)? setInitialDatetime,
   }) {
     return getNow?.call(this);
   }
@@ -1070,6 +1118,7 @@ class _$GetNowMessageImpl implements GetNowMessage {
     TResult Function(ClearMessage value)? clear,
     TResult Function(GetNowMessage value)? getNow,
     TResult Function(SetNowMessage value)? setNow,
+    TResult Function(SetInitialDatetimeMessage value)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (getNow != null) {
@@ -1159,6 +1208,7 @@ class _$SetNowMessageImpl implements SetNowMessage {
     required TResult Function() clear,
     required TResult Function() getNow,
     required TResult Function(TZDateTime datetime) setNow,
+    required TResult Function(TZDateTime datetime) setInitialDatetime,
   }) {
     return setNow(datetime);
   }
@@ -1173,6 +1223,7 @@ class _$SetNowMessageImpl implements SetNowMessage {
     TResult? Function()? clear,
     TResult? Function()? getNow,
     TResult? Function(TZDateTime datetime)? setNow,
+    TResult? Function(TZDateTime datetime)? setInitialDatetime,
   }) {
     return setNow?.call(datetime);
   }
@@ -1187,6 +1238,7 @@ class _$SetNowMessageImpl implements SetNowMessage {
     TResult Function()? clear,
     TResult Function()? getNow,
     TResult Function(TZDateTime datetime)? setNow,
+    TResult Function(TZDateTime datetime)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (setNow != null) {
@@ -1206,6 +1258,8 @@ class _$SetNowMessageImpl implements SetNowMessage {
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
+    required TResult Function(SetInitialDatetimeMessage value)
+        setInitialDatetime,
   }) {
     return setNow(this);
   }
@@ -1220,6 +1274,7 @@ class _$SetNowMessageImpl implements SetNowMessage {
     TResult? Function(ClearMessage value)? clear,
     TResult? Function(GetNowMessage value)? getNow,
     TResult? Function(SetNowMessage value)? setNow,
+    TResult? Function(SetInitialDatetimeMessage value)? setInitialDatetime,
   }) {
     return setNow?.call(this);
   }
@@ -1234,6 +1289,7 @@ class _$SetNowMessageImpl implements SetNowMessage {
     TResult Function(ClearMessage value)? clear,
     TResult Function(GetNowMessage value)? getNow,
     TResult Function(SetNowMessage value)? setNow,
+    TResult Function(SetInitialDatetimeMessage value)? setInitialDatetime,
     required TResult orElse(),
   }) {
     if (setNow != null) {
@@ -1253,4 +1309,188 @@ abstract class SetNowMessage implements DatetimeConverterMessage {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetNowMessageImplCopyWith<_$SetNowMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SetInitialDatetimeMessageImplCopyWith<$Res> {
+  factory _$$SetInitialDatetimeMessageImplCopyWith(
+          _$SetInitialDatetimeMessageImpl value,
+          $Res Function(_$SetInitialDatetimeMessageImpl) then) =
+      __$$SetInitialDatetimeMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({TZDateTime datetime});
+}
+
+/// @nodoc
+class __$$SetInitialDatetimeMessageImplCopyWithImpl<$Res>
+    extends _$DatetimeConverterMessageCopyWithImpl<$Res,
+        _$SetInitialDatetimeMessageImpl>
+    implements _$$SetInitialDatetimeMessageImplCopyWith<$Res> {
+  __$$SetInitialDatetimeMessageImplCopyWithImpl(
+      _$SetInitialDatetimeMessageImpl _value,
+      $Res Function(_$SetInitialDatetimeMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DatetimeConverterMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? datetime = null,
+  }) {
+    return _then(_$SetInitialDatetimeMessageImpl(
+      null == datetime
+          ? _value.datetime
+          : datetime // ignore: cast_nullable_to_non_nullable
+              as TZDateTime,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetInitialDatetimeMessageImpl implements SetInitialDatetimeMessage {
+  const _$SetInitialDatetimeMessageImpl(this.datetime);
+
+  @override
+  final TZDateTime datetime;
+
+  @override
+  String toString() {
+    return 'DatetimeConverterMessage.setInitialDatetime(datetime: $datetime)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetInitialDatetimeMessageImpl &&
+            (identical(other.datetime, datetime) ||
+                other.datetime == datetime));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, datetime);
+
+  /// Create a copy of DatetimeConverterMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetInitialDatetimeMessageImplCopyWith<_$SetInitialDatetimeMessageImpl>
+      get copyWith => __$$SetInitialDatetimeMessageImplCopyWithImpl<
+          _$SetInitialDatetimeMessageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String input) updateInput,
+    required TResult Function(TZDateTime datetime) updateDatetime,
+    required TResult Function(InputType type) updateInputType,
+    required TResult Function(DatetimeFormat format) updateDatetimeFormat,
+    required TResult Function() clear,
+    required TResult Function() getNow,
+    required TResult Function(TZDateTime datetime) setNow,
+    required TResult Function(TZDateTime datetime) setInitialDatetime,
+  }) {
+    return setInitialDatetime(datetime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String input)? updateInput,
+    TResult? Function(TZDateTime datetime)? updateDatetime,
+    TResult? Function(InputType type)? updateInputType,
+    TResult? Function(DatetimeFormat format)? updateDatetimeFormat,
+    TResult? Function()? clear,
+    TResult? Function()? getNow,
+    TResult? Function(TZDateTime datetime)? setNow,
+    TResult? Function(TZDateTime datetime)? setInitialDatetime,
+  }) {
+    return setInitialDatetime?.call(datetime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String input)? updateInput,
+    TResult Function(TZDateTime datetime)? updateDatetime,
+    TResult Function(InputType type)? updateInputType,
+    TResult Function(DatetimeFormat format)? updateDatetimeFormat,
+    TResult Function()? clear,
+    TResult Function()? getNow,
+    TResult Function(TZDateTime datetime)? setNow,
+    TResult Function(TZDateTime datetime)? setInitialDatetime,
+    required TResult orElse(),
+  }) {
+    if (setInitialDatetime != null) {
+      return setInitialDatetime(datetime);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdateInputMessage value) updateInput,
+    required TResult Function(UpdateDatetimeMessage value) updateDatetime,
+    required TResult Function(UpdateInputTypeMessage value) updateInputType,
+    required TResult Function(UpdateDatetimeFormatMessage value)
+        updateDatetimeFormat,
+    required TResult Function(ClearMessage value) clear,
+    required TResult Function(GetNowMessage value) getNow,
+    required TResult Function(SetNowMessage value) setNow,
+    required TResult Function(SetInitialDatetimeMessage value)
+        setInitialDatetime,
+  }) {
+    return setInitialDatetime(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UpdateInputMessage value)? updateInput,
+    TResult? Function(UpdateDatetimeMessage value)? updateDatetime,
+    TResult? Function(UpdateInputTypeMessage value)? updateInputType,
+    TResult? Function(UpdateDatetimeFormatMessage value)? updateDatetimeFormat,
+    TResult? Function(ClearMessage value)? clear,
+    TResult? Function(GetNowMessage value)? getNow,
+    TResult? Function(SetNowMessage value)? setNow,
+    TResult? Function(SetInitialDatetimeMessage value)? setInitialDatetime,
+  }) {
+    return setInitialDatetime?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdateInputMessage value)? updateInput,
+    TResult Function(UpdateDatetimeMessage value)? updateDatetime,
+    TResult Function(UpdateInputTypeMessage value)? updateInputType,
+    TResult Function(UpdateDatetimeFormatMessage value)? updateDatetimeFormat,
+    TResult Function(ClearMessage value)? clear,
+    TResult Function(GetNowMessage value)? getNow,
+    TResult Function(SetNowMessage value)? setNow,
+    TResult Function(SetInitialDatetimeMessage value)? setInitialDatetime,
+    required TResult orElse(),
+  }) {
+    if (setInitialDatetime != null) {
+      return setInitialDatetime(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetInitialDatetimeMessage implements DatetimeConverterMessage {
+  const factory SetInitialDatetimeMessage(final TZDateTime datetime) =
+      _$SetInitialDatetimeMessageImpl;
+
+  TZDateTime get datetime;
+
+  /// Create a copy of DatetimeConverterMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetInitialDatetimeMessageImplCopyWith<_$SetInitialDatetimeMessageImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
