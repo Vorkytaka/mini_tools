@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:mini_tea_flutter/mini_tea_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:timezone/timezone.dart';
 
 import '../../common/datetime.dart';
@@ -11,9 +12,8 @@ import '../../common/duration.dart';
 import '../../common/macos_read_only_field.dart';
 import '../../common/padding.dart';
 import '../../common/text_styles.dart';
-import '../../common/timezone_holder.dart';
 import '../../i18n/strings.g.dart';
-import 'datetime_cubit.dart';
+import 'feature/datetime_converter_feature.dart';
 
 extension on InputType {
   String format(BuildContext context) {
@@ -108,7 +108,7 @@ class _NowButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DatetimeCubit, DatetimeState>(
+    return FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
         buildWhen: (prev, curr) => prev.isReadOnly != curr.isReadOnly,
         builder: (context, state) {
           return PushButton(
@@ -116,8 +116,9 @@ class _NowButton extends StatelessWidget {
             onPressed: state.isReadOnly
                 ? null
                 : () {
-                    final timezone = TimezoneHolder.of(context);
-                    context.read<DatetimeCubit>().setNow(timezone);
+                    context
+                        .read<DatetimeConverterFeature>()
+                        .accept(const DatetimeConverterMessage.getNow());
                   },
             child: Text(t.datetimeConverter.now),
           );
@@ -130,13 +131,18 @@ class _ClearButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DatetimeCubit, DatetimeState>(
+    return FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
       buildWhen: (prev, curr) => prev.isReadOnly != curr.isReadOnly,
       builder: (context, state) {
         return PushButton(
           controlSize: ControlSize.regular,
-          onPressed:
-              state.isReadOnly ? null : context.read<DatetimeCubit>().clear,
+          onPressed: state.isReadOnly
+              ? null
+              : () {
+                  context
+                      .read<DatetimeConverterFeature>()
+                      .accept(const DatetimeConverterMessage.clear());
+                },
           secondary: true,
           child: Text(t.common.clear),
         );
@@ -160,8 +166,8 @@ class _InputFieldState extends State<_InputField> {
   void initState() {
     super.initState();
 
-    final cubit = context.read<DatetimeCubit>();
-    final state = cubit.state;
+    final feature = context.read<DatetimeConverterFeature>();
+    final state = feature.state;
     if (state.input != _inputController.text) {
       _inputController.text = state.input;
     }
@@ -174,8 +180,8 @@ class _InputFieldState extends State<_InputField> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    final cubit = context.watch<DatetimeCubit>();
-    final input = cubit.state.input;
+    final feature = context.watch<DatetimeConverterFeature>();
+    final input = feature.state.input;
     if (input != _inputController.text) {
       _inputController.text = input;
     }
@@ -201,9 +207,9 @@ class _InputFieldState extends State<_InputField> {
 
   void _onInputChange() {
     final inputText = _inputController.text;
-    final timezone = TimezoneHolder.of(context);
-
-    context.read<DatetimeCubit>().onInputUpdate(inputText, timezone);
+    context
+        .read<DatetimeConverterFeature>()
+        .accept(DatetimeConverterMessage.updateInput(inputText));
   }
 }
 
@@ -218,7 +224,7 @@ class _DateTimeOutput extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = Translations.of(context);
 
-    return BlocBuilder<DatetimeCubit, DatetimeState>(
+    return FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
       buildWhen: (prev, curr) => prev.datetime != curr.datetime,
       builder: (context, state) {
         final datetime = state.datetime;
@@ -308,7 +314,7 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
           children: [
             Text(t.datetimeConverter.datetimeFormat.hint),
             const SizedBox(width: 8),
-            BlocBuilder<DatetimeCubit, DatetimeState>(
+            FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
               buildWhen: (prev, curr) => prev.format != curr.format,
               builder: (context, state) {
                 return MacosPopupButton(
@@ -323,9 +329,9 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
                       .toList(growable: false),
                   onChanged: (format) {
                     if (format != null) {
-                      context
-                          .read<DatetimeCubit>()
-                          .onDatetimeFormatUpdate(format);
+                      context.read<DatetimeConverterFeature>().accept(
+                          DatetimeConverterMessage.updateDatetimeFormat(
+                              format));
                     }
                   },
                 );
@@ -334,7 +340,7 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
           ],
         ),
         const SizedBox(height: 12),
-        BlocBuilder<DatetimeCubit, DatetimeState>(
+        FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
           builder: (context, state) {
             final format = state.format;
             return _DateItem(
@@ -345,7 +351,7 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
           },
         ),
         const SizedBox(height: 12),
-        BlocBuilder<DatetimeCubit, DatetimeState>(
+        FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
           builder: (context, state) {
             final format = state.format;
             return _DateItem(
@@ -356,7 +362,7 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
           },
         ),
         const SizedBox(height: 12),
-        BlocBuilder<DatetimeCubit, DatetimeState>(
+        FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
           buildWhen: (prev, curr) => prev.datetime != curr.datetime,
           builder: (context, state) {
             final t = Translations.of(context);
@@ -415,7 +421,7 @@ class _InputTypeSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DatetimeCubit, DatetimeState>(
+    return FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
       buildWhen: (prev, curr) => prev.inputType != curr.inputType,
       builder: (context, state) {
         return MacosPopupButton(
@@ -430,7 +436,9 @@ class _InputTypeSelector extends StatelessWidget {
               .toList(growable: false),
           onChanged: (type) {
             if (type != null) {
-              context.read<DatetimeCubit>().onInputTypeUpdate(type);
+              context
+                  .read<DatetimeConverterFeature>()
+                  .accept(DatetimeConverterMessage.updateInputType(type));
             }
           },
         );

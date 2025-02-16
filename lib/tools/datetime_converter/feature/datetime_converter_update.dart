@@ -25,7 +25,10 @@ Next<DatetimeConverterState, DatetimeConverterEffect> datetimeConverterUpdate(
     case UpdateInputTypeMessage():
       return next(
         state: state.copyWith(
-          input: updateInputByInputType(state.datetime, message.type) ??
+          input: updateInputByInputType(
+                state.datetime,
+                message.type,
+              ) ??
               state.input,
           inputType: message.type,
         ),
@@ -37,6 +40,19 @@ Next<DatetimeConverterState, DatetimeConverterEffect> datetimeConverterUpdate(
         state: state.copyWith(
           datetime: null,
           input: '',
+        ),
+      );
+    case GetNowMessage():
+      return next(effects: const [DatetimeConverterEffect.getNow()]);
+    case SetNowMessage():
+      return next(
+        state: state.copyWith(
+          datetime: message.datetime,
+          input: updateInputByInputType(
+                message.datetime,
+                state.inputType,
+              ) ??
+              state.input,
         ),
       );
   }

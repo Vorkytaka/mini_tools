@@ -3,15 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:timezone/timezone.dart';
 
 import '../../i18n/strings.g.dart';
-import '../../tool/bloc_tool.dart';
+import '../../tool/feature_tool.dart';
 import 'datetime_converter_screen.dart';
 import 'datetime_cubit.dart';
+import 'feature/datetime_converter_feature.dart';
 
-final datetimeTool = BlocTool(
+final datetimeTool = FeatureTool(
   titleBuilder: (context) => Translations.of(context).datetimeConverter.title,
   icon: Icons.timelapse,
   screenBuilder: (context) => const DatetimeConverterScreen(),
-  bloc: DatetimeCubit(),
+  feature: datetimeConverterFeatureFactory()..init(),
 );
 
 Widget buildDatetimeTool(TZDateTime datetime) {
@@ -19,4 +20,11 @@ Widget buildDatetimeTool(TZDateTime datetime) {
     create: (context) => DatetimeCubit(initialDateTime: datetime),
     child: const DatetimeConverterScreen(),
   );
+}
+
+Future<void> showDatetimeConverterSheet({
+  required BuildContext context,
+  required DateTime datetime,
+}) {
+  throw Exception();
 }

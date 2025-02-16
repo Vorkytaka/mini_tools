@@ -21,4 +21,9 @@ sealed class DatetimeConverterMessage with _$DatetimeConverterMessage {
       DatetimeFormat format) = UpdateDatetimeFormatMessage;
 
   const factory DatetimeConverterMessage.clear() = ClearMessage;
+
+  const factory DatetimeConverterMessage.getNow() = GetNowMessage;
+
+  const factory DatetimeConverterMessage.setNow(TZDateTime datetime) =
+      SetNowMessage;
 }

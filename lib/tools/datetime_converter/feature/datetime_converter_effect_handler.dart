@@ -27,7 +27,7 @@ final class DatetimeConverterEffectHandler
   ) {
     final timezone = local;
     final now = TZDateTime.now(timezone);
-    emit(DatetimeConverterMessage.updateDatetime(now));
+    emit(DatetimeConverterMessage.setNow(now));
   }
 
   void _parse(
