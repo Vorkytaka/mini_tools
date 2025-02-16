@@ -43,8 +43,8 @@ extension on DatetimeFormat {
   }
 }
 
-class UnixTimestampToolWidget extends StatelessWidget {
-  const UnixTimestampToolWidget({super.key});
+class DatetimeConverterScreen extends StatelessWidget {
+  const DatetimeConverterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
