@@ -12,6 +12,7 @@ import 'number_base_converter/number_base_converter_tool.dart';
 import 'percentages_tool.dart';
 import 'regexp/regexp_tool.dart';
 import 'sqlite/sqlite_tool.dart';
+import 'text_diff/text_diff_tool.dart';
 import 'uuid/uuid_tool.dart';
 
 final tools = <Tool>[
@@ -27,6 +28,7 @@ final tools = <Tool>[
   sqliteTool,
   uuidTool,
   cronTool,
+  textDiffTool,
 ];
 
 final debugTool = BaseTool(
