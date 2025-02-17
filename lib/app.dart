@@ -62,6 +62,7 @@ class _WindowState extends State<_Window> {
   @override
   Widget build(BuildContext context) {
     return MacosWindow(
+      disableWallpaperTinting: true,
       sidebar: Sidebar(
         minWidth: 200,
         isResizable: false,
