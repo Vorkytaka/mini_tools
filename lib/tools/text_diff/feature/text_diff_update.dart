@@ -59,3 +59,37 @@ Next<TextDiffState, TextDiffEffect> textDiffUpdate(
 bool _shouldRecountDiffs(TextDiffState state, String oldText, String newText) {
   return state.oldText != oldText || state.newText != newText;
 }
+
+List<List<Diff>> splitDiffsIntoLines(List<Diff> diffs) {
+  final List<List<Diff>> lines = [];
+  List<Diff> currentLine = [];
+  for (final diff in diffs) {
+    final text = diff.text;
+    int start = 0;
+    while (true) {
+      final int index = text.indexOf('\n', start);
+      if (index == -1) {
+        // Add remaining text if any
+        if (start < text.length) {
+          final String part = text.substring(start);
+          currentLine.add(Diff(diff.operation, part));
+        }
+        break;
+      } else {
+        // Split at the newline, including it in the part
+        final String part = text.substring(start, index + 1);
+        currentLine.add(Diff(diff.operation, part));
+        if (part.endsWith('\n')) {
+          lines.add(currentLine);
+          currentLine = [];
+        }
+        start = index + 1;
+      }
+    }
+  }
+  // Add any remaining diffs as the last line
+  if (currentLine.isNotEmpty) {
+    lines.add(currentLine);
+  }
+  return lines;
+}
