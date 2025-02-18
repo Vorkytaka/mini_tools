@@ -3,6 +3,7 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:syntax_highlight/syntax_highlight.dart';
 import 'package:timezone/timezone.dart';
 
+import 'common/datetime_inherited_model.dart';
 import 'common/highlight_theme_holder.dart';
 import 'common/timezone_holder.dart';
 import 'i18n/strings.g.dart';
@@ -22,21 +23,23 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TranslationProvider(
-      child: HighlightThemeHolder(
-        highlighterTheme: highlighterTheme,
-        highlighterDarkTheme: highlighterDarkTheme,
-        child: TimezoneHolder(
-          timezone: timezone,
-          child: Builder(
-            builder: (context) => MacosApp(
-              locale: TranslationProvider.of(context).flutterLocale,
-              supportedLocales: AppLocaleUtils.supportedLocales,
-              // localizationsDelegates: GlobalMaterialLocalizations.delegates,
-              home: const _Window(),
-              builder: (context, child) => Theme(
-                data: ThemeData.dark(),
-                child: child!,
+    return DatetimeHolder(
+      child: TranslationProvider(
+        child: HighlightThemeHolder(
+          highlighterTheme: highlighterTheme,
+          highlighterDarkTheme: highlighterDarkTheme,
+          child: TimezoneHolder(
+            timezone: timezone,
+            child: Builder(
+              builder: (context) => MacosApp(
+                locale: TranslationProvider.of(context).flutterLocale,
+                supportedLocales: AppLocaleUtils.supportedLocales,
+                // localizationsDelegates: GlobalMaterialLocalizations.delegates,
+                home: const _Window(),
+                builder: (context, child) => Theme(
+                  data: ThemeData.dark(),
+                  child: child!,
+                ),
               ),
             ),
           ),
@@ -59,6 +62,7 @@ class _WindowState extends State<_Window> {
   @override
   Widget build(BuildContext context) {
     return MacosWindow(
+      disableWallpaperTinting: true,
       sidebar: Sidebar(
         minWidth: 200,
         isResizable: false,

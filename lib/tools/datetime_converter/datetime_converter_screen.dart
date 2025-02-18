@@ -1,30 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:mini_tea_flutter/mini_tea_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:timezone/timezone.dart';
 
 import '../../common/datetime.dart';
+import '../../common/datetime_inherited_model.dart';
+import '../../common/duration.dart';
 import '../../common/macos_read_only_field.dart';
 import '../../common/padding.dart';
 import '../../common/text_styles.dart';
-import '../../common/timezone_holder.dart';
 import '../../i18n/strings.g.dart';
-import 'datetime_cubit.dart';
+import 'feature/datetime_converter_feature.dart';
 
 extension on InputType {
   String format(BuildContext context) {
     final t = Translations.of(context);
     switch (this) {
       case InputType.sec:
-        return t.unixTimestamp.inputType.sec;
+        return t.datetimeConverter.inputType.sec;
       case InputType.ms:
-        return t.unixTimestamp.inputType.ms;
+        return t.datetimeConverter.inputType.ms;
       case InputType.us:
-        return t.unixTimestamp.inputType.us;
+        return t.datetimeConverter.inputType.us;
       case InputType.iso:
-        return t.unixTimestamp.inputType.iso;
+        return t.datetimeConverter.inputType.iso;
     }
   }
 }
@@ -34,46 +36,15 @@ extension on DatetimeFormat {
     final t = Translations.of(context);
     switch (this) {
       case DatetimeFormat.iso8601:
-        return t.unixTimestamp.datetimeFormat.iso;
+        return t.datetimeConverter.datetimeFormat.iso;
       case DatetimeFormat.rfc2822:
-        return t.unixTimestamp.datetimeFormat.rfc;
+        return t.datetimeConverter.datetimeFormat.rfc;
     }
   }
 }
 
-class UnixTimestampToolWidget extends StatefulWidget {
-  const UnixTimestampToolWidget({super.key});
-
-  @override
-  State<UnixTimestampToolWidget> createState() =>
-      _UnixTimestampToolWidgetState();
-}
-
-class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
-  final _inputController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    _inputController.addListener(_onInputChange);
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    final cubit = context.watch<DatetimeCubit>();
-    final input = cubit.state.input;
-    if (input != _inputController.text) {
-      _inputController.text = input;
-    }
-  }
-
-  @override
-  void dispose() {
-    _inputController.dispose();
-    super.dispose();
-  }
+class DatetimeConverterScreen extends StatelessWidget {
+  const DatetimeConverterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +53,7 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
     return MacosScaffold(
       toolBar: ToolBar(
         centerTitle: true,
-        title: Text(t.unixTimestamp.title),
+        title: Text(t.datetimeConverter.title),
       ),
       children: [
         ContentArea(
@@ -99,18 +70,10 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
                       children: [
                         Text(t.common.input),
                         const SizedBox(width: 8),
-                        PushButton(
-                          controlSize: ControlSize.regular,
-                          onPressed: _setNow,
-                          child: Text(t.unixTimestamp.now),
-                        ),
+                        const _NowButton(),
                         const SizedBox(width: 8),
-                        PushButton(
-                          controlSize: ControlSize.regular,
-                          onPressed: _clear,
-                          secondary: true,
-                          child: Text(t.common.clear),
-                        ),
+                        const _ClearButton(),
+                        const SizedBox(width: 8),
                       ],
                     ),
                   ),
@@ -120,13 +83,7 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
                     children: [
                       ConstrainedBox(
                         constraints: const BoxConstraints(maxWidth: 260),
-                        child: MacosTextField(
-                          keyboardType: const TextInputType.numberWithOptions(
-                            decimal: false,
-                            signed: false,
-                          ),
-                          controller: _inputController,
-                        ),
+                        child: const _InputField(),
                       ),
                       const SizedBox(width: 8),
                       const _InputTypeSelector(),
@@ -144,21 +101,115 @@ class _UnixTimestampToolWidgetState extends State<UnixTimestampToolWidget> {
       ],
     );
   }
+}
 
-  void _setNow() {
-    final timezone = TimezoneHolder.of(context);
-    context.read<DatetimeCubit>().setNow(timezone);
+class _NowButton extends StatelessWidget {
+  const _NowButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
+        buildWhen: (prev, curr) => prev.isReadOnly != curr.isReadOnly,
+        builder: (context, state) {
+          return PushButton(
+            controlSize: ControlSize.regular,
+            onPressed: state.isReadOnly
+                ? null
+                : () {
+                    context
+                        .read<DatetimeConverterFeature>()
+                        .accept(const DatetimeConverterMessage.getNow());
+                  },
+            child: Text(t.datetimeConverter.now),
+          );
+        });
+  }
+}
+
+class _ClearButton extends StatelessWidget {
+  const _ClearButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
+      buildWhen: (prev, curr) => prev.isReadOnly != curr.isReadOnly,
+      builder: (context, state) {
+        return PushButton(
+          controlSize: ControlSize.regular,
+          onPressed: state.isReadOnly
+              ? null
+              : () {
+                  context
+                      .read<DatetimeConverterFeature>()
+                      .accept(const DatetimeConverterMessage.clear());
+                },
+          secondary: true,
+          child: Text(t.common.clear),
+        );
+      },
+    );
+  }
+}
+
+class _InputField extends StatefulWidget {
+  const _InputField();
+
+  @override
+  State<_InputField> createState() => _InputFieldState();
+}
+
+class _InputFieldState extends State<_InputField> {
+  final _inputController = TextEditingController();
+  bool _isReadOnly = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    final feature = context.read<DatetimeConverterFeature>();
+    final state = feature.state;
+    if (state.input != _inputController.text) {
+      _inputController.text = state.input;
+    }
+    _isReadOnly = state.isReadOnly;
+
+    _inputController.addListener(_onInputChange);
   }
 
-  void _clear() {
-    context.read<DatetimeCubit>().clear();
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final feature = context.watch<DatetimeConverterFeature>();
+    final input = feature.state.input;
+    if (input != _inputController.text) {
+      _inputController.text = input;
+    }
+  }
+
+  @override
+  void dispose() {
+    _inputController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MacosTextField(
+      readOnly: _isReadOnly,
+      keyboardType: const TextInputType.numberWithOptions(
+        decimal: false,
+        signed: false,
+      ),
+      controller: _inputController,
+    );
   }
 
   void _onInputChange() {
     final inputText = _inputController.text;
-    final timezone = TimezoneHolder.of(context);
-
-    context.read<DatetimeCubit>().onInputUpdate(inputText, timezone);
+    context
+        .read<DatetimeConverterFeature>()
+        .accept(DatetimeConverterMessage.updateInput(inputText));
   }
 }
 
@@ -173,7 +224,7 @@ class _DateTimeOutput extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = Translations.of(context);
 
-    return BlocBuilder<DatetimeCubit, DatetimeState>(
+    return FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
       buildWhen: (prev, curr) => prev.datetime != curr.datetime,
       builder: (context, state) {
         final datetime = state.datetime;
@@ -193,38 +244,38 @@ class _DateTimeOutput extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _DateItem(
-                      title: t.unixTimestamp.weekday,
+                      title: t.datetimeConverter.weekday,
                       datetime: datetime,
                       mapper: _weekdayFormat.format,
                     ),
                     const SizedBox(height: 12),
                     _DateItem(
-                      title: t.unixTimestamp.weekOfTheYear,
+                      title: t.datetimeConverter.weekOfTheYear,
                       datetime: datetime,
                       mapper: (datetime) => '${weekNumber(datetime)}',
                     ),
                     const SizedBox(height: 12),
                     _DateItem(
-                      title: t.unixTimestamp.dayOfTheYear,
+                      title: t.datetimeConverter.dayOfTheYear,
                       datetime: datetime,
                       mapper: (datetime) => '${dayNumber(datetime)}',
                     ),
                     const SizedBox(height: 12),
                     _DateItem(
-                      title: t.unixTimestamp.leapYear,
+                      title: t.datetimeConverter.leapYear,
                       datetime: datetime,
                       mapper: (datetime) =>
                           isLeapYear(datetime) ? t.common.yes : t.common.no,
                     ),
                     const SizedBox(height: 12),
                     _DateItem(
-                      title: t.unixTimestamp.dateOnly,
+                      title: t.datetimeConverter.dateOnly,
                       datetime: datetime,
                       mapper: _dateFormat.format,
                     ),
                     const SizedBox(height: 12),
                     _DateItem(
-                      title: t.unixTimestamp.timeOnly,
+                      title: t.datetimeConverter.timeOnly,
                       datetime: datetime,
                       mapper: _timeFormat.format,
                     ),
@@ -261,9 +312,9 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
       children: [
         Row(
           children: [
-            Text(t.unixTimestamp.datetimeFormat.hint),
+            Text(t.datetimeConverter.datetimeFormat.hint),
             const SizedBox(width: 8),
-            BlocBuilder<DatetimeCubit, DatetimeState>(
+            FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
               buildWhen: (prev, curr) => prev.format != curr.format,
               builder: (context, state) {
                 return MacosPopupButton(
@@ -278,9 +329,9 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
                       .toList(growable: false),
                   onChanged: (format) {
                     if (format != null) {
-                      context
-                          .read<DatetimeCubit>()
-                          .onDatetimeFormatUpdate(format);
+                      context.read<DatetimeConverterFeature>().accept(
+                          DatetimeConverterMessage.updateDatetimeFormat(
+                              format));
                     }
                   },
                 );
@@ -289,27 +340,68 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
           ],
         ),
         const SizedBox(height: 12),
-        BlocBuilder<DatetimeCubit, DatetimeState>(
+        FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
           builder: (context, state) {
             final format = state.format;
             return _DateItem(
-              title: t.unixTimestamp.local,
+              title: t.datetimeConverter.local,
               datetime: widget.datetime,
               mapper: (datetime) => _formatDatetime(datetime, format),
             );
           },
         ),
         const SizedBox(height: 12),
-        BlocBuilder<DatetimeCubit, DatetimeState>(
+        FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
           builder: (context, state) {
             final format = state.format;
             return _DateItem(
-              title: t.unixTimestamp.utc,
+              title: t.datetimeConverter.utc,
               datetime: widget.datetime,
               mapper: (datetime) => _formatDatetime(datetime.toUtc(), format),
             );
           },
         ),
+        const SizedBox(height: 12),
+        FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
+          buildWhen: (prev, curr) => prev.datetime != curr.datetime,
+          builder: (context, state) {
+            final t = Translations.of(context);
+            final datetime = state.datetime;
+
+            if (datetime == null) {
+              return _DateItem(
+                title: t.datetimeConverter.relative,
+                datetime: datetime,
+                mapper: (datetime) => '',
+              );
+            }
+
+            final now =
+                DatetimeHolder.of(context, type: DatetimeHolderType.sec);
+            final diff = now.difference(datetime);
+
+            return _DateItem(
+              title: t.datetimeConverter.relative,
+              datetime: datetime,
+              mapper: (datetime) => diff.format(
+                onZero: t.datetimeConverter.relativeFormat.rightNow,
+                onDays: (days) =>
+                    t.datetimeConverter.relativeFormat.days(days: days),
+                onHours: (hours) =>
+                    t.datetimeConverter.relativeFormat.hours(hours: hours),
+                onMinutes: (min) =>
+                    t.datetimeConverter.relativeFormat.minutes(minutes: min),
+                onSeconds: (sec) =>
+                    t.datetimeConverter.relativeFormat.seconds(seconds: sec),
+                positiveWrapper: (str) =>
+                    t.datetimeConverter.relativeFormat.positive(str: str),
+                negativeWrapper: (str) =>
+                    t.datetimeConverter.relativeFormat.negative(str: str),
+                separator: t.common.textSeparator,
+              ),
+            );
+          },
+        )
       ],
     );
   }
@@ -329,7 +421,7 @@ class _InputTypeSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DatetimeCubit, DatetimeState>(
+    return FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
       buildWhen: (prev, curr) => prev.inputType != curr.inputType,
       builder: (context, state) {
         return MacosPopupButton(
@@ -344,7 +436,9 @@ class _InputTypeSelector extends StatelessWidget {
               .toList(growable: false),
           onChanged: (type) {
             if (type != null) {
-              context.read<DatetimeCubit>().onInputTypeUpdate(type);
+              context
+                  .read<DatetimeConverterFeature>()
+                  .accept(DatetimeConverterMessage.updateInputType(type));
             }
           },
         );

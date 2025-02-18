@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 200
+/// Strings: 210
 ///
-/// Built on 2025-02-09 at 17:58 UTC
+/// Built on 2025-02-16 at 17:35 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -188,8 +188,8 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
   // Translations
   late final _StringsCommonEn common = _StringsCommonEn._(_root);
-  late final _StringsUnixTimestampEn unixTimestamp =
-      _StringsUnixTimestampEn._(_root);
+  late final _StringsDatetimeConverterEn datetimeConverter =
+      _StringsDatetimeConverterEn._(_root);
   late final _StringsNumberConverterEn numberConverter =
       _StringsNumberConverterEn._(_root);
   late final _StringsRegexpEn regexp = _StringsRegexpEn._(_root);
@@ -234,18 +234,18 @@ class _StringsCommonEn {
   late final _StringsCommonMonthsEn months = _StringsCommonMonthsEn._(_root);
 }
 
-// Path: unixTimestamp
-class _StringsUnixTimestampEn {
-  _StringsUnixTimestampEn._(this._root);
+// Path: datetimeConverter
+class _StringsDatetimeConverterEn {
+  _StringsDatetimeConverterEn._(this._root);
 
   final Translations _root; // ignore: unused_field
 
   // Translations
-  String get title => 'Unix timestamp';
-  late final _StringsUnixTimestampInputTypeEn inputType =
-      _StringsUnixTimestampInputTypeEn._(_root);
-  late final _StringsUnixTimestampDatetimeFormatEn datetimeFormat =
-      _StringsUnixTimestampDatetimeFormatEn._(_root);
+  String get title => 'Datetime Converter';
+  late final _StringsDatetimeConverterInputTypeEn inputType =
+      _StringsDatetimeConverterInputTypeEn._(_root);
+  late final _StringsDatetimeConverterDatetimeFormatEn datetimeFormat =
+      _StringsDatetimeConverterDatetimeFormatEn._(_root);
   String get now => 'Now';
   String get local => 'Local time';
   String get utc => 'UTC time';
@@ -255,6 +255,9 @@ class _StringsUnixTimestampEn {
   String get leapYear => 'Leap year';
   String get dateOnly => 'Date only';
   String get timeOnly => 'Time only';
+  String get relative => 'Relative';
+  late final _StringsDatetimeConverterRelativeFormatEn relativeFormat =
+      _StringsDatetimeConverterRelativeFormatEn._(_root);
 }
 
 // Path: numberConverter
@@ -469,9 +472,9 @@ class _StringsCommonMonthsEn {
       ];
 }
 
-// Path: unixTimestamp.inputType
-class _StringsUnixTimestampInputTypeEn {
-  _StringsUnixTimestampInputTypeEn._(this._root);
+// Path: datetimeConverter.inputType
+class _StringsDatetimeConverterInputTypeEn {
+  _StringsDatetimeConverterInputTypeEn._(this._root);
 
   final Translations _root; // ignore: unused_field
 
@@ -482,9 +485,9 @@ class _StringsUnixTimestampInputTypeEn {
   String get iso => 'ISO 8601';
 }
 
-// Path: unixTimestamp.datetimeFormat
-class _StringsUnixTimestampDatetimeFormatEn {
-  _StringsUnixTimestampDatetimeFormatEn._(this._root);
+// Path: datetimeConverter.datetimeFormat
+class _StringsDatetimeConverterDatetimeFormatEn {
+  _StringsDatetimeConverterDatetimeFormatEn._(this._root);
 
   final Translations _root; // ignore: unused_field
 
@@ -492,6 +495,22 @@ class _StringsUnixTimestampDatetimeFormatEn {
   String get hint => 'Datetime format:';
   String get iso => 'ISO 8601';
   String get rfc => 'RFC 2822';
+}
+
+// Path: datetimeConverter.relativeFormat
+class _StringsDatetimeConverterRelativeFormatEn {
+  _StringsDatetimeConverterRelativeFormatEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get rightNow => 'Right now';
+  String days({required Object days}) => '${days}d';
+  String hours({required Object hours}) => '${hours}h';
+  String minutes({required Object minutes}) => '${minutes}m';
+  String seconds({required Object seconds}) => '${seconds}s';
+  String positive({required Object str}) => '${str} ago';
+  String negative({required Object str}) => 'In ${str}';
 }
 
 // Path: regexp.settings
@@ -651,6 +670,8 @@ class _StringsCronCronFormatEn {
 
   // Translations
   String atWhatTime({required Object str}) => '“At ${str}“';
+  String get atBegin => '“At ';
+  String get atEnd => '“';
   late final _StringsCronCronFormatMinutesEn minutes =
       _StringsCronCronFormatMinutesEn._(_root);
   late final _StringsCronCronFormatHoursEn hours =
@@ -860,40 +881,56 @@ extension on Translations {
         return 'November';
       case 'common.months.full.11':
         return 'December';
-      case 'unixTimestamp.title':
-        return 'Unix timestamp';
-      case 'unixTimestamp.inputType.sec':
+      case 'datetimeConverter.title':
+        return 'Datetime Converter';
+      case 'datetimeConverter.inputType.sec':
         return 'Seconds since epoch';
-      case 'unixTimestamp.inputType.ms':
+      case 'datetimeConverter.inputType.ms':
         return 'Milliseconds since epoch';
-      case 'unixTimestamp.inputType.us':
+      case 'datetimeConverter.inputType.us':
         return 'Microseconds since epoch';
-      case 'unixTimestamp.inputType.iso':
+      case 'datetimeConverter.inputType.iso':
         return 'ISO 8601';
-      case 'unixTimestamp.datetimeFormat.hint':
+      case 'datetimeConverter.datetimeFormat.hint':
         return 'Datetime format:';
-      case 'unixTimestamp.datetimeFormat.iso':
+      case 'datetimeConverter.datetimeFormat.iso':
         return 'ISO 8601';
-      case 'unixTimestamp.datetimeFormat.rfc':
+      case 'datetimeConverter.datetimeFormat.rfc':
         return 'RFC 2822';
-      case 'unixTimestamp.now':
+      case 'datetimeConverter.now':
         return 'Now';
-      case 'unixTimestamp.local':
+      case 'datetimeConverter.local':
         return 'Local time';
-      case 'unixTimestamp.utc':
+      case 'datetimeConverter.utc':
         return 'UTC time';
-      case 'unixTimestamp.weekday':
+      case 'datetimeConverter.weekday':
         return 'Weekday';
-      case 'unixTimestamp.weekOfTheYear':
+      case 'datetimeConverter.weekOfTheYear':
         return 'Week of the year';
-      case 'unixTimestamp.dayOfTheYear':
+      case 'datetimeConverter.dayOfTheYear':
         return 'Day of the year';
-      case 'unixTimestamp.leapYear':
+      case 'datetimeConverter.leapYear':
         return 'Leap year';
-      case 'unixTimestamp.dateOnly':
+      case 'datetimeConverter.dateOnly':
         return 'Date only';
-      case 'unixTimestamp.timeOnly':
+      case 'datetimeConverter.timeOnly':
         return 'Time only';
+      case 'datetimeConverter.relative':
+        return 'Relative';
+      case 'datetimeConverter.relativeFormat.rightNow':
+        return 'Right now';
+      case 'datetimeConverter.relativeFormat.days':
+        return ({required Object days}) => '${days}d';
+      case 'datetimeConverter.relativeFormat.hours':
+        return ({required Object hours}) => '${hours}h';
+      case 'datetimeConverter.relativeFormat.minutes':
+        return ({required Object minutes}) => '${minutes}m';
+      case 'datetimeConverter.relativeFormat.seconds':
+        return ({required Object seconds}) => '${seconds}s';
+      case 'datetimeConverter.relativeFormat.positive':
+        return ({required Object str}) => '${str} ago';
+      case 'datetimeConverter.relativeFormat.negative':
+        return ({required Object str}) => 'In ${str}';
       case 'numberConverter.title':
         return 'Number base converter';
       case 'numberConverter.binary':
@@ -1108,6 +1145,10 @@ extension on Translations {
         return '* * * * *';
       case 'cron.cronFormat.atWhatTime':
         return ({required Object str}) => '“At ${str}“';
+      case 'cron.cronFormat.atBegin':
+        return '“At ';
+      case 'cron.cronFormat.atEnd':
+        return '“';
       case 'cron.cronFormat.minutes.any':
         return 'every minute';
       case 'cron.cronFormat.minutes.single':

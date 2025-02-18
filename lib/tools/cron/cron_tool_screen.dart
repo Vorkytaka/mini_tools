@@ -3,11 +3,15 @@ import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:timezone/timezone.dart';
 
 import '../../common/datetime.dart';
+import '../../common/datetime_inherited_model.dart';
 import '../../common/padding.dart';
 import '../../common/regexp.dart';
+import '../../common/timezone_holder.dart';
 import '../../i18n/strings.g.dart';
+import '../datetime_converter/datetime_converter_tool.dart';
 import 'cron_format.dart';
 import 'feature/cron_feature.dart';
 import 'feature/parser/cron_parser.dart';
@@ -73,6 +77,7 @@ class _Body extends StatelessWidget {
             padding: headlinePadding,
             child: _HumanReadCron(),
           ),
+          const SizedBox(height: 4),
           Padding(
             padding: headlinePadding,
             child: Column(
@@ -290,7 +295,7 @@ class _HumanReadCron extends StatelessWidget {
           return const SizedBox();
         }
 
-        return Text(cron.format(context));
+        return Text.rich(cron.formatTextSpan(context));
       },
     );
   }
@@ -330,6 +335,8 @@ class _NextAtList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final timezone = TimezoneHolder.of(context);
+
     return FeatureBuilder<CronFeature, CronState>(
       builder: (context, state) {
         final cron = state.cron;
@@ -338,12 +345,14 @@ class _NextAtList extends StatelessWidget {
           return const SizedBox();
         }
 
-        final nexts = <DateTime>[];
+        final now = DatetimeHolder.of(context, type: DatetimeHolderType.min);
+
+        final nexts = <TZDateTime>[];
         for (int i = 0; i < 5; i++) {
           final prev = nexts.isNotEmpty && nexts.length >= i
               ? nexts[i - 1]
-              : DateTime.now();
-          final next = cron.nextRun(prev);
+              : TZDateTime.from(now, timezone);
+          final next = TZDateTime.from(cron.nextRun(prev), timezone);
           nexts.add(next);
         }
 
@@ -354,7 +363,25 @@ class _NextAtList extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              for (final next in nexts) Text(next.toRfc2822String()),
+              for (final next in nexts)
+                MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: () {
+                      showDatetimeConverterSheet(
+                        context: context,
+                        datetime: next,
+                      );
+                    },
+                    child: Text(
+                      next.toRfc2822String(),
+                      style: const TextStyle(
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                ),
             ],
           ),
         );
