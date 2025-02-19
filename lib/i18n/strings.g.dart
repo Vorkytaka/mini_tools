@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 210
+/// Strings: 213
 ///
-/// Built on 2025-02-16 at 17:35 UTC
+/// Built on 2025-02-18 at 22:56 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -205,6 +205,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
   late final _StringsUuidGeneratorEn uuidGenerator =
       _StringsUuidGeneratorEn._(_root);
   late final _StringsCronEn cron = _StringsCronEn._(_root);
+  late final _StringsTextDiffEn textDiff = _StringsTextDiffEn._(_root);
 }
 
 // Path: common
@@ -428,6 +429,18 @@ class _StringsCronEn {
   String get daysOfWeek => 'Day-of-week:';
   String get all => '(All)';
   late final _StringsCronErrorsEn errors = _StringsCronErrorsEn._(_root);
+}
+
+// Path: textDiff
+class _StringsTextDiffEn {
+  _StringsTextDiffEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Text Diff';
+  String get oldInput => 'Old text:';
+  String get newInput => 'New text:';
 }
 
 // Path: common.dayOfWeek
@@ -1252,6 +1265,12 @@ extension on Translations {
       case 'cron.errors.invalidStep':
         return ({required Object to, required Object value}) =>
             'Step must be 1 to ${to}, but got ${value}';
+      case 'textDiff.title':
+        return 'Text Diff';
+      case 'textDiff.oldInput':
+        return 'Old text:';
+      case 'textDiff.newInput':
+        return 'New text:';
       default:
         return null;
     }

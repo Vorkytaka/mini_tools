@@ -292,5 +292,10 @@
       "step_length": "Step must be in format N-M/X, N/X or */X",
       "invalid_step": "Step must be 1 to $to, but got $value"
     }
+  },
+  "text_diff": {
+    "title": "Text Diff",
+    "old_input": "Old text:",
+    "new_input": "New text:"
   }
 }
