@@ -32,7 +32,7 @@ dependencies:
   path: ^1.9.0
   pointycastle: ^3.9.1
   provider: ^6.1.2
-  re_editor: ^0.3.1
+  re_editor: ^0.6.0
   re_highlight: ^0.0.3
   responsive_grid: ^2.4.4
   rxdart: ^0.28.0

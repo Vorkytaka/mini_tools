@@ -112,6 +112,7 @@ class _MacosCodeEditorState extends State<MacosCodeEditor> {
   @override
   Widget build(BuildContext context) {
     return CodeEditor(
+      borderRadius: const BorderRadius.all(Radius.circular(7)),
       controller: widget.controller,
       scrollController: widget.scrollController,
       findController: widget.findController,
