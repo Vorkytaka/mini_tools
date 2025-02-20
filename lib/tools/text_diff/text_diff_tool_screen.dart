@@ -133,6 +133,7 @@ class _InputsState extends State<_Inputs> {
   @override
   void dispose() {
     _newTextCodeController.dispose();
+    _oldTextCodeController.dispose();
 
     _newScrollController?.dispose();
     _oldScrollController?.dispose();
