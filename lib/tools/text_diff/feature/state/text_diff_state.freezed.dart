@@ -21,6 +21,9 @@ mixin _$TextDiffState {
   List<Diff> get oldDiffs => throw _privateConstructorUsedError;
   List<Diff> get newDiffs => throw _privateConstructorUsedError;
   List<Diff> get diffs => throw _privateConstructorUsedError;
+  List<List<Diff>> get newDiffLines => throw _privateConstructorUsedError;
+  List<List<Diff>> get oldDiffLines => throw _privateConstructorUsedError;
+  int get diffCount => throw _privateConstructorUsedError;
 
   /// Create a copy of TextDiffState
   /// with the given fields replaced by the non-null parameter values.
@@ -40,7 +43,10 @@ abstract class $TextDiffStateCopyWith<$Res> {
       String newText,
       List<Diff> oldDiffs,
       List<Diff> newDiffs,
-      List<Diff> diffs});
+      List<Diff> diffs,
+      List<List<Diff>> newDiffLines,
+      List<List<Diff>> oldDiffLines,
+      int diffCount});
 }
 
 /// @nodoc
@@ -63,6 +69,9 @@ class _$TextDiffStateCopyWithImpl<$Res, $Val extends TextDiffState>
     Object? oldDiffs = null,
     Object? newDiffs = null,
     Object? diffs = null,
+    Object? newDiffLines = null,
+    Object? oldDiffLines = null,
+    Object? diffCount = null,
   }) {
     return _then(_value.copyWith(
       oldText: null == oldText
@@ -85,6 +94,18 @@ class _$TextDiffStateCopyWithImpl<$Res, $Val extends TextDiffState>
           ? _value.diffs
           : diffs // ignore: cast_nullable_to_non_nullable
               as List<Diff>,
+      newDiffLines: null == newDiffLines
+          ? _value.newDiffLines
+          : newDiffLines // ignore: cast_nullable_to_non_nullable
+              as List<List<Diff>>,
+      oldDiffLines: null == oldDiffLines
+          ? _value.oldDiffLines
+          : oldDiffLines // ignore: cast_nullable_to_non_nullable
+              as List<List<Diff>>,
+      diffCount: null == diffCount
+          ? _value.diffCount
+          : diffCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -102,7 +123,10 @@ abstract class _$$TextDiffStateImplCopyWith<$Res>
       String newText,
       List<Diff> oldDiffs,
       List<Diff> newDiffs,
-      List<Diff> diffs});
+      List<Diff> diffs,
+      List<List<Diff>> newDiffLines,
+      List<List<Diff>> oldDiffLines,
+      int diffCount});
 }
 
 /// @nodoc
@@ -123,6 +147,9 @@ class __$$TextDiffStateImplCopyWithImpl<$Res>
     Object? oldDiffs = null,
     Object? newDiffs = null,
     Object? diffs = null,
+    Object? newDiffLines = null,
+    Object? oldDiffLines = null,
+    Object? diffCount = null,
   }) {
     return _then(_$TextDiffStateImpl(
       oldText: null == oldText
@@ -145,6 +172,18 @@ class __$$TextDiffStateImplCopyWithImpl<$Res>
           ? _value._diffs
           : diffs // ignore: cast_nullable_to_non_nullable
               as List<Diff>,
+      newDiffLines: null == newDiffLines
+          ? _value._newDiffLines
+          : newDiffLines // ignore: cast_nullable_to_non_nullable
+              as List<List<Diff>>,
+      oldDiffLines: null == oldDiffLines
+          ? _value._oldDiffLines
+          : oldDiffLines // ignore: cast_nullable_to_non_nullable
+              as List<List<Diff>>,
+      diffCount: null == diffCount
+          ? _value.diffCount
+          : diffCount // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -157,10 +196,15 @@ class _$TextDiffStateImpl implements _TextDiffState {
       required this.newText,
       required final List<Diff> oldDiffs,
       required final List<Diff> newDiffs,
-      required final List<Diff> diffs})
+      required final List<Diff> diffs,
+      required final List<List<Diff>> newDiffLines,
+      required final List<List<Diff>> oldDiffLines,
+      required this.diffCount})
       : _oldDiffs = oldDiffs,
         _newDiffs = newDiffs,
-        _diffs = diffs;
+        _diffs = diffs,
+        _newDiffLines = newDiffLines,
+        _oldDiffLines = oldDiffLines;
 
   @override
   final String oldText;
@@ -190,9 +234,28 @@ class _$TextDiffStateImpl implements _TextDiffState {
     return EqualUnmodifiableListView(_diffs);
   }
 
+  final List<List<Diff>> _newDiffLines;
+  @override
+  List<List<Diff>> get newDiffLines {
+    if (_newDiffLines is EqualUnmodifiableListView) return _newDiffLines;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_newDiffLines);
+  }
+
+  final List<List<Diff>> _oldDiffLines;
+  @override
+  List<List<Diff>> get oldDiffLines {
+    if (_oldDiffLines is EqualUnmodifiableListView) return _oldDiffLines;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_oldDiffLines);
+  }
+
+  @override
+  final int diffCount;
+
   @override
   String toString() {
-    return 'TextDiffState(oldText: $oldText, newText: $newText, oldDiffs: $oldDiffs, newDiffs: $newDiffs, diffs: $diffs)';
+    return 'TextDiffState(oldText: $oldText, newText: $newText, oldDiffs: $oldDiffs, newDiffs: $newDiffs, diffs: $diffs, newDiffLines: $newDiffLines, oldDiffLines: $oldDiffLines, diffCount: $diffCount)';
   }
 
   @override
@@ -204,7 +267,13 @@ class _$TextDiffStateImpl implements _TextDiffState {
             (identical(other.newText, newText) || other.newText == newText) &&
             const DeepCollectionEquality().equals(other._oldDiffs, _oldDiffs) &&
             const DeepCollectionEquality().equals(other._newDiffs, _newDiffs) &&
-            const DeepCollectionEquality().equals(other._diffs, _diffs));
+            const DeepCollectionEquality().equals(other._diffs, _diffs) &&
+            const DeepCollectionEquality()
+                .equals(other._newDiffLines, _newDiffLines) &&
+            const DeepCollectionEquality()
+                .equals(other._oldDiffLines, _oldDiffLines) &&
+            (identical(other.diffCount, diffCount) ||
+                other.diffCount == diffCount));
   }
 
   @override
@@ -214,7 +283,10 @@ class _$TextDiffStateImpl implements _TextDiffState {
       newText,
       const DeepCollectionEquality().hash(_oldDiffs),
       const DeepCollectionEquality().hash(_newDiffs),
-      const DeepCollectionEquality().hash(_diffs));
+      const DeepCollectionEquality().hash(_diffs),
+      const DeepCollectionEquality().hash(_newDiffLines),
+      const DeepCollectionEquality().hash(_oldDiffLines),
+      diffCount);
 
   /// Create a copy of TextDiffState
   /// with the given fields replaced by the non-null parameter values.
@@ -231,7 +303,10 @@ abstract class _TextDiffState implements TextDiffState {
       required final String newText,
       required final List<Diff> oldDiffs,
       required final List<Diff> newDiffs,
-      required final List<Diff> diffs}) = _$TextDiffStateImpl;
+      required final List<Diff> diffs,
+      required final List<List<Diff>> newDiffLines,
+      required final List<List<Diff>> oldDiffLines,
+      required final int diffCount}) = _$TextDiffStateImpl;
 
   @override
   String get oldText;
@@ -243,6 +318,12 @@ abstract class _TextDiffState implements TextDiffState {
   List<Diff> get newDiffs;
   @override
   List<Diff> get diffs;
+  @override
+  List<List<Diff>> get newDiffLines;
+  @override
+  List<List<Diff>> get oldDiffLines;
+  @override
+  int get diffCount;
 
   /// Create a copy of TextDiffState
   /// with the given fields replaced by the non-null parameter values.

@@ -12,6 +12,9 @@ class TextDiffState with _$TextDiffState {
     required List<Diff> oldDiffs,
     required List<Diff> newDiffs,
     required List<Diff> diffs,
+    required List<List<Diff>> newDiffLines,
+    required List<List<Diff>> oldDiffLines,
+    required int diffCount,
   }) = _TextDiffState;
 
   factory TextDiffState.init() => const TextDiffState(
@@ -20,5 +23,8 @@ class TextDiffState with _$TextDiffState {
         oldDiffs: [],
         newDiffs: [],
         diffs: [],
+        newDiffLines: [],
+        oldDiffLines: [],
+        diffCount: 0,
       );
 }

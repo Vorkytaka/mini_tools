@@ -3,9 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:linked_scroll_controller/linked_scroll_controller.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:re_editor/re_editor.dart';
+import 'package:re_highlight/languages/json.dart';
 
+import '../../common/code_themes.dart';
+import '../../common/macos_code_editor.dart';
 import '../../common/padding.dart';
+import '../../common/text_styles.dart';
 import '../../i18n/strings.g.dart';
 import 'feature/text_diff_feature.dart';
 
@@ -33,43 +39,85 @@ class TextDiffScreen extends StatelessWidget {
   }
 }
 
-class _Body extends StatefulWidget {
+class _Body extends StatelessWidget {
   const _Body();
 
   @override
-  State<_Body> createState() => _BodyState();
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: headlinePadding.copyWith(
+            bottom: 8,
+          ),
+          child: Row(
+            children: [
+              FeatureBuilder<TextDiffFeature, TextDiffState>(
+                buildWhen: (prev, curr) => prev.diffCount != curr.diffCount,
+                builder: (context, state) {
+                  return Text('${state.diffCount} differences');
+                },
+              ),
+            ],
+          ),
+        ),
+        const Expanded(child: _Inputs()),
+      ],
+    );
+  }
 }
 
-class _BodyState extends State<_Body> {
-  final _oldTextController = DiffTextEditorController();
-  final _newTextController = DiffTextEditorController();
+class _Inputs extends StatefulWidget {
+  const _Inputs();
 
-  final _scrollControllers = LinkedScrollControllerGroup();
-  late final ScrollController? _newScrollController;
-  late final ScrollController? _oldScrollController;
+  @override
+  State<_Inputs> createState() => _InputsState();
+}
+
+class _InputsState extends State<_Inputs> {
+  late final _oldTextCodeController =
+      CodeLineEditingController(spanBuilder: _oldSpanBuilder);
+  late final _newTextCodeController =
+      CodeLineEditingController(spanBuilder: _newSpanBuilder);
+
+  final _vScrollControllers = LinkedScrollControllerGroup();
+  final _hScrollControllers = LinkedScrollControllerGroup();
+  late final CodeScrollController? _newScrollController;
+  late final CodeScrollController? _oldScrollController;
 
   @override
   void initState() {
     super.initState();
 
-    _newScrollController = _scrollControllers.addAndGet();
-    _oldScrollController = _scrollControllers.addAndGet();
+    _newScrollController = CodeScrollController(
+      horizontalScroller: _hScrollControllers.addAndGet(),
+      verticalScroller: _vScrollControllers.addAndGet(),
+    );
+    _oldScrollController = CodeScrollController(
+      horizontalScroller: _hScrollControllers.addAndGet(),
+      verticalScroller: _vScrollControllers.addAndGet(),
+    );
 
     final feature = context.read<TextDiffFeature>();
     final state = feature.state;
-    _newTextController.text = state.newText;
-    _oldTextController.text = state.oldText;
 
-    _newTextController.addListener(() {
+    _oldTextCodeController.text = state.oldText;
+
+    _newTextCodeController.text = state.newText;
+
+    _newTextCodeController.addListener(() {
       context
           .read<TextDiffFeature>()
-          .accept(TextDiffMessage.updateNewText(_newTextController.text));
+          .accept(TextDiffMessage.updateNewText(_newTextCodeController.text));
     });
 
-    _oldTextController.addListener(() {
+    _oldTextCodeController.addListener(() {
       context
           .read<TextDiffFeature>()
-          .accept(TextDiffMessage.updateOldText(_oldTextController.text));
+          .accept(TextDiffMessage.updateOldText(_oldTextCodeController.text));
     });
   }
 
@@ -77,19 +125,14 @@ class _BodyState extends State<_Body> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    final feature = context.watch<TextDiffFeature>();
-    final state = feature.state;
-    if (_newTextController.diffs != state.newDiffs ||
-        _oldTextController.diffs != state.oldDiffs) {
-      _newTextController.diffs = state.newDiffs;
-      _oldTextController.diffs = state.oldDiffs;
-    }
+    context.watch<TextDiffFeature>();
+    _oldTextCodeController.forceRepaint();
+    _newTextCodeController.forceRepaint();
   }
 
   @override
   void dispose() {
-    _newTextController.dispose();
-    _oldTextController.dispose();
+    _newTextCodeController.dispose();
 
     _newScrollController?.dispose();
     _oldScrollController?.dispose();
@@ -106,32 +149,101 @@ class _BodyState extends State<_Body> {
       children: [
         Expanded(
           child: _InputHalf(
-            textController: _oldTextController,
-            scrollController: _oldScrollController,
+            textController: _oldTextCodeController,
             title: Text(t.textDiff.oldInput),
+            scrollController: _oldScrollController,
           ),
         ),
+        const SizedBox(width: 8),
         Expanded(
           child: _InputHalf(
-            textController: _newTextController,
-            scrollController: _newScrollController,
+            textController: _newTextCodeController,
             title: Text(t.textDiff.newInput),
+            scrollController: _newScrollController,
           ),
         ),
       ],
     );
   }
+
+  TextSpan _oldSpanBuilder({
+    required BuildContext context,
+    required int index,
+    required CodeLine codeLine,
+    required TextSpan textSpan,
+    required TextStyle style,
+  }) {
+    final feature = context.read<TextDiffFeature>();
+    final state = feature.state;
+    final lines = state.oldDiffLines;
+    final diffLine = lines.elementAtOrNull(index);
+    if (diffLine != null) {
+      return TextSpan(
+        style: textSpan.style,
+        children: diffLine
+            .map(
+              (diff) => TextSpan(
+                text: diff.text,
+                style: textSpan.style?.copyWith(
+                  backgroundColor: switch (diff.operation) {
+                    DIFF_DELETE => Colors.red,
+                    DIFF_INSERT => Colors.green,
+                    _ => null,
+                  },
+                ),
+              ),
+            )
+            .toList(growable: false),
+      );
+    }
+
+    return textSpan;
+  }
+
+  TextSpan _newSpanBuilder({
+    required BuildContext context,
+    required int index,
+    required CodeLine codeLine,
+    required TextSpan textSpan,
+    required TextStyle style,
+  }) {
+    final feature = context.read<TextDiffFeature>();
+    final state = feature.state;
+    final lines = state.newDiffLines;
+    final diffLine = lines.elementAtOrNull(index);
+    if (diffLine != null) {
+      return TextSpan(
+        style: style,
+        children: diffLine
+            .map(
+              (diff) => TextSpan(
+                text: diff.text,
+                style: TextStyle(
+                  backgroundColor: switch (diff.operation) {
+                    DIFF_DELETE => Colors.red,
+                    DIFF_INSERT => Colors.green,
+                    _ => null,
+                  },
+                ),
+              ),
+            )
+            .toList(growable: false),
+      );
+    }
+
+    return textSpan;
+  }
 }
 
 class _InputHalf extends StatelessWidget {
-  final TextEditingController textController;
-  final ScrollController? scrollController;
+  final CodeLineEditingController textController;
+  final CodeScrollController? scrollController;
   final Widget title;
 
   const _InputHalf({
     required this.textController,
-    required this.scrollController,
     required this.title,
+    this.scrollController,
   });
 
   @override
@@ -170,52 +282,18 @@ class _InputHalf extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Expanded(
-          child: MacosTextField(
+          child: MacosCodeEditor(
             scrollController: scrollController,
-            textAlignVertical: const TextAlignVertical(y: -1),
-            minLines: null,
-            maxLines: null,
+            indicatorBuilder: MacosCodeEditor.defaultIndicatorBuilder,
+            style: MacosCodeEditor.defaultStyle(context,
+                codeTheme: CodeHighlightTheme(
+                  languages: {'json': CodeHighlightThemeMode(mode: langJson)},
+                  theme: CodeThemes.monokai(TextStyles.firaCode),
+                )),
             controller: textController,
           ),
         ),
       ],
-    );
-  }
-}
-
-class DiffTextEditorController extends TextEditingController {
-  List<Diff>? diffs;
-
-  @override
-  TextSpan buildTextSpan({
-    required BuildContext context,
-    required bool withComposing,
-    TextStyle? style,
-  }) {
-    final diffs = this.diffs;
-    if (diffs != null) {
-      return TextSpan(
-        children: diffs
-            .map(
-              (diff) => TextSpan(
-                text: diff.text,
-                style: TextStyle(
-                  backgroundColor: switch (diff.operation) {
-                    DIFF_DELETE => Colors.red,
-                    DIFF_INSERT => Colors.green,
-                    _ => null,
-                  },
-                ),
-              ),
-            )
-            .toList(growable: false),
-      );
-    }
-
-    return super.buildTextSpan(
-      context: context,
-      style: style,
-      withComposing: withComposing,
     );
   }
 }

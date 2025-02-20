@@ -35,22 +35,31 @@ Next<TextDiffState, TextDiffEffect> textDiffUpdate(
     case UpdateDiffsMessage():
       final oldDiffs = <Diff>[];
       final newDiffs = <Diff>[];
+      int diffCount = 0;
       for (final diff in message.diffs) {
         if (diff.operation == DIFF_INSERT) {
           newDiffs.add(diff);
+          diffCount++;
         } else if (diff.operation == DIFF_DELETE) {
           oldDiffs.add(diff);
+          diffCount++;
         } else {
           newDiffs.add(diff);
           oldDiffs.add(diff);
         }
       }
 
+      final oldDiffLines = splitDiffsIntoLines(oldDiffs);
+      final newDiffLines = splitDiffsIntoLines(newDiffs);
+
       return next(
         state: state.copyWith(
           diffs: message.diffs,
           newDiffs: newDiffs,
           oldDiffs: oldDiffs,
+          oldDiffLines: oldDiffLines,
+          newDiffLines: newDiffLines,
+          diffCount: diffCount,
         ),
       );
   }
@@ -78,7 +87,7 @@ List<List<Diff>> splitDiffsIntoLines(List<Diff> diffs) {
       } else {
         // Split at the newline, including it in the part
         final String part = text.substring(start, index + 1);
-        currentLine.add(Diff(diff.operation, part));
+        currentLine.add(Diff(diff.operation, part.replaceFirst('\n', '')));
         if (part.endsWith('\n')) {
           lines.add(currentLine);
           currentLine = [];
