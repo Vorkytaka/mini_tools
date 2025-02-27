@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
@@ -15,7 +17,7 @@ class QrCodeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MacosScaffold(
-      toolBar: ToolBar(
+      toolBar: const ToolBar(
         title: Text('QR Code'),
         centerTitle: true,
       ),
@@ -30,14 +32,25 @@ class QrCodeScreen extends StatelessWidget {
   }
 }
 
+extension on ErrorCorrectionLevel {
+  String format(BuildContext context) {
+    return switch (this) {
+      ErrorCorrectionLevel.L => 'L (7%)',
+      ErrorCorrectionLevel.M => 'M (15%)',
+      ErrorCorrectionLevel.Q => 'Q (25%)',
+      ErrorCorrectionLevel.H => 'H (30%)',
+    };
+  }
+}
+
 class _Body extends StatelessWidget {
   const _Body();
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return const Padding(
       padding: panePadding,
-      child: const Row(
+      child: Row(
         children: [
           Expanded(child: _InputSide()),
           SizedBox(width: 8),
@@ -63,19 +76,16 @@ class _InputSide extends StatelessWidget {
           child: Row(
             children: [
               Text('Input:'),
-              const SizedBox(width: 8),
-              PushButton(
-                controlSize: ControlSize.regular,
-                onPressed: () {
-                  context
-                      .read<QrCodeFeature>()
-                      .accept(const QrCodeMessage.updateInput(''));
+              SizedBox(width: 8),
+              _ClearButton(),
+              Spacer(),
+              FeatureBuilder<QrCodeFeature, QrCodeState>(
+                buildWhen: (prev, curr) => prev.input != curr.input,
+                builder: (context, state) {
+                  final bytes = utf8.encode(state.input);
+                  return Text('${bytes.length} bytes');
                 },
-                secondary: true,
-                child: Text('Clear'),
               ),
-              const Spacer(),
-              _CorrectionLevelSelector(),
             ],
           ),
         ),
@@ -143,30 +153,63 @@ class _OutputSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FeatureBuilder<QrCodeFeature, QrCodeState>(
-      buildWhen: (prev, curr) =>
-          prev.code != curr.code ||
-          prev.correctionLevel != curr.correctionLevel,
-      builder: (context, state) {
-        final code = state.code;
-        if (code == null) {
-          return const SizedBox();
-        }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Row(
+          children: [
+            Spacer(),
+            _CorrectionLevelSelector(),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            FeatureBuilder<QrCodeFeature, QrCodeState>(
+              buildWhen: (prev, curr) => prev.code != curr.code,
+              builder: (context, state) {
+                final qrCode = state.code;
 
-        return QrImageView.withQr(
-          qr: code,
-          errorCorrectionLevel: state.correctionLevel.toInt,
-          backgroundColor: Colors.white,
-          dataModuleStyle: QrDataModuleStyle(
-            color: Colors.red,
-            dataModuleShape: QrDataModuleShape.circle,
+                return PushButton(
+                  child: Text('Save'),
+                  controlSize: ControlSize.regular,
+                  onPressed: qrCode != null
+                      ? () {
+                          context
+                              .read<QrCodeFeature>()
+                              .accept(const QrCodeMessage.saveToFile());
+                        }
+                      : null,
+                );
+              },
+            ),
+          ],
+        ),
+        Expanded(
+          child: Center(
+            child: FeatureBuilder<QrCodeFeature, QrCodeState>(
+              buildWhen: (prev, curr) =>
+                  prev.code != curr.code ||
+                  prev.correctionLevel != curr.correctionLevel,
+              builder: (context, state) {
+                final code = state.code;
+                if (code == null) {
+                  return const AspectRatio(
+                    aspectRatio: 1,
+                    child: Placeholder(),
+                  );
+                }
+
+                return QrImageView.withQr(
+                  qr: code,
+                  errorCorrectionLevel: state.correctionLevel.toInt,
+                  backgroundColor: Colors.white,
+                );
+              },
+            ),
           ),
-          eyeStyle: QrEyeStyle(
-            color: Colors.blue,
-            eyeShape: QrEyeShape.circle,
-          ),
-        );
-      },
+        ),
+      ],
     );
   }
 }
@@ -176,27 +219,51 @@ class _CorrectionLevelSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FeatureBuilder<QrCodeFeature, QrCodeState>(
-      buildWhen: (prev, curr) => prev.correctionLevel != curr.correctionLevel,
-      builder: (context, state) {
-        return MacosPopupButton<ErrorCorrectionLevel>(
-          value: state.correctionLevel,
-          items: [
-            for (final level in ErrorCorrectionLevel.values)
-              MacosPopupMenuItem(
-                value: level,
-                child: Text(level.name),
-              ),
-          ],
-          onChanged: (level) {
-            if (level != null && level != state.correctionLevel) {
-              context
-                  .read<QrCodeFeature>()
-                  .accept(QrCodeMessage.updateCorrectionLevel(level));
-            }
+    return Row(
+      children: [
+        Text('Correction Level: '),
+        FeatureBuilder<QrCodeFeature, QrCodeState>(
+          buildWhen: (prev, curr) =>
+              prev.correctionLevel != curr.correctionLevel,
+          builder: (context, state) {
+            return MacosPopupButton<ErrorCorrectionLevel>(
+              value: state.correctionLevel,
+              items: [
+                for (final level in ErrorCorrectionLevel.values)
+                  MacosPopupMenuItem(
+                    value: level,
+                    child: Text(level.format(context)),
+                  ),
+              ],
+              onChanged: (level) {
+                if (level != null && level != state.correctionLevel) {
+                  context
+                      .read<QrCodeFeature>()
+                      .accept(QrCodeMessage.updateCorrectionLevel(level));
+                }
+              },
+            );
           },
-        );
+        ),
+      ],
+    );
+  }
+}
+
+class _ClearButton extends StatelessWidget {
+  const _ClearButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return PushButton(
+      controlSize: ControlSize.regular,
+      onPressed: () {
+        context
+            .read<QrCodeFeature>()
+            .accept(const QrCodeMessage.updateInput(''));
       },
+      secondary: true,
+      child: Text('Clear'),
     );
   }
 }

@@ -12,4 +12,6 @@ sealed class QrCodeMessage with _$QrCodeMessage {
 
   const factory QrCodeMessage.updateCorrectionLevel(
       ErrorCorrectionLevel level) = UpdateCorrectionLevelMessage;
+
+  const factory QrCodeMessage.saveToFile() = SaveToFileMessage;
 }

@@ -1,10 +1,14 @@
 import 'package:mini_tea/feature.dart';
 import 'package:qr/qr.dart';
 
+import 'effect/qr_code_effect.dart';
 import 'message/qr_code_message.dart';
 import 'state/qr_code_state.dart';
 
-Next<QrCodeState, void> qrCodeUpdate(QrCodeState state, QrCodeMessage message) {
+Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
+  QrCodeState state,
+  QrCodeMessage message,
+) {
   switch (message) {
     case UpdateInputMessage():
       final code = parseQrCode(message.text, state.correctionLevel);
@@ -21,6 +25,13 @@ Next<QrCodeState, void> qrCodeUpdate(QrCodeState state, QrCodeMessage message) {
           code: code,
           correctionLevel: message.level,
         ),
+      );
+    case SaveToFileMessage():
+      final code = state.code;
+      return next(
+        effects: [
+          if (code != null) QrCodeEffect.saveToFile(code: code),
+        ],
       );
   }
 }

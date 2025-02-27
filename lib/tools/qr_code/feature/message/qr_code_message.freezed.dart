@@ -20,18 +20,21 @@ mixin _$QrCodeMessage {
   TResult when<TResult extends Object?>({
     required TResult Function(String text) updateInput,
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
+    required TResult Function() saveToFile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String text)? updateInput,
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult? Function()? saveToFile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String text)? updateInput,
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult Function()? saveToFile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,6 +43,7 @@ mixin _$QrCodeMessage {
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
         updateCorrectionLevel,
+    required TResult Function(SaveToFileMessage value) saveToFile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,12 +51,14 @@ mixin _$QrCodeMessage {
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
         updateCorrectionLevel,
+    TResult? Function(SaveToFileMessage value)? saveToFile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UpdateInputMessage value)? updateInput,
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
+    TResult Function(SaveToFileMessage value)? saveToFile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -150,6 +156,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
   TResult when<TResult extends Object?>({
     required TResult Function(String text) updateInput,
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
+    required TResult Function() saveToFile,
   }) {
     return updateInput(text);
   }
@@ -159,6 +166,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String text)? updateInput,
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult? Function()? saveToFile,
   }) {
     return updateInput?.call(text);
   }
@@ -168,6 +176,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String text)? updateInput,
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult Function()? saveToFile,
     required TResult orElse(),
   }) {
     if (updateInput != null) {
@@ -182,6 +191,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
         updateCorrectionLevel,
+    required TResult Function(SaveToFileMessage value) saveToFile,
   }) {
     return updateInput(this);
   }
@@ -192,6 +202,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
         updateCorrectionLevel,
+    TResult? Function(SaveToFileMessage value)? saveToFile,
   }) {
     return updateInput?.call(this);
   }
@@ -201,6 +212,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UpdateInputMessage value)? updateInput,
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
+    TResult Function(SaveToFileMessage value)? saveToFile,
     required TResult orElse(),
   }) {
     if (updateInput != null) {
@@ -299,6 +311,7 @@ class _$UpdateCorrectionLevelMessageImpl
   TResult when<TResult extends Object?>({
     required TResult Function(String text) updateInput,
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
+    required TResult Function() saveToFile,
   }) {
     return updateCorrectionLevel(level);
   }
@@ -308,6 +321,7 @@ class _$UpdateCorrectionLevelMessageImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String text)? updateInput,
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult? Function()? saveToFile,
   }) {
     return updateCorrectionLevel?.call(level);
   }
@@ -317,6 +331,7 @@ class _$UpdateCorrectionLevelMessageImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String text)? updateInput,
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult Function()? saveToFile,
     required TResult orElse(),
   }) {
     if (updateCorrectionLevel != null) {
@@ -331,6 +346,7 @@ class _$UpdateCorrectionLevelMessageImpl
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
         updateCorrectionLevel,
+    required TResult Function(SaveToFileMessage value) saveToFile,
   }) {
     return updateCorrectionLevel(this);
   }
@@ -341,6 +357,7 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
         updateCorrectionLevel,
+    TResult? Function(SaveToFileMessage value)? saveToFile,
   }) {
     return updateCorrectionLevel?.call(this);
   }
@@ -350,6 +367,7 @@ class _$UpdateCorrectionLevelMessageImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UpdateInputMessage value)? updateInput,
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
+    TResult Function(SaveToFileMessage value)? saveToFile,
     required TResult orElse(),
   }) {
     if (updateCorrectionLevel != null) {
@@ -371,4 +389,117 @@ abstract class UpdateCorrectionLevelMessage implements QrCodeMessage {
   _$$UpdateCorrectionLevelMessageImplCopyWith<
           _$UpdateCorrectionLevelMessageImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SaveToFileMessageImplCopyWith<$Res> {
+  factory _$$SaveToFileMessageImplCopyWith(_$SaveToFileMessageImpl value,
+          $Res Function(_$SaveToFileMessageImpl) then) =
+      __$$SaveToFileMessageImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SaveToFileMessageImplCopyWithImpl<$Res>
+    extends _$QrCodeMessageCopyWithImpl<$Res, _$SaveToFileMessageImpl>
+    implements _$$SaveToFileMessageImplCopyWith<$Res> {
+  __$$SaveToFileMessageImplCopyWithImpl(_$SaveToFileMessageImpl _value,
+      $Res Function(_$SaveToFileMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$SaveToFileMessageImpl implements SaveToFileMessage {
+  const _$SaveToFileMessageImpl();
+
+  @override
+  String toString() {
+    return 'QrCodeMessage.saveToFile()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SaveToFileMessageImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String text) updateInput,
+    required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
+    required TResult Function() saveToFile,
+  }) {
+    return saveToFile();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String text)? updateInput,
+    TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult? Function()? saveToFile,
+  }) {
+    return saveToFile?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String text)? updateInput,
+    TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult Function()? saveToFile,
+    required TResult orElse(),
+  }) {
+    if (saveToFile != null) {
+      return saveToFile();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdateInputMessage value) updateInput,
+    required TResult Function(UpdateCorrectionLevelMessage value)
+        updateCorrectionLevel,
+    required TResult Function(SaveToFileMessage value) saveToFile,
+  }) {
+    return saveToFile(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UpdateInputMessage value)? updateInput,
+    TResult? Function(UpdateCorrectionLevelMessage value)?
+        updateCorrectionLevel,
+    TResult? Function(SaveToFileMessage value)? saveToFile,
+  }) {
+    return saveToFile?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdateInputMessage value)? updateInput,
+    TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
+    TResult Function(SaveToFileMessage value)? saveToFile,
+    required TResult orElse(),
+  }) {
+    if (saveToFile != null) {
+      return saveToFile(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SaveToFileMessage implements QrCodeMessage {
+  const factory SaveToFileMessage() = _$SaveToFileMessageImpl;
 }
