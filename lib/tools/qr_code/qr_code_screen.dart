@@ -196,7 +196,10 @@ class _OutputSide extends StatelessWidget {
                 if (code == null) {
                   return const AspectRatio(
                     aspectRatio: 1,
-                    child: Placeholder(),
+                    child: ColoredBox(
+                      color: Colors.white,
+                      child: Placeholder(),
+                    ),
                   );
                 }
 
@@ -204,11 +207,13 @@ class _OutputSide extends StatelessWidget {
                   qr: code,
                   errorCorrectionLevel: state.correctionLevel.toInt,
                   backgroundColor: Colors.white,
+                  padding: EdgeInsets.zero,
                 );
               },
             ),
           ),
         ),
+        Text('Always test QR before put it into use'),
       ],
     );
   }

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:image/image.dart';
 import 'package:mini_tea/feature.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
@@ -39,8 +40,22 @@ final class QrCodeEffectHandler
       gapless: true,
     );
     final data = await painter.toImageData(600);
-    final bytes = data!.buffer.asUint8List();
+
+    if (data == null) {
+      return;
+    }
+
+    final qrImage = decodePng(data.buffer.asUint8List());
+
+    if (qrImage == null) {
+      return;
+    }
+
+    Image image = Image(height: 600, width: 600);
+    image = fill(image, color: ColorInt8.rgb(127, 127, 127));
+    image = compositeImage(image, qrImage);
+
     final file = File(path);
-    await file.writeAsBytes(bytes);
+    await file.writeAsBytes(encodePng(image));
   }
 }
