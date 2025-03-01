@@ -20,6 +20,7 @@ mixin _$QrCodeState {
   String get input => throw _privateConstructorUsedError;
   ErrorCorrectionLevel get correctionLevel =>
       throw _privateConstructorUsedError;
+  ExportType get exportType => throw _privateConstructorUsedError;
 
   /// Create a copy of QrCodeState
   /// with the given fields replaced by the non-null parameter values.
@@ -34,7 +35,11 @@ abstract class $QrCodeStateCopyWith<$Res> {
           QrCodeState value, $Res Function(QrCodeState) then) =
       _$QrCodeStateCopyWithImpl<$Res, QrCodeState>;
   @useResult
-  $Res call({QrCode? code, String input, ErrorCorrectionLevel correctionLevel});
+  $Res call(
+      {QrCode? code,
+      String input,
+      ErrorCorrectionLevel correctionLevel,
+      ExportType exportType});
 }
 
 /// @nodoc
@@ -55,6 +60,7 @@ class _$QrCodeStateCopyWithImpl<$Res, $Val extends QrCodeState>
     Object? code = freezed,
     Object? input = null,
     Object? correctionLevel = null,
+    Object? exportType = null,
   }) {
     return _then(_value.copyWith(
       code: freezed == code
@@ -69,6 +75,10 @@ class _$QrCodeStateCopyWithImpl<$Res, $Val extends QrCodeState>
           ? _value.correctionLevel
           : correctionLevel // ignore: cast_nullable_to_non_nullable
               as ErrorCorrectionLevel,
+      exportType: null == exportType
+          ? _value.exportType
+          : exportType // ignore: cast_nullable_to_non_nullable
+              as ExportType,
     ) as $Val);
   }
 }
@@ -81,7 +91,11 @@ abstract class _$$QrCodeStateImplCopyWith<$Res>
       __$$QrCodeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({QrCode? code, String input, ErrorCorrectionLevel correctionLevel});
+  $Res call(
+      {QrCode? code,
+      String input,
+      ErrorCorrectionLevel correctionLevel,
+      ExportType exportType});
 }
 
 /// @nodoc
@@ -100,6 +114,7 @@ class __$$QrCodeStateImplCopyWithImpl<$Res>
     Object? code = freezed,
     Object? input = null,
     Object? correctionLevel = null,
+    Object? exportType = null,
   }) {
     return _then(_$QrCodeStateImpl(
       code: freezed == code
@@ -114,6 +129,10 @@ class __$$QrCodeStateImplCopyWithImpl<$Res>
           ? _value.correctionLevel
           : correctionLevel // ignore: cast_nullable_to_non_nullable
               as ErrorCorrectionLevel,
+      exportType: null == exportType
+          ? _value.exportType
+          : exportType // ignore: cast_nullable_to_non_nullable
+              as ExportType,
     ));
   }
 }
@@ -122,7 +141,10 @@ class __$$QrCodeStateImplCopyWithImpl<$Res>
 
 class _$QrCodeStateImpl implements _QrCodeState {
   const _$QrCodeStateImpl(
-      {required this.code, required this.input, required this.correctionLevel});
+      {required this.code,
+      required this.input,
+      required this.correctionLevel,
+      required this.exportType});
 
   @override
   final QrCode? code;
@@ -130,10 +152,12 @@ class _$QrCodeStateImpl implements _QrCodeState {
   final String input;
   @override
   final ErrorCorrectionLevel correctionLevel;
+  @override
+  final ExportType exportType;
 
   @override
   String toString() {
-    return 'QrCodeState(code: $code, input: $input, correctionLevel: $correctionLevel)';
+    return 'QrCodeState(code: $code, input: $input, correctionLevel: $correctionLevel, exportType: $exportType)';
   }
 
   @override
@@ -144,11 +168,14 @@ class _$QrCodeStateImpl implements _QrCodeState {
             (identical(other.code, code) || other.code == code) &&
             (identical(other.input, input) || other.input == input) &&
             (identical(other.correctionLevel, correctionLevel) ||
-                other.correctionLevel == correctionLevel));
+                other.correctionLevel == correctionLevel) &&
+            (identical(other.exportType, exportType) ||
+                other.exportType == exportType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, input, correctionLevel);
+  int get hashCode =>
+      Object.hash(runtimeType, code, input, correctionLevel, exportType);
 
   /// Create a copy of QrCodeState
   /// with the given fields replaced by the non-null parameter values.
@@ -163,7 +190,8 @@ abstract class _QrCodeState implements QrCodeState {
   const factory _QrCodeState(
       {required final QrCode? code,
       required final String input,
-      required final ErrorCorrectionLevel correctionLevel}) = _$QrCodeStateImpl;
+      required final ErrorCorrectionLevel correctionLevel,
+      required final ExportType exportType}) = _$QrCodeStateImpl;
 
   @override
   QrCode? get code;
@@ -171,6 +199,8 @@ abstract class _QrCodeState implements QrCodeState {
   String get input;
   @override
   ErrorCorrectionLevel get correctionLevel;
+  @override
+  ExportType get exportType;
 
   /// Create a copy of QrCodeState
   /// with the given fields replaced by the non-null parameter values.

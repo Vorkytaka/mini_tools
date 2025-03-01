@@ -17,19 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$QrCodeEffect {
   QrCode get code => throw _privateConstructorUsedError;
+  ExportType get exportType => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(QrCode code) saveToFile,
+    required TResult Function(QrCode code, ExportType exportType) saveToFile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(QrCode code)? saveToFile,
+    TResult? Function(QrCode code, ExportType exportType)? saveToFile,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(QrCode code)? saveToFile,
+    TResult Function(QrCode code, ExportType exportType)? saveToFile,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +64,7 @@ abstract class $QrCodeEffectCopyWith<$Res> {
           QrCodeEffect value, $Res Function(QrCodeEffect) then) =
       _$QrCodeEffectCopyWithImpl<$Res, QrCodeEffect>;
   @useResult
-  $Res call({QrCode code});
+  $Res call({QrCode code, ExportType exportType});
 }
 
 /// @nodoc
@@ -82,12 +83,17 @@ class _$QrCodeEffectCopyWithImpl<$Res, $Val extends QrCodeEffect>
   @override
   $Res call({
     Object? code = null,
+    Object? exportType = null,
   }) {
     return _then(_value.copyWith(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as QrCode,
+      exportType: null == exportType
+          ? _value.exportType
+          : exportType // ignore: cast_nullable_to_non_nullable
+              as ExportType,
     ) as $Val);
   }
 }
@@ -100,7 +106,7 @@ abstract class _$$SaveToFileEffectImplCopyWith<$Res>
       __$$SaveToFileEffectImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({QrCode code});
+  $Res call({QrCode code, ExportType exportType});
 }
 
 /// @nodoc
@@ -117,12 +123,17 @@ class __$$SaveToFileEffectImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? code = null,
+    Object? exportType = null,
   }) {
     return _then(_$SaveToFileEffectImpl(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as QrCode,
+      exportType: null == exportType
+          ? _value.exportType
+          : exportType // ignore: cast_nullable_to_non_nullable
+              as ExportType,
     ));
   }
 }
@@ -130,14 +141,16 @@ class __$$SaveToFileEffectImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SaveToFileEffectImpl implements SaveToFileEffect {
-  const _$SaveToFileEffectImpl({required this.code});
+  const _$SaveToFileEffectImpl({required this.code, required this.exportType});
 
   @override
   final QrCode code;
+  @override
+  final ExportType exportType;
 
   @override
   String toString() {
-    return 'QrCodeEffect.saveToFile(code: $code)';
+    return 'QrCodeEffect.saveToFile(code: $code, exportType: $exportType)';
   }
 
   @override
@@ -145,11 +158,13 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SaveToFileEffectImpl &&
-            (identical(other.code, code) || other.code == code));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.exportType, exportType) ||
+                other.exportType == exportType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code);
+  int get hashCode => Object.hash(runtimeType, code, exportType);
 
   /// Create a copy of QrCodeEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -163,27 +178,27 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(QrCode code) saveToFile,
+    required TResult Function(QrCode code, ExportType exportType) saveToFile,
   }) {
-    return saveToFile(code);
+    return saveToFile(code, exportType);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(QrCode code)? saveToFile,
+    TResult? Function(QrCode code, ExportType exportType)? saveToFile,
   }) {
-    return saveToFile?.call(code);
+    return saveToFile?.call(code, exportType);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(QrCode code)? saveToFile,
+    TResult Function(QrCode code, ExportType exportType)? saveToFile,
     required TResult orElse(),
   }) {
     if (saveToFile != null) {
-      return saveToFile(code);
+      return saveToFile(code, exportType);
     }
     return orElse();
   }
@@ -218,11 +233,14 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
 }
 
 abstract class SaveToFileEffect implements QrCodeEffect {
-  const factory SaveToFileEffect({required final QrCode code}) =
-      _$SaveToFileEffectImpl;
+  const factory SaveToFileEffect(
+      {required final QrCode code,
+      required final ExportType exportType}) = _$SaveToFileEffectImpl;
 
   @override
   QrCode get code;
+  @override
+  ExportType get exportType;
 
   /// Create a copy of QrCodeEffect
   /// with the given fields replaced by the non-null parameter values.

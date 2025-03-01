@@ -311,6 +311,11 @@
       "Q": "Q (25%)",
       "H": "H (30%)"
     },
-    "test_before_use": "Always test a QR code before using it"
+    "test_before_use": "Always test a QR code before using it",
+    "export_type": {
+      "png": "PNG",
+      "jpg": "JPG",
+      "svg": "SVG"
+    }
   }
 }
