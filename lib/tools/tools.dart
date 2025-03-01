@@ -10,6 +10,7 @@ import 'json/json_formatter.dart';
 import 'material_color/material_colors_tool.dart';
 import 'number_base_converter/number_base_converter_tool.dart';
 import 'percentages_tool.dart';
+import 'qr_code/qr_code_tool.dart';
 import 'regexp/regexp_tool.dart';
 import 'sqlite/sqlite_tool.dart';
 import 'text_diff/text_diff_tool.dart';
@@ -29,6 +30,7 @@ final tools = <Tool>[
   uuidTool,
   cronTool,
   textDiffTool,
+  qrCodeTool,
 ];
 
 final debugTool = BaseTool(

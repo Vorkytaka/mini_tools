@@ -129,7 +129,10 @@ class _BodyState extends State<_Body> {
                     buildWhen: (prev, curr) =>
                         prev.inputBytes != curr.inputBytes,
                     builder: (context, state) => SelectableText(
-                      s.hash.bytesCount(n: state.inputBytes),
+                      s.common.bytesCount(
+                        n: state.inputBytes,
+                        bytes: state.inputBytes,
+                      ),
                     ),
                   ),
                 ],
