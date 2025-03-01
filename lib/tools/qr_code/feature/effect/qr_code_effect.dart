@@ -12,4 +12,8 @@ sealed class QrCodeEffect with _$QrCodeEffect {
     required QrCode code,
     required ExportType exportType,
   }) = SaveToFileEffect;
+
+  const factory QrCodeEffect.copyToClipboard({
+    required QrCode code,
+  }) = CopyToClipboardEffect;
 }

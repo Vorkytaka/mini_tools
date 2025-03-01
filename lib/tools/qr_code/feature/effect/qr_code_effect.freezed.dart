@@ -17,36 +17,41 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$QrCodeEffect {
   QrCode get code => throw _privateConstructorUsedError;
-  ExportType get exportType => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(QrCode code, ExportType exportType) saveToFile,
+    required TResult Function(QrCode code) copyToClipboard,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(QrCode code, ExportType exportType)? saveToFile,
+    TResult? Function(QrCode code)? copyToClipboard,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(QrCode code, ExportType exportType)? saveToFile,
+    TResult Function(QrCode code)? copyToClipboard,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SaveToFileEffect value) saveToFile,
+    required TResult Function(CopyToClipboardEffect value) copyToClipboard,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SaveToFileEffect value)? saveToFile,
+    TResult? Function(CopyToClipboardEffect value)? copyToClipboard,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SaveToFileEffect value)? saveToFile,
+    TResult Function(CopyToClipboardEffect value)? copyToClipboard,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,7 +69,7 @@ abstract class $QrCodeEffectCopyWith<$Res> {
           QrCodeEffect value, $Res Function(QrCodeEffect) then) =
       _$QrCodeEffectCopyWithImpl<$Res, QrCodeEffect>;
   @useResult
-  $Res call({QrCode code, ExportType exportType});
+  $Res call({QrCode code});
 }
 
 /// @nodoc
@@ -83,17 +88,12 @@ class _$QrCodeEffectCopyWithImpl<$Res, $Val extends QrCodeEffect>
   @override
   $Res call({
     Object? code = null,
-    Object? exportType = null,
   }) {
     return _then(_value.copyWith(
       code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
               as QrCode,
-      exportType: null == exportType
-          ? _value.exportType
-          : exportType // ignore: cast_nullable_to_non_nullable
-              as ExportType,
     ) as $Val);
   }
 }
@@ -179,6 +179,7 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(QrCode code, ExportType exportType) saveToFile,
+    required TResult Function(QrCode code) copyToClipboard,
   }) {
     return saveToFile(code, exportType);
   }
@@ -187,6 +188,7 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(QrCode code, ExportType exportType)? saveToFile,
+    TResult? Function(QrCode code)? copyToClipboard,
   }) {
     return saveToFile?.call(code, exportType);
   }
@@ -195,6 +197,7 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(QrCode code, ExportType exportType)? saveToFile,
+    TResult Function(QrCode code)? copyToClipboard,
     required TResult orElse(),
   }) {
     if (saveToFile != null) {
@@ -207,6 +210,7 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SaveToFileEffect value) saveToFile,
+    required TResult Function(CopyToClipboardEffect value) copyToClipboard,
   }) {
     return saveToFile(this);
   }
@@ -215,6 +219,7 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SaveToFileEffect value)? saveToFile,
+    TResult? Function(CopyToClipboardEffect value)? copyToClipboard,
   }) {
     return saveToFile?.call(this);
   }
@@ -223,6 +228,7 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SaveToFileEffect value)? saveToFile,
+    TResult Function(CopyToClipboardEffect value)? copyToClipboard,
     required TResult orElse(),
   }) {
     if (saveToFile != null) {
@@ -239,7 +245,6 @@ abstract class SaveToFileEffect implements QrCodeEffect {
 
   @override
   QrCode get code;
-  @override
   ExportType get exportType;
 
   /// Create a copy of QrCodeEffect
@@ -248,4 +253,151 @@ abstract class SaveToFileEffect implements QrCodeEffect {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SaveToFileEffectImplCopyWith<_$SaveToFileEffectImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CopyToClipboardEffectImplCopyWith<$Res>
+    implements $QrCodeEffectCopyWith<$Res> {
+  factory _$$CopyToClipboardEffectImplCopyWith(
+          _$CopyToClipboardEffectImpl value,
+          $Res Function(_$CopyToClipboardEffectImpl) then) =
+      __$$CopyToClipboardEffectImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({QrCode code});
+}
+
+/// @nodoc
+class __$$CopyToClipboardEffectImplCopyWithImpl<$Res>
+    extends _$QrCodeEffectCopyWithImpl<$Res, _$CopyToClipboardEffectImpl>
+    implements _$$CopyToClipboardEffectImplCopyWith<$Res> {
+  __$$CopyToClipboardEffectImplCopyWithImpl(_$CopyToClipboardEffectImpl _value,
+      $Res Function(_$CopyToClipboardEffectImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of QrCodeEffect
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? code = null,
+  }) {
+    return _then(_$CopyToClipboardEffectImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as QrCode,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CopyToClipboardEffectImpl implements CopyToClipboardEffect {
+  const _$CopyToClipboardEffectImpl({required this.code});
+
+  @override
+  final QrCode code;
+
+  @override
+  String toString() {
+    return 'QrCodeEffect.copyToClipboard(code: $code)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CopyToClipboardEffectImpl &&
+            (identical(other.code, code) || other.code == code));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, code);
+
+  /// Create a copy of QrCodeEffect
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CopyToClipboardEffectImplCopyWith<_$CopyToClipboardEffectImpl>
+      get copyWith => __$$CopyToClipboardEffectImplCopyWithImpl<
+          _$CopyToClipboardEffectImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(QrCode code, ExportType exportType) saveToFile,
+    required TResult Function(QrCode code) copyToClipboard,
+  }) {
+    return copyToClipboard(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QrCode code, ExportType exportType)? saveToFile,
+    TResult? Function(QrCode code)? copyToClipboard,
+  }) {
+    return copyToClipboard?.call(code);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QrCode code, ExportType exportType)? saveToFile,
+    TResult Function(QrCode code)? copyToClipboard,
+    required TResult orElse(),
+  }) {
+    if (copyToClipboard != null) {
+      return copyToClipboard(code);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SaveToFileEffect value) saveToFile,
+    required TResult Function(CopyToClipboardEffect value) copyToClipboard,
+  }) {
+    return copyToClipboard(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SaveToFileEffect value)? saveToFile,
+    TResult? Function(CopyToClipboardEffect value)? copyToClipboard,
+  }) {
+    return copyToClipboard?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SaveToFileEffect value)? saveToFile,
+    TResult Function(CopyToClipboardEffect value)? copyToClipboard,
+    required TResult orElse(),
+  }) {
+    if (copyToClipboard != null) {
+      return copyToClipboard(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CopyToClipboardEffect implements QrCodeEffect {
+  const factory CopyToClipboardEffect({required final QrCode code}) =
+      _$CopyToClipboardEffectImpl;
+
+  @override
+  QrCode get code;
+
+  /// Create a copy of QrCodeEffect
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CopyToClipboardEffectImplCopyWith<_$CopyToClipboardEffectImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

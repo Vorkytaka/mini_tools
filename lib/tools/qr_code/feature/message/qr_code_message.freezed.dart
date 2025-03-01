@@ -22,6 +22,7 @@ mixin _$QrCodeMessage {
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
     required TResult Function() saveToFile,
     required TResult Function(ExportType type) updateExportType,
+    required TResult Function() copyToClipboard,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$QrCodeMessage {
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult? Function()? saveToFile,
     TResult? Function(ExportType type)? updateExportType,
+    TResult? Function()? copyToClipboard,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$QrCodeMessage {
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult Function()? saveToFile,
     TResult Function(ExportType type)? updateExportType,
+    TResult Function()? copyToClipboard,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +51,7 @@ mixin _$QrCodeMessage {
         updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
+    required TResult Function(CopyToClipboardMessage value) copyToClipboard,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +61,7 @@ mixin _$QrCodeMessage {
         updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +70,7 @@ mixin _$QrCodeMessage {
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
     TResult Function(SaveToFileMessage value)? saveToFile,
     TResult Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult Function(CopyToClipboardMessage value)? copyToClipboard,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -164,6 +170,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
     required TResult Function() saveToFile,
     required TResult Function(ExportType type) updateExportType,
+    required TResult Function() copyToClipboard,
   }) {
     return updateInput(text);
   }
@@ -175,6 +182,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult? Function()? saveToFile,
     TResult? Function(ExportType type)? updateExportType,
+    TResult? Function()? copyToClipboard,
   }) {
     return updateInput?.call(text);
   }
@@ -186,6 +194,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult Function()? saveToFile,
     TResult Function(ExportType type)? updateExportType,
+    TResult Function()? copyToClipboard,
     required TResult orElse(),
   }) {
     if (updateInput != null) {
@@ -202,6 +211,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
         updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
+    required TResult Function(CopyToClipboardMessage value) copyToClipboard,
   }) {
     return updateInput(this);
   }
@@ -214,6 +224,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
         updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
   }) {
     return updateInput?.call(this);
   }
@@ -225,6 +236,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
     TResult Function(SaveToFileMessage value)? saveToFile,
     TResult Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult Function(CopyToClipboardMessage value)? copyToClipboard,
     required TResult orElse(),
   }) {
     if (updateInput != null) {
@@ -325,6 +337,7 @@ class _$UpdateCorrectionLevelMessageImpl
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
     required TResult Function() saveToFile,
     required TResult Function(ExportType type) updateExportType,
+    required TResult Function() copyToClipboard,
   }) {
     return updateCorrectionLevel(level);
   }
@@ -336,6 +349,7 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult? Function()? saveToFile,
     TResult? Function(ExportType type)? updateExportType,
+    TResult? Function()? copyToClipboard,
   }) {
     return updateCorrectionLevel?.call(level);
   }
@@ -347,6 +361,7 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult Function()? saveToFile,
     TResult Function(ExportType type)? updateExportType,
+    TResult Function()? copyToClipboard,
     required TResult orElse(),
   }) {
     if (updateCorrectionLevel != null) {
@@ -363,6 +378,7 @@ class _$UpdateCorrectionLevelMessageImpl
         updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
+    required TResult Function(CopyToClipboardMessage value) copyToClipboard,
   }) {
     return updateCorrectionLevel(this);
   }
@@ -375,6 +391,7 @@ class _$UpdateCorrectionLevelMessageImpl
         updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
   }) {
     return updateCorrectionLevel?.call(this);
   }
@@ -386,6 +403,7 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
     TResult Function(SaveToFileMessage value)? saveToFile,
     TResult Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult Function(CopyToClipboardMessage value)? copyToClipboard,
     required TResult orElse(),
   }) {
     if (updateCorrectionLevel != null) {
@@ -454,6 +472,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
     required TResult Function() saveToFile,
     required TResult Function(ExportType type) updateExportType,
+    required TResult Function() copyToClipboard,
   }) {
     return saveToFile();
   }
@@ -465,6 +484,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult? Function()? saveToFile,
     TResult? Function(ExportType type)? updateExportType,
+    TResult? Function()? copyToClipboard,
   }) {
     return saveToFile?.call();
   }
@@ -476,6 +496,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult Function()? saveToFile,
     TResult Function(ExportType type)? updateExportType,
+    TResult Function()? copyToClipboard,
     required TResult orElse(),
   }) {
     if (saveToFile != null) {
@@ -492,6 +513,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
         updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
+    required TResult Function(CopyToClipboardMessage value) copyToClipboard,
   }) {
     return saveToFile(this);
   }
@@ -504,6 +526,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
         updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
   }) {
     return saveToFile?.call(this);
   }
@@ -515,6 +538,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
     TResult Function(SaveToFileMessage value)? saveToFile,
     TResult Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult Function(CopyToClipboardMessage value)? copyToClipboard,
     required TResult orElse(),
   }) {
     if (saveToFile != null) {
@@ -603,6 +627,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
     required TResult Function() saveToFile,
     required TResult Function(ExportType type) updateExportType,
+    required TResult Function() copyToClipboard,
   }) {
     return updateExportType(type);
   }
@@ -614,6 +639,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult? Function()? saveToFile,
     TResult? Function(ExportType type)? updateExportType,
+    TResult? Function()? copyToClipboard,
   }) {
     return updateExportType?.call(type);
   }
@@ -625,6 +651,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult Function()? saveToFile,
     TResult Function(ExportType type)? updateExportType,
+    TResult Function()? copyToClipboard,
     required TResult orElse(),
   }) {
     if (updateExportType != null) {
@@ -641,6 +668,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
         updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
+    required TResult Function(CopyToClipboardMessage value) copyToClipboard,
   }) {
     return updateExportType(this);
   }
@@ -653,6 +681,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
         updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
   }) {
     return updateExportType?.call(this);
   }
@@ -664,6 +693,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
     TResult Function(SaveToFileMessage value)? saveToFile,
     TResult Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult Function(CopyToClipboardMessage value)? copyToClipboard,
     required TResult orElse(),
   }) {
     if (updateExportType != null) {
@@ -684,4 +714,132 @@ abstract class UpdateExportTypeMessage implements QrCodeMessage {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateExportTypeMessageImplCopyWith<_$UpdateExportTypeMessageImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CopyToClipboardMessageImplCopyWith<$Res> {
+  factory _$$CopyToClipboardMessageImplCopyWith(
+          _$CopyToClipboardMessageImpl value,
+          $Res Function(_$CopyToClipboardMessageImpl) then) =
+      __$$CopyToClipboardMessageImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CopyToClipboardMessageImplCopyWithImpl<$Res>
+    extends _$QrCodeMessageCopyWithImpl<$Res, _$CopyToClipboardMessageImpl>
+    implements _$$CopyToClipboardMessageImplCopyWith<$Res> {
+  __$$CopyToClipboardMessageImplCopyWithImpl(
+      _$CopyToClipboardMessageImpl _value,
+      $Res Function(_$CopyToClipboardMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
+  const _$CopyToClipboardMessageImpl();
+
+  @override
+  String toString() {
+    return 'QrCodeMessage.copyToClipboard()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CopyToClipboardMessageImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String text) updateInput,
+    required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
+    required TResult Function() saveToFile,
+    required TResult Function(ExportType type) updateExportType,
+    required TResult Function() copyToClipboard,
+  }) {
+    return copyToClipboard();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String text)? updateInput,
+    TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult? Function()? saveToFile,
+    TResult? Function(ExportType type)? updateExportType,
+    TResult? Function()? copyToClipboard,
+  }) {
+    return copyToClipboard?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String text)? updateInput,
+    TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult Function()? saveToFile,
+    TResult Function(ExportType type)? updateExportType,
+    TResult Function()? copyToClipboard,
+    required TResult orElse(),
+  }) {
+    if (copyToClipboard != null) {
+      return copyToClipboard();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdateInputMessage value) updateInput,
+    required TResult Function(UpdateCorrectionLevelMessage value)
+        updateCorrectionLevel,
+    required TResult Function(SaveToFileMessage value) saveToFile,
+    required TResult Function(UpdateExportTypeMessage value) updateExportType,
+    required TResult Function(CopyToClipboardMessage value) copyToClipboard,
+  }) {
+    return copyToClipboard(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UpdateInputMessage value)? updateInput,
+    TResult? Function(UpdateCorrectionLevelMessage value)?
+        updateCorrectionLevel,
+    TResult? Function(SaveToFileMessage value)? saveToFile,
+    TResult? Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
+  }) {
+    return copyToClipboard?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdateInputMessage value)? updateInput,
+    TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
+    TResult Function(SaveToFileMessage value)? saveToFile,
+    TResult Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult Function(CopyToClipboardMessage value)? copyToClipboard,
+    required TResult orElse(),
+  }) {
+    if (copyToClipboard != null) {
+      return copyToClipboard(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CopyToClipboardMessage implements QrCodeMessage {
+  const factory CopyToClipboardMessage() = _$CopyToClipboardMessageImpl;
 }
