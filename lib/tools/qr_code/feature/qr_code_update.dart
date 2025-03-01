@@ -30,9 +30,15 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       final code = state.code;
       return next(
         effects: [
-          if (code != null) QrCodeEffect.saveToFile(code: code),
+          if (code != null)
+            QrCodeEffect.saveToFile(
+              code: code,
+              exportType: state.exportType,
+            ),
         ],
       );
+    case UpdateExportTypeMessage():
+      return next(state: state.copyWith(exportType: message.type));
   }
 }
 

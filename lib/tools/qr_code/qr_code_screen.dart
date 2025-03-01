@@ -48,6 +48,18 @@ extension on ErrorCorrectionLevel {
   }
 }
 
+extension on ExportType {
+  String format(BuildContext context) {
+    final t = Translations.of(context);
+
+    return switch (this) {
+      ExportType.png => t.qrCode.exportType.png,
+      ExportType.jpg => t.qrCode.exportType.jpg,
+      ExportType.svg => t.qrCode.exportType.svg,
+    };
+  }
+}
+
 class _Body extends StatelessWidget {
   const _Body();
 
@@ -181,16 +193,21 @@ class _OutputSide extends StatelessWidget {
               builder: (context, state) {
                 final qrCode = state.code;
 
-                return PushButton(
-                  controlSize: ControlSize.regular,
-                  onPressed: qrCode != null
-                      ? () {
-                          context
-                              .read<QrCodeFeature>()
-                              .accept(const QrCodeMessage.saveToFile());
-                        }
-                      : null,
-                  child: Text(t.common.save),
+                return Row(
+                  children: [
+                    PushButton(
+                      controlSize: ControlSize.regular,
+                      onPressed: qrCode != null
+                          ? () {
+                              context
+                                  .read<QrCodeFeature>()
+                                  .accept(const QrCodeMessage.saveToFile());
+                            }
+                          : null,
+                      child: Text(t.common.save),
+                    ),
+                    const _ExportTypeSelector(),
+                  ],
                 );
               },
             ),
@@ -210,16 +227,12 @@ class _OutputSide extends StatelessWidget {
                 if (code == null) {
                   qrCode = const AspectRatio(
                     aspectRatio: 1,
-                    child: ColoredBox(
-                      color: Colors.white,
-                      child: Placeholder(),
-                    ),
+                    child: Placeholder(),
                   );
                 } else {
                   qrCode = QrImageView.withQr(
                     qr: code,
                     errorCorrectionLevel: state.correctionLevel.toInt,
-                    backgroundColor: Colors.white,
                     padding: EdgeInsets.zero,
                   );
                 }
@@ -296,6 +309,36 @@ class _ClearButton extends StatelessWidget {
       },
       secondary: true,
       child: Text(t.common.clear),
+    );
+  }
+}
+
+class _ExportTypeSelector extends StatelessWidget {
+  const _ExportTypeSelector();
+
+  @override
+  Widget build(BuildContext context) {
+    return FeatureBuilder<QrCodeFeature, QrCodeState>(
+      buildWhen: (prev, curr) => prev.exportType != curr.exportType,
+      builder: (context, state) {
+        return MacosPopupButton<ExportType>(
+          value: state.exportType,
+          items: [
+            for (final type in ExportType.values)
+              MacosPopupMenuItem(
+                value: type,
+                child: Text(type.format(context)),
+              ),
+          ],
+          onChanged: (type) {
+            if (type != null && type != state.exportType) {
+              context
+                  .read<QrCodeFeature>()
+                  .accept(QrCodeMessage.updateExportType(type));
+            }
+          },
+        );
+      },
     );
   }
 }

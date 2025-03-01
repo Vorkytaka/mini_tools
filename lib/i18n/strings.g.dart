@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 222
+/// Strings: 225
 ///
-/// Built on 2025-03-01 at 10:57 UTC
+/// Built on 2025-03-01 at 21:46 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -461,6 +461,8 @@ class _StringsQrCodeEn {
   late final _StringsQrCodeCorrectionLevelEn correctionLevel =
       _StringsQrCodeCorrectionLevelEn._(_root);
   String get testBeforeUse => 'Always test a QR code before using it';
+  late final _StringsQrCodeExportTypeEn exportType =
+      _StringsQrCodeExportTypeEn._(_root);
 }
 
 // Path: common.dayOfWeek
@@ -751,6 +753,18 @@ class _StringsQrCodeCorrectionLevelEn {
   String get m => 'M (15%)';
   String get q => 'Q (25%)';
   String get h => 'H (30%)';
+}
+
+// Path: qrCode.exportType
+class _StringsQrCodeExportTypeEn {
+  _StringsQrCodeExportTypeEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get png => 'PNG';
+  String get jpg => 'JPG';
+  String get svg => 'SVG';
 }
 
 // Path: cron.cronFormat.minutes
@@ -1326,6 +1340,12 @@ extension on Translations {
         return 'H (30%)';
       case 'qrCode.testBeforeUse':
         return 'Always test a QR code before using it';
+      case 'qrCode.exportType.png':
+        return 'PNG';
+      case 'qrCode.exportType.jpg':
+        return 'JPG';
+      case 'qrCode.exportType.svg':
+        return 'SVG';
       default:
         return null;
     }
