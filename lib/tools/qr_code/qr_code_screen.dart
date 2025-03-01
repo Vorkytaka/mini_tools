@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../common/padding.dart';
+import '../../i18n/strings.g.dart';
 import 'feature/message/qr_code_message.dart';
 import 'feature/qr_code_feature.dart';
 import 'feature/state/qr_code_state.dart';
@@ -16,9 +17,11 @@ class QrCodeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return MacosScaffold(
-      toolBar: const ToolBar(
-        title: Text('QR Code'),
+      toolBar: ToolBar(
+        title: Text(t.qrCode.title),
         centerTitle: true,
       ),
       children: [
@@ -34,11 +37,13 @@ class QrCodeScreen extends StatelessWidget {
 
 extension on ErrorCorrectionLevel {
   String format(BuildContext context) {
+    final t = Translations.of(context);
+
     return switch (this) {
-      ErrorCorrectionLevel.L => 'L (7%)',
-      ErrorCorrectionLevel.M => 'M (15%)',
-      ErrorCorrectionLevel.Q => 'Q (25%)',
-      ErrorCorrectionLevel.H => 'H (30%)',
+      ErrorCorrectionLevel.L => t.qrCode.correctionLevel.l,
+      ErrorCorrectionLevel.M => t.qrCode.correctionLevel.m,
+      ErrorCorrectionLevel.Q => t.qrCode.correctionLevel.q,
+      ErrorCorrectionLevel.H => t.qrCode.correctionLevel.h,
     };
   }
 }
@@ -66,6 +71,8 @@ class _InputSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -75,22 +82,27 @@ class _InputSide extends StatelessWidget {
           padding: headlinePadding,
           child: Row(
             children: [
-              Text('Input:'),
-              SizedBox(width: 8),
-              _ClearButton(),
-              Spacer(),
+              Text(t.common.input),
+              const SizedBox(width: 8),
+              const _ClearButton(),
+              const Spacer(),
               FeatureBuilder<QrCodeFeature, QrCodeState>(
                 buildWhen: (prev, curr) => prev.input != curr.input,
                 builder: (context, state) {
-                  final bytes = utf8.encode(state.input);
-                  return Text('${bytes.length} bytes');
+                  final bytes = utf8.encode(state.input).length;
+                  return Text(
+                    t.common.bytesCount(
+                      n: bytes,
+                      bytes: bytes,
+                    ),
+                  );
                 },
               ),
             ],
           ),
         ),
-        SizedBox(height: 8),
-        Expanded(child: _InputField()),
+        const SizedBox(height: 8),
+        const Expanded(child: _InputField()),
       ],
     );
   }
@@ -153,25 +165,23 @@ class _OutputSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Row(
-          children: [
-            Spacer(),
-            _CorrectionLevelSelector(),
-          ],
-        ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            const _CorrectionLevelSelector(),
             FeatureBuilder<QrCodeFeature, QrCodeState>(
               buildWhen: (prev, curr) => prev.code != curr.code,
               builder: (context, state) {
                 final qrCode = state.code;
 
                 return PushButton(
-                  child: Text('Save'),
                   controlSize: ControlSize.regular,
                   onPressed: qrCode != null
                       ? () {
@@ -180,12 +190,14 @@ class _OutputSide extends StatelessWidget {
                               .accept(const QrCodeMessage.saveToFile());
                         }
                       : null,
+                  child: Text(t.common.save),
                 );
               },
             ),
           ],
         ),
-        Expanded(
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
           child: Center(
             child: FeatureBuilder<QrCodeFeature, QrCodeState>(
               buildWhen: (prev, curr) =>
@@ -193,27 +205,37 @@ class _OutputSide extends StatelessWidget {
                   prev.correctionLevel != curr.correctionLevel,
               builder: (context, state) {
                 final code = state.code;
+
+                final Widget qrCode;
                 if (code == null) {
-                  return const AspectRatio(
+                  qrCode = const AspectRatio(
                     aspectRatio: 1,
                     child: ColoredBox(
                       color: Colors.white,
                       child: Placeholder(),
                     ),
                   );
+                } else {
+                  qrCode = QrImageView.withQr(
+                    qr: code,
+                    errorCorrectionLevel: state.correctionLevel.toInt,
+                    backgroundColor: Colors.white,
+                    padding: EdgeInsets.zero,
+                  );
                 }
 
-                return QrImageView.withQr(
-                  qr: code,
-                  errorCorrectionLevel: state.correctionLevel.toInt,
-                  backgroundColor: Colors.white,
-                  padding: EdgeInsets.zero,
+                return ColoredBox(
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: qrCode,
+                  ),
                 );
               },
             ),
           ),
         ),
-        Text('Always test QR before put it into use'),
+        Text(t.qrCode.testBeforeUse),
       ],
     );
   }
@@ -224,9 +246,12 @@ class _CorrectionLevelSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Row(
       children: [
-        Text('Correction Level: '),
+        Text(t.qrCode.correctionLevel.title),
+        const SizedBox(width: 8),
         FeatureBuilder<QrCodeFeature, QrCodeState>(
           buildWhen: (prev, curr) =>
               prev.correctionLevel != curr.correctionLevel,
@@ -260,6 +285,8 @@ class _ClearButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return PushButton(
       controlSize: ControlSize.regular,
       onPressed: () {
@@ -268,7 +295,7 @@ class _ClearButton extends StatelessWidget {
             .accept(const QrCodeMessage.updateInput(''));
       },
       secondary: true,
-      child: Text('Clear'),
+      child: Text(t.common.clear),
     );
   }
 }

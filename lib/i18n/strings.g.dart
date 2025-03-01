@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 213
+/// Strings: 222
 ///
-/// Built on 2025-02-18 at 22:56 UTC
+/// Built on 2025-03-01 at 10:57 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -206,6 +206,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
       _StringsUuidGeneratorEn._(_root);
   late final _StringsCronEn cron = _StringsCronEn._(_root);
   late final _StringsTextDiffEn textDiff = _StringsTextDiffEn._(_root);
+  late final _StringsQrCodeEn qrCode = _StringsQrCodeEn._(_root);
 }
 
 // Path: common
@@ -230,9 +231,16 @@ class _StringsCommonEn {
   String get on => 'on';
   String get inWord => 'in';
   String get textSeparator => ', ';
+  String get save => 'Save';
   late final _StringsCommonDayOfWeekEn dayOfWeek =
       _StringsCommonDayOfWeekEn._(_root);
   late final _StringsCommonMonthsEn months = _StringsCommonMonthsEn._(_root);
+  String bytesCount({required num n, required Object bytes}) =>
+      (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(
+        n,
+        one: '${bytes} byte',
+        other: '${bytes} bytes',
+      );
 }
 
 // Path: datetimeConverter
@@ -365,7 +373,6 @@ class _StringsHashEn {
   String get loadFile => 'Load file';
   String get dropFile => 'Drop file';
   String get textInputHint => 'Input any text here';
-  String bytesCount({required Object n}) => '${n} bytes';
   late final _StringsHashHashFormatEn hashFormat =
       _StringsHashHashFormatEn._(_root);
   String hashOfFile({required Object path}) => 'Hash of file: ${path}';
@@ -441,6 +448,19 @@ class _StringsTextDiffEn {
   String get title => 'Text Diff';
   String get oldInput => 'Old text:';
   String get newInput => 'New text:';
+}
+
+// Path: qrCode
+class _StringsQrCodeEn {
+  _StringsQrCodeEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'QR Code Generator';
+  late final _StringsQrCodeCorrectionLevelEn correctionLevel =
+      _StringsQrCodeCorrectionLevelEn._(_root);
+  String get testBeforeUse => 'Always test a QR code before using it';
 }
 
 // Path: common.dayOfWeek
@@ -719,6 +739,20 @@ class _StringsCronErrorsEn {
       'Step must be 1 to ${to}, but got ${value}';
 }
 
+// Path: qrCode.correctionLevel
+class _StringsQrCodeCorrectionLevelEn {
+  _StringsQrCodeCorrectionLevelEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Error Correction';
+  String get l => 'L (7%)';
+  String get m => 'M (15%)';
+  String get q => 'Q (25%)';
+  String get h => 'H (30%)';
+}
+
 // Path: cron.cronFormat.minutes
 class _StringsCronCronFormatMinutesEn {
   _StringsCronCronFormatMinutesEn._(this._root);
@@ -854,6 +888,8 @@ extension on Translations {
         return 'in';
       case 'common.textSeparator':
         return ', ';
+      case 'common.save':
+        return 'Save';
       case 'common.dayOfWeek.full.0':
         return 'Sunday';
       case 'common.dayOfWeek.full.1':
@@ -894,6 +930,13 @@ extension on Translations {
         return 'November';
       case 'common.months.full.11':
         return 'December';
+      case 'common.bytesCount':
+        return ({required num n, required Object bytes}) =>
+            (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(
+              n,
+              one: '${bytes} byte',
+              other: '${bytes} bytes',
+            );
       case 'datetimeConverter.title':
         return 'Datetime Converter';
       case 'datetimeConverter.inputType.sec':
@@ -1088,8 +1131,6 @@ extension on Translations {
         return 'Drop file';
       case 'hash.textInputHint':
         return 'Input any text here';
-      case 'hash.bytesCount':
-        return ({required Object n}) => '${n} bytes';
       case 'hash.hashFormat.hex':
         return 'HEX';
       case 'hash.hashFormat.base64':
@@ -1271,6 +1312,20 @@ extension on Translations {
         return 'Old text:';
       case 'textDiff.newInput':
         return 'New text:';
+      case 'qrCode.title':
+        return 'QR Code Generator';
+      case 'qrCode.correctionLevel.title':
+        return 'Error Correction';
+      case 'qrCode.correctionLevel.l':
+        return 'L (7%)';
+      case 'qrCode.correctionLevel.m':
+        return 'M (15%)';
+      case 'qrCode.correctionLevel.q':
+        return 'Q (25%)';
+      case 'qrCode.correctionLevel.h':
+        return 'H (30%)';
+      case 'qrCode.testBeforeUse':
+        return 'Always test a QR code before using it';
       default:
         return null;
     }

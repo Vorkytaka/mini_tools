@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:qr/qr.dart';
 
 import '../state/qr_code_state.dart';
 

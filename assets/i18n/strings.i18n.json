@@ -15,6 +15,7 @@
     "on": "on",
     "inWord": "in",
     "text_separator": ", ",
+    "save": "Save",
     "dayOfWeek": {
       "full": [
         "Sunday",
@@ -42,6 +43,10 @@
         "November",
         "December"
       ]
+    },
+    "bytes_count": {
+      "one": "$bytes byte",
+      "other": "$bytes bytes"
     }
   },
   "datetime_converter": {
@@ -174,7 +179,6 @@
     "load_file": "Load file",
     "drop_file": "Drop file",
     "text_input_hint": "Input any text here",
-    "bytes_count": "$n bytes",
     "hash_format": {
       "hex": "HEX",
       "base64": "Base64"
@@ -297,5 +301,16 @@
     "title": "Text Diff",
     "old_input": "Old text:",
     "new_input": "New text:"
+  },
+  "qr_code": {
+    "title": "QR Code Generator",
+    "correction_level": {
+      "title": "Error Correction",
+      "L": "L (7%)",
+      "M": "M (15%)",
+      "Q": "Q (25%)",
+      "H": "H (30%)"
+    },
+    "test_before_use": "Always test a QR code before using it"
   }
 }
