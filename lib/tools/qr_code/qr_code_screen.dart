@@ -184,12 +184,7 @@ class _OutputSide extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const _CorrectionLevelSelector(),
-          ],
-        ),
+        const _CorrectionLevelSelector(),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: Center(
