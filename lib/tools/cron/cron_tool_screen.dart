@@ -197,27 +197,32 @@ class _CronPartValues extends StatelessWidget {
 
         final titleColor = selectedParts.contains(part) ? Colors.yellow : null;
 
-        return Text.rich(
-          TextSpan(
-            children: [
-              TextSpan(
-                text: part.format(t),
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 130,
+              child: Text(
+                part.format(t),
                 style: TextStyle(
                   color: titleColor,
                   decoration:
                       titleColor != null ? TextDecoration.underline : null,
                 ),
               ),
-              const TextSpan(text: '  '),
-              TextSpan(
-                text: text,
+            ),
+            Expanded(
+              child: Text(
+                text,
                 style: TextStyle(
                   fontFamily: 'Fira Code',
                   color: textColor,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         );
       },
     );
@@ -320,8 +325,10 @@ class _NextAt extends StatelessWidget {
         return Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(t.cron.nextAt),
-            const SizedBox(width: 8),
+            SizedBox(
+              width: 130,
+              child: Text(t.cron.nextAt),
+            ),
             const Expanded(child: _NextAtList()),
           ],
         );
