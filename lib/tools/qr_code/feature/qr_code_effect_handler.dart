@@ -6,6 +6,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:image/image.dart' as img;
 import 'package:mini_tea/feature.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:super_clipboard/super_clipboard.dart';
 
 import 'effect/qr_code_effect.dart';
 import 'message/qr_code_message.dart';
@@ -21,11 +22,13 @@ final class QrCodeEffectHandler
     switch (effect) {
       case SaveToFileEffect():
         return _saveToFile(effect, emit);
+      case CopyToClipboardEffect():
+        return _copyToClipboard(effect, emit);
     }
   }
 
   Future<void> _saveToFile(
-    QrCodeEffect effect,
+    SaveToFileEffect effect,
     MsgEmitter<QrCodeMessage> emit,
   ) async {
     final path = await FilePicker.platform.saveFile(
@@ -108,4 +111,24 @@ final class QrCodeEffectHandler
 
   static Uint8List? encodeJpg(img.Image? image) =>
       image != null ? img.encodeJpg(image) : null;
+
+  Future<void> _copyToClipboard(
+    CopyToClipboardEffect effect,
+    MsgEmitter<QrCodeMessage> emit,
+  ) async {
+    final clipboard = SystemClipboard.instance;
+    if (clipboard == null) {
+      return;
+    }
+
+    final image = await generateQrCodeRaster(effect.code);
+    final data = encodePng(image);
+    if (data == null) {
+      return;
+    }
+
+    final item = DataWriterItem();
+    item.add(Formats.png(data));
+    await clipboard.write([item]);
+  }
 }

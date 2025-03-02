@@ -16,4 +16,6 @@ sealed class QrCodeMessage with _$QrCodeMessage {
 
   const factory QrCodeMessage.updateExportType(ExportType type) =
       UpdateExportTypeMessage;
+
+  const factory QrCodeMessage.copyToClipboard() = CopyToClipboardMessage;
 }

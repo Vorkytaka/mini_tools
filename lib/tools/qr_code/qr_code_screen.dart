@@ -184,35 +184,7 @@ class _OutputSide extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const _CorrectionLevelSelector(),
-            FeatureBuilder<QrCodeFeature, QrCodeState>(
-              buildWhen: (prev, curr) => prev.code != curr.code,
-              builder: (context, state) {
-                final qrCode = state.code;
-
-                return Row(
-                  children: [
-                    PushButton(
-                      controlSize: ControlSize.regular,
-                      onPressed: qrCode != null
-                          ? () {
-                              context
-                                  .read<QrCodeFeature>()
-                                  .accept(const QrCodeMessage.saveToFile());
-                            }
-                          : null,
-                      child: Text(t.common.save),
-                    ),
-                    const _ExportTypeSelector(),
-                  ],
-                );
-              },
-            ),
-          ],
-        ),
+        const _CorrectionLevelSelector(),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: Center(
@@ -248,6 +220,54 @@ class _OutputSide extends StatelessWidget {
             ),
           ),
         ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            FeatureBuilder<QrCodeFeature, QrCodeState>(
+              buildWhen: (prev, curr) => prev.code != curr.code,
+              builder: (context, state) {
+                final qrCode = state.code;
+
+                return PushButton(
+                  controlSize: ControlSize.regular,
+                  onPressed: qrCode != null
+                      ? () {
+                          context
+                              .read<QrCodeFeature>()
+                              .accept(const QrCodeMessage.copyToClipboard());
+                        }
+                      : null,
+                  child: Text(t.common.copy),
+                );
+              },
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                FeatureBuilder<QrCodeFeature, QrCodeState>(
+                  buildWhen: (prev, curr) => prev.code != curr.code,
+                  builder: (context, state) {
+                    final qrCode = state.code;
+
+                    return PushButton(
+                      controlSize: ControlSize.regular,
+                      onPressed: qrCode != null
+                          ? () {
+                              context
+                                  .read<QrCodeFeature>()
+                                  .accept(const QrCodeMessage.saveToFile());
+                            }
+                          : null,
+                      child: Text(t.common.save),
+                    );
+                  },
+                ),
+                const _ExportTypeSelector(),
+              ],
+            ),
+          ],
+        ),
+        const Spacer(),
         Text(t.qrCode.testBeforeUse),
       ],
     );

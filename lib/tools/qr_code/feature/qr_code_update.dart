@@ -39,6 +39,16 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       );
     case UpdateExportTypeMessage():
       return next(state: state.copyWith(exportType: message.type));
+    case CopyToClipboardMessage():
+      final code = state.code;
+      return next(
+        effects: [
+          if (code != null)
+            QrCodeEffect.copyToClipboard(
+              code: code,
+            ),
+        ],
+      );
   }
 }
 
