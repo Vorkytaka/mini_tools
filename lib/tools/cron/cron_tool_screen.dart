@@ -7,6 +7,7 @@ import 'package:timezone/timezone.dart';
 
 import '../../common/datetime.dart';
 import '../../common/datetime_inherited_model.dart';
+import '../../common/duration.dart';
 import '../../common/padding.dart';
 import '../../common/regexp.dart';
 import '../../common/timezone_holder.dart';
@@ -380,12 +381,18 @@ class _NextAtList extends StatelessWidget {
                         datetime: next,
                       );
                     },
-                    child: Text(
-                      next.toRfc2822String(),
-                      style: const TextStyle(
-                        color: Colors.blue,
-                        decoration: TextDecoration.underline,
-                      ),
+                    child: Row(
+                      children: [
+                        Text(
+                          next.toRfc2822String(),
+                          style: const TextStyle(
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        _NextAtRelative(datetime: next),
+                      ],
                     ),
                   ),
                 ),
@@ -394,6 +401,38 @@ class _NextAtList extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+class _NextAtRelative extends StatelessWidget {
+  final TZDateTime datetime;
+
+  const _NextAtRelative({
+    required this.datetime,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Translations.of(context);
+    final now = DatetimeHolder.of(context, type: DatetimeHolderType.sec);
+    final diff = now.difference(datetime);
+    final diffStr = diff.format(
+      onZero: t.datetimeConverter.relativeFormat.rightNow,
+      onDays: (days) => t.datetimeConverter.relativeFormat.days(days: days),
+      onHours: (hours) =>
+          t.datetimeConverter.relativeFormat.hours(hours: hours),
+      onMinutes: (min) =>
+          t.datetimeConverter.relativeFormat.minutes(minutes: min),
+      onSeconds: (sec) =>
+          t.datetimeConverter.relativeFormat.seconds(seconds: sec),
+      positiveWrapper: (str) =>
+          t.datetimeConverter.relativeFormat.positive(str: str),
+      negativeWrapper: (str) =>
+          t.datetimeConverter.relativeFormat.negative(str: str),
+      separator: t.common.textSeparator,
+    );
+
+    return Text('($diffStr)');
   }
 }
 
