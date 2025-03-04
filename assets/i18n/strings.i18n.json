@@ -305,7 +305,7 @@
   "qr_code": {
     "title": "QR Code Generator",
     "correction_level": {
-      "title": "Error Correction",
+      "title": "Error Correction:",
       "L": "L (7%)",
       "M": "M (15%)",
       "Q": "Q (25%)",
@@ -316,6 +316,12 @@
       "png": "PNG",
       "jpg": "JPG",
       "svg": "SVG"
+    },
+    "shapes": {
+      "title": "Shape Style:",
+      "square": "Squares",
+      "circle": "Circles",
+      "svg_warning": "Shape style remain unchanged in SVG format"
     }
   }
 }

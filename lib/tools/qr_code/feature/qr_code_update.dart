@@ -34,6 +34,7 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
             QrCodeEffect.saveToFile(
               code: code,
               exportType: state.exportType,
+              visualData: state.visualData,
             ),
         ],
       );
@@ -46,8 +47,25 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
           if (code != null)
             QrCodeEffect.copyToClipboard(
               code: code,
+              visualData: state.visualData,
             ),
         ],
+      );
+    case ShapeUpdateMessage():
+      return next(
+        state: state.copyWith(
+          visualData: state.visualData.copyWith(
+            shape: message.shape,
+          ),
+        ),
+      );
+    case PaddingUpdateMessage():
+      return next(
+        state: state.copyWith(
+          visualData: state.visualData.copyWith(
+            paddings: message.padding,
+          ),
+        ),
       );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/painting.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../state/qr_code_state.dart';
@@ -18,4 +19,10 @@ sealed class QrCodeMessage with _$QrCodeMessage {
       UpdateExportTypeMessage;
 
   const factory QrCodeMessage.copyToClipboard() = CopyToClipboardMessage;
+
+  const factory QrCodeMessage.shapeUpdate(QrCodeShape shape) =
+      ShapeUpdateMessage;
+
+  const factory QrCodeMessage.paddingUpdate(EdgeInsets padding) =
+      PaddingUpdateMessage;
 }
