@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
+import 'dart:ui';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:image/image.dart' as img;
@@ -42,13 +43,19 @@ final class QrCodeEffectHandler
 
     switch (effect.exportType) {
       case ExportType.png:
-        final content = await generateQrCodeRaster(effect.code).then(encodePng);
+        final content = await generateQrCodeRaster(
+          effect.code,
+          effect.visualData,
+        ).then(encodePng);
         if (content != null) {
           await file.writeAsBytes(content);
         }
         break;
       case ExportType.jpg:
-        final content = await generateQrCodeRaster(effect.code).then(encodeJpg);
+        final content = await generateQrCodeRaster(
+          effect.code,
+          effect.visualData,
+        ).then(encodeJpg);
         if (content != null) {
           await file.writeAsBytes(content);
         }
@@ -82,10 +89,15 @@ final class QrCodeEffectHandler
   }
 
   /// Generate bytes content for vector graphic around this qr code
-  static Future<img.Image?> generateQrCodeRaster(QrCode qrCode) async {
+  static Future<img.Image?> generateQrCodeRaster(
+    QrCode qrCode,
+    QrCodeVisualData visualData,
+  ) async {
     final painter = QrPainter.withQr(
       qr: qrCode,
       gapless: true,
+      dataModuleStyle: visualData.toModuleStyle,
+      eyeStyle: visualData.toEyeStyle,
     );
     final data = await painter.toImageData(600);
 
@@ -100,7 +112,10 @@ final class QrCodeEffectHandler
     }
 
     img.Image image = img.Image(height: 600, width: 600);
-    image = img.fill(image, color: img.ColorInt8.rgb(127, 127, 127));
+    image = img.fill(
+      image,
+      color: visualData.backgroundColor.toImageColor,
+    );
     image = img.compositeImage(image, qrImage);
 
     return image;
@@ -121,7 +136,10 @@ final class QrCodeEffectHandler
       return;
     }
 
-    final image = await generateQrCodeRaster(effect.code);
+    final image = await generateQrCodeRaster(
+      effect.code,
+      effect.visualData,
+    );
     final data = encodePng(image);
     if (data == null) {
       return;
@@ -131,4 +149,8 @@ final class QrCodeEffectHandler
     item.add(Formats.png(data));
     await clipboard.write([item]);
   }
+}
+
+extension on Color {
+  img.Color get toImageColor => img.ColorUint8.rgb(red, green, blue);
 }

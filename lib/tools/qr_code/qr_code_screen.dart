@@ -215,7 +215,7 @@ class _OutputSide extends StatelessWidget {
                 }
 
                 return ColoredBox(
-                  color: Colors.white,
+                  color: state.visualData.backgroundColor,
                   child: Padding(
                     padding: const EdgeInsets.all(8),
                     child: qrCode,
@@ -279,18 +279,6 @@ class _OutputSide extends StatelessWidget {
   }
 }
 
-extension on QrCodeVisualData {
-  QrEyeStyle get toEyeStyle => QrEyeStyle(
-        color: foregroundColor,
-        eyeShape: shape.toEyeShape,
-      );
-
-  QrDataModuleStyle get toModuleStyle => QrDataModuleStyle(
-        color: foregroundColor,
-        dataModuleShape: shape.toModuleShape,
-      );
-}
-
 extension on QrCodeShape {
   String format(BuildContext context) {
     final t = Translations.of(context);
@@ -300,16 +288,6 @@ extension on QrCodeShape {
       QrCodeShape.circle => 'Circle',
     };
   }
-
-  QrEyeShape get toEyeShape => switch (this) {
-        QrCodeShape.square => QrEyeShape.square,
-        QrCodeShape.circle => QrEyeShape.circle,
-      };
-
-  QrDataModuleShape get toModuleShape => switch (this) {
-        QrCodeShape.square => QrDataModuleShape.square,
-        QrCodeShape.circle => QrDataModuleShape.circle,
-      };
 }
 
 class _QrCodeShapeSelector extends StatelessWidget {
