@@ -273,7 +273,25 @@ class _OutputSide extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        Text(t.qrCode.testBeforeUse),
+        Center(
+          child: FeatureBuilder<QrCodeFeature, QrCodeState>(
+            buildWhen: (prev, curr) => prev.exportType != curr.exportType,
+            builder: (context, state) {
+              if (state.exportType != ExportType.svg) {
+                return const SizedBox();
+              }
+
+              return DefaultTextStyle.merge(
+                style: TextStyle(
+                  color: Colors.red.shade300,
+                ),
+                child: Text('Currently, SVG only support default visual data'),
+              );
+            },
+          ),
+        ),
+        const SizedBox(height: 4),
+        Center(child: Text(t.qrCode.testBeforeUse)),
       ],
     );
   }
