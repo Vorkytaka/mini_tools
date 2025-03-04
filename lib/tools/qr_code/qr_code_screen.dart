@@ -177,56 +177,67 @@ class _OutputSide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final t = Translations.of(context);
-
-    return Column(
+    return const Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _CorrectionLevelSelector(),
-        const SizedBox(height: 8),
-        const _QrCodeShapeSelector(),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Center(
-            child: FeatureBuilder<QrCodeFeature, QrCodeState>(
-              buildWhen: (prev, curr) =>
-                  prev.code != curr.code ||
-                  prev.correctionLevel != curr.correctionLevel ||
-                  prev.visualData != curr.visualData,
-              builder: (context, state) {
-                final code = state.code;
+        _CorrectionLevelSelector(),
+        SizedBox(height: 8),
+        _QrCodeShapeSelector(),
+        SizedBox(height: 8),
+        Center(child: _QrCodeWidget()),
+        SizedBox(height: 8),
+        _ExportQrLine(),
+        Spacer(),
+        Center(child: _SvgWarning()),
+        SizedBox(height: 4),
+        Center(child: _TestQrWarning()),
+      ],
+    );
+  }
+}
 
-                final Widget qrCode;
-                if (code == null) {
-                  qrCode = const AspectRatio(
-                    aspectRatio: 1,
-                    child: Placeholder(),
-                  );
-                } else {
-                  qrCode = QrImageView.withQr(
-                    qr: code,
-                    errorCorrectionLevel: state.correctionLevel.toInt,
-                    padding: state.visualData.paddings,
-                    eyeStyle: state.visualData.toEyeStyle,
-                    dataModuleStyle: state.visualData.toModuleStyle,
-                  );
-                }
+class _TestQrWarning extends StatelessWidget {
+  const _TestQrWarning();
 
-                return ColoredBox(
-                  color: state.visualData.backgroundColor,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: qrCode,
-                  ),
-                );
-              },
-            ),
-          ),
+  @override
+  Widget build(BuildContext context) {
+    final t = Translations.of(context);
+    return Text(t.qrCode.testBeforeUse);
+  }
+}
+
+class _ExportQrLine extends StatelessWidget {
+  const _ExportQrLine();
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        FeatureBuilder<QrCodeFeature, QrCodeState>(
+          buildWhen: (prev, curr) => prev.code != curr.code,
+          builder: (context, state) {
+            final qrCode = state.code;
+
+            return PushButton(
+              controlSize: ControlSize.regular,
+              onPressed: qrCode != null
+                  ? () {
+                      context
+                          .read<QrCodeFeature>()
+                          .accept(const QrCodeMessage.copyToClipboard());
+                    }
+                  : null,
+              child: Text(t.common.copy),
+            );
+          },
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.min,
           children: [
             FeatureBuilder<QrCodeFeature, QrCodeState>(
               buildWhen: (prev, curr) => prev.code != curr.code,
@@ -239,60 +250,86 @@ class _OutputSide extends StatelessWidget {
                       ? () {
                           context
                               .read<QrCodeFeature>()
-                              .accept(const QrCodeMessage.copyToClipboard());
+                              .accept(const QrCodeMessage.saveToFile());
                         }
                       : null,
-                  child: Text(t.common.copy),
+                  child: Text(t.common.save),
                 );
               },
             ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                FeatureBuilder<QrCodeFeature, QrCodeState>(
-                  buildWhen: (prev, curr) => prev.code != curr.code,
-                  builder: (context, state) {
-                    final qrCode = state.code;
-
-                    return PushButton(
-                      controlSize: ControlSize.regular,
-                      onPressed: qrCode != null
-                          ? () {
-                              context
-                                  .read<QrCodeFeature>()
-                                  .accept(const QrCodeMessage.saveToFile());
-                            }
-                          : null,
-                      child: Text(t.common.save),
-                    );
-                  },
-                ),
-                const _ExportTypeSelector(),
-              ],
-            ),
+            const _ExportTypeSelector(),
           ],
         ),
-        const Spacer(),
-        Center(
-          child: FeatureBuilder<QrCodeFeature, QrCodeState>(
-            buildWhen: (prev, curr) => prev.exportType != curr.exportType,
-            builder: (context, state) {
-              if (state.exportType != ExportType.svg) {
-                return const SizedBox();
-              }
-
-              return DefaultTextStyle.merge(
-                style: TextStyle(
-                  color: Colors.red.shade300,
-                ),
-                child: Text('Currently, SVG only support default visual data'),
-              );
-            },
-          ),
-        ),
-        const SizedBox(height: 4),
-        Center(child: Text(t.qrCode.testBeforeUse)),
       ],
+    );
+  }
+}
+
+class _QrCodeWidget extends StatelessWidget {
+  const _QrCodeWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return FeatureBuilder<QrCodeFeature, QrCodeState>(
+      buildWhen: (prev, curr) =>
+          prev.code != curr.code ||
+          prev.correctionLevel != curr.correctionLevel ||
+          prev.visualData != curr.visualData,
+      builder: (context, state) {
+        final code = state.code;
+
+        final Widget qrCode;
+        if (code == null) {
+          qrCode = const AspectRatio(
+            aspectRatio: 1,
+            child: Placeholder(),
+          );
+        } else {
+          qrCode = QrImageView.withQr(
+            qr: code,
+            errorCorrectionLevel: state.correctionLevel.toInt,
+            padding: state.visualData.paddings,
+            eyeStyle: state.visualData.toEyeStyle,
+            dataModuleStyle: state.visualData.toModuleStyle,
+          );
+        }
+
+        return ColoredBox(
+          color: state.visualData.backgroundColor,
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: qrCode,
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _SvgWarning extends StatelessWidget {
+  const _SvgWarning();
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
+    return FeatureBuilder<QrCodeFeature, QrCodeState>(
+      buildWhen: (prev, curr) =>
+          prev.exportType != curr.exportType ||
+          prev.visualData != curr.visualData,
+      builder: (context, state) {
+        if (state.exportType == ExportType.svg &&
+            state.visualData.shape != QrCodeShape.square) {
+          return DefaultTextStyle.merge(
+            style: TextStyle(
+              color: Colors.red.shade300,
+            ),
+            child: Text(t.qrCode.shapes.svgWarning),
+          );
+        }
+
+        return const SizedBox();
+      },
     );
   }
 }
@@ -302,8 +339,8 @@ extension on QrCodeShape {
     final t = Translations.of(context);
 
     return switch (this) {
-      QrCodeShape.square => 'Square',
-      QrCodeShape.circle => 'Circle',
+      QrCodeShape.square => t.qrCode.shapes.square,
+      QrCodeShape.circle => t.qrCode.shapes.circle,
     };
   }
 }
@@ -313,12 +350,14 @@ class _QrCodeShapeSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
           width: 130,
-          child: Text('QR Code shape'),
+          child: Text(t.qrCode.shapes.title),
         ),
         FeatureBuilder<QrCodeFeature, QrCodeState>(
           buildWhen: (prev, curr) =>

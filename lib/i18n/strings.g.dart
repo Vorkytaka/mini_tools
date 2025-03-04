@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 225
+/// Strings: 229
 ///
-/// Built on 2025-03-01 at 21:46 UTC
+/// Built on 2025-03-04 at 23:03 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -463,6 +463,7 @@ class _StringsQrCodeEn {
   String get testBeforeUse => 'Always test a QR code before using it';
   late final _StringsQrCodeExportTypeEn exportType =
       _StringsQrCodeExportTypeEn._(_root);
+  late final _StringsQrCodeShapesEn shapes = _StringsQrCodeShapesEn._(_root);
 }
 
 // Path: common.dayOfWeek
@@ -748,7 +749,7 @@ class _StringsQrCodeCorrectionLevelEn {
   final Translations _root; // ignore: unused_field
 
   // Translations
-  String get title => 'Error Correction';
+  String get title => 'Error Correction:';
   String get l => 'L (7%)';
   String get m => 'M (15%)';
   String get q => 'Q (25%)';
@@ -765,6 +766,19 @@ class _StringsQrCodeExportTypeEn {
   String get png => 'PNG';
   String get jpg => 'JPG';
   String get svg => 'SVG';
+}
+
+// Path: qrCode.shapes
+class _StringsQrCodeShapesEn {
+  _StringsQrCodeShapesEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Shape Style:';
+  String get square => 'Squares';
+  String get circle => 'Circles';
+  String get svgWarning => 'Shape style remain unchanged in SVG format';
 }
 
 // Path: cron.cronFormat.minutes
@@ -1329,7 +1343,7 @@ extension on Translations {
       case 'qrCode.title':
         return 'QR Code Generator';
       case 'qrCode.correctionLevel.title':
-        return 'Error Correction';
+        return 'Error Correction:';
       case 'qrCode.correctionLevel.l':
         return 'L (7%)';
       case 'qrCode.correctionLevel.m':
@@ -1346,6 +1360,14 @@ extension on Translations {
         return 'JPG';
       case 'qrCode.exportType.svg':
         return 'SVG';
+      case 'qrCode.shapes.title':
+        return 'Shape Style:';
+      case 'qrCode.shapes.square':
+        return 'Squares';
+      case 'qrCode.shapes.circle':
+        return 'Circles';
+      case 'qrCode.shapes.svgWarning':
+        return 'Shape style remain unchanged in SVG format';
       default:
         return null;
     }
