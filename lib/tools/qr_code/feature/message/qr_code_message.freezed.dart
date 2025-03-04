@@ -23,6 +23,8 @@ mixin _$QrCodeMessage {
     required TResult Function() saveToFile,
     required TResult Function(ExportType type) updateExportType,
     required TResult Function() copyToClipboard,
+    required TResult Function(QrCodeShape shape) shapeUpdate,
+    required TResult Function(EdgeInsets padding) paddingUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +34,8 @@ mixin _$QrCodeMessage {
     TResult? Function()? saveToFile,
     TResult? Function(ExportType type)? updateExportType,
     TResult? Function()? copyToClipboard,
+    TResult? Function(QrCodeShape shape)? shapeUpdate,
+    TResult? Function(EdgeInsets padding)? paddingUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +45,8 @@ mixin _$QrCodeMessage {
     TResult Function()? saveToFile,
     TResult Function(ExportType type)? updateExportType,
     TResult Function()? copyToClipboard,
+    TResult Function(QrCodeShape shape)? shapeUpdate,
+    TResult Function(EdgeInsets padding)? paddingUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +58,8 @@ mixin _$QrCodeMessage {
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
+    required TResult Function(ShapeUpdateMessage value) shapeUpdate,
+    required TResult Function(PaddingUpdateMessage value) paddingUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +70,8 @@ mixin _$QrCodeMessage {
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +81,8 @@ mixin _$QrCodeMessage {
     TResult Function(SaveToFileMessage value)? saveToFile,
     TResult Function(UpdateExportTypeMessage value)? updateExportType,
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -171,6 +183,8 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     required TResult Function() saveToFile,
     required TResult Function(ExportType type) updateExportType,
     required TResult Function() copyToClipboard,
+    required TResult Function(QrCodeShape shape) shapeUpdate,
+    required TResult Function(EdgeInsets padding) paddingUpdate,
   }) {
     return updateInput(text);
   }
@@ -183,6 +197,8 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult? Function()? saveToFile,
     TResult? Function(ExportType type)? updateExportType,
     TResult? Function()? copyToClipboard,
+    TResult? Function(QrCodeShape shape)? shapeUpdate,
+    TResult? Function(EdgeInsets padding)? paddingUpdate,
   }) {
     return updateInput?.call(text);
   }
@@ -195,6 +211,8 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult Function()? saveToFile,
     TResult Function(ExportType type)? updateExportType,
     TResult Function()? copyToClipboard,
+    TResult Function(QrCodeShape shape)? shapeUpdate,
+    TResult Function(EdgeInsets padding)? paddingUpdate,
     required TResult orElse(),
   }) {
     if (updateInput != null) {
@@ -212,6 +230,8 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
+    required TResult Function(ShapeUpdateMessage value) shapeUpdate,
+    required TResult Function(PaddingUpdateMessage value) paddingUpdate,
   }) {
     return updateInput(this);
   }
@@ -225,6 +245,8 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
   }) {
     return updateInput?.call(this);
   }
@@ -237,6 +259,8 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult Function(SaveToFileMessage value)? saveToFile,
     TResult Function(UpdateExportTypeMessage value)? updateExportType,
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     required TResult orElse(),
   }) {
     if (updateInput != null) {
@@ -338,6 +362,8 @@ class _$UpdateCorrectionLevelMessageImpl
     required TResult Function() saveToFile,
     required TResult Function(ExportType type) updateExportType,
     required TResult Function() copyToClipboard,
+    required TResult Function(QrCodeShape shape) shapeUpdate,
+    required TResult Function(EdgeInsets padding) paddingUpdate,
   }) {
     return updateCorrectionLevel(level);
   }
@@ -350,6 +376,8 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult? Function()? saveToFile,
     TResult? Function(ExportType type)? updateExportType,
     TResult? Function()? copyToClipboard,
+    TResult? Function(QrCodeShape shape)? shapeUpdate,
+    TResult? Function(EdgeInsets padding)? paddingUpdate,
   }) {
     return updateCorrectionLevel?.call(level);
   }
@@ -362,6 +390,8 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult Function()? saveToFile,
     TResult Function(ExportType type)? updateExportType,
     TResult Function()? copyToClipboard,
+    TResult Function(QrCodeShape shape)? shapeUpdate,
+    TResult Function(EdgeInsets padding)? paddingUpdate,
     required TResult orElse(),
   }) {
     if (updateCorrectionLevel != null) {
@@ -379,6 +409,8 @@ class _$UpdateCorrectionLevelMessageImpl
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
+    required TResult Function(ShapeUpdateMessage value) shapeUpdate,
+    required TResult Function(PaddingUpdateMessage value) paddingUpdate,
   }) {
     return updateCorrectionLevel(this);
   }
@@ -392,6 +424,8 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
   }) {
     return updateCorrectionLevel?.call(this);
   }
@@ -404,6 +438,8 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult Function(SaveToFileMessage value)? saveToFile,
     TResult Function(UpdateExportTypeMessage value)? updateExportType,
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     required TResult orElse(),
   }) {
     if (updateCorrectionLevel != null) {
@@ -473,6 +509,8 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     required TResult Function() saveToFile,
     required TResult Function(ExportType type) updateExportType,
     required TResult Function() copyToClipboard,
+    required TResult Function(QrCodeShape shape) shapeUpdate,
+    required TResult Function(EdgeInsets padding) paddingUpdate,
   }) {
     return saveToFile();
   }
@@ -485,6 +523,8 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult? Function()? saveToFile,
     TResult? Function(ExportType type)? updateExportType,
     TResult? Function()? copyToClipboard,
+    TResult? Function(QrCodeShape shape)? shapeUpdate,
+    TResult? Function(EdgeInsets padding)? paddingUpdate,
   }) {
     return saveToFile?.call();
   }
@@ -497,6 +537,8 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult Function()? saveToFile,
     TResult Function(ExportType type)? updateExportType,
     TResult Function()? copyToClipboard,
+    TResult Function(QrCodeShape shape)? shapeUpdate,
+    TResult Function(EdgeInsets padding)? paddingUpdate,
     required TResult orElse(),
   }) {
     if (saveToFile != null) {
@@ -514,6 +556,8 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
+    required TResult Function(ShapeUpdateMessage value) shapeUpdate,
+    required TResult Function(PaddingUpdateMessage value) paddingUpdate,
   }) {
     return saveToFile(this);
   }
@@ -527,6 +571,8 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
   }) {
     return saveToFile?.call(this);
   }
@@ -539,6 +585,8 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult Function(SaveToFileMessage value)? saveToFile,
     TResult Function(UpdateExportTypeMessage value)? updateExportType,
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     required TResult orElse(),
   }) {
     if (saveToFile != null) {
@@ -628,6 +676,8 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     required TResult Function() saveToFile,
     required TResult Function(ExportType type) updateExportType,
     required TResult Function() copyToClipboard,
+    required TResult Function(QrCodeShape shape) shapeUpdate,
+    required TResult Function(EdgeInsets padding) paddingUpdate,
   }) {
     return updateExportType(type);
   }
@@ -640,6 +690,8 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult? Function()? saveToFile,
     TResult? Function(ExportType type)? updateExportType,
     TResult? Function()? copyToClipboard,
+    TResult? Function(QrCodeShape shape)? shapeUpdate,
+    TResult? Function(EdgeInsets padding)? paddingUpdate,
   }) {
     return updateExportType?.call(type);
   }
@@ -652,6 +704,8 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult Function()? saveToFile,
     TResult Function(ExportType type)? updateExportType,
     TResult Function()? copyToClipboard,
+    TResult Function(QrCodeShape shape)? shapeUpdate,
+    TResult Function(EdgeInsets padding)? paddingUpdate,
     required TResult orElse(),
   }) {
     if (updateExportType != null) {
@@ -669,6 +723,8 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
+    required TResult Function(ShapeUpdateMessage value) shapeUpdate,
+    required TResult Function(PaddingUpdateMessage value) paddingUpdate,
   }) {
     return updateExportType(this);
   }
@@ -682,6 +738,8 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
   }) {
     return updateExportType?.call(this);
   }
@@ -694,6 +752,8 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult Function(SaveToFileMessage value)? saveToFile,
     TResult Function(UpdateExportTypeMessage value)? updateExportType,
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     required TResult orElse(),
   }) {
     if (updateExportType != null) {
@@ -765,6 +825,8 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     required TResult Function() saveToFile,
     required TResult Function(ExportType type) updateExportType,
     required TResult Function() copyToClipboard,
+    required TResult Function(QrCodeShape shape) shapeUpdate,
+    required TResult Function(EdgeInsets padding) paddingUpdate,
   }) {
     return copyToClipboard();
   }
@@ -777,6 +839,8 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     TResult? Function()? saveToFile,
     TResult? Function(ExportType type)? updateExportType,
     TResult? Function()? copyToClipboard,
+    TResult? Function(QrCodeShape shape)? shapeUpdate,
+    TResult? Function(EdgeInsets padding)? paddingUpdate,
   }) {
     return copyToClipboard?.call();
   }
@@ -789,6 +853,8 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     TResult Function()? saveToFile,
     TResult Function(ExportType type)? updateExportType,
     TResult Function()? copyToClipboard,
+    TResult Function(QrCodeShape shape)? shapeUpdate,
+    TResult Function(EdgeInsets padding)? paddingUpdate,
     required TResult orElse(),
   }) {
     if (copyToClipboard != null) {
@@ -806,6 +872,8 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
+    required TResult Function(ShapeUpdateMessage value) shapeUpdate,
+    required TResult Function(PaddingUpdateMessage value) paddingUpdate,
   }) {
     return copyToClipboard(this);
   }
@@ -819,6 +887,8 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
   }) {
     return copyToClipboard?.call(this);
   }
@@ -831,6 +901,8 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     TResult Function(SaveToFileMessage value)? saveToFile,
     TResult Function(UpdateExportTypeMessage value)? updateExportType,
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     required TResult orElse(),
   }) {
     if (copyToClipboard != null) {
@@ -842,4 +914,353 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
 
 abstract class CopyToClipboardMessage implements QrCodeMessage {
   const factory CopyToClipboardMessage() = _$CopyToClipboardMessageImpl;
+}
+
+/// @nodoc
+abstract class _$$ShapeUpdateMessageImplCopyWith<$Res> {
+  factory _$$ShapeUpdateMessageImplCopyWith(_$ShapeUpdateMessageImpl value,
+          $Res Function(_$ShapeUpdateMessageImpl) then) =
+      __$$ShapeUpdateMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({QrCodeShape shape});
+}
+
+/// @nodoc
+class __$$ShapeUpdateMessageImplCopyWithImpl<$Res>
+    extends _$QrCodeMessageCopyWithImpl<$Res, _$ShapeUpdateMessageImpl>
+    implements _$$ShapeUpdateMessageImplCopyWith<$Res> {
+  __$$ShapeUpdateMessageImplCopyWithImpl(_$ShapeUpdateMessageImpl _value,
+      $Res Function(_$ShapeUpdateMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? shape = null,
+  }) {
+    return _then(_$ShapeUpdateMessageImpl(
+      null == shape
+          ? _value.shape
+          : shape // ignore: cast_nullable_to_non_nullable
+              as QrCodeShape,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
+  const _$ShapeUpdateMessageImpl(this.shape);
+
+  @override
+  final QrCodeShape shape;
+
+  @override
+  String toString() {
+    return 'QrCodeMessage.shapeUpdate(shape: $shape)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ShapeUpdateMessageImpl &&
+            (identical(other.shape, shape) || other.shape == shape));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, shape);
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ShapeUpdateMessageImplCopyWith<_$ShapeUpdateMessageImpl> get copyWith =>
+      __$$ShapeUpdateMessageImplCopyWithImpl<_$ShapeUpdateMessageImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String text) updateInput,
+    required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
+    required TResult Function() saveToFile,
+    required TResult Function(ExportType type) updateExportType,
+    required TResult Function() copyToClipboard,
+    required TResult Function(QrCodeShape shape) shapeUpdate,
+    required TResult Function(EdgeInsets padding) paddingUpdate,
+  }) {
+    return shapeUpdate(shape);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String text)? updateInput,
+    TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult? Function()? saveToFile,
+    TResult? Function(ExportType type)? updateExportType,
+    TResult? Function()? copyToClipboard,
+    TResult? Function(QrCodeShape shape)? shapeUpdate,
+    TResult? Function(EdgeInsets padding)? paddingUpdate,
+  }) {
+    return shapeUpdate?.call(shape);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String text)? updateInput,
+    TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult Function()? saveToFile,
+    TResult Function(ExportType type)? updateExportType,
+    TResult Function()? copyToClipboard,
+    TResult Function(QrCodeShape shape)? shapeUpdate,
+    TResult Function(EdgeInsets padding)? paddingUpdate,
+    required TResult orElse(),
+  }) {
+    if (shapeUpdate != null) {
+      return shapeUpdate(shape);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdateInputMessage value) updateInput,
+    required TResult Function(UpdateCorrectionLevelMessage value)
+        updateCorrectionLevel,
+    required TResult Function(SaveToFileMessage value) saveToFile,
+    required TResult Function(UpdateExportTypeMessage value) updateExportType,
+    required TResult Function(CopyToClipboardMessage value) copyToClipboard,
+    required TResult Function(ShapeUpdateMessage value) shapeUpdate,
+    required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+  }) {
+    return shapeUpdate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UpdateInputMessage value)? updateInput,
+    TResult? Function(UpdateCorrectionLevelMessage value)?
+        updateCorrectionLevel,
+    TResult? Function(SaveToFileMessage value)? saveToFile,
+    TResult? Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+  }) {
+    return shapeUpdate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdateInputMessage value)? updateInput,
+    TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
+    TResult Function(SaveToFileMessage value)? saveToFile,
+    TResult Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    required TResult orElse(),
+  }) {
+    if (shapeUpdate != null) {
+      return shapeUpdate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShapeUpdateMessage implements QrCodeMessage {
+  const factory ShapeUpdateMessage(final QrCodeShape shape) =
+      _$ShapeUpdateMessageImpl;
+
+  QrCodeShape get shape;
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ShapeUpdateMessageImplCopyWith<_$ShapeUpdateMessageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$PaddingUpdateMessageImplCopyWith<$Res> {
+  factory _$$PaddingUpdateMessageImplCopyWith(_$PaddingUpdateMessageImpl value,
+          $Res Function(_$PaddingUpdateMessageImpl) then) =
+      __$$PaddingUpdateMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({EdgeInsets padding});
+}
+
+/// @nodoc
+class __$$PaddingUpdateMessageImplCopyWithImpl<$Res>
+    extends _$QrCodeMessageCopyWithImpl<$Res, _$PaddingUpdateMessageImpl>
+    implements _$$PaddingUpdateMessageImplCopyWith<$Res> {
+  __$$PaddingUpdateMessageImplCopyWithImpl(_$PaddingUpdateMessageImpl _value,
+      $Res Function(_$PaddingUpdateMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? padding = null,
+  }) {
+    return _then(_$PaddingUpdateMessageImpl(
+      null == padding
+          ? _value.padding
+          : padding // ignore: cast_nullable_to_non_nullable
+              as EdgeInsets,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
+  const _$PaddingUpdateMessageImpl(this.padding);
+
+  @override
+  final EdgeInsets padding;
+
+  @override
+  String toString() {
+    return 'QrCodeMessage.paddingUpdate(padding: $padding)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$PaddingUpdateMessageImpl &&
+            (identical(other.padding, padding) || other.padding == padding));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, padding);
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PaddingUpdateMessageImplCopyWith<_$PaddingUpdateMessageImpl>
+      get copyWith =>
+          __$$PaddingUpdateMessageImplCopyWithImpl<_$PaddingUpdateMessageImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String text) updateInput,
+    required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
+    required TResult Function() saveToFile,
+    required TResult Function(ExportType type) updateExportType,
+    required TResult Function() copyToClipboard,
+    required TResult Function(QrCodeShape shape) shapeUpdate,
+    required TResult Function(EdgeInsets padding) paddingUpdate,
+  }) {
+    return paddingUpdate(padding);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String text)? updateInput,
+    TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult? Function()? saveToFile,
+    TResult? Function(ExportType type)? updateExportType,
+    TResult? Function()? copyToClipboard,
+    TResult? Function(QrCodeShape shape)? shapeUpdate,
+    TResult? Function(EdgeInsets padding)? paddingUpdate,
+  }) {
+    return paddingUpdate?.call(padding);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String text)? updateInput,
+    TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult Function()? saveToFile,
+    TResult Function(ExportType type)? updateExportType,
+    TResult Function()? copyToClipboard,
+    TResult Function(QrCodeShape shape)? shapeUpdate,
+    TResult Function(EdgeInsets padding)? paddingUpdate,
+    required TResult orElse(),
+  }) {
+    if (paddingUpdate != null) {
+      return paddingUpdate(padding);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(UpdateInputMessage value) updateInput,
+    required TResult Function(UpdateCorrectionLevelMessage value)
+        updateCorrectionLevel,
+    required TResult Function(SaveToFileMessage value) saveToFile,
+    required TResult Function(UpdateExportTypeMessage value) updateExportType,
+    required TResult Function(CopyToClipboardMessage value) copyToClipboard,
+    required TResult Function(ShapeUpdateMessage value) shapeUpdate,
+    required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+  }) {
+    return paddingUpdate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(UpdateInputMessage value)? updateInput,
+    TResult? Function(UpdateCorrectionLevelMessage value)?
+        updateCorrectionLevel,
+    TResult? Function(SaveToFileMessage value)? saveToFile,
+    TResult? Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+  }) {
+    return paddingUpdate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UpdateInputMessage value)? updateInput,
+    TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
+    TResult Function(SaveToFileMessage value)? saveToFile,
+    TResult Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    required TResult orElse(),
+  }) {
+    if (paddingUpdate != null) {
+      return paddingUpdate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class PaddingUpdateMessage implements QrCodeMessage {
+  const factory PaddingUpdateMessage(final EdgeInsets padding) =
+      _$PaddingUpdateMessageImpl;
+
+  EdgeInsets get padding;
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$PaddingUpdateMessageImplCopyWith<_$PaddingUpdateMessageImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

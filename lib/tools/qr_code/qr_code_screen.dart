@@ -182,16 +182,19 @@ class _OutputSide extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const _CorrectionLevelSelector(),
+        const SizedBox(height: 8),
+        const _QrCodeShapeSelector(),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: Center(
             child: FeatureBuilder<QrCodeFeature, QrCodeState>(
               buildWhen: (prev, curr) =>
                   prev.code != curr.code ||
-                  prev.correctionLevel != curr.correctionLevel,
+                  prev.correctionLevel != curr.correctionLevel ||
+                  prev.visualData != curr.visualData,
               builder: (context, state) {
                 final code = state.code;
 
@@ -205,7 +208,9 @@ class _OutputSide extends StatelessWidget {
                   qrCode = QrImageView.withQr(
                     qr: code,
                     errorCorrectionLevel: state.correctionLevel.toInt,
-                    padding: EdgeInsets.zero,
+                    padding: state.visualData.paddings,
+                    eyeStyle: state.visualData.toEyeStyle,
+                    dataModuleStyle: state.visualData.toModuleStyle,
                   );
                 }
 
@@ -274,6 +279,79 @@ class _OutputSide extends StatelessWidget {
   }
 }
 
+extension on QrCodeVisualData {
+  QrEyeStyle get toEyeStyle => QrEyeStyle(
+        color: foregroundColor,
+        eyeShape: shape.toEyeShape,
+      );
+
+  QrDataModuleStyle get toModuleStyle => QrDataModuleStyle(
+        color: foregroundColor,
+        dataModuleShape: shape.toModuleShape,
+      );
+}
+
+extension on QrCodeShape {
+  String format(BuildContext context) {
+    final t = Translations.of(context);
+
+    return switch (this) {
+      QrCodeShape.square => 'Square',
+      QrCodeShape.circle => 'Circle',
+    };
+  }
+
+  QrEyeShape get toEyeShape => switch (this) {
+        QrCodeShape.square => QrEyeShape.square,
+        QrCodeShape.circle => QrEyeShape.circle,
+      };
+
+  QrDataModuleShape get toModuleShape => switch (this) {
+        QrCodeShape.square => QrDataModuleShape.square,
+        QrCodeShape.circle => QrDataModuleShape.circle,
+      };
+}
+
+class _QrCodeShapeSelector extends StatelessWidget {
+  const _QrCodeShapeSelector();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          width: 130,
+          child: Text('QR Code shape'),
+        ),
+        FeatureBuilder<QrCodeFeature, QrCodeState>(
+          buildWhen: (prev, curr) =>
+              prev.visualData.shape != curr.visualData.shape,
+          builder: (context, state) {
+            return MacosPopupButton<QrCodeShape>(
+              value: state.visualData.shape,
+              items: [
+                for (final shape in QrCodeShape.values)
+                  MacosPopupMenuItem(
+                    value: shape,
+                    child: Text(shape.format(context)),
+                  ),
+              ],
+              onChanged: (shape) {
+                if (shape != null && shape != state.visualData.shape) {
+                  context
+                      .read<QrCodeFeature>()
+                      .accept(QrCodeMessage.shapeUpdate(shape));
+                }
+              },
+            );
+          },
+        ),
+      ],
+    );
+  }
+}
+
 class _CorrectionLevelSelector extends StatelessWidget {
   const _CorrectionLevelSelector();
 
@@ -283,8 +361,10 @@ class _CorrectionLevelSelector extends StatelessWidget {
 
     return Row(
       children: [
-        Text(t.qrCode.correctionLevel.title),
-        const SizedBox(width: 8),
+        SizedBox(
+          width: 130,
+          child: Text(t.qrCode.correctionLevel.title),
+        ),
         FeatureBuilder<QrCodeFeature, QrCodeState>(
           buildWhen: (prev, curr) =>
               prev.correctionLevel != curr.correctionLevel,

@@ -49,6 +49,22 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
             ),
         ],
       );
+    case ShapeUpdateMessage():
+      return next(
+        state: state.copyWith(
+          visualData: state.visualData.copyWith(
+            shape: message.shape,
+          ),
+        ),
+      );
+    case PaddingUpdateMessage():
+      return next(
+        state: state.copyWith(
+          visualData: state.visualData.copyWith(
+            paddings: message.padding,
+          ),
+        ),
+      );
   }
 }
 

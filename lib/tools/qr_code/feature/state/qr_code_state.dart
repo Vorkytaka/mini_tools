@@ -1,3 +1,4 @@
+import 'package:flutter/painting.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:qr/qr.dart';
 
@@ -41,6 +42,7 @@ class QrCodeState with _$QrCodeState {
     required String input,
     required ErrorCorrectionLevel correctionLevel,
     required ExportType exportType,
+    required QrCodeVisualData visualData,
   }) = _QrCodeState;
 
   factory QrCodeState.initialState() => const QrCodeState(
@@ -48,5 +50,27 @@ class QrCodeState with _$QrCodeState {
         input: '',
         correctionLevel: ErrorCorrectionLevel.H,
         exportType: ExportType.png,
+        visualData: QrCodeVisualData(
+          backgroundColor: Color(0xffffffff),
+          foregroundColor: Color(0xff000000),
+          shape: QrCodeShape.square,
+          paddings: EdgeInsets.zero,
+        ),
       );
+}
+
+enum QrCodeShape {
+  square,
+  circle,
+}
+
+@freezed
+@immutable
+class QrCodeVisualData with _$QrCodeVisualData {
+  const factory QrCodeVisualData({
+    required Color backgroundColor,
+    required Color foregroundColor,
+    required QrCodeShape shape,
+    required EdgeInsets paddings,
+  }) = _QrCodeVisualData;
 }
