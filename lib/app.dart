@@ -13,6 +13,8 @@ import 'i18n/strings.g.dart';
 import 'tools/tools.dart';
 
 class App extends StatelessWidget {
+  static final _key = GlobalKey();
+
   final Location timezone;
   final HighlighterTheme highlighterTheme;
   final HighlighterTheme highlighterDarkTheme;
@@ -27,7 +29,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FeatureProvider.create(
-      create: (context) => toolsFeatureFactory(),
+      create: (context) => toolsFeatureFactory(key: _key),
       child: DatetimeHolder(
         child: TranslationProvider(
           child: HighlightThemeHolder(
@@ -37,6 +39,7 @@ class App extends StatelessWidget {
               timezone: timezone,
               child: Builder(
                 builder: (context) => MacosApp(
+                  key: _key,
                   locale: TranslationProvider.of(context).flutterLocale,
                   supportedLocales: AppLocaleUtils.supportedLocales,
                   // localizationsDelegates: GlobalMaterialLocalizations.delegates,
@@ -65,11 +68,46 @@ class _Window extends StatelessWidget {
       sidebar: Sidebar(
         minWidth: 200,
         isResizable: false,
+        top: const _SearchField(),
         builder: (context, controller) => _SidebarContent(
           controller: controller,
         ),
       ),
       child: const _BodyContent(),
+    );
+  }
+}
+
+class _SearchField extends StatefulWidget {
+  const _SearchField();
+
+  @override
+  State<_SearchField> createState() => _SearchFieldState();
+}
+
+class _SearchFieldState extends State<_SearchField> {
+  final _controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      context
+          .read<ToolsFeature>()
+          .accept(ToolsMessage.updateQuery(_controller.text));
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MacosSearchField(
+      controller: _controller,
     );
   }
 }
@@ -87,7 +125,20 @@ class _SidebarContent extends StatelessWidget {
       builder: (context, state) {
         final selectedTool = state.selectedTool;
 
+        if (state.searchQuery.isNotEmpty) {
+          // TODO(Vorkytaka): ⚠️
+          final results = state.searchResult;
+
+          return ListView.builder(
+            itemCount: results.length,
+            itemBuilder: (context, i) => Text(
+              results[i].buildTitle(context),
+            ),
+          );
+        }
+
         return SidebarItems(
+          scrollController: controller,
           currentIndex: selectedTool,
           onChanged: (i) {
             if (i == selectedTool) {
