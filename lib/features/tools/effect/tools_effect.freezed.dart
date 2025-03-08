@@ -17,20 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ToolsEffect {
   String get query => throw _privateConstructorUsedError;
-  List<Tool> get tools => throw _privateConstructorUsedError;
+  List<Tools> get tools => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query, List<Tool> tools) searchTools,
+    required TResult Function(String query, List<Tools> tools) searchTools,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query, List<Tool> tools)? searchTools,
+    TResult? Function(String query, List<Tools> tools)? searchTools,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query, List<Tool> tools)? searchTools,
+    TResult Function(String query, List<Tools> tools)? searchTools,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,7 +64,7 @@ abstract class $ToolsEffectCopyWith<$Res> {
           ToolsEffect value, $Res Function(ToolsEffect) then) =
       _$ToolsEffectCopyWithImpl<$Res, ToolsEffect>;
   @useResult
-  $Res call({String query, List<Tool> tools});
+  $Res call({String query, List<Tools> tools});
 }
 
 /// @nodoc
@@ -93,7 +93,7 @@ class _$ToolsEffectCopyWithImpl<$Res, $Val extends ToolsEffect>
       tools: null == tools
           ? _value.tools
           : tools // ignore: cast_nullable_to_non_nullable
-              as List<Tool>,
+              as List<Tools>,
     ) as $Val);
   }
 }
@@ -106,7 +106,7 @@ abstract class _$$SearchToolsEffectImplCopyWith<$Res>
       __$$SearchToolsEffectImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String query, List<Tool> tools});
+  $Res call({String query, List<Tools> tools});
 }
 
 /// @nodoc
@@ -133,7 +133,7 @@ class __$$SearchToolsEffectImplCopyWithImpl<$Res>
       tools: null == tools
           ? _value._tools
           : tools // ignore: cast_nullable_to_non_nullable
-              as List<Tool>,
+              as List<Tools>,
     ));
   }
 }
@@ -142,14 +142,14 @@ class __$$SearchToolsEffectImplCopyWithImpl<$Res>
 
 class _$SearchToolsEffectImpl implements SearchToolsEffect {
   const _$SearchToolsEffectImpl(
-      {required this.query, required final List<Tool> tools})
+      {required this.query, required final List<Tools> tools})
       : _tools = tools;
 
   @override
   final String query;
-  final List<Tool> _tools;
+  final List<Tools> _tools;
   @override
-  List<Tool> get tools {
+  List<Tools> get tools {
     if (_tools is EqualUnmodifiableListView) return _tools;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tools);
@@ -185,7 +185,7 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query, List<Tool> tools) searchTools,
+    required TResult Function(String query, List<Tools> tools) searchTools,
   }) {
     return searchTools(query, tools);
   }
@@ -193,7 +193,7 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query, List<Tool> tools)? searchTools,
+    TResult? Function(String query, List<Tools> tools)? searchTools,
   }) {
     return searchTools?.call(query, tools);
   }
@@ -201,7 +201,7 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query, List<Tool> tools)? searchTools,
+    TResult Function(String query, List<Tools> tools)? searchTools,
     required TResult orElse(),
   }) {
     if (searchTools != null) {
@@ -242,12 +242,12 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
 abstract class SearchToolsEffect implements ToolsEffect {
   const factory SearchToolsEffect(
       {required final String query,
-      required final List<Tool> tools}) = _$SearchToolsEffectImpl;
+      required final List<Tools> tools}) = _$SearchToolsEffectImpl;
 
   @override
   String get query;
   @override
-  List<Tool> get tools;
+  List<Tools> get tools;
 
   /// Create a copy of ToolsEffect
   /// with the given fields replaced by the non-null parameter values.

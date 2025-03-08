@@ -3,6 +3,7 @@ import 'package:mini_tea/feature.dart';
 
 import 'effect/tools_effect.dart';
 import 'message/tools_message.dart';
+import 'state/tools_state.dart';
 
 final class ToolsEffectHandler
     implements EffectHandler<ToolsEffect, ToolsMessage> {
@@ -30,8 +31,10 @@ final class ToolsEffectHandler
   ) {
     final query = effect.query.toLowerCase();
     final result = effect.tools
-        .where((tool) =>
-            tool.buildTitle(_key.currentContext!).toLowerCase().contains(query))
+        .where((tool) => tool.tool
+            .buildTitle(_key.currentContext!)
+            .toLowerCase()
+            .contains(query))
         .toList(growable: false);
 
     emit(ToolsMessage.updateSearchResult(result));

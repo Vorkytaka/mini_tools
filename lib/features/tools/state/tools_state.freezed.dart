@@ -16,10 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ToolsState {
-  int get selectedTool => throw _privateConstructorUsedError;
-  List<Tool> get tools => throw _privateConstructorUsedError;
+  Tools get selectedTool => throw _privateConstructorUsedError;
+  List<Tools> get tools => throw _privateConstructorUsedError;
   String get searchQuery => throw _privateConstructorUsedError;
-  List<Tool> get searchResult => throw _privateConstructorUsedError;
+  List<Tools> get searchResult => throw _privateConstructorUsedError;
 
   /// Create a copy of ToolsState
   /// with the given fields replaced by the non-null parameter values.
@@ -35,10 +35,10 @@ abstract class $ToolsStateCopyWith<$Res> {
       _$ToolsStateCopyWithImpl<$Res, ToolsState>;
   @useResult
   $Res call(
-      {int selectedTool,
-      List<Tool> tools,
+      {Tools selectedTool,
+      List<Tools> tools,
       String searchQuery,
-      List<Tool> searchResult});
+      List<Tools> searchResult});
 }
 
 /// @nodoc
@@ -65,11 +65,11 @@ class _$ToolsStateCopyWithImpl<$Res, $Val extends ToolsState>
       selectedTool: null == selectedTool
           ? _value.selectedTool
           : selectedTool // ignore: cast_nullable_to_non_nullable
-              as int,
+              as Tools,
       tools: null == tools
           ? _value.tools
           : tools // ignore: cast_nullable_to_non_nullable
-              as List<Tool>,
+              as List<Tools>,
       searchQuery: null == searchQuery
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
@@ -77,7 +77,7 @@ class _$ToolsStateCopyWithImpl<$Res, $Val extends ToolsState>
       searchResult: null == searchResult
           ? _value.searchResult
           : searchResult // ignore: cast_nullable_to_non_nullable
-              as List<Tool>,
+              as List<Tools>,
     ) as $Val);
   }
 }
@@ -91,10 +91,10 @@ abstract class _$$ToolsStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int selectedTool,
-      List<Tool> tools,
+      {Tools selectedTool,
+      List<Tools> tools,
       String searchQuery,
-      List<Tool> searchResult});
+      List<Tools> searchResult});
 }
 
 /// @nodoc
@@ -119,11 +119,11 @@ class __$$ToolsStateImplCopyWithImpl<$Res>
       selectedTool: null == selectedTool
           ? _value.selectedTool
           : selectedTool // ignore: cast_nullable_to_non_nullable
-              as int,
+              as Tools,
       tools: null == tools
           ? _value._tools
           : tools // ignore: cast_nullable_to_non_nullable
-              as List<Tool>,
+              as List<Tools>,
       searchQuery: null == searchQuery
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
@@ -131,7 +131,7 @@ class __$$ToolsStateImplCopyWithImpl<$Res>
       searchResult: null == searchResult
           ? _value._searchResult
           : searchResult // ignore: cast_nullable_to_non_nullable
-              as List<Tool>,
+              as List<Tools>,
     ));
   }
 }
@@ -141,17 +141,17 @@ class __$$ToolsStateImplCopyWithImpl<$Res>
 class _$ToolsStateImpl implements _ToolsState {
   const _$ToolsStateImpl(
       {required this.selectedTool,
-      required final List<Tool> tools,
+      required final List<Tools> tools,
       required this.searchQuery,
-      required final List<Tool> searchResult})
+      required final List<Tools> searchResult})
       : _tools = tools,
         _searchResult = searchResult;
 
   @override
-  final int selectedTool;
-  final List<Tool> _tools;
+  final Tools selectedTool;
+  final List<Tools> _tools;
   @override
-  List<Tool> get tools {
+  List<Tools> get tools {
     if (_tools is EqualUnmodifiableListView) return _tools;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tools);
@@ -159,9 +159,9 @@ class _$ToolsStateImpl implements _ToolsState {
 
   @override
   final String searchQuery;
-  final List<Tool> _searchResult;
+  final List<Tools> _searchResult;
   @override
-  List<Tool> get searchResult {
+  List<Tools> get searchResult {
     if (_searchResult is EqualUnmodifiableListView) return _searchResult;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_searchResult);
@@ -205,19 +205,19 @@ class _$ToolsStateImpl implements _ToolsState {
 
 abstract class _ToolsState implements ToolsState {
   const factory _ToolsState(
-      {required final int selectedTool,
-      required final List<Tool> tools,
+      {required final Tools selectedTool,
+      required final List<Tools> tools,
       required final String searchQuery,
-      required final List<Tool> searchResult}) = _$ToolsStateImpl;
+      required final List<Tools> searchResult}) = _$ToolsStateImpl;
 
   @override
-  int get selectedTool;
+  Tools get selectedTool;
   @override
-  List<Tool> get tools;
+  List<Tools> get tools;
   @override
   String get searchQuery;
   @override
-  List<Tool> get searchResult;
+  List<Tools> get searchResult;
 
   /// Create a copy of ToolsState
   /// with the given fields replaced by the non-null parameter values.
