@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../tool/tool.dart';
 import '../state/tools_state.dart';
 
 part 'tools_effect.freezed.dart';
