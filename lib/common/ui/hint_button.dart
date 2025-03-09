@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_popup/flutter_popup.dart';
 import 'package:macos_ui/macos_ui.dart';
+
+// ignore:implementation_imports
 import 'package:macos_ui/src/utils/utils.dart';
 
 class HintButton extends StatelessWidget {
