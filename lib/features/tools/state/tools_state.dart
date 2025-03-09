@@ -5,7 +5,7 @@ import '../../../tools/color/color_tool.dart';
 import '../../../tools/cron/cron_tool.dart';
 import '../../../tools/datetime_converter/datetime_converter_tool.dart';
 import '../../../tools/hash/hash_tool.dart';
-import '../../../tools/json/json_formatter.dart';
+import '../../../tools/json_formatter/json_formatter_tool.dart';
 import '../../../tools/material_color/material_colors_tool.dart';
 import '../../../tools/number_base_converter/number_base_converter_tool.dart';
 import '../../../tools/percentages_tool.dart';

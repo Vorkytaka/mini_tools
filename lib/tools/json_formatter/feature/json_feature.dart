@@ -6,21 +6,22 @@ import 'package:json_path/json_path.dart';
 import 'package:mini_tea/effect_handlers.dart';
 import 'package:mini_tea/feature.dart';
 
-import 'state/json_state.dart';
+import 'state/json_formatter_state.dart';
 
-part 'json_effect.dart';
+part 'json_formatter_effect.dart';
 
 part 'json_effect_handler.dart';
 
-part 'json_event.dart';
+part 'json_formatter_message.dart';
 
 part 'json_update.dart';
 
-typedef JsonFeature = Feature<JsonState, JsonMsg, JsonEffect>;
+typedef JsonFormatterFeature
+    = Feature<JsonFormatterState, JsonFormatterMessage, JsonEffect>;
 
-JsonFeature jsonFeatureFactory() => JsonFeature(
-      initialState: JsonState.init(),
-      update: _jsonUpdate,
+JsonFormatterFeature jsonFormatterFeatureFactory() => JsonFormatterFeature(
+      initialState: JsonFormatterState.init(),
+      update: _jsonFormatterUpdate,
     ).wrapEffects(
       DebounceEffectHandler(
         duration: const Duration(milliseconds: 300),
