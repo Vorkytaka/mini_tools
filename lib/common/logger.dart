@@ -9,6 +9,18 @@ enum LoggerLevel {
   error,
 }
 
+extension on LoggerLevel {
+  l.Level get toLevel {
+    return switch (this) {
+      LoggerLevel.verbose => l.Level.FINE,
+      LoggerLevel.debug => l.Level.CONFIG,
+      LoggerLevel.info => l.Level.INFO,
+      LoggerLevel.warning => l.Level.WARNING,
+      LoggerLevel.error => l.Level.SEVERE,
+    };
+  }
+}
+
 extension on l.Level {
   LoggerLevel get toLoggerLevel {
     if (value <= l.Level.FINE.value) {
@@ -38,23 +50,19 @@ class Logger {
   }
 
   static void v(String tag, String message) {
-    final logger = _getLogger(tag);
-    logger.fine(message);
+    _log(LoggerLevel.verbose, tag, message);
   }
 
   static void d(String tag, String message) {
-    final logger = _getLogger(tag);
-    logger.config(message);
+    _log(LoggerLevel.debug, tag, message);
   }
 
   static void i(String tag, String message) {
-    final logger = _getLogger(tag);
-    logger.info(message);
+    _log(LoggerLevel.info, tag, message);
   }
 
   static void w(String tag, String message) {
-    final logger = _getLogger(tag);
-    logger.warning(message);
+    _log(LoggerLevel.warning, tag, message);
   }
 
   static void e(
@@ -63,8 +71,9 @@ class Logger {
     Object? exception,
     StackTrace? stacktrace,
   ]) {
-    final logger = _getLogger(tag);
-    logger.severe(
+    _log(
+      LoggerLevel.error,
+      tag,
       message,
       exception,
       stacktrace,
@@ -72,5 +81,14 @@ class Logger {
   }
 
   @pragma('vm:prefer-inline')
-  static l.Logger _getLogger(String tag) => l.Logger(tag);
+  static void _log(
+    LoggerLevel level,
+    String tag,
+    String message, [
+    Object? exception,
+    StackTrace? stacktrace,
+  ]) {
+    final logger = l.Logger(tag);
+    logger.log(level.toLevel, message, exception, stacktrace);
+  }
 }
