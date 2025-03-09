@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
 import 'common/datetime_inherited_model.dart';
@@ -52,6 +53,7 @@ class _Window extends StatelessWidget {
         builder: (context, controller) => _SidebarContent(
           controller: controller,
         ),
+        bottom: const _BottomWidget(),
       ),
       child: const _BodyContent(),
     );
@@ -165,6 +167,34 @@ class _BodyContent extends StatelessWidget {
     return FeatureBuilder<ToolsFeature, ToolsState>(
       builder: (context, state) {
         return state.selectedTool.tool.buildScreen(context);
+      },
+    );
+  }
+}
+
+class _BottomWidget extends StatelessWidget {
+  const _BottomWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: PackageInfo.fromPlatform(),
+      builder: (context, snapshot) {
+        final info = snapshot.data;
+
+        if (info == null) {
+          return const SizedBox();
+        }
+
+        final theme = MacosTheme.of(context);
+        final text = '${info.appName} ${info.version}';
+
+        return DefaultTextStyle.merge(
+          style: theme.typography.caption1.copyWith(
+            color: theme.typography.caption1.color?.withOpacity(0.7),
+          ),
+          child: Text(text),
+        );
       },
     );
   }

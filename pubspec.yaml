@@ -31,6 +31,7 @@ dependencies:
   meta: ^1.15.0
   mini_tea: ^0.1.2
   mini_tea_flutter: ^0.2.0
+  package_info_plus: ^8.3.0
   path: ^1.9.0
   pointycastle: ^3.9.1
   provider: ^6.1.2
