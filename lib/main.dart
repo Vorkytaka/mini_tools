@@ -5,24 +5,47 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:macos_ui/macos_ui.dart';
-import 'package:syntax_highlight/syntax_highlight.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:window_manager/window_manager.dart';
 
 import 'app.dart';
+import 'common/timezone_holder.dart';
 import 'i18n/strings.g.dart';
 
-/// This method initializes macos_window_utils and styles the window.
-Future<void> _configureMacosWindowUtils() async {
-  const config = MacosWindowUtilsConfig();
-  await config.apply();
+Future<void> main() async {
+  await _preInit();
+
+  runApp(
+    TimezoneHolder(
+      timezone: await _initializeTimezone(),
+      child: const MiniToolsApp(),
+    ),
+  );
 }
 
-Future<void> _configureWindows() async {
-  await windowManager.waitUntilReadyToShow(null, () async {
-    await windowManager.setBackgroundColor(const Color(0xFF111111));
-  });
+Future<void> _preInit() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  LocaleSettings.useDeviceLocale();
+  _firaCodeLicense();
+  await _configureWindow();
+}
+
+Future<void> _configureWindow() async {
+  if (kIsWeb) {
+    return;
+  }
+
+  await WindowManager.instance.ensureInitialized();
+  await WindowManager.instance.setMinimumSize(const Size(400, 500));
+
+  if (Platform.isMacOS) {
+    await const MacosWindowUtilsConfig().apply();
+  } else if (Platform.isWindows) {
+    await WindowManager.instance.waitUntilReadyToShow(null, () async {
+      await WindowManager.instance.setBackgroundColor(const Color(0xFF111111));
+    });
+  }
 }
 
 Future<tz.Location> _initializeTimezone() async {
@@ -40,33 +63,4 @@ void _firaCodeLicense() {
     final entry = LicenseEntryWithLineBreaks(['google_fonts'], licence);
     yield entry;
   });
-}
-
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  LocaleSettings.useDeviceLocale();
-  await windowManager.ensureInitialized();
-  _firaCodeLicense();
-
-  if (kIsWeb) {
-    // do nothing
-  } else if (Platform.isMacOS) {
-    await _configureMacosWindowUtils();
-  } else if (Platform.isWindows) {
-    await _configureWindows();
-  }
-
-  final timezone = await _initializeTimezone();
-
-  await Highlighter.initialize(['json']);
-  final highlightTheme = await HighlighterTheme.loadLightTheme();
-  final highlightDarkTheme = await HighlighterTheme.loadDarkTheme();
-
-  runApp(
-    App(
-      timezone: timezone,
-      highlighterTheme: highlightTheme,
-      highlighterDarkTheme: highlightDarkTheme,
-    ),
-  );
 }

@@ -2,29 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:syntax_highlight/syntax_highlight.dart';
-import 'package:timezone/timezone.dart';
 
 import 'common/datetime_inherited_model.dart';
-import 'common/highlight_theme_holder.dart';
-import 'common/timezone_holder.dart';
 import 'common/ui/macos_ui_hacks.dart';
 import 'features/tools/tools_feature.dart';
 import 'i18n/strings.g.dart';
 
-class App extends StatelessWidget {
+class MiniToolsApp extends StatelessWidget {
   static final _key = GlobalKey();
 
-  final Location timezone;
-  final HighlighterTheme highlighterTheme;
-  final HighlighterTheme highlighterDarkTheme;
-
-  const App({
-    required this.timezone,
-    required this.highlighterTheme,
-    required this.highlighterDarkTheme,
-    super.key,
-  });
+  const MiniToolsApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,23 +19,16 @@ class App extends StatelessWidget {
       create: (context) => toolsFeatureFactory(key: _key),
       child: DatetimeHolder(
         child: TranslationProvider(
-          child: HighlightThemeHolder(
-            highlighterTheme: highlighterTheme,
-            highlighterDarkTheme: highlighterDarkTheme,
-            child: TimezoneHolder(
-              timezone: timezone,
-              child: Builder(
-                builder: (context) => MacosApp(
-                  key: _key,
-                  locale: TranslationProvider.of(context).flutterLocale,
-                  supportedLocales: AppLocaleUtils.supportedLocales,
-                  // localizationsDelegates: GlobalMaterialLocalizations.delegates,
-                  home: const _Window(),
-                  builder: (context, child) => Theme(
-                    data: ThemeData.dark(),
-                    child: child!,
-                  ),
-                ),
+          child: Builder(
+            builder: (context) => MacosApp(
+              key: _key,
+              locale: TranslationProvider.of(context).flutterLocale,
+              supportedLocales: AppLocaleUtils.supportedLocales,
+              // localizationsDelegates: GlobalMaterialLocalizations.delegates,
+              home: const _Window(),
+              builder: (context, child) => Theme(
+                data: ThemeData.dark(),
+                child: child!,
               ),
             ),
           ),
