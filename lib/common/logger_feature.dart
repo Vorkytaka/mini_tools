@@ -2,7 +2,7 @@ import 'package:mini_tea/feature.dart';
 
 import 'logger.dart';
 
-// TODO: Fix https://github.com/Vorkytaka/mini_tea/issues/57
+// TODO(Vorkytaka): Fix https://github.com/Vorkytaka/mini_tea/issues/57
 class LoggerFeatureObserver<State, Message, Effect>
     implements FeatureObserver<State, Message, Effect> {
   final String tag;
