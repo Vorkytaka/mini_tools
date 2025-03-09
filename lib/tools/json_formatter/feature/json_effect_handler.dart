@@ -18,13 +18,13 @@ extension on JsonOutputFormat {
 }
 
 final class JsonEffectHandler
-    implements EffectHandler<FormatOutputEffect, JsonMsg> {
+    implements EffectHandler<FormatOutputEffect, JsonFormatterMessage> {
   const JsonEffectHandler();
 
   @override
   Future<void> call(
     FormatOutputEffect effect,
-    MsgEmitter<JsonMsg> emit,
+    MsgEmitter<JsonFormatterMessage> emit,
   ) async {
     final input = effect.input;
     final format = effect.format;
@@ -38,7 +38,7 @@ final class JsonEffectHandler
           await Isolate.run(() => _formatJson(input, format, jsonPath));
     }
 
-    emit(OutputUpdateEvent(outputJson));
+    emit(OutputUpdateMessage(outputJson));
   }
 
   static String? _formatJson(

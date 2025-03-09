@@ -1,43 +1,40 @@
 part of 'json_feature.dart';
 
-Next<JsonState, JsonEffect> _jsonUpdate(
-  JsonState state,
-  JsonMsg event,
+Next<JsonFormatterState, JsonEffect> _jsonFormatterUpdate(
+  JsonFormatterState state,
+  JsonFormatterMessage message,
 ) {
-  switch (event) {
-    case InputUpdateEvent():
-      return (
-        state.copyWith(input: event.input),
-        [
+  switch (message) {
+    case InputUpdateMessage():
+      return next(
+        state: state.copyWith(input: message.input),
+        effects: [
           FormatOutputEffect(
-            input: event.input,
+            input: message.input,
             format: state.format,
             jsonPath: state.jsonPath.value,
           ),
         ],
       );
-    case OutputUpdateEvent():
-      return (
-        state.copyWith(output: event.output),
-        const [],
-      );
-    case FormatUpdateEvent():
-      return (
-        state.copyWith(format: event.format),
-        [
+    case OutputUpdateMessage():
+      return next(state: state.copyWith(output: message.output));
+    case FormatUpdateMessage():
+      return next(
+        state: state.copyWith(format: message.format),
+        effects: [
           FormatOutputEffect(
             input: state.input,
-            format: event.format,
+            format: message.format,
             jsonPath: state.jsonPath.value,
           ),
         ],
       );
-    case JsonPathUpdateEvent():
-      final jsonPathValue = _maybeJsonPath(event.jsonPath);
+    case JsonPathUpdateMessage():
+      final jsonPathValue = _maybeJsonPath(message.jsonPath);
       return next(
         state: state.copyWith(
           jsonPath: JsonPathState(
-            input: event.jsonPath,
+            input: message.jsonPath,
             value: jsonPathValue,
           ),
         ),

@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_path/json_path.dart';
 
-part 'json_state.freezed.dart';
+part 'json_formatter_state.freezed.dart';
 
 enum JsonOutputFormat {
   min,
@@ -12,15 +12,15 @@ enum JsonOutputFormat {
 
 @immutable
 @freezed
-class JsonState with _$JsonState {
-  const factory JsonState({
+class JsonFormatterState with _$JsonFormatterState {
+  const factory JsonFormatterState({
     required String input,
     required String? output,
     required JsonOutputFormat format,
     required JsonPathState jsonPath,
-  }) = _JsonState;
+  }) = _JsonFormatterState;
 
-  factory JsonState.init() => const JsonState(
+  factory JsonFormatterState.init() => const JsonFormatterState(
         input: '',
         output: null,
         format: JsonOutputFormat.min,

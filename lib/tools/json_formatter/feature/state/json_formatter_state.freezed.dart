@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'json_state.dart';
+part of 'json_formatter_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,23 +15,24 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$JsonState {
+mixin _$JsonFormatterState {
   String get input => throw _privateConstructorUsedError;
   String? get output => throw _privateConstructorUsedError;
   JsonOutputFormat get format => throw _privateConstructorUsedError;
   JsonPathState get jsonPath => throw _privateConstructorUsedError;
 
-  /// Create a copy of JsonState
+  /// Create a copy of JsonFormatterState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $JsonStateCopyWith<JsonState> get copyWith =>
+  $JsonFormatterStateCopyWith<JsonFormatterState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $JsonStateCopyWith<$Res> {
-  factory $JsonStateCopyWith(JsonState value, $Res Function(JsonState) then) =
-      _$JsonStateCopyWithImpl<$Res, JsonState>;
+abstract class $JsonFormatterStateCopyWith<$Res> {
+  factory $JsonFormatterStateCopyWith(
+          JsonFormatterState value, $Res Function(JsonFormatterState) then) =
+      _$JsonFormatterStateCopyWithImpl<$Res, JsonFormatterState>;
   @useResult
   $Res call(
       {String input,
@@ -43,16 +44,16 @@ abstract class $JsonStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$JsonStateCopyWithImpl<$Res, $Val extends JsonState>
-    implements $JsonStateCopyWith<$Res> {
-  _$JsonStateCopyWithImpl(this._value, this._then);
+class _$JsonFormatterStateCopyWithImpl<$Res, $Val extends JsonFormatterState>
+    implements $JsonFormatterStateCopyWith<$Res> {
+  _$JsonFormatterStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of JsonState
+  /// Create a copy of JsonFormatterState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -82,7 +83,7 @@ class _$JsonStateCopyWithImpl<$Res, $Val extends JsonState>
     ) as $Val);
   }
 
-  /// Create a copy of JsonState
+  /// Create a copy of JsonFormatterState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -94,11 +95,11 @@ class _$JsonStateCopyWithImpl<$Res, $Val extends JsonState>
 }
 
 /// @nodoc
-abstract class _$$JsonStateImplCopyWith<$Res>
-    implements $JsonStateCopyWith<$Res> {
-  factory _$$JsonStateImplCopyWith(
-          _$JsonStateImpl value, $Res Function(_$JsonStateImpl) then) =
-      __$$JsonStateImplCopyWithImpl<$Res>;
+abstract class _$$JsonFormatterStateImplCopyWith<$Res>
+    implements $JsonFormatterStateCopyWith<$Res> {
+  factory _$$JsonFormatterStateImplCopyWith(_$JsonFormatterStateImpl value,
+          $Res Function(_$JsonFormatterStateImpl) then) =
+      __$$JsonFormatterStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -112,14 +113,14 @@ abstract class _$$JsonStateImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$JsonStateImplCopyWithImpl<$Res>
-    extends _$JsonStateCopyWithImpl<$Res, _$JsonStateImpl>
-    implements _$$JsonStateImplCopyWith<$Res> {
-  __$$JsonStateImplCopyWithImpl(
-      _$JsonStateImpl _value, $Res Function(_$JsonStateImpl) _then)
+class __$$JsonFormatterStateImplCopyWithImpl<$Res>
+    extends _$JsonFormatterStateCopyWithImpl<$Res, _$JsonFormatterStateImpl>
+    implements _$$JsonFormatterStateImplCopyWith<$Res> {
+  __$$JsonFormatterStateImplCopyWithImpl(_$JsonFormatterStateImpl _value,
+      $Res Function(_$JsonFormatterStateImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of JsonState
+  /// Create a copy of JsonFormatterState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -129,7 +130,7 @@ class __$$JsonStateImplCopyWithImpl<$Res>
     Object? format = null,
     Object? jsonPath = null,
   }) {
-    return _then(_$JsonStateImpl(
+    return _then(_$JsonFormatterStateImpl(
       input: null == input
           ? _value.input
           : input // ignore: cast_nullable_to_non_nullable
@@ -152,8 +153,8 @@ class __$$JsonStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$JsonStateImpl implements _JsonState {
-  const _$JsonStateImpl(
+class _$JsonFormatterStateImpl implements _JsonFormatterState {
+  const _$JsonFormatterStateImpl(
       {required this.input,
       required this.output,
       required this.format,
@@ -170,14 +171,14 @@ class _$JsonStateImpl implements _JsonState {
 
   @override
   String toString() {
-    return 'JsonState(input: $input, output: $output, format: $format, jsonPath: $jsonPath)';
+    return 'JsonFormatterState(input: $input, output: $output, format: $format, jsonPath: $jsonPath)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$JsonStateImpl &&
+            other is _$JsonFormatterStateImpl &&
             (identical(other.input, input) || other.input == input) &&
             (identical(other.output, output) || other.output == output) &&
             (identical(other.format, format) || other.format == format) &&
@@ -188,21 +189,22 @@ class _$JsonStateImpl implements _JsonState {
   @override
   int get hashCode => Object.hash(runtimeType, input, output, format, jsonPath);
 
-  /// Create a copy of JsonState
+  /// Create a copy of JsonFormatterState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$JsonStateImplCopyWith<_$JsonStateImpl> get copyWith =>
-      __$$JsonStateImplCopyWithImpl<_$JsonStateImpl>(this, _$identity);
+  _$$JsonFormatterStateImplCopyWith<_$JsonFormatterStateImpl> get copyWith =>
+      __$$JsonFormatterStateImplCopyWithImpl<_$JsonFormatterStateImpl>(
+          this, _$identity);
 }
 
-abstract class _JsonState implements JsonState {
-  const factory _JsonState(
+abstract class _JsonFormatterState implements JsonFormatterState {
+  const factory _JsonFormatterState(
       {required final String input,
       required final String? output,
       required final JsonOutputFormat format,
-      required final JsonPathState jsonPath}) = _$JsonStateImpl;
+      required final JsonPathState jsonPath}) = _$JsonFormatterStateImpl;
 
   @override
   String get input;
@@ -213,11 +215,11 @@ abstract class _JsonState implements JsonState {
   @override
   JsonPathState get jsonPath;
 
-  /// Create a copy of JsonState
+  /// Create a copy of JsonFormatterState
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$JsonStateImplCopyWith<_$JsonStateImpl> get copyWith =>
+  _$$JsonFormatterStateImplCopyWith<_$JsonFormatterStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
