@@ -664,26 +664,23 @@ packages:
   mini_tea:
     dependency: "direct main"
     description:
-      name: mini_tea
-      sha256: b667eb70afa0b7a6fd9fc03db7afa9e8964cd6c709b386b387d20a782021d9c9
-      url: "https://pub.dev"
-    source: hosted
+      path: "../mini_tea/packages/mini_tea"
+      relative: true
+    source: path
     version: "0.1.2"
   mini_tea_flutter:
     dependency: "direct main"
     description:
-      name: mini_tea_flutter
-      sha256: "9bf3c3ad3b5cdf89c551e9171575c818da6b30fdca92d4f0abf3346e1fd6bb96"
-      url: "https://pub.dev"
-    source: hosted
+      path: "../mini_tea/packages/mini_tea_flutter"
+      relative: true
+    source: path
     version: "0.2.0"
   mini_tea_test:
     dependency: "direct dev"
     description:
-      name: mini_tea_test
-      sha256: "4a24ffff99594a2ac5353dbce9a432b3b6cadb38cd166eefec58c601a580a62d"
-      url: "https://pub.dev"
-    source: hosted
+      path: "../mini_tea/packages/mini_tea_test"
+      relative: true
+    source: path
     version: "0.2.0"
   mocktail:
     dependency: "direct dev"
@@ -717,6 +714,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  package_info_plus:
+    dependency: "direct main"
+    description:
+      name: package_info_plus
+      sha256: "7976bfe4c583170d6cdc7077e3237560b364149fcd268b5f53d95a991963b191"
+      url: "https://pub.dev"
+    source: hosted
+    version: "8.3.0"
+  package_info_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: package_info_plus_platform_interface
+      sha256: "6c935fb612dff8e3cc9632c2b301720c77450a126114126ffaafe28d2e87956c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.0"
   path:
     dependency: "direct main"
     description:
