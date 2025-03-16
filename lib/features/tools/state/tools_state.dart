@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../tool/tool.dart';
+import '../../../tools/blurhash/blurhash_tool.dart';
 import '../../../tools/color/color_tool.dart';
 import '../../../tools/cron/cron_tool.dart';
 import '../../../tools/datetime_converter/datetime_converter_tool.dart';
@@ -31,6 +32,7 @@ enum Tools {
   cron,
   textDiff,
   qrCode,
+  blurhash,
 }
 
 extension ToolsToTool on Tools {
@@ -49,6 +51,7 @@ extension ToolsToTool on Tools {
       Tools.cron => cronTool,
       Tools.textDiff => textDiffTool,
       Tools.qrCode => qrCodeTool,
+      Tools.blurhash => blurhashTool,
     };
   }
 }
