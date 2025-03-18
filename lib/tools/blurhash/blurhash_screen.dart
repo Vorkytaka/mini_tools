@@ -1,3 +1,4 @@
+import 'package:blurhash_ffi/blurhashffi_image.dart';
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
@@ -33,18 +34,29 @@ class _Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: [Text('hashfjkashjdljkfh')],
-        ),
+        _TextHashWidget(),
         Expanded(
           child: Row(
             children: [
               Expanded(child: _InputSide()),
-              Expanded(child: Placeholder()),
+              Expanded(child: _OutputSide()),
             ],
           ),
         ),
       ],
+    );
+  }
+}
+
+class _TextHashWidget extends StatelessWidget {
+  const _TextHashWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return FeatureBuilder<BlurhashFeature, BlurhashState>(
+      builder: (context, state) {
+        return Text(state.blurhash);
+      },
     );
   }
 }
@@ -81,6 +93,28 @@ class _InputSide extends StatelessWidget {
                 .accept(const BlurhashMessage.selectFile());
           },
           child: child,
+        );
+      },
+    );
+  }
+}
+
+class _OutputSide extends StatelessWidget {
+  const _OutputSide();
+
+  @override
+  Widget build(BuildContext context) {
+    return FeatureBuilder<BlurhashFeature, BlurhashState>(
+      builder: (context, state) {
+        if (state.blurhash.isEmpty) {
+          return const Placeholder();
+        }
+
+        return Image(
+          image: BlurhashFfiImage(state.blurhash,
+              decodingHeight: 200, decodingWidth: 200),
+          width: 200,
+          height: 200,
         );
       },
     );
