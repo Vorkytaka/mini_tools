@@ -25,6 +25,11 @@ class MiniToolsApp extends StatelessWidget {
               key: _key,
               locale: TranslationProvider.of(context).flutterLocale,
               supportedLocales: AppLocaleUtils.supportedLocales,
+              themeMode: ThemeMode.dark,
+              theme: MacosThemeData.light(),
+              darkTheme: MacosThemeData(
+                brightness: Brightness.dark,
+              ),
               // localizationsDelegates: GlobalMaterialLocalizations.delegates,
               home: const _Window(),
               builder: (context, child) => Theme(

@@ -111,6 +111,8 @@ class _MacosCodeEditorState extends State<MacosCodeEditor> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = MacosTheme.of(context);
+
     return CodeEditor(
       controller: widget.controller,
       scrollController: widget.scrollController,
@@ -130,7 +132,7 @@ class _MacosCodeEditorState extends State<MacosCodeEditor> {
       border: Border.all(
         color: _focusNode!.hasFocus
             ? const Color.fromRGBO(26, 169, 255, 0.3)
-            : const Color(0x00000000),
+            : theme.canvasColor,
         width: 3,
       ),
       readOnly: widget.readOnly,
@@ -140,6 +142,7 @@ class _MacosCodeEditorState extends State<MacosCodeEditor> {
       focusNode: _focusNode,
       chunkAnalyzer: widget.chunkAnalyzer,
       commentFormatter: widget.commentFormatter,
+      borderRadius: const BorderRadius.all(Radius.circular(7 + 3)),
     );
   }
 }
