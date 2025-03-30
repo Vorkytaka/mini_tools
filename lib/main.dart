@@ -10,7 +10,8 @@ import 'package:timezone/timezone.dart' as tz;
 import 'package:window_manager/window_manager.dart';
 
 import 'app.dart';
-import 'common/logger.dart';
+import 'common/logger/logger.dart';
+import 'common/logger/logging_logger.dart';
 import 'common/timezone_holder.dart';
 import 'i18n/strings.g.dart';
 
@@ -18,7 +19,7 @@ Future<void> main() async {
   try {
     await _preInit();
   } on Object catch (e, s) {
-    Logger.e('main', 'PreInit failed', e, s);
+    Log.e('main', 'PreInit failed', e, s);
     rethrow;
   }
 
@@ -31,7 +32,7 @@ Future<void> main() async {
 }
 
 Future<void> _preInit() async {
-  Logger.init();
+  Log.init(LoggingLogger());
   WidgetsFlutterBinding.ensureInitialized();
   LocaleSettings.useDeviceLocale();
   _firaCodeLicense();
