@@ -23,6 +23,8 @@ Future<void> main() async {
     rethrow;
   }
 
+  Log.i('main', 'PreInit successfully');
+
   runApp(
     TimezoneHolder(
       timezone: await _initializeTimezone(),

@@ -9,8 +9,21 @@ final class LoggingLogger implements Logger {
     l.Logger.root.level = kDebugMode ? l.Level.ALL : l.Level.WARNING;
     l.Logger.root.onRecord.listen((record) {
       if (kDebugMode) {
-        print(
-            '${record.level.toLoggerLevel.name[0].toUpperCase()}/${record.loggerName}: ${record.message}');
+        final time = record.time.toIso8601String();
+        final levelAbbrev = record.level.toLoggerLevel.name[0].toUpperCase();
+        final buffer = StringBuffer(
+          '[$time] [$levelAbbrev] ${record.loggerName}: ${record.message}',
+        );
+
+        if (record.error != null) {
+          buffer.writeln();
+          buffer.write('Exception: ${record.error}');
+        }
+        if (record.stackTrace != null) {
+          buffer.writeln();
+          buffer.write('Stacktrace: ${record.stackTrace}');
+        }
+        print(buffer.toString());
       }
     });
   }
