@@ -40,6 +40,13 @@ class _CopyOverlayState extends State<CopyOverlay>
     });
   }
 
+  @override
+  void dispose() {
+    _hideNotification();
+    _controller.dispose();
+    super.dispose();
+  }
+
   void _showNotification() {
     _hideNotification();
 
