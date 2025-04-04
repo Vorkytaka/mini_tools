@@ -21,6 +21,8 @@ class CopyOverlay extends StatefulWidget {
 class _CopyOverlayState extends State<CopyOverlay>
     with SingleTickerProviderStateMixin {
   OverlayEntry? _entry;
+  Offset? _cursorPosition;
+
   late final _controller = AnimationController(
     vsync: this,
     duration: const Duration(milliseconds: 1500),
@@ -42,12 +44,9 @@ class _CopyOverlayState extends State<CopyOverlay>
     final overlay = Overlay.maybeOf(context);
     if (overlay != null) {
       final entry = OverlayEntry(
-        builder: (context) => Align(
-          alignment: AlignmentDirectional.bottomCenter,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 16),
-            child: _CopyNotificationAnimation(controller: _controller),
-          ),
+        builder: (context) => _CopyNotificationPositioned(
+          animation: _controller,
+          cursorPosition: _cursorPosition,
         ),
       );
       _entry = entry;
@@ -65,19 +64,55 @@ class _CopyOverlayState extends State<CopyOverlay>
 
   @override
   Widget build(BuildContext context) {
-    return widget.child;
+    return MouseRegion(
+      onHover: (details) {
+        _cursorPosition = details.position;
+      },
+      child: widget.child,
+    );
+  }
+}
+
+class _CopyNotificationPositioned extends StatelessWidget {
+  final Animation<double> animation;
+  final Offset? cursorPosition;
+
+  const _CopyNotificationPositioned({
+    required this.animation,
+    required this.cursorPosition,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final cursorPosition = this.cursorPosition;
+
+    if (cursorPosition != null) {
+      return Positioned(
+        top: cursorPosition.dy - 8 - 8 - 8 - 8,
+        left: cursorPosition.dx - 40,
+        child: _CopyNotificationAnimation(animation: animation),
+      );
+    }
+    return Align(
+      alignment: AlignmentDirectional.bottomCenter,
+      child: Padding(
+        padding: const EdgeInsetsDirectional.only(bottom: 8),
+        child: _CopyNotificationAnimation(animation: animation),
+      ),
+    );
   }
 }
 
 class _CopyNotificationAnimation extends StatelessWidget {
-  final Animation<double> controller;
-  final Animation<double> opacity;
-  final Animation<double> scale;
-  final Animation<double> movement;
+  final Animation<double> animation;
+
+  final Animation<double> _opacity;
+  final Animation<double> _scale;
+  final Animation<double> _movement;
 
   _CopyNotificationAnimation({
-    required this.controller,
-  })  : opacity = TweenSequence<double>([
+    required this.animation,
+  })  : _opacity = TweenSequence<double>([
           TweenSequenceItem(
             tween: Tween<double>(begin: 0, end: 1)
                 .chain(CurveTween(curve: Curves.easeIn)),
@@ -92,8 +127,8 @@ class _CopyNotificationAnimation extends StatelessWidget {
                 .chain(CurveTween(curve: Curves.easeOut)),
             weight: 20, // 81-100%
           ),
-        ]).animate(controller),
-        scale = TweenSequence<double>([
+        ]).animate(animation),
+        _scale = TweenSequence<double>([
           TweenSequenceItem(
             tween: Tween<double>(begin: 0.9, end: 1)
                 .chain(CurveTween(curve: Curves.easeIn)),
@@ -108,25 +143,25 @@ class _CopyNotificationAnimation extends StatelessWidget {
                 .chain(CurveTween(curve: Curves.easeOut)),
             weight: 20, // 81-100%
           ),
-        ]).animate(controller),
-        movement = Tween<double>(begin: 0, end: -10).animate(CurvedAnimation(
-          parent: controller,
+        ]).animate(animation),
+        _movement = Tween<double>(begin: 0, end: -10).animate(CurvedAnimation(
+          parent: animation,
           curve: const Interval(0, 0.08, curve: Curves.easeIn),
         ));
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: controller,
+      animation: animation,
       child: const _CopyNotification(),
       builder: (context, child) {
         assert(child != null);
         return Transform.translate(
-          offset: Offset(0, movement.value),
+          offset: Offset(0, _movement.value),
           child: Transform.scale(
-            scale: scale.value,
+            scale: _scale.value,
             child: Opacity(
-              opacity: opacity.value,
+              opacity: _opacity.value,
               child: child,
             ),
           ),
