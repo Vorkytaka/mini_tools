@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../i18n/strings.g.dart';
+
 class CopyOverlay extends StatefulWidget {
   final Widget child;
 
@@ -176,6 +178,8 @@ class _CopyNotification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
@@ -189,7 +193,7 @@ class _CopyNotification extends StatelessWidget {
           ),
         ],
       ),
-      child: Text('Copied!'),
+      child: Text(t.common.copied),
     );
   }
 }

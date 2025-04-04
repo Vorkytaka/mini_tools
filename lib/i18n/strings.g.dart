@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 229
+/// Strings: 230
 ///
-/// Built on 2025-03-04 at 23:03 UTC
+/// Built on 2025-04-04 at 22:55 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -222,6 +222,7 @@ class _StringsCommonEn {
   String get yes => 'Yes';
   String get no => 'No';
   String get copy => 'Copy';
+  String get copied => 'Copied';
   String get questionMark => '?';
   String get percent => '%';
   String get fileDropTitle => 'Drop file here';
@@ -898,6 +899,8 @@ extension on Translations {
         return 'No';
       case 'common.copy':
         return 'Copy';
+      case 'common.copied':
+        return 'Copied';
       case 'common.questionMark':
         return '?';
       case 'common.percent':
