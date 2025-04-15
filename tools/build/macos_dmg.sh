@@ -1,3 +1,6 @@
+#!/bin/bash
+set -euo pipefail
+
 # Docs
 #
 # To use this script call it from root of the repository, like:
@@ -8,7 +11,7 @@
 
 fvm flutter clean
 fvm flutter pub get
-fvm flutter build macos
+fvm flutter build macos --release
 
 # sign the app
 echo
