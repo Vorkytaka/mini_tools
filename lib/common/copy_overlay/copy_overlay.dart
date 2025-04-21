@@ -22,22 +22,31 @@ class CopyOverlay extends StatefulWidget {
             backgroundColor: backgroundColor,
             foregroundColor: foregroundColor,
           );
+
+  static void hideAll(BuildContext context) => context
+      .findAncestorStateOfType<_CopyOverlayState>()
+      ?._hideAllNotification();
 }
 
 class _CopyOverlayState extends State<CopyOverlay>
     with TickerProviderStateMixin {
   Offset? _cursorPosition;
 
-  final _controllers = <AnimationController>[];
+  final _entries = <(OverlayEntry, AnimationController)>[];
 
   @override
   void dispose() {
-    for (final controller in _controllers) {
-      controller.dispose();
-      // Do we need to remove entries? probably yeah
-    }
+    _hideAllNotification();
 
     super.dispose();
+  }
+
+  void _hideAllNotification() {
+    for (final entry in _entries) {
+      entry.$1.remove();
+      entry.$2.dispose();
+    }
+    _entries.clear();
   }
 
   void _showNotification({
@@ -70,10 +79,10 @@ class _CopyOverlayState extends State<CopyOverlay>
       if (status == AnimationStatus.completed && entry.mounted) {
         entry.remove();
         controller.dispose();
-        _controllers.remove(controller);
+        _entries.remove((entry, controller));
       }
     });
-    _controllers.add(controller);
+    _entries.add((entry, controller));
     overlay.insert(entry);
     controller.forward(from: 0);
   }
