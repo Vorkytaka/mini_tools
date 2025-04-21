@@ -15,60 +15,54 @@ class CopyOverlay extends StatefulWidget {
 
   static void show(BuildContext context) =>
       context.findAncestorStateOfType<_CopyOverlayState>()?._showNotification();
-
-  static void hide(BuildContext context) =>
-      context.findAncestorStateOfType<_CopyOverlayState>()?._hideNotification();
 }
 
 class _CopyOverlayState extends State<CopyOverlay>
-    with SingleTickerProviderStateMixin {
-  OverlayEntry? _entry;
+    with TickerProviderStateMixin {
   Offset? _cursorPosition;
 
-  late final _controller = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 1500),
-  );
-
-  @override
-  void initState() {
-    super.initState();
-    _controller.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        _hideNotification();
-      }
-    });
-  }
+  final _controllers = <AnimationController>[];
 
   @override
   void dispose() {
-    _hideNotification();
-    _controller.dispose();
+    for (final controller in _controllers) {
+      controller.dispose();
+      // Do we need to remove entries? probably yeah
+    }
+
     super.dispose();
   }
 
   void _showNotification() {
-    _hideNotification();
-
     final overlay = Overlay.maybeOf(context);
-    if (overlay != null) {
-      final entry = OverlayEntry(
-        builder: (context) => _CopyNotificationPositioned(
-          animation: _controller,
-          cursorPosition: _cursorPosition,
-        ),
-      );
-      _entry = entry;
-      overlay.insert(entry);
-      _controller.forward(from: 0);
-    }
-  }
 
-  void _hideNotification() {
-    if (_entry?.mounted ?? false) {
-      _entry?.remove();
-      _entry = null;
+    if (overlay == null) {
+      return;
     }
+
+    final controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
+    // We need to cache position here, because `OverlayEntry.builder` will be called later
+    // And it will take new position instead of old one
+    final pos = _cursorPosition;
+    final entry = OverlayEntry(
+      builder: (context) => _CopyNotificationPositioned(
+        animation: controller,
+        cursorPosition: pos,
+      ),
+    );
+    controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed && entry.mounted) {
+        entry.remove();
+        controller.dispose();
+        _controllers.remove(controller);
+      }
+    });
+    _controllers.add(controller);
+    overlay.insert(entry);
+    controller.forward(from: 0);
   }
 
   @override
@@ -155,7 +149,7 @@ class _CopyNotificationAnimation extends StatelessWidget {
         ]).animate(animation),
         _movement = Tween<double>(begin: 0, end: -10).animate(CurvedAnimation(
           parent: animation,
-          curve: const Interval(0, 0.08, curve: Curves.easeIn),
+          curve: Curves.easeOutQuart,
         ));
 
   @override
