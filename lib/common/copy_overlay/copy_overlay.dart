@@ -13,8 +13,15 @@ class CopyOverlay extends StatefulWidget {
   @override
   State<CopyOverlay> createState() => _CopyOverlayState();
 
-  static void show(BuildContext context) =>
-      context.findAncestorStateOfType<_CopyOverlayState>()?._showNotification();
+  static void show(
+    BuildContext context, {
+    Color? backgroundColor,
+    Color? foregroundColor,
+  }) =>
+      context.findAncestorStateOfType<_CopyOverlayState>()?._showNotification(
+            backgroundColor: backgroundColor,
+            foregroundColor: foregroundColor,
+          );
 }
 
 class _CopyOverlayState extends State<CopyOverlay>
@@ -33,7 +40,10 @@ class _CopyOverlayState extends State<CopyOverlay>
     super.dispose();
   }
 
-  void _showNotification() {
+  void _showNotification({
+    Color? foregroundColor,
+    Color? backgroundColor,
+  }) {
     final overlay = Overlay.maybeOf(context);
 
     if (overlay == null) {
@@ -48,9 +58,12 @@ class _CopyOverlayState extends State<CopyOverlay>
     // And it will take new position instead of old one
     final pos = _cursorPosition;
     final entry = OverlayEntry(
-      builder: (context) => _CopyNotificationPositioned(
-        animation: controller,
-        cursorPosition: pos,
+      builder: (context) => _CopyNotificationTheme(
+        data: _CopyNotificationThemeData(backgroundColor: backgroundColor),
+        child: _CopyNotificationPositioned(
+          animation: controller,
+          cursorPosition: pos,
+        ),
       ),
     );
     controller.addStatusListener((status) {
@@ -174,18 +187,65 @@ class _CopyNotificationAnimation extends StatelessWidget {
   }
 }
 
+class _CopyNotificationTheme extends InheritedWidget {
+  final _CopyNotificationThemeData data;
+
+  const _CopyNotificationTheme({
+    required super.child,
+    required this.data,
+  });
+
+  static _CopyNotificationThemeData? maybeOf(BuildContext context) => context
+      .dependOnInheritedWidgetOfExactType<_CopyNotificationTheme>()
+      ?.data;
+
+  @override
+  bool updateShouldNotify(_CopyNotificationTheme oldWidget) =>
+      oldWidget.data != data;
+}
+
+@immutable
+class _CopyNotificationThemeData {
+  final Color? backgroundColor;
+  final Color? foregroundColor;
+
+  _CopyNotificationThemeData({
+    this.backgroundColor,
+    Color? foregroundColor,
+  }) : foregroundColor = foregroundColor ??
+            (backgroundColor != null
+                ? ThemeData.estimateBrightnessForColor(backgroundColor) ==
+                        Brightness.dark
+                    ? Colors.white
+                    : Colors.black
+                : null);
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is _CopyNotificationThemeData &&
+          runtimeType == other.runtimeType &&
+          backgroundColor == other.backgroundColor;
+
+  @override
+  int get hashCode => backgroundColor.hashCode;
+}
+
 class _CopyNotification extends StatelessWidget {
   const _CopyNotification();
 
   @override
   Widget build(BuildContext context) {
     final t = Translations.of(context);
+    final theme = _CopyNotificationTheme.maybeOf(context);
+    final foregroundColor = theme?.foregroundColor ?? Colors.white;
+    final backgroundColor = theme?.backgroundColor ?? Colors.grey.shade800;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(8)),
-        color: Colors.grey.shade800,
+        color: backgroundColor,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.shade900,
@@ -194,7 +254,10 @@ class _CopyNotification extends StatelessWidget {
           ),
         ],
       ),
-      child: Text(t.common.copied),
+      child: DefaultTextStyle.merge(
+        style: TextStyle(color: foregroundColor),
+        child: Text(t.common.copied),
+      ),
     );
   }
 }
