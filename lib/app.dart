@@ -4,6 +4,7 @@ import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
+import 'common/copy_overlay/copy_overlay.dart';
 import 'common/datetime_inherited_model.dart';
 import 'common/ui/macos_ui_hacks.dart';
 import 'features/tools/tools_feature.dart';
@@ -29,7 +30,19 @@ class MiniToolsApp extends StatelessWidget {
               home: const _Window(),
               builder: (context, child) => Theme(
                 data: ThemeData.dark(),
-                child: child!,
+                child: CopyOverlay(
+                  child: FeatureListener<ToolsFeature, ToolsState>(
+                    listenWhen: (prev, curr) =>
+                        prev.selectedTool != curr.selectedTool,
+                    listener: (context, state) {
+                      // We just listen if selected tool changes
+                      // That's mean, that we did change the page
+                      // So, let's just hide copy overlay
+                      CopyOverlay.hideAll(context);
+                    },
+                    child: child!,
+                  ),
+                ),
               ),
             ),
           ),

@@ -87,6 +87,7 @@ class _ColorItemWidget extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Clipboard.setData(ClipboardData(text: item.hex));
+          CopyOverlay.show(context, backgroundColor: item.color);
         },
         child: Container(
           width: _itemWidth,

@@ -4,6 +4,7 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:responsive_grid/responsive_grid.dart';
 
 import '../../common/color.dart';
+import '../../common/copy_overlay/copy_overlay.dart';
 import '../../i18n/strings.g.dart';
 import '../../tool/base_tool.dart';
 
