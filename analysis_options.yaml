@@ -4,6 +4,7 @@ analyzer:
   exclude:
     - lib/i18n/**
     - lib/**.freezed.dart
+    - lib/**.g.dart
 
 # https://dart.dev/guides/language/analysis-options
 linter:

@@ -71,5 +71,6 @@ class ToolsState with _$ToolsState {
     searchResult: List.empty(growable: false),
   );
 
-  factory ToolsState.fromJson(Map<String, dynamic> json) => _$ToolsStateFromJson(json);
+  factory ToolsState.fromJson(Map<String, dynamic> json) =>
+      _$ToolsStateFromJson(json);
 }
