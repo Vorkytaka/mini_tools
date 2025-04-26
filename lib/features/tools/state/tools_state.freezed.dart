@@ -14,12 +14,19 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+ToolsState _$ToolsStateFromJson(Map<String, dynamic> json) {
+  return _ToolsState.fromJson(json);
+}
+
 /// @nodoc
 mixin _$ToolsState {
   Tools get selectedTool => throw _privateConstructorUsedError;
   List<Tools> get tools => throw _privateConstructorUsedError;
   String get searchQuery => throw _privateConstructorUsedError;
   List<Tools> get searchResult => throw _privateConstructorUsedError;
+
+  /// Serializes this ToolsState to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of ToolsState
   /// with the given fields replaced by the non-null parameter values.
@@ -137,7 +144,7 @@ class __$$ToolsStateImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$ToolsStateImpl implements _ToolsState {
   const _$ToolsStateImpl(
       {required this.selectedTool,
@@ -146,6 +153,9 @@ class _$ToolsStateImpl implements _ToolsState {
       required final List<Tools> searchResult})
       : _tools = tools,
         _searchResult = searchResult;
+
+  factory _$ToolsStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ToolsStateImplFromJson(json);
 
   @override
   final Tools selectedTool;
@@ -186,6 +196,7 @@ class _$ToolsStateImpl implements _ToolsState {
                 .equals(other._searchResult, _searchResult));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -201,6 +212,13 @@ class _$ToolsStateImpl implements _ToolsState {
   @pragma('vm:prefer-inline')
   _$$ToolsStateImplCopyWith<_$ToolsStateImpl> get copyWith =>
       __$$ToolsStateImplCopyWithImpl<_$ToolsStateImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ToolsStateImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _ToolsState implements ToolsState {
@@ -209,6 +227,9 @@ abstract class _ToolsState implements ToolsState {
       required final List<Tools> tools,
       required final String searchQuery,
       required final List<Tools> searchResult}) = _$ToolsStateImpl;
+
+  factory _ToolsState.fromJson(Map<String, dynamic> json) =
+      _$ToolsStateImpl.fromJson;
 
   @override
   Tools get selectedTool;

@@ -21,6 +21,7 @@ mixin _$ToolsMessage {
     required TResult Function(Tools selectedTool) selectTool,
     required TResult Function(String query) updateQuery,
     required TResult Function(List<Tools> result) updateSearchResult,
+    required TResult Function(ToolsState state) loadedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$ToolsMessage {
     TResult? Function(Tools selectedTool)? selectTool,
     TResult? Function(String query)? updateQuery,
     TResult? Function(List<Tools> result)? updateSearchResult,
+    TResult? Function(ToolsState state)? loadedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$ToolsMessage {
     TResult Function(Tools selectedTool)? selectTool,
     TResult Function(String query)? updateQuery,
     TResult Function(List<Tools> result)? updateSearchResult,
+    TResult Function(ToolsState state)? loadedState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,7 @@ mixin _$ToolsMessage {
     required TResult Function(UpdateQueryMessage value) updateQuery,
     required TResult Function(UpdateSearchResultMessage value)
         updateSearchResult,
+    required TResult Function(LoadedStateMessage value) loadedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +55,7 @@ mixin _$ToolsMessage {
     TResult? Function(SelectToolMessage value)? selectTool,
     TResult? Function(UpdateQueryMessage value)? updateQuery,
     TResult? Function(UpdateSearchResultMessage value)? updateSearchResult,
+    TResult? Function(LoadedStateMessage value)? loadedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +63,7 @@ mixin _$ToolsMessage {
     TResult Function(SelectToolMessage value)? selectTool,
     TResult Function(UpdateQueryMessage value)? updateQuery,
     TResult Function(UpdateSearchResultMessage value)? updateSearchResult,
+    TResult Function(LoadedStateMessage value)? loadedState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -157,6 +163,7 @@ class _$SelectToolMessageImpl implements SelectToolMessage {
     required TResult Function(Tools selectedTool) selectTool,
     required TResult Function(String query) updateQuery,
     required TResult Function(List<Tools> result) updateSearchResult,
+    required TResult Function(ToolsState state) loadedState,
   }) {
     return selectTool(selectedTool);
   }
@@ -167,6 +174,7 @@ class _$SelectToolMessageImpl implements SelectToolMessage {
     TResult? Function(Tools selectedTool)? selectTool,
     TResult? Function(String query)? updateQuery,
     TResult? Function(List<Tools> result)? updateSearchResult,
+    TResult? Function(ToolsState state)? loadedState,
   }) {
     return selectTool?.call(selectedTool);
   }
@@ -177,6 +185,7 @@ class _$SelectToolMessageImpl implements SelectToolMessage {
     TResult Function(Tools selectedTool)? selectTool,
     TResult Function(String query)? updateQuery,
     TResult Function(List<Tools> result)? updateSearchResult,
+    TResult Function(ToolsState state)? loadedState,
     required TResult orElse(),
   }) {
     if (selectTool != null) {
@@ -192,6 +201,7 @@ class _$SelectToolMessageImpl implements SelectToolMessage {
     required TResult Function(UpdateQueryMessage value) updateQuery,
     required TResult Function(UpdateSearchResultMessage value)
         updateSearchResult,
+    required TResult Function(LoadedStateMessage value) loadedState,
   }) {
     return selectTool(this);
   }
@@ -202,6 +212,7 @@ class _$SelectToolMessageImpl implements SelectToolMessage {
     TResult? Function(SelectToolMessage value)? selectTool,
     TResult? Function(UpdateQueryMessage value)? updateQuery,
     TResult? Function(UpdateSearchResultMessage value)? updateSearchResult,
+    TResult? Function(LoadedStateMessage value)? loadedState,
   }) {
     return selectTool?.call(this);
   }
@@ -212,6 +223,7 @@ class _$SelectToolMessageImpl implements SelectToolMessage {
     TResult Function(SelectToolMessage value)? selectTool,
     TResult Function(UpdateQueryMessage value)? updateQuery,
     TResult Function(UpdateSearchResultMessage value)? updateSearchResult,
+    TResult Function(LoadedStateMessage value)? loadedState,
     required TResult orElse(),
   }) {
     if (selectTool != null) {
@@ -306,6 +318,7 @@ class _$UpdateQueryMessageImpl implements UpdateQueryMessage {
     required TResult Function(Tools selectedTool) selectTool,
     required TResult Function(String query) updateQuery,
     required TResult Function(List<Tools> result) updateSearchResult,
+    required TResult Function(ToolsState state) loadedState,
   }) {
     return updateQuery(query);
   }
@@ -316,6 +329,7 @@ class _$UpdateQueryMessageImpl implements UpdateQueryMessage {
     TResult? Function(Tools selectedTool)? selectTool,
     TResult? Function(String query)? updateQuery,
     TResult? Function(List<Tools> result)? updateSearchResult,
+    TResult? Function(ToolsState state)? loadedState,
   }) {
     return updateQuery?.call(query);
   }
@@ -326,6 +340,7 @@ class _$UpdateQueryMessageImpl implements UpdateQueryMessage {
     TResult Function(Tools selectedTool)? selectTool,
     TResult Function(String query)? updateQuery,
     TResult Function(List<Tools> result)? updateSearchResult,
+    TResult Function(ToolsState state)? loadedState,
     required TResult orElse(),
   }) {
     if (updateQuery != null) {
@@ -341,6 +356,7 @@ class _$UpdateQueryMessageImpl implements UpdateQueryMessage {
     required TResult Function(UpdateQueryMessage value) updateQuery,
     required TResult Function(UpdateSearchResultMessage value)
         updateSearchResult,
+    required TResult Function(LoadedStateMessage value) loadedState,
   }) {
     return updateQuery(this);
   }
@@ -351,6 +367,7 @@ class _$UpdateQueryMessageImpl implements UpdateQueryMessage {
     TResult? Function(SelectToolMessage value)? selectTool,
     TResult? Function(UpdateQueryMessage value)? updateQuery,
     TResult? Function(UpdateSearchResultMessage value)? updateSearchResult,
+    TResult? Function(LoadedStateMessage value)? loadedState,
   }) {
     return updateQuery?.call(this);
   }
@@ -361,6 +378,7 @@ class _$UpdateQueryMessageImpl implements UpdateQueryMessage {
     TResult Function(SelectToolMessage value)? selectTool,
     TResult Function(UpdateQueryMessage value)? updateQuery,
     TResult Function(UpdateSearchResultMessage value)? updateSearchResult,
+    TResult Function(LoadedStateMessage value)? loadedState,
     required TResult orElse(),
   }) {
     if (updateQuery != null) {
@@ -464,6 +482,7 @@ class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
     required TResult Function(Tools selectedTool) selectTool,
     required TResult Function(String query) updateQuery,
     required TResult Function(List<Tools> result) updateSearchResult,
+    required TResult Function(ToolsState state) loadedState,
   }) {
     return updateSearchResult(result);
   }
@@ -474,6 +493,7 @@ class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
     TResult? Function(Tools selectedTool)? selectTool,
     TResult? Function(String query)? updateQuery,
     TResult? Function(List<Tools> result)? updateSearchResult,
+    TResult? Function(ToolsState state)? loadedState,
   }) {
     return updateSearchResult?.call(result);
   }
@@ -484,6 +504,7 @@ class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
     TResult Function(Tools selectedTool)? selectTool,
     TResult Function(String query)? updateQuery,
     TResult Function(List<Tools> result)? updateSearchResult,
+    TResult Function(ToolsState state)? loadedState,
     required TResult orElse(),
   }) {
     if (updateSearchResult != null) {
@@ -499,6 +520,7 @@ class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
     required TResult Function(UpdateQueryMessage value) updateQuery,
     required TResult Function(UpdateSearchResultMessage value)
         updateSearchResult,
+    required TResult Function(LoadedStateMessage value) loadedState,
   }) {
     return updateSearchResult(this);
   }
@@ -509,6 +531,7 @@ class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
     TResult? Function(SelectToolMessage value)? selectTool,
     TResult? Function(UpdateQueryMessage value)? updateQuery,
     TResult? Function(UpdateSearchResultMessage value)? updateSearchResult,
+    TResult? Function(LoadedStateMessage value)? loadedState,
   }) {
     return updateSearchResult?.call(this);
   }
@@ -519,6 +542,7 @@ class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
     TResult Function(SelectToolMessage value)? selectTool,
     TResult Function(UpdateQueryMessage value)? updateQuery,
     TResult Function(UpdateSearchResultMessage value)? updateSearchResult,
+    TResult Function(LoadedStateMessage value)? loadedState,
     required TResult orElse(),
   }) {
     if (updateSearchResult != null) {
@@ -539,4 +563,171 @@ abstract class UpdateSearchResultMessage implements ToolsMessage {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateSearchResultMessageImplCopyWith<_$UpdateSearchResultMessageImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadedStateMessageImplCopyWith<$Res> {
+  factory _$$LoadedStateMessageImplCopyWith(_$LoadedStateMessageImpl value,
+          $Res Function(_$LoadedStateMessageImpl) then) =
+      __$$LoadedStateMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ToolsState state});
+
+  $ToolsStateCopyWith<$Res> get state;
+}
+
+/// @nodoc
+class __$$LoadedStateMessageImplCopyWithImpl<$Res>
+    extends _$ToolsMessageCopyWithImpl<$Res, _$LoadedStateMessageImpl>
+    implements _$$LoadedStateMessageImplCopyWith<$Res> {
+  __$$LoadedStateMessageImplCopyWithImpl(_$LoadedStateMessageImpl _value,
+      $Res Function(_$LoadedStateMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ToolsMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? state = null,
+  }) {
+    return _then(_$LoadedStateMessageImpl(
+      null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as ToolsState,
+    ));
+  }
+
+  /// Create a copy of ToolsMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ToolsStateCopyWith<$Res> get state {
+    return $ToolsStateCopyWith<$Res>(_value.state, (value) {
+      return _then(_value.copyWith(state: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$LoadedStateMessageImpl implements LoadedStateMessage {
+  const _$LoadedStateMessageImpl(this.state);
+
+  @override
+  final ToolsState state;
+
+  @override
+  String toString() {
+    return 'ToolsMessage.loadedState(state: $state)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadedStateMessageImpl &&
+            (identical(other.state, state) || other.state == state));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, state);
+
+  /// Create a copy of ToolsMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadedStateMessageImplCopyWith<_$LoadedStateMessageImpl> get copyWith =>
+      __$$LoadedStateMessageImplCopyWithImpl<_$LoadedStateMessageImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Tools selectedTool) selectTool,
+    required TResult Function(String query) updateQuery,
+    required TResult Function(List<Tools> result) updateSearchResult,
+    required TResult Function(ToolsState state) loadedState,
+  }) {
+    return loadedState(state);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(Tools selectedTool)? selectTool,
+    TResult? Function(String query)? updateQuery,
+    TResult? Function(List<Tools> result)? updateSearchResult,
+    TResult? Function(ToolsState state)? loadedState,
+  }) {
+    return loadedState?.call(state);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Tools selectedTool)? selectTool,
+    TResult Function(String query)? updateQuery,
+    TResult Function(List<Tools> result)? updateSearchResult,
+    TResult Function(ToolsState state)? loadedState,
+    required TResult orElse(),
+  }) {
+    if (loadedState != null) {
+      return loadedState(state);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SelectToolMessage value) selectTool,
+    required TResult Function(UpdateQueryMessage value) updateQuery,
+    required TResult Function(UpdateSearchResultMessage value)
+        updateSearchResult,
+    required TResult Function(LoadedStateMessage value) loadedState,
+  }) {
+    return loadedState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(SelectToolMessage value)? selectTool,
+    TResult? Function(UpdateQueryMessage value)? updateQuery,
+    TResult? Function(UpdateSearchResultMessage value)? updateSearchResult,
+    TResult? Function(LoadedStateMessage value)? loadedState,
+  }) {
+    return loadedState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SelectToolMessage value)? selectTool,
+    TResult Function(UpdateQueryMessage value)? updateQuery,
+    TResult Function(UpdateSearchResultMessage value)? updateSearchResult,
+    TResult Function(LoadedStateMessage value)? loadedState,
+    required TResult orElse(),
+  }) {
+    if (loadedState != null) {
+      return loadedState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadedStateMessage implements ToolsMessage {
+  const factory LoadedStateMessage(final ToolsState state) =
+      _$LoadedStateMessageImpl;
+
+  ToolsState get state;
+
+  /// Create a copy of ToolsMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadedStateMessageImplCopyWith<_$LoadedStateMessageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
