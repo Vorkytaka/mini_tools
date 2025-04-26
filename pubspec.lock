@@ -549,6 +549,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.4"
+  json_serializable:
+    dependency: "direct dev"
+    description:
+      name: json_serializable
+      sha256: c2fcb3920cf2b6ae6845954186420fca40bc0a8abcc84903b7801f17d7050d7c
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.9.0"
   leak_tracker:
     dependency: transitive
     description:
@@ -664,23 +672,26 @@ packages:
   mini_tea:
     dependency: "direct main"
     description:
-      path: "../mini_tea/packages/mini_tea"
-      relative: true
-    source: path
+      name: mini_tea
+      sha256: b667eb70afa0b7a6fd9fc03db7afa9e8964cd6c709b386b387d20a782021d9c9
+      url: "https://pub.dev"
+    source: hosted
     version: "0.1.2"
   mini_tea_flutter:
     dependency: "direct main"
     description:
-      path: "../mini_tea/packages/mini_tea_flutter"
-      relative: true
-    source: path
+      name: mini_tea_flutter
+      sha256: "9bf3c3ad3b5cdf89c551e9171575c818da6b30fdca92d4f0abf3346e1fd6bb96"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.2.0"
   mini_tea_test:
     dependency: "direct dev"
     description:
-      path: "../mini_tea/packages/mini_tea_test"
-      relative: true
-    source: path
+      name: mini_tea_test
+      sha256: "4a24ffff99594a2ac5353dbce9a432b3b6cadb38cd166eefec58c601a580a62d"
+      url: "https://pub.dev"
+    source: hosted
     version: "0.2.0"
   mocktail:
     dependency: "direct dev"
@@ -930,6 +941,62 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.9"
+  shared_preferences:
+    dependency: "direct main"
+    description:
+      name: shared_preferences
+      sha256: "6e8bf70b7fef813df4e9a36f658ac46d107db4b4cfe1048b477d4e453a8159f5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.3"
+  shared_preferences_android:
+    dependency: transitive
+    description:
+      name: shared_preferences_android
+      sha256: "9f9f3d372d4304723e6136663bb291c0b93f5e4c8a4a6314347f481a33bda2b1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.7"
+  shared_preferences_foundation:
+    dependency: transitive
+    description:
+      name: shared_preferences_foundation
+      sha256: "6a52cfcdaeac77cad8c97b539ff688ccfc458c007b4db12be584fbe5c0e49e03"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.4"
+  shared_preferences_linux:
+    dependency: transitive
+    description:
+      name: shared_preferences_linux
+      sha256: "580abfd40f415611503cae30adf626e6656dfb2f0cee8f465ece7b6defb40f2f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.1"
+  shared_preferences_platform_interface:
+    dependency: transitive
+    description:
+      name: shared_preferences_platform_interface
+      sha256: "57cbf196c486bc2cf1f02b85784932c6094376284b3ad5779d1b1c6c6a816b80"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.1"
+  shared_preferences_web:
+    dependency: transitive
+    description:
+      name: shared_preferences_web
+      sha256: c49bd060261c9a3f0ff445892695d6212ff603ef3115edbb448509d407600019
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.3"
+  shared_preferences_windows:
+    dependency: transitive
+    description:
+      name: shared_preferences_windows
+      sha256: "94ef0f72b2d71bc3e700e025db3710911bd51a71cefb65cc609dd0d9a982e3c1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.1"
   shelf:
     dependency: transitive
     description:
@@ -991,6 +1058,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.0"
+  source_helper:
+    dependency: transitive
+    description:
+      name: source_helper
+      sha256: "86d247119aedce8e63f4751bd9626fc9613255935558447569ad42f9f5b48b3c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.5"
   source_map_stack_trace:
     dependency: transitive
     description:
@@ -1257,4 +1332,4 @@ packages:
     version: "3.1.2"
 sdks:
   dart: ">=3.5.0 <4.0.0"
-  flutter: ">=3.22.0"
+  flutter: ">=3.24.0"

@@ -41,6 +41,7 @@ dependencies:
   re_highlight: ^0.0.3
   responsive_grid: ^2.4.4
   rxdart: ^0.28.0
+  shared_preferences: ^2.5.3
   slang: ^3.31.1
   slang_flutter: ^3.31.0
   sqlite3: ^2.4.6
@@ -56,6 +57,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^2.5.7
+  json_serializable: ^6.9.0
   mini_tea_test: ^0.2.0
   mocktail: ^1.0.4
 

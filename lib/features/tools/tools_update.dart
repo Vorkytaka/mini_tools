@@ -11,7 +11,11 @@ Next<ToolsState, ToolsEffect> toolsUpdate(
 ) {
   switch (message) {
     case SelectToolMessage():
-      return next(state: state.copyWith(selectedTool: message.selectedTool));
+      final newState = state.copyWith(selectedTool: message.selectedTool);
+      return next(
+        state: newState,
+        effects: [ToolsEffect.saveState(newState)],
+      );
     case UpdateQueryMessage():
       return next(
         state: state.copyWith(searchQuery: message.query),
@@ -24,5 +28,7 @@ Next<ToolsState, ToolsEffect> toolsUpdate(
       );
     case UpdateSearchResultMessage():
       return next(state: state.copyWith(searchResult: message.result));
+    case LoadedStateMessage():
+      return next(state: message.state);
   }
 }

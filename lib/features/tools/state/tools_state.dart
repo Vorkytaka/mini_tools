@@ -16,6 +16,7 @@ import '../../../tools/text_diff/text_diff_tool.dart';
 import '../../../tools/uuid/uuid_tool.dart';
 
 part 'tools_state.freezed.dart';
+part 'tools_state.g.dart';
 
 enum Tools {
   datetime,
@@ -69,4 +70,7 @@ class ToolsState with _$ToolsState {
     searchQuery: '',
     searchResult: List.empty(growable: false),
   );
+
+  factory ToolsState.fromJson(Map<String, dynamic> json) =>
+      _$ToolsStateFromJson(json);
 }

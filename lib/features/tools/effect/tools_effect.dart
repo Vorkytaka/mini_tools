@@ -11,4 +11,8 @@ sealed class ToolsEffect with _$ToolsEffect {
     required String query,
     required List<Tools> tools,
   }) = SearchToolsEffect;
+
+  const factory ToolsEffect.saveState(ToolsState state) = SaveStateEffect;
+
+  const factory ToolsEffect.loadState() = LoadStateEffect;
 }

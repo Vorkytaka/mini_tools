@@ -14,11 +14,13 @@ export 'state/tools_state.dart';
 
 typedef ToolsFeature = Feature<ToolsState, ToolsMessage, ToolsEffect>;
 
-ToolsFeature toolsFeatureFactory({
-  required GlobalKey key,
-}) =>
-    ToolsFeature(
+ToolsFeature toolsFeatureFactory({required GlobalKey key}) => ToolsFeature(
       initialState: ToolsState.defaultValue,
       update: toolsUpdate,
-      effectHandlers: [ToolsEffectHandler(key: key)],
+      effectHandlers: [
+        ToolsEffectHandler(key: key),
+      ],
+      initialEffects: [
+        const ToolsEffect.loadState(),
+      ],
     );
