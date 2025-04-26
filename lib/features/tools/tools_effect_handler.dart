@@ -11,6 +11,9 @@ import 'state/tools_state.dart';
 
 final class ToolsEffectHandler
     implements EffectHandler<ToolsEffect, ToolsMessage> {
+  static const _tag = 'ToolsEffectHandler';
+  static const _stateKey = 'tools_feature/state';
+
   // NEVER DO THIS!
   // But i did.. Because i'm lazy
   final GlobalKey _key;
@@ -53,9 +56,10 @@ final class ToolsEffectHandler
     try {
       final json = jsonEncode(effect.state.toJson());
       final sharedPreferences = await SharedPreferences.getInstance();
-      await sharedPreferences.setString('tools_effect_state', json);
+      await sharedPreferences.setString(_stateKey, json);
+      Log.v(_tag, 'Successfully save the state');
     } on Object catch (e, st) {
-      Log.e('ToolsEffectHandler', 'Could not save the state', e, st);
+      Log.e(_tag, 'Could not save the state', e, st);
     }
   }
 
@@ -65,14 +69,15 @@ final class ToolsEffectHandler
   ) async {
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
-      final str = sharedPreferences.getString('tools_effect_state');
+      final str = sharedPreferences.getString(_stateKey);
       if (str != null) {
         final json = jsonDecode(str);
         final state = ToolsState.fromJson(json);
         emit(ToolsMessage.loadedState(state));
+        Log.v(_tag, 'Successfully load the state');
       }
     } on Object catch (e, st) {
-      Log.e('ToolsEffectHandler', 'Could not load the state', e, st);
+      Log.e(_tag, 'Could not load the state', e, st);
     }
   }
 }
