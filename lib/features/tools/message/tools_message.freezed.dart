@@ -18,25 +18,25 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ToolsMessage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tools selectedTool) selectTool,
+    required TResult Function(String toolId) selectTool,
     required TResult Function(String query) updateQuery,
-    required TResult Function(List<Tools> result) updateSearchResult,
+    required TResult Function(List<String> result) updateSearchResult,
     required TResult Function(ToolsState state) loadedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tools selectedTool)? selectTool,
+    TResult? Function(String toolId)? selectTool,
     TResult? Function(String query)? updateQuery,
-    TResult? Function(List<Tools> result)? updateSearchResult,
+    TResult? Function(List<String> result)? updateSearchResult,
     TResult? Function(ToolsState state)? loadedState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tools selectedTool)? selectTool,
+    TResult Function(String toolId)? selectTool,
     TResult Function(String query)? updateQuery,
-    TResult Function(List<Tools> result)? updateSearchResult,
+    TResult Function(List<String> result)? updateSearchResult,
     TResult Function(ToolsState state)? loadedState,
     required TResult orElse(),
   }) =>
@@ -96,7 +96,7 @@ abstract class _$$SelectToolMessageImplCopyWith<$Res> {
           $Res Function(_$SelectToolMessageImpl) then) =
       __$$SelectToolMessageImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Tools selectedTool});
+  $Res call({String toolId});
 }
 
 /// @nodoc
@@ -112,13 +112,13 @@ class __$$SelectToolMessageImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectedTool = null,
+    Object? toolId = null,
   }) {
     return _then(_$SelectToolMessageImpl(
-      null == selectedTool
-          ? _value.selectedTool
-          : selectedTool // ignore: cast_nullable_to_non_nullable
-              as Tools,
+      null == toolId
+          ? _value.toolId
+          : toolId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -126,14 +126,14 @@ class __$$SelectToolMessageImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SelectToolMessageImpl implements SelectToolMessage {
-  const _$SelectToolMessageImpl(this.selectedTool);
+  const _$SelectToolMessageImpl(this.toolId);
 
   @override
-  final Tools selectedTool;
+  final String toolId;
 
   @override
   String toString() {
-    return 'ToolsMessage.selectTool(selectedTool: $selectedTool)';
+    return 'ToolsMessage.selectTool(toolId: $toolId)';
   }
 
   @override
@@ -141,12 +141,11 @@ class _$SelectToolMessageImpl implements SelectToolMessage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SelectToolMessageImpl &&
-            (identical(other.selectedTool, selectedTool) ||
-                other.selectedTool == selectedTool));
+            (identical(other.toolId, toolId) || other.toolId == toolId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, selectedTool);
+  int get hashCode => Object.hash(runtimeType, toolId);
 
   /// Create a copy of ToolsMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -160,36 +159,36 @@ class _$SelectToolMessageImpl implements SelectToolMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tools selectedTool) selectTool,
+    required TResult Function(String toolId) selectTool,
     required TResult Function(String query) updateQuery,
-    required TResult Function(List<Tools> result) updateSearchResult,
+    required TResult Function(List<String> result) updateSearchResult,
     required TResult Function(ToolsState state) loadedState,
   }) {
-    return selectTool(selectedTool);
+    return selectTool(toolId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tools selectedTool)? selectTool,
+    TResult? Function(String toolId)? selectTool,
     TResult? Function(String query)? updateQuery,
-    TResult? Function(List<Tools> result)? updateSearchResult,
+    TResult? Function(List<String> result)? updateSearchResult,
     TResult? Function(ToolsState state)? loadedState,
   }) {
-    return selectTool?.call(selectedTool);
+    return selectTool?.call(toolId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tools selectedTool)? selectTool,
+    TResult Function(String toolId)? selectTool,
     TResult Function(String query)? updateQuery,
-    TResult Function(List<Tools> result)? updateSearchResult,
+    TResult Function(List<String> result)? updateSearchResult,
     TResult Function(ToolsState state)? loadedState,
     required TResult orElse(),
   }) {
     if (selectTool != null) {
-      return selectTool(selectedTool);
+      return selectTool(toolId);
     }
     return orElse();
   }
@@ -234,10 +233,10 @@ class _$SelectToolMessageImpl implements SelectToolMessage {
 }
 
 abstract class SelectToolMessage implements ToolsMessage {
-  const factory SelectToolMessage(final Tools selectedTool) =
+  const factory SelectToolMessage(final String toolId) =
       _$SelectToolMessageImpl;
 
-  Tools get selectedTool;
+  String get toolId;
 
   /// Create a copy of ToolsMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -315,9 +314,9 @@ class _$UpdateQueryMessageImpl implements UpdateQueryMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tools selectedTool) selectTool,
+    required TResult Function(String toolId) selectTool,
     required TResult Function(String query) updateQuery,
-    required TResult Function(List<Tools> result) updateSearchResult,
+    required TResult Function(List<String> result) updateSearchResult,
     required TResult Function(ToolsState state) loadedState,
   }) {
     return updateQuery(query);
@@ -326,9 +325,9 @@ class _$UpdateQueryMessageImpl implements UpdateQueryMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tools selectedTool)? selectTool,
+    TResult? Function(String toolId)? selectTool,
     TResult? Function(String query)? updateQuery,
-    TResult? Function(List<Tools> result)? updateSearchResult,
+    TResult? Function(List<String> result)? updateSearchResult,
     TResult? Function(ToolsState state)? loadedState,
   }) {
     return updateQuery?.call(query);
@@ -337,9 +336,9 @@ class _$UpdateQueryMessageImpl implements UpdateQueryMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tools selectedTool)? selectTool,
+    TResult Function(String toolId)? selectTool,
     TResult Function(String query)? updateQuery,
-    TResult Function(List<Tools> result)? updateSearchResult,
+    TResult Function(List<String> result)? updateSearchResult,
     TResult Function(ToolsState state)? loadedState,
     required TResult orElse(),
   }) {
@@ -408,7 +407,7 @@ abstract class _$$UpdateSearchResultMessageImplCopyWith<$Res> {
           $Res Function(_$UpdateSearchResultMessageImpl) then) =
       __$$UpdateSearchResultMessageImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Tools> result});
+  $Res call({List<String> result});
 }
 
 /// @nodoc
@@ -431,7 +430,7 @@ class __$$UpdateSearchResultMessageImplCopyWithImpl<$Res>
       null == result
           ? _value._result
           : result // ignore: cast_nullable_to_non_nullable
-              as List<Tools>,
+              as List<String>,
     ));
   }
 }
@@ -439,12 +438,12 @@ class __$$UpdateSearchResultMessageImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
-  const _$UpdateSearchResultMessageImpl(final List<Tools> result)
+  const _$UpdateSearchResultMessageImpl(final List<String> result)
       : _result = result;
 
-  final List<Tools> _result;
+  final List<String> _result;
   @override
-  List<Tools> get result {
+  List<String> get result {
     if (_result is EqualUnmodifiableListView) return _result;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_result);
@@ -479,9 +478,9 @@ class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tools selectedTool) selectTool,
+    required TResult Function(String toolId) selectTool,
     required TResult Function(String query) updateQuery,
-    required TResult Function(List<Tools> result) updateSearchResult,
+    required TResult Function(List<String> result) updateSearchResult,
     required TResult Function(ToolsState state) loadedState,
   }) {
     return updateSearchResult(result);
@@ -490,9 +489,9 @@ class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tools selectedTool)? selectTool,
+    TResult? Function(String toolId)? selectTool,
     TResult? Function(String query)? updateQuery,
-    TResult? Function(List<Tools> result)? updateSearchResult,
+    TResult? Function(List<String> result)? updateSearchResult,
     TResult? Function(ToolsState state)? loadedState,
   }) {
     return updateSearchResult?.call(result);
@@ -501,9 +500,9 @@ class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tools selectedTool)? selectTool,
+    TResult Function(String toolId)? selectTool,
     TResult Function(String query)? updateQuery,
-    TResult Function(List<Tools> result)? updateSearchResult,
+    TResult Function(List<String> result)? updateSearchResult,
     TResult Function(ToolsState state)? loadedState,
     required TResult orElse(),
   }) {
@@ -553,10 +552,10 @@ class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
 }
 
 abstract class UpdateSearchResultMessage implements ToolsMessage {
-  const factory UpdateSearchResultMessage(final List<Tools> result) =
+  const factory UpdateSearchResultMessage(final List<String> result) =
       _$UpdateSearchResultMessageImpl;
 
-  List<Tools> get result;
+  List<String> get result;
 
   /// Create a copy of ToolsMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -646,9 +645,9 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Tools selectedTool) selectTool,
+    required TResult Function(String toolId) selectTool,
     required TResult Function(String query) updateQuery,
-    required TResult Function(List<Tools> result) updateSearchResult,
+    required TResult Function(List<String> result) updateSearchResult,
     required TResult Function(ToolsState state) loadedState,
   }) {
     return loadedState(state);
@@ -657,9 +656,9 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(Tools selectedTool)? selectTool,
+    TResult? Function(String toolId)? selectTool,
     TResult? Function(String query)? updateQuery,
-    TResult? Function(List<Tools> result)? updateSearchResult,
+    TResult? Function(List<String> result)? updateSearchResult,
     TResult? Function(ToolsState state)? loadedState,
   }) {
     return loadedState?.call(state);
@@ -668,9 +667,9 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Tools selectedTool)? selectTool,
+    TResult Function(String toolId)? selectTool,
     TResult Function(String query)? updateQuery,
-    TResult Function(List<Tools> result)? updateSearchResult,
+    TResult Function(List<String> result)? updateSearchResult,
     TResult Function(ToolsState state)? loadedState,
     required TResult orElse(),
   }) {

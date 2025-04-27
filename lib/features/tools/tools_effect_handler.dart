@@ -5,6 +5,7 @@ import 'package:mini_tea/feature.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../common/logger/logger.dart';
+import '../../tools.dart';
 import 'effect/tools_effect.dart';
 import 'message/tools_message.dart';
 import 'state/tools_state.dart';
@@ -40,10 +41,12 @@ final class ToolsEffectHandler
   ) async {
     final query = effect.query.toLowerCase();
     final result = effect.tools
-        .where((tool) => tool.tool
-            .buildTitle(_key.currentContext!)
-            .toLowerCase()
-            .contains(query))
+        .where((toolId) =>
+            ToolsRegistry.toolById(toolId)
+                ?.buildTitle(_key.currentContext!)
+                .toLowerCase()
+                .contains(query) ??
+            false)
         .toList(growable: false);
 
     emit(ToolsMessage.updateSearchResult(result));

@@ -11,7 +11,7 @@ Next<ToolsState, ToolsEffect> toolsUpdate(
 ) {
   switch (message) {
     case SelectToolMessage():
-      final newState = state.copyWith(selectedTool: message.selectedTool);
+      final newState = state.copyWith(selectedToolId: message.toolId);
       return next(
         state: newState,
         effects: [ToolsEffect.saveState(newState)],
@@ -22,7 +22,7 @@ Next<ToolsState, ToolsEffect> toolsUpdate(
         effects: [
           ToolsEffect.searchTools(
             query: message.query,
-            tools: state.tools,
+            tools: state.toolIds,
           ),
         ],
       );

@@ -6,8 +6,8 @@ import '../../tool/tool.dart';
 import 'feature/src/hash_feature.dart';
 import 'hash.dart';
 
-final class HashTool {
-  const HashTool._();
+final class HashCalculatorTool {
+  const HashCalculatorTool._();
 
   static const id = 'hash';
 

@@ -8,37 +8,19 @@ part of 'tools_state.dart';
 
 _$ToolsStateImpl _$$ToolsStateImplFromJson(Map<String, dynamic> json) =>
     _$ToolsStateImpl(
-      selectedTool: $enumDecode(_$ToolsEnumMap, json['selectedTool']),
-      tools: (json['tools'] as List<dynamic>)
-          .map((e) => $enumDecode(_$ToolsEnumMap, e))
-          .toList(),
+      selectedToolId: json['selectedToolId'] as String,
+      toolIds:
+          (json['toolIds'] as List<dynamic>).map((e) => e as String).toList(),
       searchQuery: json['searchQuery'] as String,
       searchResult: (json['searchResult'] as List<dynamic>)
-          .map((e) => $enumDecode(_$ToolsEnumMap, e))
+          .map((e) => e as String)
           .toList(),
     );
 
 Map<String, dynamic> _$$ToolsStateImplToJson(_$ToolsStateImpl instance) =>
     <String, dynamic>{
-      'selectedTool': _$ToolsEnumMap[instance.selectedTool]!,
-      'tools': instance.tools.map((e) => _$ToolsEnumMap[e]!).toList(),
+      'selectedToolId': instance.selectedToolId,
+      'toolIds': instance.toolIds,
       'searchQuery': instance.searchQuery,
-      'searchResult':
-          instance.searchResult.map((e) => _$ToolsEnumMap[e]!).toList(),
+      'searchResult': instance.searchResult,
     };
-
-const _$ToolsEnumMap = {
-  Tools.datetime: 'datetime',
-  Tools.jsonFormatter: 'jsonFormatter',
-  Tools.regExp: 'regExp',
-  Tools.numberBase: 'numberBase',
-  Tools.percentage: 'percentage',
-  Tools.colorConverter: 'colorConverter',
-  Tools.materialColor: 'materialColor',
-  Tools.hashCalculator: 'hashCalculator',
-  Tools.sqlite: 'sqlite',
-  Tools.uuid: 'uuid',
-  Tools.cron: 'cron',
-  Tools.textDiff: 'textDiff',
-  Tools.qrCode: 'qrCode',
-};

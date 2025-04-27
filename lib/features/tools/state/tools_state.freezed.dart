@@ -20,10 +20,10 @@ ToolsState _$ToolsStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ToolsState {
-  Tools get selectedTool => throw _privateConstructorUsedError;
-  List<Tools> get tools => throw _privateConstructorUsedError;
+  String get selectedToolId => throw _privateConstructorUsedError;
+  List<String> get toolIds => throw _privateConstructorUsedError;
   String get searchQuery => throw _privateConstructorUsedError;
-  List<Tools> get searchResult => throw _privateConstructorUsedError;
+  List<String> get searchResult => throw _privateConstructorUsedError;
 
   /// Serializes this ToolsState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,10 +42,10 @@ abstract class $ToolsStateCopyWith<$Res> {
       _$ToolsStateCopyWithImpl<$Res, ToolsState>;
   @useResult
   $Res call(
-      {Tools selectedTool,
-      List<Tools> tools,
+      {String selectedToolId,
+      List<String> toolIds,
       String searchQuery,
-      List<Tools> searchResult});
+      List<String> searchResult});
 }
 
 /// @nodoc
@@ -63,20 +63,20 @@ class _$ToolsStateCopyWithImpl<$Res, $Val extends ToolsState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectedTool = null,
-    Object? tools = null,
+    Object? selectedToolId = null,
+    Object? toolIds = null,
     Object? searchQuery = null,
     Object? searchResult = null,
   }) {
     return _then(_value.copyWith(
-      selectedTool: null == selectedTool
-          ? _value.selectedTool
-          : selectedTool // ignore: cast_nullable_to_non_nullable
-              as Tools,
-      tools: null == tools
-          ? _value.tools
-          : tools // ignore: cast_nullable_to_non_nullable
-              as List<Tools>,
+      selectedToolId: null == selectedToolId
+          ? _value.selectedToolId
+          : selectedToolId // ignore: cast_nullable_to_non_nullable
+              as String,
+      toolIds: null == toolIds
+          ? _value.toolIds
+          : toolIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       searchQuery: null == searchQuery
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
@@ -84,7 +84,7 @@ class _$ToolsStateCopyWithImpl<$Res, $Val extends ToolsState>
       searchResult: null == searchResult
           ? _value.searchResult
           : searchResult // ignore: cast_nullable_to_non_nullable
-              as List<Tools>,
+              as List<String>,
     ) as $Val);
   }
 }
@@ -98,10 +98,10 @@ abstract class _$$ToolsStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Tools selectedTool,
-      List<Tools> tools,
+      {String selectedToolId,
+      List<String> toolIds,
       String searchQuery,
-      List<Tools> searchResult});
+      List<String> searchResult});
 }
 
 /// @nodoc
@@ -117,20 +117,20 @@ class __$$ToolsStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? selectedTool = null,
-    Object? tools = null,
+    Object? selectedToolId = null,
+    Object? toolIds = null,
     Object? searchQuery = null,
     Object? searchResult = null,
   }) {
     return _then(_$ToolsStateImpl(
-      selectedTool: null == selectedTool
-          ? _value.selectedTool
-          : selectedTool // ignore: cast_nullable_to_non_nullable
-              as Tools,
-      tools: null == tools
-          ? _value._tools
-          : tools // ignore: cast_nullable_to_non_nullable
-              as List<Tools>,
+      selectedToolId: null == selectedToolId
+          ? _value.selectedToolId
+          : selectedToolId // ignore: cast_nullable_to_non_nullable
+              as String,
+      toolIds: null == toolIds
+          ? _value._toolIds
+          : toolIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       searchQuery: null == searchQuery
           ? _value.searchQuery
           : searchQuery // ignore: cast_nullable_to_non_nullable
@@ -138,7 +138,7 @@ class __$$ToolsStateImplCopyWithImpl<$Res>
       searchResult: null == searchResult
           ? _value._searchResult
           : searchResult // ignore: cast_nullable_to_non_nullable
-              as List<Tools>,
+              as List<String>,
     ));
   }
 }
@@ -147,31 +147,31 @@ class __$$ToolsStateImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ToolsStateImpl implements _ToolsState {
   const _$ToolsStateImpl(
-      {required this.selectedTool,
-      required final List<Tools> tools,
+      {required this.selectedToolId,
+      required final List<String> toolIds,
       required this.searchQuery,
-      required final List<Tools> searchResult})
-      : _tools = tools,
+      required final List<String> searchResult})
+      : _toolIds = toolIds,
         _searchResult = searchResult;
 
   factory _$ToolsStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$ToolsStateImplFromJson(json);
 
   @override
-  final Tools selectedTool;
-  final List<Tools> _tools;
+  final String selectedToolId;
+  final List<String> _toolIds;
   @override
-  List<Tools> get tools {
-    if (_tools is EqualUnmodifiableListView) return _tools;
+  List<String> get toolIds {
+    if (_toolIds is EqualUnmodifiableListView) return _toolIds;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tools);
+    return EqualUnmodifiableListView(_toolIds);
   }
 
   @override
   final String searchQuery;
-  final List<Tools> _searchResult;
+  final List<String> _searchResult;
   @override
-  List<Tools> get searchResult {
+  List<String> get searchResult {
     if (_searchResult is EqualUnmodifiableListView) return _searchResult;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_searchResult);
@@ -179,7 +179,7 @@ class _$ToolsStateImpl implements _ToolsState {
 
   @override
   String toString() {
-    return 'ToolsState(selectedTool: $selectedTool, tools: $tools, searchQuery: $searchQuery, searchResult: $searchResult)';
+    return 'ToolsState(selectedToolId: $selectedToolId, toolIds: $toolIds, searchQuery: $searchQuery, searchResult: $searchResult)';
   }
 
   @override
@@ -187,9 +187,9 @@ class _$ToolsStateImpl implements _ToolsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ToolsStateImpl &&
-            (identical(other.selectedTool, selectedTool) ||
-                other.selectedTool == selectedTool) &&
-            const DeepCollectionEquality().equals(other._tools, _tools) &&
+            (identical(other.selectedToolId, selectedToolId) ||
+                other.selectedToolId == selectedToolId) &&
+            const DeepCollectionEquality().equals(other._toolIds, _toolIds) &&
             (identical(other.searchQuery, searchQuery) ||
                 other.searchQuery == searchQuery) &&
             const DeepCollectionEquality()
@@ -200,8 +200,8 @@ class _$ToolsStateImpl implements _ToolsState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      selectedTool,
-      const DeepCollectionEquality().hash(_tools),
+      selectedToolId,
+      const DeepCollectionEquality().hash(_toolIds),
       searchQuery,
       const DeepCollectionEquality().hash(_searchResult));
 
@@ -223,22 +223,22 @@ class _$ToolsStateImpl implements _ToolsState {
 
 abstract class _ToolsState implements ToolsState {
   const factory _ToolsState(
-      {required final Tools selectedTool,
-      required final List<Tools> tools,
+      {required final String selectedToolId,
+      required final List<String> toolIds,
       required final String searchQuery,
-      required final List<Tools> searchResult}) = _$ToolsStateImpl;
+      required final List<String> searchResult}) = _$ToolsStateImpl;
 
   factory _ToolsState.fromJson(Map<String, dynamic> json) =
       _$ToolsStateImpl.fromJson;
 
   @override
-  Tools get selectedTool;
+  String get selectedToolId;
   @override
-  List<Tools> get tools;
+  List<String> get toolIds;
   @override
   String get searchQuery;
   @override
-  List<Tools> get searchResult;
+  List<String> get searchResult;
 
   /// Create a copy of ToolsState
   /// with the given fields replaced by the non-null parameter values.

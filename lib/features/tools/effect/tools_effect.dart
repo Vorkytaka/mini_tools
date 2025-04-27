@@ -9,7 +9,7 @@ part 'tools_effect.freezed.dart';
 sealed class ToolsEffect with _$ToolsEffect {
   const factory ToolsEffect.searchTools({
     required String query,
-    required List<Tools> tools,
+    required List<String> tools,
   }) = SearchToolsEffect;
 
   const factory ToolsEffect.saveState(ToolsState state) = SaveStateEffect;

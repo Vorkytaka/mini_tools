@@ -18,21 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ToolsEffect {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query, List<Tools> tools) searchTools,
+    required TResult Function(String query, List<String> tools) searchTools,
     required TResult Function(ToolsState state) saveState,
     required TResult Function() loadState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query, List<Tools> tools)? searchTools,
+    TResult? Function(String query, List<String> tools)? searchTools,
     TResult? Function(ToolsState state)? saveState,
     TResult? Function()? loadState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query, List<Tools> tools)? searchTools,
+    TResult Function(String query, List<String> tools)? searchTools,
     TResult Function(ToolsState state)? saveState,
     TResult Function()? loadState,
     required TResult orElse(),
@@ -89,7 +89,7 @@ abstract class _$$SearchToolsEffectImplCopyWith<$Res> {
           $Res Function(_$SearchToolsEffectImpl) then) =
       __$$SearchToolsEffectImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String query, List<Tools> tools});
+  $Res call({String query, List<String> tools});
 }
 
 /// @nodoc
@@ -116,7 +116,7 @@ class __$$SearchToolsEffectImplCopyWithImpl<$Res>
       tools: null == tools
           ? _value._tools
           : tools // ignore: cast_nullable_to_non_nullable
-              as List<Tools>,
+              as List<String>,
     ));
   }
 }
@@ -125,14 +125,14 @@ class __$$SearchToolsEffectImplCopyWithImpl<$Res>
 
 class _$SearchToolsEffectImpl implements SearchToolsEffect {
   const _$SearchToolsEffectImpl(
-      {required this.query, required final List<Tools> tools})
+      {required this.query, required final List<String> tools})
       : _tools = tools;
 
   @override
   final String query;
-  final List<Tools> _tools;
+  final List<String> _tools;
   @override
-  List<Tools> get tools {
+  List<String> get tools {
     if (_tools is EqualUnmodifiableListView) return _tools;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tools);
@@ -168,7 +168,7 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query, List<Tools> tools) searchTools,
+    required TResult Function(String query, List<String> tools) searchTools,
     required TResult Function(ToolsState state) saveState,
     required TResult Function() loadState,
   }) {
@@ -178,7 +178,7 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query, List<Tools> tools)? searchTools,
+    TResult? Function(String query, List<String> tools)? searchTools,
     TResult? Function(ToolsState state)? saveState,
     TResult? Function()? loadState,
   }) {
@@ -188,7 +188,7 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query, List<Tools> tools)? searchTools,
+    TResult Function(String query, List<String> tools)? searchTools,
     TResult Function(ToolsState state)? saveState,
     TResult Function()? loadState,
     required TResult orElse(),
@@ -237,10 +237,10 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
 abstract class SearchToolsEffect implements ToolsEffect {
   const factory SearchToolsEffect(
       {required final String query,
-      required final List<Tools> tools}) = _$SearchToolsEffectImpl;
+      required final List<String> tools}) = _$SearchToolsEffectImpl;
 
   String get query;
-  List<Tools> get tools;
+  List<String> get tools;
 
   /// Create a copy of ToolsEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -330,7 +330,7 @@ class _$SaveStateEffectImpl implements SaveStateEffect {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query, List<Tools> tools) searchTools,
+    required TResult Function(String query, List<String> tools) searchTools,
     required TResult Function(ToolsState state) saveState,
     required TResult Function() loadState,
   }) {
@@ -340,7 +340,7 @@ class _$SaveStateEffectImpl implements SaveStateEffect {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query, List<Tools> tools)? searchTools,
+    TResult? Function(String query, List<String> tools)? searchTools,
     TResult? Function(ToolsState state)? saveState,
     TResult? Function()? loadState,
   }) {
@@ -350,7 +350,7 @@ class _$SaveStateEffectImpl implements SaveStateEffect {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query, List<Tools> tools)? searchTools,
+    TResult Function(String query, List<String> tools)? searchTools,
     TResult Function(ToolsState state)? saveState,
     TResult Function()? loadState,
     required TResult orElse(),
@@ -449,7 +449,7 @@ class _$LoadStateEffectImpl implements LoadStateEffect {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query, List<Tools> tools) searchTools,
+    required TResult Function(String query, List<String> tools) searchTools,
     required TResult Function(ToolsState state) saveState,
     required TResult Function() loadState,
   }) {
@@ -459,7 +459,7 @@ class _$LoadStateEffectImpl implements LoadStateEffect {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query, List<Tools> tools)? searchTools,
+    TResult? Function(String query, List<String> tools)? searchTools,
     TResult? Function(ToolsState state)? saveState,
     TResult? Function()? loadState,
   }) {
@@ -469,7 +469,7 @@ class _$LoadStateEffectImpl implements LoadStateEffect {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query, List<Tools> tools)? searchTools,
+    TResult Function(String query, List<String> tools)? searchTools,
     TResult Function(ToolsState state)? saveState,
     TResult Function()? loadState,
     required TResult orElse(),
