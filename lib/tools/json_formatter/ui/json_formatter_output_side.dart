@@ -69,6 +69,7 @@ final class _OutputSide extends StatelessWidget {
                 languages: {'json': CodeHighlightThemeMode(mode: langJson)},
                 theme: CodeThemes.monokai(TextStyles.firaCode),
               ),
+              defaultFontFamily: TextStyles.firaCode.fontFamily,
             ),
             indicatorBuilder: MacosCodeEditor.defaultIndicatorBuilder,
           ),

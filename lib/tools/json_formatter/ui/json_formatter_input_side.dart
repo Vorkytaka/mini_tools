@@ -53,6 +53,7 @@ final class _InputSide extends StatelessWidget {
                 languages: {'json': CodeHighlightThemeMode(mode: langJson)},
                 theme: CodeThemes.monokai(TextStyles.firaCode),
               ),
+              defaultFontFamily: TextStyles.firaCode.fontFamily,
             ),
             indicatorBuilder: MacosCodeEditor.defaultIndicatorBuilder,
           ),

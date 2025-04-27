@@ -85,6 +85,9 @@ class MacosCodeEditor extends StatefulWidget {
   static CodeEditorStyle defaultStyle(
     BuildContext context, {
     required CodeHighlightTheme codeTheme,
+
+    /// Hacky way to fix bug (see #216)
+    String? defaultFontFamily,
   }) {
     return CodeEditorStyle(
       backgroundColor: const Color.fromRGBO(30, 30, 30, 1),
@@ -92,6 +95,7 @@ class MacosCodeEditor extends StatefulWidget {
       cursorWidth: 2,
       cursorColor: MacosColors.white,
       textColor: MacosColors.white,
+      fontFamily: defaultFontFamily,
     );
   }
 
