@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../state/tools_state.dart';
-
 part 'tools_message.freezed.dart';
 
 @freezed
@@ -13,6 +11,4 @@ sealed class ToolsMessage with _$ToolsMessage {
 
   const factory ToolsMessage.updateSearchResult(List<String> result) =
       UpdateSearchResultMessage;
-
-  const factory ToolsMessage.loadedState(ToolsState state) = LoadedStateMessage;
 }

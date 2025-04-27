@@ -5,8 +5,6 @@ import '../../../tools/datetime_converter/datetime_converter_tool.dart';
 
 part 'tools_state.freezed.dart';
 
-part 'tools_state.g.dart';
-
 @freezed
 @immutable
 class ToolsState with _$ToolsState {
@@ -23,7 +21,4 @@ class ToolsState with _$ToolsState {
     searchQuery: '',
     searchResult: List.empty(growable: false),
   );
-
-  factory ToolsState.fromJson(Map<String, dynamic> json) =>
-      _$ToolsStateFromJson(json);
 }

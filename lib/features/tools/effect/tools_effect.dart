@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../state/tools_state.dart';
-
 part 'tools_effect.freezed.dart';
 
 @freezed
@@ -12,7 +10,8 @@ sealed class ToolsEffect with _$ToolsEffect {
     required List<String> tools,
   }) = SearchToolsEffect;
 
-  const factory ToolsEffect.saveState(ToolsState state) = SaveStateEffect;
+  const factory ToolsEffect.saveSelectedTool(String toolId) =
+      SaveSelectedToolEffect;
 
-  const factory ToolsEffect.loadState() = LoadStateEffect;
+  const factory ToolsEffect.loadSelectedTool() = LoadSelectedToolEffect;
 }
