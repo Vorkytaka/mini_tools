@@ -9,6 +9,7 @@ import 'common/datetime_inherited_model.dart';
 import 'common/ui/macos_ui_hacks.dart';
 import 'features/tools/tools_feature.dart';
 import 'i18n/strings.g.dart';
+import 'tools.dart';
 
 class MiniToolsApp extends StatelessWidget {
   static final _key = GlobalKey();
@@ -33,7 +34,7 @@ class MiniToolsApp extends StatelessWidget {
                 child: CopyOverlay(
                   child: FeatureListener<ToolsFeature, ToolsState>(
                     listenWhen: (prev, curr) =>
-                        prev.selectedTool != curr.selectedTool,
+                        prev.selectedToolId != curr.selectedToolId,
                     listener: (context, state) {
                       // We just listen if selected tool changes
                       // That's mean, that we did change the page
@@ -137,30 +138,34 @@ class _SidebarContent extends StatelessWidget {
           return ListView.builder(
             itemCount: results.length,
             padding: EdgeInsets.all(10.0 - theme.visualDensity.horizontal),
-            itemBuilder: (context, i) => MacosSidebarItem(
-              item: SidebarItem(
-                label: Text(results[i].tool.buildTitle(context)),
-                leading: MacosIcon(results[i].tool.icon),
-              ),
-              onClick: () {
-                context
-                    .read<ToolsFeature>()
-                    .accept(ToolsMessage.selectTool(results[i]));
-              },
-              selected: results[i] == state.selectedTool,
-            ),
+            itemBuilder: (context, i) {
+              final tool = ToolsRegistry.toolById(results[i])!;
+              return MacosSidebarItem(
+                item: SidebarItem(
+                  label: Text(tool.buildTitle(context)),
+                  leading: MacosIcon(tool.icon),
+                ),
+                onClick: () {
+                  context
+                      .read<ToolsFeature>()
+                      .accept(ToolsMessage.selectTool(results[i]));
+                },
+                selected: results[i] == state.selectedToolId,
+              );
+            },
           );
         }
 
         return SidebarItems(
           scrollController: controller,
-          currentIndex: state.tools.indexOf(state.selectedTool),
+          currentIndex: state.toolIds.indexOf(state.selectedToolId),
           onChanged: (i) {
-            final tool = state.tools[i];
+            final tool = state.toolIds[i];
             context.read<ToolsFeature>().accept(ToolsMessage.selectTool(tool));
           },
-          items: Tools.values
-              .map((e) => e.tool)
+          items: state.toolIds
+              .map(ToolsRegistry.toolById)
+              .nonNulls
               .map((tool) => SidebarItem(
                     leading: MacosIcon(tool.icon),
                     label: Text(tool.buildTitle(context)),
@@ -179,7 +184,8 @@ class _BodyContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return FeatureBuilder<ToolsFeature, ToolsState>(
       builder: (context, state) {
-        return state.selectedTool.tool.buildScreen(context);
+        final tool = ToolsRegistry.toolById(state.selectedToolId)!;
+        return tool.buildScreen(context);
       },
     );
   }

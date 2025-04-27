@@ -7,16 +7,21 @@ import '../common/macos_read_only_field.dart';
 import '../common/num.dart';
 import '../i18n/strings.g.dart';
 import '../tool/base_tool.dart';
+import '../tool/tool.dart';
 
-final percentagesTool = BaseTool(
-  titleBuilder: (context) =>
-      Translations.of(context).percentageCalculator.title,
-  icon: Icons.percent,
-  screenBuilder: (context) => const PercentagesTool(),
-);
+final class PercentagesTool {
+  static const id = 'percentages';
 
-class PercentagesTool extends StatelessWidget {
-  const PercentagesTool({super.key});
+  static Tool shared = BaseTool(
+    titleBuilder: (context) =>
+        Translations.of(context).percentageCalculator.title,
+    icon: Icons.percent,
+    screenBuilder: (context) => const PercentagesToolScreen(),
+  );
+}
+
+class PercentagesToolScreen extends StatelessWidget {
+  const PercentagesToolScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

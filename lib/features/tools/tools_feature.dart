@@ -21,6 +21,6 @@ ToolsFeature toolsFeatureFactory({required GlobalKey key}) => ToolsFeature(
         ToolsEffectHandler(key: key),
       ],
       initialEffects: [
-        const ToolsEffect.loadState(),
+        const ToolsEffect.loadSelectedTool(),
       ],
     );

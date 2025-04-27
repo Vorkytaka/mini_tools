@@ -11,10 +11,15 @@ Next<ToolsState, ToolsEffect> toolsUpdate(
 ) {
   switch (message) {
     case SelectToolMessage():
-      final newState = state.copyWith(selectedTool: message.selectedTool);
+      String toolId = message.toolId;
+      if (!state.toolIds.contains(toolId)) {
+        // If there is no tool that was selected,
+        // then just pick the first one of all
+        toolId = state.toolIds.first;
+      }
       return next(
-        state: newState,
-        effects: [ToolsEffect.saveState(newState)],
+        state: state.copyWith(selectedToolId: toolId),
+        effects: [ToolsEffect.saveSelectedTool(toolId)],
       );
     case UpdateQueryMessage():
       return next(
@@ -22,13 +27,11 @@ Next<ToolsState, ToolsEffect> toolsUpdate(
         effects: [
           ToolsEffect.searchTools(
             query: message.query,
-            tools: state.tools,
+            tools: state.toolIds,
           ),
         ],
       );
     case UpdateSearchResultMessage():
       return next(state: state.copyWith(searchResult: message.result));
-    case LoadedStateMessage():
-      return next(state: message.state);
   }
 }

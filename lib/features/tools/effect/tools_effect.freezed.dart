@@ -18,45 +18,45 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ToolsEffect {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query, List<Tools> tools) searchTools,
-    required TResult Function(ToolsState state) saveState,
-    required TResult Function() loadState,
+    required TResult Function(String query, List<String> tools) searchTools,
+    required TResult Function(String toolId) saveSelectedTool,
+    required TResult Function() loadSelectedTool,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query, List<Tools> tools)? searchTools,
-    TResult? Function(ToolsState state)? saveState,
-    TResult? Function()? loadState,
+    TResult? Function(String query, List<String> tools)? searchTools,
+    TResult? Function(String toolId)? saveSelectedTool,
+    TResult? Function()? loadSelectedTool,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query, List<Tools> tools)? searchTools,
-    TResult Function(ToolsState state)? saveState,
-    TResult Function()? loadState,
+    TResult Function(String query, List<String> tools)? searchTools,
+    TResult Function(String toolId)? saveSelectedTool,
+    TResult Function()? loadSelectedTool,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SearchToolsEffect value) searchTools,
-    required TResult Function(SaveStateEffect value) saveState,
-    required TResult Function(LoadStateEffect value) loadState,
+    required TResult Function(SaveSelectedToolEffect value) saveSelectedTool,
+    required TResult Function(LoadSelectedToolEffect value) loadSelectedTool,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchToolsEffect value)? searchTools,
-    TResult? Function(SaveStateEffect value)? saveState,
-    TResult? Function(LoadStateEffect value)? loadState,
+    TResult? Function(SaveSelectedToolEffect value)? saveSelectedTool,
+    TResult? Function(LoadSelectedToolEffect value)? loadSelectedTool,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchToolsEffect value)? searchTools,
-    TResult Function(SaveStateEffect value)? saveState,
-    TResult Function(LoadStateEffect value)? loadState,
+    TResult Function(SaveSelectedToolEffect value)? saveSelectedTool,
+    TResult Function(LoadSelectedToolEffect value)? loadSelectedTool,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -89,7 +89,7 @@ abstract class _$$SearchToolsEffectImplCopyWith<$Res> {
           $Res Function(_$SearchToolsEffectImpl) then) =
       __$$SearchToolsEffectImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String query, List<Tools> tools});
+  $Res call({String query, List<String> tools});
 }
 
 /// @nodoc
@@ -116,7 +116,7 @@ class __$$SearchToolsEffectImplCopyWithImpl<$Res>
       tools: null == tools
           ? _value._tools
           : tools // ignore: cast_nullable_to_non_nullable
-              as List<Tools>,
+              as List<String>,
     ));
   }
 }
@@ -125,14 +125,14 @@ class __$$SearchToolsEffectImplCopyWithImpl<$Res>
 
 class _$SearchToolsEffectImpl implements SearchToolsEffect {
   const _$SearchToolsEffectImpl(
-      {required this.query, required final List<Tools> tools})
+      {required this.query, required final List<String> tools})
       : _tools = tools;
 
   @override
   final String query;
-  final List<Tools> _tools;
+  final List<String> _tools;
   @override
-  List<Tools> get tools {
+  List<String> get tools {
     if (_tools is EqualUnmodifiableListView) return _tools;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tools);
@@ -168,9 +168,9 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query, List<Tools> tools) searchTools,
-    required TResult Function(ToolsState state) saveState,
-    required TResult Function() loadState,
+    required TResult Function(String query, List<String> tools) searchTools,
+    required TResult Function(String toolId) saveSelectedTool,
+    required TResult Function() loadSelectedTool,
   }) {
     return searchTools(query, tools);
   }
@@ -178,9 +178,9 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query, List<Tools> tools)? searchTools,
-    TResult? Function(ToolsState state)? saveState,
-    TResult? Function()? loadState,
+    TResult? Function(String query, List<String> tools)? searchTools,
+    TResult? Function(String toolId)? saveSelectedTool,
+    TResult? Function()? loadSelectedTool,
   }) {
     return searchTools?.call(query, tools);
   }
@@ -188,9 +188,9 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query, List<Tools> tools)? searchTools,
-    TResult Function(ToolsState state)? saveState,
-    TResult Function()? loadState,
+    TResult Function(String query, List<String> tools)? searchTools,
+    TResult Function(String toolId)? saveSelectedTool,
+    TResult Function()? loadSelectedTool,
     required TResult orElse(),
   }) {
     if (searchTools != null) {
@@ -203,8 +203,8 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SearchToolsEffect value) searchTools,
-    required TResult Function(SaveStateEffect value) saveState,
-    required TResult Function(LoadStateEffect value) loadState,
+    required TResult Function(SaveSelectedToolEffect value) saveSelectedTool,
+    required TResult Function(LoadSelectedToolEffect value) loadSelectedTool,
   }) {
     return searchTools(this);
   }
@@ -213,8 +213,8 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchToolsEffect value)? searchTools,
-    TResult? Function(SaveStateEffect value)? saveState,
-    TResult? Function(LoadStateEffect value)? loadState,
+    TResult? Function(SaveSelectedToolEffect value)? saveSelectedTool,
+    TResult? Function(LoadSelectedToolEffect value)? loadSelectedTool,
   }) {
     return searchTools?.call(this);
   }
@@ -223,8 +223,8 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchToolsEffect value)? searchTools,
-    TResult Function(SaveStateEffect value)? saveState,
-    TResult Function(LoadStateEffect value)? loadState,
+    TResult Function(SaveSelectedToolEffect value)? saveSelectedTool,
+    TResult Function(LoadSelectedToolEffect value)? loadSelectedTool,
     required TResult orElse(),
   }) {
     if (searchTools != null) {
@@ -237,10 +237,10 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
 abstract class SearchToolsEffect implements ToolsEffect {
   const factory SearchToolsEffect(
       {required final String query,
-      required final List<Tools> tools}) = _$SearchToolsEffectImpl;
+      required final List<String> tools}) = _$SearchToolsEffectImpl;
 
   String get query;
-  List<Tools> get tools;
+  List<String> get tools;
 
   /// Create a copy of ToolsEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -250,22 +250,22 @@ abstract class SearchToolsEffect implements ToolsEffect {
 }
 
 /// @nodoc
-abstract class _$$SaveStateEffectImplCopyWith<$Res> {
-  factory _$$SaveStateEffectImplCopyWith(_$SaveStateEffectImpl value,
-          $Res Function(_$SaveStateEffectImpl) then) =
-      __$$SaveStateEffectImplCopyWithImpl<$Res>;
+abstract class _$$SaveSelectedToolEffectImplCopyWith<$Res> {
+  factory _$$SaveSelectedToolEffectImplCopyWith(
+          _$SaveSelectedToolEffectImpl value,
+          $Res Function(_$SaveSelectedToolEffectImpl) then) =
+      __$$SaveSelectedToolEffectImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ToolsState state});
-
-  $ToolsStateCopyWith<$Res> get state;
+  $Res call({String toolId});
 }
 
 /// @nodoc
-class __$$SaveStateEffectImplCopyWithImpl<$Res>
-    extends _$ToolsEffectCopyWithImpl<$Res, _$SaveStateEffectImpl>
-    implements _$$SaveStateEffectImplCopyWith<$Res> {
-  __$$SaveStateEffectImplCopyWithImpl(
-      _$SaveStateEffectImpl _value, $Res Function(_$SaveStateEffectImpl) _then)
+class __$$SaveSelectedToolEffectImplCopyWithImpl<$Res>
+    extends _$ToolsEffectCopyWithImpl<$Res, _$SaveSelectedToolEffectImpl>
+    implements _$$SaveSelectedToolEffectImplCopyWith<$Res> {
+  __$$SaveSelectedToolEffectImplCopyWithImpl(
+      _$SaveSelectedToolEffectImpl _value,
+      $Res Function(_$SaveSelectedToolEffectImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ToolsEffect
@@ -273,90 +273,80 @@ class __$$SaveStateEffectImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? state = null,
+    Object? toolId = null,
   }) {
-    return _then(_$SaveStateEffectImpl(
-      null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as ToolsState,
+    return _then(_$SaveSelectedToolEffectImpl(
+      null == toolId
+          ? _value.toolId
+          : toolId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
-  }
-
-  /// Create a copy of ToolsEffect
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ToolsStateCopyWith<$Res> get state {
-    return $ToolsStateCopyWith<$Res>(_value.state, (value) {
-      return _then(_value.copyWith(state: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$SaveStateEffectImpl implements SaveStateEffect {
-  const _$SaveStateEffectImpl(this.state);
+class _$SaveSelectedToolEffectImpl implements SaveSelectedToolEffect {
+  const _$SaveSelectedToolEffectImpl(this.toolId);
 
   @override
-  final ToolsState state;
+  final String toolId;
 
   @override
   String toString() {
-    return 'ToolsEffect.saveState(state: $state)';
+    return 'ToolsEffect.saveSelectedTool(toolId: $toolId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SaveStateEffectImpl &&
-            (identical(other.state, state) || other.state == state));
+            other is _$SaveSelectedToolEffectImpl &&
+            (identical(other.toolId, toolId) || other.toolId == toolId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, state);
+  int get hashCode => Object.hash(runtimeType, toolId);
 
   /// Create a copy of ToolsEffect
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SaveStateEffectImplCopyWith<_$SaveStateEffectImpl> get copyWith =>
-      __$$SaveStateEffectImplCopyWithImpl<_$SaveStateEffectImpl>(
-          this, _$identity);
+  _$$SaveSelectedToolEffectImplCopyWith<_$SaveSelectedToolEffectImpl>
+      get copyWith => __$$SaveSelectedToolEffectImplCopyWithImpl<
+          _$SaveSelectedToolEffectImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query, List<Tools> tools) searchTools,
-    required TResult Function(ToolsState state) saveState,
-    required TResult Function() loadState,
+    required TResult Function(String query, List<String> tools) searchTools,
+    required TResult Function(String toolId) saveSelectedTool,
+    required TResult Function() loadSelectedTool,
   }) {
-    return saveState(state);
+    return saveSelectedTool(toolId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query, List<Tools> tools)? searchTools,
-    TResult? Function(ToolsState state)? saveState,
-    TResult? Function()? loadState,
+    TResult? Function(String query, List<String> tools)? searchTools,
+    TResult? Function(String toolId)? saveSelectedTool,
+    TResult? Function()? loadSelectedTool,
   }) {
-    return saveState?.call(state);
+    return saveSelectedTool?.call(toolId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query, List<Tools> tools)? searchTools,
-    TResult Function(ToolsState state)? saveState,
-    TResult Function()? loadState,
+    TResult Function(String query, List<String> tools)? searchTools,
+    TResult Function(String toolId)? saveSelectedTool,
+    TResult Function()? loadSelectedTool,
     required TResult orElse(),
   }) {
-    if (saveState != null) {
-      return saveState(state);
+    if (saveSelectedTool != null) {
+      return saveSelectedTool(toolId);
     }
     return orElse();
   }
@@ -365,62 +355,65 @@ class _$SaveStateEffectImpl implements SaveStateEffect {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SearchToolsEffect value) searchTools,
-    required TResult Function(SaveStateEffect value) saveState,
-    required TResult Function(LoadStateEffect value) loadState,
+    required TResult Function(SaveSelectedToolEffect value) saveSelectedTool,
+    required TResult Function(LoadSelectedToolEffect value) loadSelectedTool,
   }) {
-    return saveState(this);
+    return saveSelectedTool(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchToolsEffect value)? searchTools,
-    TResult? Function(SaveStateEffect value)? saveState,
-    TResult? Function(LoadStateEffect value)? loadState,
+    TResult? Function(SaveSelectedToolEffect value)? saveSelectedTool,
+    TResult? Function(LoadSelectedToolEffect value)? loadSelectedTool,
   }) {
-    return saveState?.call(this);
+    return saveSelectedTool?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchToolsEffect value)? searchTools,
-    TResult Function(SaveStateEffect value)? saveState,
-    TResult Function(LoadStateEffect value)? loadState,
+    TResult Function(SaveSelectedToolEffect value)? saveSelectedTool,
+    TResult Function(LoadSelectedToolEffect value)? loadSelectedTool,
     required TResult orElse(),
   }) {
-    if (saveState != null) {
-      return saveState(this);
+    if (saveSelectedTool != null) {
+      return saveSelectedTool(this);
     }
     return orElse();
   }
 }
 
-abstract class SaveStateEffect implements ToolsEffect {
-  const factory SaveStateEffect(final ToolsState state) = _$SaveStateEffectImpl;
+abstract class SaveSelectedToolEffect implements ToolsEffect {
+  const factory SaveSelectedToolEffect(final String toolId) =
+      _$SaveSelectedToolEffectImpl;
 
-  ToolsState get state;
+  String get toolId;
 
   /// Create a copy of ToolsEffect
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SaveStateEffectImplCopyWith<_$SaveStateEffectImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SaveSelectedToolEffectImplCopyWith<_$SaveSelectedToolEffectImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadStateEffectImplCopyWith<$Res> {
-  factory _$$LoadStateEffectImplCopyWith(_$LoadStateEffectImpl value,
-          $Res Function(_$LoadStateEffectImpl) then) =
-      __$$LoadStateEffectImplCopyWithImpl<$Res>;
+abstract class _$$LoadSelectedToolEffectImplCopyWith<$Res> {
+  factory _$$LoadSelectedToolEffectImplCopyWith(
+          _$LoadSelectedToolEffectImpl value,
+          $Res Function(_$LoadSelectedToolEffectImpl) then) =
+      __$$LoadSelectedToolEffectImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadStateEffectImplCopyWithImpl<$Res>
-    extends _$ToolsEffectCopyWithImpl<$Res, _$LoadStateEffectImpl>
-    implements _$$LoadStateEffectImplCopyWith<$Res> {
-  __$$LoadStateEffectImplCopyWithImpl(
-      _$LoadStateEffectImpl _value, $Res Function(_$LoadStateEffectImpl) _then)
+class __$$LoadSelectedToolEffectImplCopyWithImpl<$Res>
+    extends _$ToolsEffectCopyWithImpl<$Res, _$LoadSelectedToolEffectImpl>
+    implements _$$LoadSelectedToolEffectImplCopyWith<$Res> {
+  __$$LoadSelectedToolEffectImplCopyWithImpl(
+      _$LoadSelectedToolEffectImpl _value,
+      $Res Function(_$LoadSelectedToolEffectImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of ToolsEffect
@@ -429,18 +422,19 @@ class __$$LoadStateEffectImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadStateEffectImpl implements LoadStateEffect {
-  const _$LoadStateEffectImpl();
+class _$LoadSelectedToolEffectImpl implements LoadSelectedToolEffect {
+  const _$LoadSelectedToolEffectImpl();
 
   @override
   String toString() {
-    return 'ToolsEffect.loadState()';
+    return 'ToolsEffect.loadSelectedTool()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadStateEffectImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$LoadSelectedToolEffectImpl);
   }
 
   @override
@@ -449,33 +443,33 @@ class _$LoadStateEffectImpl implements LoadStateEffect {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query, List<Tools> tools) searchTools,
-    required TResult Function(ToolsState state) saveState,
-    required TResult Function() loadState,
+    required TResult Function(String query, List<String> tools) searchTools,
+    required TResult Function(String toolId) saveSelectedTool,
+    required TResult Function() loadSelectedTool,
   }) {
-    return loadState();
+    return loadSelectedTool();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query, List<Tools> tools)? searchTools,
-    TResult? Function(ToolsState state)? saveState,
-    TResult? Function()? loadState,
+    TResult? Function(String query, List<String> tools)? searchTools,
+    TResult? Function(String toolId)? saveSelectedTool,
+    TResult? Function()? loadSelectedTool,
   }) {
-    return loadState?.call();
+    return loadSelectedTool?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query, List<Tools> tools)? searchTools,
-    TResult Function(ToolsState state)? saveState,
-    TResult Function()? loadState,
+    TResult Function(String query, List<String> tools)? searchTools,
+    TResult Function(String toolId)? saveSelectedTool,
+    TResult Function()? loadSelectedTool,
     required TResult orElse(),
   }) {
-    if (loadState != null) {
-      return loadState();
+    if (loadSelectedTool != null) {
+      return loadSelectedTool();
     }
     return orElse();
   }
@@ -484,37 +478,37 @@ class _$LoadStateEffectImpl implements LoadStateEffect {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SearchToolsEffect value) searchTools,
-    required TResult Function(SaveStateEffect value) saveState,
-    required TResult Function(LoadStateEffect value) loadState,
+    required TResult Function(SaveSelectedToolEffect value) saveSelectedTool,
+    required TResult Function(LoadSelectedToolEffect value) loadSelectedTool,
   }) {
-    return loadState(this);
+    return loadSelectedTool(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchToolsEffect value)? searchTools,
-    TResult? Function(SaveStateEffect value)? saveState,
-    TResult? Function(LoadStateEffect value)? loadState,
+    TResult? Function(SaveSelectedToolEffect value)? saveSelectedTool,
+    TResult? Function(LoadSelectedToolEffect value)? loadSelectedTool,
   }) {
-    return loadState?.call(this);
+    return loadSelectedTool?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchToolsEffect value)? searchTools,
-    TResult Function(SaveStateEffect value)? saveState,
-    TResult Function(LoadStateEffect value)? loadState,
+    TResult Function(SaveSelectedToolEffect value)? saveSelectedTool,
+    TResult Function(LoadSelectedToolEffect value)? loadSelectedTool,
     required TResult orElse(),
   }) {
-    if (loadState != null) {
-      return loadState(this);
+    if (loadSelectedTool != null) {
+      return loadSelectedTool(this);
     }
     return orElse();
   }
 }
 
-abstract class LoadStateEffect implements ToolsEffect {
-  const factory LoadStateEffect() = _$LoadStateEffectImpl;
+abstract class LoadSelectedToolEffect implements ToolsEffect {
+  const factory LoadSelectedToolEffect() = _$LoadSelectedToolEffectImpl;
 }

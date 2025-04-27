@@ -10,8 +10,8 @@ import '../../common/padding.dart';
 import '../../i18n/strings.g.dart';
 import 'feature/regexp_feature.dart';
 
-class RegExpTool extends StatelessWidget {
-  const RegExpTool({super.key});
+class RegExpToolScreen extends StatelessWidget {
+  const RegExpToolScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
