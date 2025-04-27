@@ -82,6 +82,7 @@ class _SqliteToolScreenState extends State<SqliteToolScreen> {
                         },
                         theme: CodeThemes.monokai(TextStyles.firaCode),
                       ),
+                      defaultFontFamily: TextStyles.firaCode.fontFamily,
                     ),
                     indicatorBuilder: MacosCodeEditor.defaultIndicatorBuilder,
                   ),
