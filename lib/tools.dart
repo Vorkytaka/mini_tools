@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'tool/tool.dart';
 import 'tools/color/color_tool.dart';
 import 'tools/cron/cron_tool.dart';
@@ -17,16 +19,16 @@ class ToolsRegistry {
   static final _tools = <String, Tool>{
     DatetimeConverterTool.id: DatetimeConverterTool.shared,
     JsonFormatterTool.id: JsonFormatterTool.shared,
-    RegExpTool.id: RegExpTool.shared,
+    if (kDebugMode) RegExpTool.id: RegExpTool.shared,
     NumberBaseConverterTool.id: NumberBaseConverterTool.shared,
-    PercentagesTool.id: PercentagesTool.shared,
-    ColorConverterTool.id: ColorConverterTool.shared,
-    MaterialColorsTool.id: MaterialColorsTool.shared,
-    HashCalculatorTool.id: HashCalculatorTool.shared,
-    SqliteTool.id: SqliteTool.shared,
-    UuidTool.id: UuidTool.shared,
+    if (kDebugMode) PercentagesTool.id: PercentagesTool.shared,
+    if (kDebugMode) ColorConverterTool.id: ColorConverterTool.shared,
+    if (kDebugMode) MaterialColorsTool.id: MaterialColorsTool.shared,
+    if (kDebugMode) HashCalculatorTool.id: HashCalculatorTool.shared,
+    if (kDebugMode) SqliteTool.id: SqliteTool.shared,
+    if (kDebugMode) UuidTool.id: UuidTool.shared,
     CronTool.id: CronTool.shared,
-    TextDiffTool.id: TextDiffTool.shared,
+    if (kDebugMode) TextDiffTool.id: TextDiffTool.shared,
     QrCodeTool.id: QrCodeTool.shared,
   };
 

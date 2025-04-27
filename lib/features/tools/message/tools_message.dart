@@ -13,6 +13,4 @@ sealed class ToolsMessage with _$ToolsMessage {
 
   const factory ToolsMessage.updateSearchResult(List<String> result) =
       UpdateSearchResultMessage;
-
-  const factory ToolsMessage.loadedState(ToolsState state) = LoadedStateMessage;
 }
