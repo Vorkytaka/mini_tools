@@ -37,14 +37,14 @@ extension on HashFormat {
   }
 }
 
-class HashTool extends StatefulWidget {
-  const HashTool({super.key});
+class HashToolScreen extends StatefulWidget {
+  const HashToolScreen({super.key});
 
   @override
-  State<HashTool> createState() => _HashToolState();
+  State<HashToolScreen> createState() => _HashToolScreenState();
 }
 
-class _HashToolState extends State<HashTool> {
+class _HashToolScreenState extends State<HashToolScreen> {
   @override
   Widget build(BuildContext context) {
     final s = Translations.of(context);

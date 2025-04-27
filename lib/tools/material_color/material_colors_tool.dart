@@ -7,12 +7,20 @@ import '../../common/color.dart';
 import '../../common/copy_overlay/copy_overlay.dart';
 import '../../i18n/strings.g.dart';
 import '../../tool/base_tool.dart';
+import '../../tool/tool.dart';
 
 part 'material_color_domain.dart';
+
 part 'material_color_ui.dart';
 
-final materialColorTool = BaseTool(
-  titleBuilder: (context) => Translations.of(context).materialColors.title,
-  icon: Icons.invert_colors_sharp,
-  screenBuilder: (context) => const MaterialColorTool(),
-);
+final class MaterialColorsTool {
+  const MaterialColorsTool._();
+
+  static const id = 'material_colors';
+
+  static Tool shared = BaseTool(
+    titleBuilder: (context) => Translations.of(context).materialColors.title,
+    icon: Icons.invert_colors_sharp,
+    screenBuilder: (context) => const MaterialColorsToolScreen(),
+  );
+}

@@ -9,17 +9,24 @@ import '../../common/color.dart';
 import '../../common/macos_read_only_field.dart';
 import '../../i18n/strings.g.dart';
 import '../../tool/bloc_tool.dart';
+import '../../tool/tool.dart';
 import 'color_cubit.dart';
 
-final colorTool = BlocTool(
-  titleBuilder: (context) => Translations.of(context).color.title,
-  icon: Icons.color_lens_outlined,
-  screenBuilder: (context) => const ColorTool(),
-  bloc: ColorCubit(),
-);
+final class ColorConverterTool {
+  const ColorConverterTool._();
 
-class ColorTool extends StatelessWidget {
-  const ColorTool({super.key});
+  static const id = 'color_converter';
+
+  static Tool shared = BlocTool(
+    titleBuilder: (context) => Translations.of(context).color.title,
+    icon: Icons.color_lens_outlined,
+    screenBuilder: (context) => const ColorToolScreen(),
+    bloc: ColorCubit(),
+  );
+}
+
+class ColorToolScreen extends StatelessWidget {
+  const ColorToolScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

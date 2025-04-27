@@ -16,6 +16,7 @@ import '../../../tools/text_diff/text_diff_tool.dart';
 import '../../../tools/uuid/uuid_tool.dart';
 
 part 'tools_state.freezed.dart';
+
 part 'tools_state.g.dart';
 
 enum Tools {
@@ -37,19 +38,19 @@ enum Tools {
 extension ToolsToTool on Tools {
   Tool get tool {
     return switch (this) {
-      Tools.datetime => datetimeTool,
-      Tools.jsonFormatter => jsonFormatterTool,
-      Tools.regExp => regExpTool,
-      Tools.numberBase => numberBaseConverterTool,
-      Tools.percentage => percentagesTool,
-      Tools.colorConverter => colorTool,
-      Tools.materialColor => materialColorTool,
-      Tools.hashCalculator => hashTool,
-      Tools.sqlite => sqliteTool,
-      Tools.uuid => uuidTool,
-      Tools.cron => cronTool,
-      Tools.textDiff => textDiffTool,
-      Tools.qrCode => qrCodeTool,
+      Tools.datetime => DatetimeConverterTool.shared,
+      Tools.jsonFormatter => JsonFormatterTool.shared,
+      Tools.regExp => RegExpTool.shared,
+      Tools.numberBase => NumberBaseConverterTool.shared,
+      Tools.percentage => PercentagesTool.shared,
+      Tools.colorConverter => ColorConverterTool.shared,
+      Tools.materialColor => MaterialColorsTool.shared,
+      Tools.hashCalculator => HashTool.shared,
+      Tools.sqlite => SqliteTool.shared,
+      Tools.uuid => UuidTool.shared,
+      Tools.cron => CronTool.shared,
+      Tools.textDiff => TextDiffTool.shared,
+      Tools.qrCode => QrCodeTool.shared,
     };
   }
 }

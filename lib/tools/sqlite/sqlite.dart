@@ -12,14 +12,14 @@ import '../../i18n/strings.g.dart';
 import 'feature/sqlite_feature.dart';
 import 'sqlite_feature_utils.dart';
 
-class SqliteTool extends StatefulWidget {
-  const SqliteTool({super.key});
+class SqliteToolScreen extends StatefulWidget {
+  const SqliteToolScreen({super.key});
 
   @override
-  State<SqliteTool> createState() => _SqliteToolState();
+  State<SqliteToolScreen> createState() => _SqliteToolScreenState();
 }
 
-class _SqliteToolState extends State<SqliteTool> {
+class _SqliteToolScreenState extends State<SqliteToolScreen> {
   final _queryController = CodeLineEditingController();
 
   @override

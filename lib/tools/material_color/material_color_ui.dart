@@ -3,8 +3,8 @@ part of 'material_colors_tool.dart';
 const double _itemWidth = 220;
 const double _spacing = 10;
 
-class MaterialColorTool extends StatelessWidget {
-  const MaterialColorTool({super.key});
+class MaterialColorsToolScreen extends StatelessWidget {
+  const MaterialColorsToolScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
