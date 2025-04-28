@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'number_base_state.freezed.dart';
 
+part 'number_base_state.g.dart';
+
 @freezed
 @immutable
 class NumberBaseState with _$NumberBaseState {
@@ -25,4 +27,7 @@ class NumberBaseState with _$NumberBaseState {
         customBaseValue: '',
         value: null,
       );
+
+  factory NumberBaseState.fromJson(Map<String, dynamic> json) =>
+      _$NumberBaseStateFromJson(json);
 }

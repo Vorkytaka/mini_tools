@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+NumberBaseState _$NumberBaseStateFromJson(Map<String, dynamic> json) {
+  return _NumberBaseState.fromJson(json);
+}
+
 /// @nodoc
 mixin _$NumberBaseState {
   String get base2 => throw _privateConstructorUsedError;
@@ -23,6 +27,9 @@ mixin _$NumberBaseState {
   int get customBase => throw _privateConstructorUsedError;
   String get customBaseValue => throw _privateConstructorUsedError;
   BigInt? get value => throw _privateConstructorUsedError;
+
+  /// Serializes this NumberBaseState to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of NumberBaseState
   /// with the given fields replaced by the non-null parameter values.
@@ -176,7 +183,7 @@ class __$$NumberBaseStateImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$NumberBaseStateImpl implements _NumberBaseState {
   const _$NumberBaseStateImpl(
       {required this.base2,
@@ -187,6 +194,9 @@ class _$NumberBaseStateImpl implements _NumberBaseState {
       required this.customBaseValue,
       required this.value})
       : assert(customBase >= 2 && customBase <= 36);
+
+  factory _$NumberBaseStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NumberBaseStateImplFromJson(json);
 
   @override
   final String base2;
@@ -224,6 +234,7 @@ class _$NumberBaseStateImpl implements _NumberBaseState {
             (identical(other.value, value) || other.value == value));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, base2, base8, base10, base16,
       customBase, customBaseValue, value);
@@ -236,6 +247,13 @@ class _$NumberBaseStateImpl implements _NumberBaseState {
   _$$NumberBaseStateImplCopyWith<_$NumberBaseStateImpl> get copyWith =>
       __$$NumberBaseStateImplCopyWithImpl<_$NumberBaseStateImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$NumberBaseStateImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _NumberBaseState implements NumberBaseState {
@@ -247,6 +265,9 @@ abstract class _NumberBaseState implements NumberBaseState {
       required final int customBase,
       required final String customBaseValue,
       required final BigInt? value}) = _$NumberBaseStateImpl;
+
+  factory _NumberBaseState.fromJson(Map<String, dynamic> json) =
+      _$NumberBaseStateImpl.fromJson;
 
   @override
   String get base2;

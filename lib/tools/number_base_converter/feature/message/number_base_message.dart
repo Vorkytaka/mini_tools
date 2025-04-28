@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../number_base_feature.dart';
+
 part 'number_base_message.freezed.dart';
 
 @immutable
@@ -32,4 +34,10 @@ class UpdateCustomBaseMessage
   const factory UpdateCustomBaseMessage({
     required int base,
   }) = _UpdateCustomBaseMessage;
+}
+
+@freezed
+@immutable
+class SetStateMessage with _$SetStateMessage implements NumberBaseMessage {
+  const factory SetStateMessage(NumberBaseState state) = _SetStateMessage;
 }

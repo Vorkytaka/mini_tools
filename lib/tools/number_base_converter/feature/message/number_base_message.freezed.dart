@@ -1070,3 +1070,148 @@ abstract class _UpdateCustomBaseMessage implements UpdateCustomBaseMessage {
   _$$UpdateCustomBaseMessageImplCopyWith<_$UpdateCustomBaseMessageImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+/// @nodoc
+mixin _$SetStateMessage {
+  NumberBaseState get state => throw _privateConstructorUsedError;
+
+  /// Create a copy of SetStateMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SetStateMessageCopyWith<SetStateMessage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SetStateMessageCopyWith<$Res> {
+  factory $SetStateMessageCopyWith(
+          SetStateMessage value, $Res Function(SetStateMessage) then) =
+      _$SetStateMessageCopyWithImpl<$Res, SetStateMessage>;
+  @useResult
+  $Res call({NumberBaseState state});
+
+  $NumberBaseStateCopyWith<$Res> get state;
+}
+
+/// @nodoc
+class _$SetStateMessageCopyWithImpl<$Res, $Val extends SetStateMessage>
+    implements $SetStateMessageCopyWith<$Res> {
+  _$SetStateMessageCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of SetStateMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? state = null,
+  }) {
+    return _then(_value.copyWith(
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as NumberBaseState,
+    ) as $Val);
+  }
+
+  /// Create a copy of SetStateMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NumberBaseStateCopyWith<$Res> get state {
+    return $NumberBaseStateCopyWith<$Res>(_value.state, (value) {
+      return _then(_value.copyWith(state: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$SetStateMessageImplCopyWith<$Res>
+    implements $SetStateMessageCopyWith<$Res> {
+  factory _$$SetStateMessageImplCopyWith(_$SetStateMessageImpl value,
+          $Res Function(_$SetStateMessageImpl) then) =
+      __$$SetStateMessageImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({NumberBaseState state});
+
+  @override
+  $NumberBaseStateCopyWith<$Res> get state;
+}
+
+/// @nodoc
+class __$$SetStateMessageImplCopyWithImpl<$Res>
+    extends _$SetStateMessageCopyWithImpl<$Res, _$SetStateMessageImpl>
+    implements _$$SetStateMessageImplCopyWith<$Res> {
+  __$$SetStateMessageImplCopyWithImpl(
+      _$SetStateMessageImpl _value, $Res Function(_$SetStateMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SetStateMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? state = null,
+  }) {
+    return _then(_$SetStateMessageImpl(
+      null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as NumberBaseState,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetStateMessageImpl implements _SetStateMessage {
+  const _$SetStateMessageImpl(this.state);
+
+  @override
+  final NumberBaseState state;
+
+  @override
+  String toString() {
+    return 'SetStateMessage(state: $state)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SetStateMessageImpl &&
+            (identical(other.state, state) || other.state == state));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, state);
+
+  /// Create a copy of SetStateMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SetStateMessageImplCopyWith<_$SetStateMessageImpl> get copyWith =>
+      __$$SetStateMessageImplCopyWithImpl<_$SetStateMessageImpl>(
+          this, _$identity);
+}
+
+abstract class _SetStateMessage implements SetStateMessage {
+  const factory _SetStateMessage(final NumberBaseState state) =
+      _$SetStateMessageImpl;
+
+  @override
+  NumberBaseState get state;
+
+  /// Create a copy of SetStateMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SetStateMessageImplCopyWith<_$SetStateMessageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

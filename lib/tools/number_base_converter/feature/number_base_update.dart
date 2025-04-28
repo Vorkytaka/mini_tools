@@ -1,6 +1,6 @@
 part of 'number_base_feature.dart';
 
-Next<NumberBaseState, void> _updateNumberBase(
+Next<NumberBaseState, NumberBaseEffect> _updateNumberBase(
   NumberBaseState state,
   NumberBaseMessage message,
 ) {
@@ -9,10 +9,19 @@ Next<NumberBaseState, void> _updateNumberBase(
       return _updateInputHandle(state, message);
     case UpdateCustomBaseMessage():
       return _updateCustomBase(state, message);
+    case SetStateMessage():
+      return _setState(state, message);
   }
 }
 
-Next<NumberBaseState, void> _updateCustomBase(
+Next<NumberBaseState, NumberBaseEffect> _setState(
+  NumberBaseState state,
+  SetStateMessage message,
+) {
+  return next(state: message.state);
+}
+
+Next<NumberBaseState, NumberBaseEffect> _updateCustomBase(
   NumberBaseState state,
   UpdateCustomBaseMessage message,
 ) {
@@ -23,7 +32,7 @@ Next<NumberBaseState, void> _updateCustomBase(
   );
 }
 
-Next<NumberBaseState, void> _updateInputHandle(
+Next<NumberBaseState, NumberBaseEffect> _updateInputHandle(
   NumberBaseState state,
   UpdateInputMessage message,
 ) {
@@ -73,14 +82,17 @@ Next<NumberBaseState, void> _updateInputHandle(
       break;
   }
 
+  final newState = state.copyWith(
+    base2: base2,
+    base8: base8,
+    base10: base10,
+    base16: base16,
+    customBaseValue: custom,
+    value: bigInt,
+  );
+
   return next(
-    state: state.copyWith(
-      base2: base2,
-      base8: base8,
-      base10: base10,
-      base16: base16,
-      customBaseValue: custom,
-      value: bigInt,
-    ),
+    state: newState,
+    effects: [NumberBaseEffect.saveState(newState)],
   );
 }
