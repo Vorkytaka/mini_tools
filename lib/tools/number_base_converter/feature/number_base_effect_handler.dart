@@ -8,25 +8,15 @@ import '../../../common/logger/logger.dart';
 import 'effect/number_base_effect.dart';
 import 'number_base_feature.dart';
 
-final class NumberBaseEffectHandler
-    implements EffectHandler<NumberBaseEffect, NumberBaseMessage> {
-  static const _tag = 'NumberBase';
-  static const _stateKey = 'number_base/state';
+const _tag = 'NumberBase';
+const _stateKey = 'number_base/state';
 
-  const NumberBaseEffectHandler();
+final class SaveNumberBaseEffectHandler
+    implements EffectHandler<SaveStateEffect, NumberBaseMessage> {
+  const SaveNumberBaseEffectHandler();
 
   @override
-  Future<void> call(
-    NumberBaseEffect effect,
-    MsgEmitter<NumberBaseMessage> emit,
-  ) {
-    return switch (effect) {
-      SaveStateEffect() => _saveState(effect, emit),
-      LoadStateEffect() => _loadState(effect, emit),
-    };
-  }
-
-  Future<void> _saveState(
+  FutureOr<void> call(
     SaveStateEffect effect,
     MsgEmitter<NumberBaseMessage> emit,
   ) async {
@@ -39,8 +29,14 @@ final class NumberBaseEffectHandler
       Log.e(_tag, 'Could not save the state;', e, st);
     }
   }
+}
 
-  Future<void> _loadState(
+final class LoadNumberBaseEffectHandler
+    implements EffectHandler<LoadStateEffect, NumberBaseMessage> {
+  const LoadNumberBaseEffectHandler();
+
+  @override
+  FutureOr<void> call(
     LoadStateEffect effect,
     MsgEmitter<NumberBaseMessage> emit,
   ) async {

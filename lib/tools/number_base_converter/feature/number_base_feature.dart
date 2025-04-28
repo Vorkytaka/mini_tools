@@ -1,3 +1,4 @@
+import 'package:mini_tea/effect_handlers.dart';
 import 'package:mini_tea/feature.dart';
 
 import 'effect/number_base_effect.dart';
@@ -17,6 +18,12 @@ NumberBaseFeature numberBaseFeatureFactory() =>
     Feature<NumberBaseState, NumberBaseMessage, NumberBaseEffect>(
       initialState: NumberBaseState.init(),
       update: _updateNumberBase,
-      effectHandlers: [const NumberBaseEffectHandler()],
       initialEffects: [const NumberBaseEffect.loadState()],
-    );
+    )
+        .wrapEffects(
+          DebounceEffectHandler(
+            duration: const Duration(milliseconds: 500),
+            handler: const SaveNumberBaseEffectHandler(),
+          ),
+        )
+        .wrapEffects(const LoadNumberBaseEffectHandler());
