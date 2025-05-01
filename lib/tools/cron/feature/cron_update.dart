@@ -1,11 +1,12 @@
 import 'package:mini_tea/feature.dart';
 
+import 'effect/cron_effect.dart';
 import 'message/cron_message.dart';
 import 'parser/cron_parser.dart';
 import 'parser/exception/cron_exception.dart';
 import 'state/cron_state.dart';
 
-Next<CronState, void> cronUpdate(CronState state, CronMessage message) {
+Next<CronState, CronEffect> cronUpdate(CronState state, CronMessage message) {
   switch (message) {
     case InputUpdateMessage():
       if (message.input == state.input) {
@@ -28,6 +29,9 @@ Next<CronState, void> cronUpdate(CronState state, CronMessage message) {
           input: message.input,
           result: result,
         ),
+        effects: [
+          if (message.saveToPersist) CronEffect.save(message.input),
+        ],
       );
   }
 }

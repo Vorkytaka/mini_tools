@@ -17,19 +17,20 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$CronMessage {
   String get input => throw _privateConstructorUsedError;
+  bool get saveToPersist => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String input) inputUpdate,
+    required TResult Function(String input, bool saveToPersist) inputUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String input)? inputUpdate,
+    TResult? Function(String input, bool saveToPersist)? inputUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String input)? inputUpdate,
+    TResult Function(String input, bool saveToPersist)? inputUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,7 +64,7 @@ abstract class $CronMessageCopyWith<$Res> {
           CronMessage value, $Res Function(CronMessage) then) =
       _$CronMessageCopyWithImpl<$Res, CronMessage>;
   @useResult
-  $Res call({String input});
+  $Res call({String input, bool saveToPersist});
 }
 
 /// @nodoc
@@ -82,12 +83,17 @@ class _$CronMessageCopyWithImpl<$Res, $Val extends CronMessage>
   @override
   $Res call({
     Object? input = null,
+    Object? saveToPersist = null,
   }) {
     return _then(_value.copyWith(
       input: null == input
           ? _value.input
           : input // ignore: cast_nullable_to_non_nullable
               as String,
+      saveToPersist: null == saveToPersist
+          ? _value.saveToPersist
+          : saveToPersist // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -100,7 +106,7 @@ abstract class _$$InputUpdateMessageImplCopyWith<$Res>
       __$$InputUpdateMessageImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String input});
+  $Res call({String input, bool saveToPersist});
 }
 
 /// @nodoc
@@ -117,12 +123,17 @@ class __$$InputUpdateMessageImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? input = null,
+    Object? saveToPersist = null,
   }) {
     return _then(_$InputUpdateMessageImpl(
-      null == input
+      input: null == input
           ? _value.input
           : input // ignore: cast_nullable_to_non_nullable
               as String,
+      saveToPersist: null == saveToPersist
+          ? _value.saveToPersist
+          : saveToPersist // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -130,14 +141,18 @@ class __$$InputUpdateMessageImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InputUpdateMessageImpl implements InputUpdateMessage {
-  const _$InputUpdateMessageImpl(this.input);
+  const _$InputUpdateMessageImpl(
+      {required this.input, this.saveToPersist = true});
 
   @override
   final String input;
+  @override
+  @JsonKey()
+  final bool saveToPersist;
 
   @override
   String toString() {
-    return 'CronMessage.inputUpdate(input: $input)';
+    return 'CronMessage.inputUpdate(input: $input, saveToPersist: $saveToPersist)';
   }
 
   @override
@@ -145,11 +160,13 @@ class _$InputUpdateMessageImpl implements InputUpdateMessage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InputUpdateMessageImpl &&
-            (identical(other.input, input) || other.input == input));
+            (identical(other.input, input) || other.input == input) &&
+            (identical(other.saveToPersist, saveToPersist) ||
+                other.saveToPersist == saveToPersist));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, input);
+  int get hashCode => Object.hash(runtimeType, input, saveToPersist);
 
   /// Create a copy of CronMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -163,27 +180,27 @@ class _$InputUpdateMessageImpl implements InputUpdateMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String input) inputUpdate,
+    required TResult Function(String input, bool saveToPersist) inputUpdate,
   }) {
-    return inputUpdate(input);
+    return inputUpdate(input, saveToPersist);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String input)? inputUpdate,
+    TResult? Function(String input, bool saveToPersist)? inputUpdate,
   }) {
-    return inputUpdate?.call(input);
+    return inputUpdate?.call(input, saveToPersist);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String input)? inputUpdate,
+    TResult Function(String input, bool saveToPersist)? inputUpdate,
     required TResult orElse(),
   }) {
     if (inputUpdate != null) {
-      return inputUpdate(input);
+      return inputUpdate(input, saveToPersist);
     }
     return orElse();
   }
@@ -218,11 +235,14 @@ class _$InputUpdateMessageImpl implements InputUpdateMessage {
 }
 
 abstract class InputUpdateMessage implements CronMessage {
-  const factory InputUpdateMessage(final String input) =
-      _$InputUpdateMessageImpl;
+  const factory InputUpdateMessage(
+      {required final String input,
+      final bool saveToPersist}) = _$InputUpdateMessageImpl;
 
   @override
   String get input;
+  @override
+  bool get saveToPersist;
 
   /// Create a copy of CronMessage
   /// with the given fields replaced by the non-null parameter values.
