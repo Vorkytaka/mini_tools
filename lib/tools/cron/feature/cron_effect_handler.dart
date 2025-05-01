@@ -42,7 +42,7 @@ final class CronLoadEffectHandler
       final sharedPreferences = await SharedPreferences.getInstance();
       final input = sharedPreferences.getString(_inputKey);
       if (input != null) {
-        emit(CronMessage.inputUpdate(input));
+        emit(CronMessage.inputUpdate(input: input, saveToPersist: false));
         Log.v(_tag, 'Successfully load the input; $input');
       }
     } on Object catch (e, st) {

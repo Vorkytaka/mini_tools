@@ -29,7 +29,9 @@ Next<CronState, CronEffect> cronUpdate(CronState state, CronMessage message) {
           input: message.input,
           result: result,
         ),
-        effects: [CronEffect.save(message.input)],
+        effects: [
+          if (message.saveToPersist) CronEffect.save(message.input),
+        ],
       );
   }
 }

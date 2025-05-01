@@ -275,7 +275,7 @@ class _CronInputState extends State<_CronInput> {
 
   void _onUpdate() {
     final text = _controller.text;
-    context.read<CronFeature>().accept(CronMessage.inputUpdate(text));
+    context.read<CronFeature>().accept(CronMessage.inputUpdate(input: text));
   }
 
   void _onPartSelectionChanged(List<CronPart> parts) {
