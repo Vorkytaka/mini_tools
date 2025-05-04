@@ -124,9 +124,12 @@ class _QrCodeWidget extends StatelessWidget {
 
         return ColoredBox(
           color: state.visualData.backgroundColor,
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: qrCode,
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxHeight: 400),
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: qrCode,
+            ),
           ),
         );
       },
