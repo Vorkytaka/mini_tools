@@ -7,7 +7,24 @@ part 'qr_code_effect.freezed.dart';
 
 @immutable
 sealed class QrCodeEffect {
-  const QrCodeEffect();
+  const QrCodeEffect._();
+
+  const factory QrCodeEffect.saveToFile({
+    required QrCode code,
+    required ExportType exportType,
+    required QrCodeVisualData visualData,
+  }) = SaveToFileEffect;
+
+  const factory QrCodeEffect.copyToClipboard({
+    required QrCode code,
+    required QrCodeVisualData visualData,
+  }) = CopyToClipboardEffect;
+
+  const factory QrCodeEffect.saveState({
+    required QrCodeState state,
+  }) = _SaveStateEffect;
+
+  const factory QrCodeEffect.loadState() = _LoadStateEffect;
 }
 
 @freezed

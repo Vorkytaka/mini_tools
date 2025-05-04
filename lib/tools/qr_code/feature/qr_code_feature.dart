@@ -20,5 +20,5 @@ QrCodeFeature qrCodeFeatureFactory() => QrCodeFeature(
           ),
         ),
       ],
-      initialEffects: [const LoadStateEffect()],
+      initialEffects: [const QrCodeEffect.loadState()],
     );

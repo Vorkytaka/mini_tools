@@ -13,20 +13,20 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       final newState = state.copyWith(input: message.text);
       return next(
         state: newState,
-        effects: [SaveStateEffect(state: newState)],
+        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case UpdateCorrectionLevelMessage():
       final newState = state.copyWith(correctionLevel: message.level);
       return next(
         state: newState,
-        effects: [SaveStateEffect(state: newState)],
+        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case SaveToFileMessage():
       final code = state.code;
       return next(
         effects: [
           if (code != null)
-            ExportEffect.saveToFile(
+            QrCodeEffect.saveToFile(
               code: code,
               exportType: state.exportType,
               visualData: state.visualData,
@@ -37,14 +37,14 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       final newState = state.copyWith(exportType: message.type);
       return next(
         state: newState,
-        effects: [SaveStateEffect(state: newState)],
+        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case CopyToClipboardMessage():
       final code = state.code;
       return next(
         effects: [
           if (code != null)
-            ExportEffect.copyToClipboard(
+            QrCodeEffect.copyToClipboard(
               code: code,
               visualData: state.visualData,
             ),
@@ -58,7 +58,7 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       );
       return next(
         state: newState,
-        effects: [SaveStateEffect(state: newState)],
+        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case PaddingUpdateMessage():
       final newState = state.copyWith(
@@ -68,7 +68,7 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       );
       return next(
         state: newState,
-        effects: [SaveStateEffect(state: newState)],
+        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case LoadedStateMessage():
       return next(state: message.state);
