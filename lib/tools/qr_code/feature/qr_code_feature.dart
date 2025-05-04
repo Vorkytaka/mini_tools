@@ -9,7 +9,7 @@ import 'state/qr_code_state.dart';
 typedef QrCodeFeature = Feature<QrCodeState, QrCodeMessage, QrCodeEffect>;
 
 QrCodeFeature qrCodeFeatureFactory() => QrCodeFeature(
-      initialState: QrCodeState.initialState(),
+      initialState: QrCodeState.initialState,
       update: qrCodeUpdate,
       effectHandlers: [QrCodeEffectHandler()],
     );

@@ -16,7 +16,6 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$QrCodeState {
-  QrCode? get code => throw _privateConstructorUsedError;
   String get input => throw _privateConstructorUsedError;
   ErrorCorrectionLevel get correctionLevel =>
       throw _privateConstructorUsedError;
@@ -37,8 +36,7 @@ abstract class $QrCodeStateCopyWith<$Res> {
       _$QrCodeStateCopyWithImpl<$Res, QrCodeState>;
   @useResult
   $Res call(
-      {QrCode? code,
-      String input,
+      {String input,
       ErrorCorrectionLevel correctionLevel,
       ExportType exportType,
       QrCodeVisualData visualData});
@@ -61,17 +59,12 @@ class _$QrCodeStateCopyWithImpl<$Res, $Val extends QrCodeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
     Object? input = null,
     Object? correctionLevel = null,
     Object? exportType = null,
     Object? visualData = null,
   }) {
     return _then(_value.copyWith(
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as QrCode?,
       input: null == input
           ? _value.input
           : input // ignore: cast_nullable_to_non_nullable
@@ -111,8 +104,7 @@ abstract class _$$QrCodeStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {QrCode? code,
-      String input,
+      {String input,
       ErrorCorrectionLevel correctionLevel,
       ExportType exportType,
       QrCodeVisualData visualData});
@@ -134,17 +126,12 @@ class __$$QrCodeStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
     Object? input = null,
     Object? correctionLevel = null,
     Object? exportType = null,
     Object? visualData = null,
   }) {
     return _then(_$QrCodeStateImpl(
-      code: freezed == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as QrCode?,
       input: null == input
           ? _value.input
           : input // ignore: cast_nullable_to_non_nullable
@@ -167,16 +154,14 @@ class __$$QrCodeStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$QrCodeStateImpl implements _QrCodeState {
+class _$QrCodeStateImpl extends _QrCodeState {
   const _$QrCodeStateImpl(
-      {required this.code,
-      required this.input,
+      {required this.input,
       required this.correctionLevel,
       required this.exportType,
-      required this.visualData});
+      required this.visualData})
+      : super._();
 
-  @override
-  final QrCode? code;
   @override
   final String input;
   @override
@@ -188,7 +173,7 @@ class _$QrCodeStateImpl implements _QrCodeState {
 
   @override
   String toString() {
-    return 'QrCodeState(code: $code, input: $input, correctionLevel: $correctionLevel, exportType: $exportType, visualData: $visualData)';
+    return 'QrCodeState(input: $input, correctionLevel: $correctionLevel, exportType: $exportType, visualData: $visualData)';
   }
 
   @override
@@ -196,7 +181,6 @@ class _$QrCodeStateImpl implements _QrCodeState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$QrCodeStateImpl &&
-            (identical(other.code, code) || other.code == code) &&
             (identical(other.input, input) || other.input == input) &&
             (identical(other.correctionLevel, correctionLevel) ||
                 other.correctionLevel == correctionLevel) &&
@@ -207,8 +191,8 @@ class _$QrCodeStateImpl implements _QrCodeState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, code, input, correctionLevel, exportType, visualData);
+  int get hashCode =>
+      Object.hash(runtimeType, input, correctionLevel, exportType, visualData);
 
   /// Create a copy of QrCodeState
   /// with the given fields replaced by the non-null parameter values.
@@ -219,16 +203,14 @@ class _$QrCodeStateImpl implements _QrCodeState {
       __$$QrCodeStateImplCopyWithImpl<_$QrCodeStateImpl>(this, _$identity);
 }
 
-abstract class _QrCodeState implements QrCodeState {
+abstract class _QrCodeState extends QrCodeState {
   const factory _QrCodeState(
-      {required final QrCode? code,
-      required final String input,
+      {required final String input,
       required final ErrorCorrectionLevel correctionLevel,
       required final ExportType exportType,
       required final QrCodeVisualData visualData}) = _$QrCodeStateImpl;
+  const _QrCodeState._() : super._();
 
-  @override
-  QrCode? get code;
   @override
   String get input;
   @override

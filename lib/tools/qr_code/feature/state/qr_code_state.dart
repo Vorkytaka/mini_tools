@@ -38,25 +38,40 @@ extension ExportTypeUtils on ExportType {
 @immutable
 class QrCodeState with _$QrCodeState {
   const factory QrCodeState({
-    required QrCode? code,
     required String input,
     required ErrorCorrectionLevel correctionLevel,
     required ExportType exportType,
     required QrCodeVisualData visualData,
   }) = _QrCodeState;
 
-  factory QrCodeState.initialState() => const QrCodeState(
-        code: null,
-        input: '',
-        correctionLevel: ErrorCorrectionLevel.H,
-        exportType: ExportType.png,
-        visualData: QrCodeVisualData(
-          backgroundColor: Color(0xffffffff),
-          foregroundColor: Color(0xff000000),
-          shape: QrCodeShape.square,
-          paddings: EdgeInsets.zero,
-        ),
+  const QrCodeState._();
+
+  static const initialState = QrCodeState(
+    input: '',
+    correctionLevel: ErrorCorrectionLevel.H,
+    exportType: ExportType.png,
+    visualData: QrCodeVisualData(
+      backgroundColor: Color(0xffffffff),
+      foregroundColor: Color(0xff000000),
+      shape: QrCodeShape.square,
+      paddings: EdgeInsets.zero,
+    ),
+  );
+
+  QrCode? get code {
+    if (input.isEmpty) {
+      return null;
+    }
+
+    try {
+      return QrCode.fromData(
+        data: input,
+        errorCorrectLevel: correctionLevel.toInt,
       );
+    } on Object catch (_) {
+      return null;
+    }
+  }
 }
 
 enum QrCodeShape {
