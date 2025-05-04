@@ -47,7 +47,7 @@ Future<void> _configureWindow() async {
   }
 
   await WindowManager.instance.ensureInitialized();
-  await WindowManager.instance.setMinimumSize(const Size(400, 500));
+  await WindowManager.instance.setMinimumSize(const Size(800, 600));
 
   if (Platform.isMacOS) {
     await const MacosWindowUtilsConfig().apply();
