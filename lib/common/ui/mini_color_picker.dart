@@ -29,6 +29,15 @@ class _MiniColorPickerState extends State<MiniColorPicker> {
   }
 
   @override
+  void didUpdateWidget(covariant MiniColorPicker oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    if (oldWidget.selectedColor != _color) {
+      _color = widget.selectedColor;
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     final theme = MacosTheme.of(context);
 

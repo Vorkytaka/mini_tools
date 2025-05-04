@@ -72,5 +72,25 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       );
     case LoadedStateMessage():
       return next(state: message.state);
+    case ForegroundColorUpdateMessage():
+      final newState = state.copyWith(
+        visualData: state.visualData.copyWith(
+          foregroundColor: message.color,
+        ),
+      );
+      return next(
+        state: newState,
+        effects: [QrCodeEffect.saveState(state: newState)],
+      );
+    case BackgroundColorUpdateMessage():
+      final newState = state.copyWith(
+        visualData: state.visualData.copyWith(
+          backgroundColor: message.color,
+        ),
+      );
+      return next(
+        state: newState,
+        effects: [QrCodeEffect.saveState(state: newState)],
+      );
   }
 }

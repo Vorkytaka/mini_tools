@@ -28,4 +28,10 @@ sealed class QrCodeMessage with _$QrCodeMessage {
 
   const factory QrCodeMessage.paddingUpdate(EdgeInsets padding) =
       PaddingUpdateMessage;
+
+  const factory QrCodeMessage.foregroundColorUpdate(Color color) =
+      ForegroundColorUpdateMessage;
+
+  const factory QrCodeMessage.backgroundColorUpdate(Color color) =
+      BackgroundColorUpdateMessage;
 }

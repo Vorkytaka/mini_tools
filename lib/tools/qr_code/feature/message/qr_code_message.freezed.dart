@@ -26,6 +26,8 @@ mixin _$QrCodeMessage {
     required TResult Function() copyToClipboard,
     required TResult Function(QrCodeShape shape) shapeUpdate,
     required TResult Function(EdgeInsets padding) paddingUpdate,
+    required TResult Function(Color color) foregroundColorUpdate,
+    required TResult Function(Color color) backgroundColorUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,8 @@ mixin _$QrCodeMessage {
     TResult? Function()? copyToClipboard,
     TResult? Function(QrCodeShape shape)? shapeUpdate,
     TResult? Function(EdgeInsets padding)? paddingUpdate,
+    TResult? Function(Color color)? foregroundColorUpdate,
+    TResult? Function(Color color)? backgroundColorUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,8 @@ mixin _$QrCodeMessage {
     TResult Function()? copyToClipboard,
     TResult Function(QrCodeShape shape)? shapeUpdate,
     TResult Function(EdgeInsets padding)? paddingUpdate,
+    TResult Function(Color color)? foregroundColorUpdate,
+    TResult Function(Color color)? backgroundColorUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,6 +70,10 @@ mixin _$QrCodeMessage {
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+    required TResult Function(ForegroundColorUpdateMessage value)
+        foregroundColorUpdate,
+    required TResult Function(BackgroundColorUpdateMessage value)
+        backgroundColorUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +87,10 @@ mixin _$QrCodeMessage {
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult? Function(ForegroundColorUpdateMessage value)?
+        foregroundColorUpdate,
+    TResult? Function(BackgroundColorUpdateMessage value)?
+        backgroundColorUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -89,6 +103,8 @@ mixin _$QrCodeMessage {
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
+    TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -204,6 +220,8 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
     required TResult Function() copyToClipboard,
     required TResult Function(QrCodeShape shape) shapeUpdate,
     required TResult Function(EdgeInsets padding) paddingUpdate,
+    required TResult Function(Color color) foregroundColorUpdate,
+    required TResult Function(Color color) backgroundColorUpdate,
   }) {
     return loadedState(state);
   }
@@ -219,6 +237,8 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
     TResult? Function()? copyToClipboard,
     TResult? Function(QrCodeShape shape)? shapeUpdate,
     TResult? Function(EdgeInsets padding)? paddingUpdate,
+    TResult? Function(Color color)? foregroundColorUpdate,
+    TResult? Function(Color color)? backgroundColorUpdate,
   }) {
     return loadedState?.call(state);
   }
@@ -234,6 +254,8 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
     TResult Function()? copyToClipboard,
     TResult Function(QrCodeShape shape)? shapeUpdate,
     TResult Function(EdgeInsets padding)? paddingUpdate,
+    TResult Function(Color color)? foregroundColorUpdate,
+    TResult Function(Color color)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (loadedState != null) {
@@ -254,6 +276,10 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+    required TResult Function(ForegroundColorUpdateMessage value)
+        foregroundColorUpdate,
+    required TResult Function(BackgroundColorUpdateMessage value)
+        backgroundColorUpdate,
   }) {
     return loadedState(this);
   }
@@ -270,6 +296,10 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult? Function(ForegroundColorUpdateMessage value)?
+        foregroundColorUpdate,
+    TResult? Function(BackgroundColorUpdateMessage value)?
+        backgroundColorUpdate,
   }) {
     return loadedState?.call(this);
   }
@@ -285,6 +315,8 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
+    TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (loadedState != null) {
@@ -384,6 +416,8 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     required TResult Function() copyToClipboard,
     required TResult Function(QrCodeShape shape) shapeUpdate,
     required TResult Function(EdgeInsets padding) paddingUpdate,
+    required TResult Function(Color color) foregroundColorUpdate,
+    required TResult Function(Color color) backgroundColorUpdate,
   }) {
     return updateInput(text);
   }
@@ -399,6 +433,8 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult? Function()? copyToClipboard,
     TResult? Function(QrCodeShape shape)? shapeUpdate,
     TResult? Function(EdgeInsets padding)? paddingUpdate,
+    TResult? Function(Color color)? foregroundColorUpdate,
+    TResult? Function(Color color)? backgroundColorUpdate,
   }) {
     return updateInput?.call(text);
   }
@@ -414,6 +450,8 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult Function()? copyToClipboard,
     TResult Function(QrCodeShape shape)? shapeUpdate,
     TResult Function(EdgeInsets padding)? paddingUpdate,
+    TResult Function(Color color)? foregroundColorUpdate,
+    TResult Function(Color color)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (updateInput != null) {
@@ -434,6 +472,10 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+    required TResult Function(ForegroundColorUpdateMessage value)
+        foregroundColorUpdate,
+    required TResult Function(BackgroundColorUpdateMessage value)
+        backgroundColorUpdate,
   }) {
     return updateInput(this);
   }
@@ -450,6 +492,10 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult? Function(ForegroundColorUpdateMessage value)?
+        foregroundColorUpdate,
+    TResult? Function(BackgroundColorUpdateMessage value)?
+        backgroundColorUpdate,
   }) {
     return updateInput?.call(this);
   }
@@ -465,6 +511,8 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
+    TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (updateInput != null) {
@@ -569,6 +617,8 @@ class _$UpdateCorrectionLevelMessageImpl
     required TResult Function() copyToClipboard,
     required TResult Function(QrCodeShape shape) shapeUpdate,
     required TResult Function(EdgeInsets padding) paddingUpdate,
+    required TResult Function(Color color) foregroundColorUpdate,
+    required TResult Function(Color color) backgroundColorUpdate,
   }) {
     return updateCorrectionLevel(level);
   }
@@ -584,6 +634,8 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult? Function()? copyToClipboard,
     TResult? Function(QrCodeShape shape)? shapeUpdate,
     TResult? Function(EdgeInsets padding)? paddingUpdate,
+    TResult? Function(Color color)? foregroundColorUpdate,
+    TResult? Function(Color color)? backgroundColorUpdate,
   }) {
     return updateCorrectionLevel?.call(level);
   }
@@ -599,6 +651,8 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult Function()? copyToClipboard,
     TResult Function(QrCodeShape shape)? shapeUpdate,
     TResult Function(EdgeInsets padding)? paddingUpdate,
+    TResult Function(Color color)? foregroundColorUpdate,
+    TResult Function(Color color)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (updateCorrectionLevel != null) {
@@ -619,6 +673,10 @@ class _$UpdateCorrectionLevelMessageImpl
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+    required TResult Function(ForegroundColorUpdateMessage value)
+        foregroundColorUpdate,
+    required TResult Function(BackgroundColorUpdateMessage value)
+        backgroundColorUpdate,
   }) {
     return updateCorrectionLevel(this);
   }
@@ -635,6 +693,10 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult? Function(ForegroundColorUpdateMessage value)?
+        foregroundColorUpdate,
+    TResult? Function(BackgroundColorUpdateMessage value)?
+        backgroundColorUpdate,
   }) {
     return updateCorrectionLevel?.call(this);
   }
@@ -650,6 +712,8 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
+    TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (updateCorrectionLevel != null) {
@@ -722,6 +786,8 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     required TResult Function() copyToClipboard,
     required TResult Function(QrCodeShape shape) shapeUpdate,
     required TResult Function(EdgeInsets padding) paddingUpdate,
+    required TResult Function(Color color) foregroundColorUpdate,
+    required TResult Function(Color color) backgroundColorUpdate,
   }) {
     return saveToFile();
   }
@@ -737,6 +803,8 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult? Function()? copyToClipboard,
     TResult? Function(QrCodeShape shape)? shapeUpdate,
     TResult? Function(EdgeInsets padding)? paddingUpdate,
+    TResult? Function(Color color)? foregroundColorUpdate,
+    TResult? Function(Color color)? backgroundColorUpdate,
   }) {
     return saveToFile?.call();
   }
@@ -752,6 +820,8 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult Function()? copyToClipboard,
     TResult Function(QrCodeShape shape)? shapeUpdate,
     TResult Function(EdgeInsets padding)? paddingUpdate,
+    TResult Function(Color color)? foregroundColorUpdate,
+    TResult Function(Color color)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (saveToFile != null) {
@@ -772,6 +842,10 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+    required TResult Function(ForegroundColorUpdateMessage value)
+        foregroundColorUpdate,
+    required TResult Function(BackgroundColorUpdateMessage value)
+        backgroundColorUpdate,
   }) {
     return saveToFile(this);
   }
@@ -788,6 +862,10 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult? Function(ForegroundColorUpdateMessage value)?
+        foregroundColorUpdate,
+    TResult? Function(BackgroundColorUpdateMessage value)?
+        backgroundColorUpdate,
   }) {
     return saveToFile?.call(this);
   }
@@ -803,6 +881,8 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
+    TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (saveToFile != null) {
@@ -895,6 +975,8 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     required TResult Function() copyToClipboard,
     required TResult Function(QrCodeShape shape) shapeUpdate,
     required TResult Function(EdgeInsets padding) paddingUpdate,
+    required TResult Function(Color color) foregroundColorUpdate,
+    required TResult Function(Color color) backgroundColorUpdate,
   }) {
     return updateExportType(type);
   }
@@ -910,6 +992,8 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult? Function()? copyToClipboard,
     TResult? Function(QrCodeShape shape)? shapeUpdate,
     TResult? Function(EdgeInsets padding)? paddingUpdate,
+    TResult? Function(Color color)? foregroundColorUpdate,
+    TResult? Function(Color color)? backgroundColorUpdate,
   }) {
     return updateExportType?.call(type);
   }
@@ -925,6 +1009,8 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult Function()? copyToClipboard,
     TResult Function(QrCodeShape shape)? shapeUpdate,
     TResult Function(EdgeInsets padding)? paddingUpdate,
+    TResult Function(Color color)? foregroundColorUpdate,
+    TResult Function(Color color)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (updateExportType != null) {
@@ -945,6 +1031,10 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+    required TResult Function(ForegroundColorUpdateMessage value)
+        foregroundColorUpdate,
+    required TResult Function(BackgroundColorUpdateMessage value)
+        backgroundColorUpdate,
   }) {
     return updateExportType(this);
   }
@@ -961,6 +1051,10 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult? Function(ForegroundColorUpdateMessage value)?
+        foregroundColorUpdate,
+    TResult? Function(BackgroundColorUpdateMessage value)?
+        backgroundColorUpdate,
   }) {
     return updateExportType?.call(this);
   }
@@ -976,6 +1070,8 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
+    TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (updateExportType != null) {
@@ -1050,6 +1146,8 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     required TResult Function() copyToClipboard,
     required TResult Function(QrCodeShape shape) shapeUpdate,
     required TResult Function(EdgeInsets padding) paddingUpdate,
+    required TResult Function(Color color) foregroundColorUpdate,
+    required TResult Function(Color color) backgroundColorUpdate,
   }) {
     return copyToClipboard();
   }
@@ -1065,6 +1163,8 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     TResult? Function()? copyToClipboard,
     TResult? Function(QrCodeShape shape)? shapeUpdate,
     TResult? Function(EdgeInsets padding)? paddingUpdate,
+    TResult? Function(Color color)? foregroundColorUpdate,
+    TResult? Function(Color color)? backgroundColorUpdate,
   }) {
     return copyToClipboard?.call();
   }
@@ -1080,6 +1180,8 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     TResult Function()? copyToClipboard,
     TResult Function(QrCodeShape shape)? shapeUpdate,
     TResult Function(EdgeInsets padding)? paddingUpdate,
+    TResult Function(Color color)? foregroundColorUpdate,
+    TResult Function(Color color)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (copyToClipboard != null) {
@@ -1100,6 +1202,10 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+    required TResult Function(ForegroundColorUpdateMessage value)
+        foregroundColorUpdate,
+    required TResult Function(BackgroundColorUpdateMessage value)
+        backgroundColorUpdate,
   }) {
     return copyToClipboard(this);
   }
@@ -1116,6 +1222,10 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult? Function(ForegroundColorUpdateMessage value)?
+        foregroundColorUpdate,
+    TResult? Function(BackgroundColorUpdateMessage value)?
+        backgroundColorUpdate,
   }) {
     return copyToClipboard?.call(this);
   }
@@ -1131,6 +1241,8 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
+    TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (copyToClipboard != null) {
@@ -1221,6 +1333,8 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
     required TResult Function() copyToClipboard,
     required TResult Function(QrCodeShape shape) shapeUpdate,
     required TResult Function(EdgeInsets padding) paddingUpdate,
+    required TResult Function(Color color) foregroundColorUpdate,
+    required TResult Function(Color color) backgroundColorUpdate,
   }) {
     return shapeUpdate(shape);
   }
@@ -1236,6 +1350,8 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
     TResult? Function()? copyToClipboard,
     TResult? Function(QrCodeShape shape)? shapeUpdate,
     TResult? Function(EdgeInsets padding)? paddingUpdate,
+    TResult? Function(Color color)? foregroundColorUpdate,
+    TResult? Function(Color color)? backgroundColorUpdate,
   }) {
     return shapeUpdate?.call(shape);
   }
@@ -1251,6 +1367,8 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
     TResult Function()? copyToClipboard,
     TResult Function(QrCodeShape shape)? shapeUpdate,
     TResult Function(EdgeInsets padding)? paddingUpdate,
+    TResult Function(Color color)? foregroundColorUpdate,
+    TResult Function(Color color)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (shapeUpdate != null) {
@@ -1271,6 +1389,10 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+    required TResult Function(ForegroundColorUpdateMessage value)
+        foregroundColorUpdate,
+    required TResult Function(BackgroundColorUpdateMessage value)
+        backgroundColorUpdate,
   }) {
     return shapeUpdate(this);
   }
@@ -1287,6 +1409,10 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult? Function(ForegroundColorUpdateMessage value)?
+        foregroundColorUpdate,
+    TResult? Function(BackgroundColorUpdateMessage value)?
+        backgroundColorUpdate,
   }) {
     return shapeUpdate?.call(this);
   }
@@ -1302,6 +1428,8 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
+    TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (shapeUpdate != null) {
@@ -1402,6 +1530,8 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
     required TResult Function() copyToClipboard,
     required TResult Function(QrCodeShape shape) shapeUpdate,
     required TResult Function(EdgeInsets padding) paddingUpdate,
+    required TResult Function(Color color) foregroundColorUpdate,
+    required TResult Function(Color color) backgroundColorUpdate,
   }) {
     return paddingUpdate(padding);
   }
@@ -1417,6 +1547,8 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
     TResult? Function()? copyToClipboard,
     TResult? Function(QrCodeShape shape)? shapeUpdate,
     TResult? Function(EdgeInsets padding)? paddingUpdate,
+    TResult? Function(Color color)? foregroundColorUpdate,
+    TResult? Function(Color color)? backgroundColorUpdate,
   }) {
     return paddingUpdate?.call(padding);
   }
@@ -1432,6 +1564,8 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
     TResult Function()? copyToClipboard,
     TResult Function(QrCodeShape shape)? shapeUpdate,
     TResult Function(EdgeInsets padding)? paddingUpdate,
+    TResult Function(Color color)? foregroundColorUpdate,
+    TResult Function(Color color)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (paddingUpdate != null) {
@@ -1452,6 +1586,10 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+    required TResult Function(ForegroundColorUpdateMessage value)
+        foregroundColorUpdate,
+    required TResult Function(BackgroundColorUpdateMessage value)
+        backgroundColorUpdate,
   }) {
     return paddingUpdate(this);
   }
@@ -1468,6 +1606,10 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult? Function(ForegroundColorUpdateMessage value)?
+        foregroundColorUpdate,
+    TResult? Function(BackgroundColorUpdateMessage value)?
+        backgroundColorUpdate,
   }) {
     return paddingUpdate?.call(this);
   }
@@ -1483,6 +1625,8 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
     TResult Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
+    TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
     required TResult orElse(),
   }) {
     if (paddingUpdate != null) {
@@ -1502,5 +1646,409 @@ abstract class PaddingUpdateMessage implements QrCodeMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaddingUpdateMessageImplCopyWith<_$PaddingUpdateMessageImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ForegroundColorUpdateMessageImplCopyWith<$Res> {
+  factory _$$ForegroundColorUpdateMessageImplCopyWith(
+          _$ForegroundColorUpdateMessageImpl value,
+          $Res Function(_$ForegroundColorUpdateMessageImpl) then) =
+      __$$ForegroundColorUpdateMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Color color});
+}
+
+/// @nodoc
+class __$$ForegroundColorUpdateMessageImplCopyWithImpl<$Res>
+    extends _$QrCodeMessageCopyWithImpl<$Res,
+        _$ForegroundColorUpdateMessageImpl>
+    implements _$$ForegroundColorUpdateMessageImplCopyWith<$Res> {
+  __$$ForegroundColorUpdateMessageImplCopyWithImpl(
+      _$ForegroundColorUpdateMessageImpl _value,
+      $Res Function(_$ForegroundColorUpdateMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? color = null,
+  }) {
+    return _then(_$ForegroundColorUpdateMessageImpl(
+      null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ForegroundColorUpdateMessageImpl
+    implements ForegroundColorUpdateMessage {
+  const _$ForegroundColorUpdateMessageImpl(this.color);
+
+  @override
+  final Color color;
+
+  @override
+  String toString() {
+    return 'QrCodeMessage.foregroundColorUpdate(color: $color)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ForegroundColorUpdateMessageImpl &&
+            (identical(other.color, color) || other.color == color));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, color);
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ForegroundColorUpdateMessageImplCopyWith<
+          _$ForegroundColorUpdateMessageImpl>
+      get copyWith => __$$ForegroundColorUpdateMessageImplCopyWithImpl<
+          _$ForegroundColorUpdateMessageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(QrCodeState state) loadedState,
+    required TResult Function(String text) updateInput,
+    required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
+    required TResult Function() saveToFile,
+    required TResult Function(ExportType type) updateExportType,
+    required TResult Function() copyToClipboard,
+    required TResult Function(QrCodeShape shape) shapeUpdate,
+    required TResult Function(EdgeInsets padding) paddingUpdate,
+    required TResult Function(Color color) foregroundColorUpdate,
+    required TResult Function(Color color) backgroundColorUpdate,
+  }) {
+    return foregroundColorUpdate(color);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QrCodeState state)? loadedState,
+    TResult? Function(String text)? updateInput,
+    TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult? Function()? saveToFile,
+    TResult? Function(ExportType type)? updateExportType,
+    TResult? Function()? copyToClipboard,
+    TResult? Function(QrCodeShape shape)? shapeUpdate,
+    TResult? Function(EdgeInsets padding)? paddingUpdate,
+    TResult? Function(Color color)? foregroundColorUpdate,
+    TResult? Function(Color color)? backgroundColorUpdate,
+  }) {
+    return foregroundColorUpdate?.call(color);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QrCodeState state)? loadedState,
+    TResult Function(String text)? updateInput,
+    TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult Function()? saveToFile,
+    TResult Function(ExportType type)? updateExportType,
+    TResult Function()? copyToClipboard,
+    TResult Function(QrCodeShape shape)? shapeUpdate,
+    TResult Function(EdgeInsets padding)? paddingUpdate,
+    TResult Function(Color color)? foregroundColorUpdate,
+    TResult Function(Color color)? backgroundColorUpdate,
+    required TResult orElse(),
+  }) {
+    if (foregroundColorUpdate != null) {
+      return foregroundColorUpdate(color);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadedStateMessage value) loadedState,
+    required TResult Function(UpdateInputMessage value) updateInput,
+    required TResult Function(UpdateCorrectionLevelMessage value)
+        updateCorrectionLevel,
+    required TResult Function(SaveToFileMessage value) saveToFile,
+    required TResult Function(UpdateExportTypeMessage value) updateExportType,
+    required TResult Function(CopyToClipboardMessage value) copyToClipboard,
+    required TResult Function(ShapeUpdateMessage value) shapeUpdate,
+    required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+    required TResult Function(ForegroundColorUpdateMessage value)
+        foregroundColorUpdate,
+    required TResult Function(BackgroundColorUpdateMessage value)
+        backgroundColorUpdate,
+  }) {
+    return foregroundColorUpdate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadedStateMessage value)? loadedState,
+    TResult? Function(UpdateInputMessage value)? updateInput,
+    TResult? Function(UpdateCorrectionLevelMessage value)?
+        updateCorrectionLevel,
+    TResult? Function(SaveToFileMessage value)? saveToFile,
+    TResult? Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult? Function(ForegroundColorUpdateMessage value)?
+        foregroundColorUpdate,
+    TResult? Function(BackgroundColorUpdateMessage value)?
+        backgroundColorUpdate,
+  }) {
+    return foregroundColorUpdate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadedStateMessage value)? loadedState,
+    TResult Function(UpdateInputMessage value)? updateInput,
+    TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
+    TResult Function(SaveToFileMessage value)? saveToFile,
+    TResult Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
+    TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
+    required TResult orElse(),
+  }) {
+    if (foregroundColorUpdate != null) {
+      return foregroundColorUpdate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ForegroundColorUpdateMessage implements QrCodeMessage {
+  const factory ForegroundColorUpdateMessage(final Color color) =
+      _$ForegroundColorUpdateMessageImpl;
+
+  Color get color;
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ForegroundColorUpdateMessageImplCopyWith<
+          _$ForegroundColorUpdateMessageImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BackgroundColorUpdateMessageImplCopyWith<$Res> {
+  factory _$$BackgroundColorUpdateMessageImplCopyWith(
+          _$BackgroundColorUpdateMessageImpl value,
+          $Res Function(_$BackgroundColorUpdateMessageImpl) then) =
+      __$$BackgroundColorUpdateMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Color color});
+}
+
+/// @nodoc
+class __$$BackgroundColorUpdateMessageImplCopyWithImpl<$Res>
+    extends _$QrCodeMessageCopyWithImpl<$Res,
+        _$BackgroundColorUpdateMessageImpl>
+    implements _$$BackgroundColorUpdateMessageImplCopyWith<$Res> {
+  __$$BackgroundColorUpdateMessageImplCopyWithImpl(
+      _$BackgroundColorUpdateMessageImpl _value,
+      $Res Function(_$BackgroundColorUpdateMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? color = null,
+  }) {
+    return _then(_$BackgroundColorUpdateMessageImpl(
+      null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BackgroundColorUpdateMessageImpl
+    implements BackgroundColorUpdateMessage {
+  const _$BackgroundColorUpdateMessageImpl(this.color);
+
+  @override
+  final Color color;
+
+  @override
+  String toString() {
+    return 'QrCodeMessage.backgroundColorUpdate(color: $color)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BackgroundColorUpdateMessageImpl &&
+            (identical(other.color, color) || other.color == color));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, color);
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BackgroundColorUpdateMessageImplCopyWith<
+          _$BackgroundColorUpdateMessageImpl>
+      get copyWith => __$$BackgroundColorUpdateMessageImplCopyWithImpl<
+          _$BackgroundColorUpdateMessageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(QrCodeState state) loadedState,
+    required TResult Function(String text) updateInput,
+    required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
+    required TResult Function() saveToFile,
+    required TResult Function(ExportType type) updateExportType,
+    required TResult Function() copyToClipboard,
+    required TResult Function(QrCodeShape shape) shapeUpdate,
+    required TResult Function(EdgeInsets padding) paddingUpdate,
+    required TResult Function(Color color) foregroundColorUpdate,
+    required TResult Function(Color color) backgroundColorUpdate,
+  }) {
+    return backgroundColorUpdate(color);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QrCodeState state)? loadedState,
+    TResult? Function(String text)? updateInput,
+    TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult? Function()? saveToFile,
+    TResult? Function(ExportType type)? updateExportType,
+    TResult? Function()? copyToClipboard,
+    TResult? Function(QrCodeShape shape)? shapeUpdate,
+    TResult? Function(EdgeInsets padding)? paddingUpdate,
+    TResult? Function(Color color)? foregroundColorUpdate,
+    TResult? Function(Color color)? backgroundColorUpdate,
+  }) {
+    return backgroundColorUpdate?.call(color);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QrCodeState state)? loadedState,
+    TResult Function(String text)? updateInput,
+    TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult Function()? saveToFile,
+    TResult Function(ExportType type)? updateExportType,
+    TResult Function()? copyToClipboard,
+    TResult Function(QrCodeShape shape)? shapeUpdate,
+    TResult Function(EdgeInsets padding)? paddingUpdate,
+    TResult Function(Color color)? foregroundColorUpdate,
+    TResult Function(Color color)? backgroundColorUpdate,
+    required TResult orElse(),
+  }) {
+    if (backgroundColorUpdate != null) {
+      return backgroundColorUpdate(color);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadedStateMessage value) loadedState,
+    required TResult Function(UpdateInputMessage value) updateInput,
+    required TResult Function(UpdateCorrectionLevelMessage value)
+        updateCorrectionLevel,
+    required TResult Function(SaveToFileMessage value) saveToFile,
+    required TResult Function(UpdateExportTypeMessage value) updateExportType,
+    required TResult Function(CopyToClipboardMessage value) copyToClipboard,
+    required TResult Function(ShapeUpdateMessage value) shapeUpdate,
+    required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+    required TResult Function(ForegroundColorUpdateMessage value)
+        foregroundColorUpdate,
+    required TResult Function(BackgroundColorUpdateMessage value)
+        backgroundColorUpdate,
+  }) {
+    return backgroundColorUpdate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadedStateMessage value)? loadedState,
+    TResult? Function(UpdateInputMessage value)? updateInput,
+    TResult? Function(UpdateCorrectionLevelMessage value)?
+        updateCorrectionLevel,
+    TResult? Function(SaveToFileMessage value)? saveToFile,
+    TResult? Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult? Function(ForegroundColorUpdateMessage value)?
+        foregroundColorUpdate,
+    TResult? Function(BackgroundColorUpdateMessage value)?
+        backgroundColorUpdate,
+  }) {
+    return backgroundColorUpdate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadedStateMessage value)? loadedState,
+    TResult Function(UpdateInputMessage value)? updateInput,
+    TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
+    TResult Function(SaveToFileMessage value)? saveToFile,
+    TResult Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
+    TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
+    required TResult orElse(),
+  }) {
+    if (backgroundColorUpdate != null) {
+      return backgroundColorUpdate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BackgroundColorUpdateMessage implements QrCodeMessage {
+  const factory BackgroundColorUpdateMessage(final Color color) =
+      _$BackgroundColorUpdateMessageImpl;
+
+  Color get color;
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$BackgroundColorUpdateMessageImplCopyWith<
+          _$BackgroundColorUpdateMessageImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

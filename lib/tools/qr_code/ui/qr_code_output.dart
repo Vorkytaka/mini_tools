@@ -14,6 +14,10 @@ class _OutputSide extends StatelessWidget {
         SizedBox(height: 8),
         _QrCodeShapeSelector(),
         SizedBox(height: 8),
+        _ForegroundColorPicker(),
+        SizedBox(height: 8),
+        _BackgroundColorPicker(),
+        SizedBox(height: 8),
         Center(child: _QrCodeWidget()),
         SizedBox(height: 8),
         _ExportQrLine(),
@@ -21,6 +25,80 @@ class _OutputSide extends StatelessWidget {
         Center(child: _SvgWarning()),
         SizedBox(height: 4),
         Center(child: _TestQrWarning()),
+      ],
+    );
+  }
+}
+
+class _ForegroundColorPicker extends StatelessWidget {
+  const _ForegroundColorPicker();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          width: 130,
+          child: Text('Foreground Color: '),
+        ),
+        FeatureBuilder<QrCodeFeature, QrCodeState>(
+          buildWhen: (prev, curr) =>
+              prev.visualData.foregroundColor !=
+              curr.visualData.foregroundColor,
+          builder: (context, state) {
+            return SizedBox(
+              height: 25,
+              child: MiniColorPicker(
+                onColorChanged: (color) {
+                  if (color != state.visualData.foregroundColor) {
+                    context
+                        .read<QrCodeFeature>()
+                        .accept(QrCodeMessage.foregroundColorUpdate(color));
+                  }
+                },
+                selectedColor: state.visualData.foregroundColor,
+              ),
+            );
+          },
+        ),
+      ],
+    );
+  }
+}
+
+class _BackgroundColorPicker extends StatelessWidget {
+  const _BackgroundColorPicker();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          width: 130,
+          child: Text('Background Color: '),
+        ),
+        FeatureBuilder<QrCodeFeature, QrCodeState>(
+          buildWhen: (prev, curr) =>
+              prev.visualData.backgroundColor !=
+              curr.visualData.backgroundColor,
+          builder: (context, state) {
+            return SizedBox(
+              height: 25,
+              child: MiniColorPicker(
+                onColorChanged: (color) {
+                  if (color != state.visualData.backgroundColor) {
+                    context
+                        .read<QrCodeFeature>()
+                        .accept(QrCodeMessage.backgroundColorUpdate(color));
+                  }
+                },
+                selectedColor: state.visualData.backgroundColor,
+              ),
+            );
+          },
+        ),
       ],
     );
   }
