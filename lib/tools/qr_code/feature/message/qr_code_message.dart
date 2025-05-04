@@ -8,7 +8,8 @@ part 'qr_code_message.freezed.dart';
 @freezed
 @immutable
 sealed class QrCodeMessage with _$QrCodeMessage {
-  const factory QrCodeMessage.loadedState(QrCodeState state) = LoadedStateMessage;
+  const factory QrCodeMessage.loadedState(QrCodeState state) =
+      LoadedStateMessage;
 
   const factory QrCodeMessage.updateInput(String text) = UpdateInputMessage;
 

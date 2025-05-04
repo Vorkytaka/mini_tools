@@ -7,8 +7,6 @@ part 'qr_code_effect.freezed.dart';
 
 @immutable
 sealed class QrCodeEffect {
-  const QrCodeEffect._();
-
   const factory QrCodeEffect.saveToFile({
     required QrCode code,
     required ExportType exportType,
