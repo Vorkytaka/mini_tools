@@ -2,7 +2,11 @@ import 'package:flutter/painting.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
+import '../../../../common/json.dart';
+
 part 'qr_code_state.freezed.dart';
+
+part 'qr_code_state.g.dart';
 
 enum ErrorCorrectionLevel {
   L, // Low 7%
@@ -46,6 +50,9 @@ class QrCodeState with _$QrCodeState {
 
   const QrCodeState._();
 
+  factory QrCodeState.fromJson(Map<String, dynamic> json) =>
+      _$QrCodeStateFromJson(json);
+
   static const initialState = QrCodeState(
     input: '',
     correctionLevel: ErrorCorrectionLevel.H,
@@ -83,11 +90,14 @@ enum QrCodeShape {
 @immutable
 class QrCodeVisualData with _$QrCodeVisualData {
   const factory QrCodeVisualData({
-    required Color backgroundColor,
-    required Color foregroundColor,
+    @ColorConverter() required Color backgroundColor,
+    @ColorConverter() required Color foregroundColor,
     required QrCodeShape shape,
-    required EdgeInsets paddings,
+    @EdgeInsetsConverter() required EdgeInsets paddings,
   }) = _QrCodeVisualData;
+
+  factory QrCodeVisualData.fromJson(Map<String, dynamic> json) =>
+      _$QrCodeVisualDataFromJson(json);
 }
 
 extension QrCodeVisualDataUtils on QrCodeVisualData {

@@ -10,15 +10,23 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
 ) {
   switch (message) {
     case UpdateInputMessage():
-      return next(state: state.copyWith(input: message.text));
+      final newState = state.copyWith(input: message.text);
+      return next(
+        state: newState,
+        effects: [SaveStateEffect(state: newState)],
+      );
     case UpdateCorrectionLevelMessage():
-      return next(state: state.copyWith(correctionLevel: message.level));
+      final newState = state.copyWith(correctionLevel: message.level);
+      return next(
+        state: newState,
+        effects: [SaveStateEffect(state: newState)],
+      );
     case SaveToFileMessage():
       final code = state.code;
       return next(
         effects: [
           if (code != null)
-            QrCodeEffect.saveToFile(
+            ExportEffect.saveToFile(
               code: code,
               exportType: state.exportType,
               visualData: state.visualData,
@@ -26,33 +34,43 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
         ],
       );
     case UpdateExportTypeMessage():
-      return next(state: state.copyWith(exportType: message.type));
+      final newState = state.copyWith(exportType: message.type);
+      return next(
+        state: newState,
+        effects: [SaveStateEffect(state: newState)],
+      );
     case CopyToClipboardMessage():
       final code = state.code;
       return next(
         effects: [
           if (code != null)
-            QrCodeEffect.copyToClipboard(
+            ExportEffect.copyToClipboard(
               code: code,
               visualData: state.visualData,
             ),
         ],
       );
     case ShapeUpdateMessage():
-      return next(
-        state: state.copyWith(
-          visualData: state.visualData.copyWith(
-            shape: message.shape,
-          ),
+      final newState = state.copyWith(
+        visualData: state.visualData.copyWith(
+          shape: message.shape,
         ),
+      );
+      return next(
+        state: newState,
+        effects: [SaveStateEffect(state: newState)],
       );
     case PaddingUpdateMessage():
-      return next(
-        state: state.copyWith(
-          visualData: state.visualData.copyWith(
-            paddings: message.padding,
-          ),
+      final newState = state.copyWith(
+        visualData: state.visualData.copyWith(
+          paddings: message.padding,
         ),
       );
+      return next(
+        state: newState,
+        effects: [SaveStateEffect(state: newState)],
+      );
+    case LoadedStateMessage():
+      return next(state: message.state);
   }
 }

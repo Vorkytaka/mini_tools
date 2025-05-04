@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
+QrCodeState _$QrCodeStateFromJson(Map<String, dynamic> json) {
+  return _QrCodeState.fromJson(json);
+}
+
 /// @nodoc
 mixin _$QrCodeState {
   String get input => throw _privateConstructorUsedError;
@@ -21,6 +25,9 @@ mixin _$QrCodeState {
       throw _privateConstructorUsedError;
   ExportType get exportType => throw _privateConstructorUsedError;
   QrCodeVisualData get visualData => throw _privateConstructorUsedError;
+
+  /// Serializes this QrCodeState to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of QrCodeState
   /// with the given fields replaced by the non-null parameter values.
@@ -153,7 +160,7 @@ class __$$QrCodeStateImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$QrCodeStateImpl extends _QrCodeState {
   const _$QrCodeStateImpl(
       {required this.input,
@@ -161,6 +168,9 @@ class _$QrCodeStateImpl extends _QrCodeState {
       required this.exportType,
       required this.visualData})
       : super._();
+
+  factory _$QrCodeStateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$QrCodeStateImplFromJson(json);
 
   @override
   final String input;
@@ -190,6 +200,7 @@ class _$QrCodeStateImpl extends _QrCodeState {
                 other.visualData == visualData));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, input, correctionLevel, exportType, visualData);
@@ -201,6 +212,13 @@ class _$QrCodeStateImpl extends _QrCodeState {
   @pragma('vm:prefer-inline')
   _$$QrCodeStateImplCopyWith<_$QrCodeStateImpl> get copyWith =>
       __$$QrCodeStateImplCopyWithImpl<_$QrCodeStateImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$QrCodeStateImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _QrCodeState extends QrCodeState {
@@ -210,6 +228,9 @@ abstract class _QrCodeState extends QrCodeState {
       required final ExportType exportType,
       required final QrCodeVisualData visualData}) = _$QrCodeStateImpl;
   const _QrCodeState._() : super._();
+
+  factory _QrCodeState.fromJson(Map<String, dynamic> json) =
+      _$QrCodeStateImpl.fromJson;
 
   @override
   String get input;
@@ -228,12 +249,22 @@ abstract class _QrCodeState extends QrCodeState {
       throw _privateConstructorUsedError;
 }
 
+QrCodeVisualData _$QrCodeVisualDataFromJson(Map<String, dynamic> json) {
+  return _QrCodeVisualData.fromJson(json);
+}
+
 /// @nodoc
 mixin _$QrCodeVisualData {
+  @ColorConverter()
   Color get backgroundColor => throw _privateConstructorUsedError;
+  @ColorConverter()
   Color get foregroundColor => throw _privateConstructorUsedError;
   QrCodeShape get shape => throw _privateConstructorUsedError;
+  @EdgeInsetsConverter()
   EdgeInsets get paddings => throw _privateConstructorUsedError;
+
+  /// Serializes this QrCodeVisualData to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
   /// Create a copy of QrCodeVisualData
   /// with the given fields replaced by the non-null parameter values.
@@ -249,10 +280,10 @@ abstract class $QrCodeVisualDataCopyWith<$Res> {
       _$QrCodeVisualDataCopyWithImpl<$Res, QrCodeVisualData>;
   @useResult
   $Res call(
-      {Color backgroundColor,
-      Color foregroundColor,
+      {@ColorConverter() Color backgroundColor,
+      @ColorConverter() Color foregroundColor,
       QrCodeShape shape,
-      EdgeInsets paddings});
+      @EdgeInsetsConverter() EdgeInsets paddings});
 }
 
 /// @nodoc
@@ -305,10 +336,10 @@ abstract class _$$QrCodeVisualDataImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Color backgroundColor,
-      Color foregroundColor,
+      {@ColorConverter() Color backgroundColor,
+      @ColorConverter() Color foregroundColor,
       QrCodeShape shape,
-      EdgeInsets paddings});
+      @EdgeInsetsConverter() EdgeInsets paddings});
 }
 
 /// @nodoc
@@ -351,21 +382,27 @@ class __$$QrCodeVisualDataImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$QrCodeVisualDataImpl implements _QrCodeVisualData {
   const _$QrCodeVisualDataImpl(
-      {required this.backgroundColor,
-      required this.foregroundColor,
+      {@ColorConverter() required this.backgroundColor,
+      @ColorConverter() required this.foregroundColor,
       required this.shape,
-      required this.paddings});
+      @EdgeInsetsConverter() required this.paddings});
+
+  factory _$QrCodeVisualDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$QrCodeVisualDataImplFromJson(json);
 
   @override
+  @ColorConverter()
   final Color backgroundColor;
   @override
+  @ColorConverter()
   final Color foregroundColor;
   @override
   final QrCodeShape shape;
   @override
+  @EdgeInsetsConverter()
   final EdgeInsets paddings;
 
   @override
@@ -387,6 +424,7 @@ class _$QrCodeVisualDataImpl implements _QrCodeVisualData {
                 other.paddings == paddings));
   }
 
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, backgroundColor, foregroundColor, shape, paddings);
@@ -399,22 +437,36 @@ class _$QrCodeVisualDataImpl implements _QrCodeVisualData {
   _$$QrCodeVisualDataImplCopyWith<_$QrCodeVisualDataImpl> get copyWith =>
       __$$QrCodeVisualDataImplCopyWithImpl<_$QrCodeVisualDataImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$QrCodeVisualDataImplToJson(
+      this,
+    );
+  }
 }
 
 abstract class _QrCodeVisualData implements QrCodeVisualData {
   const factory _QrCodeVisualData(
-      {required final Color backgroundColor,
-      required final Color foregroundColor,
-      required final QrCodeShape shape,
-      required final EdgeInsets paddings}) = _$QrCodeVisualDataImpl;
+          {@ColorConverter() required final Color backgroundColor,
+          @ColorConverter() required final Color foregroundColor,
+          required final QrCodeShape shape,
+          @EdgeInsetsConverter() required final EdgeInsets paddings}) =
+      _$QrCodeVisualDataImpl;
+
+  factory _QrCodeVisualData.fromJson(Map<String, dynamic> json) =
+      _$QrCodeVisualDataImpl.fromJson;
 
   @override
+  @ColorConverter()
   Color get backgroundColor;
   @override
+  @ColorConverter()
   Color get foregroundColor;
   @override
   QrCodeShape get shape;
   @override
+  @EdgeInsetsConverter()
   EdgeInsets get paddings;
 
   /// Create a copy of QrCodeVisualData
