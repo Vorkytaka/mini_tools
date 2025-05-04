@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$QrCodeEffect {
+mixin _$ExportEffect {
   QrCode get code => throw _privateConstructorUsedError;
   QrCodeVisualData get visualData => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,18 +65,18 @@ mixin _$QrCodeEffect {
   }) =>
       throw _privateConstructorUsedError;
 
-  /// Create a copy of QrCodeEffect
+  /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $QrCodeEffectCopyWith<QrCodeEffect> get copyWith =>
+  $ExportEffectCopyWith<ExportEffect> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $QrCodeEffectCopyWith<$Res> {
-  factory $QrCodeEffectCopyWith(
-          QrCodeEffect value, $Res Function(QrCodeEffect) then) =
-      _$QrCodeEffectCopyWithImpl<$Res, QrCodeEffect>;
+abstract class $ExportEffectCopyWith<$Res> {
+  factory $ExportEffectCopyWith(
+          ExportEffect value, $Res Function(ExportEffect) then) =
+      _$ExportEffectCopyWithImpl<$Res, ExportEffect>;
   @useResult
   $Res call({QrCode code, QrCodeVisualData visualData});
 
@@ -84,16 +84,16 @@ abstract class $QrCodeEffectCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$QrCodeEffectCopyWithImpl<$Res, $Val extends QrCodeEffect>
-    implements $QrCodeEffectCopyWith<$Res> {
-  _$QrCodeEffectCopyWithImpl(this._value, this._then);
+class _$ExportEffectCopyWithImpl<$Res, $Val extends ExportEffect>
+    implements $ExportEffectCopyWith<$Res> {
+  _$ExportEffectCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of QrCodeEffect
+  /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -113,7 +113,7 @@ class _$QrCodeEffectCopyWithImpl<$Res, $Val extends QrCodeEffect>
     ) as $Val);
   }
 
-  /// Create a copy of QrCodeEffect
+  /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
@@ -126,7 +126,7 @@ class _$QrCodeEffectCopyWithImpl<$Res, $Val extends QrCodeEffect>
 
 /// @nodoc
 abstract class _$$SaveToFileEffectImplCopyWith<$Res>
-    implements $QrCodeEffectCopyWith<$Res> {
+    implements $ExportEffectCopyWith<$Res> {
   factory _$$SaveToFileEffectImplCopyWith(_$SaveToFileEffectImpl value,
           $Res Function(_$SaveToFileEffectImpl) then) =
       __$$SaveToFileEffectImplCopyWithImpl<$Res>;
@@ -140,13 +140,13 @@ abstract class _$$SaveToFileEffectImplCopyWith<$Res>
 
 /// @nodoc
 class __$$SaveToFileEffectImplCopyWithImpl<$Res>
-    extends _$QrCodeEffectCopyWithImpl<$Res, _$SaveToFileEffectImpl>
+    extends _$ExportEffectCopyWithImpl<$Res, _$SaveToFileEffectImpl>
     implements _$$SaveToFileEffectImplCopyWith<$Res> {
   __$$SaveToFileEffectImplCopyWithImpl(_$SaveToFileEffectImpl _value,
       $Res Function(_$SaveToFileEffectImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of QrCodeEffect
+  /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -187,7 +187,7 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
 
   @override
   String toString() {
-    return 'QrCodeEffect.saveToFile(code: $code, exportType: $exportType, visualData: $visualData)';
+    return 'ExportEffect.saveToFile(code: $code, exportType: $exportType, visualData: $visualData)';
   }
 
   @override
@@ -205,7 +205,7 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
   @override
   int get hashCode => Object.hash(runtimeType, code, exportType, visualData);
 
-  /// Create a copy of QrCodeEffect
+  /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -285,7 +285,7 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
   }
 }
 
-abstract class SaveToFileEffect implements QrCodeEffect {
+abstract class SaveToFileEffect implements ExportEffect {
   const factory SaveToFileEffect(
       {required final QrCode code,
       required final ExportType exportType,
@@ -297,7 +297,7 @@ abstract class SaveToFileEffect implements QrCodeEffect {
   @override
   QrCodeVisualData get visualData;
 
-  /// Create a copy of QrCodeEffect
+  /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -307,7 +307,7 @@ abstract class SaveToFileEffect implements QrCodeEffect {
 
 /// @nodoc
 abstract class _$$CopyToClipboardEffectImplCopyWith<$Res>
-    implements $QrCodeEffectCopyWith<$Res> {
+    implements $ExportEffectCopyWith<$Res> {
   factory _$$CopyToClipboardEffectImplCopyWith(
           _$CopyToClipboardEffectImpl value,
           $Res Function(_$CopyToClipboardEffectImpl) then) =
@@ -322,13 +322,13 @@ abstract class _$$CopyToClipboardEffectImplCopyWith<$Res>
 
 /// @nodoc
 class __$$CopyToClipboardEffectImplCopyWithImpl<$Res>
-    extends _$QrCodeEffectCopyWithImpl<$Res, _$CopyToClipboardEffectImpl>
+    extends _$ExportEffectCopyWithImpl<$Res, _$CopyToClipboardEffectImpl>
     implements _$$CopyToClipboardEffectImplCopyWith<$Res> {
   __$$CopyToClipboardEffectImplCopyWithImpl(_$CopyToClipboardEffectImpl _value,
       $Res Function(_$CopyToClipboardEffectImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of QrCodeEffect
+  /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -362,7 +362,7 @@ class _$CopyToClipboardEffectImpl implements CopyToClipboardEffect {
 
   @override
   String toString() {
-    return 'QrCodeEffect.copyToClipboard(code: $code, visualData: $visualData)';
+    return 'ExportEffect.copyToClipboard(code: $code, visualData: $visualData)';
   }
 
   @override
@@ -378,7 +378,7 @@ class _$CopyToClipboardEffectImpl implements CopyToClipboardEffect {
   @override
   int get hashCode => Object.hash(runtimeType, code, visualData);
 
-  /// Create a copy of QrCodeEffect
+  /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
@@ -458,7 +458,7 @@ class _$CopyToClipboardEffectImpl implements CopyToClipboardEffect {
   }
 }
 
-abstract class CopyToClipboardEffect implements QrCodeEffect {
+abstract class CopyToClipboardEffect implements ExportEffect {
   const factory CopyToClipboardEffect(
           {required final QrCode code,
           required final QrCodeVisualData visualData}) =
@@ -469,10 +469,222 @@ abstract class CopyToClipboardEffect implements QrCodeEffect {
   @override
   QrCodeVisualData get visualData;
 
-  /// Create a copy of QrCodeEffect
+  /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CopyToClipboardEffectImplCopyWith<_$CopyToClipboardEffectImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$SaveStateEffect {
+  QrCodeState get state => throw _privateConstructorUsedError;
+
+  /// Create a copy of SaveStateEffect
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SaveStateEffectCopyWith<SaveStateEffect> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SaveStateEffectCopyWith<$Res> {
+  factory $SaveStateEffectCopyWith(
+          SaveStateEffect value, $Res Function(SaveStateEffect) then) =
+      _$SaveStateEffectCopyWithImpl<$Res, SaveStateEffect>;
+  @useResult
+  $Res call({QrCodeState state});
+
+  $QrCodeStateCopyWith<$Res> get state;
+}
+
+/// @nodoc
+class _$SaveStateEffectCopyWithImpl<$Res, $Val extends SaveStateEffect>
+    implements $SaveStateEffectCopyWith<$Res> {
+  _$SaveStateEffectCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of SaveStateEffect
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? state = null,
+  }) {
+    return _then(_value.copyWith(
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as QrCodeState,
+    ) as $Val);
+  }
+
+  /// Create a copy of SaveStateEffect
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $QrCodeStateCopyWith<$Res> get state {
+    return $QrCodeStateCopyWith<$Res>(_value.state, (value) {
+      return _then(_value.copyWith(state: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$SaveStateEffectImplCopyWith<$Res>
+    implements $SaveStateEffectCopyWith<$Res> {
+  factory _$$SaveStateEffectImplCopyWith(_$SaveStateEffectImpl value,
+          $Res Function(_$SaveStateEffectImpl) then) =
+      __$$SaveStateEffectImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({QrCodeState state});
+
+  @override
+  $QrCodeStateCopyWith<$Res> get state;
+}
+
+/// @nodoc
+class __$$SaveStateEffectImplCopyWithImpl<$Res>
+    extends _$SaveStateEffectCopyWithImpl<$Res, _$SaveStateEffectImpl>
+    implements _$$SaveStateEffectImplCopyWith<$Res> {
+  __$$SaveStateEffectImplCopyWithImpl(
+      _$SaveStateEffectImpl _value, $Res Function(_$SaveStateEffectImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SaveStateEffect
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? state = null,
+  }) {
+    return _then(_$SaveStateEffectImpl(
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as QrCodeState,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SaveStateEffectImpl implements _SaveStateEffect {
+  const _$SaveStateEffectImpl({required this.state});
+
+  @override
+  final QrCodeState state;
+
+  @override
+  String toString() {
+    return 'SaveStateEffect(state: $state)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SaveStateEffectImpl &&
+            (identical(other.state, state) || other.state == state));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, state);
+
+  /// Create a copy of SaveStateEffect
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SaveStateEffectImplCopyWith<_$SaveStateEffectImpl> get copyWith =>
+      __$$SaveStateEffectImplCopyWithImpl<_$SaveStateEffectImpl>(
+          this, _$identity);
+}
+
+abstract class _SaveStateEffect implements SaveStateEffect {
+  const factory _SaveStateEffect({required final QrCodeState state}) =
+      _$SaveStateEffectImpl;
+
+  @override
+  QrCodeState get state;
+
+  /// Create a copy of SaveStateEffect
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SaveStateEffectImplCopyWith<_$SaveStateEffectImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$LoadStateEffect {}
+
+/// @nodoc
+abstract class $LoadStateEffectCopyWith<$Res> {
+  factory $LoadStateEffectCopyWith(
+          LoadStateEffect value, $Res Function(LoadStateEffect) then) =
+      _$LoadStateEffectCopyWithImpl<$Res, LoadStateEffect>;
+}
+
+/// @nodoc
+class _$LoadStateEffectCopyWithImpl<$Res, $Val extends LoadStateEffect>
+    implements $LoadStateEffectCopyWith<$Res> {
+  _$LoadStateEffectCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of LoadStateEffect
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$LoadStateEffectImplCopyWith<$Res> {
+  factory _$$LoadStateEffectImplCopyWith(_$LoadStateEffectImpl value,
+          $Res Function(_$LoadStateEffectImpl) then) =
+      __$$LoadStateEffectImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadStateEffectImplCopyWithImpl<$Res>
+    extends _$LoadStateEffectCopyWithImpl<$Res, _$LoadStateEffectImpl>
+    implements _$$LoadStateEffectImplCopyWith<$Res> {
+  __$$LoadStateEffectImplCopyWithImpl(
+      _$LoadStateEffectImpl _value, $Res Function(_$LoadStateEffectImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of LoadStateEffect
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$LoadStateEffectImpl implements _LoadStateEffect {
+  const _$LoadStateEffectImpl();
+
+  @override
+  String toString() {
+    return 'LoadStateEffect()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadStateEffectImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+}
+
+abstract class _LoadStateEffect implements LoadStateEffect {
+  const factory _LoadStateEffect() = _$LoadStateEffectImpl;
 }

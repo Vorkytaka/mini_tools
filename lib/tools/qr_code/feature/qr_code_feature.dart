@@ -1,3 +1,4 @@
+import 'package:mini_tea/effect_handlers.dart';
 import 'package:mini_tea/feature.dart';
 
 import 'effect/qr_code_effect.dart';
@@ -9,7 +10,15 @@ import 'state/qr_code_state.dart';
 typedef QrCodeFeature = Feature<QrCodeState, QrCodeMessage, QrCodeEffect>;
 
 QrCodeFeature qrCodeFeatureFactory() => QrCodeFeature(
-      initialState: QrCodeState.initialState(),
+      initialState: QrCodeState.initialState,
       update: qrCodeUpdate,
-      effectHandlers: [QrCodeEffectHandler()],
+      effectHandlers: [
+        QrCodeEffectHandler(
+          onSaveState: DebounceEffectHandler(
+            duration: const Duration(milliseconds: 500),
+            handler: const SaveStateEffectHandler(),
+          ),
+        ),
+      ],
+      initialEffects: [const QrCodeEffect.loadState()],
     );

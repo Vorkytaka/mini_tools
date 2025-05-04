@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$QrCodeMessage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(QrCodeState state) loadedState,
     required TResult Function(String text) updateInput,
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
     required TResult Function() saveToFile,
@@ -29,6 +30,7 @@ mixin _$QrCodeMessage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QrCodeState state)? loadedState,
     TResult? Function(String text)? updateInput,
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult? Function()? saveToFile,
@@ -40,6 +42,7 @@ mixin _$QrCodeMessage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QrCodeState state)? loadedState,
     TResult Function(String text)? updateInput,
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult Function()? saveToFile,
@@ -52,6 +55,7 @@ mixin _$QrCodeMessage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
         updateCorrectionLevel,
@@ -64,6 +68,7 @@ mixin _$QrCodeMessage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
         updateCorrectionLevel,
@@ -76,6 +81,7 @@ mixin _$QrCodeMessage {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadedStateMessage value)? loadedState,
     TResult Function(UpdateInputMessage value)? updateInput,
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
     TResult Function(SaveToFileMessage value)? saveToFile,
@@ -107,6 +113,198 @@ class _$QrCodeMessageCopyWithImpl<$Res, $Val extends QrCodeMessage>
 
   /// Create a copy of QrCodeMessage
   /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$LoadedStateMessageImplCopyWith<$Res> {
+  factory _$$LoadedStateMessageImplCopyWith(_$LoadedStateMessageImpl value,
+          $Res Function(_$LoadedStateMessageImpl) then) =
+      __$$LoadedStateMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({QrCodeState state});
+
+  $QrCodeStateCopyWith<$Res> get state;
+}
+
+/// @nodoc
+class __$$LoadedStateMessageImplCopyWithImpl<$Res>
+    extends _$QrCodeMessageCopyWithImpl<$Res, _$LoadedStateMessageImpl>
+    implements _$$LoadedStateMessageImplCopyWith<$Res> {
+  __$$LoadedStateMessageImplCopyWithImpl(_$LoadedStateMessageImpl _value,
+      $Res Function(_$LoadedStateMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? state = null,
+  }) {
+    return _then(_$LoadedStateMessageImpl(
+      null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as QrCodeState,
+    ));
+  }
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $QrCodeStateCopyWith<$Res> get state {
+    return $QrCodeStateCopyWith<$Res>(_value.state, (value) {
+      return _then(_value.copyWith(state: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$LoadedStateMessageImpl implements LoadedStateMessage {
+  const _$LoadedStateMessageImpl(this.state);
+
+  @override
+  final QrCodeState state;
+
+  @override
+  String toString() {
+    return 'QrCodeMessage.loadedState(state: $state)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadedStateMessageImpl &&
+            (identical(other.state, state) || other.state == state));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, state);
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadedStateMessageImplCopyWith<_$LoadedStateMessageImpl> get copyWith =>
+      __$$LoadedStateMessageImplCopyWithImpl<_$LoadedStateMessageImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(QrCodeState state) loadedState,
+    required TResult Function(String text) updateInput,
+    required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
+    required TResult Function() saveToFile,
+    required TResult Function(ExportType type) updateExportType,
+    required TResult Function() copyToClipboard,
+    required TResult Function(QrCodeShape shape) shapeUpdate,
+    required TResult Function(EdgeInsets padding) paddingUpdate,
+  }) {
+    return loadedState(state);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QrCodeState state)? loadedState,
+    TResult? Function(String text)? updateInput,
+    TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult? Function()? saveToFile,
+    TResult? Function(ExportType type)? updateExportType,
+    TResult? Function()? copyToClipboard,
+    TResult? Function(QrCodeShape shape)? shapeUpdate,
+    TResult? Function(EdgeInsets padding)? paddingUpdate,
+  }) {
+    return loadedState?.call(state);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QrCodeState state)? loadedState,
+    TResult Function(String text)? updateInput,
+    TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult Function()? saveToFile,
+    TResult Function(ExportType type)? updateExportType,
+    TResult Function()? copyToClipboard,
+    TResult Function(QrCodeShape shape)? shapeUpdate,
+    TResult Function(EdgeInsets padding)? paddingUpdate,
+    required TResult orElse(),
+  }) {
+    if (loadedState != null) {
+      return loadedState(state);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadedStateMessage value) loadedState,
+    required TResult Function(UpdateInputMessage value) updateInput,
+    required TResult Function(UpdateCorrectionLevelMessage value)
+        updateCorrectionLevel,
+    required TResult Function(SaveToFileMessage value) saveToFile,
+    required TResult Function(UpdateExportTypeMessage value) updateExportType,
+    required TResult Function(CopyToClipboardMessage value) copyToClipboard,
+    required TResult Function(ShapeUpdateMessage value) shapeUpdate,
+    required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+  }) {
+    return loadedState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadedStateMessage value)? loadedState,
+    TResult? Function(UpdateInputMessage value)? updateInput,
+    TResult? Function(UpdateCorrectionLevelMessage value)?
+        updateCorrectionLevel,
+    TResult? Function(SaveToFileMessage value)? saveToFile,
+    TResult? Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+  }) {
+    return loadedState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadedStateMessage value)? loadedState,
+    TResult Function(UpdateInputMessage value)? updateInput,
+    TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
+    TResult Function(SaveToFileMessage value)? saveToFile,
+    TResult Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    required TResult orElse(),
+  }) {
+    if (loadedState != null) {
+      return loadedState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadedStateMessage implements QrCodeMessage {
+  const factory LoadedStateMessage(final QrCodeState state) =
+      _$LoadedStateMessageImpl;
+
+  QrCodeState get state;
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LoadedStateMessageImplCopyWith<_$LoadedStateMessageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -178,6 +376,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(QrCodeState state) loadedState,
     required TResult Function(String text) updateInput,
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
     required TResult Function() saveToFile,
@@ -192,6 +391,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QrCodeState state)? loadedState,
     TResult? Function(String text)? updateInput,
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult? Function()? saveToFile,
@@ -206,6 +406,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QrCodeState state)? loadedState,
     TResult Function(String text)? updateInput,
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult Function()? saveToFile,
@@ -224,6 +425,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
         updateCorrectionLevel,
@@ -239,6 +441,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
         updateCorrectionLevel,
@@ -254,6 +457,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadedStateMessage value)? loadedState,
     TResult Function(UpdateInputMessage value)? updateInput,
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
     TResult Function(SaveToFileMessage value)? saveToFile,
@@ -357,6 +561,7 @@ class _$UpdateCorrectionLevelMessageImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(QrCodeState state) loadedState,
     required TResult Function(String text) updateInput,
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
     required TResult Function() saveToFile,
@@ -371,6 +576,7 @@ class _$UpdateCorrectionLevelMessageImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QrCodeState state)? loadedState,
     TResult? Function(String text)? updateInput,
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult? Function()? saveToFile,
@@ -385,6 +591,7 @@ class _$UpdateCorrectionLevelMessageImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QrCodeState state)? loadedState,
     TResult Function(String text)? updateInput,
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult Function()? saveToFile,
@@ -403,6 +610,7 @@ class _$UpdateCorrectionLevelMessageImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
         updateCorrectionLevel,
@@ -418,6 +626,7 @@ class _$UpdateCorrectionLevelMessageImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
         updateCorrectionLevel,
@@ -433,6 +642,7 @@ class _$UpdateCorrectionLevelMessageImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadedStateMessage value)? loadedState,
     TResult Function(UpdateInputMessage value)? updateInput,
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
     TResult Function(SaveToFileMessage value)? saveToFile,
@@ -504,6 +714,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(QrCodeState state) loadedState,
     required TResult Function(String text) updateInput,
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
     required TResult Function() saveToFile,
@@ -518,6 +729,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QrCodeState state)? loadedState,
     TResult? Function(String text)? updateInput,
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult? Function()? saveToFile,
@@ -532,6 +744,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QrCodeState state)? loadedState,
     TResult Function(String text)? updateInput,
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult Function()? saveToFile,
@@ -550,6 +763,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
         updateCorrectionLevel,
@@ -565,6 +779,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
         updateCorrectionLevel,
@@ -580,6 +795,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadedStateMessage value)? loadedState,
     TResult Function(UpdateInputMessage value)? updateInput,
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
     TResult Function(SaveToFileMessage value)? saveToFile,
@@ -671,6 +887,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(QrCodeState state) loadedState,
     required TResult Function(String text) updateInput,
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
     required TResult Function() saveToFile,
@@ -685,6 +902,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QrCodeState state)? loadedState,
     TResult? Function(String text)? updateInput,
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult? Function()? saveToFile,
@@ -699,6 +917,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QrCodeState state)? loadedState,
     TResult Function(String text)? updateInput,
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult Function()? saveToFile,
@@ -717,6 +936,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
         updateCorrectionLevel,
@@ -732,6 +952,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
         updateCorrectionLevel,
@@ -747,6 +968,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadedStateMessage value)? loadedState,
     TResult Function(UpdateInputMessage value)? updateInput,
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
     TResult Function(SaveToFileMessage value)? saveToFile,
@@ -820,6 +1042,7 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(QrCodeState state) loadedState,
     required TResult Function(String text) updateInput,
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
     required TResult Function() saveToFile,
@@ -834,6 +1057,7 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QrCodeState state)? loadedState,
     TResult? Function(String text)? updateInput,
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult? Function()? saveToFile,
@@ -848,6 +1072,7 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QrCodeState state)? loadedState,
     TResult Function(String text)? updateInput,
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult Function()? saveToFile,
@@ -866,6 +1091,7 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
         updateCorrectionLevel,
@@ -881,6 +1107,7 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
         updateCorrectionLevel,
@@ -896,6 +1123,7 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadedStateMessage value)? loadedState,
     TResult Function(UpdateInputMessage value)? updateInput,
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
     TResult Function(SaveToFileMessage value)? saveToFile,
@@ -985,6 +1213,7 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(QrCodeState state) loadedState,
     required TResult Function(String text) updateInput,
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
     required TResult Function() saveToFile,
@@ -999,6 +1228,7 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QrCodeState state)? loadedState,
     TResult? Function(String text)? updateInput,
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult? Function()? saveToFile,
@@ -1013,6 +1243,7 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QrCodeState state)? loadedState,
     TResult Function(String text)? updateInput,
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult Function()? saveToFile,
@@ -1031,6 +1262,7 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
         updateCorrectionLevel,
@@ -1046,6 +1278,7 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
         updateCorrectionLevel,
@@ -1061,6 +1294,7 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadedStateMessage value)? loadedState,
     TResult Function(UpdateInputMessage value)? updateInput,
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
     TResult Function(SaveToFileMessage value)? saveToFile,
@@ -1160,6 +1394,7 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function(QrCodeState state) loadedState,
     required TResult Function(String text) updateInput,
     required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
     required TResult Function() saveToFile,
@@ -1174,6 +1409,7 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QrCodeState state)? loadedState,
     TResult? Function(String text)? updateInput,
     TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult? Function()? saveToFile,
@@ -1188,6 +1424,7 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QrCodeState state)? loadedState,
     TResult Function(String text)? updateInput,
     TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
     TResult Function()? saveToFile,
@@ -1206,6 +1443,7 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
         updateCorrectionLevel,
@@ -1221,6 +1459,7 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
         updateCorrectionLevel,
@@ -1236,6 +1475,7 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadedStateMessage value)? loadedState,
     TResult Function(UpdateInputMessage value)? updateInput,
     TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
     TResult Function(SaveToFileMessage value)? saveToFile,

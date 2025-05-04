@@ -2,7 +2,11 @@ import 'package:flutter/painting.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
+import '../../../../common/json.dart';
+
 part 'qr_code_state.freezed.dart';
+
+part 'qr_code_state.g.dart';
 
 enum ErrorCorrectionLevel {
   L, // Low 7%
@@ -38,25 +42,43 @@ extension ExportTypeUtils on ExportType {
 @immutable
 class QrCodeState with _$QrCodeState {
   const factory QrCodeState({
-    required QrCode? code,
     required String input,
     required ErrorCorrectionLevel correctionLevel,
     required ExportType exportType,
     required QrCodeVisualData visualData,
   }) = _QrCodeState;
 
-  factory QrCodeState.initialState() => const QrCodeState(
-        code: null,
-        input: '',
-        correctionLevel: ErrorCorrectionLevel.H,
-        exportType: ExportType.png,
-        visualData: QrCodeVisualData(
-          backgroundColor: Color(0xffffffff),
-          foregroundColor: Color(0xff000000),
-          shape: QrCodeShape.square,
-          paddings: EdgeInsets.zero,
-        ),
+  const QrCodeState._();
+
+  factory QrCodeState.fromJson(Map<String, dynamic> json) =>
+      _$QrCodeStateFromJson(json);
+
+  static const initialState = QrCodeState(
+    input: '',
+    correctionLevel: ErrorCorrectionLevel.H,
+    exportType: ExportType.png,
+    visualData: QrCodeVisualData(
+      backgroundColor: Color(0xffffffff),
+      foregroundColor: Color(0xff000000),
+      shape: QrCodeShape.square,
+      paddings: EdgeInsets.zero,
+    ),
+  );
+
+  QrCode? get code {
+    if (input.isEmpty) {
+      return null;
+    }
+
+    try {
+      return QrCode.fromData(
+        data: input,
+        errorCorrectLevel: correctionLevel.toInt,
       );
+    } on Object catch (_) {
+      return null;
+    }
+  }
 }
 
 enum QrCodeShape {
@@ -68,11 +90,14 @@ enum QrCodeShape {
 @immutable
 class QrCodeVisualData with _$QrCodeVisualData {
   const factory QrCodeVisualData({
-    required Color backgroundColor,
-    required Color foregroundColor,
+    @ColorConverter() required Color backgroundColor,
+    @ColorConverter() required Color foregroundColor,
     required QrCodeShape shape,
-    required EdgeInsets paddings,
+    @EdgeInsetsConverter() required EdgeInsets paddings,
   }) = _QrCodeVisualData;
+
+  factory QrCodeVisualData.fromJson(Map<String, dynamic> json) =>
+      _$QrCodeVisualDataFromJson(json);
 }
 
 extension QrCodeVisualDataUtils on QrCodeVisualData {

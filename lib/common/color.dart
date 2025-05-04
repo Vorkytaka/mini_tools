@@ -1,4 +1,5 @@
 import 'package:flutter/painting.dart';
+import 'package:image/image.dart' as img;
 
 String? colorToHexString(Color? color) => color?.toHexString;
 
@@ -92,4 +93,8 @@ extension ColorUtils on Color {
 
     return 'hwb(${hue.round()}, ${(white * 100).round()}%, ${(black * 100).round()}%)';
   }
+}
+
+extension ImgColorTool on Color {
+  img.Color get toImageColor => img.ColorUint8.rgb(red, green, blue);
 }

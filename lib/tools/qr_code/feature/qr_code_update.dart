@@ -1,5 +1,4 @@
 import 'package:mini_tea/feature.dart';
-import 'package:qr/qr.dart';
 
 import 'effect/qr_code_effect.dart';
 import 'message/qr_code_message.dart';
@@ -11,20 +10,16 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
 ) {
   switch (message) {
     case UpdateInputMessage():
-      final code = parseQrCode(message.text, state.correctionLevel);
+      final newState = state.copyWith(input: message.text);
       return next(
-        state: state.copyWith(
-          input: message.text,
-          code: code,
-        ),
+        state: newState,
+        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case UpdateCorrectionLevelMessage():
-      final code = parseQrCode(state.input, message.level);
+      final newState = state.copyWith(correctionLevel: message.level);
       return next(
-        state: state.copyWith(
-          code: code,
-          correctionLevel: message.level,
-        ),
+        state: newState,
+        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case SaveToFileMessage():
       final code = state.code;
@@ -39,7 +34,11 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
         ],
       );
     case UpdateExportTypeMessage():
-      return next(state: state.copyWith(exportType: message.type));
+      final newState = state.copyWith(exportType: message.type);
+      return next(
+        state: newState,
+        effects: [QrCodeEffect.saveState(state: newState)],
+      );
     case CopyToClipboardMessage():
       final code = state.code;
       return next(
@@ -52,35 +51,26 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
         ],
       );
     case ShapeUpdateMessage():
-      return next(
-        state: state.copyWith(
-          visualData: state.visualData.copyWith(
-            shape: message.shape,
-          ),
+      final newState = state.copyWith(
+        visualData: state.visualData.copyWith(
+          shape: message.shape,
         ),
+      );
+      return next(
+        state: newState,
+        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case PaddingUpdateMessage():
-      return next(
-        state: state.copyWith(
-          visualData: state.visualData.copyWith(
-            paddings: message.padding,
-          ),
+      final newState = state.copyWith(
+        visualData: state.visualData.copyWith(
+          paddings: message.padding,
         ),
       );
-  }
-}
-
-QrCode? parseQrCode(String input, ErrorCorrectionLevel level) {
-  if (input.isEmpty) {
-    return null;
-  }
-
-  try {
-    return QrCode.fromData(
-      data: input,
-      errorCorrectLevel: level.toInt,
-    );
-  } on Object catch (_) {
-    return null;
+      return next(
+        state: newState,
+        effects: [QrCodeEffect.saveState(state: newState)],
+      );
+    case LoadedStateMessage():
+      return next(state: message.state);
   }
 }
