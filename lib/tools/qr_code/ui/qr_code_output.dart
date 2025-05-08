@@ -1,18 +1,22 @@
 part of 'qr_code_screen.dart';
 
+const _titleSize = 130.0;
+
 class _OutputSide extends StatelessWidget {
   const _OutputSide();
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+    return ListView(
+      padding: EdgeInsets.zero,
+      children: const [
         _CorrectionLevelSelector(),
         SizedBox(height: 8),
         _QrCodeShapeSelector(),
+        SizedBox(height: 8),
+        _ForegroundColorPicker(),
+        SizedBox(height: 8),
+        _BackgroundColorPicker(),
         SizedBox(height: 8),
         Center(child: _QrCodeWidget()),
         SizedBox(height: 8),
@@ -21,6 +25,84 @@ class _OutputSide extends StatelessWidget {
         Center(child: _SvgWarning()),
         SizedBox(height: 4),
         Center(child: _TestQrWarning()),
+      ],
+    );
+  }
+}
+
+class _ForegroundColorPicker extends StatelessWidget {
+  const _ForegroundColorPicker();
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          width: _titleSize,
+          child: Text(t.qrCode.foregroundColorTitle),
+        ),
+        FeatureBuilder<QrCodeFeature, QrCodeState>(
+          buildWhen: (prev, curr) =>
+              prev.visualData.foregroundColor !=
+              curr.visualData.foregroundColor,
+          builder: (context, state) {
+            return SizedBox(
+              height: 25,
+              child: MiniColorPicker(
+                onColorChanged: (color) {
+                  if (color != state.visualData.foregroundColor) {
+                    context
+                        .read<QrCodeFeature>()
+                        .accept(QrCodeMessage.foregroundColorUpdate(color));
+                  }
+                },
+                selectedColor: state.visualData.foregroundColor,
+              ),
+            );
+          },
+        ),
+      ],
+    );
+  }
+}
+
+class _BackgroundColorPicker extends StatelessWidget {
+  const _BackgroundColorPicker();
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        SizedBox(
+          width: _titleSize,
+          child: Text(t.qrCode.backgroundColorTitle),
+        ),
+        FeatureBuilder<QrCodeFeature, QrCodeState>(
+          buildWhen: (prev, curr) =>
+              prev.visualData.backgroundColor !=
+              curr.visualData.backgroundColor,
+          builder: (context, state) {
+            return SizedBox(
+              height: 25,
+              child: MiniColorPicker(
+                onColorChanged: (color) {
+                  if (color != state.visualData.backgroundColor) {
+                    context
+                        .read<QrCodeFeature>()
+                        .accept(QrCodeMessage.backgroundColorUpdate(color));
+                  }
+                },
+                selectedColor: state.visualData.backgroundColor,
+              ),
+            );
+          },
+        ),
       ],
     );
   }
@@ -187,7 +269,7 @@ class _QrCodeShapeSelector extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
-          width: 130,
+          width: _titleSize,
           child: Text(t.qrCode.shapes.title),
         ),
         FeatureBuilder<QrCodeFeature, QrCodeState>(
@@ -228,7 +310,7 @@ class _CorrectionLevelSelector extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: 130,
+          width: _titleSize,
           child: Text(t.qrCode.correctionLevel.title),
         ),
         FeatureBuilder<QrCodeFeature, QrCodeState>(

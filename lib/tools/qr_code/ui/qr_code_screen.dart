@@ -8,13 +8,16 @@ import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../common/padding.dart';
 import '../../../common/ui/input_text.dart';
+import '../../../common/ui/mini_color_picker.dart';
 import '../../../i18n/strings.g.dart';
 import '../feature/message/qr_code_message.dart';
 import '../feature/qr_code_feature.dart';
 import '../feature/state/qr_code_state.dart';
 
 part 'qr_code_extensions.dart';
+
 part 'qr_code_input.dart';
+
 part 'qr_code_output.dart';
 
 class QrCodeScreen extends StatelessWidget {
