@@ -1,15 +1,15 @@
 part of 'qr_code_screen.dart';
 
+const _titleSize = 130.0;
+
 class _OutputSide extends StatelessWidget {
   const _OutputSide();
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+    return ListView(
+      padding: EdgeInsets.zero,
+      children: const [
         _CorrectionLevelSelector(),
         SizedBox(height: 8),
         _QrCodeShapeSelector(),
@@ -35,12 +35,14 @@ class _ForegroundColorPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
-          width: 130,
-          child: Text('Foreground Color: '),
+          width: _titleSize,
+          child: Text(t.qrCode.foregroundColorTitle),
         ),
         FeatureBuilder<QrCodeFeature, QrCodeState>(
           buildWhen: (prev, curr) =>
@@ -72,12 +74,14 @@ class _BackgroundColorPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = Translations.of(context);
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
-          width: 130,
-          child: Text('Background Color: '),
+          width: _titleSize,
+          child: Text(t.qrCode.backgroundColorTitle),
         ),
         FeatureBuilder<QrCodeFeature, QrCodeState>(
           buildWhen: (prev, curr) =>
@@ -265,7 +269,7 @@ class _QrCodeShapeSelector extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(
-          width: 130,
+          width: _titleSize,
           child: Text(t.qrCode.shapes.title),
         ),
         FeatureBuilder<QrCodeFeature, QrCodeState>(
@@ -306,7 +310,7 @@ class _CorrectionLevelSelector extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-          width: 130,
+          width: _titleSize,
           child: Text(t.qrCode.correctionLevel.title),
         ),
         FeatureBuilder<QrCodeFeature, QrCodeState>(

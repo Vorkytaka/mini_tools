@@ -57,10 +57,10 @@ class _ColorPicker extends State<ColorPicker> {
           _buildColorDisplay(),
         ])
       // else
-        // If opacity is hidden, show only the color display, expanded
-        // Row(children: [
-        //   Expanded(child: _buildColorDisplay()),
-        // ]),
+      // If opacity is hidden, show only the color display, expanded
+      // Row(children: [
+      //   Expanded(child: _buildColorDisplay()),
+      // ]),
     ]);
   }
 

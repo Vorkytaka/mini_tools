@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 typedef HuePickerCallback = void Function(double hue);
 
 class HueSlider extends StatefulWidget {
-  const HueSlider({Key? key, required this.selectedHue, required this.onHueSelected}) : super(key: key);
+  const HueSlider(
+      {Key? key, required this.selectedHue, required this.onHueSelected})
+      : super(key: key);
   final double selectedHue;
   final HuePickerCallback onHueSelected;
 
@@ -51,7 +53,6 @@ class _HueSliderState extends State<HueSlider> {
     widget.onHueSelected(hue);
   }
 
-
   double _calculateSliderPercent(Offset localPosition) {
     final RenderBox box = context.findRenderObject() as RenderBox;
     return (1.0 - (localPosition.dx / box.size.width)).clamp(0.0, 1.0);
@@ -94,13 +95,16 @@ class _HueSliderState extends State<HueSlider> {
       _currentDragOffset.dy - bubbleSize - bubblePadding,
     );
 
-    final Color bubbleColor = HSVColor.fromAHSV(1.0, _currentHue, 1.0, 1.0).toColor();
+    final Color bubbleColor =
+        HSVColor.fromAHSV(1.0, _currentHue, 1.0, 1.0).toColor();
 
     return Positioned(
       left: position.dx,
       top: position.dy,
-      child: IgnorePointer( // Prevent the bubble from intercepting touch events
-        child: Material( // Provides elevation and shadow
+      child: IgnorePointer(
+        // Prevent the bubble from intercepting touch events
+        child: Material(
+          // Provides elevation and shadow
           elevation: 5.0,
           shape: const CircleBorder(),
           child: Container(
@@ -134,7 +138,8 @@ class _HueSliderState extends State<HueSlider> {
         onPanEnd: _onDragEnd, // Add end handler
         onPanCancel: _onDragCancel, // Add cancel handler
         child: Stack(
-          clipBehavior: Clip.none, // Allow bubble to draw outside bounds if needed
+          clipBehavior:
+              Clip.none, // Allow bubble to draw outside bounds if needed
           children: [
             CustomPaint(
               painter: HuePainter(),
@@ -153,7 +158,9 @@ class _HueSliderState extends State<HueSlider> {
     return Align(
       alignment: Alignment((huePercent * -2) + 1.0, 0.0),
       child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), border: Border.all(color: Colors.white, width: 2)),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(color: Colors.white, width: 2)),
         width: 9,
       ),
     );
@@ -163,8 +170,8 @@ class _HueSliderState extends State<HueSlider> {
 // Define the standard hue stops for the gradient.
 // These represent Red, Yellow, Green, Cyan, Blue, Magenta, and back to Red.
 final List<Color> _hueColors = [
-  const HSVColor.fromAHSV(1.0, 0.0, 1.0, 1.0).toColor(),   // Red
-  const HSVColor.fromAHSV(1.0, 60.0, 1.0, 1.0).toColor(),  // Yellow
+  const HSVColor.fromAHSV(1.0, 0.0, 1.0, 1.0).toColor(), // Red
+  const HSVColor.fromAHSV(1.0, 60.0, 1.0, 1.0).toColor(), // Yellow
   const HSVColor.fromAHSV(1.0, 120.0, 1.0, 1.0).toColor(), // Green
   const HSVColor.fromAHSV(1.0, 180.0, 1.0, 1.0).toColor(), // Cyan
   const HSVColor.fromAHSV(1.0, 240.0, 1.0, 1.0).toColor(), // Blue
@@ -178,7 +185,7 @@ class HuePainter extends CustomPainter {
     final Rect rect = Offset.zero & size;
     final Gradient gradient = LinearGradient(
       begin: Alignment.centerRight, // Corresponds to Hue 0 (Red)
-      end: Alignment.centerLeft,    // Corresponds to Hue 360 (Red)
+      end: Alignment.centerLeft, // Corresponds to Hue 360 (Red)
       colors: _hueColors,
     );
     final Paint paint = Paint()..shader = gradient.createShader(rect);

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 typedef OpacitySliderCallback = void Function(double opacity);
 
 class OpacitySlider extends StatefulWidget {
-  const OpacitySlider({Key? key, required this.selectedHue, required this.onOpacitySelected}) : super(key: key);
+  const OpacitySlider(
+      {Key? key, required this.selectedHue, required this.onOpacitySelected})
+      : super(key: key);
   final HSVColor selectedHue;
   final OpacitySliderCallback onOpacitySelected;
 
@@ -89,19 +91,24 @@ class _OpacitySliderState extends State<OpacitySlider> {
     );
 
     // Use the parent's selected hue/saturation/value, but the current alpha
-    final Color bubbleColor = widget.selectedHue.withAlpha(_currentAlpha).toColor();
+    final Color bubbleColor =
+        widget.selectedHue.withAlpha(_currentAlpha).toColor();
 
     return Positioned(
       left: position.dx,
       top: position.dy,
-      child: IgnorePointer( // Prevent the bubble from intercepting touch events
-        child: Material( // Provides elevation and shadow
+      child: IgnorePointer(
+        // Prevent the bubble from intercepting touch events
+        child: Material(
+          // Provides elevation and shadow
           elevation: 5.0,
           shape: const CircleBorder(),
           // Use a checkerboard background for the bubble itself to show transparency
-          child: ClipOval( // Clip the painter to a circle
+          child: ClipOval(
+            // Clip the painter to a circle
             child: CustomPaint(
-              painter: OpacityPainter.checkerboardPainter(), // Use a static checkerboard
+              painter: OpacityPainter
+                  .checkerboardPainter(), // Use a static checkerboard
               child: Container(
                 width: bubbleSize,
                 height: bubbleSize,
@@ -154,7 +161,9 @@ class _OpacitySliderState extends State<OpacitySlider> {
     return Align(
       alignment: Alignment((opacityPercent * -2) + 1.0, 0.0),
       child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), border: Border.all(color: Colors.white, width: 2)),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(color: Colors.white, width: 2)),
         width: 9,
       ),
     );
@@ -188,8 +197,11 @@ class OpacityPainter extends CustomPainter {
         if (i % 2 == 0 && j % 2 != 0 || i % 2 != 0 && j % 2 == 0) {
           final rectX = dx;
           final rectY = dy;
-          if (j == 3 && i == 0) { // crop the bottom left checkerboard
-            final innerRect = RRect.fromLTRBAndCorners(rectX, rectY, rectX + 10, rectY - 10, bottomLeft: const Radius.circular(5));
+          if (j == 3 && i == 0) {
+            // crop the bottom left checkerboard
+            final innerRect = RRect.fromLTRBAndCorners(
+                rectX, rectY, rectX + 10, rectY - 10,
+                bottomLeft: const Radius.circular(5));
             checkerPath.addRRect(innerRect);
           } else {
             final innerRect = Rect.fromLTWH(rectX, rectY, 10, 10);
@@ -210,10 +222,17 @@ class OpacityPainter extends CustomPainter {
     paint
       ..blendMode = BlendMode.srcOver
       ..style = PaintingStyle.fill
-      ..shader = LinearGradient(begin: Alignment.centerLeft, end: Alignment.centerRight, colors: [
-        selectedHue.withAlpha(1.0).toColor(), // Use the base color with full alpha
-        selectedHue.withAlpha(0.0).toColor(), // Use the base color with zero alpha
-      ]).createShader(Offset.zero & size);
+      ..shader = LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+            selectedHue
+                .withAlpha(1.0)
+                .toColor(), // Use the base color with full alpha
+            selectedHue
+                .withAlpha(0.0)
+                .toColor(), // Use the base color with zero alpha
+          ]).createShader(Offset.zero & size);
 
     canvas.drawRRect(roundedRect, paint);
   }
@@ -237,7 +256,6 @@ class OpacityPainter extends CustomPainter {
 class _CheckerboardPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-
     // Now draw the checkerboard within the clipped area
     final paint = Paint();
     final double squareSize = size.width / 4; // Example: 4x4 checkerboard

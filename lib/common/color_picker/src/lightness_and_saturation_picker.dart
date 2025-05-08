@@ -3,19 +3,24 @@ import 'package:flutter/material.dart';
 typedef LightnessAndSaturationPickerCallback = void Function(HSVColor color);
 
 class LightnessAndSaturationPicker extends StatefulWidget {
-  const LightnessAndSaturationPicker({Key? key, required this.hsvColor, required this.onColorSelected}) : super(key: key);
+  const LightnessAndSaturationPicker(
+      {Key? key, required this.hsvColor, required this.onColorSelected})
+      : super(key: key);
 
   final HSVColor hsvColor;
   final LightnessAndSaturationPickerCallback onColorSelected;
 
   @override
-  State<LightnessAndSaturationPicker> createState() => _LightnessAndSaturationPickerState();
+  State<LightnessAndSaturationPicker> createState() =>
+      _LightnessAndSaturationPickerState();
 }
 
-class _LightnessAndSaturationPickerState extends State<LightnessAndSaturationPicker> {
+class _LightnessAndSaturationPickerState
+    extends State<LightnessAndSaturationPicker> {
   OverlayEntry? _previewBubbleOverlay;
   Offset _currentDragOffset = Offset.zero;
-  HSVColor _currentHsvColor = const HSVColor.fromAHSV(1.0, 0.0, 0.0, 0.0); // Initial dummy color
+  HSVColor _currentHsvColor =
+      const HSVColor.fromAHSV(1.0, 0.0, 0.0, 0.0); // Initial dummy color
 
   // --- Drag Handlers ---
 
@@ -66,10 +71,10 @@ class _LightnessAndSaturationPickerState extends State<LightnessAndSaturationPic
     // but saturation and value from the drag position. Alpha remains 1.0 here.
     return HSVColor.fromAHSV(
         widget.hsvColor.alpha, // Preserve alpha from parent
-        widget.hsvColor.hue,   // Use hue from parent
-        percentOffset.dx,      // Saturation from horizontal position
-        percentOffset.dy       // Value from vertical position
-    );
+        widget.hsvColor.hue, // Use hue from parent
+        percentOffset.dx, // Saturation from horizontal position
+        percentOffset.dy // Value from vertical position
+        );
   }
 
   // --- Preview Bubble Overlay ---
@@ -110,8 +115,10 @@ class _LightnessAndSaturationPickerState extends State<LightnessAndSaturationPic
     return Positioned(
       left: position.dx,
       top: position.dy,
-      child: IgnorePointer( // Prevent the bubble from intercepting touch events
-        child: Material( // Provides elevation and shadow
+      child: IgnorePointer(
+        // Prevent the bubble from intercepting touch events
+        child: Material(
+          // Provides elevation and shadow
           elevation: 5.0,
           shape: const CircleBorder(),
           child: Container(
@@ -136,7 +143,6 @@ class _LightnessAndSaturationPickerState extends State<LightnessAndSaturationPic
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
@@ -148,11 +154,13 @@ class _LightnessAndSaturationPickerState extends State<LightnessAndSaturationPic
           child: Stack(
               clipBehavior: Clip.none, // Allow bubble to draw outside bounds
               children: [
-                CustomPaint(painter: LightnessAndSaturationPainter(hue: widget.hsvColor.hue), size: Size.infinite),
-                _buildShadeSelector(Size(constraints.maxWidth, constraints.maxHeight))
-              ]
-          )
-      );
+                CustomPaint(
+                    painter:
+                        LightnessAndSaturationPainter(hue: widget.hsvColor.hue),
+                    size: Size.infinite),
+                _buildShadeSelector(
+                    Size(constraints.maxWidth, constraints.maxHeight))
+              ]));
     });
   }
 
@@ -168,10 +176,11 @@ class _LightnessAndSaturationPickerState extends State<LightnessAndSaturationPic
           child: Container(
             width: 24,
             height: 24,
-            decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.white, width: 2)),
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.white, width: 2)),
           ),
-        )
-    );
+        ));
   }
 }
 
@@ -184,10 +193,10 @@ class LightnessAndSaturationPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // Lightness
     final lightGradientShader = const LinearGradient(
-        colors: [Colors.white, Colors.black],
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter
-    ).createShader(Offset.zero & size);
+            colors: [Colors.white, Colors.black],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter)
+        .createShader(Offset.zero & size);
     final lightPaint = Paint()..shader = lightGradientShader;
     canvas.drawRect(Offset.zero & size, lightPaint);
 
@@ -206,7 +215,6 @@ class LightnessAndSaturationPainter extends CustomPainter {
       ..shader = saturationGradientShader
       ..blendMode = BlendMode.modulate;
     canvas.drawRect(Offset.zero & size, saturationPaint);
-
   }
 
   @override

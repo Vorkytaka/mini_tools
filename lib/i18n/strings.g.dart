@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 230
+/// Strings: 232
 ///
-/// Built on 2025-04-04 at 22:55 UTC
+/// Built on 2025-05-08 at 23:15 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -465,6 +465,8 @@ class _StringsQrCodeEn {
   late final _StringsQrCodeExportTypeEn exportType =
       _StringsQrCodeExportTypeEn._(_root);
   late final _StringsQrCodeShapesEn shapes = _StringsQrCodeShapesEn._(_root);
+  String get foregroundColorTitle => 'Foreground color:';
+  String get backgroundColorTitle => 'Background color:';
 }
 
 // Path: common.dayOfWeek
@@ -1371,6 +1373,10 @@ extension on Translations {
         return 'Circles';
       case 'qrCode.shapes.svgWarning':
         return 'Shape style remain unchanged in SVG format';
+      case 'qrCode.foregroundColorTitle':
+        return 'Foreground color:';
+      case 'qrCode.backgroundColorTitle':
+        return 'Background color:';
       default:
         return null;
     }
