@@ -6,14 +6,16 @@ import 'dart:typed_data';
 import 'package:file_picker/file_picker.dart';
 import 'package:image/image.dart' as img;
 import 'package:mini_tea/feature.dart';
+import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:super_clipboard/super_clipboard.dart';
 
-import '../../../common/color.dart';
 import '../../../common/logger/logger.dart';
 import 'effect/qr_code_effect.dart';
 import 'message/qr_code_message.dart';
+import 'qr_exporter/qr_exporter.dart';
+import 'qr_exporter/qr_exporter_2.dart';
 import 'state/qr_code_state.dart';
 
 const _stateKey = 'qr_code/state';
@@ -21,6 +23,8 @@ const _tag = 'QrCodeEffectHandler';
 
 final class QrCodeEffectHandler
     implements EffectHandler<QrCodeEffect, QrCodeMessage> {
+  static QrCodeBytesExporter exporter = NewQrCodeExporter.generateBytes;
+
   final EffectHandler<SaveStateEffect, QrCodeMessage> _onSaveState;
 
   const QrCodeEffectHandler({
@@ -59,18 +63,18 @@ final class QrCodeEffectHandler
 
     switch (effect.exportType) {
       case ExportType.png:
-        final content = await generateQrCodeRaster(
-          effect.code,
-          effect.visualData,
+        final content = await exporter(
+          qrCode: effect.code,
+          visualData: effect.visualData,
         ).then(encodePng);
         if (content != null) {
           await file.writeAsBytes(content);
         }
         break;
       case ExportType.jpg:
-        final content = await generateQrCodeRaster(
-          effect.code,
-          effect.visualData,
+        final content = await exporter(
+          qrCode: effect.code,
+          visualData: effect.visualData,
         ).then(encodeJpg);
         if (content != null) {
           await file.writeAsBytes(content);
@@ -104,39 +108,6 @@ final class QrCodeEffectHandler
     return svgContent.toString();
   }
 
-  /// Generate bytes content for vector graphic around this qr code
-  static Future<img.Image?> generateQrCodeRaster(
-    QrCode qrCode,
-    QrCodeVisualData visualData,
-  ) async {
-    final painter = QrPainter.withQr(
-      qr: qrCode,
-      gapless: true,
-      dataModuleStyle: visualData.toModuleStyle,
-      eyeStyle: visualData.toEyeStyle,
-    );
-    final data = await painter.toImageData(600);
-
-    if (data == null) {
-      return null;
-    }
-
-    final qrImage = img.decodePng(data.buffer.asUint8List());
-
-    if (qrImage == null) {
-      return null;
-    }
-
-    img.Image image = img.Image(height: 600, width: 600);
-    image = img.fill(
-      image,
-      color: visualData.backgroundColor.toImageColor,
-    );
-    image = img.compositeImage(image, qrImage);
-
-    return image;
-  }
-
   static Uint8List? encodePng(img.Image? image) =>
       image != null ? img.encodePng(image) : null;
 
@@ -152,9 +123,9 @@ final class QrCodeEffectHandler
       return;
     }
 
-    final image = await generateQrCodeRaster(
-      effect.code,
-      effect.visualData,
+    final image = await exporter(
+      qrCode: effect.code,
+      visualData: effect.visualData,
     );
     final data = encodePng(image);
     if (data == null) {
