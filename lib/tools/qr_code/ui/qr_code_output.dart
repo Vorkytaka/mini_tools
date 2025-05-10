@@ -21,7 +21,6 @@ class _OutputSide extends StatelessWidget {
         Center(child: _QrCodeWidget()),
         SizedBox(height: 8),
         _ExportQrLine(),
-        Spacer(),
         Center(child: _SvgWarning()),
         SizedBox(height: 4),
         Center(child: _TestQrWarning()),
@@ -195,12 +194,11 @@ class _QrCodeWidget extends StatelessWidget {
             child: Placeholder(),
           );
         } else {
-          qrCode = QrImageView.withQr(
-            qr: code,
-            errorCorrectionLevel: state.correctionLevel.toInt,
-            padding: state.visualData.paddings,
-            eyeStyle: state.visualData.toEyeStyle,
-            dataModuleStyle: state.visualData.toModuleStyle,
+          qrCode = PrettyQrView(
+            decoration: PrettyQrDecoration(
+              shape: state.visualData.qrCodeShape,
+            ),
+            qrImage: QrImage(code),
           );
         }
 
@@ -254,6 +252,7 @@ extension on QrCodeShape {
     return switch (this) {
       QrCodeShape.square => t.qrCode.shapes.square,
       QrCodeShape.circle => t.qrCode.shapes.circle,
+      QrCodeShape.smooth => t.qrCode.shapes.smooth,
     };
   }
 }

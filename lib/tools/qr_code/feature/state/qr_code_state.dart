@@ -82,6 +82,7 @@ class QrCodeState with _$QrCodeState {
 }
 
 enum QrCodeShape {
+  smooth,
   square,
   circle,
 }
@@ -116,10 +117,12 @@ extension on QrCodeShape {
   QrEyeShape get toEyeShape => switch (this) {
         QrCodeShape.square => QrEyeShape.square,
         QrCodeShape.circle => QrEyeShape.circle,
+        QrCodeShape.smooth => QrEyeShape.square,
       };
 
   QrDataModuleShape get toModuleShape => switch (this) {
         QrCodeShape.square => QrDataModuleShape.square,
         QrCodeShape.circle => QrDataModuleShape.circle,
+        QrCodeShape.smooth => QrDataModuleShape.square,
       };
 }

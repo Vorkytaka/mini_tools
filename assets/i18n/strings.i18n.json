@@ -322,6 +322,7 @@
       "title": "Shape Style:",
       "square": "Squares",
       "circle": "Circles",
+      "smooth": "Smooth",
       "svg_warning": "Shape style remain unchanged in SVG format"
     },
     "foreground_color_title": "Foreground color:",

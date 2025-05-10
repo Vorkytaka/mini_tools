@@ -64,4 +64,5 @@ Map<String, dynamic> _$$QrCodeVisualDataImplToJson(
 const _$QrCodeShapeEnumMap = {
   QrCodeShape.square: 'square',
   QrCodeShape.circle: 'circle',
+  QrCodeShape.smooth: 'smooth',
 };

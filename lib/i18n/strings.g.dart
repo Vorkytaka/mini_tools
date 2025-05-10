@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 232
+/// Strings: 233
 ///
-/// Built on 2025-05-08 at 23:15 UTC
+/// Built on 2025-05-10 at 23:11 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -781,6 +781,7 @@ class _StringsQrCodeShapesEn {
   String get title => 'Shape Style:';
   String get square => 'Squares';
   String get circle => 'Circles';
+  String get smooth => 'Smooth';
   String get svgWarning => 'Shape style remain unchanged in SVG format';
 }
 
@@ -1371,6 +1372,8 @@ extension on Translations {
         return 'Squares';
       case 'qrCode.shapes.circle':
         return 'Circles';
+      case 'qrCode.shapes.smooth':
+        return 'Smooth';
       case 'qrCode.shapes.svgWarning':
         return 'Shape style remain unchanged in SVG format';
       case 'qrCode.foregroundColorTitle':
