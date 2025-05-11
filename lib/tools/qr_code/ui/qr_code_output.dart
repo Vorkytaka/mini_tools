@@ -124,29 +124,13 @@ class _ExportQrLine extends StatelessWidget {
   Widget build(BuildContext context) {
     final t = Translations.of(context);
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        FeatureBuilder<QrCodeFeature, QrCodeState>(
-          buildWhen: (prev, curr) => prev.code != curr.code,
-          builder: (context, state) {
-            final qrCode = state.code;
-
-            return PushButton(
-              controlSize: ControlSize.regular,
-              onPressed: qrCode != null
-                  ? () {
-                      context
-                          .read<QrCodeFeature>()
-                          .accept(const QrCodeMessage.copyToClipboard());
-                    }
-                  : null,
-              child: Text(t.common.copy),
-            );
-          },
-        ),
+        const _ExportSizeWidget(),
+        const SizedBox(height: 8),
         Row(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             FeatureBuilder<QrCodeFeature, QrCodeState>(
               buildWhen: (prev, curr) => prev.code != curr.code,
@@ -159,15 +143,113 @@ class _ExportQrLine extends StatelessWidget {
                       ? () {
                           context
                               .read<QrCodeFeature>()
-                              .accept(const QrCodeMessage.saveToFile());
+                              .accept(const QrCodeMessage.copyToClipboard());
                         }
                       : null,
-                  child: Text(t.common.save),
+                  child: Text(t.common.copy),
                 );
               },
             ),
-            const _ExportTypeSelector(),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                FeatureBuilder<QrCodeFeature, QrCodeState>(
+                  buildWhen: (prev, curr) => prev.code != curr.code,
+                  builder: (context, state) {
+                    final qrCode = state.code;
+
+                    return PushButton(
+                      controlSize: ControlSize.regular,
+                      onPressed: qrCode != null
+                          ? () {
+                              context
+                                  .read<QrCodeFeature>()
+                                  .accept(const QrCodeMessage.saveToFile());
+                            }
+                          : null,
+                      child: Text(t.common.save),
+                    );
+                  },
+                ),
+                const _ExportTypeSelector(),
+              ],
+            ),
           ],
+        ),
+      ],
+    );
+  }
+}
+
+class _ExportSizeWidget extends StatefulWidget {
+  const _ExportSizeWidget();
+
+  @override
+  State<_ExportSizeWidget> createState() => _ExportSizeWidgetState();
+}
+
+class _ExportSizeWidgetState extends State<_ExportSizeWidget> {
+  final _textController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    final feature = context.read<QrCodeFeature>();
+    _textController.text = '${feature.state.exportSize}';
+
+    _textController.addListener(() {
+      final exportSizeStr = _textController.text;
+      final exportSize = int.tryParse(exportSizeStr);
+
+      if (exportSize == null) {
+        return;
+      }
+
+      if (exportSize > QrCodeState.maxExportSize) {
+        _textController.text = '${QrCodeState.maxExportSize}';
+      } else {
+        context
+            .read<QrCodeFeature>()
+            .accept(QrCodeMessage.exportSizeUpdate(exportSize));
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final t = Translations.of(context);
+    final theme = MacosTheme.of(context);
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(t.qrCode.exportSizeTitle),
+        const SizedBox(width: 8),
+        SizedBox(
+          width: 100,
+          child: MacosTextField(
+            inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            keyboardType: const TextInputType.numberWithOptions(),
+            controller: _textController,
+            suffix: Padding(
+              padding: const EdgeInsetsDirectional.only(end: 4),
+              child: DefaultTextStyle.merge(
+                style: TextStyle(
+                  fontSize: 12,
+                  color: theme.timePickerTheme.dayPeriodTextColor,
+                ),
+                child: Text(t.qrCode.exportSizePx),
+              ),
+            ),
+            suffixMode: OverlayVisibilityMode.always,
+          ),
         ),
       ],
     );

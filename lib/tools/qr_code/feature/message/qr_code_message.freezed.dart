@@ -28,6 +28,7 @@ mixin _$QrCodeMessage {
     required TResult Function(EdgeInsets padding) paddingUpdate,
     required TResult Function(Color color) foregroundColorUpdate,
     required TResult Function(Color color) backgroundColorUpdate,
+    required TResult Function(int size) exportSizeUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,6 +43,7 @@ mixin _$QrCodeMessage {
     TResult? Function(EdgeInsets padding)? paddingUpdate,
     TResult? Function(Color color)? foregroundColorUpdate,
     TResult? Function(Color color)? backgroundColorUpdate,
+    TResult? Function(int size)? exportSizeUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +58,7 @@ mixin _$QrCodeMessage {
     TResult Function(EdgeInsets padding)? paddingUpdate,
     TResult Function(Color color)? foregroundColorUpdate,
     TResult Function(Color color)? backgroundColorUpdate,
+    TResult Function(int size)? exportSizeUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -74,6 +77,7 @@ mixin _$QrCodeMessage {
         foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
         backgroundColorUpdate,
+    required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -91,6 +95,7 @@ mixin _$QrCodeMessage {
         foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
         backgroundColorUpdate,
+    TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -105,6 +110,7 @@ mixin _$QrCodeMessage {
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
     TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
+    TResult Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -222,6 +228,7 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
     required TResult Function(EdgeInsets padding) paddingUpdate,
     required TResult Function(Color color) foregroundColorUpdate,
     required TResult Function(Color color) backgroundColorUpdate,
+    required TResult Function(int size) exportSizeUpdate,
   }) {
     return loadedState(state);
   }
@@ -239,6 +246,7 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
     TResult? Function(EdgeInsets padding)? paddingUpdate,
     TResult? Function(Color color)? foregroundColorUpdate,
     TResult? Function(Color color)? backgroundColorUpdate,
+    TResult? Function(int size)? exportSizeUpdate,
   }) {
     return loadedState?.call(state);
   }
@@ -256,6 +264,7 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
     TResult Function(EdgeInsets padding)? paddingUpdate,
     TResult Function(Color color)? foregroundColorUpdate,
     TResult Function(Color color)? backgroundColorUpdate,
+    TResult Function(int size)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (loadedState != null) {
@@ -280,6 +289,7 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
         foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
         backgroundColorUpdate,
+    required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return loadedState(this);
   }
@@ -300,6 +310,7 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
         foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
         backgroundColorUpdate,
+    TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return loadedState?.call(this);
   }
@@ -317,6 +328,7 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
     TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
+    TResult Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (loadedState != null) {
@@ -418,6 +430,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     required TResult Function(EdgeInsets padding) paddingUpdate,
     required TResult Function(Color color) foregroundColorUpdate,
     required TResult Function(Color color) backgroundColorUpdate,
+    required TResult Function(int size) exportSizeUpdate,
   }) {
     return updateInput(text);
   }
@@ -435,6 +448,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult? Function(EdgeInsets padding)? paddingUpdate,
     TResult? Function(Color color)? foregroundColorUpdate,
     TResult? Function(Color color)? backgroundColorUpdate,
+    TResult? Function(int size)? exportSizeUpdate,
   }) {
     return updateInput?.call(text);
   }
@@ -452,6 +466,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult Function(EdgeInsets padding)? paddingUpdate,
     TResult Function(Color color)? foregroundColorUpdate,
     TResult Function(Color color)? backgroundColorUpdate,
+    TResult Function(int size)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (updateInput != null) {
@@ -476,6 +491,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
         foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
         backgroundColorUpdate,
+    required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return updateInput(this);
   }
@@ -496,6 +512,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
         foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
         backgroundColorUpdate,
+    TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return updateInput?.call(this);
   }
@@ -513,6 +530,7 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
     TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
+    TResult Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (updateInput != null) {
@@ -619,6 +637,7 @@ class _$UpdateCorrectionLevelMessageImpl
     required TResult Function(EdgeInsets padding) paddingUpdate,
     required TResult Function(Color color) foregroundColorUpdate,
     required TResult Function(Color color) backgroundColorUpdate,
+    required TResult Function(int size) exportSizeUpdate,
   }) {
     return updateCorrectionLevel(level);
   }
@@ -636,6 +655,7 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult? Function(EdgeInsets padding)? paddingUpdate,
     TResult? Function(Color color)? foregroundColorUpdate,
     TResult? Function(Color color)? backgroundColorUpdate,
+    TResult? Function(int size)? exportSizeUpdate,
   }) {
     return updateCorrectionLevel?.call(level);
   }
@@ -653,6 +673,7 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult Function(EdgeInsets padding)? paddingUpdate,
     TResult Function(Color color)? foregroundColorUpdate,
     TResult Function(Color color)? backgroundColorUpdate,
+    TResult Function(int size)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (updateCorrectionLevel != null) {
@@ -677,6 +698,7 @@ class _$UpdateCorrectionLevelMessageImpl
         foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
         backgroundColorUpdate,
+    required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return updateCorrectionLevel(this);
   }
@@ -697,6 +719,7 @@ class _$UpdateCorrectionLevelMessageImpl
         foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
         backgroundColorUpdate,
+    TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return updateCorrectionLevel?.call(this);
   }
@@ -714,6 +737,7 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
     TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
+    TResult Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (updateCorrectionLevel != null) {
@@ -788,6 +812,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     required TResult Function(EdgeInsets padding) paddingUpdate,
     required TResult Function(Color color) foregroundColorUpdate,
     required TResult Function(Color color) backgroundColorUpdate,
+    required TResult Function(int size) exportSizeUpdate,
   }) {
     return saveToFile();
   }
@@ -805,6 +830,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult? Function(EdgeInsets padding)? paddingUpdate,
     TResult? Function(Color color)? foregroundColorUpdate,
     TResult? Function(Color color)? backgroundColorUpdate,
+    TResult? Function(int size)? exportSizeUpdate,
   }) {
     return saveToFile?.call();
   }
@@ -822,6 +848,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult Function(EdgeInsets padding)? paddingUpdate,
     TResult Function(Color color)? foregroundColorUpdate,
     TResult Function(Color color)? backgroundColorUpdate,
+    TResult Function(int size)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (saveToFile != null) {
@@ -846,6 +873,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
         foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
         backgroundColorUpdate,
+    required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return saveToFile(this);
   }
@@ -866,6 +894,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
         foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
         backgroundColorUpdate,
+    TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return saveToFile?.call(this);
   }
@@ -883,6 +912,7 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
     TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
+    TResult Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (saveToFile != null) {
@@ -977,6 +1007,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     required TResult Function(EdgeInsets padding) paddingUpdate,
     required TResult Function(Color color) foregroundColorUpdate,
     required TResult Function(Color color) backgroundColorUpdate,
+    required TResult Function(int size) exportSizeUpdate,
   }) {
     return updateExportType(type);
   }
@@ -994,6 +1025,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult? Function(EdgeInsets padding)? paddingUpdate,
     TResult? Function(Color color)? foregroundColorUpdate,
     TResult? Function(Color color)? backgroundColorUpdate,
+    TResult? Function(int size)? exportSizeUpdate,
   }) {
     return updateExportType?.call(type);
   }
@@ -1011,6 +1043,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult Function(EdgeInsets padding)? paddingUpdate,
     TResult Function(Color color)? foregroundColorUpdate,
     TResult Function(Color color)? backgroundColorUpdate,
+    TResult Function(int size)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (updateExportType != null) {
@@ -1035,6 +1068,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
         foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
         backgroundColorUpdate,
+    required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return updateExportType(this);
   }
@@ -1055,6 +1089,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
         foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
         backgroundColorUpdate,
+    TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return updateExportType?.call(this);
   }
@@ -1072,6 +1107,7 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
     TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
+    TResult Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (updateExportType != null) {
@@ -1148,6 +1184,7 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     required TResult Function(EdgeInsets padding) paddingUpdate,
     required TResult Function(Color color) foregroundColorUpdate,
     required TResult Function(Color color) backgroundColorUpdate,
+    required TResult Function(int size) exportSizeUpdate,
   }) {
     return copyToClipboard();
   }
@@ -1165,6 +1202,7 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     TResult? Function(EdgeInsets padding)? paddingUpdate,
     TResult? Function(Color color)? foregroundColorUpdate,
     TResult? Function(Color color)? backgroundColorUpdate,
+    TResult? Function(int size)? exportSizeUpdate,
   }) {
     return copyToClipboard?.call();
   }
@@ -1182,6 +1220,7 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     TResult Function(EdgeInsets padding)? paddingUpdate,
     TResult Function(Color color)? foregroundColorUpdate,
     TResult Function(Color color)? backgroundColorUpdate,
+    TResult Function(int size)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (copyToClipboard != null) {
@@ -1206,6 +1245,7 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
         foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
         backgroundColorUpdate,
+    required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return copyToClipboard(this);
   }
@@ -1226,6 +1266,7 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
         foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
         backgroundColorUpdate,
+    TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return copyToClipboard?.call(this);
   }
@@ -1243,6 +1284,7 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
     TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
+    TResult Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (copyToClipboard != null) {
@@ -1335,6 +1377,7 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
     required TResult Function(EdgeInsets padding) paddingUpdate,
     required TResult Function(Color color) foregroundColorUpdate,
     required TResult Function(Color color) backgroundColorUpdate,
+    required TResult Function(int size) exportSizeUpdate,
   }) {
     return shapeUpdate(shape);
   }
@@ -1352,6 +1395,7 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
     TResult? Function(EdgeInsets padding)? paddingUpdate,
     TResult? Function(Color color)? foregroundColorUpdate,
     TResult? Function(Color color)? backgroundColorUpdate,
+    TResult? Function(int size)? exportSizeUpdate,
   }) {
     return shapeUpdate?.call(shape);
   }
@@ -1369,6 +1413,7 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
     TResult Function(EdgeInsets padding)? paddingUpdate,
     TResult Function(Color color)? foregroundColorUpdate,
     TResult Function(Color color)? backgroundColorUpdate,
+    TResult Function(int size)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (shapeUpdate != null) {
@@ -1393,6 +1438,7 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
         foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
         backgroundColorUpdate,
+    required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return shapeUpdate(this);
   }
@@ -1413,6 +1459,7 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
         foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
         backgroundColorUpdate,
+    TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return shapeUpdate?.call(this);
   }
@@ -1430,6 +1477,7 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
     TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
+    TResult Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (shapeUpdate != null) {
@@ -1532,6 +1580,7 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
     required TResult Function(EdgeInsets padding) paddingUpdate,
     required TResult Function(Color color) foregroundColorUpdate,
     required TResult Function(Color color) backgroundColorUpdate,
+    required TResult Function(int size) exportSizeUpdate,
   }) {
     return paddingUpdate(padding);
   }
@@ -1549,6 +1598,7 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
     TResult? Function(EdgeInsets padding)? paddingUpdate,
     TResult? Function(Color color)? foregroundColorUpdate,
     TResult? Function(Color color)? backgroundColorUpdate,
+    TResult? Function(int size)? exportSizeUpdate,
   }) {
     return paddingUpdate?.call(padding);
   }
@@ -1566,6 +1616,7 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
     TResult Function(EdgeInsets padding)? paddingUpdate,
     TResult Function(Color color)? foregroundColorUpdate,
     TResult Function(Color color)? backgroundColorUpdate,
+    TResult Function(int size)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (paddingUpdate != null) {
@@ -1590,6 +1641,7 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
         foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
         backgroundColorUpdate,
+    required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return paddingUpdate(this);
   }
@@ -1610,6 +1662,7 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
         foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
         backgroundColorUpdate,
+    TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return paddingUpdate?.call(this);
   }
@@ -1627,6 +1680,7 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
     TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
+    TResult Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (paddingUpdate != null) {
@@ -1733,6 +1787,7 @@ class _$ForegroundColorUpdateMessageImpl
     required TResult Function(EdgeInsets padding) paddingUpdate,
     required TResult Function(Color color) foregroundColorUpdate,
     required TResult Function(Color color) backgroundColorUpdate,
+    required TResult Function(int size) exportSizeUpdate,
   }) {
     return foregroundColorUpdate(color);
   }
@@ -1750,6 +1805,7 @@ class _$ForegroundColorUpdateMessageImpl
     TResult? Function(EdgeInsets padding)? paddingUpdate,
     TResult? Function(Color color)? foregroundColorUpdate,
     TResult? Function(Color color)? backgroundColorUpdate,
+    TResult? Function(int size)? exportSizeUpdate,
   }) {
     return foregroundColorUpdate?.call(color);
   }
@@ -1767,6 +1823,7 @@ class _$ForegroundColorUpdateMessageImpl
     TResult Function(EdgeInsets padding)? paddingUpdate,
     TResult Function(Color color)? foregroundColorUpdate,
     TResult Function(Color color)? backgroundColorUpdate,
+    TResult Function(int size)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (foregroundColorUpdate != null) {
@@ -1791,6 +1848,7 @@ class _$ForegroundColorUpdateMessageImpl
         foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
         backgroundColorUpdate,
+    required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return foregroundColorUpdate(this);
   }
@@ -1811,6 +1869,7 @@ class _$ForegroundColorUpdateMessageImpl
         foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
         backgroundColorUpdate,
+    TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return foregroundColorUpdate?.call(this);
   }
@@ -1828,6 +1887,7 @@ class _$ForegroundColorUpdateMessageImpl
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
     TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
+    TResult Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (foregroundColorUpdate != null) {
@@ -1935,6 +1995,7 @@ class _$BackgroundColorUpdateMessageImpl
     required TResult Function(EdgeInsets padding) paddingUpdate,
     required TResult Function(Color color) foregroundColorUpdate,
     required TResult Function(Color color) backgroundColorUpdate,
+    required TResult Function(int size) exportSizeUpdate,
   }) {
     return backgroundColorUpdate(color);
   }
@@ -1952,6 +2013,7 @@ class _$BackgroundColorUpdateMessageImpl
     TResult? Function(EdgeInsets padding)? paddingUpdate,
     TResult? Function(Color color)? foregroundColorUpdate,
     TResult? Function(Color color)? backgroundColorUpdate,
+    TResult? Function(int size)? exportSizeUpdate,
   }) {
     return backgroundColorUpdate?.call(color);
   }
@@ -1969,6 +2031,7 @@ class _$BackgroundColorUpdateMessageImpl
     TResult Function(EdgeInsets padding)? paddingUpdate,
     TResult Function(Color color)? foregroundColorUpdate,
     TResult Function(Color color)? backgroundColorUpdate,
+    TResult Function(int size)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (backgroundColorUpdate != null) {
@@ -1993,6 +2056,7 @@ class _$BackgroundColorUpdateMessageImpl
         foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
         backgroundColorUpdate,
+    required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return backgroundColorUpdate(this);
   }
@@ -2013,6 +2077,7 @@ class _$BackgroundColorUpdateMessageImpl
         foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
         backgroundColorUpdate,
+    TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return backgroundColorUpdate?.call(this);
   }
@@ -2030,6 +2095,7 @@ class _$BackgroundColorUpdateMessageImpl
     TResult Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
     TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
+    TResult Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
     required TResult orElse(),
   }) {
     if (backgroundColorUpdate != null) {
@@ -2050,5 +2116,209 @@ abstract class BackgroundColorUpdateMessage implements QrCodeMessage {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BackgroundColorUpdateMessageImplCopyWith<
           _$BackgroundColorUpdateMessageImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ExportSizeUpdateMessageImplCopyWith<$Res> {
+  factory _$$ExportSizeUpdateMessageImplCopyWith(
+          _$ExportSizeUpdateMessageImpl value,
+          $Res Function(_$ExportSizeUpdateMessageImpl) then) =
+      __$$ExportSizeUpdateMessageImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int size});
+}
+
+/// @nodoc
+class __$$ExportSizeUpdateMessageImplCopyWithImpl<$Res>
+    extends _$QrCodeMessageCopyWithImpl<$Res, _$ExportSizeUpdateMessageImpl>
+    implements _$$ExportSizeUpdateMessageImplCopyWith<$Res> {
+  __$$ExportSizeUpdateMessageImplCopyWithImpl(
+      _$ExportSizeUpdateMessageImpl _value,
+      $Res Function(_$ExportSizeUpdateMessageImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? size = null,
+  }) {
+    return _then(_$ExportSizeUpdateMessageImpl(
+      null == size
+          ? _value.size
+          : size // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ExportSizeUpdateMessageImpl implements ExportSizeUpdateMessage {
+  const _$ExportSizeUpdateMessageImpl(this.size);
+
+  @override
+  final int size;
+
+  @override
+  String toString() {
+    return 'QrCodeMessage.exportSizeUpdate(size: $size)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ExportSizeUpdateMessageImpl &&
+            (identical(other.size, size) || other.size == size));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, size);
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ExportSizeUpdateMessageImplCopyWith<_$ExportSizeUpdateMessageImpl>
+      get copyWith => __$$ExportSizeUpdateMessageImplCopyWithImpl<
+          _$ExportSizeUpdateMessageImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(QrCodeState state) loadedState,
+    required TResult Function(String text) updateInput,
+    required TResult Function(ErrorCorrectionLevel level) updateCorrectionLevel,
+    required TResult Function() saveToFile,
+    required TResult Function(ExportType type) updateExportType,
+    required TResult Function() copyToClipboard,
+    required TResult Function(QrCodeShape shape) shapeUpdate,
+    required TResult Function(EdgeInsets padding) paddingUpdate,
+    required TResult Function(Color color) foregroundColorUpdate,
+    required TResult Function(Color color) backgroundColorUpdate,
+    required TResult Function(int size) exportSizeUpdate,
+  }) {
+    return exportSizeUpdate(size);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(QrCodeState state)? loadedState,
+    TResult? Function(String text)? updateInput,
+    TResult? Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult? Function()? saveToFile,
+    TResult? Function(ExportType type)? updateExportType,
+    TResult? Function()? copyToClipboard,
+    TResult? Function(QrCodeShape shape)? shapeUpdate,
+    TResult? Function(EdgeInsets padding)? paddingUpdate,
+    TResult? Function(Color color)? foregroundColorUpdate,
+    TResult? Function(Color color)? backgroundColorUpdate,
+    TResult? Function(int size)? exportSizeUpdate,
+  }) {
+    return exportSizeUpdate?.call(size);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(QrCodeState state)? loadedState,
+    TResult Function(String text)? updateInput,
+    TResult Function(ErrorCorrectionLevel level)? updateCorrectionLevel,
+    TResult Function()? saveToFile,
+    TResult Function(ExportType type)? updateExportType,
+    TResult Function()? copyToClipboard,
+    TResult Function(QrCodeShape shape)? shapeUpdate,
+    TResult Function(EdgeInsets padding)? paddingUpdate,
+    TResult Function(Color color)? foregroundColorUpdate,
+    TResult Function(Color color)? backgroundColorUpdate,
+    TResult Function(int size)? exportSizeUpdate,
+    required TResult orElse(),
+  }) {
+    if (exportSizeUpdate != null) {
+      return exportSizeUpdate(size);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadedStateMessage value) loadedState,
+    required TResult Function(UpdateInputMessage value) updateInput,
+    required TResult Function(UpdateCorrectionLevelMessage value)
+        updateCorrectionLevel,
+    required TResult Function(SaveToFileMessage value) saveToFile,
+    required TResult Function(UpdateExportTypeMessage value) updateExportType,
+    required TResult Function(CopyToClipboardMessage value) copyToClipboard,
+    required TResult Function(ShapeUpdateMessage value) shapeUpdate,
+    required TResult Function(PaddingUpdateMessage value) paddingUpdate,
+    required TResult Function(ForegroundColorUpdateMessage value)
+        foregroundColorUpdate,
+    required TResult Function(BackgroundColorUpdateMessage value)
+        backgroundColorUpdate,
+    required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
+  }) {
+    return exportSizeUpdate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(LoadedStateMessage value)? loadedState,
+    TResult? Function(UpdateInputMessage value)? updateInput,
+    TResult? Function(UpdateCorrectionLevelMessage value)?
+        updateCorrectionLevel,
+    TResult? Function(SaveToFileMessage value)? saveToFile,
+    TResult? Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult? Function(ForegroundColorUpdateMessage value)?
+        foregroundColorUpdate,
+    TResult? Function(BackgroundColorUpdateMessage value)?
+        backgroundColorUpdate,
+    TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
+  }) {
+    return exportSizeUpdate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadedStateMessage value)? loadedState,
+    TResult Function(UpdateInputMessage value)? updateInput,
+    TResult Function(UpdateCorrectionLevelMessage value)? updateCorrectionLevel,
+    TResult Function(SaveToFileMessage value)? saveToFile,
+    TResult Function(UpdateExportTypeMessage value)? updateExportType,
+    TResult Function(CopyToClipboardMessage value)? copyToClipboard,
+    TResult Function(ShapeUpdateMessage value)? shapeUpdate,
+    TResult Function(PaddingUpdateMessage value)? paddingUpdate,
+    TResult Function(ForegroundColorUpdateMessage value)? foregroundColorUpdate,
+    TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
+    TResult Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
+    required TResult orElse(),
+  }) {
+    if (exportSizeUpdate != null) {
+      return exportSizeUpdate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ExportSizeUpdateMessage implements QrCodeMessage {
+  const factory ExportSizeUpdateMessage(final int size) =
+      _$ExportSizeUpdateMessageImpl;
+
+  int get size;
+
+  /// Create a copy of QrCodeMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ExportSizeUpdateMessageImplCopyWith<_$ExportSizeUpdateMessageImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

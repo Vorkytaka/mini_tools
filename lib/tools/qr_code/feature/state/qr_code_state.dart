@@ -41,11 +41,15 @@ extension ExportTypeUtils on ExportType {
 @freezed
 @immutable
 class QrCodeState with _$QrCodeState {
+  static const minExportSize = 300;
+  static const maxExportSize = 4000;
+
   const factory QrCodeState({
     required String input,
     required ErrorCorrectionLevel correctionLevel,
     required ExportType exportType,
     required QrCodeVisualData visualData,
+    @Assert('exportDensity > 0') @Default(600) int exportSize,
   }) = _QrCodeState;
 
   const QrCodeState._();
@@ -60,7 +64,7 @@ class QrCodeState with _$QrCodeState {
     visualData: QrCodeVisualData(
       backgroundColor: Color(0xffffffff),
       foregroundColor: Color(0xff000000),
-      shape: QrCodeShape.square,
+      shape: QrCodeShape.smooth,
       paddings: EdgeInsets.zero,
     ),
   );

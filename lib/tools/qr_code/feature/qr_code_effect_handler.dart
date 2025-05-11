@@ -67,6 +67,7 @@ final class QrCodeEffectHandler
         final content = await exporter(
           qrCode: effect.code,
           visualData: effect.visualData,
+          exportSize: effect.exportSize,
         ).then(encodePng);
         if (content != null) {
           await file.writeAsBytes(content);
@@ -76,13 +77,18 @@ final class QrCodeEffectHandler
         final content = await exporter(
           qrCode: effect.code,
           visualData: effect.visualData,
+          exportSize: effect.exportSize,
         ).then(encodeJpg);
         if (content != null) {
           await file.writeAsBytes(content);
         }
         break;
       case ExportType.svg:
-        final content = generateQrCodeSvg(effect.code, effect.visualData);
+        final content = generateQrCodeSvg(
+          effect.code,
+          effect.visualData,
+          effect.exportSize,
+        );
         await file.writeAsString(content);
         break;
     }
@@ -92,6 +98,7 @@ final class QrCodeEffectHandler
   static String generateQrCodeSvg(
     QrCode qrCode,
     QrCodeVisualData visualData,
+    int exportSize,
   ) {
     final qrImage = QrImage(qrCode);
 
@@ -100,7 +107,7 @@ final class QrCodeEffectHandler
 
     final StringBuffer svgContent = StringBuffer(
         '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" '
-        'width="600" height="600" viewBox="0 0 ${qrImage.moduleCount} ${qrImage.moduleCount}">');
+        'width="$exportSize" height="$exportSize" viewBox="0 0 ${qrImage.moduleCount} ${qrImage.moduleCount}">');
 
     if (backgroundColor.opacity != 0) {
       // TODO(Vorkytaka): Add alpha channel
@@ -143,6 +150,7 @@ final class QrCodeEffectHandler
     final image = await exporter(
       qrCode: effect.code,
       visualData: effect.visualData,
+      exportSize: effect.exportSize,
     );
     final data = encodePng(image);
     if (data == null) {

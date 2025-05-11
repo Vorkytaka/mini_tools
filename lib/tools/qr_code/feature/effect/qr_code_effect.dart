@@ -11,11 +11,13 @@ sealed class QrCodeEffect {
     required QrCode code,
     required ExportType exportType,
     required QrCodeVisualData visualData,
+    required int exportSize,
   }) = SaveToFileEffect;
 
   const factory QrCodeEffect.copyToClipboard({
     required QrCode code,
     required QrCodeVisualData visualData,
+    required int exportSize,
   }) = CopyToClipboardEffect;
 
   const factory QrCodeEffect.saveState({
@@ -32,11 +34,13 @@ sealed class ExportEffect with _$ExportEffect implements QrCodeEffect {
     required QrCode code,
     required ExportType exportType,
     required QrCodeVisualData visualData,
+    required int exportSize,
   }) = SaveToFileEffect;
 
   const factory ExportEffect.copyToClipboard({
     required QrCode code,
     required QrCodeVisualData visualData,
+    required int exportSize,
   }) = CopyToClipboardEffect;
 }
 

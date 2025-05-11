@@ -30,6 +30,7 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
               code: code,
               exportType: state.exportType,
               visualData: state.visualData,
+              exportSize: state.exportSize,
             ),
         ],
       );
@@ -47,6 +48,7 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
             QrCodeEffect.copyToClipboard(
               code: code,
               visualData: state.visualData,
+              exportSize: state.exportSize,
             ),
         ],
       );
@@ -88,6 +90,16 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
           backgroundColor: message.color,
         ),
       );
+      return next(
+        state: newState,
+        effects: [QrCodeEffect.saveState(state: newState)],
+      );
+    case ExportSizeUpdateMessage():
+      final exportSize = message.size.clamp(
+        QrCodeState.minExportSize,
+        QrCodeState.maxExportSize,
+      );
+      final newState = state.copyWith(exportSize: exportSize);
       return next(
         state: newState,
         effects: [QrCodeEffect.saveState(state: newState)],

@@ -18,30 +18,33 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ExportEffect {
   QrCode get code => throw _privateConstructorUsedError;
   QrCodeVisualData get visualData => throw _privateConstructorUsedError;
+  int get exportSize => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            QrCode code, ExportType exportType, QrCodeVisualData visualData)
+    required TResult Function(QrCode code, ExportType exportType,
+            QrCodeVisualData visualData, int exportSize)
         saveToFile,
-    required TResult Function(QrCode code, QrCodeVisualData visualData)
+    required TResult Function(
+            QrCode code, QrCodeVisualData visualData, int exportSize)
         copyToClipboard,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            QrCode code, ExportType exportType, QrCodeVisualData visualData)?
+    TResult? Function(QrCode code, ExportType exportType,
+            QrCodeVisualData visualData, int exportSize)?
         saveToFile,
-    TResult? Function(QrCode code, QrCodeVisualData visualData)?
+    TResult? Function(QrCode code, QrCodeVisualData visualData, int exportSize)?
         copyToClipboard,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            QrCode code, ExportType exportType, QrCodeVisualData visualData)?
+    TResult Function(QrCode code, ExportType exportType,
+            QrCodeVisualData visualData, int exportSize)?
         saveToFile,
-    TResult Function(QrCode code, QrCodeVisualData visualData)? copyToClipboard,
+    TResult Function(QrCode code, QrCodeVisualData visualData, int exportSize)?
+        copyToClipboard,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,7 +81,7 @@ abstract class $ExportEffectCopyWith<$Res> {
           ExportEffect value, $Res Function(ExportEffect) then) =
       _$ExportEffectCopyWithImpl<$Res, ExportEffect>;
   @useResult
-  $Res call({QrCode code, QrCodeVisualData visualData});
+  $Res call({QrCode code, QrCodeVisualData visualData, int exportSize});
 
   $QrCodeVisualDataCopyWith<$Res> get visualData;
 }
@@ -100,6 +103,7 @@ class _$ExportEffectCopyWithImpl<$Res, $Val extends ExportEffect>
   $Res call({
     Object? code = null,
     Object? visualData = null,
+    Object? exportSize = null,
   }) {
     return _then(_value.copyWith(
       code: null == code
@@ -110,6 +114,10 @@ class _$ExportEffectCopyWithImpl<$Res, $Val extends ExportEffect>
           ? _value.visualData
           : visualData // ignore: cast_nullable_to_non_nullable
               as QrCodeVisualData,
+      exportSize: null == exportSize
+          ? _value.exportSize
+          : exportSize // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -132,7 +140,11 @@ abstract class _$$SaveToFileEffectImplCopyWith<$Res>
       __$$SaveToFileEffectImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({QrCode code, ExportType exportType, QrCodeVisualData visualData});
+  $Res call(
+      {QrCode code,
+      ExportType exportType,
+      QrCodeVisualData visualData,
+      int exportSize});
 
   @override
   $QrCodeVisualDataCopyWith<$Res> get visualData;
@@ -154,6 +166,7 @@ class __$$SaveToFileEffectImplCopyWithImpl<$Res>
     Object? code = null,
     Object? exportType = null,
     Object? visualData = null,
+    Object? exportSize = null,
   }) {
     return _then(_$SaveToFileEffectImpl(
       code: null == code
@@ -168,6 +181,10 @@ class __$$SaveToFileEffectImplCopyWithImpl<$Res>
           ? _value.visualData
           : visualData // ignore: cast_nullable_to_non_nullable
               as QrCodeVisualData,
+      exportSize: null == exportSize
+          ? _value.exportSize
+          : exportSize // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -176,7 +193,10 @@ class __$$SaveToFileEffectImplCopyWithImpl<$Res>
 
 class _$SaveToFileEffectImpl implements SaveToFileEffect {
   const _$SaveToFileEffectImpl(
-      {required this.code, required this.exportType, required this.visualData});
+      {required this.code,
+      required this.exportType,
+      required this.visualData,
+      required this.exportSize});
 
   @override
   final QrCode code;
@@ -184,10 +204,12 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
   final ExportType exportType;
   @override
   final QrCodeVisualData visualData;
+  @override
+  final int exportSize;
 
   @override
   String toString() {
-    return 'ExportEffect.saveToFile(code: $code, exportType: $exportType, visualData: $visualData)';
+    return 'ExportEffect.saveToFile(code: $code, exportType: $exportType, visualData: $visualData, exportSize: $exportSize)';
   }
 
   @override
@@ -199,11 +221,14 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
             (identical(other.exportType, exportType) ||
                 other.exportType == exportType) &&
             (identical(other.visualData, visualData) ||
-                other.visualData == visualData));
+                other.visualData == visualData) &&
+            (identical(other.exportSize, exportSize) ||
+                other.exportSize == exportSize));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, exportType, visualData);
+  int get hashCode =>
+      Object.hash(runtimeType, code, exportType, visualData, exportSize);
 
   /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -217,38 +242,40 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            QrCode code, ExportType exportType, QrCodeVisualData visualData)
+    required TResult Function(QrCode code, ExportType exportType,
+            QrCodeVisualData visualData, int exportSize)
         saveToFile,
-    required TResult Function(QrCode code, QrCodeVisualData visualData)
+    required TResult Function(
+            QrCode code, QrCodeVisualData visualData, int exportSize)
         copyToClipboard,
   }) {
-    return saveToFile(code, exportType, visualData);
+    return saveToFile(code, exportType, visualData, exportSize);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            QrCode code, ExportType exportType, QrCodeVisualData visualData)?
+    TResult? Function(QrCode code, ExportType exportType,
+            QrCodeVisualData visualData, int exportSize)?
         saveToFile,
-    TResult? Function(QrCode code, QrCodeVisualData visualData)?
+    TResult? Function(QrCode code, QrCodeVisualData visualData, int exportSize)?
         copyToClipboard,
   }) {
-    return saveToFile?.call(code, exportType, visualData);
+    return saveToFile?.call(code, exportType, visualData, exportSize);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            QrCode code, ExportType exportType, QrCodeVisualData visualData)?
+    TResult Function(QrCode code, ExportType exportType,
+            QrCodeVisualData visualData, int exportSize)?
         saveToFile,
-    TResult Function(QrCode code, QrCodeVisualData visualData)? copyToClipboard,
+    TResult Function(QrCode code, QrCodeVisualData visualData, int exportSize)?
+        copyToClipboard,
     required TResult orElse(),
   }) {
     if (saveToFile != null) {
-      return saveToFile(code, exportType, visualData);
+      return saveToFile(code, exportType, visualData, exportSize);
     }
     return orElse();
   }
@@ -289,13 +316,16 @@ abstract class SaveToFileEffect implements ExportEffect {
   const factory SaveToFileEffect(
       {required final QrCode code,
       required final ExportType exportType,
-      required final QrCodeVisualData visualData}) = _$SaveToFileEffectImpl;
+      required final QrCodeVisualData visualData,
+      required final int exportSize}) = _$SaveToFileEffectImpl;
 
   @override
   QrCode get code;
   ExportType get exportType;
   @override
   QrCodeVisualData get visualData;
+  @override
+  int get exportSize;
 
   /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -314,7 +344,7 @@ abstract class _$$CopyToClipboardEffectImplCopyWith<$Res>
       __$$CopyToClipboardEffectImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({QrCode code, QrCodeVisualData visualData});
+  $Res call({QrCode code, QrCodeVisualData visualData, int exportSize});
 
   @override
   $QrCodeVisualDataCopyWith<$Res> get visualData;
@@ -335,6 +365,7 @@ class __$$CopyToClipboardEffectImplCopyWithImpl<$Res>
   $Res call({
     Object? code = null,
     Object? visualData = null,
+    Object? exportSize = null,
   }) {
     return _then(_$CopyToClipboardEffectImpl(
       code: null == code
@@ -345,6 +376,10 @@ class __$$CopyToClipboardEffectImplCopyWithImpl<$Res>
           ? _value.visualData
           : visualData // ignore: cast_nullable_to_non_nullable
               as QrCodeVisualData,
+      exportSize: null == exportSize
+          ? _value.exportSize
+          : exportSize // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -353,16 +388,18 @@ class __$$CopyToClipboardEffectImplCopyWithImpl<$Res>
 
 class _$CopyToClipboardEffectImpl implements CopyToClipboardEffect {
   const _$CopyToClipboardEffectImpl(
-      {required this.code, required this.visualData});
+      {required this.code, required this.visualData, required this.exportSize});
 
   @override
   final QrCode code;
   @override
   final QrCodeVisualData visualData;
+  @override
+  final int exportSize;
 
   @override
   String toString() {
-    return 'ExportEffect.copyToClipboard(code: $code, visualData: $visualData)';
+    return 'ExportEffect.copyToClipboard(code: $code, visualData: $visualData, exportSize: $exportSize)';
   }
 
   @override
@@ -372,11 +409,13 @@ class _$CopyToClipboardEffectImpl implements CopyToClipboardEffect {
             other is _$CopyToClipboardEffectImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.visualData, visualData) ||
-                other.visualData == visualData));
+                other.visualData == visualData) &&
+            (identical(other.exportSize, exportSize) ||
+                other.exportSize == exportSize));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, code, visualData);
+  int get hashCode => Object.hash(runtimeType, code, visualData, exportSize);
 
   /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -390,38 +429,40 @@ class _$CopyToClipboardEffectImpl implements CopyToClipboardEffect {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            QrCode code, ExportType exportType, QrCodeVisualData visualData)
+    required TResult Function(QrCode code, ExportType exportType,
+            QrCodeVisualData visualData, int exportSize)
         saveToFile,
-    required TResult Function(QrCode code, QrCodeVisualData visualData)
+    required TResult Function(
+            QrCode code, QrCodeVisualData visualData, int exportSize)
         copyToClipboard,
   }) {
-    return copyToClipboard(code, visualData);
+    return copyToClipboard(code, visualData, exportSize);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            QrCode code, ExportType exportType, QrCodeVisualData visualData)?
+    TResult? Function(QrCode code, ExportType exportType,
+            QrCodeVisualData visualData, int exportSize)?
         saveToFile,
-    TResult? Function(QrCode code, QrCodeVisualData visualData)?
+    TResult? Function(QrCode code, QrCodeVisualData visualData, int exportSize)?
         copyToClipboard,
   }) {
-    return copyToClipboard?.call(code, visualData);
+    return copyToClipboard?.call(code, visualData, exportSize);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            QrCode code, ExportType exportType, QrCodeVisualData visualData)?
+    TResult Function(QrCode code, ExportType exportType,
+            QrCodeVisualData visualData, int exportSize)?
         saveToFile,
-    TResult Function(QrCode code, QrCodeVisualData visualData)? copyToClipboard,
+    TResult Function(QrCode code, QrCodeVisualData visualData, int exportSize)?
+        copyToClipboard,
     required TResult orElse(),
   }) {
     if (copyToClipboard != null) {
-      return copyToClipboard(code, visualData);
+      return copyToClipboard(code, visualData, exportSize);
     }
     return orElse();
   }
@@ -460,14 +501,16 @@ class _$CopyToClipboardEffectImpl implements CopyToClipboardEffect {
 
 abstract class CopyToClipboardEffect implements ExportEffect {
   const factory CopyToClipboardEffect(
-          {required final QrCode code,
-          required final QrCodeVisualData visualData}) =
-      _$CopyToClipboardEffectImpl;
+      {required final QrCode code,
+      required final QrCodeVisualData visualData,
+      required final int exportSize}) = _$CopyToClipboardEffectImpl;
 
   @override
   QrCode get code;
   @override
   QrCodeVisualData get visualData;
+  @override
+  int get exportSize;
 
   /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.

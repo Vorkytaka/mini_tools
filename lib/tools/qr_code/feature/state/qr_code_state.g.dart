@@ -14,6 +14,7 @@ _$QrCodeStateImpl _$$QrCodeStateImplFromJson(Map<String, dynamic> json) =>
       exportType: $enumDecode(_$ExportTypeEnumMap, json['exportType']),
       visualData:
           QrCodeVisualData.fromJson(json['visualData'] as Map<String, dynamic>),
+      exportSize: (json['exportSize'] as num?)?.toInt() ?? 600,
     );
 
 Map<String, dynamic> _$$QrCodeStateImplToJson(_$QrCodeStateImpl instance) =>
@@ -23,6 +24,7 @@ Map<String, dynamic> _$$QrCodeStateImplToJson(_$QrCodeStateImpl instance) =>
           _$ErrorCorrectionLevelEnumMap[instance.correctionLevel]!,
       'exportType': _$ExportTypeEnumMap[instance.exportType]!,
       'visualData': instance.visualData,
+      'exportSize': instance.exportSize,
     };
 
 const _$ErrorCorrectionLevelEnumMap = {
@@ -62,7 +64,7 @@ Map<String, dynamic> _$$QrCodeVisualDataImplToJson(
     };
 
 const _$QrCodeShapeEnumMap = {
+  QrCodeShape.smooth: 'smooth',
   QrCodeShape.square: 'square',
   QrCodeShape.circle: 'circle',
-  QrCodeShape.smooth: 'smooth',
 };
