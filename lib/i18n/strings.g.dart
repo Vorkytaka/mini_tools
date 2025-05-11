@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 235
+/// Strings: 236
 ///
-/// Built on 2025-05-11 at 22:27 UTC
+/// Built on 2025-05-11 at 22:45 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -469,6 +469,8 @@ class _StringsQrCodeEn {
   String get backgroundColorTitle => 'Background color:';
   String get exportSizeTitle => 'Export size:';
   String get exportSizePx => 'px';
+  String exportSizeHint({required Object from, required Object to}) =>
+      'From ${from} to ${to} pixels';
 }
 
 // Path: common.dayOfWeek
@@ -1386,6 +1388,9 @@ extension on Translations {
         return 'Export size:';
       case 'qrCode.exportSizePx':
         return 'px';
+      case 'qrCode.exportSizeHint':
+        return ({required Object from, required Object to}) =>
+            'From ${from} to ${to} pixels';
       default:
         return null;
     }

@@ -328,6 +328,7 @@
     "foreground_color_title": "Foreground color:",
     "background_color_title": "Background color:",
     "export_size_title": "Export size:",
-    "export_size_px": "px"
+    "export_size_px": "px",
+    "export_size_hint": "From $from to $to pixels"
   }
 }

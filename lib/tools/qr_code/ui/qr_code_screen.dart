@@ -8,6 +8,7 @@ import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/padding.dart';
+import '../../../common/ui/hint_button.dart';
 import '../../../common/ui/input_text.dart';
 import '../../../common/ui/mini_color_picker.dart';
 import '../../../i18n/strings.g.dart';

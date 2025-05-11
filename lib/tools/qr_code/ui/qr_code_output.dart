@@ -251,6 +251,13 @@ class _ExportSizeWidgetState extends State<_ExportSizeWidget> {
             suffixMode: OverlayVisibilityMode.always,
           ),
         ),
+        const SizedBox(width: 8),
+        HintButton(
+          hint: t.qrCode.exportSizeHint(
+            from: QrCodeState.minExportSize,
+            to: QrCodeState.maxExportSize,
+          ),
+        )
       ],
     );
   }
