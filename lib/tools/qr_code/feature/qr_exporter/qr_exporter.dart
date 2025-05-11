@@ -6,4 +6,5 @@ import '../state/qr_code_state.dart';
 typedef QrCodeBytesExporter = Future<Image?> Function({
   required QrCode qrCode,
   required QrCodeVisualData visualData,
+  required int exportSize,
 });

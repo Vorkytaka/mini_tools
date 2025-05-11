@@ -25,6 +25,8 @@ mixin _$QrCodeState {
       throw _privateConstructorUsedError;
   ExportType get exportType => throw _privateConstructorUsedError;
   QrCodeVisualData get visualData => throw _privateConstructorUsedError;
+  @Assert('exportDensity > 0')
+  int get exportSize => throw _privateConstructorUsedError;
 
   /// Serializes this QrCodeState to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,7 +48,8 @@ abstract class $QrCodeStateCopyWith<$Res> {
       {String input,
       ErrorCorrectionLevel correctionLevel,
       ExportType exportType,
-      QrCodeVisualData visualData});
+      QrCodeVisualData visualData,
+      @Assert('exportDensity > 0') int exportSize});
 
   $QrCodeVisualDataCopyWith<$Res> get visualData;
 }
@@ -70,6 +73,7 @@ class _$QrCodeStateCopyWithImpl<$Res, $Val extends QrCodeState>
     Object? correctionLevel = null,
     Object? exportType = null,
     Object? visualData = null,
+    Object? exportSize = null,
   }) {
     return _then(_value.copyWith(
       input: null == input
@@ -88,6 +92,10 @@ class _$QrCodeStateCopyWithImpl<$Res, $Val extends QrCodeState>
           ? _value.visualData
           : visualData // ignore: cast_nullable_to_non_nullable
               as QrCodeVisualData,
+      exportSize: null == exportSize
+          ? _value.exportSize
+          : exportSize // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -114,7 +122,8 @@ abstract class _$$QrCodeStateImplCopyWith<$Res>
       {String input,
       ErrorCorrectionLevel correctionLevel,
       ExportType exportType,
-      QrCodeVisualData visualData});
+      QrCodeVisualData visualData,
+      @Assert('exportDensity > 0') int exportSize});
 
   @override
   $QrCodeVisualDataCopyWith<$Res> get visualData;
@@ -137,6 +146,7 @@ class __$$QrCodeStateImplCopyWithImpl<$Res>
     Object? correctionLevel = null,
     Object? exportType = null,
     Object? visualData = null,
+    Object? exportSize = null,
   }) {
     return _then(_$QrCodeStateImpl(
       input: null == input
@@ -155,6 +165,10 @@ class __$$QrCodeStateImplCopyWithImpl<$Res>
           ? _value.visualData
           : visualData // ignore: cast_nullable_to_non_nullable
               as QrCodeVisualData,
+      exportSize: null == exportSize
+          ? _value.exportSize
+          : exportSize // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -166,7 +180,8 @@ class _$QrCodeStateImpl extends _QrCodeState {
       {required this.input,
       required this.correctionLevel,
       required this.exportType,
-      required this.visualData})
+      required this.visualData,
+      @Assert('exportDensity > 0') this.exportSize = 600})
       : super._();
 
   factory _$QrCodeStateImpl.fromJson(Map<String, dynamic> json) =>
@@ -180,10 +195,14 @@ class _$QrCodeStateImpl extends _QrCodeState {
   final ExportType exportType;
   @override
   final QrCodeVisualData visualData;
+  @override
+  @JsonKey()
+  @Assert('exportDensity > 0')
+  final int exportSize;
 
   @override
   String toString() {
-    return 'QrCodeState(input: $input, correctionLevel: $correctionLevel, exportType: $exportType, visualData: $visualData)';
+    return 'QrCodeState(input: $input, correctionLevel: $correctionLevel, exportType: $exportType, visualData: $visualData, exportSize: $exportSize)';
   }
 
   @override
@@ -197,13 +216,15 @@ class _$QrCodeStateImpl extends _QrCodeState {
             (identical(other.exportType, exportType) ||
                 other.exportType == exportType) &&
             (identical(other.visualData, visualData) ||
-                other.visualData == visualData));
+                other.visualData == visualData) &&
+            (identical(other.exportSize, exportSize) ||
+                other.exportSize == exportSize));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, input, correctionLevel, exportType, visualData);
+  int get hashCode => Object.hash(
+      runtimeType, input, correctionLevel, exportType, visualData, exportSize);
 
   /// Create a copy of QrCodeState
   /// with the given fields replaced by the non-null parameter values.
@@ -226,7 +247,8 @@ abstract class _QrCodeState extends QrCodeState {
       {required final String input,
       required final ErrorCorrectionLevel correctionLevel,
       required final ExportType exportType,
-      required final QrCodeVisualData visualData}) = _$QrCodeStateImpl;
+      required final QrCodeVisualData visualData,
+      @Assert('exportDensity > 0') final int exportSize}) = _$QrCodeStateImpl;
   const _QrCodeState._() : super._();
 
   factory _QrCodeState.fromJson(Map<String, dynamic> json) =
@@ -240,6 +262,9 @@ abstract class _QrCodeState extends QrCodeState {
   ExportType get exportType;
   @override
   QrCodeVisualData get visualData;
+  @override
+  @Assert('exportDensity > 0')
+  int get exportSize;
 
   /// Create a copy of QrCodeState
   /// with the given fields replaced by the non-null parameter values.

@@ -34,4 +34,7 @@ sealed class QrCodeMessage with _$QrCodeMessage {
 
   const factory QrCodeMessage.backgroundColorUpdate(Color color) =
       BackgroundColorUpdateMessage;
+
+  const factory QrCodeMessage.exportSizeUpdate(int size) =
+      ExportSizeUpdateMessage;
 }

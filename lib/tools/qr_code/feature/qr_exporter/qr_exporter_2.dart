@@ -10,10 +10,11 @@ abstract interface class NewQrCodeExporter {
   static Future<Image?> generateBytes({
     required QrCode qrCode,
     required QrCodeVisualData visualData,
+    required int exportSize,
   }) async {
     final image = QrImage(qrCode);
     final bytes = await image.toImageAsBytes(
-      size: 600,
+      size: exportSize,
       decoration: PrettyQrDecoration(
         background: visualData.backgroundColor,
         shape: visualData.qrCodeShape,
