@@ -53,11 +53,14 @@ final class QrCodeEffectHandler
     SaveToFileEffect effect,
     MsgEmitter<QrCodeMessage> emit,
   ) async {
+    Log.d(_tag, 'Save QR to file (${effect.exportType.extension});');
+
     final path = await FilePicker.platform.saveFile(
       type: FileType.image,
       fileName: 'qr_code.${effect.exportType.extension}',
     );
     if (path == null) {
+      Log.d(_tag, 'path is null; Stop saving to file;');
       return;
     }
     final file = File(path);
@@ -70,6 +73,7 @@ final class QrCodeEffectHandler
           exportSize: effect.exportSize,
         ).then(encodePng);
         if (content != null) {
+          Log.v(_tag, 'Content is not null, write as bytes to file;');
           await file.writeAsBytes(content);
         }
         break;
@@ -80,6 +84,7 @@ final class QrCodeEffectHandler
           exportSize: effect.exportSize,
         ).then(encodeJpg);
         if (content != null) {
+          Log.v(_tag, 'Content is not null, write as bytes to file;');
           await file.writeAsBytes(content);
         }
         break;
@@ -89,6 +94,7 @@ final class QrCodeEffectHandler
           effect.visualData,
           effect.exportSize,
         );
+        Log.v(_tag, 'Write as string to file;');
         await file.writeAsString(content);
         break;
     }
@@ -142,8 +148,10 @@ final class QrCodeEffectHandler
     CopyToClipboardEffect effect,
     MsgEmitter<QrCodeMessage> emit,
   ) async {
+    Log.v(_tag, 'Copy QR code to clipboard;');
     final clipboard = SystemClipboard.instance;
     if (clipboard == null) {
+      Log.d(_tag, 'Clipboard is not supported; Stop copying;');
       return;
     }
 
@@ -154,18 +162,21 @@ final class QrCodeEffectHandler
     );
     final data = encodePng(image);
     if (data == null) {
+      Log.v(_tag, 'Data is null; Stop copying;');
       return;
     }
 
     final item = DataWriterItem();
     item.add(Formats.png(data));
     await clipboard.write([item]);
+    Log.v(_tag, 'QR Code successfully copied;');
   }
 
   Future<void> _loadState(
     LoadStateEffect effect,
     MsgEmitter<QrCodeMessage> emit,
   ) async {
+    Log.v(_tag, 'Try to load a state;');
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
       final jsonStr = sharedPreferences.getString(_stateKey);
@@ -193,6 +204,7 @@ final class SaveStateEffectHandler
     SaveStateEffect effect,
     MsgEmitter<QrCodeMessage> emit,
   ) async {
+    Log.v(_tag, 'Try to save a state;');
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
       final json = jsonEncode(effect.state.toJson());
