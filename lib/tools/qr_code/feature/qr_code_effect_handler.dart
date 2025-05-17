@@ -83,14 +83,6 @@ final class QrCodeEffectHandler
           await file.writeAsBytes(content);
         }
         break;
-      case ExportType.svg:
-        final content = generateQrCodeSvg(
-          effect.code,
-          effect.visualData,
-          effect.exportSize,
-        );
-        await file.writeAsString(content);
-        break;
     }
   }
 

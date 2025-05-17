@@ -21,7 +21,6 @@ class _OutputSide extends StatelessWidget {
         Center(child: _QrCodeWidget()),
         SizedBox(height: 8),
         _ExportQrLine(),
-        Center(child: _SvgWarning()),
         SizedBox(height: 4),
         Center(child: _TestQrWarning()),
       ],
@@ -301,34 +300,6 @@ class _QrCodeWidget extends StatelessWidget {
             ),
           ),
         );
-      },
-    );
-  }
-}
-
-class _SvgWarning extends StatelessWidget {
-  const _SvgWarning();
-
-  @override
-  Widget build(BuildContext context) {
-    final t = Translations.of(context);
-
-    return FeatureBuilder<QrCodeFeature, QrCodeState>(
-      buildWhen: (prev, curr) =>
-          prev.exportType != curr.exportType ||
-          prev.visualData != curr.visualData,
-      builder: (context, state) {
-        if (state.exportType == ExportType.svg &&
-            state.visualData.shape != QrCodeShape.square) {
-          return DefaultTextStyle.merge(
-            style: TextStyle(
-              color: Colors.red.shade300,
-            ),
-            child: Text(t.qrCode.shapes.svgWarning),
-          );
-        }
-
-        return const SizedBox();
       },
     );
   }
