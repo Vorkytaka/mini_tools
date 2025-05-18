@@ -1,6 +1,7 @@
 import 'package:mini_tea/effect_handlers.dart';
 import 'package:mini_tea/feature.dart';
 
+import '../../../common/elm/log_feature.dart';
 import 'effect/qr_code_effect.dart';
 import 'message/qr_code_message.dart';
 import 'qr_code_effect_handler.dart';
@@ -21,4 +22,4 @@ QrCodeFeature qrCodeFeatureFactory() => QrCodeFeature(
         ),
       ],
       initialEffects: [const QrCodeEffect.loadState()],
-    );
+    ).withLog(tag: 'QrCodeFeature');
