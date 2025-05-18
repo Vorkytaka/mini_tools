@@ -20,7 +20,6 @@ extension on ExportType {
     return switch (this) {
       ExportType.png => t.qrCode.exportType.png,
       ExportType.jpg => t.qrCode.exportType.jpg,
-      ExportType.svg => t.qrCode.exportType.svg,
     };
   }
 }
