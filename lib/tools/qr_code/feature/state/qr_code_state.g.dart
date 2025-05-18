@@ -37,7 +37,6 @@ const _$ErrorCorrectionLevelEnumMap = {
 const _$ExportTypeEnumMap = {
   ExportType.png: 'png',
   ExportType.jpg: 'jpg',
-  ExportType.svg: 'svg',
 };
 
 _$QrCodeVisualDataImpl _$$QrCodeVisualDataImplFromJson(

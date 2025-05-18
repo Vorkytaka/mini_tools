@@ -18,7 +18,6 @@ enum ErrorCorrectionLevel {
 enum ExportType {
   png,
   jpg,
-  svg,
 }
 
 extension ErrorCorrectionLevelUtils on ErrorCorrectionLevel {
@@ -34,7 +33,6 @@ extension ExportTypeUtils on ExportType {
   String get extension => switch (this) {
         ExportType.png => 'png',
         ExportType.jpg => 'jpg',
-        ExportType.svg => 'svg',
       };
 }
 
