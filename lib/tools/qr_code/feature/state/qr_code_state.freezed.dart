@@ -181,7 +181,7 @@ class _$QrCodeStateImpl extends _QrCodeState {
       required this.correctionLevel,
       required this.exportType,
       required this.visualData,
-      @Assert('exportDensity > 0') this.exportSize = 600})
+      @Assert('exportDensity > 0') this.exportSize = 1024})
       : super._();
 
   factory _$QrCodeStateImpl.fromJson(Map<String, dynamic> json) =>

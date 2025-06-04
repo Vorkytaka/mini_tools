@@ -7,15 +7,23 @@ import '../color_picker/color_picker.dart';
 class MiniColorPicker extends StatefulWidget {
   final ColorChangedCallback onColorChanged;
   final Color selectedColor;
+  final Widget Function(BuildContext context, Color color) builder;
 
   const MiniColorPicker({
     required this.onColorChanged,
     required this.selectedColor,
+    this.builder = defaultBuilder,
     super.key,
   });
 
   @override
   State<MiniColorPicker> createState() => _MiniColorPickerState();
+
+  static Widget defaultBuilder(BuildContext context, Color color) => SizedBox(
+        height: 50,
+        width: 50,
+        child: ColoredBox(color: color),
+      );
 }
 
 class _MiniColorPickerState extends State<MiniColorPicker> {
@@ -32,7 +40,7 @@ class _MiniColorPickerState extends State<MiniColorPicker> {
   void didUpdateWidget(covariant MiniColorPicker oldWidget) {
     super.didUpdateWidget(oldWidget);
 
-    if (oldWidget.selectedColor != _color) {
+    if (oldWidget.selectedColor != widget.selectedColor) {
       _color = widget.selectedColor;
     }
   }
@@ -54,10 +62,11 @@ class _MiniColorPickerState extends State<MiniColorPicker> {
           onColorChanged: widget.onColorChanged,
         ),
       ),
-      child: SizedBox(
-        height: 50,
-        width: 50,
-        child: ColoredBox(color: _color),
+      child: Builder(
+        builder: (context) => widget.builder(
+          context,
+          _color,
+        ),
       ),
     );
   }
