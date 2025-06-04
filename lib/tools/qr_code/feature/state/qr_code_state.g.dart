@@ -14,7 +14,7 @@ _$QrCodeStateImpl _$$QrCodeStateImplFromJson(Map<String, dynamic> json) =>
       exportType: $enumDecode(_$ExportTypeEnumMap, json['exportType']),
       visualData:
           QrCodeVisualData.fromJson(json['visualData'] as Map<String, dynamic>),
-      exportSize: (json['exportSize'] as num?)?.toInt() ?? 600,
+      exportSize: (json['exportSize'] as num?)?.toInt() ?? 1024,
     );
 
 Map<String, dynamic> _$$QrCodeStateImplToJson(_$QrCodeStateImpl instance) =>
