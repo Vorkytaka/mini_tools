@@ -1,30 +1,30 @@
 #!/bin/bash
 set -euo pipefail
 
-# Docs
-#
-# To use this script call it from root of the repository, like:
-# `./tools/build/macos_dmg.sh`
-#
-# If something goes wrong with notarytool, then use this command:
-# `xcrun notarytool log ID_OF_ACTION --apple-id vorkytaka@icloud.com --password $MINI_TOOLS_PASS --team-id "BD4KPFJ9C6"`
-
+# Build the app
 fvm flutter clean
 fvm flutter pub get
 fvm flutter build macos --release
 
-# sign the app
-echo
+# Sign the app
 echo "Signing the app..."
-echo
 SIGN_ID="Developer ID Application: Konstantin Dovnar (BD4KPFJ9C6)"
 codesign --deep --force --verbose --options runtime --entitlements macos/Runner/Release.entitlements --sign "$SIGN_ID" build/macos/Build/Products/Release/miniTools.app
 
-# create dmg
-# brew install create-dmg
-echo
-echo "Creating dmg..."
-echo
+# Create a temporary zip for notarization of the app itself
+echo "Creating temporary zip for app notarization..."
+ditto -c -k --keepParent build/macos/Build/Products/Release/miniTools.app miniTools_app.zip
+
+# Submit app for notarization
+echo "Submitting app for notarization..."
+xcrun notarytool submit miniTools_app.zip --wait --apple-id vorkytaka@icloud.com --password "$MINI_TOOLS_PASS" --team-id "BD4KPFJ9C6"
+
+# Staple the app
+echo "Stapling the app..."
+xcrun stapler staple build/macos/Build/Products/Release/miniTools.app
+
+# Now create the DMG with the notarized app
+echo "Creating DMG..."
 rm -f miniTools.dmg
 create-dmg \
   --volname "miniTools" \
@@ -35,23 +35,24 @@ create-dmg \
   miniTools.dmg \
   build/macos/Build/Products/Release/miniTools.app
 
-# sign the dmg
-echo
-echo "Signing the dmg..."
-echo
+# Sign the DMG
+echo "Signing the DMG..."
 codesign --force --verbose --sign "$SIGN_ID" miniTools.dmg
 
-# send to apple for notarization
-DEV_EMAIL=vorkytaka@icloud.com
-TEAM_ID=BD4KPFJ9C6
+# Notarize the DMG
+echo "Sending DMG for notarization..."
+xcrun notarytool submit miniTools.dmg --wait --apple-id vorkytaka@icloud.com --password "$MINI_TOOLS_PASS" --team-id "BD4KPFJ9C6"
 
-echo
-echo "Sending to apple for notarization..."
-echo
-xcrun notarytool submit miniTools.dmg --wait --apple-id $DEV_EMAIL --password "$MINI_TOOLS_PASS" --team-id "$TEAM_ID"
-
-# download notarization result and apply to the dmg
-echo
-echo "Run stapler..."
-echo
+# Staple the DMG
+echo "Stapling the DMG..."
 xcrun stapler staple miniTools.dmg
+
+# Clean up
+rm -f miniTools_app.zip
+
+# Verify both are properly notarized
+echo "Verifying app notarization..."
+codesign -vv --display build/macos/Build/Products/Release/miniTools.app
+
+echo "Verifying DMG notarization..."
+codesign -vv --display miniTools.dmg
