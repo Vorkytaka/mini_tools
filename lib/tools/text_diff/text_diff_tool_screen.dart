@@ -17,16 +17,12 @@ class TextDiffScreen extends StatelessWidget {
     final t = Translations.of(context);
 
     return MacosScaffold(
-      toolBar: ToolBar(
-        centerTitle: true,
-        title: Text(t.textDiff.title),
-      ),
+      toolBar: ToolBar(centerTitle: true, title: Text(t.textDiff.title)),
       children: [
         ContentArea(
-          builder: (context, _) => const Padding(
-            padding: panePadding,
-            child: _Body(),
-          ),
+          builder:
+              (context, _) =>
+                  const Padding(padding: panePadding, child: _Body()),
         ),
       ],
     );
@@ -61,15 +57,15 @@ class _BodyState extends State<_Body> {
     _oldTextController.text = state.oldText;
 
     _newTextController.addListener(() {
-      context
-          .read<TextDiffFeature>()
-          .accept(TextDiffMessage.updateNewText(_newTextController.text));
+      context.read<TextDiffFeature>().accept(
+        TextDiffMessage.updateNewText(_newTextController.text),
+      );
     });
 
     _oldTextController.addListener(() {
-      context
-          .read<TextDiffFeature>()
-          .accept(TextDiffMessage.updateOldText(_oldTextController.text));
+      context.read<TextDiffFeature>().accept(
+        TextDiffMessage.updateOldText(_oldTextController.text),
+      );
     });
   }
 

@@ -17,19 +17,19 @@ String? colorToHwbString(Color? color) => color?.toHwbString;
 
 extension ColorUtils on Color {
   String get toHexString {
-    return '#${value.toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}';
+    return '#${toARGB32().toRadixString(16).padLeft(8, '0').substring(2).toUpperCase()}';
   }
 
   String get toArgbHexString {
-    return '#${value.toRadixString(16).padLeft(8, '0').toUpperCase()}';
+    return '#${toARGB32().toRadixString(16).padLeft(8, '0').toUpperCase()}';
   }
 
   String get toRgbString {
-    return 'rgb($red, $green, $blue)';
+    return 'rgb(${(r * 255).toInt()}, ${(g * 255).toInt()}, ${(b * 255).toInt()})';
   }
 
   String get toRgbaString {
-    return 'rgba($red, $green, $blue, $opacity)';
+    return 'rgba(${(r * 255).toInt()}, ${(g * 255).toInt()}, ${(b * 255).toInt()}, ${(a * 255).toInt()})';
   }
 
   String get toHslString {
@@ -40,9 +40,9 @@ extension ColorUtils on Color {
   String get toHsbString {
     double hue, saturation, brightness;
 
-    final int r = red;
-    final int g = green;
-    final int b = blue;
+    final double r = this.r * 255;
+    final double g = this.g * 255;
+    final double b = this.b * 255;
 
     final double max = [r, g, b].reduce((a, b) => a > b ? a : b) / 255.0;
     final double min = [r, g, b].reduce((a, b) => a < b ? a : b) / 255.0;
@@ -65,10 +65,6 @@ extension ColorUtils on Color {
   }
 
   String get toHwbString {
-    final r = red / 255.0;
-    final g = green / 255.0;
-    final b = blue / 255.0;
-
     final max = [r, g, b].reduce((a, b) => a > b ? a : b);
     final min = [r, g, b].reduce((a, b) => a < b ? a : b);
     final delta = max - min;
@@ -96,5 +92,9 @@ extension ColorUtils on Color {
 }
 
 extension ImgColorTool on Color {
-  img.Color get toImageColor => img.ColorUint8.rgb(red, green, blue);
+  img.Color get toImageColor => img.ColorUint8.rgb(
+    (r * 255).toInt(),
+    (g * 255).toInt(),
+    (b * 255).toInt(),
+  );
 }

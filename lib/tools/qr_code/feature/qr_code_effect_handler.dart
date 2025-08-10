@@ -33,10 +33,7 @@ final class QrCodeEffectHandler
   }) : _onSaveState = onSaveState;
 
   @override
-  Future<void> call(
-    QrCodeEffect effect,
-    MsgEmitter<QrCodeMessage> emit,
-  ) async {
+  Future<void> call(QrCodeEffect effect, MsgEmitter<QrCodeMessage> emit) async {
     switch (effect) {
       case SaveToFileEffect():
         return _saveToFile(effect, emit);
@@ -103,10 +100,11 @@ final class QrCodeEffectHandler
     final foregroundColor = visualData.foregroundColor;
 
     final StringBuffer svgContent = StringBuffer(
-        '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" '
-        'width="$exportSize" height="$exportSize" viewBox="0 0 ${qrImage.moduleCount} ${qrImage.moduleCount}">');
+      '<svg version="1.1" xmlns="http://www.w3.org/2000/svg" '
+      'width="$exportSize" height="$exportSize" viewBox="0 0 ${qrImage.moduleCount} ${qrImage.moduleCount}">',
+    );
 
-    if (backgroundColor.opacity != 0) {
+    if (backgroundColor.a != 0) {
       // TODO(Vorkytaka): Add alpha channel
       svgContent.write(
         '<rect width="100%" height="100%" fill="${backgroundColor.toHexString}" />',
@@ -119,7 +117,8 @@ final class QrCodeEffectHandler
       for (int y = 0; y < qrImage.moduleCount; y++) {
         if (qrImage.isDark(y, x)) {
           svgContent.write(
-              '<rect x="$x" y="$y" width="1" height="1" fill="$foregroundColorValue" />');
+            '<rect x="$x" y="$y" width="1" height="1" fill="$foregroundColorValue" />',
+          );
         }
       }
     }

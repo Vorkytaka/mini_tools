@@ -26,10 +26,7 @@ void main() {
           inputBytes: 13,
         ),
         expectedEffects: [
-          const CountTextHashEffect(
-            'Hello, World!',
-            HashAlgorithm.md5,
-          ),
+          const CountTextHashEffect('Hello, World!', HashAlgorithm.md5),
         ],
       );
     });

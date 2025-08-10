@@ -30,10 +30,7 @@ abstract interface class OldQrCodeExporter {
     }
 
     img.Image image = img.Image(height: 600, width: 600);
-    image = img.fill(
-      image,
-      color: visualData.backgroundColor.toImageColor,
-    );
+    image = img.fill(image, color: visualData.backgroundColor.toImageColor);
     return img.compositeImage(image, qrImage);
   }
 }

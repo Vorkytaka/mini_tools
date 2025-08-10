@@ -13,9 +13,7 @@ import '../qr_code_screen.dart';
 import 'title_with_selector.dart';
 
 class QrCodeSettingsSection extends StatelessWidget {
-  const QrCodeSettingsSection({
-    super.key,
-  });
+  const QrCodeSettingsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +42,9 @@ class _ForegroundColorPicker extends StatelessWidget {
       colorPreset: _ColorPicker.fColors,
       colorFromState: (state) => state.visualData.foregroundColor,
       onColorUpdate: (context, color) {
-        context
-            .read<QrCodeFeature>()
-            .accept(QrCodeMessage.foregroundColorUpdate(color));
+        context.read<QrCodeFeature>().accept(
+          QrCodeMessage.foregroundColorUpdate(color),
+        );
       },
       subtitle: Text(t.qrCode.settings.foregroundColor.title),
     );
@@ -64,9 +62,9 @@ class _BackgroundColorPicker extends StatelessWidget {
       colorPreset: _ColorPicker.bColors,
       colorFromState: (state) => state.visualData.backgroundColor,
       onColorUpdate: (context, color) {
-        context
-            .read<QrCodeFeature>()
-            .accept(QrCodeMessage.backgroundColorUpdate(color));
+        context.read<QrCodeFeature>().accept(
+          QrCodeMessage.backgroundColorUpdate(color),
+        );
       },
       subtitle: Text(t.qrCode.settings.backgroundColor.title),
     );
@@ -84,8 +82,8 @@ class _ShapeSelector extends StatelessWidget {
       title: Text(t.qrCode.settings.shapeStyle.title),
       selector: Center(
         child: FeatureBuilder<QrCodeFeature, QrCodeState>(
-          buildWhen: (prev, curr) =>
-              prev.visualData.shape != curr.visualData.shape,
+          buildWhen:
+              (prev, curr) => prev.visualData.shape != curr.visualData.shape,
           builder: (context, state) {
             return SizedBox(
               width: double.infinity,
@@ -97,9 +95,9 @@ class _ShapeSelector extends StatelessWidget {
                 },
                 onValueChanged: (shape) {
                   if (shape != null) {
-                    context
-                        .read<QrCodeFeature>()
-                        .accept(QrCodeMessage.shapeUpdate(shape));
+                    context.read<QrCodeFeature>().accept(
+                      QrCodeMessage.shapeUpdate(shape),
+                    );
                   }
                 },
               ),
@@ -124,8 +122,8 @@ class _CorrectionLevelSelector extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FeatureBuilder<QrCodeFeature, QrCodeState>(
-            buildWhen: (prev, curr) =>
-                prev.correctionLevel != curr.correctionLevel,
+            buildWhen:
+                (prev, curr) => prev.correctionLevel != curr.correctionLevel,
             builder: (context, state) {
               return Text(
                 t.qrCode.settings.errorCorrection.title(
@@ -141,16 +139,16 @@ class _CorrectionLevelSelector extends StatelessWidget {
       ),
       selector: Center(
         child: FeatureBuilder<QrCodeFeature, QrCodeState>(
-          buildWhen: (prev, curr) =>
-              prev.correctionLevel != curr.correctionLevel,
+          buildWhen:
+              (prev, curr) => prev.correctionLevel != curr.correctionLevel,
           builder: (context, state) {
             return _CorrectionLevelSelectorControl(
               selectedLevel: state.correctionLevel,
               onChanged: (level) {
                 if (level != null) {
-                  context
-                      .read<QrCodeFeature>()
-                      .accept(QrCodeMessage.updateCorrectionLevel(level));
+                  context.read<QrCodeFeature>().accept(
+                    QrCodeMessage.updateCorrectionLevel(level),
+                  );
                 }
               },
             );
@@ -178,7 +176,7 @@ class _CorrectionLevelSelectorControl extends StatelessWidget {
         groupValue: selectedLevel,
         children: {
           for (final level in ErrorCorrectionLevel.values)
-            level: Text(level.formatShort(context))
+            level: Text(level.formatShort(context)),
         },
         onValueChanged: onChanged,
       ),
@@ -225,28 +223,36 @@ class _ColorPicker extends StatelessWidget {
         children: [
           for (final color in colorPreset)
             FeatureBuilder<QrCodeFeature, QrCodeState>(
-              buildWhen: (prev, curr) =>
-                  colorFromState(prev).value != colorFromState(curr).value,
+              buildWhen:
+                  (prev, curr) =>
+                      colorFromState(prev).toARGB32() !=
+                      colorFromState(curr).toARGB32(),
               builder: (context, state) {
                 return _ColorItem(
                   color: color,
                   onSelected: (color) {
                     onColorUpdate(context, color);
                   },
-                  isSelected: colorFromState(state).value == color.value,
+                  isSelected:
+                      colorFromState(state).toARGB32() == color.toARGB32(),
                 );
               },
             ),
           FeatureBuilder<QrCodeFeature, QrCodeState>(
-            buildWhen: (prev, curr) =>
-                colorFromState(prev).value != colorFromState(curr).value,
+            buildWhen:
+                (prev, curr) =>
+                    colorFromState(prev).toARGB32() !=
+                    colorFromState(curr).toARGB32(),
             builder: (context, state) {
-              final isSelected = !colorPreset
-                  .any((color) => color.value == colorFromState(state).value);
+              final isSelected =
+                  !colorPreset.any(
+                    (color) =>
+                        color.toARGB32() == colorFromState(state).toARGB32(),
+                  );
               final selectedColor = colorFromState(state);
               final isSelectedColorDark =
                   ThemeData.estimateBrightnessForColor(selectedColor) ==
-                      Brightness.dark;
+                  Brightness.dark;
 
               return MiniColorPicker(
                 onColorChanged: (color) {
@@ -260,15 +266,16 @@ class _ColorPicker extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: Border.all(
                         width: 1.5,
-                        color: isSelected
-                            ? MacosColorProvider.getActiveColor(
-                                accentColor:
-                                    theme.accentColor ?? AccentColor.blue,
-                                isDarkModeEnabled:
-                                    theme.brightness == Brightness.dark,
-                                isWindowMain: true,
-                              )
-                            : Colors.transparent,
+                        color:
+                            isSelected
+                                ? MacosColorProvider.getActiveColor(
+                                  accentColor:
+                                      theme.accentColor ?? AccentColor.blue,
+                                  isDarkModeEnabled:
+                                      theme.brightness == Brightness.dark,
+                                  isWindowMain: true,
+                                )
+                                : Colors.transparent,
                       ),
                     ),
                     child: Padding(
@@ -320,13 +327,14 @@ class _ColorItem extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(
             width: 1.5,
-            color: isSelected
-                ? MacosColorProvider.getActiveColor(
-                    accentColor: theme.accentColor ?? AccentColor.blue,
-                    isDarkModeEnabled: theme.brightness == Brightness.dark,
-                    isWindowMain: true,
-                  )
-                : Colors.transparent,
+            color:
+                isSelected
+                    ? MacosColorProvider.getActiveColor(
+                      accentColor: theme.accentColor ?? AccentColor.blue,
+                      isDarkModeEnabled: theme.brightness == Brightness.dark,
+                      isWindowMain: true,
+                    )
+                    : Colors.transparent,
           ),
         ),
         child: Padding(

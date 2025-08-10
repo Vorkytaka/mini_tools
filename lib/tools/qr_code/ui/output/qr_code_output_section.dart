@@ -5,10 +5,7 @@ import '../../../../i18n/strings.g.dart';
 import 'qr_code_export_section.dart';
 import 'qr_code_settings_section.dart';
 
-enum QrCodeOutputSection {
-  export,
-  settings,
-}
+enum QrCodeOutputSection { export, settings }
 
 extension QrCodeOutputSectionUI on QrCodeOutputSection {
   String format(BuildContext context) {
@@ -21,15 +18,13 @@ extension QrCodeOutputSectionUI on QrCodeOutputSection {
   }
 
   Widget get widgetPage => switch (this) {
-        QrCodeOutputSection.export => const QrCodeExportSection(),
-        QrCodeOutputSection.settings => const QrCodeSettingsSection(),
-      };
+    QrCodeOutputSection.export => const QrCodeExportSection(),
+    QrCodeOutputSection.settings => const QrCodeSettingsSection(),
+  };
 }
 
 class QrCodeOutputSectionWidget extends StatefulWidget {
-  const QrCodeOutputSectionWidget({
-    super.key,
-  });
+  const QrCodeOutputSectionWidget({super.key});
 
   @override
   State<QrCodeOutputSectionWidget> createState() =>
@@ -37,8 +32,9 @@ class QrCodeOutputSectionWidget extends StatefulWidget {
 }
 
 class _QrCodeOutputSectionWidgetState extends State<QrCodeOutputSectionWidget> {
-  final _controller =
-      MacosTabController(length: QrCodeOutputSection.values.length);
+  final _controller = MacosTabController(
+    length: QrCodeOutputSection.values.length,
+  );
   QrCodeOutputSection _selectedPage = QrCodeOutputSection.export;
 
   @override
@@ -76,9 +72,7 @@ class _QrCodeOutputSectionWidgetState extends State<QrCodeOutputSectionWidget> {
           ],
         ),
         const SizedBox(height: 8),
-        Expanded(
-          child: _selectedPage.widgetPage,
-        ),
+        Expanded(child: _selectedPage.widgetPage),
       ],
     );
   }

@@ -12,7 +12,8 @@ part of 'text_diff_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$TextDiffState {
@@ -32,15 +33,17 @@ mixin _$TextDiffState {
 /// @nodoc
 abstract class $TextDiffStateCopyWith<$Res> {
   factory $TextDiffStateCopyWith(
-          TextDiffState value, $Res Function(TextDiffState) then) =
-      _$TextDiffStateCopyWithImpl<$Res, TextDiffState>;
+    TextDiffState value,
+    $Res Function(TextDiffState) then,
+  ) = _$TextDiffStateCopyWithImpl<$Res, TextDiffState>;
   @useResult
-  $Res call(
-      {String oldText,
-      String newText,
-      List<Diff> oldDiffs,
-      List<Diff> newDiffs,
-      List<Diff> diffs});
+  $Res call({
+    String oldText,
+    String newText,
+    List<Diff> oldDiffs,
+    List<Diff> newDiffs,
+    List<Diff> diffs,
+  });
 }
 
 /// @nodoc
@@ -64,28 +67,36 @@ class _$TextDiffStateCopyWithImpl<$Res, $Val extends TextDiffState>
     Object? newDiffs = null,
     Object? diffs = null,
   }) {
-    return _then(_value.copyWith(
-      oldText: null == oldText
-          ? _value.oldText
-          : oldText // ignore: cast_nullable_to_non_nullable
-              as String,
-      newText: null == newText
-          ? _value.newText
-          : newText // ignore: cast_nullable_to_non_nullable
-              as String,
-      oldDiffs: null == oldDiffs
-          ? _value.oldDiffs
-          : oldDiffs // ignore: cast_nullable_to_non_nullable
-              as List<Diff>,
-      newDiffs: null == newDiffs
-          ? _value.newDiffs
-          : newDiffs // ignore: cast_nullable_to_non_nullable
-              as List<Diff>,
-      diffs: null == diffs
-          ? _value.diffs
-          : diffs // ignore: cast_nullable_to_non_nullable
-              as List<Diff>,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            oldText:
+                null == oldText
+                    ? _value.oldText
+                    : oldText // ignore: cast_nullable_to_non_nullable
+                        as String,
+            newText:
+                null == newText
+                    ? _value.newText
+                    : newText // ignore: cast_nullable_to_non_nullable
+                        as String,
+            oldDiffs:
+                null == oldDiffs
+                    ? _value.oldDiffs
+                    : oldDiffs // ignore: cast_nullable_to_non_nullable
+                        as List<Diff>,
+            newDiffs:
+                null == newDiffs
+                    ? _value.newDiffs
+                    : newDiffs // ignore: cast_nullable_to_non_nullable
+                        as List<Diff>,
+            diffs:
+                null == diffs
+                    ? _value.diffs
+                    : diffs // ignore: cast_nullable_to_non_nullable
+                        as List<Diff>,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -93,16 +104,18 @@ class _$TextDiffStateCopyWithImpl<$Res, $Val extends TextDiffState>
 abstract class _$$TextDiffStateImplCopyWith<$Res>
     implements $TextDiffStateCopyWith<$Res> {
   factory _$$TextDiffStateImplCopyWith(
-          _$TextDiffStateImpl value, $Res Function(_$TextDiffStateImpl) then) =
-      __$$TextDiffStateImplCopyWithImpl<$Res>;
+    _$TextDiffStateImpl value,
+    $Res Function(_$TextDiffStateImpl) then,
+  ) = __$$TextDiffStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String oldText,
-      String newText,
-      List<Diff> oldDiffs,
-      List<Diff> newDiffs,
-      List<Diff> diffs});
+  $Res call({
+    String oldText,
+    String newText,
+    List<Diff> oldDiffs,
+    List<Diff> newDiffs,
+    List<Diff> diffs,
+  });
 }
 
 /// @nodoc
@@ -110,8 +123,9 @@ class __$$TextDiffStateImplCopyWithImpl<$Res>
     extends _$TextDiffStateCopyWithImpl<$Res, _$TextDiffStateImpl>
     implements _$$TextDiffStateImplCopyWith<$Res> {
   __$$TextDiffStateImplCopyWithImpl(
-      _$TextDiffStateImpl _value, $Res Function(_$TextDiffStateImpl) _then)
-      : super(_value, _then);
+    _$TextDiffStateImpl _value,
+    $Res Function(_$TextDiffStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of TextDiffState
   /// with the given fields replaced by the non-null parameter values.
@@ -124,43 +138,50 @@ class __$$TextDiffStateImplCopyWithImpl<$Res>
     Object? newDiffs = null,
     Object? diffs = null,
   }) {
-    return _then(_$TextDiffStateImpl(
-      oldText: null == oldText
-          ? _value.oldText
-          : oldText // ignore: cast_nullable_to_non_nullable
-              as String,
-      newText: null == newText
-          ? _value.newText
-          : newText // ignore: cast_nullable_to_non_nullable
-              as String,
-      oldDiffs: null == oldDiffs
-          ? _value._oldDiffs
-          : oldDiffs // ignore: cast_nullable_to_non_nullable
-              as List<Diff>,
-      newDiffs: null == newDiffs
-          ? _value._newDiffs
-          : newDiffs // ignore: cast_nullable_to_non_nullable
-              as List<Diff>,
-      diffs: null == diffs
-          ? _value._diffs
-          : diffs // ignore: cast_nullable_to_non_nullable
-              as List<Diff>,
-    ));
+    return _then(
+      _$TextDiffStateImpl(
+        oldText:
+            null == oldText
+                ? _value.oldText
+                : oldText // ignore: cast_nullable_to_non_nullable
+                    as String,
+        newText:
+            null == newText
+                ? _value.newText
+                : newText // ignore: cast_nullable_to_non_nullable
+                    as String,
+        oldDiffs:
+            null == oldDiffs
+                ? _value._oldDiffs
+                : oldDiffs // ignore: cast_nullable_to_non_nullable
+                    as List<Diff>,
+        newDiffs:
+            null == newDiffs
+                ? _value._newDiffs
+                : newDiffs // ignore: cast_nullable_to_non_nullable
+                    as List<Diff>,
+        diffs:
+            null == diffs
+                ? _value._diffs
+                : diffs // ignore: cast_nullable_to_non_nullable
+                    as List<Diff>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$TextDiffStateImpl implements _TextDiffState {
-  const _$TextDiffStateImpl(
-      {required this.oldText,
-      required this.newText,
-      required final List<Diff> oldDiffs,
-      required final List<Diff> newDiffs,
-      required final List<Diff> diffs})
-      : _oldDiffs = oldDiffs,
-        _newDiffs = newDiffs,
-        _diffs = diffs;
+  const _$TextDiffStateImpl({
+    required this.oldText,
+    required this.newText,
+    required final List<Diff> oldDiffs,
+    required final List<Diff> newDiffs,
+    required final List<Diff> diffs,
+  }) : _oldDiffs = oldDiffs,
+       _newDiffs = newDiffs,
+       _diffs = diffs;
 
   @override
   final String oldText;
@@ -209,12 +230,13 @@ class _$TextDiffStateImpl implements _TextDiffState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      oldText,
-      newText,
-      const DeepCollectionEquality().hash(_oldDiffs),
-      const DeepCollectionEquality().hash(_newDiffs),
-      const DeepCollectionEquality().hash(_diffs));
+    runtimeType,
+    oldText,
+    newText,
+    const DeepCollectionEquality().hash(_oldDiffs),
+    const DeepCollectionEquality().hash(_newDiffs),
+    const DeepCollectionEquality().hash(_diffs),
+  );
 
   /// Create a copy of TextDiffState
   /// with the given fields replaced by the non-null parameter values.
@@ -226,12 +248,13 @@ class _$TextDiffStateImpl implements _TextDiffState {
 }
 
 abstract class _TextDiffState implements TextDiffState {
-  const factory _TextDiffState(
-      {required final String oldText,
-      required final String newText,
-      required final List<Diff> oldDiffs,
-      required final List<Diff> newDiffs,
-      required final List<Diff> diffs}) = _$TextDiffStateImpl;
+  const factory _TextDiffState({
+    required final String oldText,
+    required final String newText,
+    required final List<Diff> oldDiffs,
+    required final List<Diff> newDiffs,
+    required final List<Diff> diffs,
+  }) = _$TextDiffStateImpl;
 
   @override
   String get oldText;

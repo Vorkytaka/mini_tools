@@ -11,14 +11,16 @@ Next<UuidState, UuidEffect> uuidUpdate(UuidState state, UuidMessage message) {
     case UpdateCountMessage():
       return next(state: state.copyWith(count: message.count));
     case GenerateMessage():
-      return next(effects: [
-        UuidEffect.generate(
-          version: state.version,
-          count: state.count,
-          namespace: state.namespace,
-          name: state.name,
-        ),
-      ]);
+      return next(
+        effects: [
+          UuidEffect.generate(
+            version: state.version,
+            count: state.count,
+            namespace: state.namespace,
+            name: state.name,
+          ),
+        ],
+      );
     case SetIdsMessage():
       return next(state: state.copyWith(ids: message.ids));
     case UpdateNamespaceMessage():

@@ -11,20 +11,14 @@ final class TextDiffEffectHandler
   TextDiffEffectHandler();
 
   @override
-  void call(
-    TextDiffEffect effect,
-    MsgEmitter<TextDiffMessage> emit,
-  ) {
+  void call(TextDiffEffect effect, MsgEmitter<TextDiffMessage> emit) {
     switch (effect) {
       case CountDiffsEffect():
         return _countDiffs(effect, emit);
     }
   }
 
-  void _countDiffs(
-    CountDiffsEffect effect,
-    MsgEmitter<TextDiffMessage> emit,
-  ) {
+  void _countDiffs(CountDiffsEffect effect, MsgEmitter<TextDiffMessage> emit) {
     final diffs = _dmp.diff(effect.oldText, effect.newText);
     _dmp.diffCleanupEfficiency(diffs);
     emit(TextDiffMessage.updateDiffs(diffs.toList(growable: false)));

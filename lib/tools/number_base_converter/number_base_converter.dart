@@ -23,9 +23,7 @@ class NumberBaseConverter extends StatelessWidget {
       ),
       children: [
         ContentArea(
-          builder: (context, controller) => _Body(
-            controller: controller,
-          ),
+          builder: (context, controller) => _Body(controller: controller),
         ),
       ],
     );
@@ -35,9 +33,7 @@ class NumberBaseConverter extends StatelessWidget {
 class _Body extends StatefulWidget {
   final ScrollController? controller;
 
-  const _Body({
-    this.controller,
-  });
+  const _Body({this.controller});
 
   @override
   State<_Body> createState() => _BodyState();
@@ -129,16 +125,16 @@ class _BodyState extends State<_Body> {
                       value: state.customBase,
                       items: [
                         for (int i = 2; i <= 36; i++)
-                          MacosPopupMenuItem(
-                            value: i,
-                            child: Text('$i'),
-                          ),
+                          MacosPopupMenuItem(value: i, child: Text('$i')),
                       ],
                       onChanged: (customBase) {
                         if (customBase != null &&
                             customBase != state.customBase) {
-                          context.numberBaseFeature(context).accept(
-                              UpdateCustomBaseMessage(base: customBase));
+                          context
+                              .numberBaseFeature(context)
+                              .accept(
+                                UpdateCustomBaseMessage(base: customBase),
+                              );
                         }
                       },
                     );
@@ -194,10 +190,7 @@ class _Item extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: headlinePadding,
-          child: title,
-        ),
+        Padding(padding: headlinePadding, child: title),
         const SizedBox(height: 4),
         Row(
           children: [
@@ -214,11 +207,7 @@ class _Item extends StatelessWidget {
                   return;
                 }
 
-                Clipboard.setData(
-                  ClipboardData(
-                    text: controller.text,
-                  ),
-                );
+                Clipboard.setData(ClipboardData(text: controller.text));
               },
               semanticLabel: t.common.copy,
               icon: const MacosIcon(

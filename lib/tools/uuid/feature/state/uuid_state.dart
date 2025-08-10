@@ -2,11 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'uuid_state.freezed.dart';
 
-enum UuidVersion {
-  v1,
-  v4,
-  v5,
-}
+enum UuidVersion { v1, v4, v5 }
 
 @freezed
 @immutable
@@ -22,11 +18,11 @@ abstract class UuidState with _$UuidState {
   }) = _UuidState;
 
   factory UuidState.init() => const UuidState(
-        version: UuidVersion.v4,
-        namespace: '',
-        name: '',
-        count: 1,
-        ids: [],
-        isLowerCase: false,
-      );
+    version: UuidVersion.v4,
+    namespace: '',
+    name: '',
+    count: 1,
+    ids: [],
+    isLowerCase: false,
+  );
 }

@@ -12,7 +12,8 @@ part of 'qr_code_effect.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ExportEffect {
@@ -21,52 +22,61 @@ mixin _$ExportEffect {
   int get exportSize => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(QrCode code, ExportType exportType,
-            QrCodeVisualData visualData, int exportSize)
-        saveToFile,
     required TResult Function(
-            QrCode code, QrCodeVisualData visualData, int exportSize)
-        copyToClipboard,
-  }) =>
-      throw _privateConstructorUsedError;
+      QrCode code,
+      ExportType exportType,
+      QrCodeVisualData visualData,
+      int exportSize,
+    )
+    saveToFile,
+    required TResult Function(
+      QrCode code,
+      QrCodeVisualData visualData,
+      int exportSize,
+    )
+    copyToClipboard,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(QrCode code, ExportType exportType,
-            QrCodeVisualData visualData, int exportSize)?
-        saveToFile,
+    TResult? Function(
+      QrCode code,
+      ExportType exportType,
+      QrCodeVisualData visualData,
+      int exportSize,
+    )?
+    saveToFile,
     TResult? Function(QrCode code, QrCodeVisualData visualData, int exportSize)?
-        copyToClipboard,
-  }) =>
-      throw _privateConstructorUsedError;
+    copyToClipboard,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(QrCode code, ExportType exportType,
-            QrCodeVisualData visualData, int exportSize)?
-        saveToFile,
+    TResult Function(
+      QrCode code,
+      ExportType exportType,
+      QrCodeVisualData visualData,
+      int exportSize,
+    )?
+    saveToFile,
     TResult Function(QrCode code, QrCodeVisualData visualData, int exportSize)?
-        copyToClipboard,
+    copyToClipboard,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SaveToFileEffect value) saveToFile,
     required TResult Function(CopyToClipboardEffect value) copyToClipboard,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SaveToFileEffect value)? saveToFile,
     TResult? Function(CopyToClipboardEffect value)? copyToClipboard,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SaveToFileEffect value)? saveToFile,
     TResult Function(CopyToClipboardEffect value)? copyToClipboard,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 
   /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -78,8 +88,9 @@ mixin _$ExportEffect {
 /// @nodoc
 abstract class $ExportEffectCopyWith<$Res> {
   factory $ExportEffectCopyWith(
-          ExportEffect value, $Res Function(ExportEffect) then) =
-      _$ExportEffectCopyWithImpl<$Res, ExportEffect>;
+    ExportEffect value,
+    $Res Function(ExportEffect) then,
+  ) = _$ExportEffectCopyWithImpl<$Res, ExportEffect>;
   @useResult
   $Res call({QrCode code, QrCodeVisualData visualData, int exportSize});
 
@@ -105,20 +116,26 @@ class _$ExportEffectCopyWithImpl<$Res, $Val extends ExportEffect>
     Object? visualData = null,
     Object? exportSize = null,
   }) {
-    return _then(_value.copyWith(
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as QrCode,
-      visualData: null == visualData
-          ? _value.visualData
-          : visualData // ignore: cast_nullable_to_non_nullable
-              as QrCodeVisualData,
-      exportSize: null == exportSize
-          ? _value.exportSize
-          : exportSize // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            code:
+                null == code
+                    ? _value.code
+                    : code // ignore: cast_nullable_to_non_nullable
+                        as QrCode,
+            visualData:
+                null == visualData
+                    ? _value.visualData
+                    : visualData // ignore: cast_nullable_to_non_nullable
+                        as QrCodeVisualData,
+            exportSize:
+                null == exportSize
+                    ? _value.exportSize
+                    : exportSize // ignore: cast_nullable_to_non_nullable
+                        as int,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of ExportEffect
@@ -135,16 +152,18 @@ class _$ExportEffectCopyWithImpl<$Res, $Val extends ExportEffect>
 /// @nodoc
 abstract class _$$SaveToFileEffectImplCopyWith<$Res>
     implements $ExportEffectCopyWith<$Res> {
-  factory _$$SaveToFileEffectImplCopyWith(_$SaveToFileEffectImpl value,
-          $Res Function(_$SaveToFileEffectImpl) then) =
-      __$$SaveToFileEffectImplCopyWithImpl<$Res>;
+  factory _$$SaveToFileEffectImplCopyWith(
+    _$SaveToFileEffectImpl value,
+    $Res Function(_$SaveToFileEffectImpl) then,
+  ) = __$$SaveToFileEffectImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {QrCode code,
-      ExportType exportType,
-      QrCodeVisualData visualData,
-      int exportSize});
+  $Res call({
+    QrCode code,
+    ExportType exportType,
+    QrCodeVisualData visualData,
+    int exportSize,
+  });
 
   @override
   $QrCodeVisualDataCopyWith<$Res> get visualData;
@@ -154,9 +173,10 @@ abstract class _$$SaveToFileEffectImplCopyWith<$Res>
 class __$$SaveToFileEffectImplCopyWithImpl<$Res>
     extends _$ExportEffectCopyWithImpl<$Res, _$SaveToFileEffectImpl>
     implements _$$SaveToFileEffectImplCopyWith<$Res> {
-  __$$SaveToFileEffectImplCopyWithImpl(_$SaveToFileEffectImpl _value,
-      $Res Function(_$SaveToFileEffectImpl) _then)
-      : super(_value, _then);
+  __$$SaveToFileEffectImplCopyWithImpl(
+    _$SaveToFileEffectImpl _value,
+    $Res Function(_$SaveToFileEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -168,35 +188,42 @@ class __$$SaveToFileEffectImplCopyWithImpl<$Res>
     Object? visualData = null,
     Object? exportSize = null,
   }) {
-    return _then(_$SaveToFileEffectImpl(
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as QrCode,
-      exportType: null == exportType
-          ? _value.exportType
-          : exportType // ignore: cast_nullable_to_non_nullable
-              as ExportType,
-      visualData: null == visualData
-          ? _value.visualData
-          : visualData // ignore: cast_nullable_to_non_nullable
-              as QrCodeVisualData,
-      exportSize: null == exportSize
-          ? _value.exportSize
-          : exportSize // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$SaveToFileEffectImpl(
+        code:
+            null == code
+                ? _value.code
+                : code // ignore: cast_nullable_to_non_nullable
+                    as QrCode,
+        exportType:
+            null == exportType
+                ? _value.exportType
+                : exportType // ignore: cast_nullable_to_non_nullable
+                    as ExportType,
+        visualData:
+            null == visualData
+                ? _value.visualData
+                : visualData // ignore: cast_nullable_to_non_nullable
+                    as QrCodeVisualData,
+        exportSize:
+            null == exportSize
+                ? _value.exportSize
+                : exportSize // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$SaveToFileEffectImpl implements SaveToFileEffect {
-  const _$SaveToFileEffectImpl(
-      {required this.code,
-      required this.exportType,
-      required this.visualData,
-      required this.exportSize});
+  const _$SaveToFileEffectImpl({
+    required this.code,
+    required this.exportType,
+    required this.visualData,
+    required this.exportSize,
+  });
 
   @override
   final QrCode code;
@@ -237,17 +264,26 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
   @pragma('vm:prefer-inline')
   _$$SaveToFileEffectImplCopyWith<_$SaveToFileEffectImpl> get copyWith =>
       __$$SaveToFileEffectImplCopyWithImpl<_$SaveToFileEffectImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(QrCode code, ExportType exportType,
-            QrCodeVisualData visualData, int exportSize)
-        saveToFile,
     required TResult Function(
-            QrCode code, QrCodeVisualData visualData, int exportSize)
-        copyToClipboard,
+      QrCode code,
+      ExportType exportType,
+      QrCodeVisualData visualData,
+      int exportSize,
+    )
+    saveToFile,
+    required TResult Function(
+      QrCode code,
+      QrCodeVisualData visualData,
+      int exportSize,
+    )
+    copyToClipboard,
   }) {
     return saveToFile(code, exportType, visualData, exportSize);
   }
@@ -255,11 +291,15 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(QrCode code, ExportType exportType,
-            QrCodeVisualData visualData, int exportSize)?
-        saveToFile,
+    TResult? Function(
+      QrCode code,
+      ExportType exportType,
+      QrCodeVisualData visualData,
+      int exportSize,
+    )?
+    saveToFile,
     TResult? Function(QrCode code, QrCodeVisualData visualData, int exportSize)?
-        copyToClipboard,
+    copyToClipboard,
   }) {
     return saveToFile?.call(code, exportType, visualData, exportSize);
   }
@@ -267,11 +307,15 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(QrCode code, ExportType exportType,
-            QrCodeVisualData visualData, int exportSize)?
-        saveToFile,
+    TResult Function(
+      QrCode code,
+      ExportType exportType,
+      QrCodeVisualData visualData,
+      int exportSize,
+    )?
+    saveToFile,
     TResult Function(QrCode code, QrCodeVisualData visualData, int exportSize)?
-        copyToClipboard,
+    copyToClipboard,
     required TResult orElse(),
   }) {
     if (saveToFile != null) {
@@ -313,11 +357,12 @@ class _$SaveToFileEffectImpl implements SaveToFileEffect {
 }
 
 abstract class SaveToFileEffect implements ExportEffect {
-  const factory SaveToFileEffect(
-      {required final QrCode code,
-      required final ExportType exportType,
-      required final QrCodeVisualData visualData,
-      required final int exportSize}) = _$SaveToFileEffectImpl;
+  const factory SaveToFileEffect({
+    required final QrCode code,
+    required final ExportType exportType,
+    required final QrCodeVisualData visualData,
+    required final int exportSize,
+  }) = _$SaveToFileEffectImpl;
 
   @override
   QrCode get code;
@@ -339,9 +384,9 @@ abstract class SaveToFileEffect implements ExportEffect {
 abstract class _$$CopyToClipboardEffectImplCopyWith<$Res>
     implements $ExportEffectCopyWith<$Res> {
   factory _$$CopyToClipboardEffectImplCopyWith(
-          _$CopyToClipboardEffectImpl value,
-          $Res Function(_$CopyToClipboardEffectImpl) then) =
-      __$$CopyToClipboardEffectImplCopyWithImpl<$Res>;
+    _$CopyToClipboardEffectImpl value,
+    $Res Function(_$CopyToClipboardEffectImpl) then,
+  ) = __$$CopyToClipboardEffectImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({QrCode code, QrCodeVisualData visualData, int exportSize});
@@ -354,9 +399,10 @@ abstract class _$$CopyToClipboardEffectImplCopyWith<$Res>
 class __$$CopyToClipboardEffectImplCopyWithImpl<$Res>
     extends _$ExportEffectCopyWithImpl<$Res, _$CopyToClipboardEffectImpl>
     implements _$$CopyToClipboardEffectImplCopyWith<$Res> {
-  __$$CopyToClipboardEffectImplCopyWithImpl(_$CopyToClipboardEffectImpl _value,
-      $Res Function(_$CopyToClipboardEffectImpl) _then)
-      : super(_value, _then);
+  __$$CopyToClipboardEffectImplCopyWithImpl(
+    _$CopyToClipboardEffectImpl _value,
+    $Res Function(_$CopyToClipboardEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ExportEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -367,28 +413,36 @@ class __$$CopyToClipboardEffectImplCopyWithImpl<$Res>
     Object? visualData = null,
     Object? exportSize = null,
   }) {
-    return _then(_$CopyToClipboardEffectImpl(
-      code: null == code
-          ? _value.code
-          : code // ignore: cast_nullable_to_non_nullable
-              as QrCode,
-      visualData: null == visualData
-          ? _value.visualData
-          : visualData // ignore: cast_nullable_to_non_nullable
-              as QrCodeVisualData,
-      exportSize: null == exportSize
-          ? _value.exportSize
-          : exportSize // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$CopyToClipboardEffectImpl(
+        code:
+            null == code
+                ? _value.code
+                : code // ignore: cast_nullable_to_non_nullable
+                    as QrCode,
+        visualData:
+            null == visualData
+                ? _value.visualData
+                : visualData // ignore: cast_nullable_to_non_nullable
+                    as QrCodeVisualData,
+        exportSize:
+            null == exportSize
+                ? _value.exportSize
+                : exportSize // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$CopyToClipboardEffectImpl implements CopyToClipboardEffect {
-  const _$CopyToClipboardEffectImpl(
-      {required this.code, required this.visualData, required this.exportSize});
+  const _$CopyToClipboardEffectImpl({
+    required this.code,
+    required this.visualData,
+    required this.exportSize,
+  });
 
   @override
   final QrCode code;
@@ -423,18 +477,28 @@ class _$CopyToClipboardEffectImpl implements CopyToClipboardEffect {
   @override
   @pragma('vm:prefer-inline')
   _$$CopyToClipboardEffectImplCopyWith<_$CopyToClipboardEffectImpl>
-      get copyWith => __$$CopyToClipboardEffectImplCopyWithImpl<
-          _$CopyToClipboardEffectImpl>(this, _$identity);
+  get copyWith =>
+      __$$CopyToClipboardEffectImplCopyWithImpl<_$CopyToClipboardEffectImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(QrCode code, ExportType exportType,
-            QrCodeVisualData visualData, int exportSize)
-        saveToFile,
     required TResult Function(
-            QrCode code, QrCodeVisualData visualData, int exportSize)
-        copyToClipboard,
+      QrCode code,
+      ExportType exportType,
+      QrCodeVisualData visualData,
+      int exportSize,
+    )
+    saveToFile,
+    required TResult Function(
+      QrCode code,
+      QrCodeVisualData visualData,
+      int exportSize,
+    )
+    copyToClipboard,
   }) {
     return copyToClipboard(code, visualData, exportSize);
   }
@@ -442,11 +506,15 @@ class _$CopyToClipboardEffectImpl implements CopyToClipboardEffect {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(QrCode code, ExportType exportType,
-            QrCodeVisualData visualData, int exportSize)?
-        saveToFile,
+    TResult? Function(
+      QrCode code,
+      ExportType exportType,
+      QrCodeVisualData visualData,
+      int exportSize,
+    )?
+    saveToFile,
     TResult? Function(QrCode code, QrCodeVisualData visualData, int exportSize)?
-        copyToClipboard,
+    copyToClipboard,
   }) {
     return copyToClipboard?.call(code, visualData, exportSize);
   }
@@ -454,11 +522,15 @@ class _$CopyToClipboardEffectImpl implements CopyToClipboardEffect {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(QrCode code, ExportType exportType,
-            QrCodeVisualData visualData, int exportSize)?
-        saveToFile,
+    TResult Function(
+      QrCode code,
+      ExportType exportType,
+      QrCodeVisualData visualData,
+      int exportSize,
+    )?
+    saveToFile,
     TResult Function(QrCode code, QrCodeVisualData visualData, int exportSize)?
-        copyToClipboard,
+    copyToClipboard,
     required TResult orElse(),
   }) {
     if (copyToClipboard != null) {
@@ -500,10 +572,11 @@ class _$CopyToClipboardEffectImpl implements CopyToClipboardEffect {
 }
 
 abstract class CopyToClipboardEffect implements ExportEffect {
-  const factory CopyToClipboardEffect(
-      {required final QrCode code,
-      required final QrCodeVisualData visualData,
-      required final int exportSize}) = _$CopyToClipboardEffectImpl;
+  const factory CopyToClipboardEffect({
+    required final QrCode code,
+    required final QrCodeVisualData visualData,
+    required final int exportSize,
+  }) = _$CopyToClipboardEffectImpl;
 
   @override
   QrCode get code;
@@ -517,7 +590,7 @@ abstract class CopyToClipboardEffect implements ExportEffect {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CopyToClipboardEffectImplCopyWith<_$CopyToClipboardEffectImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -534,8 +607,9 @@ mixin _$SaveStateEffect {
 /// @nodoc
 abstract class $SaveStateEffectCopyWith<$Res> {
   factory $SaveStateEffectCopyWith(
-          SaveStateEffect value, $Res Function(SaveStateEffect) then) =
-      _$SaveStateEffectCopyWithImpl<$Res, SaveStateEffect>;
+    SaveStateEffect value,
+    $Res Function(SaveStateEffect) then,
+  ) = _$SaveStateEffectCopyWithImpl<$Res, SaveStateEffect>;
   @useResult
   $Res call({QrCodeState state});
 
@@ -556,15 +630,17 @@ class _$SaveStateEffectCopyWithImpl<$Res, $Val extends SaveStateEffect>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? state = null,
-  }) {
-    return _then(_value.copyWith(
-      state: null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as QrCodeState,
-    ) as $Val);
+  $Res call({Object? state = null}) {
+    return _then(
+      _value.copyWith(
+            state:
+                null == state
+                    ? _value.state
+                    : state // ignore: cast_nullable_to_non_nullable
+                        as QrCodeState,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of SaveStateEffect
@@ -581,9 +657,10 @@ class _$SaveStateEffectCopyWithImpl<$Res, $Val extends SaveStateEffect>
 /// @nodoc
 abstract class _$$SaveStateEffectImplCopyWith<$Res>
     implements $SaveStateEffectCopyWith<$Res> {
-  factory _$$SaveStateEffectImplCopyWith(_$SaveStateEffectImpl value,
-          $Res Function(_$SaveStateEffectImpl) then) =
-      __$$SaveStateEffectImplCopyWithImpl<$Res>;
+  factory _$$SaveStateEffectImplCopyWith(
+    _$SaveStateEffectImpl value,
+    $Res Function(_$SaveStateEffectImpl) then,
+  ) = __$$SaveStateEffectImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({QrCodeState state});
@@ -597,22 +674,24 @@ class __$$SaveStateEffectImplCopyWithImpl<$Res>
     extends _$SaveStateEffectCopyWithImpl<$Res, _$SaveStateEffectImpl>
     implements _$$SaveStateEffectImplCopyWith<$Res> {
   __$$SaveStateEffectImplCopyWithImpl(
-      _$SaveStateEffectImpl _value, $Res Function(_$SaveStateEffectImpl) _then)
-      : super(_value, _then);
+    _$SaveStateEffectImpl _value,
+    $Res Function(_$SaveStateEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SaveStateEffect
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? state = null,
-  }) {
-    return _then(_$SaveStateEffectImpl(
-      state: null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as QrCodeState,
-    ));
+  $Res call({Object? state = null}) {
+    return _then(
+      _$SaveStateEffectImpl(
+        state:
+            null == state
+                ? _value.state
+                : state // ignore: cast_nullable_to_non_nullable
+                    as QrCodeState,
+      ),
+    );
   }
 }
 
@@ -647,7 +726,9 @@ class _$SaveStateEffectImpl implements _SaveStateEffect {
   @pragma('vm:prefer-inline')
   _$$SaveStateEffectImplCopyWith<_$SaveStateEffectImpl> get copyWith =>
       __$$SaveStateEffectImplCopyWithImpl<_$SaveStateEffectImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _SaveStateEffect implements SaveStateEffect {
@@ -671,8 +752,9 @@ mixin _$LoadStateEffect {}
 /// @nodoc
 abstract class $LoadStateEffectCopyWith<$Res> {
   factory $LoadStateEffectCopyWith(
-          LoadStateEffect value, $Res Function(LoadStateEffect) then) =
-      _$LoadStateEffectCopyWithImpl<$Res, LoadStateEffect>;
+    LoadStateEffect value,
+    $Res Function(LoadStateEffect) then,
+  ) = _$LoadStateEffectCopyWithImpl<$Res, LoadStateEffect>;
 }
 
 /// @nodoc
@@ -691,9 +773,10 @@ class _$LoadStateEffectCopyWithImpl<$Res, $Val extends LoadStateEffect>
 
 /// @nodoc
 abstract class _$$LoadStateEffectImplCopyWith<$Res> {
-  factory _$$LoadStateEffectImplCopyWith(_$LoadStateEffectImpl value,
-          $Res Function(_$LoadStateEffectImpl) then) =
-      __$$LoadStateEffectImplCopyWithImpl<$Res>;
+  factory _$$LoadStateEffectImplCopyWith(
+    _$LoadStateEffectImpl value,
+    $Res Function(_$LoadStateEffectImpl) then,
+  ) = __$$LoadStateEffectImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -701,8 +784,9 @@ class __$$LoadStateEffectImplCopyWithImpl<$Res>
     extends _$LoadStateEffectCopyWithImpl<$Res, _$LoadStateEffectImpl>
     implements _$$LoadStateEffectImplCopyWith<$Res> {
   __$$LoadStateEffectImplCopyWithImpl(
-      _$LoadStateEffectImpl _value, $Res Function(_$LoadStateEffectImpl) _then)
-      : super(_value, _then);
+    _$LoadStateEffectImpl _value,
+    $Res Function(_$LoadStateEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of LoadStateEffect
   /// with the given fields replaced by the non-null parameter values.

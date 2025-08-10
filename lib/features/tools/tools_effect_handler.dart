@@ -16,15 +16,10 @@ final class ToolsEffectHandler
   // But i did.. Because i'm lazy
   final GlobalKey _key;
 
-  ToolsEffectHandler({
-    required GlobalKey key,
-  }) : _key = key;
+  ToolsEffectHandler({required GlobalKey key}) : _key = key;
 
   @override
-  Future<void> call(
-    ToolsEffect effect,
-    MsgEmitter<ToolsMessage> emit,
-  ) {
+  Future<void> call(ToolsEffect effect, MsgEmitter<ToolsMessage> emit) {
     return switch (effect) {
       SearchToolsEffect() => _searchTools(effect, emit),
       SaveSelectedToolEffect() => _saveSelectedTool(effect, emit),
@@ -38,12 +33,14 @@ final class ToolsEffectHandler
   ) async {
     final query = effect.query.toLowerCase();
     final result = effect.tools
-        .where((toolId) =>
-            ToolsRegistry.toolById(toolId)
-                ?.buildTitle(_key.currentContext!)
-                .toLowerCase()
-                .contains(query) ??
-            false)
+        .where(
+          (toolId) =>
+              ToolsRegistry.toolById(toolId)
+                  ?.buildTitle(_key.currentContext!)
+                  .toLowerCase()
+                  .contains(query) ??
+              false,
+        )
         .toList(growable: false);
 
     emit(ToolsMessage.updateSearchResult(result));

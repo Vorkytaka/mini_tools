@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 typedef OpacitySliderCallback = void Function(double opacity);
 
 class OpacitySlider extends StatefulWidget {
-  const OpacitySlider(
-      {Key? key, required this.selectedHue, required this.onOpacitySelected})
-      : super(key: key);
+  const OpacitySlider({
+    Key? key,
+    required this.selectedHue,
+    required this.onOpacitySelected,
+  }) : super(key: key);
   final HSVColor selectedHue;
   final OpacitySliderCallback onOpacitySelected;
 
@@ -107,8 +109,8 @@ class _OpacitySliderState extends State<OpacitySlider> {
           child: ClipOval(
             // Clip the painter to a circle
             child: CustomPaint(
-              painter: OpacityPainter
-                  .checkerboardPainter(), // Use a static checkerboard
+              painter:
+                  OpacityPainter.checkerboardPainter(), // Use a static checkerboard
               child: Container(
                 width: bubbleSize,
                 height: bubbleSize,
@@ -135,24 +137,26 @@ class _OpacitySliderState extends State<OpacitySlider> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return GestureDetector(
-        onPanStart: _onDragStart,
-        onPanUpdate: _onDragUpdate,
-        onPanEnd: _onDragEnd, // Add end handler
-        onPanCancel: _onDragCancel, // Add cancel handler
-        child: Stack(
-          clipBehavior: Clip.none, // Allow bubble to draw outside bounds
-          children: [
-            CustomPaint(
-              painter: OpacityPainter(selectedHue: widget.selectedHue),
-              size: Size.infinite,
-            ),
-            _buildOpacitySelector(constraints.maxWidth)
-          ],
-        ),
-      );
-    });
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return GestureDetector(
+          onPanStart: _onDragStart,
+          onPanUpdate: _onDragUpdate,
+          onPanEnd: _onDragEnd, // Add end handler
+          onPanCancel: _onDragCancel, // Add cancel handler
+          child: Stack(
+            clipBehavior: Clip.none, // Allow bubble to draw outside bounds
+            children: [
+              CustomPaint(
+                painter: OpacityPainter(selectedHue: widget.selectedHue),
+                size: Size.infinite,
+              ),
+              _buildOpacitySelector(constraints.maxWidth),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   Widget _buildOpacitySelector(double width) {
@@ -162,8 +166,9 @@ class _OpacitySliderState extends State<OpacitySlider> {
       alignment: Alignment((opacityPercent * -2) + 1.0, 0.0),
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(color: Colors.white, width: 2)),
+          borderRadius: BorderRadius.circular(5),
+          border: Border.all(color: Colors.white, width: 2),
+        ),
         width: 9,
       ),
     );
@@ -200,8 +205,12 @@ class OpacityPainter extends CustomPainter {
           if (j == 3 && i == 0) {
             // crop the bottom left checkerboard
             final innerRect = RRect.fromLTRBAndCorners(
-                rectX, rectY, rectX + 10, rectY - 10,
-                bottomLeft: const Radius.circular(5));
+              rectX,
+              rectY,
+              rectX + 10,
+              rectY - 10,
+              bottomLeft: const Radius.circular(5),
+            );
             checkerPath.addRRect(innerRect);
           } else {
             final innerRect = Rect.fromLTWH(rectX, rectY, 10, 10);
@@ -223,16 +232,17 @@ class OpacityPainter extends CustomPainter {
       ..blendMode = BlendMode.srcOver
       ..style = PaintingStyle.fill
       ..shader = LinearGradient(
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-          colors: [
-            selectedHue
-                .withAlpha(1.0)
-                .toColor(), // Use the base color with full alpha
-            selectedHue
-                .withAlpha(0.0)
-                .toColor(), // Use the base color with zero alpha
-          ]).createShader(Offset.zero & size);
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+        colors: [
+          selectedHue
+              .withAlpha(1.0)
+              .toColor(), // Use the base color with full alpha
+          selectedHue
+              .withAlpha(0.0)
+              .toColor(), // Use the base color with zero alpha
+        ],
+      ).createShader(Offset.zero & size);
 
     canvas.drawRRect(roundedRect, paint);
   }

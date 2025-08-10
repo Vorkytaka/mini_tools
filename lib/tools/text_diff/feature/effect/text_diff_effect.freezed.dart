@@ -12,7 +12,8 @@ part of 'text_diff_effect.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$TextDiffEffect {
@@ -21,35 +22,29 @@ mixin _$TextDiffEffect {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String oldText, String newText) countDiffs,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String oldText, String newText)? countDiffs,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String oldText, String newText)? countDiffs,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(CountDiffsEffect value) countDiffs,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(CountDiffsEffect value)? countDiffs,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CountDiffsEffect value)? countDiffs,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 
   /// Create a copy of TextDiffEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -61,8 +56,9 @@ mixin _$TextDiffEffect {
 /// @nodoc
 abstract class $TextDiffEffectCopyWith<$Res> {
   factory $TextDiffEffectCopyWith(
-          TextDiffEffect value, $Res Function(TextDiffEffect) then) =
-      _$TextDiffEffectCopyWithImpl<$Res, TextDiffEffect>;
+    TextDiffEffect value,
+    $Res Function(TextDiffEffect) then,
+  ) = _$TextDiffEffectCopyWithImpl<$Res, TextDiffEffect>;
   @useResult
   $Res call({String oldText, String newText});
 }
@@ -81,29 +77,32 @@ class _$TextDiffEffectCopyWithImpl<$Res, $Val extends TextDiffEffect>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? oldText = null,
-    Object? newText = null,
-  }) {
-    return _then(_value.copyWith(
-      oldText: null == oldText
-          ? _value.oldText
-          : oldText // ignore: cast_nullable_to_non_nullable
-              as String,
-      newText: null == newText
-          ? _value.newText
-          : newText // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  $Res call({Object? oldText = null, Object? newText = null}) {
+    return _then(
+      _value.copyWith(
+            oldText:
+                null == oldText
+                    ? _value.oldText
+                    : oldText // ignore: cast_nullable_to_non_nullable
+                        as String,
+            newText:
+                null == newText
+                    ? _value.newText
+                    : newText // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$CountDiffsEffectImplCopyWith<$Res>
     implements $TextDiffEffectCopyWith<$Res> {
-  factory _$$CountDiffsEffectImplCopyWith(_$CountDiffsEffectImpl value,
-          $Res Function(_$CountDiffsEffectImpl) then) =
-      __$$CountDiffsEffectImplCopyWithImpl<$Res>;
+  factory _$$CountDiffsEffectImplCopyWith(
+    _$CountDiffsEffectImpl value,
+    $Res Function(_$CountDiffsEffectImpl) then,
+  ) = __$$CountDiffsEffectImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String oldText, String newText});
@@ -113,28 +112,30 @@ abstract class _$$CountDiffsEffectImplCopyWith<$Res>
 class __$$CountDiffsEffectImplCopyWithImpl<$Res>
     extends _$TextDiffEffectCopyWithImpl<$Res, _$CountDiffsEffectImpl>
     implements _$$CountDiffsEffectImplCopyWith<$Res> {
-  __$$CountDiffsEffectImplCopyWithImpl(_$CountDiffsEffectImpl _value,
-      $Res Function(_$CountDiffsEffectImpl) _then)
-      : super(_value, _then);
+  __$$CountDiffsEffectImplCopyWithImpl(
+    _$CountDiffsEffectImpl _value,
+    $Res Function(_$CountDiffsEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of TextDiffEffect
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? oldText = null,
-    Object? newText = null,
-  }) {
-    return _then(_$CountDiffsEffectImpl(
-      oldText: null == oldText
-          ? _value.oldText
-          : oldText // ignore: cast_nullable_to_non_nullable
-              as String,
-      newText: null == newText
-          ? _value.newText
-          : newText // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? oldText = null, Object? newText = null}) {
+    return _then(
+      _$CountDiffsEffectImpl(
+        oldText:
+            null == oldText
+                ? _value.oldText
+                : oldText // ignore: cast_nullable_to_non_nullable
+                    as String,
+        newText:
+            null == newText
+                ? _value.newText
+                : newText // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -172,7 +173,9 @@ class _$CountDiffsEffectImpl implements CountDiffsEffect {
   @pragma('vm:prefer-inline')
   _$$CountDiffsEffectImplCopyWith<_$CountDiffsEffectImpl> get copyWith =>
       __$$CountDiffsEffectImplCopyWithImpl<_$CountDiffsEffectImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -232,9 +235,10 @@ class _$CountDiffsEffectImpl implements CountDiffsEffect {
 }
 
 abstract class CountDiffsEffect implements TextDiffEffect {
-  const factory CountDiffsEffect(
-      {required final String oldText,
-      required final String newText}) = _$CountDiffsEffectImpl;
+  const factory CountDiffsEffect({
+    required final String oldText,
+    required final String newText,
+  }) = _$CountDiffsEffectImpl;
 
   @override
   String get oldText;

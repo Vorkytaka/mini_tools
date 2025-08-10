@@ -47,9 +47,9 @@ final class _OutputSide extends StatelessWidget {
                         .toList(growable: false),
                     onChanged: (format) {
                       if (format != null) {
-                        context
-                            .read<JsonFormatterFeature>()
-                            .accept(FormatUpdateMessage(format));
+                        context.read<JsonFormatterFeature>().accept(
+                          FormatUpdateMessage(format),
+                        );
                       }
                     },
                   );

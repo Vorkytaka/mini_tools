@@ -25,10 +25,8 @@ Next<DatetimeConverterState, DatetimeConverterEffect> datetimeConverterUpdate(
     case UpdateInputTypeMessage():
       return next(
         state: state.copyWith(
-          input: updateInputByInputType(
-                state.datetime,
-                message.type,
-              ) ??
+          input:
+              updateInputByInputType(state.datetime, message.type) ??
               state.input,
           inputType: message.type,
         ),
@@ -36,22 +34,15 @@ Next<DatetimeConverterState, DatetimeConverterEffect> datetimeConverterUpdate(
     case UpdateDatetimeFormatMessage():
       return next(state: state.copyWith(format: message.format));
     case ClearMessage():
-      return next(
-        state: state.copyWith(
-          datetime: null,
-          input: '',
-        ),
-      );
+      return next(state: state.copyWith(datetime: null, input: ''));
     case GetNowMessage():
       return next(effects: const [DatetimeConverterEffect.getNow()]);
     case SetNowMessage():
       return next(
         state: state.copyWith(
           datetime: message.datetime,
-          input: updateInputByInputType(
-                message.datetime,
-                state.inputType,
-              ) ??
+          input:
+              updateInputByInputType(message.datetime, state.inputType) ??
               state.input,
         ),
       );
@@ -60,20 +51,15 @@ Next<DatetimeConverterState, DatetimeConverterEffect> datetimeConverterUpdate(
         state: state.copyWith(
           datetime: message.datetime,
           isReadOnly: true,
-          input: updateInputByInputType(
-                message.datetime,
-                state.inputType,
-              ) ??
+          input:
+              updateInputByInputType(message.datetime, state.inputType) ??
               state.input,
         ),
       );
   }
 }
 
-String? updateInputByInputType(
-  TZDateTime? datetime,
-  InputType type,
-) {
+String? updateInputByInputType(TZDateTime? datetime, InputType type) {
   if (datetime == null) {
     return null;
   }

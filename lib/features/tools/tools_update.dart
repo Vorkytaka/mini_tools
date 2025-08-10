@@ -25,10 +25,7 @@ Next<ToolsState, ToolsEffect> toolsUpdate(
       return next(
         state: state.copyWith(searchQuery: message.query),
         effects: [
-          ToolsEffect.searchTools(
-            query: message.query,
-            tools: state.toolIds,
-          ),
+          ToolsEffect.searchTools(query: message.query, tools: state.toolIds),
         ],
       );
     case UpdateSearchResultMessage():

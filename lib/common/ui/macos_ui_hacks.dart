@@ -32,13 +32,13 @@ class MacosSidebarItem extends StatelessWidget {
   void _handleActionTap() => onClick?.call();
 
   Map<Type, Action<Intent>> get _actionMap => <Type, Action<Intent>>{
-        ActivateIntent: CallbackAction<ActivateIntent>(
-          onInvoke: (intent) => _handleActionTap(),
-        ),
-        ButtonActivateIntent: CallbackAction<ButtonActivateIntent>(
-          onInvoke: (intent) => _handleActionTap(),
-        ),
-      };
+    ActivateIntent: CallbackAction<ActivateIntent>(
+      onInvoke: (intent) => _handleActionTap(),
+    ),
+    ButtonActivateIntent: CallbackAction<ButtonActivateIntent>(
+      onInvoke: (intent) => _handleActionTap(),
+    ),
+  };
 
   bool get hasLeading => item.leading != null;
 
@@ -96,7 +96,8 @@ class MacosSidebarItem extends StatelessWidget {
             height: itemSize.height + theme.visualDensity.vertical,
             decoration: ShapeDecoration(
               color: selected ? selectedColor : unselectedColor,
-              shape: item.shape ??
+              shape:
+                  item.shape ??
                   const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(5)),
                   ),

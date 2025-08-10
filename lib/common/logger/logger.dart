@@ -67,13 +67,7 @@ class Log {
     Object? exception,
     StackTrace? stacktrace,
   ]) {
-    _log(
-      LogLevel.error,
-      tag,
-      message,
-      exception,
-      stacktrace,
-    );
+    _log(LogLevel.error, tag, message, exception, stacktrace);
   }
 
   @pragma('vm:prefer-inline')

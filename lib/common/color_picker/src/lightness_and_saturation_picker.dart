@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 typedef LightnessAndSaturationPickerCallback = void Function(HSVColor color);
 
 class LightnessAndSaturationPicker extends StatefulWidget {
-  const LightnessAndSaturationPicker(
-      {Key? key, required this.hsvColor, required this.onColorSelected})
-      : super(key: key);
+  const LightnessAndSaturationPicker({
+    Key? key,
+    required this.hsvColor,
+    required this.onColorSelected,
+  }) : super(key: key);
 
   final HSVColor hsvColor;
   final LightnessAndSaturationPickerCallback onColorSelected;
@@ -19,8 +21,12 @@ class _LightnessAndSaturationPickerState
     extends State<LightnessAndSaturationPicker> {
   OverlayEntry? _previewBubbleOverlay;
   Offset _currentDragOffset = Offset.zero;
-  HSVColor _currentHsvColor =
-      const HSVColor.fromAHSV(1.0, 0.0, 0.0, 0.0); // Initial dummy color
+  HSVColor _currentHsvColor = const HSVColor.fromAHSV(
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+  ); // Initial dummy color
 
   // --- Drag Handlers ---
 
@@ -70,11 +76,11 @@ class _LightnessAndSaturationPickerState
     // Use the hue from the *currently selected* color in the parent picker,
     // but saturation and value from the drag position. Alpha remains 1.0 here.
     return HSVColor.fromAHSV(
-        widget.hsvColor.alpha, // Preserve alpha from parent
-        widget.hsvColor.hue, // Use hue from parent
-        percentOffset.dx, // Saturation from horizontal position
-        percentOffset.dy // Value from vertical position
-        );
+      widget.hsvColor.alpha, // Preserve alpha from parent
+      widget.hsvColor.hue, // Use hue from parent
+      percentOffset.dx, // Saturation from horizontal position
+      percentOffset.dy, // Value from vertical position
+    );
   }
 
   // --- Preview Bubble Overlay ---
@@ -145,23 +151,30 @@ class _LightnessAndSaturationPickerState
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return GestureDetector(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return GestureDetector(
           onPanStart: _onDragStart,
           onPanUpdate: _onDragUpdate,
           onPanEnd: _onDragEnd, // Add end handler
           onPanCancel: _onDragCancel, // Add cancel handler
           child: Stack(
-              clipBehavior: Clip.none, // Allow bubble to draw outside bounds
-              children: [
-                CustomPaint(
-                    painter:
-                        LightnessAndSaturationPainter(hue: widget.hsvColor.hue),
-                    size: Size.infinite),
-                _buildShadeSelector(
-                    Size(constraints.maxWidth, constraints.maxHeight))
-              ]));
-    });
+            clipBehavior: Clip.none, // Allow bubble to draw outside bounds
+            children: [
+              CustomPaint(
+                painter: LightnessAndSaturationPainter(
+                  hue: widget.hsvColor.hue,
+                ),
+                size: Size.infinite,
+              ),
+              _buildShadeSelector(
+                Size(constraints.maxWidth, constraints.maxHeight),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   Widget _buildShadeSelector(Size size) {
@@ -169,18 +182,20 @@ class _LightnessAndSaturationPickerState
     final double darknessPercent = 1.0 - widget.hsvColor.value;
 
     return Positioned(
-        left: 0 * (1.0 - saturationPercent) + size.width * saturationPercent,
-        top: 0 * (1.0 - darknessPercent) + size.height * darknessPercent,
-        child: FractionalTranslation(
-          translation: const Offset(-0.5, -0.5),
-          child: Container(
-            width: 24,
-            height: 24,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.white, width: 2)),
+      left: 0 * (1.0 - saturationPercent) + size.width * saturationPercent,
+      top: 0 * (1.0 - darknessPercent) + size.height * darknessPercent,
+      child: FractionalTranslation(
+        translation: const Offset(-0.5, -0.5),
+        child: Container(
+          width: 24,
+          height: 24,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: Colors.white, width: 2),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -193,10 +208,10 @@ class LightnessAndSaturationPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // Lightness
     final lightGradientShader = const LinearGradient(
-            colors: [Colors.white, Colors.black],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter)
-        .createShader(Offset.zero & size);
+      colors: [Colors.white, Colors.black],
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+    ).createShader(Offset.zero & size);
     final lightPaint = Paint()..shader = lightGradientShader;
     canvas.drawRect(Offset.zero & size, lightPaint);
 
@@ -204,16 +219,14 @@ class LightnessAndSaturationPainter extends CustomPainter {
     final noSaturationColor = HSVColor.fromAHSV(1.0, hue, 0.0, 1.0);
     final fullSaturationColor = HSVColor.fromAHSV(1.0, hue, 1.0, 1.0);
     final saturationGradientShader = LinearGradient(
-      colors: [
-        noSaturationColor.toColor(),
-        fullSaturationColor.toColor(),
-      ],
+      colors: [noSaturationColor.toColor(), fullSaturationColor.toColor()],
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
     ).createShader(Offset.zero & size);
-    final saturationPaint = Paint()
-      ..shader = saturationGradientShader
-      ..blendMode = BlendMode.modulate;
+    final saturationPaint =
+        Paint()
+          ..shader = saturationGradientShader
+          ..blendMode = BlendMode.modulate;
     canvas.drawRect(Offset.zero & size, saturationPaint);
   }
 

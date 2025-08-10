@@ -21,7 +21,7 @@ const _monthNames = {
   'SEP': '9',
   'OCT': '10',
   'NOV': '11',
-  'DEC': '12'
+  'DEC': '12',
 };
 
 const _weekdayNames = {
@@ -31,7 +31,7 @@ const _weekdayNames = {
   'WED': '3',
   'THU': '4',
   'FRI': '5',
-  'SAT': '6'
+  'SAT': '6',
 };
 
 const _nonStandard = {
@@ -85,13 +85,7 @@ const _nonStandard = {
   ),
 };
 
-enum CronPart {
-  minutes,
-  hours,
-  days,
-  months,
-  weekdays,
-}
+enum CronPart { minutes, hours, days, months, weekdays }
 
 extension CronExpressionUtils on CronExpression {
   List<int> getAll(CronPart part) {
@@ -99,13 +93,12 @@ extension CronExpressionUtils on CronExpression {
       any: () => [for (int i = part.minValue; i <= part.maxValue; i++) i],
       single: (value) => [value],
       range: (from, to) => [for (int i = from; i <= to; i++) i],
-      list: (values) => [
-        for (final value in values) ...value.getAll(part),
-      ],
-      step: (base, step) => base
-          .getAll(part)
-          .where((i) => base.stepMatches(i, step))
-          .toList(growable: false),
+      list: (values) => [for (final value in values) ...value.getAll(part)],
+      step:
+          (base, step) => base
+              .getAll(part)
+              .where((i) => base.stepMatches(i, step))
+              .toList(growable: false),
     );
   }
 }
@@ -156,7 +149,9 @@ extension CronPartUtils on CronPart {
       case CronPart.weekdays:
         return expression
             .replaceAllMapped(
-                _weekdayRegExp, (match) => _weekdayNames[match.group(0)!]!)
+              _weekdayRegExp,
+              (match) => _weekdayNames[match.group(0)!]!,
+            )
             .replaceAll('7', '0');
     }
   }
@@ -277,10 +272,7 @@ CronExpression parseExpression(String? expression, CronPart part) {
   final singleValue = int.tryParse(expression);
   if (singleValue != null) {
     if (!part.checkNumber(singleValue)) {
-      throw CronException.value(
-        value: singleValue,
-        part: part,
-      );
+      throw CronException.value(value: singleValue, part: part);
     }
     return CronExpression.single(singleValue);
   }
@@ -320,17 +312,11 @@ CronExpression parseExpression(String? expression, CronPart part) {
       }
 
       if (!part.checkNumber(from)) {
-        throw CronException.value(
-          value: from,
-          part: part,
-        );
+        throw CronException.value(value: from, part: part);
       }
 
       if (!part.checkNumber(to)) {
-        throw CronException.value(
-          value: to,
-          part: part,
-        );
+        throw CronException.value(value: to, part: part);
       }
 
       return CronExpression.range(from: from, to: to);
@@ -347,10 +333,7 @@ CronExpression parseExpression(String? expression, CronPart part) {
     final step = int.tryParse(parts[1]);
     if (step != null) {
       if (!part.checkNumber(step) || step == 0) {
-        throw CronException.step(
-          step: step,
-          part: part,
-        );
+        throw CronException.step(step: step, part: part);
       }
 
       CronExpression base = parseExpression(parts[0], part);
@@ -403,8 +386,9 @@ extension CronExpressionMatcher on CronExpression {
     return when(
       any: () => value % step == 0,
       single: (v) => value >= v && (value - v) % step == 0,
-      range: (from, to) =>
-          value >= from && value <= to && (value - from) % step == 0,
+      range:
+          (from, to) =>
+              value >= from && value <= to && (value - from) % step == 0,
       list: (_) => throw Exception(),
       step: (_, __) => throw Exception(),
     );
@@ -440,7 +424,8 @@ extension CronUtils on Cron {
 
       if (!daysIsAny && !weekdaysIsAny) {
         // Both are specified: day must match either
-        dayMatches = days.matches(current.day) ||
+        dayMatches =
+            days.matches(current.day) ||
             weekdays.matches(current.weekday % DateTime.daysPerWeek);
       } else if (!daysIsAny) {
         // Only days are specified
@@ -502,7 +487,8 @@ extension CronUtils on Cron {
 
       if (!daysIsAny && !weekdaysIsAny) {
         // Both are specified: day must match either
-        dayMatches = days.matches(current.day) ||
+        dayMatches =
+            days.matches(current.day) ||
             weekdays.matches(current.weekday % DateTime.daysPerWeek);
       } else if (!daysIsAny) {
         // Only days are specified
@@ -519,7 +505,10 @@ extension CronUtils on Cron {
       }
       current = current.add(const Duration(days: 1));
       current = DateTime(
-          current.year, current.month, current.day); // Reset time to midnight
+        current.year,
+        current.month,
+        current.day,
+      ); // Reset time to midnight
     }
   }
 

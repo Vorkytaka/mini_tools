@@ -3,12 +3,7 @@ import 'package:json_path/json_path.dart';
 
 part 'json_formatter_state.freezed.dart';
 
-enum JsonOutputFormat {
-  min,
-  two,
-  four,
-  tab,
-}
+enum JsonOutputFormat { min, two, four, tab }
 
 @immutable
 @freezed
@@ -21,14 +16,11 @@ class JsonFormatterState with _$JsonFormatterState {
   }) = _JsonFormatterState;
 
   factory JsonFormatterState.init() => const JsonFormatterState(
-        input: '',
-        output: null,
-        format: JsonOutputFormat.min,
-        jsonPath: JsonPathState(
-          input: '',
-          value: null,
-        ),
-      );
+    input: '',
+    output: null,
+    format: JsonOutputFormat.min,
+    jsonPath: JsonPathState(input: '', value: null),
+  );
 }
 
 @immutable

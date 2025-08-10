@@ -17,8 +17,8 @@ export 'src/state/sqlite_state.dart';
 typedef SqliteFeature = Feature<SqliteState, SqliteMsg, SqliteEffect>;
 
 SqliteFeature sqliteFeatureFactory() => SqliteFeature(
-      initialState: SqliteState.init,
-      update: sqliteUpdate,
-      effectHandlers: [SqliteEffectHandler()],
-      initialEffects: [const SqliteEffect.subscribeDb()],
-    );
+  initialState: SqliteState.init,
+  update: sqliteUpdate,
+  effectHandlers: [SqliteEffectHandler()],
+  initialEffects: [const SqliteEffect.subscribeDb()],
+);

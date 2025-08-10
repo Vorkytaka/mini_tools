@@ -12,7 +12,8 @@ part of 'number_base_message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$UpdateInputMessage {
@@ -24,8 +25,7 @@ mixin _$UpdateInputMessage {
     required TResult Function(String input) base10,
     required TResult Function(String input) base16,
     required TResult Function(String input) custom,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String input)? base2,
@@ -33,8 +33,7 @@ mixin _$UpdateInputMessage {
     TResult? Function(String input)? base10,
     TResult? Function(String input)? base16,
     TResult? Function(String input)? custom,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String input)? base2,
@@ -43,8 +42,7 @@ mixin _$UpdateInputMessage {
     TResult Function(String input)? base16,
     TResult Function(String input)? custom,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UpdateBase2Message value) base2,
@@ -52,8 +50,7 @@ mixin _$UpdateInputMessage {
     required TResult Function(UpdateBase10Message value) base10,
     required TResult Function(UpdateBase16Message value) base16,
     required TResult Function(UpdateCustomMessage value) custom,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(UpdateBase2Message value)? base2,
@@ -61,8 +58,7 @@ mixin _$UpdateInputMessage {
     TResult? Function(UpdateBase10Message value)? base10,
     TResult? Function(UpdateBase16Message value)? base16,
     TResult? Function(UpdateCustomMessage value)? custom,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UpdateBase2Message value)? base2,
@@ -71,8 +67,7 @@ mixin _$UpdateInputMessage {
     TResult Function(UpdateBase16Message value)? base16,
     TResult Function(UpdateCustomMessage value)? custom,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 
   /// Create a copy of UpdateInputMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -84,8 +79,9 @@ mixin _$UpdateInputMessage {
 /// @nodoc
 abstract class $UpdateInputMessageCopyWith<$Res> {
   factory $UpdateInputMessageCopyWith(
-          UpdateInputMessage value, $Res Function(UpdateInputMessage) then) =
-      _$UpdateInputMessageCopyWithImpl<$Res, UpdateInputMessage>;
+    UpdateInputMessage value,
+    $Res Function(UpdateInputMessage) then,
+  ) = _$UpdateInputMessageCopyWithImpl<$Res, UpdateInputMessage>;
   @useResult
   $Res call({String input});
 }
@@ -104,24 +100,27 @@ class _$UpdateInputMessageCopyWithImpl<$Res, $Val extends UpdateInputMessage>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? input = null,
-  }) {
-    return _then(_value.copyWith(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  $Res call({Object? input = null}) {
+    return _then(
+      _value.copyWith(
+            input:
+                null == input
+                    ? _value.input
+                    : input // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$UpdateBase2MessageImplCopyWith<$Res>
     implements $UpdateInputMessageCopyWith<$Res> {
-  factory _$$UpdateBase2MessageImplCopyWith(_$UpdateBase2MessageImpl value,
-          $Res Function(_$UpdateBase2MessageImpl) then) =
-      __$$UpdateBase2MessageImplCopyWithImpl<$Res>;
+  factory _$$UpdateBase2MessageImplCopyWith(
+    _$UpdateBase2MessageImpl value,
+    $Res Function(_$UpdateBase2MessageImpl) then,
+  ) = __$$UpdateBase2MessageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String input});
@@ -131,23 +130,24 @@ abstract class _$$UpdateBase2MessageImplCopyWith<$Res>
 class __$$UpdateBase2MessageImplCopyWithImpl<$Res>
     extends _$UpdateInputMessageCopyWithImpl<$Res, _$UpdateBase2MessageImpl>
     implements _$$UpdateBase2MessageImplCopyWith<$Res> {
-  __$$UpdateBase2MessageImplCopyWithImpl(_$UpdateBase2MessageImpl _value,
-      $Res Function(_$UpdateBase2MessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateBase2MessageImplCopyWithImpl(
+    _$UpdateBase2MessageImpl _value,
+    $Res Function(_$UpdateBase2MessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UpdateInputMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? input = null,
-  }) {
-    return _then(_$UpdateBase2MessageImpl(
-      null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? input = null}) {
+    return _then(
+      _$UpdateBase2MessageImpl(
+        null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -182,7 +182,9 @@ class _$UpdateBase2MessageImpl implements UpdateBase2Message {
   @pragma('vm:prefer-inline')
   _$$UpdateBase2MessageImplCopyWith<_$UpdateBase2MessageImpl> get copyWith =>
       __$$UpdateBase2MessageImplCopyWithImpl<_$UpdateBase2MessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -283,9 +285,10 @@ abstract class UpdateBase2Message implements UpdateInputMessage {
 /// @nodoc
 abstract class _$$UpdateBase8MessageImplCopyWith<$Res>
     implements $UpdateInputMessageCopyWith<$Res> {
-  factory _$$UpdateBase8MessageImplCopyWith(_$UpdateBase8MessageImpl value,
-          $Res Function(_$UpdateBase8MessageImpl) then) =
-      __$$UpdateBase8MessageImplCopyWithImpl<$Res>;
+  factory _$$UpdateBase8MessageImplCopyWith(
+    _$UpdateBase8MessageImpl value,
+    $Res Function(_$UpdateBase8MessageImpl) then,
+  ) = __$$UpdateBase8MessageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String input});
@@ -295,23 +298,24 @@ abstract class _$$UpdateBase8MessageImplCopyWith<$Res>
 class __$$UpdateBase8MessageImplCopyWithImpl<$Res>
     extends _$UpdateInputMessageCopyWithImpl<$Res, _$UpdateBase8MessageImpl>
     implements _$$UpdateBase8MessageImplCopyWith<$Res> {
-  __$$UpdateBase8MessageImplCopyWithImpl(_$UpdateBase8MessageImpl _value,
-      $Res Function(_$UpdateBase8MessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateBase8MessageImplCopyWithImpl(
+    _$UpdateBase8MessageImpl _value,
+    $Res Function(_$UpdateBase8MessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UpdateInputMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? input = null,
-  }) {
-    return _then(_$UpdateBase8MessageImpl(
-      null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? input = null}) {
+    return _then(
+      _$UpdateBase8MessageImpl(
+        null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -346,7 +350,9 @@ class _$UpdateBase8MessageImpl implements UpdateBase8Message {
   @pragma('vm:prefer-inline')
   _$$UpdateBase8MessageImplCopyWith<_$UpdateBase8MessageImpl> get copyWith =>
       __$$UpdateBase8MessageImplCopyWithImpl<_$UpdateBase8MessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -447,9 +453,10 @@ abstract class UpdateBase8Message implements UpdateInputMessage {
 /// @nodoc
 abstract class _$$UpdateBase10MessageImplCopyWith<$Res>
     implements $UpdateInputMessageCopyWith<$Res> {
-  factory _$$UpdateBase10MessageImplCopyWith(_$UpdateBase10MessageImpl value,
-          $Res Function(_$UpdateBase10MessageImpl) then) =
-      __$$UpdateBase10MessageImplCopyWithImpl<$Res>;
+  factory _$$UpdateBase10MessageImplCopyWith(
+    _$UpdateBase10MessageImpl value,
+    $Res Function(_$UpdateBase10MessageImpl) then,
+  ) = __$$UpdateBase10MessageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String input});
@@ -459,23 +466,24 @@ abstract class _$$UpdateBase10MessageImplCopyWith<$Res>
 class __$$UpdateBase10MessageImplCopyWithImpl<$Res>
     extends _$UpdateInputMessageCopyWithImpl<$Res, _$UpdateBase10MessageImpl>
     implements _$$UpdateBase10MessageImplCopyWith<$Res> {
-  __$$UpdateBase10MessageImplCopyWithImpl(_$UpdateBase10MessageImpl _value,
-      $Res Function(_$UpdateBase10MessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateBase10MessageImplCopyWithImpl(
+    _$UpdateBase10MessageImpl _value,
+    $Res Function(_$UpdateBase10MessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UpdateInputMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? input = null,
-  }) {
-    return _then(_$UpdateBase10MessageImpl(
-      null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? input = null}) {
+    return _then(
+      _$UpdateBase10MessageImpl(
+        null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -510,7 +518,9 @@ class _$UpdateBase10MessageImpl implements UpdateBase10Message {
   @pragma('vm:prefer-inline')
   _$$UpdateBase10MessageImplCopyWith<_$UpdateBase10MessageImpl> get copyWith =>
       __$$UpdateBase10MessageImplCopyWithImpl<_$UpdateBase10MessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -611,9 +621,10 @@ abstract class UpdateBase10Message implements UpdateInputMessage {
 /// @nodoc
 abstract class _$$UpdateBase16MessageImplCopyWith<$Res>
     implements $UpdateInputMessageCopyWith<$Res> {
-  factory _$$UpdateBase16MessageImplCopyWith(_$UpdateBase16MessageImpl value,
-          $Res Function(_$UpdateBase16MessageImpl) then) =
-      __$$UpdateBase16MessageImplCopyWithImpl<$Res>;
+  factory _$$UpdateBase16MessageImplCopyWith(
+    _$UpdateBase16MessageImpl value,
+    $Res Function(_$UpdateBase16MessageImpl) then,
+  ) = __$$UpdateBase16MessageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String input});
@@ -623,23 +634,24 @@ abstract class _$$UpdateBase16MessageImplCopyWith<$Res>
 class __$$UpdateBase16MessageImplCopyWithImpl<$Res>
     extends _$UpdateInputMessageCopyWithImpl<$Res, _$UpdateBase16MessageImpl>
     implements _$$UpdateBase16MessageImplCopyWith<$Res> {
-  __$$UpdateBase16MessageImplCopyWithImpl(_$UpdateBase16MessageImpl _value,
-      $Res Function(_$UpdateBase16MessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateBase16MessageImplCopyWithImpl(
+    _$UpdateBase16MessageImpl _value,
+    $Res Function(_$UpdateBase16MessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UpdateInputMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? input = null,
-  }) {
-    return _then(_$UpdateBase16MessageImpl(
-      null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? input = null}) {
+    return _then(
+      _$UpdateBase16MessageImpl(
+        null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -674,7 +686,9 @@ class _$UpdateBase16MessageImpl implements UpdateBase16Message {
   @pragma('vm:prefer-inline')
   _$$UpdateBase16MessageImplCopyWith<_$UpdateBase16MessageImpl> get copyWith =>
       __$$UpdateBase16MessageImplCopyWithImpl<_$UpdateBase16MessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -775,9 +789,10 @@ abstract class UpdateBase16Message implements UpdateInputMessage {
 /// @nodoc
 abstract class _$$UpdateCustomMessageImplCopyWith<$Res>
     implements $UpdateInputMessageCopyWith<$Res> {
-  factory _$$UpdateCustomMessageImplCopyWith(_$UpdateCustomMessageImpl value,
-          $Res Function(_$UpdateCustomMessageImpl) then) =
-      __$$UpdateCustomMessageImplCopyWithImpl<$Res>;
+  factory _$$UpdateCustomMessageImplCopyWith(
+    _$UpdateCustomMessageImpl value,
+    $Res Function(_$UpdateCustomMessageImpl) then,
+  ) = __$$UpdateCustomMessageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String input});
@@ -787,23 +802,24 @@ abstract class _$$UpdateCustomMessageImplCopyWith<$Res>
 class __$$UpdateCustomMessageImplCopyWithImpl<$Res>
     extends _$UpdateInputMessageCopyWithImpl<$Res, _$UpdateCustomMessageImpl>
     implements _$$UpdateCustomMessageImplCopyWith<$Res> {
-  __$$UpdateCustomMessageImplCopyWithImpl(_$UpdateCustomMessageImpl _value,
-      $Res Function(_$UpdateCustomMessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateCustomMessageImplCopyWithImpl(
+    _$UpdateCustomMessageImpl _value,
+    $Res Function(_$UpdateCustomMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UpdateInputMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? input = null,
-  }) {
-    return _then(_$UpdateCustomMessageImpl(
-      null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? input = null}) {
+    return _then(
+      _$UpdateCustomMessageImpl(
+        null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -838,7 +854,9 @@ class _$UpdateCustomMessageImpl implements UpdateCustomMessage {
   @pragma('vm:prefer-inline')
   _$$UpdateCustomMessageImplCopyWith<_$UpdateCustomMessageImpl> get copyWith =>
       __$$UpdateCustomMessageImplCopyWithImpl<_$UpdateCustomMessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -949,16 +967,19 @@ mixin _$UpdateCustomBaseMessage {
 
 /// @nodoc
 abstract class $UpdateCustomBaseMessageCopyWith<$Res> {
-  factory $UpdateCustomBaseMessageCopyWith(UpdateCustomBaseMessage value,
-          $Res Function(UpdateCustomBaseMessage) then) =
-      _$UpdateCustomBaseMessageCopyWithImpl<$Res, UpdateCustomBaseMessage>;
+  factory $UpdateCustomBaseMessageCopyWith(
+    UpdateCustomBaseMessage value,
+    $Res Function(UpdateCustomBaseMessage) then,
+  ) = _$UpdateCustomBaseMessageCopyWithImpl<$Res, UpdateCustomBaseMessage>;
   @useResult
   $Res call({int base});
 }
 
 /// @nodoc
-class _$UpdateCustomBaseMessageCopyWithImpl<$Res,
-        $Val extends UpdateCustomBaseMessage>
+class _$UpdateCustomBaseMessageCopyWithImpl<
+  $Res,
+  $Val extends UpdateCustomBaseMessage
+>
     implements $UpdateCustomBaseMessageCopyWith<$Res> {
   _$UpdateCustomBaseMessageCopyWithImpl(this._value, this._then);
 
@@ -971,15 +992,17 @@ class _$UpdateCustomBaseMessageCopyWithImpl<$Res,
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? base = null,
-  }) {
-    return _then(_value.copyWith(
-      base: null == base
-          ? _value.base
-          : base // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  $Res call({Object? base = null}) {
+    return _then(
+      _value.copyWith(
+            base:
+                null == base
+                    ? _value.base
+                    : base // ignore: cast_nullable_to_non_nullable
+                        as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -987,9 +1010,9 @@ class _$UpdateCustomBaseMessageCopyWithImpl<$Res,
 abstract class _$$UpdateCustomBaseMessageImplCopyWith<$Res>
     implements $UpdateCustomBaseMessageCopyWith<$Res> {
   factory _$$UpdateCustomBaseMessageImplCopyWith(
-          _$UpdateCustomBaseMessageImpl value,
-          $Res Function(_$UpdateCustomBaseMessageImpl) then) =
-      __$$UpdateCustomBaseMessageImplCopyWithImpl<$Res>;
+    _$UpdateCustomBaseMessageImpl value,
+    $Res Function(_$UpdateCustomBaseMessageImpl) then,
+  ) = __$$UpdateCustomBaseMessageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int base});
@@ -997,27 +1020,31 @@ abstract class _$$UpdateCustomBaseMessageImplCopyWith<$Res>
 
 /// @nodoc
 class __$$UpdateCustomBaseMessageImplCopyWithImpl<$Res>
-    extends _$UpdateCustomBaseMessageCopyWithImpl<$Res,
-        _$UpdateCustomBaseMessageImpl>
+    extends
+        _$UpdateCustomBaseMessageCopyWithImpl<
+          $Res,
+          _$UpdateCustomBaseMessageImpl
+        >
     implements _$$UpdateCustomBaseMessageImplCopyWith<$Res> {
   __$$UpdateCustomBaseMessageImplCopyWithImpl(
-      _$UpdateCustomBaseMessageImpl _value,
-      $Res Function(_$UpdateCustomBaseMessageImpl) _then)
-      : super(_value, _then);
+    _$UpdateCustomBaseMessageImpl _value,
+    $Res Function(_$UpdateCustomBaseMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UpdateCustomBaseMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? base = null,
-  }) {
-    return _then(_$UpdateCustomBaseMessageImpl(
-      base: null == base
-          ? _value.base
-          : base // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? base = null}) {
+    return _then(
+      _$UpdateCustomBaseMessageImpl(
+        base:
+            null == base
+                ? _value.base
+                : base // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
@@ -1025,7 +1052,7 @@ class __$$UpdateCustomBaseMessageImplCopyWithImpl<$Res>
 
 class _$UpdateCustomBaseMessageImpl implements _UpdateCustomBaseMessage {
   const _$UpdateCustomBaseMessageImpl({required this.base})
-      : assert(base >= 2 && base <= 36);
+    : assert(base >= 2 && base <= 36);
 
   @override
   final int base;
@@ -1052,8 +1079,9 @@ class _$UpdateCustomBaseMessageImpl implements _UpdateCustomBaseMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateCustomBaseMessageImplCopyWith<_$UpdateCustomBaseMessageImpl>
-      get copyWith => __$$UpdateCustomBaseMessageImplCopyWithImpl<
-          _$UpdateCustomBaseMessageImpl>(this, _$identity);
+  get copyWith => __$$UpdateCustomBaseMessageImplCopyWithImpl<
+    _$UpdateCustomBaseMessageImpl
+  >(this, _$identity);
 }
 
 abstract class _UpdateCustomBaseMessage implements UpdateCustomBaseMessage {
@@ -1068,7 +1096,7 @@ abstract class _UpdateCustomBaseMessage implements UpdateCustomBaseMessage {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateCustomBaseMessageImplCopyWith<_$UpdateCustomBaseMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1085,8 +1113,9 @@ mixin _$SetStateMessage {
 /// @nodoc
 abstract class $SetStateMessageCopyWith<$Res> {
   factory $SetStateMessageCopyWith(
-          SetStateMessage value, $Res Function(SetStateMessage) then) =
-      _$SetStateMessageCopyWithImpl<$Res, SetStateMessage>;
+    SetStateMessage value,
+    $Res Function(SetStateMessage) then,
+  ) = _$SetStateMessageCopyWithImpl<$Res, SetStateMessage>;
   @useResult
   $Res call({NumberBaseState state});
 
@@ -1107,15 +1136,17 @@ class _$SetStateMessageCopyWithImpl<$Res, $Val extends SetStateMessage>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? state = null,
-  }) {
-    return _then(_value.copyWith(
-      state: null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as NumberBaseState,
-    ) as $Val);
+  $Res call({Object? state = null}) {
+    return _then(
+      _value.copyWith(
+            state:
+                null == state
+                    ? _value.state
+                    : state // ignore: cast_nullable_to_non_nullable
+                        as NumberBaseState,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of SetStateMessage
@@ -1132,9 +1163,10 @@ class _$SetStateMessageCopyWithImpl<$Res, $Val extends SetStateMessage>
 /// @nodoc
 abstract class _$$SetStateMessageImplCopyWith<$Res>
     implements $SetStateMessageCopyWith<$Res> {
-  factory _$$SetStateMessageImplCopyWith(_$SetStateMessageImpl value,
-          $Res Function(_$SetStateMessageImpl) then) =
-      __$$SetStateMessageImplCopyWithImpl<$Res>;
+  factory _$$SetStateMessageImplCopyWith(
+    _$SetStateMessageImpl value,
+    $Res Function(_$SetStateMessageImpl) then,
+  ) = __$$SetStateMessageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({NumberBaseState state});
@@ -1148,22 +1180,23 @@ class __$$SetStateMessageImplCopyWithImpl<$Res>
     extends _$SetStateMessageCopyWithImpl<$Res, _$SetStateMessageImpl>
     implements _$$SetStateMessageImplCopyWith<$Res> {
   __$$SetStateMessageImplCopyWithImpl(
-      _$SetStateMessageImpl _value, $Res Function(_$SetStateMessageImpl) _then)
-      : super(_value, _then);
+    _$SetStateMessageImpl _value,
+    $Res Function(_$SetStateMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SetStateMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? state = null,
-  }) {
-    return _then(_$SetStateMessageImpl(
-      null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as NumberBaseState,
-    ));
+  $Res call({Object? state = null}) {
+    return _then(
+      _$SetStateMessageImpl(
+        null == state
+            ? _value.state
+            : state // ignore: cast_nullable_to_non_nullable
+                as NumberBaseState,
+      ),
+    );
   }
 }
 
@@ -1198,7 +1231,9 @@ class _$SetStateMessageImpl implements _SetStateMessage {
   @pragma('vm:prefer-inline')
   _$$SetStateMessageImplCopyWith<_$SetStateMessageImpl> get copyWith =>
       __$$SetStateMessageImplCopyWithImpl<_$SetStateMessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _SetStateMessage implements SetStateMessage {

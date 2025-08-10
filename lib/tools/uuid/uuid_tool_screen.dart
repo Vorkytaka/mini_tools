@@ -16,15 +16,8 @@ class UuidToolScreen extends StatelessWidget {
     final t = Translations.of(context);
 
     return MacosScaffold(
-      toolBar: ToolBar(
-        centerTitle: true,
-        title: Text(t.uuidGenerator.title),
-      ),
-      children: [
-        ContentArea(
-          builder: (context, _) => const _Content(),
-        ),
-      ],
+      toolBar: ToolBar(centerTitle: true, title: Text(t.uuidGenerator.title)),
+      children: [ContentArea(builder: (context, _) => const _Content())],
     );
   }
 }
@@ -77,9 +70,9 @@ class _UuidVersionSelector extends StatelessWidget {
           value: state.version,
           onChanged: (version) {
             if (version != null) {
-              context
-                  .read<UuidFeature>()
-                  .accept(UuidMessage.updateVersion(version));
+              context.read<UuidFeature>().accept(
+                UuidMessage.updateVersion(version),
+              );
             }
           },
           items: [
@@ -169,16 +162,13 @@ class _UuidV5Inputs extends StatelessWidget {
             const SizedBox(height: 8),
             const _UuidV5Namespace(),
             const SizedBox(height: 8),
-            const Padding(
-              padding: headlinePadding,
-              child: Text('Name:'),
-            ),
+            const Padding(padding: headlinePadding, child: Text('Name:')),
             const SizedBox(height: 4),
             MacosTextField(
               onChanged: (name) {
-                context
-                    .read<UuidFeature>()
-                    .accept(UuidMessage.updateName(name));
+                context.read<UuidFeature>().accept(
+                  UuidMessage.updateName(name),
+                );
               },
             ),
           ],
@@ -230,9 +220,7 @@ class _UuidV5Namespace extends StatelessWidget {
 class _UuidV5NamespaceItem extends StatelessWidget {
   final Namespace namespace;
 
-  const _UuidV5NamespaceItem({
-    required this.namespace,
-  });
+  const _UuidV5NamespaceItem({required this.namespace});
 
   @override
   Widget build(BuildContext context) {
@@ -242,9 +230,9 @@ class _UuidV5NamespaceItem extends StatelessWidget {
         return PushButton(
           secondary: state.namespace != namespace.value,
           onPressed: () {
-            context
-                .read<UuidFeature>()
-                .accept(UuidMessage.updateNamespace(namespace.value));
+            context.read<UuidFeature>().accept(
+              UuidMessage.updateNamespace(namespace.value),
+            );
           },
           controlSize: ControlSize.regular,
           child: Text(namespace.format(context)),
@@ -305,10 +293,7 @@ class _UuidV5NamespaceInputState extends State<_UuidV5NamespaceInput> {
 
   @override
   Widget build(BuildContext context) {
-    return MacosTextField(
-      maxLength: 36,
-      controller: _controller,
-    );
+    return MacosTextField(maxLength: 36, controller: _controller);
   }
 
   void _onUpdate() {
@@ -351,9 +336,9 @@ class _IsLowerCase extends StatelessWidget {
         return GestureDetector(
           onTap: () {
             final isLowerCase = !state.isLowerCase;
-            context
-                .read<UuidFeature>()
-                .accept(UuidMessage.updateLowerCase(isLowerCase));
+            context.read<UuidFeature>().accept(
+              UuidMessage.updateLowerCase(isLowerCase),
+            );
           },
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -362,9 +347,9 @@ class _IsLowerCase extends StatelessWidget {
                 value: state.isLowerCase,
                 onChanged: (value) {
                   if (state.isLowerCase != value) {
-                    context
-                        .read<UuidFeature>()
-                        .accept(UuidMessage.updateLowerCase(value));
+                    context.read<UuidFeature>().accept(
+                      UuidMessage.updateLowerCase(value),
+                    );
                   }
                 },
               ),

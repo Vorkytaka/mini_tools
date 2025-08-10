@@ -12,7 +12,8 @@ part of 'regexp_message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$RegExpMessage {
@@ -27,8 +28,7 @@ mixin _$RegExpMessage {
     required TResult Function(String testString) updateTestString,
     required TResult Function(RegExp? regexp) updateRegExp,
     required TResult Function(List<RegExpMatch>? matches) updateMatches,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String input)? updateInput,
@@ -40,8 +40,7 @@ mixin _$RegExpMessage {
     TResult? Function(String testString)? updateTestString,
     TResult? Function(RegExp? regexp)? updateRegExp,
     TResult? Function(List<RegExpMatch>? matches)? updateMatches,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String input)? updateInput,
@@ -54,8 +53,7 @@ mixin _$RegExpMessage {
     TResult Function(RegExp? regexp)? updateRegExp,
     TResult Function(List<RegExpMatch>? matches)? updateMatches,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_UpdateInput value) updateInput,
@@ -67,8 +65,7 @@ mixin _$RegExpMessage {
     required TResult Function(_UpdateTestString value) updateTestString,
     required TResult Function(_UpdateRegExp value) updateRegExp,
     required TResult Function(_UpdateMatches value) updateMatches,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_UpdateInput value)? updateInput,
@@ -80,8 +77,7 @@ mixin _$RegExpMessage {
     TResult? Function(_UpdateTestString value)? updateTestString,
     TResult? Function(_UpdateRegExp value)? updateRegExp,
     TResult? Function(_UpdateMatches value)? updateMatches,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_UpdateInput value)? updateInput,
@@ -94,15 +90,15 @@ mixin _$RegExpMessage {
     TResult Function(_UpdateRegExp value)? updateRegExp,
     TResult Function(_UpdateMatches value)? updateMatches,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RegExpMessageCopyWith<$Res> {
   factory $RegExpMessageCopyWith(
-          RegExpMessage value, $Res Function(RegExpMessage) then) =
-      _$RegExpMessageCopyWithImpl<$Res, RegExpMessage>;
+    RegExpMessage value,
+    $Res Function(RegExpMessage) then,
+  ) = _$RegExpMessageCopyWithImpl<$Res, RegExpMessage>;
 }
 
 /// @nodoc
@@ -122,8 +118,9 @@ class _$RegExpMessageCopyWithImpl<$Res, $Val extends RegExpMessage>
 /// @nodoc
 abstract class _$$UpdateInputImplCopyWith<$Res> {
   factory _$$UpdateInputImplCopyWith(
-          _$UpdateInputImpl value, $Res Function(_$UpdateInputImpl) then) =
-      __$$UpdateInputImplCopyWithImpl<$Res>;
+    _$UpdateInputImpl value,
+    $Res Function(_$UpdateInputImpl) then,
+  ) = __$$UpdateInputImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String input});
 }
@@ -133,22 +130,23 @@ class __$$UpdateInputImplCopyWithImpl<$Res>
     extends _$RegExpMessageCopyWithImpl<$Res, _$UpdateInputImpl>
     implements _$$UpdateInputImplCopyWith<$Res> {
   __$$UpdateInputImplCopyWithImpl(
-      _$UpdateInputImpl _value, $Res Function(_$UpdateInputImpl) _then)
-      : super(_value, _then);
+    _$UpdateInputImpl _value,
+    $Res Function(_$UpdateInputImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RegExpMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? input = null,
-  }) {
-    return _then(_$UpdateInputImpl(
-      null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? input = null}) {
+    return _then(
+      _$UpdateInputImpl(
+        null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -304,8 +302,9 @@ abstract class _UpdateInput implements RegExpMessage {
 /// @nodoc
 abstract class _$$UpdateGlobalImplCopyWith<$Res> {
   factory _$$UpdateGlobalImplCopyWith(
-          _$UpdateGlobalImpl value, $Res Function(_$UpdateGlobalImpl) then) =
-      __$$UpdateGlobalImplCopyWithImpl<$Res>;
+    _$UpdateGlobalImpl value,
+    $Res Function(_$UpdateGlobalImpl) then,
+  ) = __$$UpdateGlobalImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isGlobal});
 }
@@ -315,22 +314,23 @@ class __$$UpdateGlobalImplCopyWithImpl<$Res>
     extends _$RegExpMessageCopyWithImpl<$Res, _$UpdateGlobalImpl>
     implements _$$UpdateGlobalImplCopyWith<$Res> {
   __$$UpdateGlobalImplCopyWithImpl(
-      _$UpdateGlobalImpl _value, $Res Function(_$UpdateGlobalImpl) _then)
-      : super(_value, _then);
+    _$UpdateGlobalImpl _value,
+    $Res Function(_$UpdateGlobalImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RegExpMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? isGlobal = null,
-  }) {
-    return _then(_$UpdateGlobalImpl(
-      null == isGlobal
-          ? _value.isGlobal
-          : isGlobal // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? isGlobal = null}) {
+    return _then(
+      _$UpdateGlobalImpl(
+        null == isGlobal
+            ? _value.isGlobal
+            : isGlobal // ignore: cast_nullable_to_non_nullable
+                as bool,
+      ),
+    );
   }
 }
 
@@ -486,9 +486,10 @@ abstract class _UpdateGlobal implements RegExpMessage {
 
 /// @nodoc
 abstract class _$$UpdateMultilineImplCopyWith<$Res> {
-  factory _$$UpdateMultilineImplCopyWith(_$UpdateMultilineImpl value,
-          $Res Function(_$UpdateMultilineImpl) then) =
-      __$$UpdateMultilineImplCopyWithImpl<$Res>;
+  factory _$$UpdateMultilineImplCopyWith(
+    _$UpdateMultilineImpl value,
+    $Res Function(_$UpdateMultilineImpl) then,
+  ) = __$$UpdateMultilineImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isMultiline});
 }
@@ -498,22 +499,23 @@ class __$$UpdateMultilineImplCopyWithImpl<$Res>
     extends _$RegExpMessageCopyWithImpl<$Res, _$UpdateMultilineImpl>
     implements _$$UpdateMultilineImplCopyWith<$Res> {
   __$$UpdateMultilineImplCopyWithImpl(
-      _$UpdateMultilineImpl _value, $Res Function(_$UpdateMultilineImpl) _then)
-      : super(_value, _then);
+    _$UpdateMultilineImpl _value,
+    $Res Function(_$UpdateMultilineImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RegExpMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? isMultiline = null,
-  }) {
-    return _then(_$UpdateMultilineImpl(
-      null == isMultiline
-          ? _value.isMultiline
-          : isMultiline // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? isMultiline = null}) {
+    return _then(
+      _$UpdateMultilineImpl(
+        null == isMultiline
+            ? _value.isMultiline
+            : isMultiline // ignore: cast_nullable_to_non_nullable
+                as bool,
+      ),
+    );
   }
 }
 
@@ -549,7 +551,9 @@ class _$UpdateMultilineImpl implements _UpdateMultiline {
   @pragma('vm:prefer-inline')
   _$$UpdateMultilineImplCopyWith<_$UpdateMultilineImpl> get copyWith =>
       __$$UpdateMultilineImplCopyWithImpl<_$UpdateMultilineImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -671,9 +675,10 @@ abstract class _UpdateMultiline implements RegExpMessage {
 
 /// @nodoc
 abstract class _$$UpdateCaseSensitiveImplCopyWith<$Res> {
-  factory _$$UpdateCaseSensitiveImplCopyWith(_$UpdateCaseSensitiveImpl value,
-          $Res Function(_$UpdateCaseSensitiveImpl) then) =
-      __$$UpdateCaseSensitiveImplCopyWithImpl<$Res>;
+  factory _$$UpdateCaseSensitiveImplCopyWith(
+    _$UpdateCaseSensitiveImpl value,
+    $Res Function(_$UpdateCaseSensitiveImpl) then,
+  ) = __$$UpdateCaseSensitiveImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isCaseSensitive});
 }
@@ -682,23 +687,24 @@ abstract class _$$UpdateCaseSensitiveImplCopyWith<$Res> {
 class __$$UpdateCaseSensitiveImplCopyWithImpl<$Res>
     extends _$RegExpMessageCopyWithImpl<$Res, _$UpdateCaseSensitiveImpl>
     implements _$$UpdateCaseSensitiveImplCopyWith<$Res> {
-  __$$UpdateCaseSensitiveImplCopyWithImpl(_$UpdateCaseSensitiveImpl _value,
-      $Res Function(_$UpdateCaseSensitiveImpl) _then)
-      : super(_value, _then);
+  __$$UpdateCaseSensitiveImplCopyWithImpl(
+    _$UpdateCaseSensitiveImpl _value,
+    $Res Function(_$UpdateCaseSensitiveImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RegExpMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? isCaseSensitive = null,
-  }) {
-    return _then(_$UpdateCaseSensitiveImpl(
-      null == isCaseSensitive
-          ? _value.isCaseSensitive
-          : isCaseSensitive // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? isCaseSensitive = null}) {
+    return _then(
+      _$UpdateCaseSensitiveImpl(
+        null == isCaseSensitive
+            ? _value.isCaseSensitive
+            : isCaseSensitive // ignore: cast_nullable_to_non_nullable
+                as bool,
+      ),
+    );
   }
 }
 
@@ -734,7 +740,9 @@ class _$UpdateCaseSensitiveImpl implements _UpdateCaseSensitive {
   @pragma('vm:prefer-inline')
   _$$UpdateCaseSensitiveImplCopyWith<_$UpdateCaseSensitiveImpl> get copyWith =>
       __$$UpdateCaseSensitiveImplCopyWithImpl<_$UpdateCaseSensitiveImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -857,8 +865,9 @@ abstract class _UpdateCaseSensitive implements RegExpMessage {
 /// @nodoc
 abstract class _$$UpdateUnicodeImplCopyWith<$Res> {
   factory _$$UpdateUnicodeImplCopyWith(
-          _$UpdateUnicodeImpl value, $Res Function(_$UpdateUnicodeImpl) then) =
-      __$$UpdateUnicodeImplCopyWithImpl<$Res>;
+    _$UpdateUnicodeImpl value,
+    $Res Function(_$UpdateUnicodeImpl) then,
+  ) = __$$UpdateUnicodeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isUnicode});
 }
@@ -868,22 +877,23 @@ class __$$UpdateUnicodeImplCopyWithImpl<$Res>
     extends _$RegExpMessageCopyWithImpl<$Res, _$UpdateUnicodeImpl>
     implements _$$UpdateUnicodeImplCopyWith<$Res> {
   __$$UpdateUnicodeImplCopyWithImpl(
-      _$UpdateUnicodeImpl _value, $Res Function(_$UpdateUnicodeImpl) _then)
-      : super(_value, _then);
+    _$UpdateUnicodeImpl _value,
+    $Res Function(_$UpdateUnicodeImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RegExpMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? isUnicode = null,
-  }) {
-    return _then(_$UpdateUnicodeImpl(
-      null == isUnicode
-          ? _value.isUnicode
-          : isUnicode // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? isUnicode = null}) {
+    return _then(
+      _$UpdateUnicodeImpl(
+        null == isUnicode
+            ? _value.isUnicode
+            : isUnicode // ignore: cast_nullable_to_non_nullable
+                as bool,
+      ),
+    );
   }
 }
 
@@ -1040,8 +1050,9 @@ abstract class _UpdateUnicode implements RegExpMessage {
 /// @nodoc
 abstract class _$$UpdateDotAllImplCopyWith<$Res> {
   factory _$$UpdateDotAllImplCopyWith(
-          _$UpdateDotAllImpl value, $Res Function(_$UpdateDotAllImpl) then) =
-      __$$UpdateDotAllImplCopyWithImpl<$Res>;
+    _$UpdateDotAllImpl value,
+    $Res Function(_$UpdateDotAllImpl) then,
+  ) = __$$UpdateDotAllImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isDotAll});
 }
@@ -1051,22 +1062,23 @@ class __$$UpdateDotAllImplCopyWithImpl<$Res>
     extends _$RegExpMessageCopyWithImpl<$Res, _$UpdateDotAllImpl>
     implements _$$UpdateDotAllImplCopyWith<$Res> {
   __$$UpdateDotAllImplCopyWithImpl(
-      _$UpdateDotAllImpl _value, $Res Function(_$UpdateDotAllImpl) _then)
-      : super(_value, _then);
+    _$UpdateDotAllImpl _value,
+    $Res Function(_$UpdateDotAllImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RegExpMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? isDotAll = null,
-  }) {
-    return _then(_$UpdateDotAllImpl(
-      null == isDotAll
-          ? _value.isDotAll
-          : isDotAll // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? isDotAll = null}) {
+    return _then(
+      _$UpdateDotAllImpl(
+        null == isDotAll
+            ? _value.isDotAll
+            : isDotAll // ignore: cast_nullable_to_non_nullable
+                as bool,
+      ),
+    );
   }
 }
 
@@ -1222,9 +1234,10 @@ abstract class _UpdateDotAll implements RegExpMessage {
 
 /// @nodoc
 abstract class _$$UpdateTestStringImplCopyWith<$Res> {
-  factory _$$UpdateTestStringImplCopyWith(_$UpdateTestStringImpl value,
-          $Res Function(_$UpdateTestStringImpl) then) =
-      __$$UpdateTestStringImplCopyWithImpl<$Res>;
+  factory _$$UpdateTestStringImplCopyWith(
+    _$UpdateTestStringImpl value,
+    $Res Function(_$UpdateTestStringImpl) then,
+  ) = __$$UpdateTestStringImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String testString});
 }
@@ -1233,23 +1246,24 @@ abstract class _$$UpdateTestStringImplCopyWith<$Res> {
 class __$$UpdateTestStringImplCopyWithImpl<$Res>
     extends _$RegExpMessageCopyWithImpl<$Res, _$UpdateTestStringImpl>
     implements _$$UpdateTestStringImplCopyWith<$Res> {
-  __$$UpdateTestStringImplCopyWithImpl(_$UpdateTestStringImpl _value,
-      $Res Function(_$UpdateTestStringImpl) _then)
-      : super(_value, _then);
+  __$$UpdateTestStringImplCopyWithImpl(
+    _$UpdateTestStringImpl _value,
+    $Res Function(_$UpdateTestStringImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RegExpMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? testString = null,
-  }) {
-    return _then(_$UpdateTestStringImpl(
-      null == testString
-          ? _value.testString
-          : testString // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? testString = null}) {
+    return _then(
+      _$UpdateTestStringImpl(
+        null == testString
+            ? _value.testString
+            : testString // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -1285,7 +1299,9 @@ class _$UpdateTestStringImpl implements _UpdateTestString {
   @pragma('vm:prefer-inline')
   _$$UpdateTestStringImplCopyWith<_$UpdateTestStringImpl> get copyWith =>
       __$$UpdateTestStringImplCopyWithImpl<_$UpdateTestStringImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1408,8 +1424,9 @@ abstract class _UpdateTestString implements RegExpMessage {
 /// @nodoc
 abstract class _$$UpdateRegExpImplCopyWith<$Res> {
   factory _$$UpdateRegExpImplCopyWith(
-          _$UpdateRegExpImpl value, $Res Function(_$UpdateRegExpImpl) then) =
-      __$$UpdateRegExpImplCopyWithImpl<$Res>;
+    _$UpdateRegExpImpl value,
+    $Res Function(_$UpdateRegExpImpl) then,
+  ) = __$$UpdateRegExpImplCopyWithImpl<$Res>;
   @useResult
   $Res call({RegExp? regexp});
 }
@@ -1419,22 +1436,23 @@ class __$$UpdateRegExpImplCopyWithImpl<$Res>
     extends _$RegExpMessageCopyWithImpl<$Res, _$UpdateRegExpImpl>
     implements _$$UpdateRegExpImplCopyWith<$Res> {
   __$$UpdateRegExpImplCopyWithImpl(
-      _$UpdateRegExpImpl _value, $Res Function(_$UpdateRegExpImpl) _then)
-      : super(_value, _then);
+    _$UpdateRegExpImpl _value,
+    $Res Function(_$UpdateRegExpImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RegExpMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? regexp = freezed,
-  }) {
-    return _then(_$UpdateRegExpImpl(
-      freezed == regexp
-          ? _value.regexp
-          : regexp // ignore: cast_nullable_to_non_nullable
-              as RegExp?,
-    ));
+  $Res call({Object? regexp = freezed}) {
+    return _then(
+      _$UpdateRegExpImpl(
+        freezed == regexp
+            ? _value.regexp
+            : regexp // ignore: cast_nullable_to_non_nullable
+                as RegExp?,
+      ),
+    );
   }
 }
 
@@ -1590,8 +1608,9 @@ abstract class _UpdateRegExp implements RegExpMessage {
 /// @nodoc
 abstract class _$$UpdateMatchesImplCopyWith<$Res> {
   factory _$$UpdateMatchesImplCopyWith(
-          _$UpdateMatchesImpl value, $Res Function(_$UpdateMatchesImpl) then) =
-      __$$UpdateMatchesImplCopyWithImpl<$Res>;
+    _$UpdateMatchesImpl value,
+    $Res Function(_$UpdateMatchesImpl) then,
+  ) = __$$UpdateMatchesImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<RegExpMatch>? matches});
 }
@@ -1601,22 +1620,23 @@ class __$$UpdateMatchesImplCopyWithImpl<$Res>
     extends _$RegExpMessageCopyWithImpl<$Res, _$UpdateMatchesImpl>
     implements _$$UpdateMatchesImplCopyWith<$Res> {
   __$$UpdateMatchesImplCopyWithImpl(
-      _$UpdateMatchesImpl _value, $Res Function(_$UpdateMatchesImpl) _then)
-      : super(_value, _then);
+    _$UpdateMatchesImpl _value,
+    $Res Function(_$UpdateMatchesImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RegExpMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? matches = freezed,
-  }) {
-    return _then(_$UpdateMatchesImpl(
-      freezed == matches
-          ? _value._matches
-          : matches // ignore: cast_nullable_to_non_nullable
-              as List<RegExpMatch>?,
-    ));
+  $Res call({Object? matches = freezed}) {
+    return _then(
+      _$UpdateMatchesImpl(
+        freezed == matches
+            ? _value._matches
+            : matches // ignore: cast_nullable_to_non_nullable
+                as List<RegExpMatch>?,
+      ),
+    );
   }
 }
 
@@ -1624,7 +1644,7 @@ class __$$UpdateMatchesImplCopyWithImpl<$Res>
 
 class _$UpdateMatchesImpl implements _UpdateMatches {
   const _$UpdateMatchesImpl(final List<RegExpMatch>? matches)
-      : _matches = matches;
+    : _matches = matches;
 
   final List<RegExpMatch>? _matches;
   @override

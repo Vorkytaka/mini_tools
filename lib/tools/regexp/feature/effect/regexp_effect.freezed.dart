@@ -12,64 +12,75 @@ part of 'regexp_effect.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$RegExpEffect {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String input, bool isMultiline,
-            bool isCaseSensitive, bool isUnicode, bool isDotAll)
-        parseRegExp,
+    required TResult Function(
+      String input,
+      bool isMultiline,
+      bool isCaseSensitive,
+      bool isUnicode,
+      bool isDotAll,
+    )
+    parseRegExp,
     required TResult Function(RegExp? regexp, String testString, bool isGlobal)
-        findMatches,
-  }) =>
-      throw _privateConstructorUsedError;
+    findMatches,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String input, bool isMultiline, bool isCaseSensitive,
-            bool isUnicode, bool isDotAll)?
-        parseRegExp,
+    TResult? Function(
+      String input,
+      bool isMultiline,
+      bool isCaseSensitive,
+      bool isUnicode,
+      bool isDotAll,
+    )?
+    parseRegExp,
     TResult? Function(RegExp? regexp, String testString, bool isGlobal)?
-        findMatches,
-  }) =>
-      throw _privateConstructorUsedError;
+    findMatches,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String input, bool isMultiline, bool isCaseSensitive,
-            bool isUnicode, bool isDotAll)?
-        parseRegExp,
+    TResult Function(
+      String input,
+      bool isMultiline,
+      bool isCaseSensitive,
+      bool isUnicode,
+      bool isDotAll,
+    )?
+    parseRegExp,
     TResult Function(RegExp? regexp, String testString, bool isGlobal)?
-        findMatches,
+    findMatches,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ParseRegExp value) parseRegExp,
     required TResult Function(_FindMatches value) findMatches,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_ParseRegExp value)? parseRegExp,
     TResult? Function(_FindMatches value)? findMatches,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_ParseRegExp value)? parseRegExp,
     TResult Function(_FindMatches value)? findMatches,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $RegExpEffectCopyWith<$Res> {
   factory $RegExpEffectCopyWith(
-          RegExpEffect value, $Res Function(RegExpEffect) then) =
-      _$RegExpEffectCopyWithImpl<$Res, RegExpEffect>;
+    RegExpEffect value,
+    $Res Function(RegExpEffect) then,
+  ) = _$RegExpEffectCopyWithImpl<$Res, RegExpEffect>;
 }
 
 /// @nodoc
@@ -89,15 +100,17 @@ class _$RegExpEffectCopyWithImpl<$Res, $Val extends RegExpEffect>
 /// @nodoc
 abstract class _$$ParseRegExpImplCopyWith<$Res> {
   factory _$$ParseRegExpImplCopyWith(
-          _$ParseRegExpImpl value, $Res Function(_$ParseRegExpImpl) then) =
-      __$$ParseRegExpImplCopyWithImpl<$Res>;
+    _$ParseRegExpImpl value,
+    $Res Function(_$ParseRegExpImpl) then,
+  ) = __$$ParseRegExpImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {String input,
-      bool isMultiline,
-      bool isCaseSensitive,
-      bool isUnicode,
-      bool isDotAll});
+  $Res call({
+    String input,
+    bool isMultiline,
+    bool isCaseSensitive,
+    bool isUnicode,
+    bool isDotAll,
+  });
 }
 
 /// @nodoc
@@ -105,8 +118,9 @@ class __$$ParseRegExpImplCopyWithImpl<$Res>
     extends _$RegExpEffectCopyWithImpl<$Res, _$ParseRegExpImpl>
     implements _$$ParseRegExpImplCopyWith<$Res> {
   __$$ParseRegExpImplCopyWithImpl(
-      _$ParseRegExpImpl _value, $Res Function(_$ParseRegExpImpl) _then)
-      : super(_value, _then);
+    _$ParseRegExpImpl _value,
+    $Res Function(_$ParseRegExpImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RegExpEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -119,40 +133,48 @@ class __$$ParseRegExpImplCopyWithImpl<$Res>
     Object? isUnicode = null,
     Object? isDotAll = null,
   }) {
-    return _then(_$ParseRegExpImpl(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      isMultiline: null == isMultiline
-          ? _value.isMultiline
-          : isMultiline // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isCaseSensitive: null == isCaseSensitive
-          ? _value.isCaseSensitive
-          : isCaseSensitive // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUnicode: null == isUnicode
-          ? _value.isUnicode
-          : isUnicode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isDotAll: null == isDotAll
-          ? _value.isDotAll
-          : isDotAll // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ParseRegExpImpl(
+        input:
+            null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                    as String,
+        isMultiline:
+            null == isMultiline
+                ? _value.isMultiline
+                : isMultiline // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        isCaseSensitive:
+            null == isCaseSensitive
+                ? _value.isCaseSensitive
+                : isCaseSensitive // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        isUnicode:
+            null == isUnicode
+                ? _value.isUnicode
+                : isUnicode // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        isDotAll:
+            null == isDotAll
+                ? _value.isDotAll
+                : isDotAll // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ParseRegExpImpl implements _ParseRegExp {
-  const _$ParseRegExpImpl(
-      {required this.input,
-      required this.isMultiline,
-      required this.isCaseSensitive,
-      required this.isUnicode,
-      required this.isDotAll});
+  const _$ParseRegExpImpl({
+    required this.input,
+    required this.isMultiline,
+    required this.isCaseSensitive,
+    required this.isUnicode,
+    required this.isDotAll,
+  });
 
   @override
   final String input;
@@ -188,7 +210,13 @@ class _$ParseRegExpImpl implements _ParseRegExp {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, input, isMultiline, isCaseSensitive, isUnicode, isDotAll);
+    runtimeType,
+    input,
+    isMultiline,
+    isCaseSensitive,
+    isUnicode,
+    isDotAll,
+  );
 
   /// Create a copy of RegExpEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -201,42 +229,72 @@ class _$ParseRegExpImpl implements _ParseRegExp {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String input, bool isMultiline,
-            bool isCaseSensitive, bool isUnicode, bool isDotAll)
-        parseRegExp,
+    required TResult Function(
+      String input,
+      bool isMultiline,
+      bool isCaseSensitive,
+      bool isUnicode,
+      bool isDotAll,
+    )
+    parseRegExp,
     required TResult Function(RegExp? regexp, String testString, bool isGlobal)
-        findMatches,
+    findMatches,
   }) {
     return parseRegExp(
-        input, isMultiline, isCaseSensitive, isUnicode, isDotAll);
+      input,
+      isMultiline,
+      isCaseSensitive,
+      isUnicode,
+      isDotAll,
+    );
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String input, bool isMultiline, bool isCaseSensitive,
-            bool isUnicode, bool isDotAll)?
-        parseRegExp,
+    TResult? Function(
+      String input,
+      bool isMultiline,
+      bool isCaseSensitive,
+      bool isUnicode,
+      bool isDotAll,
+    )?
+    parseRegExp,
     TResult? Function(RegExp? regexp, String testString, bool isGlobal)?
-        findMatches,
+    findMatches,
   }) {
     return parseRegExp?.call(
-        input, isMultiline, isCaseSensitive, isUnicode, isDotAll);
+      input,
+      isMultiline,
+      isCaseSensitive,
+      isUnicode,
+      isDotAll,
+    );
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String input, bool isMultiline, bool isCaseSensitive,
-            bool isUnicode, bool isDotAll)?
-        parseRegExp,
+    TResult Function(
+      String input,
+      bool isMultiline,
+      bool isCaseSensitive,
+      bool isUnicode,
+      bool isDotAll,
+    )?
+    parseRegExp,
     TResult Function(RegExp? regexp, String testString, bool isGlobal)?
-        findMatches,
+    findMatches,
     required TResult orElse(),
   }) {
     if (parseRegExp != null) {
       return parseRegExp(
-          input, isMultiline, isCaseSensitive, isUnicode, isDotAll);
+        input,
+        isMultiline,
+        isCaseSensitive,
+        isUnicode,
+        isDotAll,
+      );
     }
     return orElse();
   }
@@ -274,12 +332,13 @@ class _$ParseRegExpImpl implements _ParseRegExp {
 }
 
 abstract class _ParseRegExp implements RegExpEffect {
-  const factory _ParseRegExp(
-      {required final String input,
-      required final bool isMultiline,
-      required final bool isCaseSensitive,
-      required final bool isUnicode,
-      required final bool isDotAll}) = _$ParseRegExpImpl;
+  const factory _ParseRegExp({
+    required final String input,
+    required final bool isMultiline,
+    required final bool isCaseSensitive,
+    required final bool isUnicode,
+    required final bool isDotAll,
+  }) = _$ParseRegExpImpl;
 
   String get input;
   bool get isMultiline;
@@ -297,8 +356,9 @@ abstract class _ParseRegExp implements RegExpEffect {
 /// @nodoc
 abstract class _$$FindMatchesImplCopyWith<$Res> {
   factory _$$FindMatchesImplCopyWith(
-          _$FindMatchesImpl value, $Res Function(_$FindMatchesImpl) then) =
-      __$$FindMatchesImplCopyWithImpl<$Res>;
+    _$FindMatchesImpl value,
+    $Res Function(_$FindMatchesImpl) then,
+  ) = __$$FindMatchesImplCopyWithImpl<$Res>;
   @useResult
   $Res call({RegExp? regexp, String testString, bool isGlobal});
 }
@@ -308,8 +368,9 @@ class __$$FindMatchesImplCopyWithImpl<$Res>
     extends _$RegExpEffectCopyWithImpl<$Res, _$FindMatchesImpl>
     implements _$$FindMatchesImplCopyWith<$Res> {
   __$$FindMatchesImplCopyWithImpl(
-      _$FindMatchesImpl _value, $Res Function(_$FindMatchesImpl) _then)
-      : super(_value, _then);
+    _$FindMatchesImpl _value,
+    $Res Function(_$FindMatchesImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RegExpEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -320,28 +381,36 @@ class __$$FindMatchesImplCopyWithImpl<$Res>
     Object? testString = null,
     Object? isGlobal = null,
   }) {
-    return _then(_$FindMatchesImpl(
-      regexp: freezed == regexp
-          ? _value.regexp
-          : regexp // ignore: cast_nullable_to_non_nullable
-              as RegExp?,
-      testString: null == testString
-          ? _value.testString
-          : testString // ignore: cast_nullable_to_non_nullable
-              as String,
-      isGlobal: null == isGlobal
-          ? _value.isGlobal
-          : isGlobal // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$FindMatchesImpl(
+        regexp:
+            freezed == regexp
+                ? _value.regexp
+                : regexp // ignore: cast_nullable_to_non_nullable
+                    as RegExp?,
+        testString:
+            null == testString
+                ? _value.testString
+                : testString // ignore: cast_nullable_to_non_nullable
+                    as String,
+        isGlobal:
+            null == isGlobal
+                ? _value.isGlobal
+                : isGlobal // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$FindMatchesImpl implements _FindMatches {
-  const _$FindMatchesImpl(
-      {required this.regexp, required this.testString, required this.isGlobal});
+  const _$FindMatchesImpl({
+    required this.regexp,
+    required this.testString,
+    required this.isGlobal,
+  });
 
   @override
   final RegExp? regexp;
@@ -381,11 +450,16 @@ class _$FindMatchesImpl implements _FindMatches {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String input, bool isMultiline,
-            bool isCaseSensitive, bool isUnicode, bool isDotAll)
-        parseRegExp,
+    required TResult Function(
+      String input,
+      bool isMultiline,
+      bool isCaseSensitive,
+      bool isUnicode,
+      bool isDotAll,
+    )
+    parseRegExp,
     required TResult Function(RegExp? regexp, String testString, bool isGlobal)
-        findMatches,
+    findMatches,
   }) {
     return findMatches(regexp, testString, isGlobal);
   }
@@ -393,11 +467,16 @@ class _$FindMatchesImpl implements _FindMatches {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String input, bool isMultiline, bool isCaseSensitive,
-            bool isUnicode, bool isDotAll)?
-        parseRegExp,
+    TResult? Function(
+      String input,
+      bool isMultiline,
+      bool isCaseSensitive,
+      bool isUnicode,
+      bool isDotAll,
+    )?
+    parseRegExp,
     TResult? Function(RegExp? regexp, String testString, bool isGlobal)?
-        findMatches,
+    findMatches,
   }) {
     return findMatches?.call(regexp, testString, isGlobal);
   }
@@ -405,11 +484,16 @@ class _$FindMatchesImpl implements _FindMatches {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String input, bool isMultiline, bool isCaseSensitive,
-            bool isUnicode, bool isDotAll)?
-        parseRegExp,
+    TResult Function(
+      String input,
+      bool isMultiline,
+      bool isCaseSensitive,
+      bool isUnicode,
+      bool isDotAll,
+    )?
+    parseRegExp,
     TResult Function(RegExp? regexp, String testString, bool isGlobal)?
-        findMatches,
+    findMatches,
     required TResult orElse(),
   }) {
     if (findMatches != null) {
@@ -451,10 +535,11 @@ class _$FindMatchesImpl implements _FindMatches {
 }
 
 abstract class _FindMatches implements RegExpEffect {
-  const factory _FindMatches(
-      {required final RegExp? regexp,
-      required final String testString,
-      required final bool isGlobal}) = _$FindMatchesImpl;
+  const factory _FindMatches({
+    required final RegExp? regexp,
+    required final String testString,
+    required final bool isGlobal,
+  }) = _$FindMatchesImpl;
 
   RegExp? get regexp;
   String get testString;

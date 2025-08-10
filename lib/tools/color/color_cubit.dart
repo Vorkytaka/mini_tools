@@ -37,7 +37,7 @@ class ColorCubit extends Cubit<ColorState> {
 
   void setColor(Color color) {
     final String input;
-    if (color.alpha == 255) {
+    if (color.a == 255) {
       input = color.toHexString;
     } else {
       input = color.toArgbHexString;
@@ -55,22 +55,11 @@ class ColorState {
   final String input;
   final Color? color;
 
-  const ColorState({
-    required this.input,
-    required this.color,
-  });
+  const ColorState({required this.input, required this.color});
 
-  const ColorState.init()
-      : input = '',
-        color = null;
+  const ColorState.init() : input = '', color = null;
 
-  ColorState copyWith({
-    String? input,
-    Color? color,
-  }) {
-    return ColorState(
-      input: input ?? this.input,
-      color: color ?? this.color,
-    );
+  ColorState copyWith({String? input, Color? color}) {
+    return ColorState(input: input ?? this.input, color: color ?? this.color);
   }
 }

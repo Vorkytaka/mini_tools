@@ -12,7 +12,8 @@ part of 'text_diff_message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$TextDiffMessage {
@@ -21,52 +22,47 @@ mixin _$TextDiffMessage {
     required TResult Function(String text) updateNewText,
     required TResult Function(String text) updateOldText,
     required TResult Function(List<Diff> diffs) updateDiffs,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String text)? updateNewText,
     TResult? Function(String text)? updateOldText,
     TResult? Function(List<Diff> diffs)? updateDiffs,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String text)? updateNewText,
     TResult Function(String text)? updateOldText,
     TResult Function(List<Diff> diffs)? updateDiffs,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UpdateNewTextMessage value) updateNewText,
     required TResult Function(UpdateOldTextMessage value) updateOldText,
     required TResult Function(UpdateDiffsMessage value) updateDiffs,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(UpdateNewTextMessage value)? updateNewText,
     TResult? Function(UpdateOldTextMessage value)? updateOldText,
     TResult? Function(UpdateDiffsMessage value)? updateDiffs,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UpdateNewTextMessage value)? updateNewText,
     TResult Function(UpdateOldTextMessage value)? updateOldText,
     TResult Function(UpdateDiffsMessage value)? updateDiffs,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $TextDiffMessageCopyWith<$Res> {
   factory $TextDiffMessageCopyWith(
-          TextDiffMessage value, $Res Function(TextDiffMessage) then) =
-      _$TextDiffMessageCopyWithImpl<$Res, TextDiffMessage>;
+    TextDiffMessage value,
+    $Res Function(TextDiffMessage) then,
+  ) = _$TextDiffMessageCopyWithImpl<$Res, TextDiffMessage>;
 }
 
 /// @nodoc
@@ -85,9 +81,10 @@ class _$TextDiffMessageCopyWithImpl<$Res, $Val extends TextDiffMessage>
 
 /// @nodoc
 abstract class _$$UpdateNewTextMessageImplCopyWith<$Res> {
-  factory _$$UpdateNewTextMessageImplCopyWith(_$UpdateNewTextMessageImpl value,
-          $Res Function(_$UpdateNewTextMessageImpl) then) =
-      __$$UpdateNewTextMessageImplCopyWithImpl<$Res>;
+  factory _$$UpdateNewTextMessageImplCopyWith(
+    _$UpdateNewTextMessageImpl value,
+    $Res Function(_$UpdateNewTextMessageImpl) then,
+  ) = __$$UpdateNewTextMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String text});
 }
@@ -96,23 +93,24 @@ abstract class _$$UpdateNewTextMessageImplCopyWith<$Res> {
 class __$$UpdateNewTextMessageImplCopyWithImpl<$Res>
     extends _$TextDiffMessageCopyWithImpl<$Res, _$UpdateNewTextMessageImpl>
     implements _$$UpdateNewTextMessageImplCopyWith<$Res> {
-  __$$UpdateNewTextMessageImplCopyWithImpl(_$UpdateNewTextMessageImpl _value,
-      $Res Function(_$UpdateNewTextMessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateNewTextMessageImplCopyWithImpl(
+    _$UpdateNewTextMessageImpl _value,
+    $Res Function(_$UpdateNewTextMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of TextDiffMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_$UpdateNewTextMessageImpl(
-      null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? text = null}) {
+    return _then(
+      _$UpdateNewTextMessageImpl(
+        null == text
+            ? _value.text
+            : text // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -146,9 +144,11 @@ class _$UpdateNewTextMessageImpl implements UpdateNewTextMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateNewTextMessageImplCopyWith<_$UpdateNewTextMessageImpl>
-      get copyWith =>
-          __$$UpdateNewTextMessageImplCopyWithImpl<_$UpdateNewTextMessageImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$UpdateNewTextMessageImplCopyWithImpl<_$UpdateNewTextMessageImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -229,14 +229,15 @@ abstract class UpdateNewTextMessage implements TextDiffMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateNewTextMessageImplCopyWith<_$UpdateNewTextMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$UpdateOldTextMessageImplCopyWith<$Res> {
-  factory _$$UpdateOldTextMessageImplCopyWith(_$UpdateOldTextMessageImpl value,
-          $Res Function(_$UpdateOldTextMessageImpl) then) =
-      __$$UpdateOldTextMessageImplCopyWithImpl<$Res>;
+  factory _$$UpdateOldTextMessageImplCopyWith(
+    _$UpdateOldTextMessageImpl value,
+    $Res Function(_$UpdateOldTextMessageImpl) then,
+  ) = __$$UpdateOldTextMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String text});
 }
@@ -245,23 +246,24 @@ abstract class _$$UpdateOldTextMessageImplCopyWith<$Res> {
 class __$$UpdateOldTextMessageImplCopyWithImpl<$Res>
     extends _$TextDiffMessageCopyWithImpl<$Res, _$UpdateOldTextMessageImpl>
     implements _$$UpdateOldTextMessageImplCopyWith<$Res> {
-  __$$UpdateOldTextMessageImplCopyWithImpl(_$UpdateOldTextMessageImpl _value,
-      $Res Function(_$UpdateOldTextMessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateOldTextMessageImplCopyWithImpl(
+    _$UpdateOldTextMessageImpl _value,
+    $Res Function(_$UpdateOldTextMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of TextDiffMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_$UpdateOldTextMessageImpl(
-      null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? text = null}) {
+    return _then(
+      _$UpdateOldTextMessageImpl(
+        null == text
+            ? _value.text
+            : text // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -295,9 +297,11 @@ class _$UpdateOldTextMessageImpl implements UpdateOldTextMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateOldTextMessageImplCopyWith<_$UpdateOldTextMessageImpl>
-      get copyWith =>
-          __$$UpdateOldTextMessageImplCopyWithImpl<_$UpdateOldTextMessageImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$UpdateOldTextMessageImplCopyWithImpl<_$UpdateOldTextMessageImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -378,14 +382,15 @@ abstract class UpdateOldTextMessage implements TextDiffMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateOldTextMessageImplCopyWith<_$UpdateOldTextMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$UpdateDiffsMessageImplCopyWith<$Res> {
-  factory _$$UpdateDiffsMessageImplCopyWith(_$UpdateDiffsMessageImpl value,
-          $Res Function(_$UpdateDiffsMessageImpl) then) =
-      __$$UpdateDiffsMessageImplCopyWithImpl<$Res>;
+  factory _$$UpdateDiffsMessageImplCopyWith(
+    _$UpdateDiffsMessageImpl value,
+    $Res Function(_$UpdateDiffsMessageImpl) then,
+  ) = __$$UpdateDiffsMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Diff> diffs});
 }
@@ -394,23 +399,24 @@ abstract class _$$UpdateDiffsMessageImplCopyWith<$Res> {
 class __$$UpdateDiffsMessageImplCopyWithImpl<$Res>
     extends _$TextDiffMessageCopyWithImpl<$Res, _$UpdateDiffsMessageImpl>
     implements _$$UpdateDiffsMessageImplCopyWith<$Res> {
-  __$$UpdateDiffsMessageImplCopyWithImpl(_$UpdateDiffsMessageImpl _value,
-      $Res Function(_$UpdateDiffsMessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateDiffsMessageImplCopyWithImpl(
+    _$UpdateDiffsMessageImpl _value,
+    $Res Function(_$UpdateDiffsMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of TextDiffMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? diffs = null,
-  }) {
-    return _then(_$UpdateDiffsMessageImpl(
-      null == diffs
-          ? _value._diffs
-          : diffs // ignore: cast_nullable_to_non_nullable
-              as List<Diff>,
-    ));
+  $Res call({Object? diffs = null}) {
+    return _then(
+      _$UpdateDiffsMessageImpl(
+        null == diffs
+            ? _value._diffs
+            : diffs // ignore: cast_nullable_to_non_nullable
+                as List<Diff>,
+      ),
+    );
   }
 }
 
@@ -451,7 +457,9 @@ class _$UpdateDiffsMessageImpl implements UpdateDiffsMessage {
   @pragma('vm:prefer-inline')
   _$$UpdateDiffsMessageImplCopyWith<_$UpdateDiffsMessageImpl> get copyWith =>
       __$$UpdateDiffsMessageImplCopyWithImpl<_$UpdateDiffsMessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs

@@ -11,10 +11,7 @@ class MaterialColorsToolScreen extends StatelessWidget {
     final t = Translations.of(context);
 
     return MacosScaffold(
-      toolBar: ToolBar(
-        title: Text(t.materialColors.title),
-        centerTitle: true,
-      ),
+      toolBar: ToolBar(title: Text(t.materialColors.title), centerTitle: true),
       children: [
         ContentArea(
           builder: (context, controller) => _Body(controller: controller),
@@ -27,9 +24,7 @@ class MaterialColorsToolScreen extends StatelessWidget {
 class _Body extends StatelessWidget {
   final ScrollController? controller;
 
-  const _Body({
-    this.controller,
-  });
+  const _Body({this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +41,7 @@ class _Body extends StatelessWidget {
 class _ColorCollectionWidget extends StatelessWidget {
   final _ColorCollection collection;
 
-  const _ColorCollectionWidget({
-    required this.collection,
-  });
+  const _ColorCollectionWidget({required this.collection});
 
   @override
   Widget build(BuildContext context) {
@@ -70,17 +63,15 @@ class _ColorItemWidget extends StatelessWidget {
   final String? pretitle;
   final _ColorItem item;
 
-  const _ColorItemWidget({
-    required this.pretitle,
-    required this.item,
-  });
+  const _ColorItemWidget({required this.pretitle, required this.item});
 
   @override
   Widget build(BuildContext context) {
     final pretitle = this.pretitle;
-    final title = pretitle != null && pretitle.isNotEmpty
-        ? '$pretitle ${item.title}'
-        : item.title;
+    final title =
+        pretitle != null && pretitle.isNotEmpty
+            ? '$pretitle ${item.title}'
+            : item.title;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -97,9 +88,10 @@ class _ColorItemWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: DefaultTextStyle.merge(
               style: TextStyle(
-                color: item.brightness == Brightness.dark
-                    ? Colors.white
-                    : Colors.black,
+                color:
+                    item.brightness == Brightness.dark
+                        ? Colors.white
+                        : Colors.black,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

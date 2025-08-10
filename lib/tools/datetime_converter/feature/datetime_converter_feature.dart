@@ -10,18 +10,21 @@ export 'effect/datetime_converter_effect.dart';
 export 'message/datetime_converter_message.dart';
 export 'state/datetime_converter_state.dart';
 
-typedef DatetimeConverterFeature = Feature<DatetimeConverterState,
-    DatetimeConverterMessage, DatetimeConverterEffect>;
+typedef DatetimeConverterFeature =
+    Feature<
+      DatetimeConverterState,
+      DatetimeConverterMessage,
+      DatetimeConverterEffect
+    >;
 
 DatetimeConverterFeature datetimeConverterFeatureFactory({
   DateTime? initialDatetime,
-}) =>
-    DatetimeConverterFeature(
-      initialState: DatetimeConverterState.defaultValue(),
-      update: datetimeConverterUpdate,
-      effectHandlers: const [DatetimeConverterEffectHandler()],
-      initialEffects: [
-        if (initialDatetime != null)
-          DatetimeConverterEffect.setInitialDatetime(initialDatetime),
-      ],
-    );
+}) => DatetimeConverterFeature(
+  initialState: DatetimeConverterState.defaultValue(),
+  update: datetimeConverterUpdate,
+  effectHandlers: const [DatetimeConverterEffectHandler()],
+  initialEffects: [
+    if (initialDatetime != null)
+      DatetimeConverterEffect.setInitialDatetime(initialDatetime),
+  ],
+);

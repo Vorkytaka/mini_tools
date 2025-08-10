@@ -44,8 +44,9 @@ abstract interface class NewDatabaseHolder {
 }
 
 final class NewDatabaseHolderImpl implements NewDatabaseHolder {
-  final _subject =
-      BehaviorSubject<DatabaseHolderConnection>.seeded(const Disconnect());
+  final _subject = BehaviorSubject<DatabaseHolderConnection>.seeded(
+    const Disconnect(),
+  );
 
   @override
   Stream<DatabaseHolderConnection> get connection => _subject.stream;

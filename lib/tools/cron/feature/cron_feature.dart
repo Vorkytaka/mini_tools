@@ -17,8 +17,10 @@ CronFeature cronFeatureFactory() => CronFeature(
       update: cronUpdate,
       initialEffects: const [CronEffect.load()],
     )
-        .wrapEffects(const CronLoadEffectHandler())
-        .wrapEffects(DebounceEffectHandler(
-          duration: const Duration(milliseconds: 500),
-          handler: const CronSaveEffectHandler(),
-        ));
+    .wrapEffects(const CronLoadEffectHandler())
+    .wrapEffects(
+      DebounceEffectHandler(
+        duration: const Duration(milliseconds: 500),
+        handler: const CronSaveEffectHandler(),
+      ),
+    );

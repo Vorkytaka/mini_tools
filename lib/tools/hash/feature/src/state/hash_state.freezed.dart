@@ -12,7 +12,8 @@ part of 'hash_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$HashState {
@@ -34,12 +35,13 @@ abstract class $HashStateCopyWith<$Res> {
   factory $HashStateCopyWith(HashState value, $Res Function(HashState) then) =
       _$HashStateCopyWithImpl<$Res, HashState>;
   @useResult
-  $Res call(
-      {HashInput input,
-      HashFormat format,
-      HashAlgorithm algorithm,
-      Uint8List? hash,
-      int inputBytes});
+  $Res call({
+    HashInput input,
+    HashFormat format,
+    HashAlgorithm algorithm,
+    Uint8List? hash,
+    int inputBytes,
+  });
 
   $HashInputCopyWith<$Res> get input;
 }
@@ -65,28 +67,36 @@ class _$HashStateCopyWithImpl<$Res, $Val extends HashState>
     Object? hash = freezed,
     Object? inputBytes = null,
   }) {
-    return _then(_value.copyWith(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as HashInput,
-      format: null == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as HashFormat,
-      algorithm: null == algorithm
-          ? _value.algorithm
-          : algorithm // ignore: cast_nullable_to_non_nullable
-              as HashAlgorithm,
-      hash: freezed == hash
-          ? _value.hash
-          : hash // ignore: cast_nullable_to_non_nullable
-              as Uint8List?,
-      inputBytes: null == inputBytes
-          ? _value.inputBytes
-          : inputBytes // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            input:
+                null == input
+                    ? _value.input
+                    : input // ignore: cast_nullable_to_non_nullable
+                        as HashInput,
+            format:
+                null == format
+                    ? _value.format
+                    : format // ignore: cast_nullable_to_non_nullable
+                        as HashFormat,
+            algorithm:
+                null == algorithm
+                    ? _value.algorithm
+                    : algorithm // ignore: cast_nullable_to_non_nullable
+                        as HashAlgorithm,
+            hash:
+                freezed == hash
+                    ? _value.hash
+                    : hash // ignore: cast_nullable_to_non_nullable
+                        as Uint8List?,
+            inputBytes:
+                null == inputBytes
+                    ? _value.inputBytes
+                    : inputBytes // ignore: cast_nullable_to_non_nullable
+                        as int,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of HashState
@@ -104,16 +114,18 @@ class _$HashStateCopyWithImpl<$Res, $Val extends HashState>
 abstract class _$$HashStateImplCopyWith<$Res>
     implements $HashStateCopyWith<$Res> {
   factory _$$HashStateImplCopyWith(
-          _$HashStateImpl value, $Res Function(_$HashStateImpl) then) =
-      __$$HashStateImplCopyWithImpl<$Res>;
+    _$HashStateImpl value,
+    $Res Function(_$HashStateImpl) then,
+  ) = __$$HashStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {HashInput input,
-      HashFormat format,
-      HashAlgorithm algorithm,
-      Uint8List? hash,
-      int inputBytes});
+  $Res call({
+    HashInput input,
+    HashFormat format,
+    HashAlgorithm algorithm,
+    Uint8List? hash,
+    int inputBytes,
+  });
 
   @override
   $HashInputCopyWith<$Res> get input;
@@ -124,8 +136,9 @@ class __$$HashStateImplCopyWithImpl<$Res>
     extends _$HashStateCopyWithImpl<$Res, _$HashStateImpl>
     implements _$$HashStateImplCopyWith<$Res> {
   __$$HashStateImplCopyWithImpl(
-      _$HashStateImpl _value, $Res Function(_$HashStateImpl) _then)
-      : super(_value, _then);
+    _$HashStateImpl _value,
+    $Res Function(_$HashStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HashState
   /// with the given fields replaced by the non-null parameter values.
@@ -138,40 +151,48 @@ class __$$HashStateImplCopyWithImpl<$Res>
     Object? hash = freezed,
     Object? inputBytes = null,
   }) {
-    return _then(_$HashStateImpl(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as HashInput,
-      format: null == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as HashFormat,
-      algorithm: null == algorithm
-          ? _value.algorithm
-          : algorithm // ignore: cast_nullable_to_non_nullable
-              as HashAlgorithm,
-      hash: freezed == hash
-          ? _value.hash
-          : hash // ignore: cast_nullable_to_non_nullable
-              as Uint8List?,
-      inputBytes: null == inputBytes
-          ? _value.inputBytes
-          : inputBytes // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$HashStateImpl(
+        input:
+            null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                    as HashInput,
+        format:
+            null == format
+                ? _value.format
+                : format // ignore: cast_nullable_to_non_nullable
+                    as HashFormat,
+        algorithm:
+            null == algorithm
+                ? _value.algorithm
+                : algorithm // ignore: cast_nullable_to_non_nullable
+                    as HashAlgorithm,
+        hash:
+            freezed == hash
+                ? _value.hash
+                : hash // ignore: cast_nullable_to_non_nullable
+                    as Uint8List?,
+        inputBytes:
+            null == inputBytes
+                ? _value.inputBytes
+                : inputBytes // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$HashStateImpl implements _HashState {
-  const _$HashStateImpl(
-      {required this.input,
-      required this.format,
-      required this.algorithm,
-      required this.hash,
-      this.inputBytes = 0});
+  const _$HashStateImpl({
+    required this.input,
+    required this.format,
+    required this.algorithm,
+    required this.hash,
+    this.inputBytes = 0,
+  });
 
   @override
   final HashInput input;
@@ -205,8 +226,14 @@ class _$HashStateImpl implements _HashState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, input, format, algorithm,
-      const DeepCollectionEquality().hash(hash), inputBytes);
+  int get hashCode => Object.hash(
+    runtimeType,
+    input,
+    format,
+    algorithm,
+    const DeepCollectionEquality().hash(hash),
+    inputBytes,
+  );
 
   /// Create a copy of HashState
   /// with the given fields replaced by the non-null parameter values.
@@ -218,12 +245,13 @@ class _$HashStateImpl implements _HashState {
 }
 
 abstract class _HashState implements HashState {
-  const factory _HashState(
-      {required final HashInput input,
-      required final HashFormat format,
-      required final HashAlgorithm algorithm,
-      required final Uint8List? hash,
-      final int inputBytes}) = _$HashStateImpl;
+  const factory _HashState({
+    required final HashInput input,
+    required final HashFormat format,
+    required final HashAlgorithm algorithm,
+    required final Uint8List? hash,
+    final int inputBytes,
+  }) = _$HashStateImpl;
 
   @override
   HashInput get input;
@@ -250,40 +278,34 @@ mixin _$HashInput {
   TResult when<TResult extends Object?>({
     required TResult Function(String text) text,
     required TResult Function(String path) file,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String text)? text,
     TResult? Function(String path)? file,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String text)? text,
     TResult Function(String path)? file,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(TextInput value) text,
     required TResult Function(FileInput value) file,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(TextInput value)? text,
     TResult? Function(FileInput value)? file,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(TextInput value)? text,
     TResult Function(FileInput value)? file,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -309,8 +331,9 @@ class _$HashInputCopyWithImpl<$Res, $Val extends HashInput>
 /// @nodoc
 abstract class _$$TextInputImplCopyWith<$Res> {
   factory _$$TextInputImplCopyWith(
-          _$TextInputImpl value, $Res Function(_$TextInputImpl) then) =
-      __$$TextInputImplCopyWithImpl<$Res>;
+    _$TextInputImpl value,
+    $Res Function(_$TextInputImpl) then,
+  ) = __$$TextInputImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String text});
 }
@@ -320,22 +343,24 @@ class __$$TextInputImplCopyWithImpl<$Res>
     extends _$HashInputCopyWithImpl<$Res, _$TextInputImpl>
     implements _$$TextInputImplCopyWith<$Res> {
   __$$TextInputImplCopyWithImpl(
-      _$TextInputImpl _value, $Res Function(_$TextInputImpl) _then)
-      : super(_value, _then);
+    _$TextInputImpl _value,
+    $Res Function(_$TextInputImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HashInput
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_$TextInputImpl(
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? text = null}) {
+    return _then(
+      _$TextInputImpl(
+        text:
+            null == text
+                ? _value.text
+                : text // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -449,8 +474,9 @@ abstract class TextInput implements HashInput {
 /// @nodoc
 abstract class _$$FileInputImplCopyWith<$Res> {
   factory _$$FileInputImplCopyWith(
-          _$FileInputImpl value, $Res Function(_$FileInputImpl) then) =
-      __$$FileInputImplCopyWithImpl<$Res>;
+    _$FileInputImpl value,
+    $Res Function(_$FileInputImpl) then,
+  ) = __$$FileInputImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String path});
 }
@@ -460,22 +486,24 @@ class __$$FileInputImplCopyWithImpl<$Res>
     extends _$HashInputCopyWithImpl<$Res, _$FileInputImpl>
     implements _$$FileInputImplCopyWith<$Res> {
   __$$FileInputImplCopyWithImpl(
-      _$FileInputImpl _value, $Res Function(_$FileInputImpl) _then)
-      : super(_value, _then);
+    _$FileInputImpl _value,
+    $Res Function(_$FileInputImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HashInput
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? path = null,
-  }) {
-    return _then(_$FileInputImpl(
-      path: null == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? path = null}) {
+    return _then(
+      _$FileInputImpl(
+        path:
+            null == path
+                ? _value.path
+                : path // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 

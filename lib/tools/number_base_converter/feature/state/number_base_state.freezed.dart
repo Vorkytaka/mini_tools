@@ -12,7 +12,8 @@ part of 'number_base_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 NumberBaseState _$NumberBaseStateFromJson(Map<String, dynamic> json) {
   return _NumberBaseState.fromJson(json);
@@ -41,17 +42,19 @@ mixin _$NumberBaseState {
 /// @nodoc
 abstract class $NumberBaseStateCopyWith<$Res> {
   factory $NumberBaseStateCopyWith(
-          NumberBaseState value, $Res Function(NumberBaseState) then) =
-      _$NumberBaseStateCopyWithImpl<$Res, NumberBaseState>;
+    NumberBaseState value,
+    $Res Function(NumberBaseState) then,
+  ) = _$NumberBaseStateCopyWithImpl<$Res, NumberBaseState>;
   @useResult
-  $Res call(
-      {String base2,
-      String base8,
-      String base10,
-      String base16,
-      int customBase,
-      String customBaseValue,
-      BigInt? value});
+  $Res call({
+    String base2,
+    String base8,
+    String base10,
+    String base16,
+    int customBase,
+    String customBaseValue,
+    BigInt? value,
+  });
 }
 
 /// @nodoc
@@ -77,55 +80,67 @@ class _$NumberBaseStateCopyWithImpl<$Res, $Val extends NumberBaseState>
     Object? customBaseValue = null,
     Object? value = freezed,
   }) {
-    return _then(_value.copyWith(
-      base2: null == base2
-          ? _value.base2
-          : base2 // ignore: cast_nullable_to_non_nullable
-              as String,
-      base8: null == base8
-          ? _value.base8
-          : base8 // ignore: cast_nullable_to_non_nullable
-              as String,
-      base10: null == base10
-          ? _value.base10
-          : base10 // ignore: cast_nullable_to_non_nullable
-              as String,
-      base16: null == base16
-          ? _value.base16
-          : base16 // ignore: cast_nullable_to_non_nullable
-              as String,
-      customBase: null == customBase
-          ? _value.customBase
-          : customBase // ignore: cast_nullable_to_non_nullable
-              as int,
-      customBaseValue: null == customBaseValue
-          ? _value.customBaseValue
-          : customBaseValue // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as BigInt?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            base2:
+                null == base2
+                    ? _value.base2
+                    : base2 // ignore: cast_nullable_to_non_nullable
+                        as String,
+            base8:
+                null == base8
+                    ? _value.base8
+                    : base8 // ignore: cast_nullable_to_non_nullable
+                        as String,
+            base10:
+                null == base10
+                    ? _value.base10
+                    : base10 // ignore: cast_nullable_to_non_nullable
+                        as String,
+            base16:
+                null == base16
+                    ? _value.base16
+                    : base16 // ignore: cast_nullable_to_non_nullable
+                        as String,
+            customBase:
+                null == customBase
+                    ? _value.customBase
+                    : customBase // ignore: cast_nullable_to_non_nullable
+                        as int,
+            customBaseValue:
+                null == customBaseValue
+                    ? _value.customBaseValue
+                    : customBaseValue // ignore: cast_nullable_to_non_nullable
+                        as String,
+            value:
+                freezed == value
+                    ? _value.value
+                    : value // ignore: cast_nullable_to_non_nullable
+                        as BigInt?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$NumberBaseStateImplCopyWith<$Res>
     implements $NumberBaseStateCopyWith<$Res> {
-  factory _$$NumberBaseStateImplCopyWith(_$NumberBaseStateImpl value,
-          $Res Function(_$NumberBaseStateImpl) then) =
-      __$$NumberBaseStateImplCopyWithImpl<$Res>;
+  factory _$$NumberBaseStateImplCopyWith(
+    _$NumberBaseStateImpl value,
+    $Res Function(_$NumberBaseStateImpl) then,
+  ) = __$$NumberBaseStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String base2,
-      String base8,
-      String base10,
-      String base16,
-      int customBase,
-      String customBaseValue,
-      BigInt? value});
+  $Res call({
+    String base2,
+    String base8,
+    String base10,
+    String base16,
+    int customBase,
+    String customBaseValue,
+    BigInt? value,
+  });
 }
 
 /// @nodoc
@@ -133,8 +148,9 @@ class __$$NumberBaseStateImplCopyWithImpl<$Res>
     extends _$NumberBaseStateCopyWithImpl<$Res, _$NumberBaseStateImpl>
     implements _$$NumberBaseStateImplCopyWith<$Res> {
   __$$NumberBaseStateImplCopyWithImpl(
-      _$NumberBaseStateImpl _value, $Res Function(_$NumberBaseStateImpl) _then)
-      : super(_value, _then);
+    _$NumberBaseStateImpl _value,
+    $Res Function(_$NumberBaseStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of NumberBaseState
   /// with the given fields replaced by the non-null parameter values.
@@ -149,51 +165,60 @@ class __$$NumberBaseStateImplCopyWithImpl<$Res>
     Object? customBaseValue = null,
     Object? value = freezed,
   }) {
-    return _then(_$NumberBaseStateImpl(
-      base2: null == base2
-          ? _value.base2
-          : base2 // ignore: cast_nullable_to_non_nullable
-              as String,
-      base8: null == base8
-          ? _value.base8
-          : base8 // ignore: cast_nullable_to_non_nullable
-              as String,
-      base10: null == base10
-          ? _value.base10
-          : base10 // ignore: cast_nullable_to_non_nullable
-              as String,
-      base16: null == base16
-          ? _value.base16
-          : base16 // ignore: cast_nullable_to_non_nullable
-              as String,
-      customBase: null == customBase
-          ? _value.customBase
-          : customBase // ignore: cast_nullable_to_non_nullable
-              as int,
-      customBaseValue: null == customBaseValue
-          ? _value.customBaseValue
-          : customBaseValue // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as BigInt?,
-    ));
+    return _then(
+      _$NumberBaseStateImpl(
+        base2:
+            null == base2
+                ? _value.base2
+                : base2 // ignore: cast_nullable_to_non_nullable
+                    as String,
+        base8:
+            null == base8
+                ? _value.base8
+                : base8 // ignore: cast_nullable_to_non_nullable
+                    as String,
+        base10:
+            null == base10
+                ? _value.base10
+                : base10 // ignore: cast_nullable_to_non_nullable
+                    as String,
+        base16:
+            null == base16
+                ? _value.base16
+                : base16 // ignore: cast_nullable_to_non_nullable
+                    as String,
+        customBase:
+            null == customBase
+                ? _value.customBase
+                : customBase // ignore: cast_nullable_to_non_nullable
+                    as int,
+        customBaseValue:
+            null == customBaseValue
+                ? _value.customBaseValue
+                : customBaseValue // ignore: cast_nullable_to_non_nullable
+                    as String,
+        value:
+            freezed == value
+                ? _value.value
+                : value // ignore: cast_nullable_to_non_nullable
+                    as BigInt?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$NumberBaseStateImpl implements _NumberBaseState {
-  const _$NumberBaseStateImpl(
-      {required this.base2,
-      required this.base8,
-      required this.base10,
-      required this.base16,
-      required this.customBase,
-      required this.customBaseValue,
-      required this.value})
-      : assert(customBase >= 2 && customBase <= 36);
+  const _$NumberBaseStateImpl({
+    required this.base2,
+    required this.base8,
+    required this.base10,
+    required this.base16,
+    required this.customBase,
+    required this.customBaseValue,
+    required this.value,
+  }) : assert(customBase >= 2 && customBase <= 36);
 
   factory _$NumberBaseStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$NumberBaseStateImplFromJson(json);
@@ -236,8 +261,16 @@ class _$NumberBaseStateImpl implements _NumberBaseState {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, base2, base8, base10, base16,
-      customBase, customBaseValue, value);
+  int get hashCode => Object.hash(
+    runtimeType,
+    base2,
+    base8,
+    base10,
+    base16,
+    customBase,
+    customBaseValue,
+    value,
+  );
 
   /// Create a copy of NumberBaseState
   /// with the given fields replaced by the non-null parameter values.
@@ -246,25 +279,26 @@ class _$NumberBaseStateImpl implements _NumberBaseState {
   @pragma('vm:prefer-inline')
   _$$NumberBaseStateImplCopyWith<_$NumberBaseStateImpl> get copyWith =>
       __$$NumberBaseStateImplCopyWithImpl<_$NumberBaseStateImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$NumberBaseStateImplToJson(
-      this,
-    );
+    return _$$NumberBaseStateImplToJson(this);
   }
 }
 
 abstract class _NumberBaseState implements NumberBaseState {
-  const factory _NumberBaseState(
-      {required final String base2,
-      required final String base8,
-      required final String base10,
-      required final String base16,
-      required final int customBase,
-      required final String customBaseValue,
-      required final BigInt? value}) = _$NumberBaseStateImpl;
+  const factory _NumberBaseState({
+    required final String base2,
+    required final String base8,
+    required final String base10,
+    required final String base16,
+    required final int customBase,
+    required final String customBaseValue,
+    required final BigInt? value,
+  }) = _$NumberBaseStateImpl;
 
   factory _NumberBaseState.fromJson(Map<String, dynamic> json) =
       _$NumberBaseStateImpl.fromJson;

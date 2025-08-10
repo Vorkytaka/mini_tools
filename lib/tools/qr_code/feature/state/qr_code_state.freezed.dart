@@ -12,7 +12,8 @@ part of 'qr_code_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 QrCodeState _$QrCodeStateFromJson(Map<String, dynamic> json) {
   return _QrCodeState.fromJson(json);
@@ -41,15 +42,17 @@ mixin _$QrCodeState {
 /// @nodoc
 abstract class $QrCodeStateCopyWith<$Res> {
   factory $QrCodeStateCopyWith(
-          QrCodeState value, $Res Function(QrCodeState) then) =
-      _$QrCodeStateCopyWithImpl<$Res, QrCodeState>;
+    QrCodeState value,
+    $Res Function(QrCodeState) then,
+  ) = _$QrCodeStateCopyWithImpl<$Res, QrCodeState>;
   @useResult
-  $Res call(
-      {String input,
-      ErrorCorrectionLevel correctionLevel,
-      ExportType exportType,
-      QrCodeVisualData visualData,
-      @Assert('exportDensity > 0') int exportSize});
+  $Res call({
+    String input,
+    ErrorCorrectionLevel correctionLevel,
+    ExportType exportType,
+    QrCodeVisualData visualData,
+    @Assert('exportDensity > 0') int exportSize,
+  });
 
   $QrCodeVisualDataCopyWith<$Res> get visualData;
 }
@@ -75,28 +78,36 @@ class _$QrCodeStateCopyWithImpl<$Res, $Val extends QrCodeState>
     Object? visualData = null,
     Object? exportSize = null,
   }) {
-    return _then(_value.copyWith(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      correctionLevel: null == correctionLevel
-          ? _value.correctionLevel
-          : correctionLevel // ignore: cast_nullable_to_non_nullable
-              as ErrorCorrectionLevel,
-      exportType: null == exportType
-          ? _value.exportType
-          : exportType // ignore: cast_nullable_to_non_nullable
-              as ExportType,
-      visualData: null == visualData
-          ? _value.visualData
-          : visualData // ignore: cast_nullable_to_non_nullable
-              as QrCodeVisualData,
-      exportSize: null == exportSize
-          ? _value.exportSize
-          : exportSize // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            input:
+                null == input
+                    ? _value.input
+                    : input // ignore: cast_nullable_to_non_nullable
+                        as String,
+            correctionLevel:
+                null == correctionLevel
+                    ? _value.correctionLevel
+                    : correctionLevel // ignore: cast_nullable_to_non_nullable
+                        as ErrorCorrectionLevel,
+            exportType:
+                null == exportType
+                    ? _value.exportType
+                    : exportType // ignore: cast_nullable_to_non_nullable
+                        as ExportType,
+            visualData:
+                null == visualData
+                    ? _value.visualData
+                    : visualData // ignore: cast_nullable_to_non_nullable
+                        as QrCodeVisualData,
+            exportSize:
+                null == exportSize
+                    ? _value.exportSize
+                    : exportSize // ignore: cast_nullable_to_non_nullable
+                        as int,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of QrCodeState
@@ -114,16 +125,18 @@ class _$QrCodeStateCopyWithImpl<$Res, $Val extends QrCodeState>
 abstract class _$$QrCodeStateImplCopyWith<$Res>
     implements $QrCodeStateCopyWith<$Res> {
   factory _$$QrCodeStateImplCopyWith(
-          _$QrCodeStateImpl value, $Res Function(_$QrCodeStateImpl) then) =
-      __$$QrCodeStateImplCopyWithImpl<$Res>;
+    _$QrCodeStateImpl value,
+    $Res Function(_$QrCodeStateImpl) then,
+  ) = __$$QrCodeStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String input,
-      ErrorCorrectionLevel correctionLevel,
-      ExportType exportType,
-      QrCodeVisualData visualData,
-      @Assert('exportDensity > 0') int exportSize});
+  $Res call({
+    String input,
+    ErrorCorrectionLevel correctionLevel,
+    ExportType exportType,
+    QrCodeVisualData visualData,
+    @Assert('exportDensity > 0') int exportSize,
+  });
 
   @override
   $QrCodeVisualDataCopyWith<$Res> get visualData;
@@ -134,8 +147,9 @@ class __$$QrCodeStateImplCopyWithImpl<$Res>
     extends _$QrCodeStateCopyWithImpl<$Res, _$QrCodeStateImpl>
     implements _$$QrCodeStateImplCopyWith<$Res> {
   __$$QrCodeStateImplCopyWithImpl(
-      _$QrCodeStateImpl _value, $Res Function(_$QrCodeStateImpl) _then)
-      : super(_value, _then);
+    _$QrCodeStateImpl _value,
+    $Res Function(_$QrCodeStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of QrCodeState
   /// with the given fields replaced by the non-null parameter values.
@@ -148,41 +162,48 @@ class __$$QrCodeStateImplCopyWithImpl<$Res>
     Object? visualData = null,
     Object? exportSize = null,
   }) {
-    return _then(_$QrCodeStateImpl(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      correctionLevel: null == correctionLevel
-          ? _value.correctionLevel
-          : correctionLevel // ignore: cast_nullable_to_non_nullable
-              as ErrorCorrectionLevel,
-      exportType: null == exportType
-          ? _value.exportType
-          : exportType // ignore: cast_nullable_to_non_nullable
-              as ExportType,
-      visualData: null == visualData
-          ? _value.visualData
-          : visualData // ignore: cast_nullable_to_non_nullable
-              as QrCodeVisualData,
-      exportSize: null == exportSize
-          ? _value.exportSize
-          : exportSize // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$QrCodeStateImpl(
+        input:
+            null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                    as String,
+        correctionLevel:
+            null == correctionLevel
+                ? _value.correctionLevel
+                : correctionLevel // ignore: cast_nullable_to_non_nullable
+                    as ErrorCorrectionLevel,
+        exportType:
+            null == exportType
+                ? _value.exportType
+                : exportType // ignore: cast_nullable_to_non_nullable
+                    as ExportType,
+        visualData:
+            null == visualData
+                ? _value.visualData
+                : visualData // ignore: cast_nullable_to_non_nullable
+                    as QrCodeVisualData,
+        exportSize:
+            null == exportSize
+                ? _value.exportSize
+                : exportSize // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$QrCodeStateImpl extends _QrCodeState {
-  const _$QrCodeStateImpl(
-      {required this.input,
-      required this.correctionLevel,
-      required this.exportType,
-      required this.visualData,
-      @Assert('exportDensity > 0') this.exportSize = 1024})
-      : super._();
+  const _$QrCodeStateImpl({
+    required this.input,
+    required this.correctionLevel,
+    required this.exportType,
+    required this.visualData,
+    @Assert('exportDensity > 0') this.exportSize = 1024,
+  }) : super._();
 
   factory _$QrCodeStateImpl.fromJson(Map<String, dynamic> json) =>
       _$$QrCodeStateImplFromJson(json);
@@ -224,7 +245,13 @@ class _$QrCodeStateImpl extends _QrCodeState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, input, correctionLevel, exportType, visualData, exportSize);
+    runtimeType,
+    input,
+    correctionLevel,
+    exportType,
+    visualData,
+    exportSize,
+  );
 
   /// Create a copy of QrCodeState
   /// with the given fields replaced by the non-null parameter values.
@@ -236,19 +263,18 @@ class _$QrCodeStateImpl extends _QrCodeState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$QrCodeStateImplToJson(
-      this,
-    );
+    return _$$QrCodeStateImplToJson(this);
   }
 }
 
 abstract class _QrCodeState extends QrCodeState {
-  const factory _QrCodeState(
-      {required final String input,
-      required final ErrorCorrectionLevel correctionLevel,
-      required final ExportType exportType,
-      required final QrCodeVisualData visualData,
-      @Assert('exportDensity > 0') final int exportSize}) = _$QrCodeStateImpl;
+  const factory _QrCodeState({
+    required final String input,
+    required final ErrorCorrectionLevel correctionLevel,
+    required final ExportType exportType,
+    required final QrCodeVisualData visualData,
+    @Assert('exportDensity > 0') final int exportSize,
+  }) = _$QrCodeStateImpl;
   const _QrCodeState._() : super._();
 
   factory _QrCodeState.fromJson(Map<String, dynamic> json) =
@@ -301,14 +327,16 @@ mixin _$QrCodeVisualData {
 /// @nodoc
 abstract class $QrCodeVisualDataCopyWith<$Res> {
   factory $QrCodeVisualDataCopyWith(
-          QrCodeVisualData value, $Res Function(QrCodeVisualData) then) =
-      _$QrCodeVisualDataCopyWithImpl<$Res, QrCodeVisualData>;
+    QrCodeVisualData value,
+    $Res Function(QrCodeVisualData) then,
+  ) = _$QrCodeVisualDataCopyWithImpl<$Res, QrCodeVisualData>;
   @useResult
-  $Res call(
-      {@ColorConverter() Color backgroundColor,
-      @ColorConverter() Color foregroundColor,
-      QrCodeShape shape,
-      @EdgeInsetsConverter() EdgeInsets paddings});
+  $Res call({
+    @ColorConverter() Color backgroundColor,
+    @ColorConverter() Color foregroundColor,
+    QrCodeShape shape,
+    @EdgeInsetsConverter() EdgeInsets paddings,
+  });
 }
 
 /// @nodoc
@@ -331,49 +359,59 @@ class _$QrCodeVisualDataCopyWithImpl<$Res, $Val extends QrCodeVisualData>
     Object? shape = null,
     Object? paddings = null,
   }) {
-    return _then(_value.copyWith(
-      backgroundColor: null == backgroundColor
-          ? _value.backgroundColor
-          : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as Color,
-      foregroundColor: null == foregroundColor
-          ? _value.foregroundColor
-          : foregroundColor // ignore: cast_nullable_to_non_nullable
-              as Color,
-      shape: null == shape
-          ? _value.shape
-          : shape // ignore: cast_nullable_to_non_nullable
-              as QrCodeShape,
-      paddings: null == paddings
-          ? _value.paddings
-          : paddings // ignore: cast_nullable_to_non_nullable
-              as EdgeInsets,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            backgroundColor:
+                null == backgroundColor
+                    ? _value.backgroundColor
+                    : backgroundColor // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            foregroundColor:
+                null == foregroundColor
+                    ? _value.foregroundColor
+                    : foregroundColor // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            shape:
+                null == shape
+                    ? _value.shape
+                    : shape // ignore: cast_nullable_to_non_nullable
+                        as QrCodeShape,
+            paddings:
+                null == paddings
+                    ? _value.paddings
+                    : paddings // ignore: cast_nullable_to_non_nullable
+                        as EdgeInsets,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$QrCodeVisualDataImplCopyWith<$Res>
     implements $QrCodeVisualDataCopyWith<$Res> {
-  factory _$$QrCodeVisualDataImplCopyWith(_$QrCodeVisualDataImpl value,
-          $Res Function(_$QrCodeVisualDataImpl) then) =
-      __$$QrCodeVisualDataImplCopyWithImpl<$Res>;
+  factory _$$QrCodeVisualDataImplCopyWith(
+    _$QrCodeVisualDataImpl value,
+    $Res Function(_$QrCodeVisualDataImpl) then,
+  ) = __$$QrCodeVisualDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@ColorConverter() Color backgroundColor,
-      @ColorConverter() Color foregroundColor,
-      QrCodeShape shape,
-      @EdgeInsetsConverter() EdgeInsets paddings});
+  $Res call({
+    @ColorConverter() Color backgroundColor,
+    @ColorConverter() Color foregroundColor,
+    QrCodeShape shape,
+    @EdgeInsetsConverter() EdgeInsets paddings,
+  });
 }
 
 /// @nodoc
 class __$$QrCodeVisualDataImplCopyWithImpl<$Res>
     extends _$QrCodeVisualDataCopyWithImpl<$Res, _$QrCodeVisualDataImpl>
     implements _$$QrCodeVisualDataImplCopyWith<$Res> {
-  __$$QrCodeVisualDataImplCopyWithImpl(_$QrCodeVisualDataImpl _value,
-      $Res Function(_$QrCodeVisualDataImpl) _then)
-      : super(_value, _then);
+  __$$QrCodeVisualDataImplCopyWithImpl(
+    _$QrCodeVisualDataImpl _value,
+    $Res Function(_$QrCodeVisualDataImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of QrCodeVisualData
   /// with the given fields replaced by the non-null parameter values.
@@ -385,35 +423,42 @@ class __$$QrCodeVisualDataImplCopyWithImpl<$Res>
     Object? shape = null,
     Object? paddings = null,
   }) {
-    return _then(_$QrCodeVisualDataImpl(
-      backgroundColor: null == backgroundColor
-          ? _value.backgroundColor
-          : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as Color,
-      foregroundColor: null == foregroundColor
-          ? _value.foregroundColor
-          : foregroundColor // ignore: cast_nullable_to_non_nullable
-              as Color,
-      shape: null == shape
-          ? _value.shape
-          : shape // ignore: cast_nullable_to_non_nullable
-              as QrCodeShape,
-      paddings: null == paddings
-          ? _value.paddings
-          : paddings // ignore: cast_nullable_to_non_nullable
-              as EdgeInsets,
-    ));
+    return _then(
+      _$QrCodeVisualDataImpl(
+        backgroundColor:
+            null == backgroundColor
+                ? _value.backgroundColor
+                : backgroundColor // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        foregroundColor:
+            null == foregroundColor
+                ? _value.foregroundColor
+                : foregroundColor // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        shape:
+            null == shape
+                ? _value.shape
+                : shape // ignore: cast_nullable_to_non_nullable
+                    as QrCodeShape,
+        paddings:
+            null == paddings
+                ? _value.paddings
+                : paddings // ignore: cast_nullable_to_non_nullable
+                    as EdgeInsets,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$QrCodeVisualDataImpl implements _QrCodeVisualData {
-  const _$QrCodeVisualDataImpl(
-      {@ColorConverter() required this.backgroundColor,
-      @ColorConverter() required this.foregroundColor,
-      required this.shape,
-      @EdgeInsetsConverter() required this.paddings});
+  const _$QrCodeVisualDataImpl({
+    @ColorConverter() required this.backgroundColor,
+    @ColorConverter() required this.foregroundColor,
+    required this.shape,
+    @EdgeInsetsConverter() required this.paddings,
+  });
 
   factory _$QrCodeVisualDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$QrCodeVisualDataImplFromJson(json);
@@ -452,7 +497,12 @@ class _$QrCodeVisualDataImpl implements _QrCodeVisualData {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, backgroundColor, foregroundColor, shape, paddings);
+    runtimeType,
+    backgroundColor,
+    foregroundColor,
+    shape,
+    paddings,
+  );
 
   /// Create a copy of QrCodeVisualData
   /// with the given fields replaced by the non-null parameter values.
@@ -461,23 +511,23 @@ class _$QrCodeVisualDataImpl implements _QrCodeVisualData {
   @pragma('vm:prefer-inline')
   _$$QrCodeVisualDataImplCopyWith<_$QrCodeVisualDataImpl> get copyWith =>
       __$$QrCodeVisualDataImplCopyWithImpl<_$QrCodeVisualDataImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$QrCodeVisualDataImplToJson(
-      this,
-    );
+    return _$$QrCodeVisualDataImplToJson(this);
   }
 }
 
 abstract class _QrCodeVisualData implements QrCodeVisualData {
-  const factory _QrCodeVisualData(
-          {@ColorConverter() required final Color backgroundColor,
-          @ColorConverter() required final Color foregroundColor,
-          required final QrCodeShape shape,
-          @EdgeInsetsConverter() required final EdgeInsets paddings}) =
-      _$QrCodeVisualDataImpl;
+  const factory _QrCodeVisualData({
+    @ColorConverter() required final Color backgroundColor,
+    @ColorConverter() required final Color foregroundColor,
+    required final QrCodeShape shape,
+    @EdgeInsetsConverter() required final EdgeInsets paddings,
+  }) = _$QrCodeVisualDataImpl;
 
   factory _QrCodeVisualData.fromJson(Map<String, dynamic> json) =
       _$QrCodeVisualDataImpl.fromJson;

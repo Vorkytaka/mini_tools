@@ -3,17 +3,9 @@ import 'package:timezone/timezone.dart';
 
 part 'datetime_converter_state.freezed.dart';
 
-enum InputType {
-  sec,
-  ms,
-  us,
-  iso,
-}
+enum InputType { sec, ms, us, iso }
 
-enum DatetimeFormat {
-  iso8601,
-  rfc2822,
-}
+enum DatetimeFormat { iso8601, rfc2822 }
 
 @freezed
 @immutable
@@ -27,10 +19,10 @@ class DatetimeConverterState with _$DatetimeConverterState {
   }) = _DatetimeConverterState;
 
   factory DatetimeConverterState.defaultValue() => const DatetimeConverterState(
-        datetime: null,
-        isReadOnly: false,
-        input: '',
-        inputType: InputType.sec,
-        format: DatetimeFormat.rfc2822,
-      );
+    datetime: null,
+    isReadOnly: false,
+    input: '',
+    inputType: InputType.sec,
+    format: DatetimeFormat.rfc2822,
+  );
 }

@@ -15,10 +15,10 @@ class TextDiffState with _$TextDiffState {
   }) = _TextDiffState;
 
   factory TextDiffState.init() => const TextDiffState(
-        oldText: '',
-        newText: '',
-        oldDiffs: [],
-        newDiffs: [],
-        diffs: [],
-      );
+    oldText: '',
+    newText: '',
+    oldDiffs: [],
+    newDiffs: [],
+    diffs: [],
+  );
 }

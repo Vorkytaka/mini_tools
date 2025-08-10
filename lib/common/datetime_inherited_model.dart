@@ -2,19 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 
-enum DatetimeHolderType {
-  ms,
-  sec,
-  min,
-}
+enum DatetimeHolderType { ms, sec, min }
 
 class _DatetimeModel extends InheritedModel<DatetimeHolderType> {
   final DateTime datetime;
 
-  const _DatetimeModel({
-    required this.datetime,
-    required super.child,
-  });
+  const _DatetimeModel({required this.datetime, required super.child});
 
   @override
   bool updateShouldNotify(_DatetimeModel oldWidget) {
@@ -39,10 +32,7 @@ class _DatetimeModel extends InheritedModel<DatetimeHolderType> {
 class DatetimeHolder extends StatefulWidget {
   final Widget child;
 
-  const DatetimeHolder({
-    required this.child,
-    super.key,
-  });
+  const DatetimeHolder({required this.child, super.key});
 
   @override
   State<DatetimeHolder> createState() => _DatetimeHolderState();
@@ -76,10 +66,7 @@ class _DatetimeHolderState extends State<DatetimeHolder> {
 
   @override
   Widget build(BuildContext context) {
-    return _DatetimeModel(
-      datetime: _now,
-      child: widget.child,
-    );
+    return _DatetimeModel(datetime: _now, child: widget.child);
   }
 
   void _onUpdate(Timer _) {

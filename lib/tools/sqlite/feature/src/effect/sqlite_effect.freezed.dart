@@ -12,7 +12,8 @@ part of 'sqlite_effect.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SqliteEffect {
@@ -25,8 +26,7 @@ mixin _$SqliteEffect {
     required TResult Function() subscribeDb,
     required TResult Function() unsubscribeDb,
     required TResult Function() dropTable,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query)? execute,
@@ -36,8 +36,7 @@ mixin _$SqliteEffect {
     TResult? Function()? subscribeDb,
     TResult? Function()? unsubscribeDb,
     TResult? Function()? dropTable,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query)? execute,
@@ -48,8 +47,7 @@ mixin _$SqliteEffect {
     TResult Function()? unsubscribeDb,
     TResult Function()? dropTable,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ExecuteEffect value) execute,
@@ -59,8 +57,7 @@ mixin _$SqliteEffect {
     required TResult Function(SubscribeDbEffect value) subscribeDb,
     required TResult Function(UnsubscribeDbEffect value) unsubscribeDb,
     required TResult Function(DropTableEffect value) dropTable,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ExecuteEffect value)? execute,
@@ -70,8 +67,7 @@ mixin _$SqliteEffect {
     TResult? Function(SubscribeDbEffect value)? subscribeDb,
     TResult? Function(UnsubscribeDbEffect value)? unsubscribeDb,
     TResult? Function(DropTableEffect value)? dropTable,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ExecuteEffect value)? execute,
@@ -82,15 +78,15 @@ mixin _$SqliteEffect {
     TResult Function(UnsubscribeDbEffect value)? unsubscribeDb,
     TResult Function(DropTableEffect value)? dropTable,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SqliteEffectCopyWith<$Res> {
   factory $SqliteEffectCopyWith(
-          SqliteEffect value, $Res Function(SqliteEffect) then) =
-      _$SqliteEffectCopyWithImpl<$Res, SqliteEffect>;
+    SqliteEffect value,
+    $Res Function(SqliteEffect) then,
+  ) = _$SqliteEffectCopyWithImpl<$Res, SqliteEffect>;
 }
 
 /// @nodoc
@@ -110,8 +106,9 @@ class _$SqliteEffectCopyWithImpl<$Res, $Val extends SqliteEffect>
 /// @nodoc
 abstract class _$$ExecuteEffectImplCopyWith<$Res> {
   factory _$$ExecuteEffectImplCopyWith(
-          _$ExecuteEffectImpl value, $Res Function(_$ExecuteEffectImpl) then) =
-      __$$ExecuteEffectImplCopyWithImpl<$Res>;
+    _$ExecuteEffectImpl value,
+    $Res Function(_$ExecuteEffectImpl) then,
+  ) = __$$ExecuteEffectImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String query});
 }
@@ -121,22 +118,23 @@ class __$$ExecuteEffectImplCopyWithImpl<$Res>
     extends _$SqliteEffectCopyWithImpl<$Res, _$ExecuteEffectImpl>
     implements _$$ExecuteEffectImplCopyWith<$Res> {
   __$$ExecuteEffectImplCopyWithImpl(
-      _$ExecuteEffectImpl _value, $Res Function(_$ExecuteEffectImpl) _then)
-      : super(_value, _then);
+    _$ExecuteEffectImpl _value,
+    $Res Function(_$ExecuteEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteEffect
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? query = null,
-  }) {
-    return _then(_$ExecuteEffectImpl(
-      null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? query = null}) {
+    return _then(
+      _$ExecuteEffectImpl(
+        null == query
+            ? _value.query
+            : query // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -279,18 +277,20 @@ abstract class ExecuteEffect implements SqliteEffect {
 
 /// @nodoc
 abstract class _$$UpdateTablesEffectImplCopyWith<$Res> {
-  factory _$$UpdateTablesEffectImplCopyWith(_$UpdateTablesEffectImpl value,
-          $Res Function(_$UpdateTablesEffectImpl) then) =
-      __$$UpdateTablesEffectImplCopyWithImpl<$Res>;
+  factory _$$UpdateTablesEffectImplCopyWith(
+    _$UpdateTablesEffectImpl value,
+    $Res Function(_$UpdateTablesEffectImpl) then,
+  ) = __$$UpdateTablesEffectImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$UpdateTablesEffectImplCopyWithImpl<$Res>
     extends _$SqliteEffectCopyWithImpl<$Res, _$UpdateTablesEffectImpl>
     implements _$$UpdateTablesEffectImplCopyWith<$Res> {
-  __$$UpdateTablesEffectImplCopyWithImpl(_$UpdateTablesEffectImpl _value,
-      $Res Function(_$UpdateTablesEffectImpl) _then)
-      : super(_value, _then);
+  __$$UpdateTablesEffectImplCopyWithImpl(
+    _$UpdateTablesEffectImpl _value,
+    $Res Function(_$UpdateTablesEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -414,9 +414,10 @@ abstract class UpdateTablesEffect implements SqliteEffect {
 
 /// @nodoc
 abstract class _$$ImportDbEffectImplCopyWith<$Res> {
-  factory _$$ImportDbEffectImplCopyWith(_$ImportDbEffectImpl value,
-          $Res Function(_$ImportDbEffectImpl) then) =
-      __$$ImportDbEffectImplCopyWithImpl<$Res>;
+  factory _$$ImportDbEffectImplCopyWith(
+    _$ImportDbEffectImpl value,
+    $Res Function(_$ImportDbEffectImpl) then,
+  ) = __$$ImportDbEffectImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String path});
 }
@@ -426,22 +427,23 @@ class __$$ImportDbEffectImplCopyWithImpl<$Res>
     extends _$SqliteEffectCopyWithImpl<$Res, _$ImportDbEffectImpl>
     implements _$$ImportDbEffectImplCopyWith<$Res> {
   __$$ImportDbEffectImplCopyWithImpl(
-      _$ImportDbEffectImpl _value, $Res Function(_$ImportDbEffectImpl) _then)
-      : super(_value, _then);
+    _$ImportDbEffectImpl _value,
+    $Res Function(_$ImportDbEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteEffect
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? path = null,
-  }) {
-    return _then(_$ImportDbEffectImpl(
-      null == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? path = null}) {
+    return _then(
+      _$ImportDbEffectImpl(
+        null == path
+            ? _value.path
+            : path // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -476,7 +478,9 @@ class _$ImportDbEffectImpl implements ImportDbEffect {
   @pragma('vm:prefer-inline')
   _$$ImportDbEffectImplCopyWith<_$ImportDbEffectImpl> get copyWith =>
       __$$ImportDbEffectImplCopyWithImpl<_$ImportDbEffectImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -585,9 +589,10 @@ abstract class ImportDbEffect implements SqliteEffect {
 
 /// @nodoc
 abstract class _$$ExportDbEffectImplCopyWith<$Res> {
-  factory _$$ExportDbEffectImplCopyWith(_$ExportDbEffectImpl value,
-          $Res Function(_$ExportDbEffectImpl) then) =
-      __$$ExportDbEffectImplCopyWithImpl<$Res>;
+  factory _$$ExportDbEffectImplCopyWith(
+    _$ExportDbEffectImpl value,
+    $Res Function(_$ExportDbEffectImpl) then,
+  ) = __$$ExportDbEffectImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String path});
 }
@@ -597,22 +602,23 @@ class __$$ExportDbEffectImplCopyWithImpl<$Res>
     extends _$SqliteEffectCopyWithImpl<$Res, _$ExportDbEffectImpl>
     implements _$$ExportDbEffectImplCopyWith<$Res> {
   __$$ExportDbEffectImplCopyWithImpl(
-      _$ExportDbEffectImpl _value, $Res Function(_$ExportDbEffectImpl) _then)
-      : super(_value, _then);
+    _$ExportDbEffectImpl _value,
+    $Res Function(_$ExportDbEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteEffect
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? path = null,
-  }) {
-    return _then(_$ExportDbEffectImpl(
-      null == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? path = null}) {
+    return _then(
+      _$ExportDbEffectImpl(
+        null == path
+            ? _value.path
+            : path // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -647,7 +653,9 @@ class _$ExportDbEffectImpl implements ExportDbEffect {
   @pragma('vm:prefer-inline')
   _$$ExportDbEffectImplCopyWith<_$ExportDbEffectImpl> get copyWith =>
       __$$ExportDbEffectImplCopyWithImpl<_$ExportDbEffectImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -756,18 +764,20 @@ abstract class ExportDbEffect implements SqliteEffect {
 
 /// @nodoc
 abstract class _$$SubscribeDbEffectImplCopyWith<$Res> {
-  factory _$$SubscribeDbEffectImplCopyWith(_$SubscribeDbEffectImpl value,
-          $Res Function(_$SubscribeDbEffectImpl) then) =
-      __$$SubscribeDbEffectImplCopyWithImpl<$Res>;
+  factory _$$SubscribeDbEffectImplCopyWith(
+    _$SubscribeDbEffectImpl value,
+    $Res Function(_$SubscribeDbEffectImpl) then,
+  ) = __$$SubscribeDbEffectImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$SubscribeDbEffectImplCopyWithImpl<$Res>
     extends _$SqliteEffectCopyWithImpl<$Res, _$SubscribeDbEffectImpl>
     implements _$$SubscribeDbEffectImplCopyWith<$Res> {
-  __$$SubscribeDbEffectImplCopyWithImpl(_$SubscribeDbEffectImpl _value,
-      $Res Function(_$SubscribeDbEffectImpl) _then)
-      : super(_value, _then);
+  __$$SubscribeDbEffectImplCopyWithImpl(
+    _$SubscribeDbEffectImpl _value,
+    $Res Function(_$SubscribeDbEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -891,18 +901,20 @@ abstract class SubscribeDbEffect implements SqliteEffect {
 
 /// @nodoc
 abstract class _$$UnsubscribeDbEffectImplCopyWith<$Res> {
-  factory _$$UnsubscribeDbEffectImplCopyWith(_$UnsubscribeDbEffectImpl value,
-          $Res Function(_$UnsubscribeDbEffectImpl) then) =
-      __$$UnsubscribeDbEffectImplCopyWithImpl<$Res>;
+  factory _$$UnsubscribeDbEffectImplCopyWith(
+    _$UnsubscribeDbEffectImpl value,
+    $Res Function(_$UnsubscribeDbEffectImpl) then,
+  ) = __$$UnsubscribeDbEffectImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$UnsubscribeDbEffectImplCopyWithImpl<$Res>
     extends _$SqliteEffectCopyWithImpl<$Res, _$UnsubscribeDbEffectImpl>
     implements _$$UnsubscribeDbEffectImplCopyWith<$Res> {
-  __$$UnsubscribeDbEffectImplCopyWithImpl(_$UnsubscribeDbEffectImpl _value,
-      $Res Function(_$UnsubscribeDbEffectImpl) _then)
-      : super(_value, _then);
+  __$$UnsubscribeDbEffectImplCopyWithImpl(
+    _$UnsubscribeDbEffectImpl _value,
+    $Res Function(_$UnsubscribeDbEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -1027,9 +1039,10 @@ abstract class UnsubscribeDbEffect implements SqliteEffect {
 
 /// @nodoc
 abstract class _$$DropTableEffectImplCopyWith<$Res> {
-  factory _$$DropTableEffectImplCopyWith(_$DropTableEffectImpl value,
-          $Res Function(_$DropTableEffectImpl) then) =
-      __$$DropTableEffectImplCopyWithImpl<$Res>;
+  factory _$$DropTableEffectImplCopyWith(
+    _$DropTableEffectImpl value,
+    $Res Function(_$DropTableEffectImpl) then,
+  ) = __$$DropTableEffectImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1037,8 +1050,9 @@ class __$$DropTableEffectImplCopyWithImpl<$Res>
     extends _$SqliteEffectCopyWithImpl<$Res, _$DropTableEffectImpl>
     implements _$$DropTableEffectImplCopyWith<$Res> {
   __$$DropTableEffectImplCopyWithImpl(
-      _$DropTableEffectImpl _value, $Res Function(_$DropTableEffectImpl) _then)
-      : super(_value, _then);
+    _$DropTableEffectImpl _value,
+    $Res Function(_$DropTableEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteEffect
   /// with the given fields replaced by the non-null parameter values.

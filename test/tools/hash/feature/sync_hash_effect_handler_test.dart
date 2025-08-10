@@ -12,20 +12,14 @@ void main() {
 
     test('Handles CountTextHashEffect with non-empty text', () {
       handler.test(
-        effect: const CountTextHashEffect(
-          '1',
-          HashAlgorithm.md5,
-        ),
+        effect: const CountTextHashEffect('1', HashAlgorithm.md5),
         expectedMessages: [UpdateHashEvent(_md5OfOne)],
       );
     });
 
     test('Handles CountTextHashEffect with empty text', () {
       handler.test(
-        effect: const CountTextHashEffect(
-          '',
-          HashAlgorithm.sha256,
-        ),
+        effect: const CountTextHashEffect('', HashAlgorithm.sha256),
         expectedMessages: [const UpdateHashEvent(null)],
       );
     });

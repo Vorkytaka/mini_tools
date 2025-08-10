@@ -126,8 +126,7 @@ extension FutureEitherUtils<L, R> on Future<Either<L, R>> {
   Future<T> fold<T>({
     required T Function(L value) ifLeft,
     required T Function(R value) ifRight,
-  }) =>
-      then((value) => value.fold(ifLeft: ifLeft, ifRight: ifRight));
+  }) => then((value) => value.fold(ifLeft: ifLeft, ifRight: ifRight));
 
   Future<Either<L, T>> flatMap<T>(Either<L, T> Function(R value) f) =>
       then((value) => value.flatMap(f));

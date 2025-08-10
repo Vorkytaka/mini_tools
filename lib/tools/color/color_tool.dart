@@ -33,10 +33,7 @@ class ColorToolScreen extends StatelessWidget {
     final t = Translations.of(context);
 
     return MacosScaffold(
-      toolBar: ToolBar(
-        title: Text(t.color.title),
-        centerTitle: true,
-      ),
+      toolBar: ToolBar(title: Text(t.color.title), centerTitle: true),
       children: [
         ContentArea(
           builder: (context, controller) => _Body(controller: controller),
@@ -102,8 +99,8 @@ class _BodyState extends State<_Body> {
               selector: (state) => state.color,
               builder: (context, color) {
                 return _ColorButton(
-                  onChanged: (color) =>
-                      context.read<ColorCubit>().setColor(color),
+                  onChanged:
+                      (color) => context.read<ColorCubit>().setColor(color),
                   color: color,
                 );
               },
@@ -143,40 +140,22 @@ class _BodyState extends State<_Body> {
         const SizedBox(height: 24),
         Column(
           children: [
-            _ItemBuilder(
-              title: t.color.titles.hex,
-              mapper: colorToHexString,
-            ),
+            _ItemBuilder(title: t.color.titles.hex, mapper: colorToHexString),
             separator,
             _ItemBuilder(
               title: t.color.titles.hexWithAlpha,
               mapper: colorToArgbHexString,
             ),
             separator,
-            _ItemBuilder(
-              title: t.color.titles.rgb,
-              mapper: colorToRgbString,
-            ),
+            _ItemBuilder(title: t.color.titles.rgb, mapper: colorToRgbString),
             separator,
-            _ItemBuilder(
-              title: t.color.titles.rgba,
-              mapper: colorToRgbaString,
-            ),
+            _ItemBuilder(title: t.color.titles.rgba, mapper: colorToRgbaString),
             separator,
-            _ItemBuilder(
-              title: t.color.titles.hsl,
-              mapper: colorToHslString,
-            ),
+            _ItemBuilder(title: t.color.titles.hsl, mapper: colorToHslString),
             separator,
-            _ItemBuilder(
-              title: t.color.titles.hsb,
-              mapper: colorToHsbString,
-            ),
+            _ItemBuilder(title: t.color.titles.hsb, mapper: colorToHsbString),
             separator,
-            _ItemBuilder(
-              title: t.color.titles.hwb,
-              mapper: colorToHwbString,
-            ),
+            _ItemBuilder(title: t.color.titles.hwb, mapper: colorToHwbString),
           ],
         ),
       ],
@@ -192,19 +171,13 @@ class _ItemBuilder extends StatelessWidget {
   final String title;
   final String? Function(Color? color) mapper;
 
-  const _ItemBuilder({
-    required this.title,
-    required this.mapper,
-  });
+  const _ItemBuilder({required this.title, required this.mapper});
 
   @override
   Widget build(BuildContext context) {
     return BlocSelector<ColorCubit, ColorState, Color?>(
       selector: (state) => state.color,
-      builder: (context, color) => _Item(
-        title: title,
-        value: mapper(color),
-      ),
+      builder: (context, color) => _Item(title: title, value: mapper(color)),
     );
   }
 }
@@ -213,10 +186,7 @@ class _Item extends StatelessWidget {
   final String title;
   final String? value;
 
-  const _Item({
-    required this.title,
-    required this.value,
-  });
+  const _Item({required this.title, required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -227,12 +197,7 @@ class _Item extends StatelessWidget {
         const SizedBox(height: 4),
         Row(
           children: [
-            Expanded(
-              child: MacosReadonlyField(
-                text: value ?? '',
-                maxLines: 1,
-              ),
-            ),
+            Expanded(child: MacosReadonlyField(text: value ?? '', maxLines: 1)),
             const SizedBox(width: 4),
             MacosIconButton(
               onPressed: () {
@@ -254,10 +219,7 @@ class _ColorButton extends StatefulWidget {
   final Color? color;
   final ValueChanged<Color> onChanged;
 
-  const _ColorButton({
-    required this.onChanged,
-    this.color,
-  });
+  const _ColorButton({required this.onChanged, this.color});
 
   @override
   State<_ColorButton> createState() => _ColorButtonState();
@@ -327,6 +289,5 @@ class UpperCaseInputFormatter implements TextInputFormatter {
   TextEditingValue formatEditUpdate(
     TextEditingValue oldValue,
     TextEditingValue newValue,
-  ) =>
-      newValue.copyWith(text: newValue.text.toUpperCase());
+  ) => newValue.copyWith(text: newValue.text.toUpperCase());
 }

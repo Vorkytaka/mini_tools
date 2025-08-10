@@ -9,15 +9,9 @@ import 'package:macos_ui/src/utils/utils.dart';
 class HintButton extends StatelessWidget {
   final Widget hint;
 
-  HintButton({
-    required String hint,
-    super.key,
-  }) : hint = Text(hint);
+  HintButton({required String hint, super.key}) : hint = Text(hint);
 
-  const HintButton.rich({
-    required this.hint,
-    super.key,
-  });
+  const HintButton.rich({required this.hint, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +21,7 @@ class HintButton extends StatelessWidget {
       arrowColor: theme.popupButtonTheme.popupColor,
       backgroundColor: theme.popupButtonTheme.popupColor,
       content: ConstrainedBox(
-        constraints: const BoxConstraints(
-          maxWidth: 300,
-        ),
+        constraints: const BoxConstraints(maxWidth: 300),
         child: hint,
       ),
       child: CircleAvatar(
@@ -39,10 +31,7 @@ class HintButton extends StatelessWidget {
           theme.brightness == Brightness.dark,
         ),
         radius: 10,
-        child: const Icon(
-          CupertinoIcons.question,
-          size: 13,
-        ),
+        child: const Icon(CupertinoIcons.question, size: 13),
       ),
     );
   }

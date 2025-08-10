@@ -18,7 +18,7 @@ Next<TextDiffState, TextDiffEffect> textDiffUpdate(
             TextDiffEffect.countDiffs(
               oldText: state.oldText,
               newText: message.text,
-            )
+            ),
         ],
       );
     case UpdateOldTextMessage():

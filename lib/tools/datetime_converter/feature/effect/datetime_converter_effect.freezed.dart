@@ -12,7 +12,8 @@ part of 'datetime_converter_effect.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$DatetimeConverterEffect {
@@ -21,58 +22,55 @@ mixin _$DatetimeConverterEffect {
     required TResult Function() getNow,
     required TResult Function(String input, InputType type) parse,
     required TResult Function(DateTime datetime) setInitialDatetime,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getNow,
     TResult? Function(String input, InputType type)? parse,
     TResult? Function(DateTime datetime)? setInitialDatetime,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getNow,
     TResult Function(String input, InputType type)? parse,
     TResult Function(DateTime datetime)? setInitialDatetime,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(GetNowEffect value) getNow,
     required TResult Function(ParseEffect value) parse,
     required TResult Function(SetInitialDatetimeEffect value)
-        setInitialDatetime,
-  }) =>
-      throw _privateConstructorUsedError;
+    setInitialDatetime,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(GetNowEffect value)? getNow,
     TResult? Function(ParseEffect value)? parse,
     TResult? Function(SetInitialDatetimeEffect value)? setInitialDatetime,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(GetNowEffect value)? getNow,
     TResult Function(ParseEffect value)? parse,
     TResult Function(SetInitialDatetimeEffect value)? setInitialDatetime,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DatetimeConverterEffectCopyWith<$Res> {
-  factory $DatetimeConverterEffectCopyWith(DatetimeConverterEffect value,
-          $Res Function(DatetimeConverterEffect) then) =
-      _$DatetimeConverterEffectCopyWithImpl<$Res, DatetimeConverterEffect>;
+  factory $DatetimeConverterEffectCopyWith(
+    DatetimeConverterEffect value,
+    $Res Function(DatetimeConverterEffect) then,
+  ) = _$DatetimeConverterEffectCopyWithImpl<$Res, DatetimeConverterEffect>;
 }
 
 /// @nodoc
-class _$DatetimeConverterEffectCopyWithImpl<$Res,
-        $Val extends DatetimeConverterEffect>
+class _$DatetimeConverterEffectCopyWithImpl<
+  $Res,
+  $Val extends DatetimeConverterEffect
+>
     implements $DatetimeConverterEffectCopyWith<$Res> {
   _$DatetimeConverterEffectCopyWithImpl(this._value, this._then);
 
@@ -88,8 +86,9 @@ class _$DatetimeConverterEffectCopyWithImpl<$Res,
 /// @nodoc
 abstract class _$$GetNowEffectImplCopyWith<$Res> {
   factory _$$GetNowEffectImplCopyWith(
-          _$GetNowEffectImpl value, $Res Function(_$GetNowEffectImpl) then) =
-      __$$GetNowEffectImplCopyWithImpl<$Res>;
+    _$GetNowEffectImpl value,
+    $Res Function(_$GetNowEffectImpl) then,
+  ) = __$$GetNowEffectImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -97,8 +96,9 @@ class __$$GetNowEffectImplCopyWithImpl<$Res>
     extends _$DatetimeConverterEffectCopyWithImpl<$Res, _$GetNowEffectImpl>
     implements _$$GetNowEffectImplCopyWith<$Res> {
   __$$GetNowEffectImplCopyWithImpl(
-      _$GetNowEffectImpl _value, $Res Function(_$GetNowEffectImpl) _then)
-      : super(_value, _then);
+    _$GetNowEffectImpl _value,
+    $Res Function(_$GetNowEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatetimeConverterEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -163,7 +163,7 @@ class _$GetNowEffectImpl implements GetNowEffect {
     required TResult Function(GetNowEffect value) getNow,
     required TResult Function(ParseEffect value) parse,
     required TResult Function(SetInitialDatetimeEffect value)
-        setInitialDatetime,
+    setInitialDatetime,
   }) {
     return getNow(this);
   }
@@ -200,8 +200,9 @@ abstract class GetNowEffect implements DatetimeConverterEffect {
 /// @nodoc
 abstract class _$$ParseEffectImplCopyWith<$Res> {
   factory _$$ParseEffectImplCopyWith(
-          _$ParseEffectImpl value, $Res Function(_$ParseEffectImpl) then) =
-      __$$ParseEffectImplCopyWithImpl<$Res>;
+    _$ParseEffectImpl value,
+    $Res Function(_$ParseEffectImpl) then,
+  ) = __$$ParseEffectImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String input, InputType type});
 }
@@ -211,27 +212,29 @@ class __$$ParseEffectImplCopyWithImpl<$Res>
     extends _$DatetimeConverterEffectCopyWithImpl<$Res, _$ParseEffectImpl>
     implements _$$ParseEffectImplCopyWith<$Res> {
   __$$ParseEffectImplCopyWithImpl(
-      _$ParseEffectImpl _value, $Res Function(_$ParseEffectImpl) _then)
-      : super(_value, _then);
+    _$ParseEffectImpl _value,
+    $Res Function(_$ParseEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatetimeConverterEffect
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? input = null,
-    Object? type = null,
-  }) {
-    return _then(_$ParseEffectImpl(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as InputType,
-    ));
+  $Res call({Object? input = null, Object? type = null}) {
+    return _then(
+      _$ParseEffectImpl(
+        input:
+            null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                    as String,
+        type:
+            null == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                    as InputType,
+      ),
+    );
   }
 }
 
@@ -310,7 +313,7 @@ class _$ParseEffectImpl implements ParseEffect {
     required TResult Function(GetNowEffect value) getNow,
     required TResult Function(ParseEffect value) parse,
     required TResult Function(SetInitialDatetimeEffect value)
-        setInitialDatetime,
+    setInitialDatetime,
   }) {
     return parse(this);
   }
@@ -341,9 +344,10 @@ class _$ParseEffectImpl implements ParseEffect {
 }
 
 abstract class ParseEffect implements DatetimeConverterEffect {
-  const factory ParseEffect(
-      {required final String input,
-      required final InputType type}) = _$ParseEffectImpl;
+  const factory ParseEffect({
+    required final String input,
+    required final InputType type,
+  }) = _$ParseEffectImpl;
 
   String get input;
   InputType get type;
@@ -358,36 +362,39 @@ abstract class ParseEffect implements DatetimeConverterEffect {
 /// @nodoc
 abstract class _$$SetInitialDatetimeEffectImplCopyWith<$Res> {
   factory _$$SetInitialDatetimeEffectImplCopyWith(
-          _$SetInitialDatetimeEffectImpl value,
-          $Res Function(_$SetInitialDatetimeEffectImpl) then) =
-      __$$SetInitialDatetimeEffectImplCopyWithImpl<$Res>;
+    _$SetInitialDatetimeEffectImpl value,
+    $Res Function(_$SetInitialDatetimeEffectImpl) then,
+  ) = __$$SetInitialDatetimeEffectImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DateTime datetime});
 }
 
 /// @nodoc
 class __$$SetInitialDatetimeEffectImplCopyWithImpl<$Res>
-    extends _$DatetimeConverterEffectCopyWithImpl<$Res,
-        _$SetInitialDatetimeEffectImpl>
+    extends
+        _$DatetimeConverterEffectCopyWithImpl<
+          $Res,
+          _$SetInitialDatetimeEffectImpl
+        >
     implements _$$SetInitialDatetimeEffectImplCopyWith<$Res> {
   __$$SetInitialDatetimeEffectImplCopyWithImpl(
-      _$SetInitialDatetimeEffectImpl _value,
-      $Res Function(_$SetInitialDatetimeEffectImpl) _then)
-      : super(_value, _then);
+    _$SetInitialDatetimeEffectImpl _value,
+    $Res Function(_$SetInitialDatetimeEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatetimeConverterEffect
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? datetime = null,
-  }) {
-    return _then(_$SetInitialDatetimeEffectImpl(
-      null == datetime
-          ? _value.datetime
-          : datetime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
+  $Res call({Object? datetime = null}) {
+    return _then(
+      _$SetInitialDatetimeEffectImpl(
+        null == datetime
+            ? _value.datetime
+            : datetime // ignore: cast_nullable_to_non_nullable
+                as DateTime,
+      ),
+    );
   }
 }
 
@@ -422,8 +429,9 @@ class _$SetInitialDatetimeEffectImpl implements SetInitialDatetimeEffect {
   @override
   @pragma('vm:prefer-inline')
   _$$SetInitialDatetimeEffectImplCopyWith<_$SetInitialDatetimeEffectImpl>
-      get copyWith => __$$SetInitialDatetimeEffectImplCopyWithImpl<
-          _$SetInitialDatetimeEffectImpl>(this, _$identity);
+  get copyWith => __$$SetInitialDatetimeEffectImplCopyWithImpl<
+    _$SetInitialDatetimeEffectImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -465,7 +473,7 @@ class _$SetInitialDatetimeEffectImpl implements SetInitialDatetimeEffect {
     required TResult Function(GetNowEffect value) getNow,
     required TResult Function(ParseEffect value) parse,
     required TResult Function(SetInitialDatetimeEffect value)
-        setInitialDatetime,
+    setInitialDatetime,
   }) {
     return setInitialDatetime(this);
   }
@@ -505,5 +513,5 @@ abstract class SetInitialDatetimeEffect implements DatetimeConverterEffect {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetInitialDatetimeEffectImplCopyWith<_$SetInitialDatetimeEffectImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

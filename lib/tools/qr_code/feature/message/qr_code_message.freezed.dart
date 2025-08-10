@@ -12,7 +12,8 @@ part of 'qr_code_message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$QrCodeMessage {
@@ -29,8 +30,7 @@ mixin _$QrCodeMessage {
     required TResult Function(Color color) foregroundColorUpdate,
     required TResult Function(Color color) backgroundColorUpdate,
     required TResult Function(int size) exportSizeUpdate,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(QrCodeState state)? loadedState,
@@ -44,8 +44,7 @@ mixin _$QrCodeMessage {
     TResult? Function(Color color)? foregroundColorUpdate,
     TResult? Function(Color color)? backgroundColorUpdate,
     TResult? Function(int size)? exportSizeUpdate,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(QrCodeState state)? loadedState,
@@ -60,44 +59,41 @@ mixin _$QrCodeMessage {
     TResult Function(Color color)? backgroundColorUpdate,
     TResult Function(int size)? exportSizeUpdate,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
     required TResult Function(ForegroundColorUpdateMessage value)
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult? Function(ForegroundColorUpdateMessage value)?
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadedStateMessage value)? loadedState,
@@ -112,15 +108,15 @@ mixin _$QrCodeMessage {
     TResult Function(BackgroundColorUpdateMessage value)? backgroundColorUpdate,
     TResult Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $QrCodeMessageCopyWith<$Res> {
   factory $QrCodeMessageCopyWith(
-          QrCodeMessage value, $Res Function(QrCodeMessage) then) =
-      _$QrCodeMessageCopyWithImpl<$Res, QrCodeMessage>;
+    QrCodeMessage value,
+    $Res Function(QrCodeMessage) then,
+  ) = _$QrCodeMessageCopyWithImpl<$Res, QrCodeMessage>;
 }
 
 /// @nodoc
@@ -139,9 +135,10 @@ class _$QrCodeMessageCopyWithImpl<$Res, $Val extends QrCodeMessage>
 
 /// @nodoc
 abstract class _$$LoadedStateMessageImplCopyWith<$Res> {
-  factory _$$LoadedStateMessageImplCopyWith(_$LoadedStateMessageImpl value,
-          $Res Function(_$LoadedStateMessageImpl) then) =
-      __$$LoadedStateMessageImplCopyWithImpl<$Res>;
+  factory _$$LoadedStateMessageImplCopyWith(
+    _$LoadedStateMessageImpl value,
+    $Res Function(_$LoadedStateMessageImpl) then,
+  ) = __$$LoadedStateMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({QrCodeState state});
 
@@ -152,23 +149,24 @@ abstract class _$$LoadedStateMessageImplCopyWith<$Res> {
 class __$$LoadedStateMessageImplCopyWithImpl<$Res>
     extends _$QrCodeMessageCopyWithImpl<$Res, _$LoadedStateMessageImpl>
     implements _$$LoadedStateMessageImplCopyWith<$Res> {
-  __$$LoadedStateMessageImplCopyWithImpl(_$LoadedStateMessageImpl _value,
-      $Res Function(_$LoadedStateMessageImpl) _then)
-      : super(_value, _then);
+  __$$LoadedStateMessageImplCopyWithImpl(
+    _$LoadedStateMessageImpl _value,
+    $Res Function(_$LoadedStateMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of QrCodeMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? state = null,
-  }) {
-    return _then(_$LoadedStateMessageImpl(
-      null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as QrCodeState,
-    ));
+  $Res call({Object? state = null}) {
+    return _then(
+      _$LoadedStateMessageImpl(
+        null == state
+            ? _value.state
+            : state // ignore: cast_nullable_to_non_nullable
+                as QrCodeState,
+      ),
+    );
   }
 
   /// Create a copy of QrCodeMessage
@@ -213,7 +211,9 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
   @pragma('vm:prefer-inline')
   _$$LoadedStateMessageImplCopyWith<_$LoadedStateMessageImpl> get copyWith =>
       __$$LoadedStateMessageImplCopyWithImpl<_$LoadedStateMessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -279,16 +279,16 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
     required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
     required TResult Function(ForegroundColorUpdateMessage value)
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return loadedState(this);
@@ -300,16 +300,16 @@ class _$LoadedStateMessageImpl implements LoadedStateMessage {
     TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult? Function(ForegroundColorUpdateMessage value)?
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return loadedState?.call(this);
@@ -353,9 +353,10 @@ abstract class LoadedStateMessage implements QrCodeMessage {
 
 /// @nodoc
 abstract class _$$UpdateInputMessageImplCopyWith<$Res> {
-  factory _$$UpdateInputMessageImplCopyWith(_$UpdateInputMessageImpl value,
-          $Res Function(_$UpdateInputMessageImpl) then) =
-      __$$UpdateInputMessageImplCopyWithImpl<$Res>;
+  factory _$$UpdateInputMessageImplCopyWith(
+    _$UpdateInputMessageImpl value,
+    $Res Function(_$UpdateInputMessageImpl) then,
+  ) = __$$UpdateInputMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String text});
 }
@@ -364,23 +365,24 @@ abstract class _$$UpdateInputMessageImplCopyWith<$Res> {
 class __$$UpdateInputMessageImplCopyWithImpl<$Res>
     extends _$QrCodeMessageCopyWithImpl<$Res, _$UpdateInputMessageImpl>
     implements _$$UpdateInputMessageImplCopyWith<$Res> {
-  __$$UpdateInputMessageImplCopyWithImpl(_$UpdateInputMessageImpl _value,
-      $Res Function(_$UpdateInputMessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateInputMessageImplCopyWithImpl(
+    _$UpdateInputMessageImpl _value,
+    $Res Function(_$UpdateInputMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of QrCodeMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_$UpdateInputMessageImpl(
-      null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? text = null}) {
+    return _then(
+      _$UpdateInputMessageImpl(
+        null == text
+            ? _value.text
+            : text // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -415,7 +417,9 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
   @pragma('vm:prefer-inline')
   _$$UpdateInputMessageImplCopyWith<_$UpdateInputMessageImpl> get copyWith =>
       __$$UpdateInputMessageImplCopyWithImpl<_$UpdateInputMessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -481,16 +485,16 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
     required TResult Function(ForegroundColorUpdateMessage value)
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return updateInput(this);
@@ -502,16 +506,16 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult? Function(ForegroundColorUpdateMessage value)?
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return updateInput?.call(this);
@@ -556,36 +560,36 @@ abstract class UpdateInputMessage implements QrCodeMessage {
 /// @nodoc
 abstract class _$$UpdateCorrectionLevelMessageImplCopyWith<$Res> {
   factory _$$UpdateCorrectionLevelMessageImplCopyWith(
-          _$UpdateCorrectionLevelMessageImpl value,
-          $Res Function(_$UpdateCorrectionLevelMessageImpl) then) =
-      __$$UpdateCorrectionLevelMessageImplCopyWithImpl<$Res>;
+    _$UpdateCorrectionLevelMessageImpl value,
+    $Res Function(_$UpdateCorrectionLevelMessageImpl) then,
+  ) = __$$UpdateCorrectionLevelMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ErrorCorrectionLevel level});
 }
 
 /// @nodoc
 class __$$UpdateCorrectionLevelMessageImplCopyWithImpl<$Res>
-    extends _$QrCodeMessageCopyWithImpl<$Res,
-        _$UpdateCorrectionLevelMessageImpl>
+    extends
+        _$QrCodeMessageCopyWithImpl<$Res, _$UpdateCorrectionLevelMessageImpl>
     implements _$$UpdateCorrectionLevelMessageImplCopyWith<$Res> {
   __$$UpdateCorrectionLevelMessageImplCopyWithImpl(
-      _$UpdateCorrectionLevelMessageImpl _value,
-      $Res Function(_$UpdateCorrectionLevelMessageImpl) _then)
-      : super(_value, _then);
+    _$UpdateCorrectionLevelMessageImpl _value,
+    $Res Function(_$UpdateCorrectionLevelMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of QrCodeMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? level = null,
-  }) {
-    return _then(_$UpdateCorrectionLevelMessageImpl(
-      null == level
-          ? _value.level
-          : level // ignore: cast_nullable_to_non_nullable
-              as ErrorCorrectionLevel,
-    ));
+  $Res call({Object? level = null}) {
+    return _then(
+      _$UpdateCorrectionLevelMessageImpl(
+        null == level
+            ? _value.level
+            : level // ignore: cast_nullable_to_non_nullable
+                as ErrorCorrectionLevel,
+      ),
+    );
   }
 }
 
@@ -620,9 +624,11 @@ class _$UpdateCorrectionLevelMessageImpl
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateCorrectionLevelMessageImplCopyWith<
-          _$UpdateCorrectionLevelMessageImpl>
-      get copyWith => __$$UpdateCorrectionLevelMessageImplCopyWithImpl<
-          _$UpdateCorrectionLevelMessageImpl>(this, _$identity);
+    _$UpdateCorrectionLevelMessageImpl
+  >
+  get copyWith => __$$UpdateCorrectionLevelMessageImplCopyWithImpl<
+    _$UpdateCorrectionLevelMessageImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -688,16 +694,16 @@ class _$UpdateCorrectionLevelMessageImpl
     required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
     required TResult Function(ForegroundColorUpdateMessage value)
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return updateCorrectionLevel(this);
@@ -709,16 +715,16 @@ class _$UpdateCorrectionLevelMessageImpl
     TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult? Function(ForegroundColorUpdateMessage value)?
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return updateCorrectionLevel?.call(this);
@@ -757,24 +763,27 @@ abstract class UpdateCorrectionLevelMessage implements QrCodeMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateCorrectionLevelMessageImplCopyWith<
-          _$UpdateCorrectionLevelMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$UpdateCorrectionLevelMessageImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$SaveToFileMessageImplCopyWith<$Res> {
-  factory _$$SaveToFileMessageImplCopyWith(_$SaveToFileMessageImpl value,
-          $Res Function(_$SaveToFileMessageImpl) then) =
-      __$$SaveToFileMessageImplCopyWithImpl<$Res>;
+  factory _$$SaveToFileMessageImplCopyWith(
+    _$SaveToFileMessageImpl value,
+    $Res Function(_$SaveToFileMessageImpl) then,
+  ) = __$$SaveToFileMessageImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$SaveToFileMessageImplCopyWithImpl<$Res>
     extends _$QrCodeMessageCopyWithImpl<$Res, _$SaveToFileMessageImpl>
     implements _$$SaveToFileMessageImplCopyWith<$Res> {
-  __$$SaveToFileMessageImplCopyWithImpl(_$SaveToFileMessageImpl _value,
-      $Res Function(_$SaveToFileMessageImpl) _then)
-      : super(_value, _then);
+  __$$SaveToFileMessageImplCopyWithImpl(
+    _$SaveToFileMessageImpl _value,
+    $Res Function(_$SaveToFileMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of QrCodeMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -863,16 +872,16 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
     required TResult Function(ForegroundColorUpdateMessage value)
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return saveToFile(this);
@@ -884,16 +893,16 @@ class _$SaveToFileMessageImpl implements SaveToFileMessage {
     TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult? Function(ForegroundColorUpdateMessage value)?
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return saveToFile?.call(this);
@@ -929,9 +938,9 @@ abstract class SaveToFileMessage implements QrCodeMessage {
 /// @nodoc
 abstract class _$$UpdateExportTypeMessageImplCopyWith<$Res> {
   factory _$$UpdateExportTypeMessageImplCopyWith(
-          _$UpdateExportTypeMessageImpl value,
-          $Res Function(_$UpdateExportTypeMessageImpl) then) =
-      __$$UpdateExportTypeMessageImplCopyWithImpl<$Res>;
+    _$UpdateExportTypeMessageImpl value,
+    $Res Function(_$UpdateExportTypeMessageImpl) then,
+  ) = __$$UpdateExportTypeMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ExportType type});
 }
@@ -941,23 +950,23 @@ class __$$UpdateExportTypeMessageImplCopyWithImpl<$Res>
     extends _$QrCodeMessageCopyWithImpl<$Res, _$UpdateExportTypeMessageImpl>
     implements _$$UpdateExportTypeMessageImplCopyWith<$Res> {
   __$$UpdateExportTypeMessageImplCopyWithImpl(
-      _$UpdateExportTypeMessageImpl _value,
-      $Res Function(_$UpdateExportTypeMessageImpl) _then)
-      : super(_value, _then);
+    _$UpdateExportTypeMessageImpl _value,
+    $Res Function(_$UpdateExportTypeMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of QrCodeMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? type = null,
-  }) {
-    return _then(_$UpdateExportTypeMessageImpl(
-      null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as ExportType,
-    ));
+  $Res call({Object? type = null}) {
+    return _then(
+      _$UpdateExportTypeMessageImpl(
+        null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                as ExportType,
+      ),
+    );
   }
 }
 
@@ -991,8 +1000,9 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateExportTypeMessageImplCopyWith<_$UpdateExportTypeMessageImpl>
-      get copyWith => __$$UpdateExportTypeMessageImplCopyWithImpl<
-          _$UpdateExportTypeMessageImpl>(this, _$identity);
+  get copyWith => __$$UpdateExportTypeMessageImplCopyWithImpl<
+    _$UpdateExportTypeMessageImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1058,16 +1068,16 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
     required TResult Function(ForegroundColorUpdateMessage value)
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return updateExportType(this);
@@ -1079,16 +1089,16 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
     TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult? Function(ForegroundColorUpdateMessage value)?
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return updateExportType?.call(this);
@@ -1127,15 +1137,15 @@ abstract class UpdateExportTypeMessage implements QrCodeMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateExportTypeMessageImplCopyWith<_$UpdateExportTypeMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$CopyToClipboardMessageImplCopyWith<$Res> {
   factory _$$CopyToClipboardMessageImplCopyWith(
-          _$CopyToClipboardMessageImpl value,
-          $Res Function(_$CopyToClipboardMessageImpl) then) =
-      __$$CopyToClipboardMessageImplCopyWithImpl<$Res>;
+    _$CopyToClipboardMessageImpl value,
+    $Res Function(_$CopyToClipboardMessageImpl) then,
+  ) = __$$CopyToClipboardMessageImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1143,9 +1153,9 @@ class __$$CopyToClipboardMessageImplCopyWithImpl<$Res>
     extends _$QrCodeMessageCopyWithImpl<$Res, _$CopyToClipboardMessageImpl>
     implements _$$CopyToClipboardMessageImplCopyWith<$Res> {
   __$$CopyToClipboardMessageImplCopyWithImpl(
-      _$CopyToClipboardMessageImpl _value,
-      $Res Function(_$CopyToClipboardMessageImpl) _then)
-      : super(_value, _then);
+    _$CopyToClipboardMessageImpl _value,
+    $Res Function(_$CopyToClipboardMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of QrCodeMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -1235,16 +1245,16 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
     required TResult Function(ForegroundColorUpdateMessage value)
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return copyToClipboard(this);
@@ -1256,16 +1266,16 @@ class _$CopyToClipboardMessageImpl implements CopyToClipboardMessage {
     TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult? Function(ForegroundColorUpdateMessage value)?
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return copyToClipboard?.call(this);
@@ -1300,9 +1310,10 @@ abstract class CopyToClipboardMessage implements QrCodeMessage {
 
 /// @nodoc
 abstract class _$$ShapeUpdateMessageImplCopyWith<$Res> {
-  factory _$$ShapeUpdateMessageImplCopyWith(_$ShapeUpdateMessageImpl value,
-          $Res Function(_$ShapeUpdateMessageImpl) then) =
-      __$$ShapeUpdateMessageImplCopyWithImpl<$Res>;
+  factory _$$ShapeUpdateMessageImplCopyWith(
+    _$ShapeUpdateMessageImpl value,
+    $Res Function(_$ShapeUpdateMessageImpl) then,
+  ) = __$$ShapeUpdateMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({QrCodeShape shape});
 }
@@ -1311,23 +1322,24 @@ abstract class _$$ShapeUpdateMessageImplCopyWith<$Res> {
 class __$$ShapeUpdateMessageImplCopyWithImpl<$Res>
     extends _$QrCodeMessageCopyWithImpl<$Res, _$ShapeUpdateMessageImpl>
     implements _$$ShapeUpdateMessageImplCopyWith<$Res> {
-  __$$ShapeUpdateMessageImplCopyWithImpl(_$ShapeUpdateMessageImpl _value,
-      $Res Function(_$ShapeUpdateMessageImpl) _then)
-      : super(_value, _then);
+  __$$ShapeUpdateMessageImplCopyWithImpl(
+    _$ShapeUpdateMessageImpl _value,
+    $Res Function(_$ShapeUpdateMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of QrCodeMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? shape = null,
-  }) {
-    return _then(_$ShapeUpdateMessageImpl(
-      null == shape
-          ? _value.shape
-          : shape // ignore: cast_nullable_to_non_nullable
-              as QrCodeShape,
-    ));
+  $Res call({Object? shape = null}) {
+    return _then(
+      _$ShapeUpdateMessageImpl(
+        null == shape
+            ? _value.shape
+            : shape // ignore: cast_nullable_to_non_nullable
+                as QrCodeShape,
+      ),
+    );
   }
 }
 
@@ -1362,7 +1374,9 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
   @pragma('vm:prefer-inline')
   _$$ShapeUpdateMessageImplCopyWith<_$ShapeUpdateMessageImpl> get copyWith =>
       __$$ShapeUpdateMessageImplCopyWithImpl<_$ShapeUpdateMessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1428,16 +1442,16 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
     required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
     required TResult Function(ForegroundColorUpdateMessage value)
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return shapeUpdate(this);
@@ -1449,16 +1463,16 @@ class _$ShapeUpdateMessageImpl implements ShapeUpdateMessage {
     TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult? Function(ForegroundColorUpdateMessage value)?
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return shapeUpdate?.call(this);
@@ -1502,9 +1516,10 @@ abstract class ShapeUpdateMessage implements QrCodeMessage {
 
 /// @nodoc
 abstract class _$$PaddingUpdateMessageImplCopyWith<$Res> {
-  factory _$$PaddingUpdateMessageImplCopyWith(_$PaddingUpdateMessageImpl value,
-          $Res Function(_$PaddingUpdateMessageImpl) then) =
-      __$$PaddingUpdateMessageImplCopyWithImpl<$Res>;
+  factory _$$PaddingUpdateMessageImplCopyWith(
+    _$PaddingUpdateMessageImpl value,
+    $Res Function(_$PaddingUpdateMessageImpl) then,
+  ) = __$$PaddingUpdateMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({EdgeInsets padding});
 }
@@ -1513,23 +1528,24 @@ abstract class _$$PaddingUpdateMessageImplCopyWith<$Res> {
 class __$$PaddingUpdateMessageImplCopyWithImpl<$Res>
     extends _$QrCodeMessageCopyWithImpl<$Res, _$PaddingUpdateMessageImpl>
     implements _$$PaddingUpdateMessageImplCopyWith<$Res> {
-  __$$PaddingUpdateMessageImplCopyWithImpl(_$PaddingUpdateMessageImpl _value,
-      $Res Function(_$PaddingUpdateMessageImpl) _then)
-      : super(_value, _then);
+  __$$PaddingUpdateMessageImplCopyWithImpl(
+    _$PaddingUpdateMessageImpl _value,
+    $Res Function(_$PaddingUpdateMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of QrCodeMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? padding = null,
-  }) {
-    return _then(_$PaddingUpdateMessageImpl(
-      null == padding
-          ? _value.padding
-          : padding // ignore: cast_nullable_to_non_nullable
-              as EdgeInsets,
-    ));
+  $Res call({Object? padding = null}) {
+    return _then(
+      _$PaddingUpdateMessageImpl(
+        null == padding
+            ? _value.padding
+            : padding // ignore: cast_nullable_to_non_nullable
+                as EdgeInsets,
+      ),
+    );
   }
 }
 
@@ -1563,9 +1579,11 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$PaddingUpdateMessageImplCopyWith<_$PaddingUpdateMessageImpl>
-      get copyWith =>
-          __$$PaddingUpdateMessageImplCopyWithImpl<_$PaddingUpdateMessageImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$PaddingUpdateMessageImplCopyWithImpl<_$PaddingUpdateMessageImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1631,16 +1649,16 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
     required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
     required TResult Function(ForegroundColorUpdateMessage value)
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return paddingUpdate(this);
@@ -1652,16 +1670,16 @@ class _$PaddingUpdateMessageImpl implements PaddingUpdateMessage {
     TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult? Function(ForegroundColorUpdateMessage value)?
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return paddingUpdate?.call(this);
@@ -1700,42 +1718,42 @@ abstract class PaddingUpdateMessage implements QrCodeMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaddingUpdateMessageImplCopyWith<_$PaddingUpdateMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ForegroundColorUpdateMessageImplCopyWith<$Res> {
   factory _$$ForegroundColorUpdateMessageImplCopyWith(
-          _$ForegroundColorUpdateMessageImpl value,
-          $Res Function(_$ForegroundColorUpdateMessageImpl) then) =
-      __$$ForegroundColorUpdateMessageImplCopyWithImpl<$Res>;
+    _$ForegroundColorUpdateMessageImpl value,
+    $Res Function(_$ForegroundColorUpdateMessageImpl) then,
+  ) = __$$ForegroundColorUpdateMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Color color});
 }
 
 /// @nodoc
 class __$$ForegroundColorUpdateMessageImplCopyWithImpl<$Res>
-    extends _$QrCodeMessageCopyWithImpl<$Res,
-        _$ForegroundColorUpdateMessageImpl>
+    extends
+        _$QrCodeMessageCopyWithImpl<$Res, _$ForegroundColorUpdateMessageImpl>
     implements _$$ForegroundColorUpdateMessageImplCopyWith<$Res> {
   __$$ForegroundColorUpdateMessageImplCopyWithImpl(
-      _$ForegroundColorUpdateMessageImpl _value,
-      $Res Function(_$ForegroundColorUpdateMessageImpl) _then)
-      : super(_value, _then);
+    _$ForegroundColorUpdateMessageImpl _value,
+    $Res Function(_$ForegroundColorUpdateMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of QrCodeMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? color = null,
-  }) {
-    return _then(_$ForegroundColorUpdateMessageImpl(
-      null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as Color,
-    ));
+  $Res call({Object? color = null}) {
+    return _then(
+      _$ForegroundColorUpdateMessageImpl(
+        null == color
+            ? _value.color
+            : color // ignore: cast_nullable_to_non_nullable
+                as Color,
+      ),
+    );
   }
 }
 
@@ -1770,9 +1788,11 @@ class _$ForegroundColorUpdateMessageImpl
   @override
   @pragma('vm:prefer-inline')
   _$$ForegroundColorUpdateMessageImplCopyWith<
-          _$ForegroundColorUpdateMessageImpl>
-      get copyWith => __$$ForegroundColorUpdateMessageImplCopyWithImpl<
-          _$ForegroundColorUpdateMessageImpl>(this, _$identity);
+    _$ForegroundColorUpdateMessageImpl
+  >
+  get copyWith => __$$ForegroundColorUpdateMessageImplCopyWithImpl<
+    _$ForegroundColorUpdateMessageImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1838,16 +1858,16 @@ class _$ForegroundColorUpdateMessageImpl
     required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
     required TResult Function(ForegroundColorUpdateMessage value)
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return foregroundColorUpdate(this);
@@ -1859,16 +1879,16 @@ class _$ForegroundColorUpdateMessageImpl
     TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult? Function(ForegroundColorUpdateMessage value)?
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return foregroundColorUpdate?.call(this);
@@ -1907,43 +1927,44 @@ abstract class ForegroundColorUpdateMessage implements QrCodeMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ForegroundColorUpdateMessageImplCopyWith<
-          _$ForegroundColorUpdateMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$ForegroundColorUpdateMessageImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$BackgroundColorUpdateMessageImplCopyWith<$Res> {
   factory _$$BackgroundColorUpdateMessageImplCopyWith(
-          _$BackgroundColorUpdateMessageImpl value,
-          $Res Function(_$BackgroundColorUpdateMessageImpl) then) =
-      __$$BackgroundColorUpdateMessageImplCopyWithImpl<$Res>;
+    _$BackgroundColorUpdateMessageImpl value,
+    $Res Function(_$BackgroundColorUpdateMessageImpl) then,
+  ) = __$$BackgroundColorUpdateMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Color color});
 }
 
 /// @nodoc
 class __$$BackgroundColorUpdateMessageImplCopyWithImpl<$Res>
-    extends _$QrCodeMessageCopyWithImpl<$Res,
-        _$BackgroundColorUpdateMessageImpl>
+    extends
+        _$QrCodeMessageCopyWithImpl<$Res, _$BackgroundColorUpdateMessageImpl>
     implements _$$BackgroundColorUpdateMessageImplCopyWith<$Res> {
   __$$BackgroundColorUpdateMessageImplCopyWithImpl(
-      _$BackgroundColorUpdateMessageImpl _value,
-      $Res Function(_$BackgroundColorUpdateMessageImpl) _then)
-      : super(_value, _then);
+    _$BackgroundColorUpdateMessageImpl _value,
+    $Res Function(_$BackgroundColorUpdateMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of QrCodeMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? color = null,
-  }) {
-    return _then(_$BackgroundColorUpdateMessageImpl(
-      null == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as Color,
-    ));
+  $Res call({Object? color = null}) {
+    return _then(
+      _$BackgroundColorUpdateMessageImpl(
+        null == color
+            ? _value.color
+            : color // ignore: cast_nullable_to_non_nullable
+                as Color,
+      ),
+    );
   }
 }
 
@@ -1978,9 +1999,11 @@ class _$BackgroundColorUpdateMessageImpl
   @override
   @pragma('vm:prefer-inline')
   _$$BackgroundColorUpdateMessageImplCopyWith<
-          _$BackgroundColorUpdateMessageImpl>
-      get copyWith => __$$BackgroundColorUpdateMessageImplCopyWithImpl<
-          _$BackgroundColorUpdateMessageImpl>(this, _$identity);
+    _$BackgroundColorUpdateMessageImpl
+  >
+  get copyWith => __$$BackgroundColorUpdateMessageImplCopyWithImpl<
+    _$BackgroundColorUpdateMessageImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2046,16 +2069,16 @@ class _$BackgroundColorUpdateMessageImpl
     required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
     required TResult Function(ForegroundColorUpdateMessage value)
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return backgroundColorUpdate(this);
@@ -2067,16 +2090,16 @@ class _$BackgroundColorUpdateMessageImpl
     TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult? Function(ForegroundColorUpdateMessage value)?
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return backgroundColorUpdate?.call(this);
@@ -2115,16 +2138,17 @@ abstract class BackgroundColorUpdateMessage implements QrCodeMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BackgroundColorUpdateMessageImplCopyWith<
-          _$BackgroundColorUpdateMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$BackgroundColorUpdateMessageImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ExportSizeUpdateMessageImplCopyWith<$Res> {
   factory _$$ExportSizeUpdateMessageImplCopyWith(
-          _$ExportSizeUpdateMessageImpl value,
-          $Res Function(_$ExportSizeUpdateMessageImpl) then) =
-      __$$ExportSizeUpdateMessageImplCopyWithImpl<$Res>;
+    _$ExportSizeUpdateMessageImpl value,
+    $Res Function(_$ExportSizeUpdateMessageImpl) then,
+  ) = __$$ExportSizeUpdateMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int size});
 }
@@ -2134,23 +2158,23 @@ class __$$ExportSizeUpdateMessageImplCopyWithImpl<$Res>
     extends _$QrCodeMessageCopyWithImpl<$Res, _$ExportSizeUpdateMessageImpl>
     implements _$$ExportSizeUpdateMessageImplCopyWith<$Res> {
   __$$ExportSizeUpdateMessageImplCopyWithImpl(
-      _$ExportSizeUpdateMessageImpl _value,
-      $Res Function(_$ExportSizeUpdateMessageImpl) _then)
-      : super(_value, _then);
+    _$ExportSizeUpdateMessageImpl _value,
+    $Res Function(_$ExportSizeUpdateMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of QrCodeMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? size = null,
-  }) {
-    return _then(_$ExportSizeUpdateMessageImpl(
-      null == size
-          ? _value.size
-          : size // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? size = null}) {
+    return _then(
+      _$ExportSizeUpdateMessageImpl(
+        null == size
+            ? _value.size
+            : size // ignore: cast_nullable_to_non_nullable
+                as int,
+      ),
+    );
   }
 }
 
@@ -2184,8 +2208,9 @@ class _$ExportSizeUpdateMessageImpl implements ExportSizeUpdateMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$ExportSizeUpdateMessageImplCopyWith<_$ExportSizeUpdateMessageImpl>
-      get copyWith => __$$ExportSizeUpdateMessageImplCopyWithImpl<
-          _$ExportSizeUpdateMessageImpl>(this, _$identity);
+  get copyWith => __$$ExportSizeUpdateMessageImplCopyWithImpl<
+    _$ExportSizeUpdateMessageImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2251,16 +2276,16 @@ class _$ExportSizeUpdateMessageImpl implements ExportSizeUpdateMessage {
     required TResult Function(LoadedStateMessage value) loadedState,
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateCorrectionLevelMessage value)
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     required TResult Function(SaveToFileMessage value) saveToFile,
     required TResult Function(UpdateExportTypeMessage value) updateExportType,
     required TResult Function(CopyToClipboardMessage value) copyToClipboard,
     required TResult Function(ShapeUpdateMessage value) shapeUpdate,
     required TResult Function(PaddingUpdateMessage value) paddingUpdate,
     required TResult Function(ForegroundColorUpdateMessage value)
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     required TResult Function(BackgroundColorUpdateMessage value)
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     required TResult Function(ExportSizeUpdateMessage value) exportSizeUpdate,
   }) {
     return exportSizeUpdate(this);
@@ -2272,16 +2297,16 @@ class _$ExportSizeUpdateMessageImpl implements ExportSizeUpdateMessage {
     TResult? Function(LoadedStateMessage value)? loadedState,
     TResult? Function(UpdateInputMessage value)? updateInput,
     TResult? Function(UpdateCorrectionLevelMessage value)?
-        updateCorrectionLevel,
+    updateCorrectionLevel,
     TResult? Function(SaveToFileMessage value)? saveToFile,
     TResult? Function(UpdateExportTypeMessage value)? updateExportType,
     TResult? Function(CopyToClipboardMessage value)? copyToClipboard,
     TResult? Function(ShapeUpdateMessage value)? shapeUpdate,
     TResult? Function(PaddingUpdateMessage value)? paddingUpdate,
     TResult? Function(ForegroundColorUpdateMessage value)?
-        foregroundColorUpdate,
+    foregroundColorUpdate,
     TResult? Function(BackgroundColorUpdateMessage value)?
-        backgroundColorUpdate,
+    backgroundColorUpdate,
     TResult? Function(ExportSizeUpdateMessage value)? exportSizeUpdate,
   }) {
     return exportSizeUpdate?.call(this);
@@ -2320,5 +2345,5 @@ abstract class ExportSizeUpdateMessage implements QrCodeMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExportSizeUpdateMessageImplCopyWith<_$ExportSizeUpdateMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

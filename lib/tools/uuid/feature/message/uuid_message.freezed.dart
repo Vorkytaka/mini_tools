@@ -12,7 +12,8 @@ part of 'uuid_message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$UuidMessage {
@@ -25,8 +26,7 @@ mixin _$UuidMessage {
     required TResult Function(String namespace) updateNamespace,
     required TResult Function(String name) updateName,
     required TResult Function(bool isLowerCase) updateLowerCase,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(UuidVersion version)? updateVersion,
@@ -36,8 +36,7 @@ mixin _$UuidMessage {
     TResult? Function(String namespace)? updateNamespace,
     TResult? Function(String name)? updateName,
     TResult? Function(bool isLowerCase)? updateLowerCase,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(UuidVersion version)? updateVersion,
@@ -48,8 +47,7 @@ mixin _$UuidMessage {
     TResult Function(String name)? updateName,
     TResult Function(bool isLowerCase)? updateLowerCase,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UpdateVersionMessage value) updateVersion,
@@ -59,8 +57,7 @@ mixin _$UuidMessage {
     required TResult Function(UpdateNamespaceMessage value) updateNamespace,
     required TResult Function(UpdateNameMessage value) updateName,
     required TResult Function(UpdateLowerCase value) updateLowerCase,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(UpdateVersionMessage value)? updateVersion,
@@ -70,8 +67,7 @@ mixin _$UuidMessage {
     TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
     TResult? Function(UpdateNameMessage value)? updateName,
     TResult? Function(UpdateLowerCase value)? updateLowerCase,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UpdateVersionMessage value)? updateVersion,
@@ -82,15 +78,15 @@ mixin _$UuidMessage {
     TResult Function(UpdateNameMessage value)? updateName,
     TResult Function(UpdateLowerCase value)? updateLowerCase,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $UuidMessageCopyWith<$Res> {
   factory $UuidMessageCopyWith(
-          UuidMessage value, $Res Function(UuidMessage) then) =
-      _$UuidMessageCopyWithImpl<$Res, UuidMessage>;
+    UuidMessage value,
+    $Res Function(UuidMessage) then,
+  ) = _$UuidMessageCopyWithImpl<$Res, UuidMessage>;
 }
 
 /// @nodoc
@@ -109,9 +105,10 @@ class _$UuidMessageCopyWithImpl<$Res, $Val extends UuidMessage>
 
 /// @nodoc
 abstract class _$$UpdateVersionMessageImplCopyWith<$Res> {
-  factory _$$UpdateVersionMessageImplCopyWith(_$UpdateVersionMessageImpl value,
-          $Res Function(_$UpdateVersionMessageImpl) then) =
-      __$$UpdateVersionMessageImplCopyWithImpl<$Res>;
+  factory _$$UpdateVersionMessageImplCopyWith(
+    _$UpdateVersionMessageImpl value,
+    $Res Function(_$UpdateVersionMessageImpl) then,
+  ) = __$$UpdateVersionMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({UuidVersion version});
 }
@@ -120,23 +117,24 @@ abstract class _$$UpdateVersionMessageImplCopyWith<$Res> {
 class __$$UpdateVersionMessageImplCopyWithImpl<$Res>
     extends _$UuidMessageCopyWithImpl<$Res, _$UpdateVersionMessageImpl>
     implements _$$UpdateVersionMessageImplCopyWith<$Res> {
-  __$$UpdateVersionMessageImplCopyWithImpl(_$UpdateVersionMessageImpl _value,
-      $Res Function(_$UpdateVersionMessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateVersionMessageImplCopyWithImpl(
+    _$UpdateVersionMessageImpl _value,
+    $Res Function(_$UpdateVersionMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UuidMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? version = null,
-  }) {
-    return _then(_$UpdateVersionMessageImpl(
-      null == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as UuidVersion,
-    ));
+  $Res call({Object? version = null}) {
+    return _then(
+      _$UpdateVersionMessageImpl(
+        null == version
+            ? _value.version
+            : version // ignore: cast_nullable_to_non_nullable
+                as UuidVersion,
+      ),
+    );
   }
 }
 
@@ -170,9 +168,11 @@ class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateVersionMessageImplCopyWith<_$UpdateVersionMessageImpl>
-      get copyWith =>
-          __$$UpdateVersionMessageImplCopyWithImpl<_$UpdateVersionMessageImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$UpdateVersionMessageImplCopyWithImpl<_$UpdateVersionMessageImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -277,14 +277,15 @@ abstract class UpdateVersionMessage implements UuidMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateVersionMessageImplCopyWith<_$UpdateVersionMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$UpdateCountMessageImplCopyWith<$Res> {
-  factory _$$UpdateCountMessageImplCopyWith(_$UpdateCountMessageImpl value,
-          $Res Function(_$UpdateCountMessageImpl) then) =
-      __$$UpdateCountMessageImplCopyWithImpl<$Res>;
+  factory _$$UpdateCountMessageImplCopyWith(
+    _$UpdateCountMessageImpl value,
+    $Res Function(_$UpdateCountMessageImpl) then,
+  ) = __$$UpdateCountMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int count});
 }
@@ -293,23 +294,24 @@ abstract class _$$UpdateCountMessageImplCopyWith<$Res> {
 class __$$UpdateCountMessageImplCopyWithImpl<$Res>
     extends _$UuidMessageCopyWithImpl<$Res, _$UpdateCountMessageImpl>
     implements _$$UpdateCountMessageImplCopyWith<$Res> {
-  __$$UpdateCountMessageImplCopyWithImpl(_$UpdateCountMessageImpl _value,
-      $Res Function(_$UpdateCountMessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateCountMessageImplCopyWithImpl(
+    _$UpdateCountMessageImpl _value,
+    $Res Function(_$UpdateCountMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UuidMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? count = null,
-  }) {
-    return _then(_$UpdateCountMessageImpl(
-      null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? count = null}) {
+    return _then(
+      _$UpdateCountMessageImpl(
+        null == count
+            ? _value.count
+            : count // ignore: cast_nullable_to_non_nullable
+                as int,
+      ),
+    );
   }
 }
 
@@ -344,7 +346,9 @@ class _$UpdateCountMessageImpl implements UpdateCountMessage {
   @pragma('vm:prefer-inline')
   _$$UpdateCountMessageImplCopyWith<_$UpdateCountMessageImpl> get copyWith =>
       __$$UpdateCountMessageImplCopyWithImpl<_$UpdateCountMessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -453,9 +457,10 @@ abstract class UpdateCountMessage implements UuidMessage {
 
 /// @nodoc
 abstract class _$$GenerateMessageImplCopyWith<$Res> {
-  factory _$$GenerateMessageImplCopyWith(_$GenerateMessageImpl value,
-          $Res Function(_$GenerateMessageImpl) then) =
-      __$$GenerateMessageImplCopyWithImpl<$Res>;
+  factory _$$GenerateMessageImplCopyWith(
+    _$GenerateMessageImpl value,
+    $Res Function(_$GenerateMessageImpl) then,
+  ) = __$$GenerateMessageImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -463,8 +468,9 @@ class __$$GenerateMessageImplCopyWithImpl<$Res>
     extends _$UuidMessageCopyWithImpl<$Res, _$GenerateMessageImpl>
     implements _$$GenerateMessageImplCopyWith<$Res> {
   __$$GenerateMessageImplCopyWithImpl(
-      _$GenerateMessageImpl _value, $Res Function(_$GenerateMessageImpl) _then)
-      : super(_value, _then);
+    _$GenerateMessageImpl _value,
+    $Res Function(_$GenerateMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UuidMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -589,8 +595,9 @@ abstract class GenerateMessage implements UuidMessage {
 /// @nodoc
 abstract class _$$SetIdsMessageImplCopyWith<$Res> {
   factory _$$SetIdsMessageImplCopyWith(
-          _$SetIdsMessageImpl value, $Res Function(_$SetIdsMessageImpl) then) =
-      __$$SetIdsMessageImplCopyWithImpl<$Res>;
+    _$SetIdsMessageImpl value,
+    $Res Function(_$SetIdsMessageImpl) then,
+  ) = __$$SetIdsMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<String> ids});
 }
@@ -600,22 +607,23 @@ class __$$SetIdsMessageImplCopyWithImpl<$Res>
     extends _$UuidMessageCopyWithImpl<$Res, _$SetIdsMessageImpl>
     implements _$$SetIdsMessageImplCopyWith<$Res> {
   __$$SetIdsMessageImplCopyWithImpl(
-      _$SetIdsMessageImpl _value, $Res Function(_$SetIdsMessageImpl) _then)
-      : super(_value, _then);
+    _$SetIdsMessageImpl _value,
+    $Res Function(_$SetIdsMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UuidMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? ids = null,
-  }) {
-    return _then(_$SetIdsMessageImpl(
-      null == ids
-          ? _value._ids
-          : ids // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+  $Res call({Object? ids = null}) {
+    return _then(
+      _$SetIdsMessageImpl(
+        null == ids
+            ? _value._ids
+            : ids // ignore: cast_nullable_to_non_nullable
+                as List<String>,
+      ),
+    );
   }
 }
 
@@ -765,9 +773,9 @@ abstract class SetIdsMessage implements UuidMessage {
 /// @nodoc
 abstract class _$$UpdateNamespaceMessageImplCopyWith<$Res> {
   factory _$$UpdateNamespaceMessageImplCopyWith(
-          _$UpdateNamespaceMessageImpl value,
-          $Res Function(_$UpdateNamespaceMessageImpl) then) =
-      __$$UpdateNamespaceMessageImplCopyWithImpl<$Res>;
+    _$UpdateNamespaceMessageImpl value,
+    $Res Function(_$UpdateNamespaceMessageImpl) then,
+  ) = __$$UpdateNamespaceMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String namespace});
 }
@@ -777,23 +785,23 @@ class __$$UpdateNamespaceMessageImplCopyWithImpl<$Res>
     extends _$UuidMessageCopyWithImpl<$Res, _$UpdateNamespaceMessageImpl>
     implements _$$UpdateNamespaceMessageImplCopyWith<$Res> {
   __$$UpdateNamespaceMessageImplCopyWithImpl(
-      _$UpdateNamespaceMessageImpl _value,
-      $Res Function(_$UpdateNamespaceMessageImpl) _then)
-      : super(_value, _then);
+    _$UpdateNamespaceMessageImpl _value,
+    $Res Function(_$UpdateNamespaceMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UuidMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? namespace = null,
-  }) {
-    return _then(_$UpdateNamespaceMessageImpl(
-      null == namespace
-          ? _value.namespace
-          : namespace // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? namespace = null}) {
+    return _then(
+      _$UpdateNamespaceMessageImpl(
+        null == namespace
+            ? _value.namespace
+            : namespace // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -828,8 +836,11 @@ class _$UpdateNamespaceMessageImpl implements UpdateNamespaceMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateNamespaceMessageImplCopyWith<_$UpdateNamespaceMessageImpl>
-      get copyWith => __$$UpdateNamespaceMessageImplCopyWithImpl<
-          _$UpdateNamespaceMessageImpl>(this, _$identity);
+  get copyWith =>
+      __$$UpdateNamespaceMessageImplCopyWithImpl<_$UpdateNamespaceMessageImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -934,14 +945,15 @@ abstract class UpdateNamespaceMessage implements UuidMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateNamespaceMessageImplCopyWith<_$UpdateNamespaceMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$UpdateNameMessageImplCopyWith<$Res> {
-  factory _$$UpdateNameMessageImplCopyWith(_$UpdateNameMessageImpl value,
-          $Res Function(_$UpdateNameMessageImpl) then) =
-      __$$UpdateNameMessageImplCopyWithImpl<$Res>;
+  factory _$$UpdateNameMessageImplCopyWith(
+    _$UpdateNameMessageImpl value,
+    $Res Function(_$UpdateNameMessageImpl) then,
+  ) = __$$UpdateNameMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String name});
 }
@@ -950,23 +962,24 @@ abstract class _$$UpdateNameMessageImplCopyWith<$Res> {
 class __$$UpdateNameMessageImplCopyWithImpl<$Res>
     extends _$UuidMessageCopyWithImpl<$Res, _$UpdateNameMessageImpl>
     implements _$$UpdateNameMessageImplCopyWith<$Res> {
-  __$$UpdateNameMessageImplCopyWithImpl(_$UpdateNameMessageImpl _value,
-      $Res Function(_$UpdateNameMessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateNameMessageImplCopyWithImpl(
+    _$UpdateNameMessageImpl _value,
+    $Res Function(_$UpdateNameMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UuidMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? name = null,
-  }) {
-    return _then(_$UpdateNameMessageImpl(
-      null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? name = null}) {
+    return _then(
+      _$UpdateNameMessageImpl(
+        null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -1001,7 +1014,9 @@ class _$UpdateNameMessageImpl implements UpdateNameMessage {
   @pragma('vm:prefer-inline')
   _$$UpdateNameMessageImplCopyWith<_$UpdateNameMessageImpl> get copyWith =>
       __$$UpdateNameMessageImplCopyWithImpl<_$UpdateNameMessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1110,9 +1125,10 @@ abstract class UpdateNameMessage implements UuidMessage {
 
 /// @nodoc
 abstract class _$$UpdateLowerCaseImplCopyWith<$Res> {
-  factory _$$UpdateLowerCaseImplCopyWith(_$UpdateLowerCaseImpl value,
-          $Res Function(_$UpdateLowerCaseImpl) then) =
-      __$$UpdateLowerCaseImplCopyWithImpl<$Res>;
+  factory _$$UpdateLowerCaseImplCopyWith(
+    _$UpdateLowerCaseImpl value,
+    $Res Function(_$UpdateLowerCaseImpl) then,
+  ) = __$$UpdateLowerCaseImplCopyWithImpl<$Res>;
   @useResult
   $Res call({bool isLowerCase});
 }
@@ -1122,22 +1138,23 @@ class __$$UpdateLowerCaseImplCopyWithImpl<$Res>
     extends _$UuidMessageCopyWithImpl<$Res, _$UpdateLowerCaseImpl>
     implements _$$UpdateLowerCaseImplCopyWith<$Res> {
   __$$UpdateLowerCaseImplCopyWithImpl(
-      _$UpdateLowerCaseImpl _value, $Res Function(_$UpdateLowerCaseImpl) _then)
-      : super(_value, _then);
+    _$UpdateLowerCaseImpl _value,
+    $Res Function(_$UpdateLowerCaseImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UuidMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? isLowerCase = null,
-  }) {
-    return _then(_$UpdateLowerCaseImpl(
-      null == isLowerCase
-          ? _value.isLowerCase
-          : isLowerCase // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? isLowerCase = null}) {
+    return _then(
+      _$UpdateLowerCaseImpl(
+        null == isLowerCase
+            ? _value.isLowerCase
+            : isLowerCase // ignore: cast_nullable_to_non_nullable
+                as bool,
+      ),
+    );
   }
 }
 
@@ -1173,7 +1190,9 @@ class _$UpdateLowerCaseImpl implements UpdateLowerCase {
   @pragma('vm:prefer-inline')
   _$$UpdateLowerCaseImplCopyWith<_$UpdateLowerCaseImpl> get copyWith =>
       __$$UpdateLowerCaseImplCopyWithImpl<_$UpdateLowerCaseImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs

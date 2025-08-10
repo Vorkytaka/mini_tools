@@ -12,7 +12,8 @@ part of 'uuid_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$UuidState {
@@ -35,13 +36,14 @@ abstract class $UuidStateCopyWith<$Res> {
   factory $UuidStateCopyWith(UuidState value, $Res Function(UuidState) then) =
       _$UuidStateCopyWithImpl<$Res, UuidState>;
   @useResult
-  $Res call(
-      {UuidVersion version,
-      String namespace,
-      String name,
-      int count,
-      List<String> ids,
-      bool isLowerCase});
+  $Res call({
+    UuidVersion version,
+    String namespace,
+    String name,
+    int count,
+    List<String> ids,
+    bool isLowerCase,
+  });
 }
 
 /// @nodoc
@@ -66,32 +68,41 @@ class _$UuidStateCopyWithImpl<$Res, $Val extends UuidState>
     Object? ids = null,
     Object? isLowerCase = null,
   }) {
-    return _then(_value.copyWith(
-      version: null == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as UuidVersion,
-      namespace: null == namespace
-          ? _value.namespace
-          : namespace // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-      ids: null == ids
-          ? _value.ids
-          : ids // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      isLowerCase: null == isLowerCase
-          ? _value.isLowerCase
-          : isLowerCase // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            version:
+                null == version
+                    ? _value.version
+                    : version // ignore: cast_nullable_to_non_nullable
+                        as UuidVersion,
+            namespace:
+                null == namespace
+                    ? _value.namespace
+                    : namespace // ignore: cast_nullable_to_non_nullable
+                        as String,
+            name:
+                null == name
+                    ? _value.name
+                    : name // ignore: cast_nullable_to_non_nullable
+                        as String,
+            count:
+                null == count
+                    ? _value.count
+                    : count // ignore: cast_nullable_to_non_nullable
+                        as int,
+            ids:
+                null == ids
+                    ? _value.ids
+                    : ids // ignore: cast_nullable_to_non_nullable
+                        as List<String>,
+            isLowerCase:
+                null == isLowerCase
+                    ? _value.isLowerCase
+                    : isLowerCase // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -99,17 +110,19 @@ class _$UuidStateCopyWithImpl<$Res, $Val extends UuidState>
 abstract class _$$UuidStateImplCopyWith<$Res>
     implements $UuidStateCopyWith<$Res> {
   factory _$$UuidStateImplCopyWith(
-          _$UuidStateImpl value, $Res Function(_$UuidStateImpl) then) =
-      __$$UuidStateImplCopyWithImpl<$Res>;
+    _$UuidStateImpl value,
+    $Res Function(_$UuidStateImpl) then,
+  ) = __$$UuidStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {UuidVersion version,
-      String namespace,
-      String name,
-      int count,
-      List<String> ids,
-      bool isLowerCase});
+  $Res call({
+    UuidVersion version,
+    String namespace,
+    String name,
+    int count,
+    List<String> ids,
+    bool isLowerCase,
+  });
 }
 
 /// @nodoc
@@ -117,8 +130,9 @@ class __$$UuidStateImplCopyWithImpl<$Res>
     extends _$UuidStateCopyWithImpl<$Res, _$UuidStateImpl>
     implements _$$UuidStateImplCopyWith<$Res> {
   __$$UuidStateImplCopyWithImpl(
-      _$UuidStateImpl _value, $Res Function(_$UuidStateImpl) _then)
-      : super(_value, _then);
+    _$UuidStateImpl _value,
+    $Res Function(_$UuidStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UuidState
   /// with the given fields replaced by the non-null parameter values.
@@ -132,47 +146,55 @@ class __$$UuidStateImplCopyWithImpl<$Res>
     Object? ids = null,
     Object? isLowerCase = null,
   }) {
-    return _then(_$UuidStateImpl(
-      version: null == version
-          ? _value.version
-          : version // ignore: cast_nullable_to_non_nullable
-              as UuidVersion,
-      namespace: null == namespace
-          ? _value.namespace
-          : namespace // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-      ids: null == ids
-          ? _value._ids
-          : ids // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      isLowerCase: null == isLowerCase
-          ? _value.isLowerCase
-          : isLowerCase // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$UuidStateImpl(
+        version:
+            null == version
+                ? _value.version
+                : version // ignore: cast_nullable_to_non_nullable
+                    as UuidVersion,
+        namespace:
+            null == namespace
+                ? _value.namespace
+                : namespace // ignore: cast_nullable_to_non_nullable
+                    as String,
+        name:
+            null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        count:
+            null == count
+                ? _value.count
+                : count // ignore: cast_nullable_to_non_nullable
+                    as int,
+        ids:
+            null == ids
+                ? _value._ids
+                : ids // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+        isLowerCase:
+            null == isLowerCase
+                ? _value.isLowerCase
+                : isLowerCase // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$UuidStateImpl implements _UuidState {
-  const _$UuidStateImpl(
-      {required this.version,
-      required this.namespace,
-      required this.name,
-      required this.count,
-      required final List<String> ids,
-      required this.isLowerCase})
-      : assert(count > 0),
-        _ids = ids;
+  const _$UuidStateImpl({
+    required this.version,
+    required this.namespace,
+    required this.name,
+    required this.count,
+    required final List<String> ids,
+    required this.isLowerCase,
+  }) : assert(count > 0),
+       _ids = ids;
 
   @override
   final UuidVersion version;
@@ -214,8 +236,15 @@ class _$UuidStateImpl implements _UuidState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, version, namespace, name, count,
-      const DeepCollectionEquality().hash(_ids), isLowerCase);
+  int get hashCode => Object.hash(
+    runtimeType,
+    version,
+    namespace,
+    name,
+    count,
+    const DeepCollectionEquality().hash(_ids),
+    isLowerCase,
+  );
 
   /// Create a copy of UuidState
   /// with the given fields replaced by the non-null parameter values.
@@ -227,13 +256,14 @@ class _$UuidStateImpl implements _UuidState {
 }
 
 abstract class _UuidState implements UuidState {
-  const factory _UuidState(
-      {required final UuidVersion version,
-      required final String namespace,
-      required final String name,
-      required final int count,
-      required final List<String> ids,
-      required final bool isLowerCase}) = _$UuidStateImpl;
+  const factory _UuidState({
+    required final UuidVersion version,
+    required final String namespace,
+    required final String name,
+    required final int count,
+    required final List<String> ids,
+    required final bool isLowerCase,
+  }) = _$UuidStateImpl;
 
   @override
   UuidVersion get version;

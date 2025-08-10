@@ -4,10 +4,7 @@ final class HashUpdate implements IUpdate<HashState, HashEvent, HashEffect> {
   const HashUpdate();
 
   @override
-  Next<HashState, HashEffect> call(
-    HashState state,
-    HashEvent event,
-  ) {
+  Next<HashState, HashEffect> call(HashState state, HashEvent event) {
     switch (event) {
       case UpdateTextEvent():
         return next(
@@ -31,16 +28,11 @@ final class HashUpdate implements IUpdate<HashState, HashEvent, HashEffect> {
           ),
         );
       case UpdateFormatEvent():
-        return next(
-          state: state.copyWith(format: event.format),
-        );
+        return next(state: state.copyWith(format: event.format));
       case UpdateHashEvent():
         final bytesCount = event.bytesInFile ?? state.inputBytes;
         return next(
-          state: state.copyWith(
-            hash: event.hash,
-            inputBytes: bytesCount,
-          ),
+          state: state.copyWith(hash: event.hash, inputBytes: bytesCount),
         );
       case UpdateAlgorithmEvent():
         final effect = state.input.map(

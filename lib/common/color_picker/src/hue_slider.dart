@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 typedef HuePickerCallback = void Function(double hue);
 
 class HueSlider extends StatefulWidget {
-  const HueSlider(
-      {Key? key, required this.selectedHue, required this.onHueSelected})
-      : super(key: key);
+  const HueSlider({
+    Key? key,
+    required this.selectedHue,
+    required this.onHueSelected,
+  }) : super(key: key);
   final double selectedHue;
   final HuePickerCallback onHueSelected;
 
@@ -131,25 +133,24 @@ class _HueSliderState extends State<HueSlider> {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      return GestureDetector(
-        onPanStart: _onDragStart,
-        onPanUpdate: _onDragUpdate,
-        onPanEnd: _onDragEnd, // Add end handler
-        onPanCancel: _onDragCancel, // Add cancel handler
-        child: Stack(
-          clipBehavior:
-              Clip.none, // Allow bubble to draw outside bounds if needed
-          children: [
-            CustomPaint(
-              painter: HuePainter(),
-              size: Size.infinite,
-            ),
-            _buildHueSelector(constraints.maxWidth)
-          ],
-        ),
-      );
-    });
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return GestureDetector(
+          onPanStart: _onDragStart,
+          onPanUpdate: _onDragUpdate,
+          onPanEnd: _onDragEnd, // Add end handler
+          onPanCancel: _onDragCancel, // Add cancel handler
+          child: Stack(
+            clipBehavior:
+                Clip.none, // Allow bubble to draw outside bounds if needed
+            children: [
+              CustomPaint(painter: HuePainter(), size: Size.infinite),
+              _buildHueSelector(constraints.maxWidth),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   Widget _buildHueSelector(double width) {
@@ -159,8 +160,9 @@ class _HueSliderState extends State<HueSlider> {
       alignment: Alignment((huePercent * -2) + 1.0, 0.0),
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(color: Colors.white, width: 2)),
+          borderRadius: BorderRadius.circular(5),
+          border: Border.all(color: Colors.white, width: 2),
+        ),
         width: 9,
       ),
     );

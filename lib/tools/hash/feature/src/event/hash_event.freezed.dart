@@ -12,7 +12,8 @@ part of 'hash_event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$HashEvent {
@@ -24,8 +25,7 @@ mixin _$HashEvent {
     required TResult Function(HashFormat format) updateFormat,
     required TResult Function(Uint8List? hash, int? bytesInFile) updateHash,
     required TResult Function(HashAlgorithm algorithm) updateAlgorithm,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String text)? updateText,
@@ -34,8 +34,7 @@ mixin _$HashEvent {
     TResult? Function(HashFormat format)? updateFormat,
     TResult? Function(Uint8List? hash, int? bytesInFile)? updateHash,
     TResult? Function(HashAlgorithm algorithm)? updateAlgorithm,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String text)? updateText,
@@ -45,8 +44,7 @@ mixin _$HashEvent {
     TResult Function(Uint8List? hash, int? bytesInFile)? updateHash,
     TResult Function(HashAlgorithm algorithm)? updateAlgorithm,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UpdateTextEvent value) updateText,
@@ -55,8 +53,7 @@ mixin _$HashEvent {
     required TResult Function(UpdateFormatEvent value) updateFormat,
     required TResult Function(UpdateHashEvent value) updateHash,
     required TResult Function(UpdateAlgorithmEvent value) updateAlgorithm,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(UpdateTextEvent value)? updateText,
@@ -65,8 +62,7 @@ mixin _$HashEvent {
     TResult? Function(UpdateFormatEvent value)? updateFormat,
     TResult? Function(UpdateHashEvent value)? updateHash,
     TResult? Function(UpdateAlgorithmEvent value)? updateAlgorithm,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UpdateTextEvent value)? updateText,
@@ -76,8 +72,7 @@ mixin _$HashEvent {
     TResult Function(UpdateHashEvent value)? updateHash,
     TResult Function(UpdateAlgorithmEvent value)? updateAlgorithm,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -102,9 +97,10 @@ class _$HashEventCopyWithImpl<$Res, $Val extends HashEvent>
 
 /// @nodoc
 abstract class _$$UpdateTextEventImplCopyWith<$Res> {
-  factory _$$UpdateTextEventImplCopyWith(_$UpdateTextEventImpl value,
-          $Res Function(_$UpdateTextEventImpl) then) =
-      __$$UpdateTextEventImplCopyWithImpl<$Res>;
+  factory _$$UpdateTextEventImplCopyWith(
+    _$UpdateTextEventImpl value,
+    $Res Function(_$UpdateTextEventImpl) then,
+  ) = __$$UpdateTextEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String text});
 }
@@ -114,22 +110,23 @@ class __$$UpdateTextEventImplCopyWithImpl<$Res>
     extends _$HashEventCopyWithImpl<$Res, _$UpdateTextEventImpl>
     implements _$$UpdateTextEventImplCopyWith<$Res> {
   __$$UpdateTextEventImplCopyWithImpl(
-      _$UpdateTextEventImpl _value, $Res Function(_$UpdateTextEventImpl) _then)
-      : super(_value, _then);
+    _$UpdateTextEventImpl _value,
+    $Res Function(_$UpdateTextEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HashEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? text = null,
-  }) {
-    return _then(_$UpdateTextEventImpl(
-      null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? text = null}) {
+    return _then(
+      _$UpdateTextEventImpl(
+        null == text
+            ? _value.text
+            : text // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -164,7 +161,9 @@ class _$UpdateTextEventImpl implements UpdateTextEvent {
   @pragma('vm:prefer-inline')
   _$$UpdateTextEventImplCopyWith<_$UpdateTextEventImpl> get copyWith =>
       __$$UpdateTextEventImplCopyWithImpl<_$UpdateTextEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -268,8 +267,9 @@ abstract class UpdateTextEvent implements HashEvent {
 /// @nodoc
 abstract class _$$SetFileEventImplCopyWith<$Res> {
   factory _$$SetFileEventImplCopyWith(
-          _$SetFileEventImpl value, $Res Function(_$SetFileEventImpl) then) =
-      __$$SetFileEventImplCopyWithImpl<$Res>;
+    _$SetFileEventImpl value,
+    $Res Function(_$SetFileEventImpl) then,
+  ) = __$$SetFileEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String path});
 }
@@ -279,22 +279,23 @@ class __$$SetFileEventImplCopyWithImpl<$Res>
     extends _$HashEventCopyWithImpl<$Res, _$SetFileEventImpl>
     implements _$$SetFileEventImplCopyWith<$Res> {
   __$$SetFileEventImplCopyWithImpl(
-      _$SetFileEventImpl _value, $Res Function(_$SetFileEventImpl) _then)
-      : super(_value, _then);
+    _$SetFileEventImpl _value,
+    $Res Function(_$SetFileEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HashEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? path = null,
-  }) {
-    return _then(_$SetFileEventImpl(
-      null == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? path = null}) {
+    return _then(
+      _$SetFileEventImpl(
+        null == path
+            ? _value.path
+            : path // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -432,8 +433,9 @@ abstract class SetFileEvent implements HashEvent {
 /// @nodoc
 abstract class _$$DropFileEventImplCopyWith<$Res> {
   factory _$$DropFileEventImplCopyWith(
-          _$DropFileEventImpl value, $Res Function(_$DropFileEventImpl) then) =
-      __$$DropFileEventImplCopyWithImpl<$Res>;
+    _$DropFileEventImpl value,
+    $Res Function(_$DropFileEventImpl) then,
+  ) = __$$DropFileEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -441,8 +443,9 @@ class __$$DropFileEventImplCopyWithImpl<$Res>
     extends _$HashEventCopyWithImpl<$Res, _$DropFileEventImpl>
     implements _$$DropFileEventImplCopyWith<$Res> {
   __$$DropFileEventImplCopyWithImpl(
-      _$DropFileEventImpl _value, $Res Function(_$DropFileEventImpl) _then)
-      : super(_value, _then);
+    _$DropFileEventImpl _value,
+    $Res Function(_$DropFileEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HashEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -560,9 +563,10 @@ abstract class DropFileEvent implements HashEvent {
 
 /// @nodoc
 abstract class _$$UpdateFormatEventImplCopyWith<$Res> {
-  factory _$$UpdateFormatEventImplCopyWith(_$UpdateFormatEventImpl value,
-          $Res Function(_$UpdateFormatEventImpl) then) =
-      __$$UpdateFormatEventImplCopyWithImpl<$Res>;
+  factory _$$UpdateFormatEventImplCopyWith(
+    _$UpdateFormatEventImpl value,
+    $Res Function(_$UpdateFormatEventImpl) then,
+  ) = __$$UpdateFormatEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({HashFormat format});
 }
@@ -571,23 +575,24 @@ abstract class _$$UpdateFormatEventImplCopyWith<$Res> {
 class __$$UpdateFormatEventImplCopyWithImpl<$Res>
     extends _$HashEventCopyWithImpl<$Res, _$UpdateFormatEventImpl>
     implements _$$UpdateFormatEventImplCopyWith<$Res> {
-  __$$UpdateFormatEventImplCopyWithImpl(_$UpdateFormatEventImpl _value,
-      $Res Function(_$UpdateFormatEventImpl) _then)
-      : super(_value, _then);
+  __$$UpdateFormatEventImplCopyWithImpl(
+    _$UpdateFormatEventImpl _value,
+    $Res Function(_$UpdateFormatEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HashEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? format = null,
-  }) {
-    return _then(_$UpdateFormatEventImpl(
-      null == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as HashFormat,
-    ));
+  $Res call({Object? format = null}) {
+    return _then(
+      _$UpdateFormatEventImpl(
+        null == format
+            ? _value.format
+            : format // ignore: cast_nullable_to_non_nullable
+                as HashFormat,
+      ),
+    );
   }
 }
 
@@ -622,7 +627,9 @@ class _$UpdateFormatEventImpl implements UpdateFormatEvent {
   @pragma('vm:prefer-inline')
   _$$UpdateFormatEventImplCopyWith<_$UpdateFormatEventImpl> get copyWith =>
       __$$UpdateFormatEventImplCopyWithImpl<_$UpdateFormatEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -726,9 +733,10 @@ abstract class UpdateFormatEvent implements HashEvent {
 
 /// @nodoc
 abstract class _$$UpdateHashEventImplCopyWith<$Res> {
-  factory _$$UpdateHashEventImplCopyWith(_$UpdateHashEventImpl value,
-          $Res Function(_$UpdateHashEventImpl) then) =
-      __$$UpdateHashEventImplCopyWithImpl<$Res>;
+  factory _$$UpdateHashEventImplCopyWith(
+    _$UpdateHashEventImpl value,
+    $Res Function(_$UpdateHashEventImpl) then,
+  ) = __$$UpdateHashEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Uint8List? hash, int? bytesInFile});
 }
@@ -738,27 +746,28 @@ class __$$UpdateHashEventImplCopyWithImpl<$Res>
     extends _$HashEventCopyWithImpl<$Res, _$UpdateHashEventImpl>
     implements _$$UpdateHashEventImplCopyWith<$Res> {
   __$$UpdateHashEventImplCopyWithImpl(
-      _$UpdateHashEventImpl _value, $Res Function(_$UpdateHashEventImpl) _then)
-      : super(_value, _then);
+    _$UpdateHashEventImpl _value,
+    $Res Function(_$UpdateHashEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HashEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? hash = freezed,
-    Object? bytesInFile = freezed,
-  }) {
-    return _then(_$UpdateHashEventImpl(
-      freezed == hash
-          ? _value.hash
-          : hash // ignore: cast_nullable_to_non_nullable
-              as Uint8List?,
-      bytesInFile: freezed == bytesInFile
-          ? _value.bytesInFile
-          : bytesInFile // ignore: cast_nullable_to_non_nullable
-              as int?,
-    ));
+  $Res call({Object? hash = freezed, Object? bytesInFile = freezed}) {
+    return _then(
+      _$UpdateHashEventImpl(
+        freezed == hash
+            ? _value.hash
+            : hash // ignore: cast_nullable_to_non_nullable
+                as Uint8List?,
+        bytesInFile:
+            freezed == bytesInFile
+                ? _value.bytesInFile
+                : bytesInFile // ignore: cast_nullable_to_non_nullable
+                    as int?,
+      ),
+    );
   }
 }
 
@@ -789,7 +798,10 @@ class _$UpdateHashEventImpl implements UpdateHashEvent {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(hash), bytesInFile);
+    runtimeType,
+    const DeepCollectionEquality().hash(hash),
+    bytesInFile,
+  );
 
   /// Create a copy of HashEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -798,7 +810,9 @@ class _$UpdateHashEventImpl implements UpdateHashEvent {
   @pragma('vm:prefer-inline')
   _$$UpdateHashEventImplCopyWith<_$UpdateHashEventImpl> get copyWith =>
       __$$UpdateHashEventImplCopyWithImpl<_$UpdateHashEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -888,8 +902,10 @@ class _$UpdateHashEventImpl implements UpdateHashEvent {
 }
 
 abstract class UpdateHashEvent implements HashEvent {
-  const factory UpdateHashEvent(final Uint8List? hash,
-      {final int? bytesInFile}) = _$UpdateHashEventImpl;
+  const factory UpdateHashEvent(
+    final Uint8List? hash, {
+    final int? bytesInFile,
+  }) = _$UpdateHashEventImpl;
 
   Uint8List? get hash;
   int? get bytesInFile;
@@ -903,9 +919,10 @@ abstract class UpdateHashEvent implements HashEvent {
 
 /// @nodoc
 abstract class _$$UpdateAlgorithmEventImplCopyWith<$Res> {
-  factory _$$UpdateAlgorithmEventImplCopyWith(_$UpdateAlgorithmEventImpl value,
-          $Res Function(_$UpdateAlgorithmEventImpl) then) =
-      __$$UpdateAlgorithmEventImplCopyWithImpl<$Res>;
+  factory _$$UpdateAlgorithmEventImplCopyWith(
+    _$UpdateAlgorithmEventImpl value,
+    $Res Function(_$UpdateAlgorithmEventImpl) then,
+  ) = __$$UpdateAlgorithmEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({HashAlgorithm algorithm});
 }
@@ -914,23 +931,24 @@ abstract class _$$UpdateAlgorithmEventImplCopyWith<$Res> {
 class __$$UpdateAlgorithmEventImplCopyWithImpl<$Res>
     extends _$HashEventCopyWithImpl<$Res, _$UpdateAlgorithmEventImpl>
     implements _$$UpdateAlgorithmEventImplCopyWith<$Res> {
-  __$$UpdateAlgorithmEventImplCopyWithImpl(_$UpdateAlgorithmEventImpl _value,
-      $Res Function(_$UpdateAlgorithmEventImpl) _then)
-      : super(_value, _then);
+  __$$UpdateAlgorithmEventImplCopyWithImpl(
+    _$UpdateAlgorithmEventImpl _value,
+    $Res Function(_$UpdateAlgorithmEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of HashEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? algorithm = null,
-  }) {
-    return _then(_$UpdateAlgorithmEventImpl(
-      null == algorithm
-          ? _value.algorithm
-          : algorithm // ignore: cast_nullable_to_non_nullable
-              as HashAlgorithm,
-    ));
+  $Res call({Object? algorithm = null}) {
+    return _then(
+      _$UpdateAlgorithmEventImpl(
+        null == algorithm
+            ? _value.algorithm
+            : algorithm // ignore: cast_nullable_to_non_nullable
+                as HashAlgorithm,
+      ),
+    );
   }
 }
 
@@ -965,9 +983,11 @@ class _$UpdateAlgorithmEventImpl implements UpdateAlgorithmEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateAlgorithmEventImplCopyWith<_$UpdateAlgorithmEventImpl>
-      get copyWith =>
-          __$$UpdateAlgorithmEventImplCopyWithImpl<_$UpdateAlgorithmEventImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$UpdateAlgorithmEventImplCopyWithImpl<_$UpdateAlgorithmEventImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1066,5 +1086,5 @@ abstract class UpdateAlgorithmEvent implements HashEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateAlgorithmEventImplCopyWith<_$UpdateAlgorithmEventImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

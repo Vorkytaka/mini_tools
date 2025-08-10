@@ -29,18 +29,19 @@ final class DatetimeConverterTool {
     return showMacosSheet(
       context: context,
       barrierDismissible: true,
-      builder: (context) => FeatureProvider.create(
-        create: (context) => datetimeConverterFeatureFactory(
-          initialDatetime: datetime,
-        ),
-        child: const MacosSheet(
-          child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-            clipBehavior: Clip.hardEdge,
-            child: DatetimeConverterScreen(),
+      builder:
+          (context) => FeatureProvider.create(
+            create:
+                (context) =>
+                    datetimeConverterFeatureFactory(initialDatetime: datetime),
+            child: const MacosSheet(
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+                clipBehavior: Clip.hardEdge,
+                child: DatetimeConverterScreen(),
+              ),
+            ),
           ),
-        ),
-      ),
     );
   }
 }

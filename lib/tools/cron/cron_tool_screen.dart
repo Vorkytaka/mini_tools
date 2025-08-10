@@ -26,13 +26,8 @@ class CronToolScreen extends StatelessWidget {
     final t = Translations.of(context);
 
     return MacosScaffold(
-      toolBar: ToolBar(
-        centerTitle: true,
-        title: Text(t.cron.title),
-      ),
-      children: [
-        ContentArea(builder: (context, _) => const _Body()),
-      ],
+      toolBar: ToolBar(centerTitle: true, title: Text(t.cron.title)),
+      children: [ContentArea(builder: (context, _) => const _Body())],
     );
   }
 }
@@ -69,15 +64,9 @@ class _Body extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          const SizedBox(
-            width: 300,
-            child: _CronInput(),
-          ),
+          const SizedBox(width: 300, child: _CronInput()),
           const SizedBox(height: 16),
-          const Padding(
-            padding: headlinePadding,
-            child: _HumanReadCron(),
-          ),
+          const Padding(padding: headlinePadding, child: _HumanReadCron()),
           const SizedBox(height: 4),
           Padding(
             padding: headlinePadding,
@@ -94,10 +83,7 @@ class _Body extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          const Padding(
-            padding: headlinePadding,
-            child: _NextAt(),
-          ),
+          const Padding(padding: headlinePadding, child: _NextAt()),
         ],
       ),
     );
@@ -105,10 +91,7 @@ class _Body extends StatelessWidget {
 }
 
 extension CronExpressionUtils on CronExpression {
-  String formatToList({
-    required Translations t,
-    required CronPart part,
-  }) {
+  String formatToList({required Translations t, required CronPart part}) {
     if (this is Any) {
       return t.cron.all;
     }
@@ -129,10 +112,7 @@ extension on CronPart {
     };
   }
 
-  String formatInt({
-    required Translations t,
-    required int num,
-  }) {
+  String formatInt({required Translations t, required int num}) {
     return switch (this) {
       CronPart.minutes => ':${num.toString().padLeft(2, '0')}',
       CronPart.hours => '${num.toString().padLeft(2, '0')}:',
@@ -146,9 +126,7 @@ extension on CronPart {
 class _CronPartValues extends StatelessWidget {
   final CronPart part;
 
-  const _CronPartValues({
-    required this.part,
-  });
+  const _CronPartValues({required this.part});
 
   @override
   Widget build(BuildContext context) {
@@ -172,16 +150,17 @@ class _CronPartValues extends StatelessWidget {
           CronPart.weekdays => cron?.weekdays,
         };
         final exception = state.result.maybeWhen(
-          failure: (e) => switch (e) {
-            InvalidCronPartException() => switch (part) {
-                CronPart.minutes => e.minutes,
-                CronPart.hours => e.hours,
-                CronPart.days => e.daysOfMonth,
-                CronPart.months => e.months,
-                CronPart.weekdays => e.daysOfWeek,
+          failure:
+              (e) => switch (e) {
+                InvalidCronPartException() => switch (part) {
+                  CronPart.minutes => e.minutes,
+                  CronPart.hours => e.hours,
+                  CronPart.days => e.daysOfMonth,
+                  CronPart.months => e.months,
+                  CronPart.weekdays => e.daysOfWeek,
+                },
+                _ => null,
               },
-            _ => null,
-          },
           orElse: () => null,
         );
 
@@ -217,10 +196,7 @@ class _CronPartValues extends StatelessWidget {
             Expanded(
               child: Text(
                 text,
-                style: TextStyle(
-                  fontFamily: 'Fira Code',
-                  color: textColor,
-                ),
+                style: TextStyle(fontFamily: 'Fira Code', color: textColor),
               ),
             ),
           ],
@@ -279,11 +255,7 @@ class _CronInputState extends State<_CronInput> {
   }
 
   void _onPartSelectionChanged(List<CronPart> parts) {
-    SharedAppData.setValue(
-      context,
-      'cron/selected/parts',
-      parts,
-    );
+    SharedAppData.setValue(context, 'cron/selected/parts', parts);
   }
 }
 
@@ -326,10 +298,7 @@ class _NextAt extends StatelessWidget {
         return Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              width: 130,
-              child: Text(t.cron.nextAt),
-            ),
+            SizedBox(width: 130, child: Text(t.cron.nextAt)),
             const Expanded(child: _NextAtList()),
           ],
         );
@@ -357,9 +326,10 @@ class _NextAtList extends StatelessWidget {
 
         final nexts = <TZDateTime>[];
         for (int i = 0; i < 5; i++) {
-          final prev = nexts.isNotEmpty && nexts.length >= i
-              ? nexts[i - 1]
-              : TZDateTime.from(now, timezone);
+          final prev =
+              nexts.isNotEmpty && nexts.length >= i
+                  ? nexts[i - 1]
+                  : TZDateTime.from(now, timezone);
           final next = TZDateTime.from(cron.nextRun(prev), timezone);
           nexts.add(next);
         }
@@ -407,9 +377,7 @@ class _NextAtList extends StatelessWidget {
 class _NextAtRelative extends StatelessWidget {
   final TZDateTime datetime;
 
-  const _NextAtRelative({
-    required this.datetime,
-  });
+  const _NextAtRelative({required this.datetime});
 
   @override
   Widget build(BuildContext context) {
@@ -419,16 +387,16 @@ class _NextAtRelative extends StatelessWidget {
     final diffStr = diff.format(
       onZero: t.datetimeConverter.relativeFormat.rightNow,
       onDays: (days) => t.datetimeConverter.relativeFormat.days(days: days),
-      onHours: (hours) =>
-          t.datetimeConverter.relativeFormat.hours(hours: hours),
-      onMinutes: (min) =>
-          t.datetimeConverter.relativeFormat.minutes(minutes: min),
-      onSeconds: (sec) =>
-          t.datetimeConverter.relativeFormat.seconds(seconds: sec),
-      positiveWrapper: (str) =>
-          t.datetimeConverter.relativeFormat.positive(str: str),
-      negativeWrapper: (str) =>
-          t.datetimeConverter.relativeFormat.negative(str: str),
+      onHours:
+          (hours) => t.datetimeConverter.relativeFormat.hours(hours: hours),
+      onMinutes:
+          (min) => t.datetimeConverter.relativeFormat.minutes(minutes: min),
+      onSeconds:
+          (sec) => t.datetimeConverter.relativeFormat.seconds(seconds: sec),
+      positiveWrapper:
+          (str) => t.datetimeConverter.relativeFormat.positive(str: str),
+      negativeWrapper:
+          (str) => t.datetimeConverter.relativeFormat.negative(str: str),
       separator: t.common.textSeparator,
     );
 
@@ -443,20 +411,20 @@ extension on CronException {
       EmptyCronException() => t.cron.errors.empty,
       CustomCronException() => t.cron.errors.custom,
       InvalidValueException() => t.cron.errors.invalidValue(
-          from: err.part.minValue,
-          to: err.part.maxValue,
-          value: err.value,
-        ),
+        from: err.part.minValue,
+        to: err.part.maxValue,
+        value: err.value,
+      ),
       InvalidRangeLengthException() => t.cron.errors.rangeLength,
       InvalidRangeException() => t.cron.errors.range(
-          from: err.from,
-          to: err.to,
-        ),
+        from: err.from,
+        to: err.to,
+      ),
       InvalidStepLengthException() => t.cron.errors.stepLength,
       InvalidStepException() => t.cron.errors.invalidStep(
-          to: err.part.maxValue,
-          value: err.step,
-        ),
+        to: err.part.maxValue,
+        value: err.step,
+      ),
       InvalidCronPartException() => err.format(t),
     };
   }
@@ -513,9 +481,7 @@ extension on InvalidCronPartException {
 class _CronTextEditingController extends TextEditingController {
   final ValueChanged<List<CronPart>> onPartSelectionChanged;
 
-  _CronTextEditingController({
-    required this.onPartSelectionChanged,
-  });
+  _CronTextEditingController({required this.onPartSelectionChanged});
 
   @override
   set selection(TextSelection newSelection) {

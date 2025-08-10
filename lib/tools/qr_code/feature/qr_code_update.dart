@@ -54,9 +54,7 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       );
     case ShapeUpdateMessage():
       final newState = state.copyWith(
-        visualData: state.visualData.copyWith(
-          shape: message.shape,
-        ),
+        visualData: state.visualData.copyWith(shape: message.shape),
       );
       return next(
         state: newState,
@@ -64,9 +62,7 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       );
     case PaddingUpdateMessage():
       final newState = state.copyWith(
-        visualData: state.visualData.copyWith(
-          paddings: message.padding,
-        ),
+        visualData: state.visualData.copyWith(paddings: message.padding),
       );
       return next(
         state: newState,
@@ -76,9 +72,7 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       return next(state: message.state);
     case ForegroundColorUpdateMessage():
       final newState = state.copyWith(
-        visualData: state.visualData.copyWith(
-          foregroundColor: message.color,
-        ),
+        visualData: state.visualData.copyWith(foregroundColor: message.color),
       );
       return next(
         state: newState,
@@ -86,9 +80,7 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       );
     case BackgroundColorUpdateMessage():
       final newState = state.copyWith(
-        visualData: state.visualData.copyWith(
-          backgroundColor: message.color,
-        ),
+        visualData: state.visualData.copyWith(backgroundColor: message.color),
       );
       return next(
         state: newState,

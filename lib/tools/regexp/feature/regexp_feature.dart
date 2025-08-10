@@ -15,7 +15,7 @@ export 'state/regexp_state.dart';
 typedef RegExpFeature = Feature<RegExpState, RegExpMessage, RegExpEffect>;
 
 RegExpFeature regExpFeatureFactory() => Feature(
-      initialState: RegExpState.init(),
-      update: regExpUpdate,
-      effectHandlers: const [RegExpEffectHandler()],
-    );
+  initialState: RegExpState.init(),
+  update: regExpUpdate,
+  effectHandlers: const [RegExpEffectHandler()],
+);

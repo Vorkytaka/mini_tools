@@ -13,8 +13,8 @@ final class PercentagesTool {
   static const id = 'percentages';
 
   static Tool shared = BaseTool(
-    titleBuilder: (context) =>
-        Translations.of(context).percentageCalculator.title,
+    titleBuilder:
+        (context) => Translations.of(context).percentageCalculator.title,
     icon: Icons.percent,
     screenBuilder: (context) => const PercentagesToolScreen(),
   );
@@ -35,22 +35,23 @@ class PercentagesToolScreen extends StatelessWidget {
       ),
       children: [
         ContentArea(
-          builder: (context, controller) => const Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8),
-                  child: _PercentagesFromValue(),
+          builder:
+              (context, controller) => const Padding(
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: _PercentagesFromValue(),
+                    ),
+                    MacosPulldownMenuDivider(),
+                    Padding(
+                      padding: EdgeInsets.all(8),
+                      child: _PercentagesOfValue(),
+                    ),
+                  ],
                 ),
-                MacosPulldownMenuDivider(),
-                Padding(
-                  padding: EdgeInsets.all(8),
-                  child: _PercentagesOfValue(),
-                ),
-              ],
-            ),
-          ),
+              ),
         ),
       ],
     );
@@ -99,10 +100,7 @@ class _PercentagesFromValueState extends State<_PercentagesFromValue> {
               child: MacosTextField(
                 controller: _percentController,
                 textAlign: TextAlign.end,
-                suffix: Opacity(
-                  opacity: 0.5,
-                  child: Text(t.common.percent),
-                ),
+                suffix: Opacity(opacity: 0.5, child: Text(t.common.percent)),
               ),
             ),
             Text(t.percentageCalculator.percentFromValue.of),
@@ -211,10 +209,7 @@ class _PercentagesOfValueState extends State<_PercentagesOfValue> {
             textAlign: TextAlign.end,
             maxLines: 1,
             text: _value,
-            suffix: Opacity(
-              opacity: 0.5,
-              child: Text(t.common.percent),
-            ),
+            suffix: Opacity(opacity: 0.5, child: Text(t.common.percent)),
           ),
         ),
         const SizedBox(width: 4),

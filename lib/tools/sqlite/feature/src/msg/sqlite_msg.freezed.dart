@@ -12,7 +12,8 @@ part of 'sqlite_msg.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SqliteMsg {
@@ -26,8 +27,7 @@ mixin _$SqliteMsg {
     required TResult Function(List<TableInfo> tables) tableInfo,
     required TResult Function(DatabaseConnection connection) connectionChanged,
     required TResult Function() dispose,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query)? execute,
@@ -38,8 +38,7 @@ mixin _$SqliteMsg {
     TResult? Function(List<TableInfo> tables)? tableInfo,
     TResult? Function(DatabaseConnection connection)? connectionChanged,
     TResult? Function()? dispose,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query)? execute,
@@ -51,8 +50,7 @@ mixin _$SqliteMsg {
     TResult Function(DatabaseConnection connection)? connectionChanged,
     TResult Function()? dispose,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ExecuteMsg value) execute,
@@ -63,8 +61,7 @@ mixin _$SqliteMsg {
     required TResult Function(TableInfoMsg value) tableInfo,
     required TResult Function(ConnectionChangedMsg value) connectionChanged,
     required TResult Function(DisposeMsg value) dispose,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ExecuteMsg value)? execute,
@@ -75,8 +72,7 @@ mixin _$SqliteMsg {
     TResult? Function(TableInfoMsg value)? tableInfo,
     TResult? Function(ConnectionChangedMsg value)? connectionChanged,
     TResult? Function(DisposeMsg value)? dispose,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ExecuteMsg value)? execute,
@@ -88,8 +84,7 @@ mixin _$SqliteMsg {
     TResult Function(ConnectionChangedMsg value)? connectionChanged,
     TResult Function(DisposeMsg value)? dispose,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -115,8 +110,9 @@ class _$SqliteMsgCopyWithImpl<$Res, $Val extends SqliteMsg>
 /// @nodoc
 abstract class _$$ExecuteMsgImplCopyWith<$Res> {
   factory _$$ExecuteMsgImplCopyWith(
-          _$ExecuteMsgImpl value, $Res Function(_$ExecuteMsgImpl) then) =
-      __$$ExecuteMsgImplCopyWithImpl<$Res>;
+    _$ExecuteMsgImpl value,
+    $Res Function(_$ExecuteMsgImpl) then,
+  ) = __$$ExecuteMsgImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String query});
 }
@@ -126,22 +122,23 @@ class __$$ExecuteMsgImplCopyWithImpl<$Res>
     extends _$SqliteMsgCopyWithImpl<$Res, _$ExecuteMsgImpl>
     implements _$$ExecuteMsgImplCopyWith<$Res> {
   __$$ExecuteMsgImplCopyWithImpl(
-      _$ExecuteMsgImpl _value, $Res Function(_$ExecuteMsgImpl) _then)
-      : super(_value, _then);
+    _$ExecuteMsgImpl _value,
+    $Res Function(_$ExecuteMsgImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? query = null,
-  }) {
-    return _then(_$ExecuteMsgImpl(
-      null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? query = null}) {
+    return _then(
+      _$ExecuteMsgImpl(
+        null == query
+            ? _value.query
+            : query // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -290,9 +287,10 @@ abstract class ExecuteMsg implements SqliteMsg {
 
 /// @nodoc
 abstract class _$$QueryResultMsgImplCopyWith<$Res> {
-  factory _$$QueryResultMsgImplCopyWith(_$QueryResultMsgImpl value,
-          $Res Function(_$QueryResultMsgImpl) then) =
-      __$$QueryResultMsgImplCopyWithImpl<$Res>;
+  factory _$$QueryResultMsgImplCopyWith(
+    _$QueryResultMsgImpl value,
+    $Res Function(_$QueryResultMsgImpl) then,
+  ) = __$$QueryResultMsgImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Result result});
 
@@ -304,22 +302,23 @@ class __$$QueryResultMsgImplCopyWithImpl<$Res>
     extends _$SqliteMsgCopyWithImpl<$Res, _$QueryResultMsgImpl>
     implements _$$QueryResultMsgImplCopyWith<$Res> {
   __$$QueryResultMsgImplCopyWithImpl(
-      _$QueryResultMsgImpl _value, $Res Function(_$QueryResultMsgImpl) _then)
-      : super(_value, _then);
+    _$QueryResultMsgImpl _value,
+    $Res Function(_$QueryResultMsgImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? result = null,
-  }) {
-    return _then(_$QueryResultMsgImpl(
-      null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
-              as Result,
-    ));
+  $Res call({Object? result = null}) {
+    return _then(
+      _$QueryResultMsgImpl(
+        null == result
+            ? _value.result
+            : result // ignore: cast_nullable_to_non_nullable
+                as Result,
+      ),
+    );
   }
 
   /// Create a copy of SqliteMsg
@@ -364,7 +363,9 @@ class _$QueryResultMsgImpl implements QueryResultMsg {
   @pragma('vm:prefer-inline')
   _$$QueryResultMsgImplCopyWith<_$QueryResultMsgImpl> get copyWith =>
       __$$QueryResultMsgImplCopyWithImpl<_$QueryResultMsgImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -480,8 +481,9 @@ abstract class QueryResultMsg implements SqliteMsg {
 /// @nodoc
 abstract class _$$ImportDbMsgImplCopyWith<$Res> {
   factory _$$ImportDbMsgImplCopyWith(
-          _$ImportDbMsgImpl value, $Res Function(_$ImportDbMsgImpl) then) =
-      __$$ImportDbMsgImplCopyWithImpl<$Res>;
+    _$ImportDbMsgImpl value,
+    $Res Function(_$ImportDbMsgImpl) then,
+  ) = __$$ImportDbMsgImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String path});
 }
@@ -491,22 +493,23 @@ class __$$ImportDbMsgImplCopyWithImpl<$Res>
     extends _$SqliteMsgCopyWithImpl<$Res, _$ImportDbMsgImpl>
     implements _$$ImportDbMsgImplCopyWith<$Res> {
   __$$ImportDbMsgImplCopyWithImpl(
-      _$ImportDbMsgImpl _value, $Res Function(_$ImportDbMsgImpl) _then)
-      : super(_value, _then);
+    _$ImportDbMsgImpl _value,
+    $Res Function(_$ImportDbMsgImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? path = null,
-  }) {
-    return _then(_$ImportDbMsgImpl(
-      null == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? path = null}) {
+    return _then(
+      _$ImportDbMsgImpl(
+        null == path
+            ? _value.path
+            : path // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -656,8 +659,9 @@ abstract class ImportDbMsg implements SqliteMsg {
 /// @nodoc
 abstract class _$$ExportDbMsgImplCopyWith<$Res> {
   factory _$$ExportDbMsgImplCopyWith(
-          _$ExportDbMsgImpl value, $Res Function(_$ExportDbMsgImpl) then) =
-      __$$ExportDbMsgImplCopyWithImpl<$Res>;
+    _$ExportDbMsgImpl value,
+    $Res Function(_$ExportDbMsgImpl) then,
+  ) = __$$ExportDbMsgImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String path});
 }
@@ -667,22 +671,23 @@ class __$$ExportDbMsgImplCopyWithImpl<$Res>
     extends _$SqliteMsgCopyWithImpl<$Res, _$ExportDbMsgImpl>
     implements _$$ExportDbMsgImplCopyWith<$Res> {
   __$$ExportDbMsgImplCopyWithImpl(
-      _$ExportDbMsgImpl _value, $Res Function(_$ExportDbMsgImpl) _then)
-      : super(_value, _then);
+    _$ExportDbMsgImpl _value,
+    $Res Function(_$ExportDbMsgImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? path = null,
-  }) {
-    return _then(_$ExportDbMsgImpl(
-      null == path
-          ? _value.path
-          : path // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? path = null}) {
+    return _then(
+      _$ExportDbMsgImpl(
+        null == path
+            ? _value.path
+            : path // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -832,8 +837,9 @@ abstract class ExportDbMsg implements SqliteMsg {
 /// @nodoc
 abstract class _$$DropTableMsgImplCopyWith<$Res> {
   factory _$$DropTableMsgImplCopyWith(
-          _$DropTableMsgImpl value, $Res Function(_$DropTableMsgImpl) then) =
-      __$$DropTableMsgImplCopyWithImpl<$Res>;
+    _$DropTableMsgImpl value,
+    $Res Function(_$DropTableMsgImpl) then,
+  ) = __$$DropTableMsgImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -841,8 +847,9 @@ class __$$DropTableMsgImplCopyWithImpl<$Res>
     extends _$SqliteMsgCopyWithImpl<$Res, _$DropTableMsgImpl>
     implements _$$DropTableMsgImplCopyWith<$Res> {
   __$$DropTableMsgImplCopyWithImpl(
-      _$DropTableMsgImpl _value, $Res Function(_$DropTableMsgImpl) _then)
-      : super(_value, _then);
+    _$DropTableMsgImpl _value,
+    $Res Function(_$DropTableMsgImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
@@ -973,8 +980,9 @@ abstract class DropTableMsg implements SqliteMsg {
 /// @nodoc
 abstract class _$$TableInfoMsgImplCopyWith<$Res> {
   factory _$$TableInfoMsgImplCopyWith(
-          _$TableInfoMsgImpl value, $Res Function(_$TableInfoMsgImpl) then) =
-      __$$TableInfoMsgImplCopyWithImpl<$Res>;
+    _$TableInfoMsgImpl value,
+    $Res Function(_$TableInfoMsgImpl) then,
+  ) = __$$TableInfoMsgImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<TableInfo> tables});
 }
@@ -984,22 +992,23 @@ class __$$TableInfoMsgImplCopyWithImpl<$Res>
     extends _$SqliteMsgCopyWithImpl<$Res, _$TableInfoMsgImpl>
     implements _$$TableInfoMsgImplCopyWith<$Res> {
   __$$TableInfoMsgImplCopyWithImpl(
-      _$TableInfoMsgImpl _value, $Res Function(_$TableInfoMsgImpl) _then)
-      : super(_value, _then);
+    _$TableInfoMsgImpl _value,
+    $Res Function(_$TableInfoMsgImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? tables = null,
-  }) {
-    return _then(_$TableInfoMsgImpl(
-      null == tables
-          ? _value._tables
-          : tables // ignore: cast_nullable_to_non_nullable
-              as List<TableInfo>,
-    ));
+  $Res call({Object? tables = null}) {
+    return _then(
+      _$TableInfoMsgImpl(
+        null == tables
+            ? _value._tables
+            : tables // ignore: cast_nullable_to_non_nullable
+                as List<TableInfo>,
+      ),
+    );
   }
 }
 
@@ -1154,9 +1163,10 @@ abstract class TableInfoMsg implements SqliteMsg {
 
 /// @nodoc
 abstract class _$$ConnectionChangedMsgImplCopyWith<$Res> {
-  factory _$$ConnectionChangedMsgImplCopyWith(_$ConnectionChangedMsgImpl value,
-          $Res Function(_$ConnectionChangedMsgImpl) then) =
-      __$$ConnectionChangedMsgImplCopyWithImpl<$Res>;
+  factory _$$ConnectionChangedMsgImplCopyWith(
+    _$ConnectionChangedMsgImpl value,
+    $Res Function(_$ConnectionChangedMsgImpl) then,
+  ) = __$$ConnectionChangedMsgImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DatabaseConnection connection});
 
@@ -1167,23 +1177,24 @@ abstract class _$$ConnectionChangedMsgImplCopyWith<$Res> {
 class __$$ConnectionChangedMsgImplCopyWithImpl<$Res>
     extends _$SqliteMsgCopyWithImpl<$Res, _$ConnectionChangedMsgImpl>
     implements _$$ConnectionChangedMsgImplCopyWith<$Res> {
-  __$$ConnectionChangedMsgImplCopyWithImpl(_$ConnectionChangedMsgImpl _value,
-      $Res Function(_$ConnectionChangedMsgImpl) _then)
-      : super(_value, _then);
+  __$$ConnectionChangedMsgImplCopyWithImpl(
+    _$ConnectionChangedMsgImpl _value,
+    $Res Function(_$ConnectionChangedMsgImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? connection = null,
-  }) {
-    return _then(_$ConnectionChangedMsgImpl(
-      null == connection
-          ? _value.connection
-          : connection // ignore: cast_nullable_to_non_nullable
-              as DatabaseConnection,
-    ));
+  $Res call({Object? connection = null}) {
+    return _then(
+      _$ConnectionChangedMsgImpl(
+        null == connection
+            ? _value.connection
+            : connection // ignore: cast_nullable_to_non_nullable
+                as DatabaseConnection,
+      ),
+    );
   }
 
   /// Create a copy of SqliteMsg
@@ -1228,9 +1239,11 @@ class _$ConnectionChangedMsgImpl implements ConnectionChangedMsg {
   @override
   @pragma('vm:prefer-inline')
   _$$ConnectionChangedMsgImplCopyWith<_$ConnectionChangedMsgImpl>
-      get copyWith =>
-          __$$ConnectionChangedMsgImplCopyWithImpl<_$ConnectionChangedMsgImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$ConnectionChangedMsgImplCopyWithImpl<_$ConnectionChangedMsgImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1341,14 +1354,15 @@ abstract class ConnectionChangedMsg implements SqliteMsg {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConnectionChangedMsgImplCopyWith<_$ConnectionChangedMsgImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$DisposeMsgImplCopyWith<$Res> {
   factory _$$DisposeMsgImplCopyWith(
-          _$DisposeMsgImpl value, $Res Function(_$DisposeMsgImpl) then) =
-      __$$DisposeMsgImplCopyWithImpl<$Res>;
+    _$DisposeMsgImpl value,
+    $Res Function(_$DisposeMsgImpl) then,
+  ) = __$$DisposeMsgImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1356,8 +1370,9 @@ class __$$DisposeMsgImplCopyWithImpl<$Res>
     extends _$SqliteMsgCopyWithImpl<$Res, _$DisposeMsgImpl>
     implements _$$DisposeMsgImplCopyWith<$Res> {
   __$$DisposeMsgImplCopyWithImpl(
-      _$DisposeMsgImpl _value, $Res Function(_$DisposeMsgImpl) _then)
-      : super(_value, _then);
+    _$DisposeMsgImpl _value,
+    $Res Function(_$DisposeMsgImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteMsg
   /// with the given fields replaced by the non-null parameter values.

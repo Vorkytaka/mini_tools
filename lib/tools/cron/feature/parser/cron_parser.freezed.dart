@@ -12,7 +12,8 @@ part of 'cron_parser.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$Cron {
@@ -33,12 +34,13 @@ abstract class $CronCopyWith<$Res> {
   factory $CronCopyWith(Cron value, $Res Function(Cron) then) =
       _$CronCopyWithImpl<$Res, Cron>;
   @useResult
-  $Res call(
-      {CronExpression minutes,
-      CronExpression hours,
-      CronExpression days,
-      CronExpression months,
-      CronExpression weekdays});
+  $Res call({
+    CronExpression minutes,
+    CronExpression hours,
+    CronExpression days,
+    CronExpression months,
+    CronExpression weekdays,
+  });
 
   $CronExpressionCopyWith<$Res> get minutes;
   $CronExpressionCopyWith<$Res> get hours;
@@ -68,28 +70,36 @@ class _$CronCopyWithImpl<$Res, $Val extends Cron>
     Object? months = null,
     Object? weekdays = null,
   }) {
-    return _then(_value.copyWith(
-      minutes: null == minutes
-          ? _value.minutes
-          : minutes // ignore: cast_nullable_to_non_nullable
-              as CronExpression,
-      hours: null == hours
-          ? _value.hours
-          : hours // ignore: cast_nullable_to_non_nullable
-              as CronExpression,
-      days: null == days
-          ? _value.days
-          : days // ignore: cast_nullable_to_non_nullable
-              as CronExpression,
-      months: null == months
-          ? _value.months
-          : months // ignore: cast_nullable_to_non_nullable
-              as CronExpression,
-      weekdays: null == weekdays
-          ? _value.weekdays
-          : weekdays // ignore: cast_nullable_to_non_nullable
-              as CronExpression,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            minutes:
+                null == minutes
+                    ? _value.minutes
+                    : minutes // ignore: cast_nullable_to_non_nullable
+                        as CronExpression,
+            hours:
+                null == hours
+                    ? _value.hours
+                    : hours // ignore: cast_nullable_to_non_nullable
+                        as CronExpression,
+            days:
+                null == days
+                    ? _value.days
+                    : days // ignore: cast_nullable_to_non_nullable
+                        as CronExpression,
+            months:
+                null == months
+                    ? _value.months
+                    : months // ignore: cast_nullable_to_non_nullable
+                        as CronExpression,
+            weekdays:
+                null == weekdays
+                    ? _value.weekdays
+                    : weekdays // ignore: cast_nullable_to_non_nullable
+                        as CronExpression,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of Cron
@@ -146,16 +156,18 @@ class _$CronCopyWithImpl<$Res, $Val extends Cron>
 /// @nodoc
 abstract class _$$CronImplCopyWith<$Res> implements $CronCopyWith<$Res> {
   factory _$$CronImplCopyWith(
-          _$CronImpl value, $Res Function(_$CronImpl) then) =
-      __$$CronImplCopyWithImpl<$Res>;
+    _$CronImpl value,
+    $Res Function(_$CronImpl) then,
+  ) = __$$CronImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {CronExpression minutes,
-      CronExpression hours,
-      CronExpression days,
-      CronExpression months,
-      CronExpression weekdays});
+  $Res call({
+    CronExpression minutes,
+    CronExpression hours,
+    CronExpression days,
+    CronExpression months,
+    CronExpression weekdays,
+  });
 
   @override
   $CronExpressionCopyWith<$Res> get minutes;
@@ -174,7 +186,7 @@ class __$$CronImplCopyWithImpl<$Res>
     extends _$CronCopyWithImpl<$Res, _$CronImpl>
     implements _$$CronImplCopyWith<$Res> {
   __$$CronImplCopyWithImpl(_$CronImpl _value, $Res Function(_$CronImpl) _then)
-      : super(_value, _then);
+    : super(_value, _then);
 
   /// Create a copy of Cron
   /// with the given fields replaced by the non-null parameter values.
@@ -187,40 +199,48 @@ class __$$CronImplCopyWithImpl<$Res>
     Object? months = null,
     Object? weekdays = null,
   }) {
-    return _then(_$CronImpl(
-      minutes: null == minutes
-          ? _value.minutes
-          : minutes // ignore: cast_nullable_to_non_nullable
-              as CronExpression,
-      hours: null == hours
-          ? _value.hours
-          : hours // ignore: cast_nullable_to_non_nullable
-              as CronExpression,
-      days: null == days
-          ? _value.days
-          : days // ignore: cast_nullable_to_non_nullable
-              as CronExpression,
-      months: null == months
-          ? _value.months
-          : months // ignore: cast_nullable_to_non_nullable
-              as CronExpression,
-      weekdays: null == weekdays
-          ? _value.weekdays
-          : weekdays // ignore: cast_nullable_to_non_nullable
-              as CronExpression,
-    ));
+    return _then(
+      _$CronImpl(
+        minutes:
+            null == minutes
+                ? _value.minutes
+                : minutes // ignore: cast_nullable_to_non_nullable
+                    as CronExpression,
+        hours:
+            null == hours
+                ? _value.hours
+                : hours // ignore: cast_nullable_to_non_nullable
+                    as CronExpression,
+        days:
+            null == days
+                ? _value.days
+                : days // ignore: cast_nullable_to_non_nullable
+                    as CronExpression,
+        months:
+            null == months
+                ? _value.months
+                : months // ignore: cast_nullable_to_non_nullable
+                    as CronExpression,
+        weekdays:
+            null == weekdays
+                ? _value.weekdays
+                : weekdays // ignore: cast_nullable_to_non_nullable
+                    as CronExpression,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$CronImpl implements _Cron {
-  const _$CronImpl(
-      {required this.minutes,
-      required this.hours,
-      required this.days,
-      required this.months,
-      required this.weekdays});
+  const _$CronImpl({
+    required this.minutes,
+    required this.hours,
+    required this.days,
+    required this.months,
+    required this.weekdays,
+  });
 
   @override
   final CronExpression minutes;
@@ -265,12 +285,13 @@ class _$CronImpl implements _Cron {
 }
 
 abstract class _Cron implements Cron {
-  const factory _Cron(
-      {required final CronExpression minutes,
-      required final CronExpression hours,
-      required final CronExpression days,
-      required final CronExpression months,
-      required final CronExpression weekdays}) = _$CronImpl;
+  const factory _Cron({
+    required final CronExpression minutes,
+    required final CronExpression hours,
+    required final CronExpression days,
+    required final CronExpression months,
+    required final CronExpression weekdays,
+  }) = _$CronImpl;
 
   @override
   CronExpression get minutes;
@@ -300,8 +321,7 @@ mixin _$CronExpression {
     required TResult Function(int from, int to) range,
     required TResult Function(List<CronExpression> values) list,
     required TResult Function(CronExpression base, int step) step,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? any,
@@ -309,8 +329,7 @@ mixin _$CronExpression {
     TResult? Function(int from, int to)? range,
     TResult? Function(List<CronExpression> values)? list,
     TResult? Function(CronExpression base, int step)? step,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? any,
@@ -319,8 +338,7 @@ mixin _$CronExpression {
     TResult Function(List<CronExpression> values)? list,
     TResult Function(CronExpression base, int step)? step,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Any value) any,
@@ -328,8 +346,7 @@ mixin _$CronExpression {
     required TResult Function(Range value) range,
     required TResult Function(ValuesList value) list,
     required TResult Function(Step value) step,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Any value)? any,
@@ -337,8 +354,7 @@ mixin _$CronExpression {
     TResult? Function(Range value)? range,
     TResult? Function(ValuesList value)? list,
     TResult? Function(Step value)? step,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Any value)? any,
@@ -347,15 +363,15 @@ mixin _$CronExpression {
     TResult Function(ValuesList value)? list,
     TResult Function(Step value)? step,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CronExpressionCopyWith<$Res> {
   factory $CronExpressionCopyWith(
-          CronExpression value, $Res Function(CronExpression) then) =
-      _$CronExpressionCopyWithImpl<$Res, CronExpression>;
+    CronExpression value,
+    $Res Function(CronExpression) then,
+  ) = _$CronExpressionCopyWithImpl<$Res, CronExpression>;
 }
 
 /// @nodoc
@@ -383,7 +399,7 @@ class __$$AnyImplCopyWithImpl<$Res>
     extends _$CronExpressionCopyWithImpl<$Res, _$AnyImpl>
     implements _$$AnyImplCopyWith<$Res> {
   __$$AnyImplCopyWithImpl(_$AnyImpl _value, $Res Function(_$AnyImpl) _then)
-      : super(_value, _then);
+    : super(_value, _then);
 
   /// Create a copy of CronExpression
   /// with the given fields replaced by the non-null parameter values.
@@ -496,8 +512,9 @@ abstract class Any implements CronExpression {
 /// @nodoc
 abstract class _$$SingleImplCopyWith<$Res> {
   factory _$$SingleImplCopyWith(
-          _$SingleImpl value, $Res Function(_$SingleImpl) then) =
-      __$$SingleImplCopyWithImpl<$Res>;
+    _$SingleImpl value,
+    $Res Function(_$SingleImpl) then,
+  ) = __$$SingleImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int value});
 }
@@ -507,22 +524,23 @@ class __$$SingleImplCopyWithImpl<$Res>
     extends _$CronExpressionCopyWithImpl<$Res, _$SingleImpl>
     implements _$$SingleImplCopyWith<$Res> {
   __$$SingleImplCopyWithImpl(
-      _$SingleImpl _value, $Res Function(_$SingleImpl) _then)
-      : super(_value, _then);
+    _$SingleImpl _value,
+    $Res Function(_$SingleImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CronExpression
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_$SingleImpl(
-      null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? value = null}) {
+    return _then(
+      _$SingleImpl(
+        null == value
+            ? _value.value
+            : value // ignore: cast_nullable_to_non_nullable
+                as int,
+      ),
+    );
   }
 }
 
@@ -654,8 +672,9 @@ abstract class Single implements CronExpression {
 /// @nodoc
 abstract class _$$RangeImplCopyWith<$Res> {
   factory _$$RangeImplCopyWith(
-          _$RangeImpl value, $Res Function(_$RangeImpl) then) =
-      __$$RangeImplCopyWithImpl<$Res>;
+    _$RangeImpl value,
+    $Res Function(_$RangeImpl) then,
+  ) = __$$RangeImplCopyWithImpl<$Res>;
   @useResult
   $Res call({int from, int to});
 }
@@ -665,27 +684,29 @@ class __$$RangeImplCopyWithImpl<$Res>
     extends _$CronExpressionCopyWithImpl<$Res, _$RangeImpl>
     implements _$$RangeImplCopyWith<$Res> {
   __$$RangeImplCopyWithImpl(
-      _$RangeImpl _value, $Res Function(_$RangeImpl) _then)
-      : super(_value, _then);
+    _$RangeImpl _value,
+    $Res Function(_$RangeImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CronExpression
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? from = null,
-    Object? to = null,
-  }) {
-    return _then(_$RangeImpl(
-      from: null == from
-          ? _value.from
-          : from // ignore: cast_nullable_to_non_nullable
-              as int,
-      to: null == to
-          ? _value.to
-          : to // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? from = null, Object? to = null}) {
+    return _then(
+      _$RangeImpl(
+        from:
+            null == from
+                ? _value.from
+                : from // ignore: cast_nullable_to_non_nullable
+                    as int,
+        to:
+            null == to
+                ? _value.to
+                : to // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
@@ -822,8 +843,9 @@ abstract class Range implements CronExpression {
 /// @nodoc
 abstract class _$$ValuesListImplCopyWith<$Res> {
   factory _$$ValuesListImplCopyWith(
-          _$ValuesListImpl value, $Res Function(_$ValuesListImpl) then) =
-      __$$ValuesListImplCopyWithImpl<$Res>;
+    _$ValuesListImpl value,
+    $Res Function(_$ValuesListImpl) then,
+  ) = __$$ValuesListImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<CronExpression> values});
 }
@@ -833,22 +855,23 @@ class __$$ValuesListImplCopyWithImpl<$Res>
     extends _$CronExpressionCopyWithImpl<$Res, _$ValuesListImpl>
     implements _$$ValuesListImplCopyWith<$Res> {
   __$$ValuesListImplCopyWithImpl(
-      _$ValuesListImpl _value, $Res Function(_$ValuesListImpl) _then)
-      : super(_value, _then);
+    _$ValuesListImpl _value,
+    $Res Function(_$ValuesListImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CronExpression
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? values = null,
-  }) {
-    return _then(_$ValuesListImpl(
-      null == values
-          ? _value._values
-          : values // ignore: cast_nullable_to_non_nullable
-              as List<CronExpression>,
-    ));
+  $Res call({Object? values = null}) {
+    return _then(
+      _$ValuesListImpl(
+        null == values
+            ? _value._values
+            : values // ignore: cast_nullable_to_non_nullable
+                as List<CronExpression>,
+      ),
+    );
   }
 }
 
@@ -987,8 +1010,9 @@ abstract class ValuesList implements CronExpression {
 /// @nodoc
 abstract class _$$StepImplCopyWith<$Res> {
   factory _$$StepImplCopyWith(
-          _$StepImpl value, $Res Function(_$StepImpl) then) =
-      __$$StepImplCopyWithImpl<$Res>;
+    _$StepImpl value,
+    $Res Function(_$StepImpl) then,
+  ) = __$$StepImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CronExpression base, int step});
 
@@ -1000,26 +1024,27 @@ class __$$StepImplCopyWithImpl<$Res>
     extends _$CronExpressionCopyWithImpl<$Res, _$StepImpl>
     implements _$$StepImplCopyWith<$Res> {
   __$$StepImplCopyWithImpl(_$StepImpl _value, $Res Function(_$StepImpl) _then)
-      : super(_value, _then);
+    : super(_value, _then);
 
   /// Create a copy of CronExpression
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? base = null,
-    Object? step = null,
-  }) {
-    return _then(_$StepImpl(
-      base: null == base
-          ? _value.base
-          : base // ignore: cast_nullable_to_non_nullable
-              as CronExpression,
-      step: null == step
-          ? _value.step
-          : step // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? base = null, Object? step = null}) {
+    return _then(
+      _$StepImpl(
+        base:
+            null == base
+                ? _value.base
+                : base // ignore: cast_nullable_to_non_nullable
+                    as CronExpression,
+        step:
+            null == step
+                ? _value.step
+                : step // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 
   /// Create a copy of CronExpression
@@ -1150,9 +1175,10 @@ class _$StepImpl implements Step {
 }
 
 abstract class Step implements CronExpression {
-  const factory Step(
-      {required final CronExpression base,
-      required final int step}) = _$StepImpl;
+  const factory Step({
+    required final CronExpression base,
+    required final int step,
+  }) = _$StepImpl;
 
   CronExpression get base;
   int get step;

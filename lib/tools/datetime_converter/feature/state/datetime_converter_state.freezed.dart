@@ -12,7 +12,8 @@ part of 'datetime_converter_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$DatetimeConverterState {
@@ -31,21 +32,25 @@ mixin _$DatetimeConverterState {
 
 /// @nodoc
 abstract class $DatetimeConverterStateCopyWith<$Res> {
-  factory $DatetimeConverterStateCopyWith(DatetimeConverterState value,
-          $Res Function(DatetimeConverterState) then) =
-      _$DatetimeConverterStateCopyWithImpl<$Res, DatetimeConverterState>;
+  factory $DatetimeConverterStateCopyWith(
+    DatetimeConverterState value,
+    $Res Function(DatetimeConverterState) then,
+  ) = _$DatetimeConverterStateCopyWithImpl<$Res, DatetimeConverterState>;
   @useResult
-  $Res call(
-      {TZDateTime? datetime,
-      bool isReadOnly,
-      String input,
-      InputType inputType,
-      DatetimeFormat format});
+  $Res call({
+    TZDateTime? datetime,
+    bool isReadOnly,
+    String input,
+    InputType inputType,
+    DatetimeFormat format,
+  });
 }
 
 /// @nodoc
-class _$DatetimeConverterStateCopyWithImpl<$Res,
-        $Val extends DatetimeConverterState>
+class _$DatetimeConverterStateCopyWithImpl<
+  $Res,
+  $Val extends DatetimeConverterState
+>
     implements $DatetimeConverterStateCopyWith<$Res> {
   _$DatetimeConverterStateCopyWithImpl(this._value, this._then);
 
@@ -65,28 +70,36 @@ class _$DatetimeConverterStateCopyWithImpl<$Res,
     Object? inputType = null,
     Object? format = null,
   }) {
-    return _then(_value.copyWith(
-      datetime: freezed == datetime
-          ? _value.datetime
-          : datetime // ignore: cast_nullable_to_non_nullable
-              as TZDateTime?,
-      isReadOnly: null == isReadOnly
-          ? _value.isReadOnly
-          : isReadOnly // ignore: cast_nullable_to_non_nullable
-              as bool,
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      inputType: null == inputType
-          ? _value.inputType
-          : inputType // ignore: cast_nullable_to_non_nullable
-              as InputType,
-      format: null == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as DatetimeFormat,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            datetime:
+                freezed == datetime
+                    ? _value.datetime
+                    : datetime // ignore: cast_nullable_to_non_nullable
+                        as TZDateTime?,
+            isReadOnly:
+                null == isReadOnly
+                    ? _value.isReadOnly
+                    : isReadOnly // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            input:
+                null == input
+                    ? _value.input
+                    : input // ignore: cast_nullable_to_non_nullable
+                        as String,
+            inputType:
+                null == inputType
+                    ? _value.inputType
+                    : inputType // ignore: cast_nullable_to_non_nullable
+                        as InputType,
+            format:
+                null == format
+                    ? _value.format
+                    : format // ignore: cast_nullable_to_non_nullable
+                        as DatetimeFormat,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -94,28 +107,29 @@ class _$DatetimeConverterStateCopyWithImpl<$Res,
 abstract class _$$DatetimeConverterStateImplCopyWith<$Res>
     implements $DatetimeConverterStateCopyWith<$Res> {
   factory _$$DatetimeConverterStateImplCopyWith(
-          _$DatetimeConverterStateImpl value,
-          $Res Function(_$DatetimeConverterStateImpl) then) =
-      __$$DatetimeConverterStateImplCopyWithImpl<$Res>;
+    _$DatetimeConverterStateImpl value,
+    $Res Function(_$DatetimeConverterStateImpl) then,
+  ) = __$$DatetimeConverterStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {TZDateTime? datetime,
-      bool isReadOnly,
-      String input,
-      InputType inputType,
-      DatetimeFormat format});
+  $Res call({
+    TZDateTime? datetime,
+    bool isReadOnly,
+    String input,
+    InputType inputType,
+    DatetimeFormat format,
+  });
 }
 
 /// @nodoc
 class __$$DatetimeConverterStateImplCopyWithImpl<$Res>
-    extends _$DatetimeConverterStateCopyWithImpl<$Res,
-        _$DatetimeConverterStateImpl>
+    extends
+        _$DatetimeConverterStateCopyWithImpl<$Res, _$DatetimeConverterStateImpl>
     implements _$$DatetimeConverterStateImplCopyWith<$Res> {
   __$$DatetimeConverterStateImplCopyWithImpl(
-      _$DatetimeConverterStateImpl _value,
-      $Res Function(_$DatetimeConverterStateImpl) _then)
-      : super(_value, _then);
+    _$DatetimeConverterStateImpl _value,
+    $Res Function(_$DatetimeConverterStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatetimeConverterState
   /// with the given fields replaced by the non-null parameter values.
@@ -128,40 +142,48 @@ class __$$DatetimeConverterStateImplCopyWithImpl<$Res>
     Object? inputType = null,
     Object? format = null,
   }) {
-    return _then(_$DatetimeConverterStateImpl(
-      datetime: freezed == datetime
-          ? _value.datetime
-          : datetime // ignore: cast_nullable_to_non_nullable
-              as TZDateTime?,
-      isReadOnly: null == isReadOnly
-          ? _value.isReadOnly
-          : isReadOnly // ignore: cast_nullable_to_non_nullable
-              as bool,
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      inputType: null == inputType
-          ? _value.inputType
-          : inputType // ignore: cast_nullable_to_non_nullable
-              as InputType,
-      format: null == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as DatetimeFormat,
-    ));
+    return _then(
+      _$DatetimeConverterStateImpl(
+        datetime:
+            freezed == datetime
+                ? _value.datetime
+                : datetime // ignore: cast_nullable_to_non_nullable
+                    as TZDateTime?,
+        isReadOnly:
+            null == isReadOnly
+                ? _value.isReadOnly
+                : isReadOnly // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        input:
+            null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                    as String,
+        inputType:
+            null == inputType
+                ? _value.inputType
+                : inputType // ignore: cast_nullable_to_non_nullable
+                    as InputType,
+        format:
+            null == format
+                ? _value.format
+                : format // ignore: cast_nullable_to_non_nullable
+                    as DatetimeFormat,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$DatetimeConverterStateImpl implements _DatetimeConverterState {
-  const _$DatetimeConverterStateImpl(
-      {required this.datetime,
-      required this.isReadOnly,
-      required this.input,
-      required this.inputType,
-      required this.format});
+  const _$DatetimeConverterStateImpl({
+    required this.datetime,
+    required this.isReadOnly,
+    required this.input,
+    required this.inputType,
+    required this.format,
+  });
 
   @override
   final TZDateTime? datetime;
@@ -204,17 +226,21 @@ class _$DatetimeConverterStateImpl implements _DatetimeConverterState {
   @override
   @pragma('vm:prefer-inline')
   _$$DatetimeConverterStateImplCopyWith<_$DatetimeConverterStateImpl>
-      get copyWith => __$$DatetimeConverterStateImplCopyWithImpl<
-          _$DatetimeConverterStateImpl>(this, _$identity);
+  get copyWith =>
+      __$$DatetimeConverterStateImplCopyWithImpl<_$DatetimeConverterStateImpl>(
+        this,
+        _$identity,
+      );
 }
 
 abstract class _DatetimeConverterState implements DatetimeConverterState {
-  const factory _DatetimeConverterState(
-      {required final TZDateTime? datetime,
-      required final bool isReadOnly,
-      required final String input,
-      required final InputType inputType,
-      required final DatetimeFormat format}) = _$DatetimeConverterStateImpl;
+  const factory _DatetimeConverterState({
+    required final TZDateTime? datetime,
+    required final bool isReadOnly,
+    required final String input,
+    required final InputType inputType,
+    required final DatetimeFormat format,
+  }) = _$DatetimeConverterStateImpl;
 
   @override
   TZDateTime? get datetime;
@@ -232,5 +258,5 @@ abstract class _DatetimeConverterState implements DatetimeConverterState {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DatetimeConverterStateImplCopyWith<_$DatetimeConverterStateImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

@@ -11,15 +11,15 @@ export 'state/number_base_state.dart';
 
 part 'number_base_update.dart';
 
-typedef NumberBaseFeature
-    = Feature<NumberBaseState, NumberBaseMessage, NumberBaseEffect>;
+typedef NumberBaseFeature =
+    Feature<NumberBaseState, NumberBaseMessage, NumberBaseEffect>;
 
 NumberBaseFeature numberBaseFeatureFactory() =>
     Feature<NumberBaseState, NumberBaseMessage, NumberBaseEffect>(
-      initialState: NumberBaseState.init(),
-      update: _updateNumberBase,
-      initialEffects: [const NumberBaseEffect.loadState()],
-    )
+          initialState: NumberBaseState.init(),
+          update: _updateNumberBase,
+          initialEffects: [const NumberBaseEffect.loadState()],
+        )
         .wrapEffects(
           DebounceEffectHandler(
             duration: const Duration(milliseconds: 500),

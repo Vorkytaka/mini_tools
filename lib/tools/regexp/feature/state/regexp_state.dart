@@ -18,14 +18,14 @@ class RegExpState with _$RegExpState {
   }) = _RegExpState;
 
   factory RegExpState.init() => const RegExpState(
-        input: '',
-        testString: '',
-        isGlobal: true,
-        isMultiline: true,
-        isCaseSensitive: true,
-        isUnicode: false,
-        isDotAll: false,
-        regexp: null,
-        matches: null,
-      );
+    input: '',
+    testString: '',
+    isGlobal: true,
+    isMultiline: true,
+    isCaseSensitive: true,
+    isUnicode: false,
+    isDotAll: false,
+    regexp: null,
+    matches: null,
+  );
 }
