@@ -57,46 +57,47 @@ class DatetimeConverterScreen extends StatelessWidget {
       ),
       children: [
         ContentArea(
-          builder: (context, controller) => SingleChildScrollView(
-            controller: controller,
-            child: Padding(
-              padding: panePadding,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: headlinePadding,
-                    child: Row(
-                      children: [
-                        Text(t.common.input),
-                        const SizedBox(width: 8),
-                        const _NowButton(),
-                        const SizedBox(width: 8),
-                        const _ClearButton(),
-                        const SizedBox(width: 8),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+          builder:
+              (context, controller) => SingleChildScrollView(
+                controller: controller,
+                child: Padding(
+                  padding: panePadding,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 260),
-                        child: const _InputField(),
+                      Padding(
+                        padding: headlinePadding,
+                        child: Row(
+                          children: [
+                            Text(t.common.input),
+                            const SizedBox(width: 8),
+                            const _NowButton(),
+                            const SizedBox(width: 8),
+                            const _ClearButton(),
+                            const SizedBox(width: 8),
+                          ],
+                        ),
                       ),
-                      const SizedBox(width: 8),
-                      const _InputTypeSelector(),
+                      const SizedBox(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: 260),
+                            child: const _InputField(),
+                          ),
+                          const SizedBox(width: 8),
+                          const _InputTypeSelector(),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      const MacosPulldownMenuDivider(),
+                      const SizedBox(height: 8),
+                      const _DateTimeOutput(),
                     ],
                   ),
-                  const SizedBox(height: 8),
-                  const MacosPulldownMenuDivider(),
-                  const SizedBox(height: 8),
-                  const _DateTimeOutput(),
-                ],
+                ),
               ),
-            ),
-          ),
         ),
       ],
     );
@@ -109,20 +110,22 @@ class _NowButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
-        buildWhen: (prev, curr) => prev.isReadOnly != curr.isReadOnly,
-        builder: (context, state) {
-          return PushButton(
-            controlSize: ControlSize.regular,
-            onPressed: state.isReadOnly
-                ? null
-                : () {
-                    context
-                        .read<DatetimeConverterFeature>()
-                        .accept(const DatetimeConverterMessage.getNow());
+      buildWhen: (prev, curr) => prev.isReadOnly != curr.isReadOnly,
+      builder: (context, state) {
+        return PushButton(
+          controlSize: ControlSize.regular,
+          onPressed:
+              state.isReadOnly
+                  ? null
+                  : () {
+                    context.read<DatetimeConverterFeature>().accept(
+                      const DatetimeConverterMessage.getNow(),
+                    );
                   },
-            child: Text(t.datetimeConverter.now),
-          );
-        });
+          child: Text(t.datetimeConverter.now),
+        );
+      },
+    );
   }
 }
 
@@ -136,13 +139,14 @@ class _ClearButton extends StatelessWidget {
       builder: (context, state) {
         return PushButton(
           controlSize: ControlSize.regular,
-          onPressed: state.isReadOnly
-              ? null
-              : () {
-                  context
-                      .read<DatetimeConverterFeature>()
-                      .accept(const DatetimeConverterMessage.clear());
-                },
+          onPressed:
+              state.isReadOnly
+                  ? null
+                  : () {
+                    context.read<DatetimeConverterFeature>().accept(
+                      const DatetimeConverterMessage.clear(),
+                    );
+                  },
           secondary: true,
           child: Text(t.common.clear),
         );
@@ -207,9 +211,9 @@ class _InputFieldState extends State<_InputField> {
 
   void _onInputChange() {
     final inputText = _inputController.text;
-    context
-        .read<DatetimeConverterFeature>()
-        .accept(DatetimeConverterMessage.updateInput(inputText));
+    context.read<DatetimeConverterFeature>().accept(
+      DatetimeConverterMessage.updateInput(inputText),
+    );
   }
 }
 
@@ -235,9 +239,7 @@ class _DateTimeOutput extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: _DateTimeLocalUTCOutput(datetime: datetime),
-              ),
+              Expanded(child: _DateTimeLocalUTCOutput(datetime: datetime)),
               const SizedBox(width: 16),
               Expanded(
                 child: Column(
@@ -264,8 +266,9 @@ class _DateTimeOutput extends StatelessWidget {
                     _DateItem(
                       title: t.datetimeConverter.leapYear,
                       datetime: datetime,
-                      mapper: (datetime) =>
-                          isLeapYear(datetime) ? t.common.yes : t.common.no,
+                      mapper:
+                          (datetime) =>
+                              isLeapYear(datetime) ? t.common.yes : t.common.no,
                     ),
                     const SizedBox(height: 12),
                     _DateItem(
@@ -293,9 +296,7 @@ class _DateTimeOutput extends StatelessWidget {
 class _DateTimeLocalUTCOutput extends StatefulWidget {
   final TZDateTime? datetime;
 
-  const _DateTimeLocalUTCOutput({
-    required this.datetime,
-  });
+  const _DateTimeLocalUTCOutput({required this.datetime});
 
   @override
   State<_DateTimeLocalUTCOutput> createState() =>
@@ -330,8 +331,8 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
                   onChanged: (format) {
                     if (format != null) {
                       context.read<DatetimeConverterFeature>().accept(
-                          DatetimeConverterMessage.updateDatetimeFormat(
-                              format));
+                        DatetimeConverterMessage.updateDatetimeFormat(format),
+                      );
                     }
                   },
                 );
@@ -376,32 +377,46 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
               );
             }
 
-            final now =
-                DatetimeHolder.of(context, type: DatetimeHolderType.sec);
+            final now = DatetimeHolder.of(
+              context,
+              type: DatetimeHolderType.sec,
+            );
             final diff = now.difference(datetime);
 
             return _DateItem(
               title: t.datetimeConverter.relative,
               datetime: datetime,
-              mapper: (datetime) => diff.format(
-                onZero: t.datetimeConverter.relativeFormat.rightNow,
-                onDays: (days) =>
-                    t.datetimeConverter.relativeFormat.days(days: days),
-                onHours: (hours) =>
-                    t.datetimeConverter.relativeFormat.hours(hours: hours),
-                onMinutes: (min) =>
-                    t.datetimeConverter.relativeFormat.minutes(minutes: min),
-                onSeconds: (sec) =>
-                    t.datetimeConverter.relativeFormat.seconds(seconds: sec),
-                positiveWrapper: (str) =>
-                    t.datetimeConverter.relativeFormat.positive(str: str),
-                negativeWrapper: (str) =>
-                    t.datetimeConverter.relativeFormat.negative(str: str),
-                separator: t.common.textSeparator,
-              ),
+              mapper:
+                  (datetime) => diff.format(
+                    onZero: t.datetimeConverter.relativeFormat.rightNow,
+                    onDays:
+                        (days) =>
+                            t.datetimeConverter.relativeFormat.days(days: days),
+                    onHours:
+                        (hours) => t.datetimeConverter.relativeFormat.hours(
+                          hours: hours,
+                        ),
+                    onMinutes:
+                        (min) => t.datetimeConverter.relativeFormat.minutes(
+                          minutes: min,
+                        ),
+                    onSeconds:
+                        (sec) => t.datetimeConverter.relativeFormat.seconds(
+                          seconds: sec,
+                        ),
+                    positiveWrapper:
+                        (str) => t.datetimeConverter.relativeFormat.positive(
+                          str: str,
+                        ),
+                    negativeWrapper:
+                        (str) => t.datetimeConverter.relativeFormat.negative(
+                          str: str,
+                        ),
+                    separator: t.common.textSeparator,
+                  ),
             );
           },
-        )
+        ),
       ],
     );
   }
@@ -436,9 +451,9 @@ class _InputTypeSelector extends StatelessWidget {
               .toList(growable: false),
           onChanged: (type) {
             if (type != null) {
-              context
-                  .read<DatetimeConverterFeature>()
-                  .accept(DatetimeConverterMessage.updateInputType(type));
+              context.read<DatetimeConverterFeature>().accept(
+                DatetimeConverterMessage.updateInputType(type),
+              );
             }
           },
         );
@@ -483,11 +498,7 @@ class _DateItem extends StatelessWidget {
             const SizedBox(width: 4),
             MacosIconButton(
               onPressed: () {
-                Clipboard.setData(
-                  ClipboardData(
-                    text: text,
-                  ),
-                );
+                Clipboard.setData(ClipboardData(text: text));
               },
               semanticLabel: t.common.copy,
               icon: const MacosIcon(
@@ -512,8 +523,9 @@ class _DateItem extends StatelessWidget {
 }
 
 int dayNumber(TZDateTime date) {
-  final diff =
-      date.difference(TZDateTime(date.location, date.year, 1, 0, 0, 0));
+  final diff = date.difference(
+    TZDateTime(date.location, date.year, 1, 0, 0, 0),
+  );
   return diff.inDays;
 }
 

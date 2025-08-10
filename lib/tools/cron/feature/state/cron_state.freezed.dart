@@ -12,7 +12,8 @@ part of 'cron_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$CronState {
@@ -50,20 +51,22 @@ class _$CronStateCopyWithImpl<$Res, $Val extends CronState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? input = null,
-    Object? result = null,
-  }) {
-    return _then(_value.copyWith(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
-              as CronResult,
-    ) as $Val);
+  $Res call({Object? input = null, Object? result = null}) {
+    return _then(
+      _value.copyWith(
+            input:
+                null == input
+                    ? _value.input
+                    : input // ignore: cast_nullable_to_non_nullable
+                        as String,
+            result:
+                null == result
+                    ? _value.result
+                    : result // ignore: cast_nullable_to_non_nullable
+                        as CronResult,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of CronState
@@ -81,8 +84,9 @@ class _$CronStateCopyWithImpl<$Res, $Val extends CronState>
 abstract class _$$CronStateImplCopyWith<$Res>
     implements $CronStateCopyWith<$Res> {
   factory _$$CronStateImplCopyWith(
-          _$CronStateImpl value, $Res Function(_$CronStateImpl) then) =
-      __$$CronStateImplCopyWithImpl<$Res>;
+    _$CronStateImpl value,
+    $Res Function(_$CronStateImpl) then,
+  ) = __$$CronStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String input, CronResult result});
@@ -96,27 +100,29 @@ class __$$CronStateImplCopyWithImpl<$Res>
     extends _$CronStateCopyWithImpl<$Res, _$CronStateImpl>
     implements _$$CronStateImplCopyWith<$Res> {
   __$$CronStateImplCopyWithImpl(
-      _$CronStateImpl _value, $Res Function(_$CronStateImpl) _then)
-      : super(_value, _then);
+    _$CronStateImpl _value,
+    $Res Function(_$CronStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CronState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? input = null,
-    Object? result = null,
-  }) {
-    return _then(_$CronStateImpl(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
-              as CronResult,
-    ));
+  $Res call({Object? input = null, Object? result = null}) {
+    return _then(
+      _$CronStateImpl(
+        input:
+            null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                    as String,
+        result:
+            null == result
+                ? _value.result
+                : result // ignore: cast_nullable_to_non_nullable
+                    as CronResult,
+      ),
+    );
   }
 }
 
@@ -157,9 +163,10 @@ class _$CronStateImpl implements _CronState {
 }
 
 abstract class _CronState implements CronState {
-  const factory _CronState(
-      {required final String input,
-      required final CronResult result}) = _$CronStateImpl;
+  const factory _CronState({
+    required final String input,
+    required final CronResult result,
+  }) = _$CronStateImpl;
 
   @override
   String get input;
@@ -181,52 +188,47 @@ mixin _$CronResult {
     required TResult Function() idle,
     required TResult Function(Cron cron) success,
     required TResult Function(CronException exception) failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? idle,
     TResult? Function(Cron cron)? success,
     TResult? Function(CronException exception)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? idle,
     TResult Function(Cron cron)? success,
     TResult Function(CronException exception)? failure,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Idle value) idle,
     required TResult Function(_Success value) success,
     required TResult Function(_Failure value) failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Idle value)? idle,
     TResult? Function(_Success value)? success,
     TResult? Function(_Failure value)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Idle value)? idle,
     TResult Function(_Success value)? success,
     TResult Function(_Failure value)? failure,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CronResultCopyWith<$Res> {
   factory $CronResultCopyWith(
-          CronResult value, $Res Function(CronResult) then) =
-      _$CronResultCopyWithImpl<$Res, CronResult>;
+    CronResult value,
+    $Res Function(CronResult) then,
+  ) = _$CronResultCopyWithImpl<$Res, CronResult>;
 }
 
 /// @nodoc
@@ -246,8 +248,9 @@ class _$CronResultCopyWithImpl<$Res, $Val extends CronResult>
 /// @nodoc
 abstract class _$$IdleImplCopyWith<$Res> {
   factory _$$IdleImplCopyWith(
-          _$IdleImpl value, $Res Function(_$IdleImpl) then) =
-      __$$IdleImplCopyWithImpl<$Res>;
+    _$IdleImpl value,
+    $Res Function(_$IdleImpl) then,
+  ) = __$$IdleImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -255,7 +258,7 @@ class __$$IdleImplCopyWithImpl<$Res>
     extends _$CronResultCopyWithImpl<$Res, _$IdleImpl>
     implements _$$IdleImplCopyWith<$Res> {
   __$$IdleImplCopyWithImpl(_$IdleImpl _value, $Res Function(_$IdleImpl) _then)
-      : super(_value, _then);
+    : super(_value, _then);
 
   /// Create a copy of CronResult
   /// with the given fields replaced by the non-null parameter values.
@@ -356,8 +359,9 @@ abstract class _Idle implements CronResult {
 /// @nodoc
 abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
+    _$SuccessImpl value,
+    $Res Function(_$SuccessImpl) then,
+  ) = __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Cron cron});
 
@@ -369,22 +373,23 @@ class __$$SuccessImplCopyWithImpl<$Res>
     extends _$CronResultCopyWithImpl<$Res, _$SuccessImpl>
     implements _$$SuccessImplCopyWith<$Res> {
   __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
-      : super(_value, _then);
+    _$SuccessImpl _value,
+    $Res Function(_$SuccessImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CronResult
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? cron = null,
-  }) {
-    return _then(_$SuccessImpl(
-      null == cron
-          ? _value.cron
-          : cron // ignore: cast_nullable_to_non_nullable
-              as Cron,
-    ));
+  $Res call({Object? cron = null}) {
+    return _then(
+      _$SuccessImpl(
+        null == cron
+            ? _value.cron
+            : cron // ignore: cast_nullable_to_non_nullable
+                as Cron,
+      ),
+    );
   }
 
   /// Create a copy of CronResult
@@ -514,8 +519,9 @@ abstract class _Success implements CronResult {
 /// @nodoc
 abstract class _$$FailureImplCopyWith<$Res> {
   factory _$$FailureImplCopyWith(
-          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
-      __$$FailureImplCopyWithImpl<$Res>;
+    _$FailureImpl value,
+    $Res Function(_$FailureImpl) then,
+  ) = __$$FailureImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CronException exception});
 }
@@ -525,22 +531,23 @@ class __$$FailureImplCopyWithImpl<$Res>
     extends _$CronResultCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
-      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
-      : super(_value, _then);
+    _$FailureImpl _value,
+    $Res Function(_$FailureImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of CronResult
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? exception = null,
-  }) {
-    return _then(_$FailureImpl(
-      null == exception
-          ? _value.exception
-          : exception // ignore: cast_nullable_to_non_nullable
-              as CronException,
-    ));
+  $Res call({Object? exception = null}) {
+    return _then(
+      _$FailureImpl(
+        null == exception
+            ? _value.exception
+            : exception // ignore: cast_nullable_to_non_nullable
+                as CronException,
+      ),
+    );
   }
 }
 

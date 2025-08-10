@@ -19,14 +19,14 @@ class NumberBaseState with _$NumberBaseState {
   }) = _NumberBaseState;
 
   factory NumberBaseState.init() => const NumberBaseState(
-        base2: '',
-        base8: '',
-        base10: '',
-        base16: '',
-        customBase: 12,
-        customBaseValue: '',
-        value: null,
-      );
+    base2: '',
+    base8: '',
+    base10: '',
+    base16: '',
+    customBase: 12,
+    customBaseValue: '',
+    value: null,
+  );
 
   factory NumberBaseState.fromJson(Map<String, dynamic> json) =>
       _$NumberBaseStateFromJson(json);

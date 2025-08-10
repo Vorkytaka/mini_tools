@@ -12,7 +12,8 @@ part of 'number_base_effect.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$NumberBaseEffect {
@@ -20,47 +21,42 @@ mixin _$NumberBaseEffect {
   TResult when<TResult extends Object?>({
     required TResult Function(NumberBaseState state) saveState,
     required TResult Function() loadState,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(NumberBaseState state)? saveState,
     TResult? Function()? loadState,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(NumberBaseState state)? saveState,
     TResult Function()? loadState,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SaveStateEffect value) saveState,
     required TResult Function(LoadStateEffect value) loadState,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SaveStateEffect value)? saveState,
     TResult? Function(LoadStateEffect value)? loadState,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SaveStateEffect value)? saveState,
     TResult Function(LoadStateEffect value)? loadState,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $NumberBaseEffectCopyWith<$Res> {
   factory $NumberBaseEffectCopyWith(
-          NumberBaseEffect value, $Res Function(NumberBaseEffect) then) =
-      _$NumberBaseEffectCopyWithImpl<$Res, NumberBaseEffect>;
+    NumberBaseEffect value,
+    $Res Function(NumberBaseEffect) then,
+  ) = _$NumberBaseEffectCopyWithImpl<$Res, NumberBaseEffect>;
 }
 
 /// @nodoc
@@ -79,9 +75,10 @@ class _$NumberBaseEffectCopyWithImpl<$Res, $Val extends NumberBaseEffect>
 
 /// @nodoc
 abstract class _$$SaveStateEffectImplCopyWith<$Res> {
-  factory _$$SaveStateEffectImplCopyWith(_$SaveStateEffectImpl value,
-          $Res Function(_$SaveStateEffectImpl) then) =
-      __$$SaveStateEffectImplCopyWithImpl<$Res>;
+  factory _$$SaveStateEffectImplCopyWith(
+    _$SaveStateEffectImpl value,
+    $Res Function(_$SaveStateEffectImpl) then,
+  ) = __$$SaveStateEffectImplCopyWithImpl<$Res>;
   @useResult
   $Res call({NumberBaseState state});
 
@@ -93,22 +90,23 @@ class __$$SaveStateEffectImplCopyWithImpl<$Res>
     extends _$NumberBaseEffectCopyWithImpl<$Res, _$SaveStateEffectImpl>
     implements _$$SaveStateEffectImplCopyWith<$Res> {
   __$$SaveStateEffectImplCopyWithImpl(
-      _$SaveStateEffectImpl _value, $Res Function(_$SaveStateEffectImpl) _then)
-      : super(_value, _then);
+    _$SaveStateEffectImpl _value,
+    $Res Function(_$SaveStateEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of NumberBaseEffect
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? state = null,
-  }) {
-    return _then(_$SaveStateEffectImpl(
-      null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as NumberBaseState,
-    ));
+  $Res call({Object? state = null}) {
+    return _then(
+      _$SaveStateEffectImpl(
+        null == state
+            ? _value.state
+            : state // ignore: cast_nullable_to_non_nullable
+                as NumberBaseState,
+      ),
+    );
   }
 
   /// Create a copy of NumberBaseEffect
@@ -153,7 +151,9 @@ class _$SaveStateEffectImpl implements SaveStateEffect {
   @pragma('vm:prefer-inline')
   _$$SaveStateEffectImplCopyWith<_$SaveStateEffectImpl> get copyWith =>
       __$$SaveStateEffectImplCopyWithImpl<_$SaveStateEffectImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -233,9 +233,10 @@ abstract class SaveStateEffect implements NumberBaseEffect {
 
 /// @nodoc
 abstract class _$$LoadStateEffectImplCopyWith<$Res> {
-  factory _$$LoadStateEffectImplCopyWith(_$LoadStateEffectImpl value,
-          $Res Function(_$LoadStateEffectImpl) then) =
-      __$$LoadStateEffectImplCopyWithImpl<$Res>;
+  factory _$$LoadStateEffectImplCopyWith(
+    _$LoadStateEffectImpl value,
+    $Res Function(_$LoadStateEffectImpl) then,
+  ) = __$$LoadStateEffectImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -243,8 +244,9 @@ class __$$LoadStateEffectImplCopyWithImpl<$Res>
     extends _$NumberBaseEffectCopyWithImpl<$Res, _$LoadStateEffectImpl>
     implements _$$LoadStateEffectImplCopyWith<$Res> {
   __$$LoadStateEffectImplCopyWithImpl(
-      _$LoadStateEffectImpl _value, $Res Function(_$LoadStateEffectImpl) _then)
-      : super(_value, _then);
+    _$LoadStateEffectImpl _value,
+    $Res Function(_$LoadStateEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of NumberBaseEffect
   /// with the given fields replaced by the non-null parameter values.

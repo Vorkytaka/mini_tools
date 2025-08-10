@@ -23,19 +23,13 @@ final class DatetimeConverterEffectHandler
     }
   }
 
-  void _getNow(
-    GetNowEffect effect,
-    MsgEmitter<DatetimeConverterMessage> emit,
-  ) {
+  void _getNow(GetNowEffect effect, MsgEmitter<DatetimeConverterMessage> emit) {
     final timezone = local;
     final now = TZDateTime.now(timezone);
     emit(DatetimeConverterMessage.setNow(now));
   }
 
-  void _parse(
-    ParseEffect effect,
-    MsgEmitter<DatetimeConverterMessage> emit,
-  ) {
+  void _parse(ParseEffect effect, MsgEmitter<DatetimeConverterMessage> emit) {
     final timezone = local;
     TZDateTime? datetime;
 

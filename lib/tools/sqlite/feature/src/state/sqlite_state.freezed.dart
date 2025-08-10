@@ -12,7 +12,8 @@ part of 'sqlite_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$SqliteState {
@@ -30,13 +31,15 @@ mixin _$SqliteState {
 /// @nodoc
 abstract class $SqliteStateCopyWith<$Res> {
   factory $SqliteStateCopyWith(
-          SqliteState value, $Res Function(SqliteState) then) =
-      _$SqliteStateCopyWithImpl<$Res, SqliteState>;
+    SqliteState value,
+    $Res Function(SqliteState) then,
+  ) = _$SqliteStateCopyWithImpl<$Res, SqliteState>;
   @useResult
-  $Res call(
-      {DatabaseConnection connection,
-      List<Result> results,
-      List<TableInfo> tables});
+  $Res call({
+    DatabaseConnection connection,
+    List<Result> results,
+    List<TableInfo> tables,
+  });
 
   $DatabaseConnectionCopyWith<$Res> get connection;
 }
@@ -60,20 +63,26 @@ class _$SqliteStateCopyWithImpl<$Res, $Val extends SqliteState>
     Object? results = null,
     Object? tables = null,
   }) {
-    return _then(_value.copyWith(
-      connection: null == connection
-          ? _value.connection
-          : connection // ignore: cast_nullable_to_non_nullable
-              as DatabaseConnection,
-      results: null == results
-          ? _value.results
-          : results // ignore: cast_nullable_to_non_nullable
-              as List<Result>,
-      tables: null == tables
-          ? _value.tables
-          : tables // ignore: cast_nullable_to_non_nullable
-              as List<TableInfo>,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            connection:
+                null == connection
+                    ? _value.connection
+                    : connection // ignore: cast_nullable_to_non_nullable
+                        as DatabaseConnection,
+            results:
+                null == results
+                    ? _value.results
+                    : results // ignore: cast_nullable_to_non_nullable
+                        as List<Result>,
+            tables:
+                null == tables
+                    ? _value.tables
+                    : tables // ignore: cast_nullable_to_non_nullable
+                        as List<TableInfo>,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of SqliteState
@@ -91,14 +100,16 @@ class _$SqliteStateCopyWithImpl<$Res, $Val extends SqliteState>
 abstract class _$$SqliteStateImplCopyWith<$Res>
     implements $SqliteStateCopyWith<$Res> {
   factory _$$SqliteStateImplCopyWith(
-          _$SqliteStateImpl value, $Res Function(_$SqliteStateImpl) then) =
-      __$$SqliteStateImplCopyWithImpl<$Res>;
+    _$SqliteStateImpl value,
+    $Res Function(_$SqliteStateImpl) then,
+  ) = __$$SqliteStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {DatabaseConnection connection,
-      List<Result> results,
-      List<TableInfo> tables});
+  $Res call({
+    DatabaseConnection connection,
+    List<Result> results,
+    List<TableInfo> tables,
+  });
 
   @override
   $DatabaseConnectionCopyWith<$Res> get connection;
@@ -109,8 +120,9 @@ class __$$SqliteStateImplCopyWithImpl<$Res>
     extends _$SqliteStateCopyWithImpl<$Res, _$SqliteStateImpl>
     implements _$$SqliteStateImplCopyWith<$Res> {
   __$$SqliteStateImplCopyWithImpl(
-      _$SqliteStateImpl _value, $Res Function(_$SqliteStateImpl) _then)
-      : super(_value, _then);
+    _$SqliteStateImpl _value,
+    $Res Function(_$SqliteStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of SqliteState
   /// with the given fields replaced by the non-null parameter values.
@@ -121,32 +133,37 @@ class __$$SqliteStateImplCopyWithImpl<$Res>
     Object? results = null,
     Object? tables = null,
   }) {
-    return _then(_$SqliteStateImpl(
-      connection: null == connection
-          ? _value.connection
-          : connection // ignore: cast_nullable_to_non_nullable
-              as DatabaseConnection,
-      results: null == results
-          ? _value._results
-          : results // ignore: cast_nullable_to_non_nullable
-              as List<Result>,
-      tables: null == tables
-          ? _value._tables
-          : tables // ignore: cast_nullable_to_non_nullable
-              as List<TableInfo>,
-    ));
+    return _then(
+      _$SqliteStateImpl(
+        connection:
+            null == connection
+                ? _value.connection
+                : connection // ignore: cast_nullable_to_non_nullable
+                    as DatabaseConnection,
+        results:
+            null == results
+                ? _value._results
+                : results // ignore: cast_nullable_to_non_nullable
+                    as List<Result>,
+        tables:
+            null == tables
+                ? _value._tables
+                : tables // ignore: cast_nullable_to_non_nullable
+                    as List<TableInfo>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$SqliteStateImpl implements _SqliteState {
-  const _$SqliteStateImpl(
-      {required this.connection,
-      required final List<Result> results,
-      required final List<TableInfo> tables})
-      : _results = results,
-        _tables = tables;
+  const _$SqliteStateImpl({
+    required this.connection,
+    required final List<Result> results,
+    required final List<TableInfo> tables,
+  }) : _results = results,
+       _tables = tables;
 
   @override
   final DatabaseConnection connection;
@@ -184,10 +201,11 @@ class _$SqliteStateImpl implements _SqliteState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      connection,
-      const DeepCollectionEquality().hash(_results),
-      const DeepCollectionEquality().hash(_tables));
+    runtimeType,
+    connection,
+    const DeepCollectionEquality().hash(_results),
+    const DeepCollectionEquality().hash(_tables),
+  );
 
   /// Create a copy of SqliteState
   /// with the given fields replaced by the non-null parameter values.
@@ -199,10 +217,11 @@ class _$SqliteStateImpl implements _SqliteState {
 }
 
 abstract class _SqliteState implements SqliteState {
-  const factory _SqliteState(
-      {required final DatabaseConnection connection,
-      required final List<Result> results,
-      required final List<TableInfo> tables}) = _$SqliteStateImpl;
+  const factory _SqliteState({
+    required final DatabaseConnection connection,
+    required final List<Result> results,
+    required final List<TableInfo> tables,
+  }) = _$SqliteStateImpl;
 
   @override
   DatabaseConnection get connection;
@@ -226,52 +245,47 @@ mixin _$DatabaseConnection {
     required TResult Function() disconnect,
     required TResult Function() inMemory,
     required TResult Function(String folder, String name) file,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnect,
     TResult? Function()? inMemory,
     TResult? Function(String folder, String name)? file,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnect,
     TResult Function()? inMemory,
     TResult Function(String folder, String name)? file,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(Disconnected value) disconnect,
     required TResult Function(InMemoryConnection value) inMemory,
     required TResult Function(FileConnection value) file,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(Disconnected value)? disconnect,
     TResult? Function(InMemoryConnection value)? inMemory,
     TResult? Function(FileConnection value)? file,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Disconnected value)? disconnect,
     TResult Function(InMemoryConnection value)? inMemory,
     TResult Function(FileConnection value)? file,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DatabaseConnectionCopyWith<$Res> {
   factory $DatabaseConnectionCopyWith(
-          DatabaseConnection value, $Res Function(DatabaseConnection) then) =
-      _$DatabaseConnectionCopyWithImpl<$Res, DatabaseConnection>;
+    DatabaseConnection value,
+    $Res Function(DatabaseConnection) then,
+  ) = _$DatabaseConnectionCopyWithImpl<$Res, DatabaseConnection>;
 }
 
 /// @nodoc
@@ -291,8 +305,9 @@ class _$DatabaseConnectionCopyWithImpl<$Res, $Val extends DatabaseConnection>
 /// @nodoc
 abstract class _$$DisconnectedImplCopyWith<$Res> {
   factory _$$DisconnectedImplCopyWith(
-          _$DisconnectedImpl value, $Res Function(_$DisconnectedImpl) then) =
-      __$$DisconnectedImplCopyWithImpl<$Res>;
+    _$DisconnectedImpl value,
+    $Res Function(_$DisconnectedImpl) then,
+  ) = __$$DisconnectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -300,8 +315,9 @@ class __$$DisconnectedImplCopyWithImpl<$Res>
     extends _$DatabaseConnectionCopyWithImpl<$Res, _$DisconnectedImpl>
     implements _$$DisconnectedImplCopyWith<$Res> {
   __$$DisconnectedImplCopyWithImpl(
-      _$DisconnectedImpl _value, $Res Function(_$DisconnectedImpl) _then)
-      : super(_value, _then);
+    _$DisconnectedImpl _value,
+    $Res Function(_$DisconnectedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatabaseConnection
   /// with the given fields replaced by the non-null parameter values.
@@ -401,18 +417,20 @@ abstract class Disconnected implements DatabaseConnection {
 
 /// @nodoc
 abstract class _$$InMemoryConnectionImplCopyWith<$Res> {
-  factory _$$InMemoryConnectionImplCopyWith(_$InMemoryConnectionImpl value,
-          $Res Function(_$InMemoryConnectionImpl) then) =
-      __$$InMemoryConnectionImplCopyWithImpl<$Res>;
+  factory _$$InMemoryConnectionImplCopyWith(
+    _$InMemoryConnectionImpl value,
+    $Res Function(_$InMemoryConnectionImpl) then,
+  ) = __$$InMemoryConnectionImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$InMemoryConnectionImplCopyWithImpl<$Res>
     extends _$DatabaseConnectionCopyWithImpl<$Res, _$InMemoryConnectionImpl>
     implements _$$InMemoryConnectionImplCopyWith<$Res> {
-  __$$InMemoryConnectionImplCopyWithImpl(_$InMemoryConnectionImpl _value,
-      $Res Function(_$InMemoryConnectionImpl) _then)
-      : super(_value, _then);
+  __$$InMemoryConnectionImplCopyWithImpl(
+    _$InMemoryConnectionImpl _value,
+    $Res Function(_$InMemoryConnectionImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatabaseConnection
   /// with the given fields replaced by the non-null parameter values.
@@ -512,9 +530,10 @@ abstract class InMemoryConnection implements DatabaseConnection {
 
 /// @nodoc
 abstract class _$$FileConnectionImplCopyWith<$Res> {
-  factory _$$FileConnectionImplCopyWith(_$FileConnectionImpl value,
-          $Res Function(_$FileConnectionImpl) then) =
-      __$$FileConnectionImplCopyWithImpl<$Res>;
+  factory _$$FileConnectionImplCopyWith(
+    _$FileConnectionImpl value,
+    $Res Function(_$FileConnectionImpl) then,
+  ) = __$$FileConnectionImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String folder, String name});
 }
@@ -524,27 +543,29 @@ class __$$FileConnectionImplCopyWithImpl<$Res>
     extends _$DatabaseConnectionCopyWithImpl<$Res, _$FileConnectionImpl>
     implements _$$FileConnectionImplCopyWith<$Res> {
   __$$FileConnectionImplCopyWithImpl(
-      _$FileConnectionImpl _value, $Res Function(_$FileConnectionImpl) _then)
-      : super(_value, _then);
+    _$FileConnectionImpl _value,
+    $Res Function(_$FileConnectionImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatabaseConnection
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? folder = null,
-    Object? name = null,
-  }) {
-    return _then(_$FileConnectionImpl(
-      folder: null == folder
-          ? _value.folder
-          : folder // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? folder = null, Object? name = null}) {
+    return _then(
+      _$FileConnectionImpl(
+        folder:
+            null == folder
+                ? _value.folder
+                : folder // ignore: cast_nullable_to_non_nullable
+                    as String,
+        name:
+            null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -582,7 +603,9 @@ class _$FileConnectionImpl implements FileConnection {
   @pragma('vm:prefer-inline')
   _$$FileConnectionImplCopyWith<_$FileConnectionImpl> get copyWith =>
       __$$FileConnectionImplCopyWithImpl<_$FileConnectionImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -654,9 +677,10 @@ class _$FileConnectionImpl implements FileConnection {
 }
 
 abstract class FileConnection implements DatabaseConnection {
-  const factory FileConnection(
-      {required final String folder,
-      required final String name}) = _$FileConnectionImpl;
+  const factory FileConnection({
+    required final String folder,
+    required final String name,
+  }) = _$FileConnectionImpl;
 
   String get folder;
   String get name;
@@ -675,47 +699,47 @@ mixin _$Result {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String query, DateTime datetime, Iterable<dynamic> result)
-        success,
+      String query,
+      DateTime datetime,
+      Iterable<dynamic> result,
+    )
+    success,
     required TResult Function(String query, DateTime datetime, String error)
-        failure,
-  }) =>
-      throw _privateConstructorUsedError;
+    failure,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String query, DateTime datetime, Iterable<dynamic> result)?
-        success,
+      String query,
+      DateTime datetime,
+      Iterable<dynamic> result,
+    )?
+    success,
     TResult? Function(String query, DateTime datetime, String error)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query, DateTime datetime, Iterable<dynamic> result)?
-        success,
+    success,
     TResult Function(String query, DateTime datetime, String error)? failure,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ResultSuccess value) success,
     required TResult Function(ResultFailure value) failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ResultSuccess value)? success,
     TResult? Function(ResultFailure value)? failure,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ResultSuccess value)? success,
     TResult Function(ResultFailure value)? failure,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 
   /// Create a copy of Result
   /// with the given fields replaced by the non-null parameter values.
@@ -745,20 +769,22 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? query = null,
-    Object? datetime = null,
-  }) {
-    return _then(_value.copyWith(
-      query: null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String,
-      datetime: null == datetime
-          ? _value.datetime
-          : datetime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
+  $Res call({Object? query = null, Object? datetime = null}) {
+    return _then(
+      _value.copyWith(
+            query:
+                null == query
+                    ? _value.query
+                    : query // ignore: cast_nullable_to_non_nullable
+                        as String,
+            datetime:
+                null == datetime
+                    ? _value.datetime
+                    : datetime // ignore: cast_nullable_to_non_nullable
+                        as DateTime,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -766,8 +792,9 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
 abstract class _$$ResultSuccessImplCopyWith<$Res>
     implements $ResultCopyWith<$Res> {
   factory _$$ResultSuccessImplCopyWith(
-          _$ResultSuccessImpl value, $Res Function(_$ResultSuccessImpl) then) =
-      __$$ResultSuccessImplCopyWithImpl<$Res>;
+    _$ResultSuccessImpl value,
+    $Res Function(_$ResultSuccessImpl) then,
+  ) = __$$ResultSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String query, DateTime datetime, Iterable<dynamic> result});
@@ -778,8 +805,9 @@ class __$$ResultSuccessImplCopyWithImpl<$Res>
     extends _$ResultCopyWithImpl<$Res, _$ResultSuccessImpl>
     implements _$$ResultSuccessImplCopyWith<$Res> {
   __$$ResultSuccessImplCopyWithImpl(
-      _$ResultSuccessImpl _value, $Res Function(_$ResultSuccessImpl) _then)
-      : super(_value, _then);
+    _$ResultSuccessImpl _value,
+    $Res Function(_$ResultSuccessImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Result
   /// with the given fields replaced by the non-null parameter values.
@@ -790,28 +818,36 @@ class __$$ResultSuccessImplCopyWithImpl<$Res>
     Object? datetime = null,
     Object? result = null,
   }) {
-    return _then(_$ResultSuccessImpl(
-      query: null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String,
-      datetime: null == datetime
-          ? _value.datetime
-          : datetime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
-              as Iterable<dynamic>,
-    ));
+    return _then(
+      _$ResultSuccessImpl(
+        query:
+            null == query
+                ? _value.query
+                : query // ignore: cast_nullable_to_non_nullable
+                    as String,
+        datetime:
+            null == datetime
+                ? _value.datetime
+                : datetime // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        result:
+            null == result
+                ? _value.result
+                : result // ignore: cast_nullable_to_non_nullable
+                    as Iterable<dynamic>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ResultSuccessImpl implements ResultSuccess {
-  const _$ResultSuccessImpl(
-      {required this.query, required this.datetime, required this.result});
+  const _$ResultSuccessImpl({
+    required this.query,
+    required this.datetime,
+    required this.result,
+  });
 
   @override
   final String query;
@@ -837,8 +873,12 @@ class _$ResultSuccessImpl implements ResultSuccess {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, query, datetime,
-      const DeepCollectionEquality().hash(result));
+  int get hashCode => Object.hash(
+    runtimeType,
+    query,
+    datetime,
+    const DeepCollectionEquality().hash(result),
+  );
 
   /// Create a copy of Result
   /// with the given fields replaced by the non-null parameter values.
@@ -852,10 +892,13 @@ class _$ResultSuccessImpl implements ResultSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String query, DateTime datetime, Iterable<dynamic> result)
-        success,
+      String query,
+      DateTime datetime,
+      Iterable<dynamic> result,
+    )
+    success,
     required TResult Function(String query, DateTime datetime, String error)
-        failure,
+    failure,
   }) {
     return success(query, datetime, result);
   }
@@ -864,8 +907,11 @@ class _$ResultSuccessImpl implements ResultSuccess {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String query, DateTime datetime, Iterable<dynamic> result)?
-        success,
+      String query,
+      DateTime datetime,
+      Iterable<dynamic> result,
+    )?
+    success,
     TResult? Function(String query, DateTime datetime, String error)? failure,
   }) {
     return success?.call(query, datetime, result);
@@ -875,7 +921,7 @@ class _$ResultSuccessImpl implements ResultSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query, DateTime datetime, Iterable<dynamic> result)?
-        success,
+    success,
     TResult Function(String query, DateTime datetime, String error)? failure,
     required TResult orElse(),
   }) {
@@ -918,10 +964,11 @@ class _$ResultSuccessImpl implements ResultSuccess {
 }
 
 abstract class ResultSuccess implements Result {
-  const factory ResultSuccess(
-      {required final String query,
-      required final DateTime datetime,
-      required final Iterable<dynamic> result}) = _$ResultSuccessImpl;
+  const factory ResultSuccess({
+    required final String query,
+    required final DateTime datetime,
+    required final Iterable<dynamic> result,
+  }) = _$ResultSuccessImpl;
 
   @override
   String get query;
@@ -941,8 +988,9 @@ abstract class ResultSuccess implements Result {
 abstract class _$$ResultFailureImplCopyWith<$Res>
     implements $ResultCopyWith<$Res> {
   factory _$$ResultFailureImplCopyWith(
-          _$ResultFailureImpl value, $Res Function(_$ResultFailureImpl) then) =
-      __$$ResultFailureImplCopyWithImpl<$Res>;
+    _$ResultFailureImpl value,
+    $Res Function(_$ResultFailureImpl) then,
+  ) = __$$ResultFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String query, DateTime datetime, String error});
@@ -953,8 +1001,9 @@ class __$$ResultFailureImplCopyWithImpl<$Res>
     extends _$ResultCopyWithImpl<$Res, _$ResultFailureImpl>
     implements _$$ResultFailureImplCopyWith<$Res> {
   __$$ResultFailureImplCopyWithImpl(
-      _$ResultFailureImpl _value, $Res Function(_$ResultFailureImpl) _then)
-      : super(_value, _then);
+    _$ResultFailureImpl _value,
+    $Res Function(_$ResultFailureImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Result
   /// with the given fields replaced by the non-null parameter values.
@@ -965,28 +1014,36 @@ class __$$ResultFailureImplCopyWithImpl<$Res>
     Object? datetime = null,
     Object? error = null,
   }) {
-    return _then(_$ResultFailureImpl(
-      query: null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String,
-      datetime: null == datetime
-          ? _value.datetime
-          : datetime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return _then(
+      _$ResultFailureImpl(
+        query:
+            null == query
+                ? _value.query
+                : query // ignore: cast_nullable_to_non_nullable
+                    as String,
+        datetime:
+            null == datetime
+                ? _value.datetime
+                : datetime // ignore: cast_nullable_to_non_nullable
+                    as DateTime,
+        error:
+            null == error
+                ? _value.error
+                : error // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ResultFailureImpl implements ResultFailure {
-  const _$ResultFailureImpl(
-      {required this.query, required this.datetime, required this.error});
+  const _$ResultFailureImpl({
+    required this.query,
+    required this.datetime,
+    required this.error,
+  });
 
   @override
   final String query;
@@ -1026,10 +1083,13 @@ class _$ResultFailureImpl implements ResultFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String query, DateTime datetime, Iterable<dynamic> result)
-        success,
+      String query,
+      DateTime datetime,
+      Iterable<dynamic> result,
+    )
+    success,
     required TResult Function(String query, DateTime datetime, String error)
-        failure,
+    failure,
   }) {
     return failure(query, datetime, error);
   }
@@ -1038,8 +1098,11 @@ class _$ResultFailureImpl implements ResultFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(
-            String query, DateTime datetime, Iterable<dynamic> result)?
-        success,
+      String query,
+      DateTime datetime,
+      Iterable<dynamic> result,
+    )?
+    success,
     TResult? Function(String query, DateTime datetime, String error)? failure,
   }) {
     return failure?.call(query, datetime, error);
@@ -1049,7 +1112,7 @@ class _$ResultFailureImpl implements ResultFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query, DateTime datetime, Iterable<dynamic> result)?
-        success,
+    success,
     TResult Function(String query, DateTime datetime, String error)? failure,
     required TResult orElse(),
   }) {
@@ -1092,10 +1155,11 @@ class _$ResultFailureImpl implements ResultFailure {
 }
 
 abstract class ResultFailure implements Result {
-  const factory ResultFailure(
-      {required final String query,
-      required final DateTime datetime,
-      required final String error}) = _$ResultFailureImpl;
+  const factory ResultFailure({
+    required final String query,
+    required final DateTime datetime,
+    required final String error,
+  }) = _$ResultFailureImpl;
 
   @override
   String get query;
@@ -1145,20 +1209,22 @@ class _$TableInfoCopyWithImpl<$Res, $Val extends TableInfo>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? name = null,
-    Object? columns = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      columns: null == columns
-          ? _value.columns
-          : columns // ignore: cast_nullable_to_non_nullable
-              as List<ColumnInfo>,
-    ) as $Val);
+  $Res call({Object? name = null, Object? columns = null}) {
+    return _then(
+      _value.copyWith(
+            name:
+                null == name
+                    ? _value.name
+                    : name // ignore: cast_nullable_to_non_nullable
+                        as String,
+            columns:
+                null == columns
+                    ? _value.columns
+                    : columns // ignore: cast_nullable_to_non_nullable
+                        as List<ColumnInfo>,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -1166,8 +1232,9 @@ class _$TableInfoCopyWithImpl<$Res, $Val extends TableInfo>
 abstract class _$$TableInfoImplCopyWith<$Res>
     implements $TableInfoCopyWith<$Res> {
   factory _$$TableInfoImplCopyWith(
-          _$TableInfoImpl value, $Res Function(_$TableInfoImpl) then) =
-      __$$TableInfoImplCopyWithImpl<$Res>;
+    _$TableInfoImpl value,
+    $Res Function(_$TableInfoImpl) then,
+  ) = __$$TableInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, List<ColumnInfo> columns});
@@ -1178,36 +1245,39 @@ class __$$TableInfoImplCopyWithImpl<$Res>
     extends _$TableInfoCopyWithImpl<$Res, _$TableInfoImpl>
     implements _$$TableInfoImplCopyWith<$Res> {
   __$$TableInfoImplCopyWithImpl(
-      _$TableInfoImpl _value, $Res Function(_$TableInfoImpl) _then)
-      : super(_value, _then);
+    _$TableInfoImpl _value,
+    $Res Function(_$TableInfoImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of TableInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? name = null,
-    Object? columns = null,
-  }) {
-    return _then(_$TableInfoImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      columns: null == columns
-          ? _value._columns
-          : columns // ignore: cast_nullable_to_non_nullable
-              as List<ColumnInfo>,
-    ));
+  $Res call({Object? name = null, Object? columns = null}) {
+    return _then(
+      _$TableInfoImpl(
+        name:
+            null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        columns:
+            null == columns
+                ? _value._columns
+                : columns // ignore: cast_nullable_to_non_nullable
+                    as List<ColumnInfo>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$TableInfoImpl implements _TableInfo {
-  const _$TableInfoImpl(
-      {required this.name, required final List<ColumnInfo> columns})
-      : _columns = columns;
+  const _$TableInfoImpl({
+    required this.name,
+    required final List<ColumnInfo> columns,
+  }) : _columns = columns;
 
   @override
   final String name;
@@ -1235,7 +1305,10 @@ class _$TableInfoImpl implements _TableInfo {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, const DeepCollectionEquality().hash(_columns));
+    runtimeType,
+    name,
+    const DeepCollectionEquality().hash(_columns),
+  );
 
   /// Create a copy of TableInfo
   /// with the given fields replaced by the non-null parameter values.
@@ -1247,9 +1320,10 @@ class _$TableInfoImpl implements _TableInfo {
 }
 
 abstract class _TableInfo implements TableInfo {
-  const factory _TableInfo(
-      {required final String name,
-      required final List<ColumnInfo> columns}) = _$TableInfoImpl;
+  const factory _TableInfo({
+    required final String name,
+    required final List<ColumnInfo> columns,
+  }) = _$TableInfoImpl;
 
   @override
   String get name;
@@ -1280,8 +1354,9 @@ mixin _$ColumnInfo {
 /// @nodoc
 abstract class $ColumnInfoCopyWith<$Res> {
   factory $ColumnInfoCopyWith(
-          ColumnInfo value, $Res Function(ColumnInfo) then) =
-      _$ColumnInfoCopyWithImpl<$Res, ColumnInfo>;
+    ColumnInfo value,
+    $Res Function(ColumnInfo) then,
+  ) = _$ColumnInfoCopyWithImpl<$Res, ColumnInfo>;
   @useResult
   $Res call({String name, String type, bool pk});
 }
@@ -1300,25 +1375,27 @@ class _$ColumnInfoCopyWithImpl<$Res, $Val extends ColumnInfo>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? name = null,
-    Object? type = null,
-    Object? pk = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      pk: null == pk
-          ? _value.pk
-          : pk // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+  $Res call({Object? name = null, Object? type = null, Object? pk = null}) {
+    return _then(
+      _value.copyWith(
+            name:
+                null == name
+                    ? _value.name
+                    : name // ignore: cast_nullable_to_non_nullable
+                        as String,
+            type:
+                null == type
+                    ? _value.type
+                    : type // ignore: cast_nullable_to_non_nullable
+                        as String,
+            pk:
+                null == pk
+                    ? _value.pk
+                    : pk // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -1326,8 +1403,9 @@ class _$ColumnInfoCopyWithImpl<$Res, $Val extends ColumnInfo>
 abstract class _$$ColumnInfoImplCopyWith<$Res>
     implements $ColumnInfoCopyWith<$Res> {
   factory _$$ColumnInfoImplCopyWith(
-          _$ColumnInfoImpl value, $Res Function(_$ColumnInfoImpl) then) =
-      __$$ColumnInfoImplCopyWithImpl<$Res>;
+    _$ColumnInfoImpl value,
+    $Res Function(_$ColumnInfoImpl) then,
+  ) = __$$ColumnInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String type, bool pk});
@@ -1338,40 +1416,45 @@ class __$$ColumnInfoImplCopyWithImpl<$Res>
     extends _$ColumnInfoCopyWithImpl<$Res, _$ColumnInfoImpl>
     implements _$$ColumnInfoImplCopyWith<$Res> {
   __$$ColumnInfoImplCopyWithImpl(
-      _$ColumnInfoImpl _value, $Res Function(_$ColumnInfoImpl) _then)
-      : super(_value, _then);
+    _$ColumnInfoImpl _value,
+    $Res Function(_$ColumnInfoImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ColumnInfo
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? name = null,
-    Object? type = null,
-    Object? pk = null,
-  }) {
-    return _then(_$ColumnInfoImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      pk: null == pk
-          ? _value.pk
-          : pk // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? name = null, Object? type = null, Object? pk = null}) {
+    return _then(
+      _$ColumnInfoImpl(
+        name:
+            null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        type:
+            null == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                    as String,
+        pk:
+            null == pk
+                ? _value.pk
+                : pk // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ColumnInfoImpl implements _ColumnInfo {
-  const _$ColumnInfoImpl(
-      {required this.name, required this.type, required this.pk});
+  const _$ColumnInfoImpl({
+    required this.name,
+    required this.type,
+    required this.pk,
+  });
 
   @override
   final String name;
@@ -1408,10 +1491,11 @@ class _$ColumnInfoImpl implements _ColumnInfo {
 }
 
 abstract class _ColumnInfo implements ColumnInfo {
-  const factory _ColumnInfo(
-      {required final String name,
-      required final String type,
-      required final bool pk}) = _$ColumnInfoImpl;
+  const factory _ColumnInfo({
+    required final String name,
+    required final String type,
+    required final bool pk,
+  }) = _$ColumnInfoImpl;
 
   @override
   String get name;

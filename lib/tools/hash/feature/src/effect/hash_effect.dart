@@ -10,10 +10,8 @@ sealed class HashEffect {}
 @freezed
 @Implements<HashEffect>()
 sealed class SyncHashEffect with _$SyncHashEffect implements HashEffect {
-  const factory SyncHashEffect.textHash(
-    String text,
-    HashAlgorithm algorithm,
-  ) = CountTextHashEffect;
+  const factory SyncHashEffect.textHash(String text, HashAlgorithm algorithm) =
+      CountTextHashEffect;
 }
 
 @immutable

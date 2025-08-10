@@ -4,8 +4,9 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   desktop_drop
+  flutter_timezone
   irondash_engine_context
-  screen_retriever
+  screen_retriever_linux
   sqlite3_flutter_libs
   super_native_extensions
   window_manager

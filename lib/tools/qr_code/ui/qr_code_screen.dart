@@ -23,10 +23,7 @@ class QrCodeScreen extends StatelessWidget {
     final t = Translations.of(context);
 
     return MacosScaffold(
-      toolBar: ToolBar(
-        title: Text(t.qrCode.title),
-        centerTitle: true,
-      ),
+      toolBar: ToolBar(title: Text(t.qrCode.title), centerTitle: true),
       children: [
         ContentArea(
           builder: (context, controller) {
@@ -34,10 +31,11 @@ class QrCodeScreen extends StatelessWidget {
           },
         ),
         ResizablePane(
-          builder: (context, controller) => const Padding(
-            padding: panePadding,
-            child: QrCodeOutputSide(),
-          ),
+          builder:
+              (context, controller) => const Padding(
+                padding: panePadding,
+                child: QrCodeOutputSide(),
+              ),
           minSize: 260,
           resizableSide: ResizableSide.left,
           startSize: 260,
@@ -53,9 +51,6 @@ class _Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: panePadding,
-      child: _InputSide(),
-    );
+    return const Padding(padding: panePadding, child: _InputSide());
   }
 }

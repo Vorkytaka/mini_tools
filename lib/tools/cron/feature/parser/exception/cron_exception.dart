@@ -20,10 +20,8 @@ sealed class CronException implements Exception {
 
   const factory CronException.rangeLength() = InvalidRangeLengthException;
 
-  const factory CronException.range({
-    required int from,
-    required int to,
-  }) = InvalidRangeException;
+  const factory CronException.range({required int from, required int to}) =
+      InvalidRangeException;
 
   const factory CronException.stepLength() = InvalidStepLengthException;
 
@@ -45,10 +43,7 @@ class InvalidValueException implements CronException {
   final int value;
   final CronPart part;
 
-  const InvalidValueException({
-    required this.value,
-    required this.part,
-  });
+  const InvalidValueException({required this.value, required this.part});
 }
 
 class InvalidRangeLengthException implements CronException {
@@ -59,10 +54,7 @@ class InvalidRangeException implements CronException {
   final int from;
   final int to;
 
-  const InvalidRangeException({
-    required this.from,
-    required this.to,
-  });
+  const InvalidRangeException({required this.from, required this.to});
 }
 
 class InvalidStepLengthException implements CronException {
@@ -73,10 +65,7 @@ class InvalidStepException implements CronException {
   final int step;
   final CronPart part;
 
-  const InvalidStepException({
-    required this.step,
-    required this.part,
-  });
+  const InvalidStepException({required this.step, required this.part});
 }
 
 class InvalidCronPartException implements CronException {

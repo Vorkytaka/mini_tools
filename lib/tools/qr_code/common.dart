@@ -6,16 +6,17 @@ extension QrCodeVisualDataUtils on QrCodeVisualData {
   PrettyQrShape get qrCodeShape {
     return switch (shape) {
       QrCodeShape.square => PrettyQrSmoothSymbol(
-          roundFactor: 0,
-          color: foregroundColor,
-        ),
-      QrCodeShape.circle => PrettyQrRoundedSymbol(
-          color: foregroundColor,
-        ),
+        roundFactor: 0,
+        color: foregroundColor,
+      ),
+      QrCodeShape.circle => PrettyQrSquaresSymbol(
+        color: foregroundColor,
+        rounding: 1,
+      ),
       QrCodeShape.smooth => PrettyQrSmoothSymbol(
-          roundFactor: 1,
-          color: foregroundColor,
-        ),
+        roundFactor: 1,
+        color: foregroundColor,
+      ),
     };
   }
 }

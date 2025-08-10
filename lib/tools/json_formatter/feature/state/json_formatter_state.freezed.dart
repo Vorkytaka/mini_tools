@@ -12,7 +12,8 @@ part of 'json_formatter_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$JsonFormatterState {
@@ -31,14 +32,16 @@ mixin _$JsonFormatterState {
 /// @nodoc
 abstract class $JsonFormatterStateCopyWith<$Res> {
   factory $JsonFormatterStateCopyWith(
-          JsonFormatterState value, $Res Function(JsonFormatterState) then) =
-      _$JsonFormatterStateCopyWithImpl<$Res, JsonFormatterState>;
+    JsonFormatterState value,
+    $Res Function(JsonFormatterState) then,
+  ) = _$JsonFormatterStateCopyWithImpl<$Res, JsonFormatterState>;
   @useResult
-  $Res call(
-      {String input,
-      String? output,
-      JsonOutputFormat format,
-      JsonPathState jsonPath});
+  $Res call({
+    String input,
+    String? output,
+    JsonOutputFormat format,
+    JsonPathState jsonPath,
+  });
 
   $JsonPathStateCopyWith<$Res> get jsonPath;
 }
@@ -63,24 +66,31 @@ class _$JsonFormatterStateCopyWithImpl<$Res, $Val extends JsonFormatterState>
     Object? format = null,
     Object? jsonPath = null,
   }) {
-    return _then(_value.copyWith(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      output: freezed == output
-          ? _value.output
-          : output // ignore: cast_nullable_to_non_nullable
-              as String?,
-      format: null == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as JsonOutputFormat,
-      jsonPath: null == jsonPath
-          ? _value.jsonPath
-          : jsonPath // ignore: cast_nullable_to_non_nullable
-              as JsonPathState,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            input:
+                null == input
+                    ? _value.input
+                    : input // ignore: cast_nullable_to_non_nullable
+                        as String,
+            output:
+                freezed == output
+                    ? _value.output
+                    : output // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            format:
+                null == format
+                    ? _value.format
+                    : format // ignore: cast_nullable_to_non_nullable
+                        as JsonOutputFormat,
+            jsonPath:
+                null == jsonPath
+                    ? _value.jsonPath
+                    : jsonPath // ignore: cast_nullable_to_non_nullable
+                        as JsonPathState,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of JsonFormatterState
@@ -97,16 +107,18 @@ class _$JsonFormatterStateCopyWithImpl<$Res, $Val extends JsonFormatterState>
 /// @nodoc
 abstract class _$$JsonFormatterStateImplCopyWith<$Res>
     implements $JsonFormatterStateCopyWith<$Res> {
-  factory _$$JsonFormatterStateImplCopyWith(_$JsonFormatterStateImpl value,
-          $Res Function(_$JsonFormatterStateImpl) then) =
-      __$$JsonFormatterStateImplCopyWithImpl<$Res>;
+  factory _$$JsonFormatterStateImplCopyWith(
+    _$JsonFormatterStateImpl value,
+    $Res Function(_$JsonFormatterStateImpl) then,
+  ) = __$$JsonFormatterStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String input,
-      String? output,
-      JsonOutputFormat format,
-      JsonPathState jsonPath});
+  $Res call({
+    String input,
+    String? output,
+    JsonOutputFormat format,
+    JsonPathState jsonPath,
+  });
 
   @override
   $JsonPathStateCopyWith<$Res> get jsonPath;
@@ -116,9 +128,10 @@ abstract class _$$JsonFormatterStateImplCopyWith<$Res>
 class __$$JsonFormatterStateImplCopyWithImpl<$Res>
     extends _$JsonFormatterStateCopyWithImpl<$Res, _$JsonFormatterStateImpl>
     implements _$$JsonFormatterStateImplCopyWith<$Res> {
-  __$$JsonFormatterStateImplCopyWithImpl(_$JsonFormatterStateImpl _value,
-      $Res Function(_$JsonFormatterStateImpl) _then)
-      : super(_value, _then);
+  __$$JsonFormatterStateImplCopyWithImpl(
+    _$JsonFormatterStateImpl _value,
+    $Res Function(_$JsonFormatterStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of JsonFormatterState
   /// with the given fields replaced by the non-null parameter values.
@@ -130,35 +143,42 @@ class __$$JsonFormatterStateImplCopyWithImpl<$Res>
     Object? format = null,
     Object? jsonPath = null,
   }) {
-    return _then(_$JsonFormatterStateImpl(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      output: freezed == output
-          ? _value.output
-          : output // ignore: cast_nullable_to_non_nullable
-              as String?,
-      format: null == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as JsonOutputFormat,
-      jsonPath: null == jsonPath
-          ? _value.jsonPath
-          : jsonPath // ignore: cast_nullable_to_non_nullable
-              as JsonPathState,
-    ));
+    return _then(
+      _$JsonFormatterStateImpl(
+        input:
+            null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                    as String,
+        output:
+            freezed == output
+                ? _value.output
+                : output // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        format:
+            null == format
+                ? _value.format
+                : format // ignore: cast_nullable_to_non_nullable
+                    as JsonOutputFormat,
+        jsonPath:
+            null == jsonPath
+                ? _value.jsonPath
+                : jsonPath // ignore: cast_nullable_to_non_nullable
+                    as JsonPathState,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$JsonFormatterStateImpl implements _JsonFormatterState {
-  const _$JsonFormatterStateImpl(
-      {required this.input,
-      required this.output,
-      required this.format,
-      required this.jsonPath});
+  const _$JsonFormatterStateImpl({
+    required this.input,
+    required this.output,
+    required this.format,
+    required this.jsonPath,
+  });
 
   @override
   final String input;
@@ -196,15 +216,18 @@ class _$JsonFormatterStateImpl implements _JsonFormatterState {
   @pragma('vm:prefer-inline')
   _$$JsonFormatterStateImplCopyWith<_$JsonFormatterStateImpl> get copyWith =>
       __$$JsonFormatterStateImplCopyWithImpl<_$JsonFormatterStateImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _JsonFormatterState implements JsonFormatterState {
-  const factory _JsonFormatterState(
-      {required final String input,
-      required final String? output,
-      required final JsonOutputFormat format,
-      required final JsonPathState jsonPath}) = _$JsonFormatterStateImpl;
+  const factory _JsonFormatterState({
+    required final String input,
+    required final String? output,
+    required final JsonOutputFormat format,
+    required final JsonPathState jsonPath,
+  }) = _$JsonFormatterStateImpl;
 
   @override
   String get input;
@@ -238,8 +261,9 @@ mixin _$JsonPathState {
 /// @nodoc
 abstract class $JsonPathStateCopyWith<$Res> {
   factory $JsonPathStateCopyWith(
-          JsonPathState value, $Res Function(JsonPathState) then) =
-      _$JsonPathStateCopyWithImpl<$Res, JsonPathState>;
+    JsonPathState value,
+    $Res Function(JsonPathState) then,
+  ) = _$JsonPathStateCopyWithImpl<$Res, JsonPathState>;
   @useResult
   $Res call({String input, JsonPath? value});
 }
@@ -258,20 +282,22 @@ class _$JsonPathStateCopyWithImpl<$Res, $Val extends JsonPathState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? input = null,
-    Object? value = freezed,
-  }) {
-    return _then(_value.copyWith(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as JsonPath?,
-    ) as $Val);
+  $Res call({Object? input = null, Object? value = freezed}) {
+    return _then(
+      _value.copyWith(
+            input:
+                null == input
+                    ? _value.input
+                    : input // ignore: cast_nullable_to_non_nullable
+                        as String,
+            value:
+                freezed == value
+                    ? _value.value
+                    : value // ignore: cast_nullable_to_non_nullable
+                        as JsonPath?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -279,8 +305,9 @@ class _$JsonPathStateCopyWithImpl<$Res, $Val extends JsonPathState>
 abstract class _$$JsonPathStateImplCopyWith<$Res>
     implements $JsonPathStateCopyWith<$Res> {
   factory _$$JsonPathStateImplCopyWith(
-          _$JsonPathStateImpl value, $Res Function(_$JsonPathStateImpl) then) =
-      __$$JsonPathStateImplCopyWithImpl<$Res>;
+    _$JsonPathStateImpl value,
+    $Res Function(_$JsonPathStateImpl) then,
+  ) = __$$JsonPathStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String input, JsonPath? value});
@@ -291,27 +318,29 @@ class __$$JsonPathStateImplCopyWithImpl<$Res>
     extends _$JsonPathStateCopyWithImpl<$Res, _$JsonPathStateImpl>
     implements _$$JsonPathStateImplCopyWith<$Res> {
   __$$JsonPathStateImplCopyWithImpl(
-      _$JsonPathStateImpl _value, $Res Function(_$JsonPathStateImpl) _then)
-      : super(_value, _then);
+    _$JsonPathStateImpl _value,
+    $Res Function(_$JsonPathStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of JsonPathState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? input = null,
-    Object? value = freezed,
-  }) {
-    return _then(_$JsonPathStateImpl(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: freezed == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as JsonPath?,
-    ));
+  $Res call({Object? input = null, Object? value = freezed}) {
+    return _then(
+      _$JsonPathStateImpl(
+        input:
+            null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                    as String,
+        value:
+            freezed == value
+                ? _value.value
+                : value // ignore: cast_nullable_to_non_nullable
+                    as JsonPath?,
+      ),
+    );
   }
 }
 
@@ -319,7 +348,7 @@ class __$$JsonPathStateImplCopyWithImpl<$Res>
 
 class _$JsonPathStateImpl extends _JsonPathState {
   const _$JsonPathStateImpl({required this.input, required this.value})
-      : super._();
+    : super._();
 
   @override
   final String input;
@@ -353,9 +382,10 @@ class _$JsonPathStateImpl extends _JsonPathState {
 }
 
 abstract class _JsonPathState extends JsonPathState {
-  const factory _JsonPathState(
-      {required final String input,
-      required final JsonPath? value}) = _$JsonPathStateImpl;
+  const factory _JsonPathState({
+    required final String input,
+    required final JsonPath? value,
+  }) = _$JsonPathStateImpl;
   const _JsonPathState._() : super._();
 
   @override

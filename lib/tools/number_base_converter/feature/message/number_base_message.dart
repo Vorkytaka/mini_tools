@@ -31,9 +31,8 @@ class UpdateCustomBaseMessage
     with _$UpdateCustomBaseMessage
     implements NumberBaseMessage {
   @Assert('base >= 2 && base <= 36')
-  const factory UpdateCustomBaseMessage({
-    required int base,
-  }) = _UpdateCustomBaseMessage;
+  const factory UpdateCustomBaseMessage({required int base}) =
+      _UpdateCustomBaseMessage;
 }
 
 @freezed

@@ -6,14 +6,17 @@ class CodeThemes {
   static Map<String, TextStyle> monokai(TextStyle baseStyle) {
     return {
       'root': baseStyle.copyWith(
-          color: const Color(0xfff8f8f2),
-          backgroundColor: const Color(0xff272822)),
+        color: const Color(0xfff8f8f2),
+        backgroundColor: const Color(0xff272822),
+      ),
       '.hljs::selection': baseStyle.copyWith(
-          backgroundColor: const Color(0xff49483e),
-          color: const Color(0xfff8f8f2)),
+        backgroundColor: const Color(0xff49483e),
+        color: const Color(0xfff8f8f2),
+      ),
       '.hljs-::selection': baseStyle.copyWith(
-          backgroundColor: const Color(0xff49483e),
-          color: const Color(0xfff8f8f2)),
+        backgroundColor: const Color(0xff49483e),
+        color: const Color(0xfff8f8f2),
+      ),
       'comment': baseStyle.copyWith(color: const Color(0xff75715e)),
       'tag': baseStyle.copyWith(color: const Color(0xffa59f85)),
       'subst': baseStyle.copyWith(color: const Color(0xfff8f8f2)),
@@ -35,11 +38,14 @@ class CodeThemes {
       'class-title': baseStyle.copyWith(color: const Color(0xfff4bf75)),
       'title.class_': baseStyle.copyWith(color: const Color(0xfff4bf75)),
       'strong': baseStyle.copyWith(
-          fontWeight: FontWeight.bold, color: const Color(0xfff4bf75)),
+        fontWeight: FontWeight.bold,
+        color: const Color(0xfff4bf75),
+      ),
       'code': baseStyle.copyWith(color: const Color(0xffa6e22e)),
       'addition': baseStyle.copyWith(color: const Color(0xffa6e22e)),
-      'title.class_.inherited__':
-          baseStyle.copyWith(color: const Color(0xffa6e22e)),
+      'title.class_.inherited__': baseStyle.copyWith(
+        color: const Color(0xffa6e22e),
+      ),
       'string': baseStyle.copyWith(color: const Color(0xffa6e22e)),
       'built_in': baseStyle.copyWith(color: const Color(0xffa1efe4)),
       'doctag': baseStyle.copyWith(color: const Color(0xffa1efe4)),
@@ -56,10 +62,14 @@ class CodeThemes {
       '.diff-meta': baseStyle.copyWith(color: const Color(0xffae81ff)),
       'keyword': baseStyle.copyWith(color: const Color(0xffae81ff)),
       'emphasis': baseStyle.copyWith(
-          color: const Color(0xffae81ff), fontStyle: FontStyle.italic),
+        color: const Color(0xffae81ff),
+        fontStyle: FontStyle.italic,
+      ),
       'meta': baseStyle.copyWith(color: const Color(0xffcc6633)),
       'meta-keyword': baseStyle.copyWith(
-          color: const Color(0xffcc6633), fontWeight: FontWeight.bold),
+        color: const Color(0xffcc6633),
+        fontWeight: FontWeight.bold,
+      ),
       'meta-string': baseStyle.copyWith(color: const Color(0xffcc6633)),
     };
   }

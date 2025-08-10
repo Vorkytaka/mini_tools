@@ -10,11 +10,11 @@ export 'effect/text_diff_effect.dart';
 export 'message/text_diff_message.dart';
 export 'state/text_diff_state.dart';
 
-typedef TextDiffFeature
-    = Feature<TextDiffState, TextDiffMessage, TextDiffEffect>;
+typedef TextDiffFeature =
+    Feature<TextDiffState, TextDiffMessage, TextDiffEffect>;
 
 TextDiffFeature textDiffFeatureFactory() => Feature(
-      initialState: TextDiffState.init(),
-      update: textDiffUpdate,
-      effectHandlers: [TextDiffEffectHandler()],
-    );
+  initialState: TextDiffState.init(),
+  update: textDiffUpdate,
+  effectHandlers: [TextDiffEffectHandler()],
+);

@@ -42,9 +42,9 @@ Next<NumberBaseState, NumberBaseEffect> _updateInputHandle(
     UpdateBase10Message() => BigInt.tryParse(message.input, radix: 10),
     UpdateBase16Message() => BigInt.tryParse(message.input, radix: 16),
     UpdateCustomMessage() => BigInt.tryParse(
-        message.input,
-        radix: state.customBase,
-      ),
+      message.input,
+      radix: state.customBase,
+    ),
   };
 
   String base2, base8, base10, base16, custom;
@@ -91,8 +91,5 @@ Next<NumberBaseState, NumberBaseEffect> _updateInputHandle(
     value: bigInt,
   );
 
-  return next(
-    state: newState,
-    effects: [NumberBaseEffect.saveState(newState)],
-  );
+  return next(state: newState, effects: [NumberBaseEffect.saveState(newState)]);
 }

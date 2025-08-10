@@ -89,7 +89,6 @@ linter:
     one_member_abstracts: true
     only_throw_errors: true
     overridden_fields: true
-    package_api_docs: false # This is too much for an app
     package_names: true
     package_prefixed_library_names: true
     parameter_assignments: false # Do use final for that
@@ -162,7 +161,6 @@ linter:
     unnecessary_string_interpolations: true
     unnecessary_this: true
     unrelated_type_equality_checks: true
-    unsafe_html: true
     use_full_hex_values_for_flutter_colors: true
     use_function_type_syntax_for_parameters: true
     use_is_even_rather_than_modulo: true

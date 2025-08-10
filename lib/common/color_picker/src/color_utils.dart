@@ -39,7 +39,7 @@ extension CompactColorPickerColorUtils on Color {
     return '#${toHexAlpha()}';
   }
 
-// Note: Conversions to/from HSV and HSL are already handled by Flutter's
-// HSVColor.fromColor(), HSLColor.fromColor(), hsvColor.toColor(), hslColor.toColor().
-// We don't need to replicate that here, but we can document how users can do it.
+  // Note: Conversions to/from HSV and HSL are already handled by Flutter's
+  // HSVColor.fromColor(), HSLColor.fromColor(), hsvColor.toColor(), hslColor.toColor().
+  // We don't need to replicate that here, but we can document how users can do it.
 }

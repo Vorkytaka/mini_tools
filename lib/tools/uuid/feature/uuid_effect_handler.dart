@@ -16,10 +16,7 @@ final class UuidEffectHandler
   UuidEffectHandler();
 
   @override
-  Future<void> call(
-    UuidEffect effect,
-    MsgEmitter<UuidMessage> emit,
-  ) {
+  Future<void> call(UuidEffect effect, MsgEmitter<UuidMessage> emit) {
     switch (effect) {
       case InitEffect():
         return _init(effect, emit);
@@ -28,10 +25,7 @@ final class UuidEffectHandler
     }
   }
 
-  Future<void> _init(
-    InitEffect effect,
-    MsgEmitter<UuidMessage> emit,
-  ) async {
+  Future<void> _init(InitEffect effect, MsgEmitter<UuidMessage> emit) async {
     final options = GlobalOptions(CryptoRNG());
     _uuid = Uuid(goptions: options);
   }

@@ -18,7 +18,8 @@ sealed class DatetimeConverterMessage with _$DatetimeConverterMessage {
       UpdateInputTypeMessage;
 
   const factory DatetimeConverterMessage.updateDatetimeFormat(
-      DatetimeFormat format) = UpdateDatetimeFormatMessage;
+    DatetimeFormat format,
+  ) = UpdateDatetimeFormatMessage;
 
   const factory DatetimeConverterMessage.clear() = ClearMessage;
 
@@ -28,5 +29,6 @@ sealed class DatetimeConverterMessage with _$DatetimeConverterMessage {
       SetNowMessage;
 
   const factory DatetimeConverterMessage.setInitialDatetime(
-      TZDateTime datetime) = SetInitialDatetimeMessage;
+    TZDateTime datetime,
+  ) = SetInitialDatetimeMessage;
 }

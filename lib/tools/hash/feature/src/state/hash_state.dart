@@ -4,10 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'hash_state.freezed.dart';
 
-enum HashFormat {
-  base64,
-  hex,
-}
+enum HashFormat { base64, hex }
 
 enum HashAlgorithm {
   md2,

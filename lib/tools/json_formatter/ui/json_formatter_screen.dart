@@ -26,15 +26,8 @@ class JsonFormatterScreen extends StatelessWidget {
     final t = Translations.of(context);
 
     return MacosScaffold(
-      toolBar: ToolBar(
-        title: Text(t.jsonFormatter.title),
-        centerTitle: true,
-      ),
-      children: [
-        ContentArea(
-          builder: (context, controller) => const _Body(),
-        ),
-      ],
+      toolBar: ToolBar(title: Text(t.jsonFormatter.title), centerTitle: true),
+      children: [ContentArea(builder: (context, controller) => const _Body())],
     );
   }
 }
@@ -89,16 +82,14 @@ class _BodyState extends State<_Body> {
       padding: panePadding,
       child: Row(
         children: [
-          Expanded(
-            child: _InputSide(controller: _inputController),
-          ),
+          Expanded(child: _InputSide(controller: _inputController)),
           const SizedBox(width: 8),
           Expanded(
             child: _OutputSide(
               outputController: _outputController,
               jsonPathController: _jsonPathController,
             ),
-          )
+          ),
         ],
       ),
     );
@@ -111,8 +102,8 @@ class _BodyState extends State<_Body> {
 
   void _onJsonPathUpdate() {
     final jsonPath = _jsonPathController.text;
-    context
-        .read<JsonFormatterFeature>()
-        .accept(JsonPathUpdateMessage(jsonPath));
+    context.read<JsonFormatterFeature>().accept(
+      JsonPathUpdateMessage(jsonPath),
+    );
   }
 }

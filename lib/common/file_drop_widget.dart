@@ -10,11 +10,7 @@ class FileDropWidget extends StatefulWidget {
   final ValueChanged<XFile?>? onFileDropped;
   final Widget child;
 
-  const FileDropWidget({
-    required this.child,
-    this.onFileDropped,
-    super.key,
-  });
+  const FileDropWidget({required this.child, this.onFileDropped, super.key});
 
   @override
   State<FileDropWidget> createState() => _FileDropWidgetState();
@@ -46,10 +42,7 @@ class _FileDropWidgetState extends State<FileDropWidget> {
       child: Stack(
         fit: StackFit.expand,
         alignment: Alignment.center,
-        children: [
-          widget.child,
-          if (_isDropping) const _DroppingHint(),
-        ],
+        children: [widget.child, if (_isDropping) const _DroppingHint()],
       ),
     );
   }
@@ -64,15 +57,11 @@ class _DroppingHint extends StatelessWidget {
     final theme = MacosTheme.of(context);
 
     return ColoredBox(
-      color: Colors.grey.shade800.withOpacity(0.5),
+      color: Colors.grey.shade800.withValues(alpha: 0.5),
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: DecoratedBox(
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.white,
-            ),
-          ),
+          decoration: BoxDecoration(border: Border.all(color: Colors.white)),
           child: Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -83,10 +72,7 @@ class _DroppingHint extends StatelessWidget {
                   color: DefaultTextStyle.of(context).style.color,
                 ),
                 const SizedBox(height: 12),
-                Text(
-                  s.common.fileDropTitle,
-                  style: theme.typography.title1,
-                ),
+                Text(s.common.fileDropTitle, style: theme.typography.title1),
               ],
             ),
           ),

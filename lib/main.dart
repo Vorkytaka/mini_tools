@@ -68,8 +68,9 @@ Future<tz.Location> _initializeTimezone() async {
 
 void _firaCodeLicense() {
   LicenseRegistry.addLicense(() async* {
-    final licence =
-        await rootBundle.loadString('assets/google_fonts/FiraCode-OFL.txt');
+    final licence = await rootBundle.loadString(
+      'assets/google_fonts/FiraCode-OFL.txt',
+    );
     final entry = LicenseEntryWithLineBreaks(['google_fonts'], licence);
     yield entry;
   });

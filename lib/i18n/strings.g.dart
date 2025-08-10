@@ -27,11 +27,12 @@ const AppLocale _baseLocale = AppLocale.en;
 enum AppLocale with BaseAppLocale<AppLocale, Translations> {
   en(languageCode: 'en', build: Translations.build);
 
-  const AppLocale(
-      {required this.languageCode,
-      this.scriptCode,
-      this.countryCode,
-      required this.build}); // ignore: unused_element
+  const AppLocale({
+    required this.languageCode,
+    this.scriptCode,
+    this.countryCode,
+    required this.build,
+  }); // ignore: unused_element
 
   @override
   final String languageCode;
@@ -76,11 +77,11 @@ Translations get t => LocaleSettings.instance.currentTranslations;
 class TranslationProvider
     extends BaseTranslationProvider<AppLocale, Translations> {
   TranslationProvider({required super.child})
-      : super(settings: LocaleSettings.instance);
+    : super(settings: LocaleSettings.instance);
 
   static InheritedLocaleData<AppLocale, Translations> of(
-          BuildContext context) =>
-      InheritedLocaleData.of<AppLocale, Translations>(context);
+    BuildContext context,
+  ) => InheritedLocaleData.of<AppLocale, Translations>(context);
 }
 
 /// Method B shorthand via [BuildContext] extension method.
@@ -102,48 +103,53 @@ class LocaleSettings
   // static aliases (checkout base methods for documentation)
   static AppLocale get currentLocale => instance.currentLocale;
   static Stream<AppLocale> getLocaleStream() => instance.getLocaleStream();
-  static AppLocale setLocale(AppLocale locale,
-          {bool? listenToDeviceLocale = false}) =>
-      instance.setLocale(locale, listenToDeviceLocale: listenToDeviceLocale);
-  static AppLocale setLocaleRaw(String rawLocale,
-          {bool? listenToDeviceLocale = false}) =>
-      instance.setLocaleRaw(rawLocale,
-          listenToDeviceLocale: listenToDeviceLocale);
+  static AppLocale setLocale(
+    AppLocale locale, {
+    bool? listenToDeviceLocale = false,
+  }) => instance.setLocale(locale, listenToDeviceLocale: listenToDeviceLocale);
+  static AppLocale setLocaleRaw(
+    String rawLocale, {
+    bool? listenToDeviceLocale = false,
+  }) => instance.setLocaleRaw(
+    rawLocale,
+    listenToDeviceLocale: listenToDeviceLocale,
+  );
   static AppLocale useDeviceLocale() => instance.useDeviceLocale();
   @Deprecated('Use [AppLocaleUtils.supportedLocales]')
   static List<Locale> get supportedLocales => instance.supportedLocales;
   @Deprecated('Use [AppLocaleUtils.supportedLocalesRaw]')
   static List<String> get supportedLocalesRaw => instance.supportedLocalesRaw;
-  static void setPluralResolver(
-          {String? language,
-          AppLocale? locale,
-          PluralResolver? cardinalResolver,
-          PluralResolver? ordinalResolver}) =>
-      instance.setPluralResolver(
-        language: language,
-        locale: locale,
-        cardinalResolver: cardinalResolver,
-        ordinalResolver: ordinalResolver,
-      );
+  static void setPluralResolver({
+    String? language,
+    AppLocale? locale,
+    PluralResolver? cardinalResolver,
+    PluralResolver? ordinalResolver,
+  }) => instance.setPluralResolver(
+    language: language,
+    locale: locale,
+    cardinalResolver: cardinalResolver,
+    ordinalResolver: ordinalResolver,
+  );
 }
 
 /// Provides utility functions without any side effects.
 class AppLocaleUtils extends BaseAppLocaleUtils<AppLocale, Translations> {
   AppLocaleUtils._()
-      : super(baseLocale: _baseLocale, locales: AppLocale.values);
+    : super(baseLocale: _baseLocale, locales: AppLocale.values);
 
   static final instance = AppLocaleUtils._();
 
   // static aliases (checkout base methods for documentation)
   static AppLocale parse(String rawLocale) => instance.parse(rawLocale);
-  static AppLocale parseLocaleParts(
-          {required String languageCode,
-          String? scriptCode,
-          String? countryCode}) =>
-      instance.parseLocaleParts(
-          languageCode: languageCode,
-          scriptCode: scriptCode,
-          countryCode: countryCode);
+  static AppLocale parseLocaleParts({
+    required String languageCode,
+    String? scriptCode,
+    String? countryCode,
+  }) => instance.parseLocaleParts(
+    languageCode: languageCode,
+    scriptCode: scriptCode,
+    countryCode: countryCode,
+  );
   static AppLocale findDeviceLocale() => instance.findDeviceLocale();
   static List<Locale> get supportedLocales => instance.supportedLocales;
   static List<String> get supportedLocalesRaw => instance.supportedLocalesRaw;
@@ -162,18 +168,20 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
   /// You can call this constructor and build your own translation instance of this locale.
   /// Constructing via the enum [AppLocale.build] is preferred.
-  Translations.build(
-      {Map<String, Node>? overrides,
-      PluralResolver? cardinalResolver,
-      PluralResolver? ordinalResolver})
-      : assert(overrides == null,
-            'Set "translation_overrides: true" in order to enable this feature.'),
-        $meta = TranslationMetadata(
-          locale: AppLocale.en,
-          overrides: overrides ?? {},
-          cardinalResolver: cardinalResolver,
-          ordinalResolver: ordinalResolver,
-        ) {
+  Translations.build({
+    Map<String, Node>? overrides,
+    PluralResolver? cardinalResolver,
+    PluralResolver? ordinalResolver,
+  }) : assert(
+         overrides == null,
+         'Set "translation_overrides: true" in order to enable this feature.',
+       ),
+       $meta = TranslationMetadata(
+         locale: AppLocale.en,
+         overrides: overrides ?? {},
+         cardinalResolver: cardinalResolver,
+         ordinalResolver: ordinalResolver,
+       ) {
     $meta.setFlatMapFunction(_flatMapFunction);
   }
 
@@ -193,8 +201,9 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
   late final _StringsNumberConverterEn numberConverter =
       _StringsNumberConverterEn._(_root);
   late final _StringsRegexpEn regexp = _StringsRegexpEn._(_root);
-  late final _StringsJsonFormatterEn jsonFormatter =
-      _StringsJsonFormatterEn._(_root);
+  late final _StringsJsonFormatterEn jsonFormatter = _StringsJsonFormatterEn._(
+    _root,
+  );
   late final _StringsPercentageCalculatorEn percentageCalculator =
       _StringsPercentageCalculatorEn._(_root);
   late final _StringsColorEn color = _StringsColorEn._(_root);
@@ -202,8 +211,9 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
       _StringsMaterialColorsEn._(_root);
   late final _StringsHashEn hash = _StringsHashEn._(_root);
   late final _StringsSqliteEn sqlite = _StringsSqliteEn._(_root);
-  late final _StringsUuidGeneratorEn uuidGenerator =
-      _StringsUuidGeneratorEn._(_root);
+  late final _StringsUuidGeneratorEn uuidGenerator = _StringsUuidGeneratorEn._(
+    _root,
+  );
   late final _StringsCronEn cron = _StringsCronEn._(_root);
   late final _StringsTextDiffEn textDiff = _StringsTextDiffEn._(_root);
   late final _StringsQrCodeEn qrCode = _StringsQrCodeEn._(_root);
@@ -234,8 +244,9 @@ class _StringsCommonEn {
   String get inWord => 'in';
   String get textSeparator => ', ';
   String get save => 'Save';
-  late final _StringsCommonDayOfWeekEn dayOfWeek =
-      _StringsCommonDayOfWeekEn._(_root);
+  late final _StringsCommonDayOfWeekEn dayOfWeek = _StringsCommonDayOfWeekEn._(
+    _root,
+  );
   late final _StringsCommonMonthsEn months = _StringsCommonMonthsEn._(_root);
   String bytesCount({required num n, required Object bytes}) =>
       (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(
@@ -308,8 +319,9 @@ class _StringsRegexpEn {
   String matchInfoIndexes({required Object start, required Object end}) =>
       '(${start}-${end})';
   String get matchInfoNothing => 'No matches found';
-  late final _StringsRegexpSettingsEn settings =
-      _StringsRegexpSettingsEn._(_root);
+  late final _StringsRegexpSettingsEn settings = _StringsRegexpSettingsEn._(
+    _root,
+  );
 }
 
 // Path: jsonFormatter
@@ -375,8 +387,9 @@ class _StringsHashEn {
   String get loadFile => 'Load file';
   String get dropFile => 'Drop file';
   String get textInputHint => 'Input any text here';
-  late final _StringsHashHashFormatEn hashFormat =
-      _StringsHashHashFormatEn._(_root);
+  late final _StringsHashHashFormatEn hashFormat = _StringsHashHashFormatEn._(
+    _root,
+  );
   String hashOfFile({required Object path}) => 'Hash of file: ${path}';
 }
 
@@ -394,8 +407,9 @@ class _StringsSqliteEn {
   String get drop => 'Drop';
   String get tables => 'Tables';
   String get history => 'History';
-  late final _StringsSqliteOverrideEn override =
-      _StringsSqliteOverrideEn._(_root);
+  late final _StringsSqliteOverrideEn override = _StringsSqliteOverrideEn._(
+    _root,
+  );
   String get edit => 'Edit';
   String rowAffected({required Object count}) => '${count} row affected';
 }
@@ -429,8 +443,9 @@ class _StringsCronEn {
   String get title => 'Cron Parser';
   String get nextAt => 'Next at:';
   String get cronHint => '* * * * *';
-  late final _StringsCronCronFormatEn cronFormat =
-      _StringsCronCronFormatEn._(_root);
+  late final _StringsCronCronFormatEn cronFormat = _StringsCronCronFormatEn._(
+    _root,
+  );
   String get minutes => 'Minutes:';
   String get hours => 'Hours:';
   String get daysOfMonth => 'Day-of-month:';
@@ -462,8 +477,9 @@ class _StringsQrCodeEn {
   String get title => 'QR Code Generator';
   String get testBeforeUse => 'Always test a QR code before using it';
   late final _StringsQrCodeExportEn export = _StringsQrCodeExportEn._(_root);
-  late final _StringsQrCodeSettingsEn settings =
-      _StringsQrCodeSettingsEn._(_root);
+  late final _StringsQrCodeSettingsEn settings = _StringsQrCodeSettingsEn._(
+    _root,
+  );
 }
 
 // Path: common.dayOfWeek
@@ -474,15 +490,15 @@ class _StringsCommonDayOfWeekEn {
 
   // Translations
   List<String> get full => [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday',
-      ];
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ];
 }
 
 // Path: common.months
@@ -493,19 +509,19 @@ class _StringsCommonMonthsEn {
 
   // Translations
   List<String> get full => [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-      ];
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
 }
 
 // Path: datetimeConverter.inputType
@@ -712,8 +728,9 @@ class _StringsCronCronFormatEn {
       _StringsCronCronFormatMinutesEn._(_root);
   late final _StringsCronCronFormatHoursEn hours =
       _StringsCronCronFormatHoursEn._(_root);
-  late final _StringsCronCronFormatDaysEn days =
-      _StringsCronCronFormatDaysEn._(_root);
+  late final _StringsCronCronFormatDaysEn days = _StringsCronCronFormatDaysEn._(
+    _root,
+  );
   late final _StringsCronCronFormatMonthsEn months =
       _StringsCronCronFormatMonthsEn._(_root);
   late final _StringsCronCronFormatDaysOfWeekEn daysOfWeek =
@@ -731,9 +748,11 @@ class _StringsCronErrorsEn {
   // Translations
   String get empty => 'Empty cron part';
   String get custom => 'Something goes wrong';
-  String invalidValue(
-          {required Object from, required Object to, required Object value}) =>
-      'Value must be ${from} to ${to}, but got ${value}';
+  String invalidValue({
+    required Object from,
+    required Object to,
+    required Object value,
+  }) => 'Value must be ${from} to ${to}, but got ${value}';
   String get rangeLength => 'Range must be in format N-M';
   String range({required Object from, required Object to}) =>
       '${from} must be less than ${to}';
@@ -1396,11 +1415,11 @@ extension on Translations {
       case 'cron.errors.custom':
         return 'Something goes wrong';
       case 'cron.errors.invalidValue':
-        return (
-                {required Object from,
-                required Object to,
-                required Object value}) =>
-            'Value must be ${from} to ${to}, but got ${value}';
+        return ({
+          required Object from,
+          required Object to,
+          required Object value,
+        }) => 'Value must be ${from} to ${to}, but got ${value}';
       case 'cron.errors.rangeLength':
         return 'Range must be in format N-M';
       case 'cron.errors.range':

@@ -19,11 +19,8 @@ class MiniColorPicker extends StatefulWidget {
   @override
   State<MiniColorPicker> createState() => _MiniColorPickerState();
 
-  static Widget defaultBuilder(BuildContext context, Color color) => SizedBox(
-        height: 50,
-        width: 50,
-        child: ColoredBox(color: color),
-      );
+  static Widget defaultBuilder(BuildContext context, Color color) =>
+      SizedBox(height: 50, width: 50, child: ColoredBox(color: color));
 }
 
 class _MiniColorPickerState extends State<MiniColorPicker> {
@@ -62,12 +59,7 @@ class _MiniColorPickerState extends State<MiniColorPicker> {
           onColorChanged: widget.onColorChanged,
         ),
       ),
-      child: Builder(
-        builder: (context) => widget.builder(
-          context,
-          _color,
-        ),
-      ),
+      child: Builder(builder: (context) => widget.builder(context, _color)),
     );
   }
 }

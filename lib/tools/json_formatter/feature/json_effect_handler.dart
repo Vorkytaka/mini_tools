@@ -34,8 +34,9 @@ final class JsonEffectHandler
     if (input.length <= _kIsolateThreshold) {
       outputJson = _formatJson(input, format, jsonPath);
     } else {
-      outputJson =
-          await Isolate.run(() => _formatJson(input, format, jsonPath));
+      outputJson = await Isolate.run(
+        () => _formatJson(input, format, jsonPath),
+      );
     }
 
     emit(OutputUpdateMessage(outputJson));

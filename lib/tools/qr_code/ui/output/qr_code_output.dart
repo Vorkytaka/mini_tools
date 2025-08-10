@@ -8,9 +8,7 @@ import '../../feature/qr_code_feature.dart';
 import 'qr_code_output_section.dart';
 
 class QrCodeOutputSide extends StatelessWidget {
-  const QrCodeOutputSide({
-    super.key,
-  });
+  const QrCodeOutputSide({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,24 +28,20 @@ class _QrCodeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FeatureBuilder<QrCodeFeature, QrCodeState>(
-      buildWhen: (prev, curr) =>
-          prev.code != curr.code ||
-          prev.correctionLevel != curr.correctionLevel ||
-          prev.visualData != curr.visualData,
+      buildWhen:
+          (prev, curr) =>
+              prev.code != curr.code ||
+              prev.correctionLevel != curr.correctionLevel ||
+              prev.visualData != curr.visualData,
       builder: (context, state) {
         final code = state.code;
 
         final Widget qrCode;
         if (code == null) {
-          qrCode = const AspectRatio(
-            aspectRatio: 1,
-            child: Placeholder(),
-          );
+          qrCode = const AspectRatio(aspectRatio: 1, child: Placeholder());
         } else {
           qrCode = PrettyQrView(
-            decoration: PrettyQrDecoration(
-              shape: state.visualData.qrCodeShape,
-            ),
+            decoration: PrettyQrDecoration(shape: state.visualData.qrCodeShape),
             qrImage: QrImage(code),
           );
         }
@@ -56,10 +50,7 @@ class _QrCodeWidget extends StatelessWidget {
           color: state.visualData.backgroundColor,
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxHeight: 400),
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: qrCode,
-            ),
+            child: Padding(padding: const EdgeInsets.all(8), child: qrCode),
           ),
         );
       },

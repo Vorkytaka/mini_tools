@@ -18,32 +18,28 @@ class RegExpToolScreen extends StatelessWidget {
     final t = Translations.of(context);
 
     return MacosScaffold(
-      toolBar: ToolBar(
-        title: Text(t.regexp.title),
-        centerTitle: true,
-      ),
+      toolBar: ToolBar(title: Text(t.regexp.title), centerTitle: true),
       children: [
-        ContentArea(
-          builder: (context, _) => const _Body(),
-        ),
+        ContentArea(builder: (context, _) => const _Body()),
         ResizablePane(
-          builder: (context, controller) => Padding(
-            padding: panePadding,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          builder:
+              (context, controller) => Padding(
+                padding: panePadding,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(t.regexp.matchInfoTitle),
-                    const _MatchCounter(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(t.regexp.matchInfoTitle),
+                        const _MatchCounter(),
+                      ],
+                    ),
+                    itemSpaceV,
+                    const Expanded(child: _MatchInformation()),
                   ],
                 ),
-                itemSpaceV,
-                const Expanded(child: _MatchInformation()),
-              ],
-            ),
-          ),
+              ),
           minSize: 300,
           maxSize: 400,
           resizableSide: ResizableSide.left,
@@ -157,10 +153,7 @@ class _BodyState extends State<_Body> {
                     ],
                   ),
                 ),
-                child: const MacosIcon(
-                  Icons.tune,
-                  size: 16,
-                ),
+                child: const MacosIcon(Icons.tune, size: 16),
               ),
               const SizedBox(width: 8),
             ],
@@ -183,13 +176,13 @@ class _BodyState extends State<_Body> {
     );
   }
 
-  void _regExpUpdate() => context
-      .read<RegExpFeature>()
-      .accept(RegExpMessage.updateInput(_regExpController.text));
+  void _regExpUpdate() => context.read<RegExpFeature>().accept(
+    RegExpMessage.updateInput(_regExpController.text),
+  );
 
-  void _exampleUpdate() => context
-      .read<RegExpFeature>()
-      .accept(RegExpMessage.updateTestString(_testStringController.text));
+  void _exampleUpdate() => context.read<RegExpFeature>().accept(
+    RegExpMessage.updateTestString(_testStringController.text),
+  );
 }
 
 class _GlobalCheckbox extends StatelessWidget {
@@ -204,9 +197,10 @@ class _GlobalCheckbox extends StatelessWidget {
       builder: (context, state) {
         return LabeledCheckbox(
           value: state.isGlobal,
-          onChanged: (isGlobal) => context
-              .read<RegExpFeature>()
-              .accept(RegExpMessage.updateGlobal(isGlobal)),
+          onChanged:
+              (isGlobal) => context.read<RegExpFeature>().accept(
+                RegExpMessage.updateGlobal(isGlobal),
+              ),
           label: t.regexp.settings.global,
         );
       },
@@ -226,9 +220,10 @@ class _MultilineCheckbox extends StatelessWidget {
       builder: (context, state) {
         return LabeledCheckbox(
           value: state.isMultiline,
-          onChanged: (isMultiline) => context
-              .read<RegExpFeature>()
-              .accept(RegExpMessage.updateMultiline(isMultiline)),
+          onChanged:
+              (isMultiline) => context.read<RegExpFeature>().accept(
+                RegExpMessage.updateMultiline(isMultiline),
+              ),
           label: t.regexp.settings.multiline,
         );
       },
@@ -248,9 +243,10 @@ class _CaseSensitiveCheckbox extends StatelessWidget {
       builder: (context, state) {
         return LabeledCheckbox(
           value: state.isCaseSensitive,
-          onChanged: (isCaseSensitive) => context
-              .read<RegExpFeature>()
-              .accept(RegExpMessage.updateCaseSensitive(isCaseSensitive)),
+          onChanged:
+              (isCaseSensitive) => context.read<RegExpFeature>().accept(
+                RegExpMessage.updateCaseSensitive(isCaseSensitive),
+              ),
           label: t.regexp.settings.caseSensitive,
         );
       },
@@ -270,9 +266,10 @@ class _UnicodeCheckbox extends StatelessWidget {
       builder: (context, state) {
         return LabeledCheckbox(
           value: state.isUnicode,
-          onChanged: (isUnicode) => context
-              .read<RegExpFeature>()
-              .accept(RegExpMessage.updateUnicode(isUnicode)),
+          onChanged:
+              (isUnicode) => context.read<RegExpFeature>().accept(
+                RegExpMessage.updateUnicode(isUnicode),
+              ),
           label: t.regexp.settings.unicode,
         );
       },
@@ -292,9 +289,10 @@ class _DotAllCheckbox extends StatelessWidget {
       builder: (context, state) {
         return LabeledCheckbox(
           value: state.isDotAll,
-          onChanged: (isDotAll) => context
-              .read<RegExpFeature>()
-              .accept(RegExpMessage.updateDotAll(isDotAll)),
+          onChanged:
+              (isDotAll) => context.read<RegExpFeature>().accept(
+                RegExpMessage.updateDotAll(isDotAll),
+              ),
           label: t.regexp.settings.dotAll,
         );
       },
@@ -327,10 +325,7 @@ class LabeledCheckbox extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          MacosCheckbox(
-            value: value,
-            onChanged: onChanged,
-          ),
+          MacosCheckbox(value: value, onChanged: onChanged),
           const SizedBox(width: 4),
           Text(label),
         ],
@@ -358,10 +353,8 @@ class _MatchInformation extends StatelessWidget {
         return ListView.separated(
           itemCount: matches.length,
           separatorBuilder: (context, i) => const MacosPulldownMenuDivider(),
-          itemBuilder: (context, i) => _MatchWidget(
-            position: i + 1,
-            match: matches[i],
-          ),
+          itemBuilder:
+              (context, i) => _MatchWidget(position: i + 1, match: matches[i]),
         );
       },
     );
@@ -372,10 +365,7 @@ class _MatchWidget extends StatelessWidget {
   final int position;
   final RegExpMatch match;
 
-  const _MatchWidget({
-    required this.position,
-    required this.match,
-  });
+  const _MatchWidget({required this.position, required this.match});
 
   @override
   Widget build(BuildContext context) {
@@ -404,22 +394,14 @@ class _MatchWidget extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
-              child: Text(
-                match.group(0)!,
-                textAlign: TextAlign.end,
-              ),
-            ),
+            Expanded(child: Text(match.group(0)!, textAlign: TextAlign.end)),
           ],
         ),
         const SizedBox(height: 4),
         for (int i = 1; i <= match.groupCount; i++)
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            child: _GroupWidget(
-              position: i,
-              value: match.group(i),
-            ),
+            child: _GroupWidget(position: i, value: match.group(i)),
           ),
       ],
     );
@@ -430,10 +412,8 @@ class _GroupWidget extends StatelessWidget {
   final int position;
   final String value;
 
-  const _GroupWidget({
-    required this.position,
-    String? value,
-  }) : value = value ?? '';
+  const _GroupWidget({required this.position, String? value})
+    : value = value ?? '';
 
   @override
   Widget build(BuildContext context) {
@@ -446,12 +426,7 @@ class _GroupWidget extends StatelessWidget {
           t.regexp.matchInfoGroup(position: position),
           style: const TextStyle(decoration: TextDecoration.underline),
         ),
-        Expanded(
-          child: Text(
-            value,
-            textAlign: TextAlign.end,
-          ),
-        ),
+        Expanded(child: Text(value, textAlign: TextAlign.end)),
       ],
     );
   }
@@ -471,7 +446,10 @@ class _RegExpExampleTextEditingController extends TextEditingController {
     final matches = this.matches;
     if (matches == null || matches.isEmpty) {
       return super.buildTextSpan(
-          context: context, style: style, withComposing: withComposing);
+        context: context,
+        style: style,
+        withComposing: withComposing,
+      );
     }
 
     final matchesIterator = matches.iterator;
@@ -485,31 +463,26 @@ class _RegExpExampleTextEditingController extends TextEditingController {
 
       final simpleText = text.substring(lastStart, match.start);
       if (simpleText.isNotEmpty) {
-        spans.add(TextSpan(
-          text: simpleText,
-          style: style,
-        ));
+        spans.add(TextSpan(text: simpleText, style: style));
       }
 
       final matchText = text.substring(match.start, match.end);
       if (matchText.isNotEmpty) {
-        spans.add(TextSpan(
-          text: matchText,
-          style: style?.copyWith(
-            // color: Colors.black,
-            backgroundColor: Colors.green.withOpacity(0.3),
+        spans.add(
+          TextSpan(
+            text: matchText,
+            style: style?.copyWith(
+              backgroundColor: Colors.green.withValues(alpha: 0.3),
+            ),
           ),
-        ));
+        );
       }
 
       lastStart = match.end;
     } while (lastStart < length && matchesIterator.moveNext());
 
     if (lastStart < length) {
-      spans.add(TextSpan(
-        text: text.substring(lastStart),
-        style: style,
-      ));
+      spans.add(TextSpan(text: text.substring(lastStart), style: style));
     }
 
     return TextSpan(children: spans);

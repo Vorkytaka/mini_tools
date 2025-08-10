@@ -5,10 +5,7 @@ import '../../i18n/strings.g.dart';
 class CopyOverlay extends StatefulWidget {
   final Widget child;
 
-  const CopyOverlay({
-    required this.child,
-    super.key,
-  });
+  const CopyOverlay({required this.child, super.key});
 
   @override
   State<CopyOverlay> createState() => _CopyOverlayState();
@@ -17,15 +14,15 @@ class CopyOverlay extends StatefulWidget {
     BuildContext context, {
     Color? backgroundColor,
     Color? foregroundColor,
-  }) =>
-      context.findAncestorStateOfType<_CopyOverlayState>()?._showNotification(
-            backgroundColor: backgroundColor,
-            foregroundColor: foregroundColor,
-          );
+  }) => context.findAncestorStateOfType<_CopyOverlayState>()?._showNotification(
+    backgroundColor: backgroundColor,
+    foregroundColor: foregroundColor,
+  );
 
-  static void hideAll(BuildContext context) => context
-      .findAncestorStateOfType<_CopyOverlayState>()
-      ?._hideAllNotification();
+  static void hideAll(BuildContext context) =>
+      context
+          .findAncestorStateOfType<_CopyOverlayState>()
+          ?._hideAllNotification();
 }
 
 class _CopyOverlayState extends State<CopyOverlay>
@@ -49,10 +46,7 @@ class _CopyOverlayState extends State<CopyOverlay>
     _entries.clear();
   }
 
-  void _showNotification({
-    Color? foregroundColor,
-    Color? backgroundColor,
-  }) {
+  void _showNotification({Color? foregroundColor, Color? backgroundColor}) {
     final overlay = Overlay.maybeOf(context);
 
     if (overlay == null) {
@@ -67,13 +61,14 @@ class _CopyOverlayState extends State<CopyOverlay>
     // And it will take new position instead of old one
     final pos = _cursorPosition;
     final entry = OverlayEntry(
-      builder: (context) => _CopyNotificationTheme(
-        data: _CopyNotificationThemeData(backgroundColor: backgroundColor),
-        child: _CopyNotificationPositioned(
-          animation: controller,
-          cursorPosition: pos,
-        ),
-      ),
+      builder:
+          (context) => _CopyNotificationTheme(
+            data: _CopyNotificationThemeData(backgroundColor: backgroundColor),
+            child: _CopyNotificationPositioned(
+              animation: controller,
+              cursorPosition: pos,
+            ),
+          ),
     );
     controller.addStatusListener((status) {
       if (status == AnimationStatus.completed && entry.mounted) {
@@ -135,44 +130,51 @@ class _CopyNotificationAnimation extends StatelessWidget {
   final Animation<double> _scale;
   final Animation<double> _movement;
 
-  _CopyNotificationAnimation({
-    required this.animation,
-  })  : _opacity = TweenSequence<double>([
-          TweenSequenceItem(
-            tween: Tween<double>(begin: 0, end: 1)
-                .chain(CurveTween(curve: Curves.easeIn)),
-            weight: 10, // 0-20%
-          ),
-          TweenSequenceItem(
-            tween: ConstantTween(1),
-            weight: 70, // 21-80%
-          ),
-          TweenSequenceItem(
-            tween: Tween<double>(begin: 1, end: 0)
-                .chain(CurveTween(curve: Curves.easeOut)),
-            weight: 20, // 81-100%
-          ),
-        ]).animate(animation),
-        _scale = TweenSequence<double>([
-          TweenSequenceItem(
-            tween: Tween<double>(begin: 0.9, end: 1)
-                .chain(CurveTween(curve: Curves.easeIn)),
-            weight: 10, // 0-20%
-          ),
-          TweenSequenceItem(
-            tween: ConstantTween(1),
-            weight: 70, // 21-80%
-          ),
-          TweenSequenceItem(
-            tween: Tween<double>(begin: 1, end: 0.9)
-                .chain(CurveTween(curve: Curves.easeOut)),
-            weight: 20, // 81-100%
-          ),
-        ]).animate(animation),
-        _movement = Tween<double>(begin: 0, end: -10).animate(CurvedAnimation(
-          parent: animation,
-          curve: Curves.easeOutQuart,
-        ));
+  _CopyNotificationAnimation({required this.animation})
+    : _opacity = TweenSequence<double>([
+        TweenSequenceItem(
+          tween: Tween<double>(
+            begin: 0,
+            end: 1,
+          ).chain(CurveTween(curve: Curves.easeIn)),
+          weight: 10, // 0-20%
+        ),
+        TweenSequenceItem(
+          tween: ConstantTween(1),
+          weight: 70, // 21-80%
+        ),
+        TweenSequenceItem(
+          tween: Tween<double>(
+            begin: 1,
+            end: 0,
+          ).chain(CurveTween(curve: Curves.easeOut)),
+          weight: 20, // 81-100%
+        ),
+      ]).animate(animation),
+      _scale = TweenSequence<double>([
+        TweenSequenceItem(
+          tween: Tween<double>(
+            begin: 0.9,
+            end: 1,
+          ).chain(CurveTween(curve: Curves.easeIn)),
+          weight: 10, // 0-20%
+        ),
+        TweenSequenceItem(
+          tween: ConstantTween(1),
+          weight: 70, // 21-80%
+        ),
+        TweenSequenceItem(
+          tween: Tween<double>(
+            begin: 1,
+            end: 0.9,
+          ).chain(CurveTween(curve: Curves.easeOut)),
+          weight: 20, // 81-100%
+        ),
+      ]).animate(animation),
+      _movement = Tween<double>(
+        begin: 0,
+        end: -10,
+      ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOutQuart));
 
   @override
   Widget build(BuildContext context) {
@@ -185,10 +187,7 @@ class _CopyNotificationAnimation extends StatelessWidget {
           offset: Offset(0, _movement.value),
           child: Transform.scale(
             scale: _scale.value,
-            child: Opacity(
-              opacity: _opacity.value,
-              child: child,
-            ),
+            child: Opacity(opacity: _opacity.value, child: child),
           ),
         );
       },
@@ -199,14 +198,12 @@ class _CopyNotificationAnimation extends StatelessWidget {
 class _CopyNotificationTheme extends InheritedWidget {
   final _CopyNotificationThemeData data;
 
-  const _CopyNotificationTheme({
-    required super.child,
-    required this.data,
-  });
+  const _CopyNotificationTheme({required super.child, required this.data});
 
-  static _CopyNotificationThemeData? maybeOf(BuildContext context) => context
-      .dependOnInheritedWidgetOfExactType<_CopyNotificationTheme>()
-      ?.data;
+  static _CopyNotificationThemeData? maybeOf(BuildContext context) =>
+      context
+          .dependOnInheritedWidgetOfExactType<_CopyNotificationTheme>()
+          ?.data;
 
   @override
   bool updateShouldNotify(_CopyNotificationTheme oldWidget) =>
@@ -218,16 +215,15 @@ class _CopyNotificationThemeData {
   final Color? backgroundColor;
   final Color? foregroundColor;
 
-  _CopyNotificationThemeData({
-    this.backgroundColor,
-    Color? foregroundColor,
-  }) : foregroundColor = foregroundColor ??
-            (backgroundColor != null
-                ? ThemeData.estimateBrightnessForColor(backgroundColor) ==
-                        Brightness.dark
-                    ? Colors.white
-                    : Colors.black
-                : null);
+  _CopyNotificationThemeData({this.backgroundColor, Color? foregroundColor})
+    : foregroundColor =
+          foregroundColor ??
+          (backgroundColor != null
+              ? ThemeData.estimateBrightnessForColor(backgroundColor) ==
+                      Brightness.dark
+                  ? Colors.white
+                  : Colors.black
+              : null);
 
   @override
   bool operator ==(Object other) =>

@@ -12,7 +12,8 @@ part of 'regexp_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$RegExpState {
@@ -36,19 +37,21 @@ mixin _$RegExpState {
 /// @nodoc
 abstract class $RegExpStateCopyWith<$Res> {
   factory $RegExpStateCopyWith(
-          RegExpState value, $Res Function(RegExpState) then) =
-      _$RegExpStateCopyWithImpl<$Res, RegExpState>;
+    RegExpState value,
+    $Res Function(RegExpState) then,
+  ) = _$RegExpStateCopyWithImpl<$Res, RegExpState>;
   @useResult
-  $Res call(
-      {String input,
-      String testString,
-      bool isGlobal,
-      bool isMultiline,
-      bool isCaseSensitive,
-      bool isUnicode,
-      bool isDotAll,
-      RegExp? regexp,
-      List<RegExpMatch>? matches});
+  $Res call({
+    String input,
+    String testString,
+    bool isGlobal,
+    bool isMultiline,
+    bool isCaseSensitive,
+    bool isUnicode,
+    bool isDotAll,
+    RegExp? regexp,
+    List<RegExpMatch>? matches,
+  });
 }
 
 /// @nodoc
@@ -76,44 +79,56 @@ class _$RegExpStateCopyWithImpl<$Res, $Val extends RegExpState>
     Object? regexp = freezed,
     Object? matches = freezed,
   }) {
-    return _then(_value.copyWith(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      testString: null == testString
-          ? _value.testString
-          : testString // ignore: cast_nullable_to_non_nullable
-              as String,
-      isGlobal: null == isGlobal
-          ? _value.isGlobal
-          : isGlobal // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isMultiline: null == isMultiline
-          ? _value.isMultiline
-          : isMultiline // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isCaseSensitive: null == isCaseSensitive
-          ? _value.isCaseSensitive
-          : isCaseSensitive // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUnicode: null == isUnicode
-          ? _value.isUnicode
-          : isUnicode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isDotAll: null == isDotAll
-          ? _value.isDotAll
-          : isDotAll // ignore: cast_nullable_to_non_nullable
-              as bool,
-      regexp: freezed == regexp
-          ? _value.regexp
-          : regexp // ignore: cast_nullable_to_non_nullable
-              as RegExp?,
-      matches: freezed == matches
-          ? _value.matches
-          : matches // ignore: cast_nullable_to_non_nullable
-              as List<RegExpMatch>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            input:
+                null == input
+                    ? _value.input
+                    : input // ignore: cast_nullable_to_non_nullable
+                        as String,
+            testString:
+                null == testString
+                    ? _value.testString
+                    : testString // ignore: cast_nullable_to_non_nullable
+                        as String,
+            isGlobal:
+                null == isGlobal
+                    ? _value.isGlobal
+                    : isGlobal // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            isMultiline:
+                null == isMultiline
+                    ? _value.isMultiline
+                    : isMultiline // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            isCaseSensitive:
+                null == isCaseSensitive
+                    ? _value.isCaseSensitive
+                    : isCaseSensitive // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            isUnicode:
+                null == isUnicode
+                    ? _value.isUnicode
+                    : isUnicode // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            isDotAll:
+                null == isDotAll
+                    ? _value.isDotAll
+                    : isDotAll // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            regexp:
+                freezed == regexp
+                    ? _value.regexp
+                    : regexp // ignore: cast_nullable_to_non_nullable
+                        as RegExp?,
+            matches:
+                freezed == matches
+                    ? _value.matches
+                    : matches // ignore: cast_nullable_to_non_nullable
+                        as List<RegExpMatch>?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -121,20 +136,22 @@ class _$RegExpStateCopyWithImpl<$Res, $Val extends RegExpState>
 abstract class _$$RegExpStateImplCopyWith<$Res>
     implements $RegExpStateCopyWith<$Res> {
   factory _$$RegExpStateImplCopyWith(
-          _$RegExpStateImpl value, $Res Function(_$RegExpStateImpl) then) =
-      __$$RegExpStateImplCopyWithImpl<$Res>;
+    _$RegExpStateImpl value,
+    $Res Function(_$RegExpStateImpl) then,
+  ) = __$$RegExpStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String input,
-      String testString,
-      bool isGlobal,
-      bool isMultiline,
-      bool isCaseSensitive,
-      bool isUnicode,
-      bool isDotAll,
-      RegExp? regexp,
-      List<RegExpMatch>? matches});
+  $Res call({
+    String input,
+    String testString,
+    bool isGlobal,
+    bool isMultiline,
+    bool isCaseSensitive,
+    bool isUnicode,
+    bool isDotAll,
+    RegExp? regexp,
+    List<RegExpMatch>? matches,
+  });
 }
 
 /// @nodoc
@@ -142,8 +159,9 @@ class __$$RegExpStateImplCopyWithImpl<$Res>
     extends _$RegExpStateCopyWithImpl<$Res, _$RegExpStateImpl>
     implements _$$RegExpStateImplCopyWith<$Res> {
   __$$RegExpStateImplCopyWithImpl(
-      _$RegExpStateImpl _value, $Res Function(_$RegExpStateImpl) _then)
-      : super(_value, _then);
+    _$RegExpStateImpl _value,
+    $Res Function(_$RegExpStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of RegExpState
   /// with the given fields replaced by the non-null parameter values.
@@ -160,61 +178,72 @@ class __$$RegExpStateImplCopyWithImpl<$Res>
     Object? regexp = freezed,
     Object? matches = freezed,
   }) {
-    return _then(_$RegExpStateImpl(
-      input: null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-      testString: null == testString
-          ? _value.testString
-          : testString // ignore: cast_nullable_to_non_nullable
-              as String,
-      isGlobal: null == isGlobal
-          ? _value.isGlobal
-          : isGlobal // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isMultiline: null == isMultiline
-          ? _value.isMultiline
-          : isMultiline // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isCaseSensitive: null == isCaseSensitive
-          ? _value.isCaseSensitive
-          : isCaseSensitive // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isUnicode: null == isUnicode
-          ? _value.isUnicode
-          : isUnicode // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isDotAll: null == isDotAll
-          ? _value.isDotAll
-          : isDotAll // ignore: cast_nullable_to_non_nullable
-              as bool,
-      regexp: freezed == regexp
-          ? _value.regexp
-          : regexp // ignore: cast_nullable_to_non_nullable
-              as RegExp?,
-      matches: freezed == matches
-          ? _value._matches
-          : matches // ignore: cast_nullable_to_non_nullable
-              as List<RegExpMatch>?,
-    ));
+    return _then(
+      _$RegExpStateImpl(
+        input:
+            null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                    as String,
+        testString:
+            null == testString
+                ? _value.testString
+                : testString // ignore: cast_nullable_to_non_nullable
+                    as String,
+        isGlobal:
+            null == isGlobal
+                ? _value.isGlobal
+                : isGlobal // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        isMultiline:
+            null == isMultiline
+                ? _value.isMultiline
+                : isMultiline // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        isCaseSensitive:
+            null == isCaseSensitive
+                ? _value.isCaseSensitive
+                : isCaseSensitive // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        isUnicode:
+            null == isUnicode
+                ? _value.isUnicode
+                : isUnicode // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        isDotAll:
+            null == isDotAll
+                ? _value.isDotAll
+                : isDotAll // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        regexp:
+            freezed == regexp
+                ? _value.regexp
+                : regexp // ignore: cast_nullable_to_non_nullable
+                    as RegExp?,
+        matches:
+            freezed == matches
+                ? _value._matches
+                : matches // ignore: cast_nullable_to_non_nullable
+                    as List<RegExpMatch>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$RegExpStateImpl implements _RegExpState {
-  const _$RegExpStateImpl(
-      {required this.input,
-      required this.testString,
-      required this.isGlobal,
-      required this.isMultiline,
-      required this.isCaseSensitive,
-      required this.isUnicode,
-      required this.isDotAll,
-      required this.regexp,
-      required final List<RegExpMatch>? matches})
-      : _matches = matches;
+  const _$RegExpStateImpl({
+    required this.input,
+    required this.testString,
+    required this.isGlobal,
+    required this.isMultiline,
+    required this.isCaseSensitive,
+    required this.isUnicode,
+    required this.isDotAll,
+    required this.regexp,
+    required final List<RegExpMatch>? matches,
+  }) : _matches = matches;
 
   @override
   final String input;
@@ -271,16 +300,17 @@ class _$RegExpStateImpl implements _RegExpState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      input,
-      testString,
-      isGlobal,
-      isMultiline,
-      isCaseSensitive,
-      isUnicode,
-      isDotAll,
-      regexp,
-      const DeepCollectionEquality().hash(_matches));
+    runtimeType,
+    input,
+    testString,
+    isGlobal,
+    isMultiline,
+    isCaseSensitive,
+    isUnicode,
+    isDotAll,
+    regexp,
+    const DeepCollectionEquality().hash(_matches),
+  );
 
   /// Create a copy of RegExpState
   /// with the given fields replaced by the non-null parameter values.
@@ -292,16 +322,17 @@ class _$RegExpStateImpl implements _RegExpState {
 }
 
 abstract class _RegExpState implements RegExpState {
-  const factory _RegExpState(
-      {required final String input,
-      required final String testString,
-      required final bool isGlobal,
-      required final bool isMultiline,
-      required final bool isCaseSensitive,
-      required final bool isUnicode,
-      required final bool isDotAll,
-      required final RegExp? regexp,
-      required final List<RegExpMatch>? matches}) = _$RegExpStateImpl;
+  const factory _RegExpState({
+    required final String input,
+    required final String testString,
+    required final bool isGlobal,
+    required final bool isMultiline,
+    required final bool isCaseSensitive,
+    required final bool isUnicode,
+    required final bool isDotAll,
+    required final RegExp? regexp,
+    required final List<RegExpMatch>? matches,
+  }) = _$RegExpStateImpl;
 
   @override
   String get input;

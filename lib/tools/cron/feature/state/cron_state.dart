@@ -8,22 +8,16 @@ part 'cron_state.freezed.dart';
 @freezed
 @immutable
 class CronState with _$CronState {
-  const factory CronState({
-    required String input,
-    required CronResult result,
-  }) = _CronState;
+  const factory CronState({required String input, required CronResult result}) =
+      _CronState;
 
-  factory CronState.init() => const CronState(
-        input: '',
-        result: CronResult.idle(),
-      );
+  factory CronState.init() =>
+      const CronState(input: '', result: CronResult.idle());
 }
 
 extension CronStateUtils on CronState {
-  Cron? get cron => result.maybeWhen(
-        success: (cron) => cron,
-        orElse: () => null,
-      );
+  Cron? get cron =>
+      result.maybeWhen(success: (cron) => cron, orElse: () => null);
 }
 
 @freezed

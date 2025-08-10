@@ -12,7 +12,8 @@ part of 'tools_message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ToolsMessage {
@@ -21,53 +22,48 @@ mixin _$ToolsMessage {
     required TResult Function(String toolId) selectTool,
     required TResult Function(String query) updateQuery,
     required TResult Function(List<String> result) updateSearchResult,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String toolId)? selectTool,
     TResult? Function(String query)? updateQuery,
     TResult? Function(List<String> result)? updateSearchResult,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String toolId)? selectTool,
     TResult Function(String query)? updateQuery,
     TResult Function(List<String> result)? updateSearchResult,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SelectToolMessage value) selectTool,
     required TResult Function(UpdateQueryMessage value) updateQuery,
     required TResult Function(UpdateSearchResultMessage value)
-        updateSearchResult,
-  }) =>
-      throw _privateConstructorUsedError;
+    updateSearchResult,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SelectToolMessage value)? selectTool,
     TResult? Function(UpdateQueryMessage value)? updateQuery,
     TResult? Function(UpdateSearchResultMessage value)? updateSearchResult,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SelectToolMessage value)? selectTool,
     TResult Function(UpdateQueryMessage value)? updateQuery,
     TResult Function(UpdateSearchResultMessage value)? updateSearchResult,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ToolsMessageCopyWith<$Res> {
   factory $ToolsMessageCopyWith(
-          ToolsMessage value, $Res Function(ToolsMessage) then) =
-      _$ToolsMessageCopyWithImpl<$Res, ToolsMessage>;
+    ToolsMessage value,
+    $Res Function(ToolsMessage) then,
+  ) = _$ToolsMessageCopyWithImpl<$Res, ToolsMessage>;
 }
 
 /// @nodoc
@@ -86,9 +82,10 @@ class _$ToolsMessageCopyWithImpl<$Res, $Val extends ToolsMessage>
 
 /// @nodoc
 abstract class _$$SelectToolMessageImplCopyWith<$Res> {
-  factory _$$SelectToolMessageImplCopyWith(_$SelectToolMessageImpl value,
-          $Res Function(_$SelectToolMessageImpl) then) =
-      __$$SelectToolMessageImplCopyWithImpl<$Res>;
+  factory _$$SelectToolMessageImplCopyWith(
+    _$SelectToolMessageImpl value,
+    $Res Function(_$SelectToolMessageImpl) then,
+  ) = __$$SelectToolMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String toolId});
 }
@@ -97,23 +94,24 @@ abstract class _$$SelectToolMessageImplCopyWith<$Res> {
 class __$$SelectToolMessageImplCopyWithImpl<$Res>
     extends _$ToolsMessageCopyWithImpl<$Res, _$SelectToolMessageImpl>
     implements _$$SelectToolMessageImplCopyWith<$Res> {
-  __$$SelectToolMessageImplCopyWithImpl(_$SelectToolMessageImpl _value,
-      $Res Function(_$SelectToolMessageImpl) _then)
-      : super(_value, _then);
+  __$$SelectToolMessageImplCopyWithImpl(
+    _$SelectToolMessageImpl _value,
+    $Res Function(_$SelectToolMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ToolsMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? toolId = null,
-  }) {
-    return _then(_$SelectToolMessageImpl(
-      null == toolId
-          ? _value.toolId
-          : toolId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? toolId = null}) {
+    return _then(
+      _$SelectToolMessageImpl(
+        null == toolId
+            ? _value.toolId
+            : toolId // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -148,7 +146,9 @@ class _$SelectToolMessageImpl implements SelectToolMessage {
   @pragma('vm:prefer-inline')
   _$$SelectToolMessageImplCopyWith<_$SelectToolMessageImpl> get copyWith =>
       __$$SelectToolMessageImplCopyWithImpl<_$SelectToolMessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -190,7 +190,7 @@ class _$SelectToolMessageImpl implements SelectToolMessage {
     required TResult Function(SelectToolMessage value) selectTool,
     required TResult Function(UpdateQueryMessage value) updateQuery,
     required TResult Function(UpdateSearchResultMessage value)
-        updateSearchResult,
+    updateSearchResult,
   }) {
     return selectTool(this);
   }
@@ -235,9 +235,10 @@ abstract class SelectToolMessage implements ToolsMessage {
 
 /// @nodoc
 abstract class _$$UpdateQueryMessageImplCopyWith<$Res> {
-  factory _$$UpdateQueryMessageImplCopyWith(_$UpdateQueryMessageImpl value,
-          $Res Function(_$UpdateQueryMessageImpl) then) =
-      __$$UpdateQueryMessageImplCopyWithImpl<$Res>;
+  factory _$$UpdateQueryMessageImplCopyWith(
+    _$UpdateQueryMessageImpl value,
+    $Res Function(_$UpdateQueryMessageImpl) then,
+  ) = __$$UpdateQueryMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String query});
 }
@@ -246,23 +247,24 @@ abstract class _$$UpdateQueryMessageImplCopyWith<$Res> {
 class __$$UpdateQueryMessageImplCopyWithImpl<$Res>
     extends _$ToolsMessageCopyWithImpl<$Res, _$UpdateQueryMessageImpl>
     implements _$$UpdateQueryMessageImplCopyWith<$Res> {
-  __$$UpdateQueryMessageImplCopyWithImpl(_$UpdateQueryMessageImpl _value,
-      $Res Function(_$UpdateQueryMessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateQueryMessageImplCopyWithImpl(
+    _$UpdateQueryMessageImpl _value,
+    $Res Function(_$UpdateQueryMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ToolsMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? query = null,
-  }) {
-    return _then(_$UpdateQueryMessageImpl(
-      null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? query = null}) {
+    return _then(
+      _$UpdateQueryMessageImpl(
+        null == query
+            ? _value.query
+            : query // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -297,7 +299,9 @@ class _$UpdateQueryMessageImpl implements UpdateQueryMessage {
   @pragma('vm:prefer-inline')
   _$$UpdateQueryMessageImplCopyWith<_$UpdateQueryMessageImpl> get copyWith =>
       __$$UpdateQueryMessageImplCopyWithImpl<_$UpdateQueryMessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -339,7 +343,7 @@ class _$UpdateQueryMessageImpl implements UpdateQueryMessage {
     required TResult Function(SelectToolMessage value) selectTool,
     required TResult Function(UpdateQueryMessage value) updateQuery,
     required TResult Function(UpdateSearchResultMessage value)
-        updateSearchResult,
+    updateSearchResult,
   }) {
     return updateQuery(this);
   }
@@ -385,9 +389,9 @@ abstract class UpdateQueryMessage implements ToolsMessage {
 /// @nodoc
 abstract class _$$UpdateSearchResultMessageImplCopyWith<$Res> {
   factory _$$UpdateSearchResultMessageImplCopyWith(
-          _$UpdateSearchResultMessageImpl value,
-          $Res Function(_$UpdateSearchResultMessageImpl) then) =
-      __$$UpdateSearchResultMessageImplCopyWithImpl<$Res>;
+    _$UpdateSearchResultMessageImpl value,
+    $Res Function(_$UpdateSearchResultMessageImpl) then,
+  ) = __$$UpdateSearchResultMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<String> result});
 }
@@ -397,23 +401,23 @@ class __$$UpdateSearchResultMessageImplCopyWithImpl<$Res>
     extends _$ToolsMessageCopyWithImpl<$Res, _$UpdateSearchResultMessageImpl>
     implements _$$UpdateSearchResultMessageImplCopyWith<$Res> {
   __$$UpdateSearchResultMessageImplCopyWithImpl(
-      _$UpdateSearchResultMessageImpl _value,
-      $Res Function(_$UpdateSearchResultMessageImpl) _then)
-      : super(_value, _then);
+    _$UpdateSearchResultMessageImpl _value,
+    $Res Function(_$UpdateSearchResultMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ToolsMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? result = null,
-  }) {
-    return _then(_$UpdateSearchResultMessageImpl(
-      null == result
-          ? _value._result
-          : result // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+  $Res call({Object? result = null}) {
+    return _then(
+      _$UpdateSearchResultMessageImpl(
+        null == result
+            ? _value._result
+            : result // ignore: cast_nullable_to_non_nullable
+                as List<String>,
+      ),
+    );
   }
 }
 
@@ -421,7 +425,7 @@ class __$$UpdateSearchResultMessageImplCopyWithImpl<$Res>
 
 class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
   const _$UpdateSearchResultMessageImpl(final List<String> result)
-      : _result = result;
+    : _result = result;
 
   final List<String> _result;
   @override
@@ -454,8 +458,9 @@ class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateSearchResultMessageImplCopyWith<_$UpdateSearchResultMessageImpl>
-      get copyWith => __$$UpdateSearchResultMessageImplCopyWithImpl<
-          _$UpdateSearchResultMessageImpl>(this, _$identity);
+  get copyWith => __$$UpdateSearchResultMessageImplCopyWithImpl<
+    _$UpdateSearchResultMessageImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -497,7 +502,7 @@ class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
     required TResult Function(SelectToolMessage value) selectTool,
     required TResult Function(UpdateQueryMessage value) updateQuery,
     required TResult Function(UpdateSearchResultMessage value)
-        updateSearchResult,
+    updateSearchResult,
   }) {
     return updateSearchResult(this);
   }
@@ -537,5 +542,5 @@ abstract class UpdateSearchResultMessage implements ToolsMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateSearchResultMessageImplCopyWith<_$UpdateSearchResultMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

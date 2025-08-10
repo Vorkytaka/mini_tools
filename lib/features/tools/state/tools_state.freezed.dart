@@ -12,7 +12,8 @@ part of 'tools_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ToolsState {
@@ -31,14 +32,16 @@ mixin _$ToolsState {
 /// @nodoc
 abstract class $ToolsStateCopyWith<$Res> {
   factory $ToolsStateCopyWith(
-          ToolsState value, $Res Function(ToolsState) then) =
-      _$ToolsStateCopyWithImpl<$Res, ToolsState>;
+    ToolsState value,
+    $Res Function(ToolsState) then,
+  ) = _$ToolsStateCopyWithImpl<$Res, ToolsState>;
   @useResult
-  $Res call(
-      {String selectedToolId,
-      List<String> toolIds,
-      String searchQuery,
-      List<String> searchResult});
+  $Res call({
+    String selectedToolId,
+    List<String> toolIds,
+    String searchQuery,
+    List<String> searchResult,
+  });
 }
 
 /// @nodoc
@@ -61,24 +64,31 @@ class _$ToolsStateCopyWithImpl<$Res, $Val extends ToolsState>
     Object? searchQuery = null,
     Object? searchResult = null,
   }) {
-    return _then(_value.copyWith(
-      selectedToolId: null == selectedToolId
-          ? _value.selectedToolId
-          : selectedToolId // ignore: cast_nullable_to_non_nullable
-              as String,
-      toolIds: null == toolIds
-          ? _value.toolIds
-          : toolIds // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      searchQuery: null == searchQuery
-          ? _value.searchQuery
-          : searchQuery // ignore: cast_nullable_to_non_nullable
-              as String,
-      searchResult: null == searchResult
-          ? _value.searchResult
-          : searchResult // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            selectedToolId:
+                null == selectedToolId
+                    ? _value.selectedToolId
+                    : selectedToolId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            toolIds:
+                null == toolIds
+                    ? _value.toolIds
+                    : toolIds // ignore: cast_nullable_to_non_nullable
+                        as List<String>,
+            searchQuery:
+                null == searchQuery
+                    ? _value.searchQuery
+                    : searchQuery // ignore: cast_nullable_to_non_nullable
+                        as String,
+            searchResult:
+                null == searchResult
+                    ? _value.searchResult
+                    : searchResult // ignore: cast_nullable_to_non_nullable
+                        as List<String>,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -86,15 +96,17 @@ class _$ToolsStateCopyWithImpl<$Res, $Val extends ToolsState>
 abstract class _$$ToolsStateImplCopyWith<$Res>
     implements $ToolsStateCopyWith<$Res> {
   factory _$$ToolsStateImplCopyWith(
-          _$ToolsStateImpl value, $Res Function(_$ToolsStateImpl) then) =
-      __$$ToolsStateImplCopyWithImpl<$Res>;
+    _$ToolsStateImpl value,
+    $Res Function(_$ToolsStateImpl) then,
+  ) = __$$ToolsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String selectedToolId,
-      List<String> toolIds,
-      String searchQuery,
-      List<String> searchResult});
+  $Res call({
+    String selectedToolId,
+    List<String> toolIds,
+    String searchQuery,
+    List<String> searchResult,
+  });
 }
 
 /// @nodoc
@@ -102,8 +114,9 @@ class __$$ToolsStateImplCopyWithImpl<$Res>
     extends _$ToolsStateCopyWithImpl<$Res, _$ToolsStateImpl>
     implements _$$ToolsStateImplCopyWith<$Res> {
   __$$ToolsStateImplCopyWithImpl(
-      _$ToolsStateImpl _value, $Res Function(_$ToolsStateImpl) _then)
-      : super(_value, _then);
+    _$ToolsStateImpl _value,
+    $Res Function(_$ToolsStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ToolsState
   /// with the given fields replaced by the non-null parameter values.
@@ -115,37 +128,43 @@ class __$$ToolsStateImplCopyWithImpl<$Res>
     Object? searchQuery = null,
     Object? searchResult = null,
   }) {
-    return _then(_$ToolsStateImpl(
-      selectedToolId: null == selectedToolId
-          ? _value.selectedToolId
-          : selectedToolId // ignore: cast_nullable_to_non_nullable
-              as String,
-      toolIds: null == toolIds
-          ? _value._toolIds
-          : toolIds // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      searchQuery: null == searchQuery
-          ? _value.searchQuery
-          : searchQuery // ignore: cast_nullable_to_non_nullable
-              as String,
-      searchResult: null == searchResult
-          ? _value._searchResult
-          : searchResult // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+    return _then(
+      _$ToolsStateImpl(
+        selectedToolId:
+            null == selectedToolId
+                ? _value.selectedToolId
+                : selectedToolId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        toolIds:
+            null == toolIds
+                ? _value._toolIds
+                : toolIds // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+        searchQuery:
+            null == searchQuery
+                ? _value.searchQuery
+                : searchQuery // ignore: cast_nullable_to_non_nullable
+                    as String,
+        searchResult:
+            null == searchResult
+                ? _value._searchResult
+                : searchResult // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ToolsStateImpl implements _ToolsState {
-  const _$ToolsStateImpl(
-      {required this.selectedToolId,
-      required final List<String> toolIds,
-      required this.searchQuery,
-      required final List<String> searchResult})
-      : _toolIds = toolIds,
-        _searchResult = searchResult;
+  const _$ToolsStateImpl({
+    required this.selectedToolId,
+    required final List<String> toolIds,
+    required this.searchQuery,
+    required final List<String> searchResult,
+  }) : _toolIds = toolIds,
+       _searchResult = searchResult;
 
   @override
   final String selectedToolId;
@@ -182,17 +201,20 @@ class _$ToolsStateImpl implements _ToolsState {
             const DeepCollectionEquality().equals(other._toolIds, _toolIds) &&
             (identical(other.searchQuery, searchQuery) ||
                 other.searchQuery == searchQuery) &&
-            const DeepCollectionEquality()
-                .equals(other._searchResult, _searchResult));
+            const DeepCollectionEquality().equals(
+              other._searchResult,
+              _searchResult,
+            ));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      selectedToolId,
-      const DeepCollectionEquality().hash(_toolIds),
-      searchQuery,
-      const DeepCollectionEquality().hash(_searchResult));
+    runtimeType,
+    selectedToolId,
+    const DeepCollectionEquality().hash(_toolIds),
+    searchQuery,
+    const DeepCollectionEquality().hash(_searchResult),
+  );
 
   /// Create a copy of ToolsState
   /// with the given fields replaced by the non-null parameter values.
@@ -204,11 +226,12 @@ class _$ToolsStateImpl implements _ToolsState {
 }
 
 abstract class _ToolsState implements ToolsState {
-  const factory _ToolsState(
-      {required final String selectedToolId,
-      required final List<String> toolIds,
-      required final String searchQuery,
-      required final List<String> searchResult}) = _$ToolsStateImpl;
+  const factory _ToolsState({
+    required final String selectedToolId,
+    required final List<String> toolIds,
+    required final String searchQuery,
+    required final List<String> searchResult,
+  }) = _$ToolsStateImpl;
 
   @override
   String get selectedToolId;

@@ -15,10 +15,7 @@ final class CronSaveEffectHandler
   const CronSaveEffectHandler();
 
   @override
-  Future<void> call(
-    SaveEffect effect,
-    MsgEmitter<CronMessage> emit,
-  ) async {
+  Future<void> call(SaveEffect effect, MsgEmitter<CronMessage> emit) async {
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
       await sharedPreferences.setString(_inputKey, effect.input);
@@ -34,10 +31,7 @@ final class CronLoadEffectHandler
   const CronLoadEffectHandler();
 
   @override
-  Future<void> call(
-    LoadEffect effect,
-    MsgEmitter<CronMessage> emit,
-  ) async {
+  Future<void> call(LoadEffect effect, MsgEmitter<CronMessage> emit) async {
     try {
       final sharedPreferences = await SharedPreferences.getInstance();
       final input = sharedPreferences.getString(_inputKey);

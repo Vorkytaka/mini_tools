@@ -5,16 +5,7 @@ import 'package:timezone/timezone.dart';
 
 void main() {
   group('DatetimeConverterUpdate Tests', () {
-    final tzDateTime = TZDateTime(
-      UTC,
-      2023,
-      8,
-      15,
-      12,
-      30,
-      45,
-      500,
-    );
+    final tzDateTime = TZDateTime(UTC, 2023, 8, 15, 12, 30, 45, 500);
 
     test('UpdateInputMessage updates input and triggers parse effect', () {
       final initialState = DatetimeConverterState.defaultValue();
@@ -87,8 +78,9 @@ void main() {
     test('SetNowMessage updates datetime and input', () {
       final now = TZDateTime.now(UTC);
       final result = datetimeConverterUpdate(
-        DatetimeConverterState.defaultValue()
-            .copyWith(inputType: InputType.iso),
+        DatetimeConverterState.defaultValue().copyWith(
+          inputType: InputType.iso,
+        ),
         DatetimeConverterMessage.setNow(now),
       );
 
@@ -102,7 +94,8 @@ void main() {
       final result = datetimeConverterUpdate(
         initialState,
         const DatetimeConverterMessage.updateDatetimeFormat(
-            DatetimeFormat.iso8601),
+          DatetimeFormat.iso8601,
+        ),
       );
 
       expect(result.$1?.format, DatetimeFormat.iso8601);

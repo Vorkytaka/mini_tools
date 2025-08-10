@@ -42,9 +42,7 @@ extension CronFormat on Cron {
       spans.add(
         TextSpan(
           text: minutes.formatMinutes(t),
-          style: TextStyle(
-            color: isMinutesSelected ? selectedColor : null,
-          ),
+          style: TextStyle(color: isMinutesSelected ? selectedColor : null),
         ),
       );
       final hoursFormatted = hours.formatHours(t);
@@ -53,9 +51,7 @@ extension CronFormat on Cron {
         spans.add(
           TextSpan(
             text: hoursFormatted,
-            style: TextStyle(
-              color: isHoursSelected ? selectedColor : null,
-            ),
+            style: TextStyle(color: isHoursSelected ? selectedColor : null),
           ),
         );
       }
@@ -164,97 +160,93 @@ extension CronFormat on Cron {
 
 extension CronExpressionFormatting on CronExpression {
   String formatMinutes(Translations t) {
-    String rangeMapper(int from, int to) => t.cron.cronFormat.minutes.range(
-          from: from,
-          to: to,
-        );
+    String rangeMapper(int from, int to) =>
+        t.cron.cronFormat.minutes.range(from: from, to: to);
 
     return when(
       any: () => t.cron.cronFormat.minutes.any,
       single: (value) => t.cron.cronFormat.minutes.single(minute: value),
       range: rangeMapper,
       list: (values) => _formatList(values, _formatMinutePart, t),
-      step: (base, step) => _formatStep(
-        base.rangeMap(rangeMapper),
-        t.cron.cronFormat.minutes.step(n: step, step: step),
-      ),
+      step:
+          (base, step) => _formatStep(
+            base.rangeMap(rangeMapper),
+            t.cron.cronFormat.minutes.step(n: step, step: step),
+          ),
     );
   }
 
   String? formatHours(Translations t) {
-    String rangeMapper(int from, int to) => t.cron.cronFormat.hours.range(
-          from: from,
-          to: to,
-        );
+    String rangeMapper(int from, int to) =>
+        t.cron.cronFormat.hours.range(from: from, to: to);
 
     return when(
       any: () => null,
       single: (value) => t.cron.cronFormat.hours.single(hour: value),
       range: rangeMapper,
       list: (values) => _formatList(values, _formatHourPart, t),
-      step: (base, step) => _formatStep(
-        base.rangeMap(rangeMapper),
-        t.cron.cronFormat.hours.step(n: step, step: step),
-      ),
+      step:
+          (base, step) => _formatStep(
+            base.rangeMap(rangeMapper),
+            t.cron.cronFormat.hours.step(n: step, step: step),
+          ),
     );
   }
 
   String? formatDays(Translations t) {
-    String rangeMapper(int from, int to) => t.cron.cronFormat.days.range(
-          from: from,
-          to: to,
-        );
+    String rangeMapper(int from, int to) =>
+        t.cron.cronFormat.days.range(from: from, to: to);
 
     return when(
       any: () => null,
       single: (value) => t.cron.cronFormat.days.single(day: value),
       range: rangeMapper,
       list: (values) => _formatList(values, _formatDayPart, t),
-      step: (base, step) => _formatStep(
-        base.rangeMap(rangeMapper),
-        t.cron.cronFormat.days.step(n: step, step: step),
-      ),
+      step:
+          (base, step) => _formatStep(
+            base.rangeMap(rangeMapper),
+            t.cron.cronFormat.days.step(n: step, step: step),
+          ),
     );
   }
 
   String? formatMonths(Translations t) {
     String rangeMapper(int from, int to) => t.cron.cronFormat.months.range(
-          from: from.formatMonth(t),
-          to: to.formatMonth(t),
-        );
+      from: from.formatMonth(t),
+      to: to.formatMonth(t),
+    );
     return when(
       any: () => null,
       single: (v) => v.formatMonth(t),
       range: rangeMapper,
       list: (values) => _formatList(values, (e) => e.formatMonths(t)!, t),
-      step: (base, step) => _formatStep(
-        base.rangeMap(rangeMapper),
-        t.cron.cronFormat.months.step(n: step, step: step),
-      ),
+      step:
+          (base, step) => _formatStep(
+            base.rangeMap(rangeMapper),
+            t.cron.cronFormat.months.step(n: step, step: step),
+          ),
     );
   }
 
   String? formatWeekdays(Translations t) {
     String rangeMapper(int from, int to) => t.cron.cronFormat.daysOfWeek.range(
-          from: from.formatWeekday(t),
-          to: to.formatWeekday(t),
-        );
+      from: from.formatWeekday(t),
+      to: to.formatWeekday(t),
+    );
     return when(
       any: () => null,
       single: (v) => v.formatWeekday(t),
       range: rangeMapper,
       list: (values) => _formatList(values, (e) => e.formatWeekdays(t)!, t),
-      step: (base, step) => _formatStep(
-        base.rangeMap(rangeMapper),
-        t.cron.cronFormat.daysOfWeek.step(n: step, step: step),
-      ),
+      step:
+          (base, step) => _formatStep(
+            base.rangeMap(rangeMapper),
+            t.cron.cronFormat.daysOfWeek.step(n: step, step: step),
+          ),
     );
   }
 
-  String _formatStep(
-    String baseText,
-    String stepText,
-  ) {
+  String _formatStep(String baseText, String stepText) {
     return [stepText, baseText].where((s) => s.isNotEmpty).join(' ');
   }
 

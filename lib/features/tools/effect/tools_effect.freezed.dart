@@ -12,7 +12,8 @@ part of 'tools_effect.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ToolsEffect {
@@ -21,52 +22,47 @@ mixin _$ToolsEffect {
     required TResult Function(String query, List<String> tools) searchTools,
     required TResult Function(String toolId) saveSelectedTool,
     required TResult Function() loadSelectedTool,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query, List<String> tools)? searchTools,
     TResult? Function(String toolId)? saveSelectedTool,
     TResult? Function()? loadSelectedTool,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query, List<String> tools)? searchTools,
     TResult Function(String toolId)? saveSelectedTool,
     TResult Function()? loadSelectedTool,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(SearchToolsEffect value) searchTools,
     required TResult Function(SaveSelectedToolEffect value) saveSelectedTool,
     required TResult Function(LoadSelectedToolEffect value) loadSelectedTool,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(SearchToolsEffect value)? searchTools,
     TResult? Function(SaveSelectedToolEffect value)? saveSelectedTool,
     TResult? Function(LoadSelectedToolEffect value)? loadSelectedTool,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(SearchToolsEffect value)? searchTools,
     TResult Function(SaveSelectedToolEffect value)? saveSelectedTool,
     TResult Function(LoadSelectedToolEffect value)? loadSelectedTool,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ToolsEffectCopyWith<$Res> {
   factory $ToolsEffectCopyWith(
-          ToolsEffect value, $Res Function(ToolsEffect) then) =
-      _$ToolsEffectCopyWithImpl<$Res, ToolsEffect>;
+    ToolsEffect value,
+    $Res Function(ToolsEffect) then,
+  ) = _$ToolsEffectCopyWithImpl<$Res, ToolsEffect>;
 }
 
 /// @nodoc
@@ -85,9 +81,10 @@ class _$ToolsEffectCopyWithImpl<$Res, $Val extends ToolsEffect>
 
 /// @nodoc
 abstract class _$$SearchToolsEffectImplCopyWith<$Res> {
-  factory _$$SearchToolsEffectImplCopyWith(_$SearchToolsEffectImpl value,
-          $Res Function(_$SearchToolsEffectImpl) then) =
-      __$$SearchToolsEffectImplCopyWithImpl<$Res>;
+  factory _$$SearchToolsEffectImplCopyWith(
+    _$SearchToolsEffectImpl value,
+    $Res Function(_$SearchToolsEffectImpl) then,
+  ) = __$$SearchToolsEffectImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String query, List<String> tools});
 }
@@ -96,37 +93,40 @@ abstract class _$$SearchToolsEffectImplCopyWith<$Res> {
 class __$$SearchToolsEffectImplCopyWithImpl<$Res>
     extends _$ToolsEffectCopyWithImpl<$Res, _$SearchToolsEffectImpl>
     implements _$$SearchToolsEffectImplCopyWith<$Res> {
-  __$$SearchToolsEffectImplCopyWithImpl(_$SearchToolsEffectImpl _value,
-      $Res Function(_$SearchToolsEffectImpl) _then)
-      : super(_value, _then);
+  __$$SearchToolsEffectImplCopyWithImpl(
+    _$SearchToolsEffectImpl _value,
+    $Res Function(_$SearchToolsEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ToolsEffect
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? query = null,
-    Object? tools = null,
-  }) {
-    return _then(_$SearchToolsEffectImpl(
-      query: null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String,
-      tools: null == tools
-          ? _value._tools
-          : tools // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+  $Res call({Object? query = null, Object? tools = null}) {
+    return _then(
+      _$SearchToolsEffectImpl(
+        query:
+            null == query
+                ? _value.query
+                : query // ignore: cast_nullable_to_non_nullable
+                    as String,
+        tools:
+            null == tools
+                ? _value._tools
+                : tools // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$SearchToolsEffectImpl implements SearchToolsEffect {
-  const _$SearchToolsEffectImpl(
-      {required this.query, required final List<String> tools})
-      : _tools = tools;
+  const _$SearchToolsEffectImpl({
+    required this.query,
+    required final List<String> tools,
+  }) : _tools = tools;
 
   @override
   final String query;
@@ -154,7 +154,10 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, query, const DeepCollectionEquality().hash(_tools));
+    runtimeType,
+    query,
+    const DeepCollectionEquality().hash(_tools),
+  );
 
   /// Create a copy of ToolsEffect
   /// with the given fields replaced by the non-null parameter values.
@@ -163,7 +166,9 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
   @pragma('vm:prefer-inline')
   _$$SearchToolsEffectImplCopyWith<_$SearchToolsEffectImpl> get copyWith =>
       __$$SearchToolsEffectImplCopyWithImpl<_$SearchToolsEffectImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -235,9 +240,10 @@ class _$SearchToolsEffectImpl implements SearchToolsEffect {
 }
 
 abstract class SearchToolsEffect implements ToolsEffect {
-  const factory SearchToolsEffect(
-      {required final String query,
-      required final List<String> tools}) = _$SearchToolsEffectImpl;
+  const factory SearchToolsEffect({
+    required final String query,
+    required final List<String> tools,
+  }) = _$SearchToolsEffectImpl;
 
   String get query;
   List<String> get tools;
@@ -252,9 +258,9 @@ abstract class SearchToolsEffect implements ToolsEffect {
 /// @nodoc
 abstract class _$$SaveSelectedToolEffectImplCopyWith<$Res> {
   factory _$$SaveSelectedToolEffectImplCopyWith(
-          _$SaveSelectedToolEffectImpl value,
-          $Res Function(_$SaveSelectedToolEffectImpl) then) =
-      __$$SaveSelectedToolEffectImplCopyWithImpl<$Res>;
+    _$SaveSelectedToolEffectImpl value,
+    $Res Function(_$SaveSelectedToolEffectImpl) then,
+  ) = __$$SaveSelectedToolEffectImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String toolId});
 }
@@ -264,23 +270,23 @@ class __$$SaveSelectedToolEffectImplCopyWithImpl<$Res>
     extends _$ToolsEffectCopyWithImpl<$Res, _$SaveSelectedToolEffectImpl>
     implements _$$SaveSelectedToolEffectImplCopyWith<$Res> {
   __$$SaveSelectedToolEffectImplCopyWithImpl(
-      _$SaveSelectedToolEffectImpl _value,
-      $Res Function(_$SaveSelectedToolEffectImpl) _then)
-      : super(_value, _then);
+    _$SaveSelectedToolEffectImpl _value,
+    $Res Function(_$SaveSelectedToolEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ToolsEffect
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? toolId = null,
-  }) {
-    return _then(_$SaveSelectedToolEffectImpl(
-      null == toolId
-          ? _value.toolId
-          : toolId // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? toolId = null}) {
+    return _then(
+      _$SaveSelectedToolEffectImpl(
+        null == toolId
+            ? _value.toolId
+            : toolId // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -314,8 +320,11 @@ class _$SaveSelectedToolEffectImpl implements SaveSelectedToolEffect {
   @override
   @pragma('vm:prefer-inline')
   _$$SaveSelectedToolEffectImplCopyWith<_$SaveSelectedToolEffectImpl>
-      get copyWith => __$$SaveSelectedToolEffectImplCopyWithImpl<
-          _$SaveSelectedToolEffectImpl>(this, _$identity);
+  get copyWith =>
+      __$$SaveSelectedToolEffectImplCopyWithImpl<_$SaveSelectedToolEffectImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -396,15 +405,15 @@ abstract class SaveSelectedToolEffect implements ToolsEffect {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SaveSelectedToolEffectImplCopyWith<_$SaveSelectedToolEffectImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$LoadSelectedToolEffectImplCopyWith<$Res> {
   factory _$$LoadSelectedToolEffectImplCopyWith(
-          _$LoadSelectedToolEffectImpl value,
-          $Res Function(_$LoadSelectedToolEffectImpl) then) =
-      __$$LoadSelectedToolEffectImplCopyWithImpl<$Res>;
+    _$LoadSelectedToolEffectImpl value,
+    $Res Function(_$LoadSelectedToolEffectImpl) then,
+  ) = __$$LoadSelectedToolEffectImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -412,9 +421,9 @@ class __$$LoadSelectedToolEffectImplCopyWithImpl<$Res>
     extends _$ToolsEffectCopyWithImpl<$Res, _$LoadSelectedToolEffectImpl>
     implements _$$LoadSelectedToolEffectImplCopyWith<$Res> {
   __$$LoadSelectedToolEffectImplCopyWithImpl(
-      _$LoadSelectedToolEffectImpl _value,
-      $Res Function(_$LoadSelectedToolEffectImpl) _then)
-      : super(_value, _then);
+    _$LoadSelectedToolEffectImpl _value,
+    $Res Function(_$LoadSelectedToolEffectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ToolsEffect
   /// with the given fields replaced by the non-null parameter values.

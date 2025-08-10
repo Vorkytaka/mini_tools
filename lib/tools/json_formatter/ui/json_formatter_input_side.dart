@@ -3,9 +3,7 @@ part of 'json_formatter_screen.dart';
 final class _InputSide extends StatelessWidget {
   final CodeLineEditingController controller;
 
-  const _InputSide({
-    required this.controller,
-  });
+  const _InputSide({required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +37,7 @@ final class _InputSide extends StatelessWidget {
                   });
                 },
                 child: Text(t.common.paste),
-              )
+              ),
             ],
           ),
         ),

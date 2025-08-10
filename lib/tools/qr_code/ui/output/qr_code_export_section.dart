@@ -28,12 +28,7 @@ class QrCodeExportSection extends StatelessWidget {
   }
 }
 
-enum ExportSizeUI {
-  small,
-  medium,
-  large,
-  custom,
-}
+enum ExportSizeUI { small, medium, large, custom }
 
 extension on ExportSizeUI {
   String format(BuildContext context) {
@@ -60,9 +55,7 @@ extension on ExportSizeUI {
   }
 }
 
-Future<int?> showSelectSizeDialog({
-  required BuildContext context,
-}) =>
+Future<int?> showSelectSizeDialog({required BuildContext context}) =>
     showMacosAlertDialog(
       context: context,
       barrierDismissible: true,
@@ -84,19 +77,13 @@ class _ExportSizeAlertDialogState extends State<_ExportSizeAlertDialog> {
     final t = Translations.of(context);
 
     return MacosAlertDialog(
-      appIcon: const MacosIcon(
-        Icons.aspect_ratio,
-        size: 50,
-      ),
+      appIcon: const MacosIcon(Icons.aspect_ratio, size: 50),
       title: Text(t.qrCode.export.exportSize.dialog.title),
       message: Column(
         children: [
           Text(t.qrCode.export.exportSize.dialog.body),
           const SizedBox(height: 24),
-          MacosTextField(
-            autofocus: true,
-            onChanged: _onInputUpdate,
-          ),
+          MacosTextField(autofocus: true, onChanged: _onInputUpdate),
         ],
       ),
       primaryButton: PushButton(
@@ -156,9 +143,9 @@ class _ExportSizeSelector extends StatelessWidget {
               return;
             }
 
-            context
-                .read<QrCodeFeature>()
-                .accept(QrCodeMessage.exportSizeUpdate(sizeInPx));
+            context.read<QrCodeFeature>().accept(
+              QrCodeMessage.exportSizeUpdate(sizeInPx),
+            );
           }
 
           return CupertinoSlidingSegmentedControl(
@@ -167,11 +154,12 @@ class _ExportSizeSelector extends StatelessWidget {
               for (final size in ExportSizeUI.values)
                 size: GestureDetector(
                   // This is hack to RE-select the custom item
-                  onTap: size == ExportSizeUI.custom && selectedSize == size
-                      ? () {
-                          onChanged(size);
-                        }
-                      : null,
+                  onTap:
+                      size == ExportSizeUI.custom && selectedSize == size
+                          ? () {
+                            onChanged(size);
+                          }
+                          : null,
                   child: Text(size.format(context)),
                 ),
             },
@@ -205,9 +193,9 @@ class _ExportTypeSelector extends StatelessWidget {
               },
               onValueChanged: (type) {
                 if (type != null) {
-                  context
-                      .read<QrCodeFeature>()
-                      .accept(QrCodeMessage.updateExportType(type));
+                  context.read<QrCodeFeature>().accept(
+                    QrCodeMessage.updateExportType(type),
+                  );
                 }
               },
             ),
@@ -237,13 +225,14 @@ class _ExportButtons extends StatelessWidget {
               return PushButton(
                 secondary: true,
                 controlSize: ControlSize.large,
-                onPressed: qrCode != null
-                    ? () {
-                        context
-                            .read<QrCodeFeature>()
-                            .accept(const QrCodeMessage.copyToClipboard());
-                      }
-                    : null,
+                onPressed:
+                    qrCode != null
+                        ? () {
+                          context.read<QrCodeFeature>().accept(
+                            const QrCodeMessage.copyToClipboard(),
+                          );
+                        }
+                        : null,
                 child: Text(t.common.copy),
               );
             },
@@ -258,13 +247,14 @@ class _ExportButtons extends StatelessWidget {
 
               return PushButton(
                 controlSize: ControlSize.large,
-                onPressed: qrCode != null
-                    ? () {
-                        context
-                            .read<QrCodeFeature>()
-                            .accept(const QrCodeMessage.saveToFile());
-                      }
-                    : null,
+                onPressed:
+                    qrCode != null
+                        ? () {
+                          context.read<QrCodeFeature>().accept(
+                            const QrCodeMessage.saveToFile(),
+                          );
+                        }
+                        : null,
                 child: Text(t.common.save),
               );
             },

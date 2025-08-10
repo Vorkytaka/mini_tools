@@ -4,12 +4,14 @@ import 'package:provider/provider.dart';
 
 import 'feature/number_base_feature.dart';
 
-typedef NumberBaseFeatureBuilder
-    = FeatureBuilder<NumberBaseFeature, NumberBaseState>;
+typedef NumberBaseFeatureBuilder =
+    FeatureBuilder<NumberBaseFeature, NumberBaseState>;
 
 extension NumberBaseFeatureContext on BuildContext {
-  NumberBaseFeature numberBaseFeature(BuildContext context,
-      {bool listen = false}) {
+  NumberBaseFeature numberBaseFeature(
+    BuildContext context, {
+    bool listen = false,
+  }) {
     return Provider.of<NumberBaseFeature>(context, listen: listen);
   }
 }

@@ -91,9 +91,9 @@ class _ClearButton extends StatelessWidget {
     return PushButton(
       controlSize: ControlSize.regular,
       onPressed: () {
-        context
-            .read<QrCodeFeature>()
-            .accept(const QrCodeMessage.updateInput(''));
+        context.read<QrCodeFeature>().accept(
+          const QrCodeMessage.updateInput(''),
+        );
       },
       secondary: true,
       child: Text(t.common.clear),
@@ -112,12 +112,7 @@ class _BytesCount extends StatelessWidget {
       buildWhen: (prev, curr) => prev.input != curr.input,
       builder: (context, state) {
         final bytes = utf8.encode(state.input).length;
-        return Text(
-          t.common.bytesCount(
-            n: bytes,
-            bytes: bytes,
-          ),
-        );
+        return Text(t.common.bytesCount(n: bytes, bytes: bytes));
       },
     );
   }

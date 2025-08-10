@@ -12,7 +12,8 @@ part of 'datetime_converter_message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$DatetimeConverterMessage {
@@ -26,8 +27,7 @@ mixin _$DatetimeConverterMessage {
     required TResult Function() getNow,
     required TResult Function(TZDateTime datetime) setNow,
     required TResult Function(TZDateTime datetime) setInitialDatetime,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String input)? updateInput,
@@ -38,8 +38,7 @@ mixin _$DatetimeConverterMessage {
     TResult? Function()? getNow,
     TResult? Function(TZDateTime datetime)? setNow,
     TResult? Function(TZDateTime datetime)? setInitialDatetime,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String input)? updateInput,
@@ -51,22 +50,20 @@ mixin _$DatetimeConverterMessage {
     TResult Function(TZDateTime datetime)? setNow,
     TResult Function(TZDateTime datetime)? setInitialDatetime,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(UpdateInputMessage value) updateInput,
     required TResult Function(UpdateDatetimeMessage value) updateDatetime,
     required TResult Function(UpdateInputTypeMessage value) updateInputType,
     required TResult Function(UpdateDatetimeFormatMessage value)
-        updateDatetimeFormat,
+    updateDatetimeFormat,
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
     required TResult Function(SetInitialDatetimeMessage value)
-        setInitialDatetime,
-  }) =>
-      throw _privateConstructorUsedError;
+    setInitialDatetime,
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(UpdateInputMessage value)? updateInput,
@@ -77,8 +74,7 @@ mixin _$DatetimeConverterMessage {
     TResult? Function(GetNowMessage value)? getNow,
     TResult? Function(SetNowMessage value)? setNow,
     TResult? Function(SetInitialDatetimeMessage value)? setInitialDatetime,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(UpdateInputMessage value)? updateInput,
@@ -90,20 +86,22 @@ mixin _$DatetimeConverterMessage {
     TResult Function(SetNowMessage value)? setNow,
     TResult Function(SetInitialDatetimeMessage value)? setInitialDatetime,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $DatetimeConverterMessageCopyWith<$Res> {
-  factory $DatetimeConverterMessageCopyWith(DatetimeConverterMessage value,
-          $Res Function(DatetimeConverterMessage) then) =
-      _$DatetimeConverterMessageCopyWithImpl<$Res, DatetimeConverterMessage>;
+  factory $DatetimeConverterMessageCopyWith(
+    DatetimeConverterMessage value,
+    $Res Function(DatetimeConverterMessage) then,
+  ) = _$DatetimeConverterMessageCopyWithImpl<$Res, DatetimeConverterMessage>;
 }
 
 /// @nodoc
-class _$DatetimeConverterMessageCopyWithImpl<$Res,
-        $Val extends DatetimeConverterMessage>
+class _$DatetimeConverterMessageCopyWithImpl<
+  $Res,
+  $Val extends DatetimeConverterMessage
+>
     implements $DatetimeConverterMessageCopyWith<$Res> {
   _$DatetimeConverterMessageCopyWithImpl(this._value, this._then);
 
@@ -118,35 +116,37 @@ class _$DatetimeConverterMessageCopyWithImpl<$Res,
 
 /// @nodoc
 abstract class _$$UpdateInputMessageImplCopyWith<$Res> {
-  factory _$$UpdateInputMessageImplCopyWith(_$UpdateInputMessageImpl value,
-          $Res Function(_$UpdateInputMessageImpl) then) =
-      __$$UpdateInputMessageImplCopyWithImpl<$Res>;
+  factory _$$UpdateInputMessageImplCopyWith(
+    _$UpdateInputMessageImpl value,
+    $Res Function(_$UpdateInputMessageImpl) then,
+  ) = __$$UpdateInputMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String input});
 }
 
 /// @nodoc
 class __$$UpdateInputMessageImplCopyWithImpl<$Res>
-    extends _$DatetimeConverterMessageCopyWithImpl<$Res,
-        _$UpdateInputMessageImpl>
+    extends
+        _$DatetimeConverterMessageCopyWithImpl<$Res, _$UpdateInputMessageImpl>
     implements _$$UpdateInputMessageImplCopyWith<$Res> {
-  __$$UpdateInputMessageImplCopyWithImpl(_$UpdateInputMessageImpl _value,
-      $Res Function(_$UpdateInputMessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateInputMessageImplCopyWithImpl(
+    _$UpdateInputMessageImpl _value,
+    $Res Function(_$UpdateInputMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatetimeConverterMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? input = null,
-  }) {
-    return _then(_$UpdateInputMessageImpl(
-      null == input
-          ? _value.input
-          : input // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? input = null}) {
+    return _then(
+      _$UpdateInputMessageImpl(
+        null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -181,7 +181,9 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
   @pragma('vm:prefer-inline')
   _$$UpdateInputMessageImplCopyWith<_$UpdateInputMessageImpl> get copyWith =>
       __$$UpdateInputMessageImplCopyWithImpl<_$UpdateInputMessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -239,12 +241,12 @@ class _$UpdateInputMessageImpl implements UpdateInputMessage {
     required TResult Function(UpdateDatetimeMessage value) updateDatetime,
     required TResult Function(UpdateInputTypeMessage value) updateInputType,
     required TResult Function(UpdateDatetimeFormatMessage value)
-        updateDatetimeFormat,
+    updateDatetimeFormat,
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
     required TResult Function(SetInitialDatetimeMessage value)
-        setInitialDatetime,
+    setInitialDatetime,
   }) {
     return updateInput(this);
   }
@@ -300,35 +302,39 @@ abstract class UpdateInputMessage implements DatetimeConverterMessage {
 /// @nodoc
 abstract class _$$UpdateDatetimeMessageImplCopyWith<$Res> {
   factory _$$UpdateDatetimeMessageImplCopyWith(
-          _$UpdateDatetimeMessageImpl value,
-          $Res Function(_$UpdateDatetimeMessageImpl) then) =
-      __$$UpdateDatetimeMessageImplCopyWithImpl<$Res>;
+    _$UpdateDatetimeMessageImpl value,
+    $Res Function(_$UpdateDatetimeMessageImpl) then,
+  ) = __$$UpdateDatetimeMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({TZDateTime datetime});
 }
 
 /// @nodoc
 class __$$UpdateDatetimeMessageImplCopyWithImpl<$Res>
-    extends _$DatetimeConverterMessageCopyWithImpl<$Res,
-        _$UpdateDatetimeMessageImpl>
+    extends
+        _$DatetimeConverterMessageCopyWithImpl<
+          $Res,
+          _$UpdateDatetimeMessageImpl
+        >
     implements _$$UpdateDatetimeMessageImplCopyWith<$Res> {
-  __$$UpdateDatetimeMessageImplCopyWithImpl(_$UpdateDatetimeMessageImpl _value,
-      $Res Function(_$UpdateDatetimeMessageImpl) _then)
-      : super(_value, _then);
+  __$$UpdateDatetimeMessageImplCopyWithImpl(
+    _$UpdateDatetimeMessageImpl _value,
+    $Res Function(_$UpdateDatetimeMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatetimeConverterMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? datetime = null,
-  }) {
-    return _then(_$UpdateDatetimeMessageImpl(
-      null == datetime
-          ? _value.datetime
-          : datetime // ignore: cast_nullable_to_non_nullable
-              as TZDateTime,
-    ));
+  $Res call({Object? datetime = null}) {
+    return _then(
+      _$UpdateDatetimeMessageImpl(
+        null == datetime
+            ? _value.datetime
+            : datetime // ignore: cast_nullable_to_non_nullable
+                as TZDateTime,
+      ),
+    );
   }
 }
 
@@ -363,8 +369,11 @@ class _$UpdateDatetimeMessageImpl implements UpdateDatetimeMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateDatetimeMessageImplCopyWith<_$UpdateDatetimeMessageImpl>
-      get copyWith => __$$UpdateDatetimeMessageImplCopyWithImpl<
-          _$UpdateDatetimeMessageImpl>(this, _$identity);
+  get copyWith =>
+      __$$UpdateDatetimeMessageImplCopyWithImpl<_$UpdateDatetimeMessageImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -422,12 +431,12 @@ class _$UpdateDatetimeMessageImpl implements UpdateDatetimeMessage {
     required TResult Function(UpdateDatetimeMessage value) updateDatetime,
     required TResult Function(UpdateInputTypeMessage value) updateInputType,
     required TResult Function(UpdateDatetimeFormatMessage value)
-        updateDatetimeFormat,
+    updateDatetimeFormat,
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
     required TResult Function(SetInitialDatetimeMessage value)
-        setInitialDatetime,
+    setInitialDatetime,
   }) {
     return updateDatetime(this);
   }
@@ -477,42 +486,45 @@ abstract class UpdateDatetimeMessage implements DatetimeConverterMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateDatetimeMessageImplCopyWith<_$UpdateDatetimeMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$UpdateInputTypeMessageImplCopyWith<$Res> {
   factory _$$UpdateInputTypeMessageImplCopyWith(
-          _$UpdateInputTypeMessageImpl value,
-          $Res Function(_$UpdateInputTypeMessageImpl) then) =
-      __$$UpdateInputTypeMessageImplCopyWithImpl<$Res>;
+    _$UpdateInputTypeMessageImpl value,
+    $Res Function(_$UpdateInputTypeMessageImpl) then,
+  ) = __$$UpdateInputTypeMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({InputType type});
 }
 
 /// @nodoc
 class __$$UpdateInputTypeMessageImplCopyWithImpl<$Res>
-    extends _$DatetimeConverterMessageCopyWithImpl<$Res,
-        _$UpdateInputTypeMessageImpl>
+    extends
+        _$DatetimeConverterMessageCopyWithImpl<
+          $Res,
+          _$UpdateInputTypeMessageImpl
+        >
     implements _$$UpdateInputTypeMessageImplCopyWith<$Res> {
   __$$UpdateInputTypeMessageImplCopyWithImpl(
-      _$UpdateInputTypeMessageImpl _value,
-      $Res Function(_$UpdateInputTypeMessageImpl) _then)
-      : super(_value, _then);
+    _$UpdateInputTypeMessageImpl _value,
+    $Res Function(_$UpdateInputTypeMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatetimeConverterMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? type = null,
-  }) {
-    return _then(_$UpdateInputTypeMessageImpl(
-      null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as InputType,
-    ));
+  $Res call({Object? type = null}) {
+    return _then(
+      _$UpdateInputTypeMessageImpl(
+        null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                as InputType,
+      ),
+    );
   }
 }
 
@@ -546,8 +558,11 @@ class _$UpdateInputTypeMessageImpl implements UpdateInputTypeMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateInputTypeMessageImplCopyWith<_$UpdateInputTypeMessageImpl>
-      get copyWith => __$$UpdateInputTypeMessageImplCopyWithImpl<
-          _$UpdateInputTypeMessageImpl>(this, _$identity);
+  get copyWith =>
+      __$$UpdateInputTypeMessageImplCopyWithImpl<_$UpdateInputTypeMessageImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -605,12 +620,12 @@ class _$UpdateInputTypeMessageImpl implements UpdateInputTypeMessage {
     required TResult Function(UpdateDatetimeMessage value) updateDatetime,
     required TResult Function(UpdateInputTypeMessage value) updateInputType,
     required TResult Function(UpdateDatetimeFormatMessage value)
-        updateDatetimeFormat,
+    updateDatetimeFormat,
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
     required TResult Function(SetInitialDatetimeMessage value)
-        setInitialDatetime,
+    setInitialDatetime,
   }) {
     return updateInputType(this);
   }
@@ -660,42 +675,45 @@ abstract class UpdateInputTypeMessage implements DatetimeConverterMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateInputTypeMessageImplCopyWith<_$UpdateInputTypeMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$UpdateDatetimeFormatMessageImplCopyWith<$Res> {
   factory _$$UpdateDatetimeFormatMessageImplCopyWith(
-          _$UpdateDatetimeFormatMessageImpl value,
-          $Res Function(_$UpdateDatetimeFormatMessageImpl) then) =
-      __$$UpdateDatetimeFormatMessageImplCopyWithImpl<$Res>;
+    _$UpdateDatetimeFormatMessageImpl value,
+    $Res Function(_$UpdateDatetimeFormatMessageImpl) then,
+  ) = __$$UpdateDatetimeFormatMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({DatetimeFormat format});
 }
 
 /// @nodoc
 class __$$UpdateDatetimeFormatMessageImplCopyWithImpl<$Res>
-    extends _$DatetimeConverterMessageCopyWithImpl<$Res,
-        _$UpdateDatetimeFormatMessageImpl>
+    extends
+        _$DatetimeConverterMessageCopyWithImpl<
+          $Res,
+          _$UpdateDatetimeFormatMessageImpl
+        >
     implements _$$UpdateDatetimeFormatMessageImplCopyWith<$Res> {
   __$$UpdateDatetimeFormatMessageImplCopyWithImpl(
-      _$UpdateDatetimeFormatMessageImpl _value,
-      $Res Function(_$UpdateDatetimeFormatMessageImpl) _then)
-      : super(_value, _then);
+    _$UpdateDatetimeFormatMessageImpl _value,
+    $Res Function(_$UpdateDatetimeFormatMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatetimeConverterMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? format = null,
-  }) {
-    return _then(_$UpdateDatetimeFormatMessageImpl(
-      null == format
-          ? _value.format
-          : format // ignore: cast_nullable_to_non_nullable
-              as DatetimeFormat,
-    ));
+  $Res call({Object? format = null}) {
+    return _then(
+      _$UpdateDatetimeFormatMessageImpl(
+        null == format
+            ? _value.format
+            : format // ignore: cast_nullable_to_non_nullable
+                as DatetimeFormat,
+      ),
+    );
   }
 }
 
@@ -729,8 +747,9 @@ class _$UpdateDatetimeFormatMessageImpl implements UpdateDatetimeFormatMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateDatetimeFormatMessageImplCopyWith<_$UpdateDatetimeFormatMessageImpl>
-      get copyWith => __$$UpdateDatetimeFormatMessageImplCopyWithImpl<
-          _$UpdateDatetimeFormatMessageImpl>(this, _$identity);
+  get copyWith => __$$UpdateDatetimeFormatMessageImplCopyWithImpl<
+    _$UpdateDatetimeFormatMessageImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -788,12 +807,12 @@ class _$UpdateDatetimeFormatMessageImpl implements UpdateDatetimeFormatMessage {
     required TResult Function(UpdateDatetimeMessage value) updateDatetime,
     required TResult Function(UpdateInputTypeMessage value) updateInputType,
     required TResult Function(UpdateDatetimeFormatMessage value)
-        updateDatetimeFormat,
+    updateDatetimeFormat,
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
     required TResult Function(SetInitialDatetimeMessage value)
-        setInitialDatetime,
+    setInitialDatetime,
   }) {
     return updateDatetimeFormat(this);
   }
@@ -843,14 +862,15 @@ abstract class UpdateDatetimeFormatMessage implements DatetimeConverterMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateDatetimeFormatMessageImplCopyWith<_$UpdateDatetimeFormatMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$ClearMessageImplCopyWith<$Res> {
   factory _$$ClearMessageImplCopyWith(
-          _$ClearMessageImpl value, $Res Function(_$ClearMessageImpl) then) =
-      __$$ClearMessageImplCopyWithImpl<$Res>;
+    _$ClearMessageImpl value,
+    $Res Function(_$ClearMessageImpl) then,
+  ) = __$$ClearMessageImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -858,8 +878,9 @@ class __$$ClearMessageImplCopyWithImpl<$Res>
     extends _$DatetimeConverterMessageCopyWithImpl<$Res, _$ClearMessageImpl>
     implements _$$ClearMessageImplCopyWith<$Res> {
   __$$ClearMessageImplCopyWithImpl(
-      _$ClearMessageImpl _value, $Res Function(_$ClearMessageImpl) _then)
-      : super(_value, _then);
+    _$ClearMessageImpl _value,
+    $Res Function(_$ClearMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatetimeConverterMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -940,12 +961,12 @@ class _$ClearMessageImpl implements ClearMessage {
     required TResult Function(UpdateDatetimeMessage value) updateDatetime,
     required TResult Function(UpdateInputTypeMessage value) updateInputType,
     required TResult Function(UpdateDatetimeFormatMessage value)
-        updateDatetimeFormat,
+    updateDatetimeFormat,
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
     required TResult Function(SetInitialDatetimeMessage value)
-        setInitialDatetime,
+    setInitialDatetime,
   }) {
     return clear(this);
   }
@@ -992,8 +1013,9 @@ abstract class ClearMessage implements DatetimeConverterMessage {
 /// @nodoc
 abstract class _$$GetNowMessageImplCopyWith<$Res> {
   factory _$$GetNowMessageImplCopyWith(
-          _$GetNowMessageImpl value, $Res Function(_$GetNowMessageImpl) then) =
-      __$$GetNowMessageImplCopyWithImpl<$Res>;
+    _$GetNowMessageImpl value,
+    $Res Function(_$GetNowMessageImpl) then,
+  ) = __$$GetNowMessageImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -1001,8 +1023,9 @@ class __$$GetNowMessageImplCopyWithImpl<$Res>
     extends _$DatetimeConverterMessageCopyWithImpl<$Res, _$GetNowMessageImpl>
     implements _$$GetNowMessageImplCopyWith<$Res> {
   __$$GetNowMessageImplCopyWithImpl(
-      _$GetNowMessageImpl _value, $Res Function(_$GetNowMessageImpl) _then)
-      : super(_value, _then);
+    _$GetNowMessageImpl _value,
+    $Res Function(_$GetNowMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatetimeConverterMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -1083,12 +1106,12 @@ class _$GetNowMessageImpl implements GetNowMessage {
     required TResult Function(UpdateDatetimeMessage value) updateDatetime,
     required TResult Function(UpdateInputTypeMessage value) updateInputType,
     required TResult Function(UpdateDatetimeFormatMessage value)
-        updateDatetimeFormat,
+    updateDatetimeFormat,
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
     required TResult Function(SetInitialDatetimeMessage value)
-        setInitialDatetime,
+    setInitialDatetime,
   }) {
     return getNow(this);
   }
@@ -1135,8 +1158,9 @@ abstract class GetNowMessage implements DatetimeConverterMessage {
 /// @nodoc
 abstract class _$$SetNowMessageImplCopyWith<$Res> {
   factory _$$SetNowMessageImplCopyWith(
-          _$SetNowMessageImpl value, $Res Function(_$SetNowMessageImpl) then) =
-      __$$SetNowMessageImplCopyWithImpl<$Res>;
+    _$SetNowMessageImpl value,
+    $Res Function(_$SetNowMessageImpl) then,
+  ) = __$$SetNowMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({TZDateTime datetime});
 }
@@ -1146,22 +1170,23 @@ class __$$SetNowMessageImplCopyWithImpl<$Res>
     extends _$DatetimeConverterMessageCopyWithImpl<$Res, _$SetNowMessageImpl>
     implements _$$SetNowMessageImplCopyWith<$Res> {
   __$$SetNowMessageImplCopyWithImpl(
-      _$SetNowMessageImpl _value, $Res Function(_$SetNowMessageImpl) _then)
-      : super(_value, _then);
+    _$SetNowMessageImpl _value,
+    $Res Function(_$SetNowMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatetimeConverterMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? datetime = null,
-  }) {
-    return _then(_$SetNowMessageImpl(
-      null == datetime
-          ? _value.datetime
-          : datetime // ignore: cast_nullable_to_non_nullable
-              as TZDateTime,
-    ));
+  $Res call({Object? datetime = null}) {
+    return _then(
+      _$SetNowMessageImpl(
+        null == datetime
+            ? _value.datetime
+            : datetime // ignore: cast_nullable_to_non_nullable
+                as TZDateTime,
+      ),
+    );
   }
 }
 
@@ -1254,12 +1279,12 @@ class _$SetNowMessageImpl implements SetNowMessage {
     required TResult Function(UpdateDatetimeMessage value) updateDatetime,
     required TResult Function(UpdateInputTypeMessage value) updateInputType,
     required TResult Function(UpdateDatetimeFormatMessage value)
-        updateDatetimeFormat,
+    updateDatetimeFormat,
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
     required TResult Function(SetInitialDatetimeMessage value)
-        setInitialDatetime,
+    setInitialDatetime,
   }) {
     return setNow(this);
   }
@@ -1314,36 +1339,39 @@ abstract class SetNowMessage implements DatetimeConverterMessage {
 /// @nodoc
 abstract class _$$SetInitialDatetimeMessageImplCopyWith<$Res> {
   factory _$$SetInitialDatetimeMessageImplCopyWith(
-          _$SetInitialDatetimeMessageImpl value,
-          $Res Function(_$SetInitialDatetimeMessageImpl) then) =
-      __$$SetInitialDatetimeMessageImplCopyWithImpl<$Res>;
+    _$SetInitialDatetimeMessageImpl value,
+    $Res Function(_$SetInitialDatetimeMessageImpl) then,
+  ) = __$$SetInitialDatetimeMessageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({TZDateTime datetime});
 }
 
 /// @nodoc
 class __$$SetInitialDatetimeMessageImplCopyWithImpl<$Res>
-    extends _$DatetimeConverterMessageCopyWithImpl<$Res,
-        _$SetInitialDatetimeMessageImpl>
+    extends
+        _$DatetimeConverterMessageCopyWithImpl<
+          $Res,
+          _$SetInitialDatetimeMessageImpl
+        >
     implements _$$SetInitialDatetimeMessageImplCopyWith<$Res> {
   __$$SetInitialDatetimeMessageImplCopyWithImpl(
-      _$SetInitialDatetimeMessageImpl _value,
-      $Res Function(_$SetInitialDatetimeMessageImpl) _then)
-      : super(_value, _then);
+    _$SetInitialDatetimeMessageImpl _value,
+    $Res Function(_$SetInitialDatetimeMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DatetimeConverterMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? datetime = null,
-  }) {
-    return _then(_$SetInitialDatetimeMessageImpl(
-      null == datetime
-          ? _value.datetime
-          : datetime // ignore: cast_nullable_to_non_nullable
-              as TZDateTime,
-    ));
+  $Res call({Object? datetime = null}) {
+    return _then(
+      _$SetInitialDatetimeMessageImpl(
+        null == datetime
+            ? _value.datetime
+            : datetime // ignore: cast_nullable_to_non_nullable
+                as TZDateTime,
+      ),
+    );
   }
 }
 
@@ -1378,8 +1406,9 @@ class _$SetInitialDatetimeMessageImpl implements SetInitialDatetimeMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$SetInitialDatetimeMessageImplCopyWith<_$SetInitialDatetimeMessageImpl>
-      get copyWith => __$$SetInitialDatetimeMessageImplCopyWithImpl<
-          _$SetInitialDatetimeMessageImpl>(this, _$identity);
+  get copyWith => __$$SetInitialDatetimeMessageImplCopyWithImpl<
+    _$SetInitialDatetimeMessageImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1437,12 +1466,12 @@ class _$SetInitialDatetimeMessageImpl implements SetInitialDatetimeMessage {
     required TResult Function(UpdateDatetimeMessage value) updateDatetime,
     required TResult Function(UpdateInputTypeMessage value) updateInputType,
     required TResult Function(UpdateDatetimeFormatMessage value)
-        updateDatetimeFormat,
+    updateDatetimeFormat,
     required TResult Function(ClearMessage value) clear,
     required TResult Function(GetNowMessage value) getNow,
     required TResult Function(SetNowMessage value) setNow,
     required TResult Function(SetInitialDatetimeMessage value)
-        setInitialDatetime,
+    setInitialDatetime,
   }) {
     return setInitialDatetime(this);
   }
@@ -1492,5 +1521,5 @@ abstract class SetInitialDatetimeMessage implements DatetimeConverterMessage {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SetInitialDatetimeMessageImplCopyWith<_$SetInitialDatetimeMessageImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

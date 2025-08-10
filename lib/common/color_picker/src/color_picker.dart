@@ -47,21 +47,25 @@ class _ColorPicker extends State<ColorPicker> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      _buildHueSlider(),
-      Expanded(child: _buildLightnessAndSaturationPicker()),
-      // Conditionally build the bottom row based on showOpacity
-      if (_showOpacity)
-        Row(children: [
-          Expanded(child: _buildOpacitySlider()),
-          _buildColorDisplay(),
-        ])
-      // else
-      // If opacity is hidden, show only the color display, expanded
-      // Row(children: [
-      //   Expanded(child: _buildColorDisplay()),
-      // ]),
-    ]);
+    return Column(
+      children: [
+        _buildHueSlider(),
+        Expanded(child: _buildLightnessAndSaturationPicker()),
+        // Conditionally build the bottom row based on showOpacity
+        if (_showOpacity)
+          Row(
+            children: [
+              Expanded(child: _buildOpacitySlider()),
+              _buildColorDisplay(),
+            ],
+          ),
+        // else
+        // If opacity is hidden, show only the color display, expanded
+        // Row(children: [
+        //   Expanded(child: _buildColorDisplay()),
+        // ]),
+      ],
+    );
   }
 
   Widget _buildLightnessAndSaturationPicker() {
@@ -83,39 +87,46 @@ class _ColorPicker extends State<ColorPicker> {
 
   Widget _buildHueSlider() {
     return SizedBox(
-        height: 40,
-        child: HueSlider(
-            selectedHue: _hsvColor.hue,
-            onHueSelected: (double hue) {
-              setState(() {
-                _hsvColor = _hsvColor.withHue(hue);
-              });
-              // Call the public callback with the updated Color
-              widget.onColorChanged?.call(_hsvColor.toColor());
-            }));
+      height: 40,
+      child: HueSlider(
+        selectedHue: _hsvColor.hue,
+        onHueSelected: (double hue) {
+          setState(() {
+            _hsvColor = _hsvColor.withHue(hue);
+          });
+          // Call the public callback with the updated Color
+          widget.onColorChanged?.call(_hsvColor.toColor());
+        },
+      ),
+    );
   }
 
   Widget _buildOpacitySlider() {
     return SizedBox(
-        height: 40,
-        child: OpacitySlider(
-            selectedHue: _hsvColor,
-            onOpacitySelected: (double alpha) {
-              setState(() {
-                _hsvColor = _hsvColor.withAlpha(alpha);
-              });
-              // Call the public callback with the updated Color
-              widget.onColorChanged?.call(_hsvColor.toColor());
-            }));
+      height: 40,
+      child: OpacitySlider(
+        selectedHue: _hsvColor,
+        onOpacitySelected: (double alpha) {
+          setState(() {
+            _hsvColor = _hsvColor.withAlpha(alpha);
+          });
+          // Call the public callback with the updated Color
+          widget.onColorChanged?.call(_hsvColor.toColor());
+        },
+      ),
+    );
   }
 
   Widget _buildColorDisplay() {
     // Adjust width and border radius based on whether opacity slider is shown
     final double displayWidth = _showOpacity ? 150 : double.infinity;
-    final BorderRadius borderRadius = _showOpacity
-        ? const BorderRadius.only(bottomRight: Radius.circular(5))
-        : const BorderRadius.only(
-            bottomRight: Radius.circular(5), bottomLeft: Radius.circular(5));
+    final BorderRadius borderRadius =
+        _showOpacity
+            ? const BorderRadius.only(bottomRight: Radius.circular(5))
+            : const BorderRadius.only(
+              bottomRight: Radius.circular(5),
+              bottomLeft: Radius.circular(5),
+            );
 
     return Container(
       height: 40,
@@ -126,31 +137,37 @@ class _ColorPicker extends State<ColorPicker> {
       ),
       child: Center(
         child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 7),
-            child: Container(
-              decoration: BoxDecoration(
-                  color: _showHexCode && _hsvColor.alpha < 0.4
+          padding: const EdgeInsets.symmetric(horizontal: 7),
+          child: Container(
+            decoration: BoxDecoration(
+              color:
+                  _showHexCode && _hsvColor.alpha < 0.4
                       ? Colors.white54
                       : Colors.transparent,
-                  borderRadius: const BorderRadius.all(Radius.circular(4))),
-              child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 2, horizontal: 4),
-                  child: DefaultTextStyle(
-                    style: const TextStyle(inherit: true),
-                    child: _showHexCode
+              borderRadius: const BorderRadius.all(Radius.circular(4)),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 4),
+              child: DefaultTextStyle(
+                style: const TextStyle(inherit: true),
+                child:
+                    _showHexCode
                         ? Text(
-                            '#${_hsvColor.toColor().toHexAlpha().toString()}',
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: _hsvColor.toColor().computeLuminance() >
-                                            0.35 ||
+                          '#${_hsvColor.toColor().toHexAlpha().toString()}',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color:
+                                _hsvColor.toColor().computeLuminance() > 0.35 ||
                                         _hsvColor.alpha < 0.4
                                     ? Colors.black
-                                    : Colors.white))
+                                    : Colors.white,
+                          ),
+                        )
                         : Container(),
-                  )),
-            )),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

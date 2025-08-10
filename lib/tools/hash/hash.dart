@@ -50,15 +50,8 @@ class _HashToolScreenState extends State<HashToolScreen> {
     final s = Translations.of(context);
 
     return MacosScaffold(
-      toolBar: ToolBar(
-        title: Text(s.hash.title),
-        centerTitle: true,
-      ),
-      children: [
-        ContentArea(
-          builder: (context, controller) => const _Body(),
-        ),
-      ],
+      toolBar: ToolBar(title: Text(s.hash.title), centerTitle: true),
+      children: [ContentArea(builder: (context, controller) => const _Body())],
     );
   }
 }
@@ -75,22 +68,24 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     final s = Translations.of(context);
 
-    final pathToFile = context.hashFeature(listen: true).state.input.map(
-          text: (value) => null,
-          file: (value) => value.path,
-        );
-    final field = pathToFile != null
-        ? MacosReadonlyField(
-            text: s.hash.hashOfFile(path: pathToFile),
-            maxLines: 10,
-            textAlignVertical: const TextAlignVertical(y: -1),
-          )
-        : MacosTextField(
-            maxLines: null,
-            textAlignVertical: const TextAlignVertical(y: -1),
-            placeholder: s.hash.textInputHint,
-            onChanged: _onTextChanged,
-          );
+    final pathToFile = context
+        .hashFeature(listen: true)
+        .state
+        .input
+        .map(text: (value) => null, file: (value) => value.path);
+    final field =
+        pathToFile != null
+            ? MacosReadonlyField(
+              text: s.hash.hashOfFile(path: pathToFile),
+              maxLines: 10,
+              textAlignVertical: const TextAlignVertical(y: -1),
+            )
+            : MacosTextField(
+              maxLines: null,
+              textAlignVertical: const TextAlignVertical(y: -1),
+              placeholder: s.hash.textInputHint,
+              onChanged: _onTextChanged,
+            );
 
     return Padding(
       padding: panePadding,
@@ -126,14 +121,15 @@ class _BodyState extends State<_Body> {
                   const _HashFormatSelector(),
                   const Spacer(),
                   FeatureBuilder<HashFeature, HashState>(
-                    buildWhen: (prev, curr) =>
-                        prev.inputBytes != curr.inputBytes,
-                    builder: (context, state) => SelectableText(
-                      s.common.bytesCount(
-                        n: state.inputBytes,
-                        bytes: state.inputBytes,
-                      ),
-                    ),
+                    buildWhen:
+                        (prev, curr) => prev.inputBytes != curr.inputBytes,
+                    builder:
+                        (context, state) => SelectableText(
+                          s.common.bytesCount(
+                            n: state.inputBytes,
+                            bytes: state.inputBytes,
+                          ),
+                        ),
                   ),
                 ],
               ),
@@ -186,12 +182,7 @@ class _DigestItem extends StatelessWidget {
 
     return Row(
       children: [
-        Expanded(
-          child: MacosReadonlyField(
-            text: value,
-            maxLines: 1,
-          ),
-        ),
+        Expanded(child: MacosReadonlyField(text: value, maxLines: 1)),
         const SizedBox(width: 4),
         MacosIconButton(
           onPressed: () {
@@ -233,9 +224,9 @@ class _AlgorithmSelector extends StatelessWidget {
               .toList(growable: false),
           onChanged: (algorithm) {
             if (algorithm != null) {
-              context
-                  .hashFeature()
-                  .accept(HashEvent.updateAlgorithm(algorithm));
+              context.hashFeature().accept(
+                HashEvent.updateAlgorithm(algorithm),
+              );
             }
           },
         );

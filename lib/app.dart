@@ -23,29 +23,32 @@ class MiniToolsApp extends StatelessWidget {
       child: DatetimeHolder(
         child: TranslationProvider(
           child: Builder(
-            builder: (context) => MacosApp(
-              key: _key,
-              locale: TranslationProvider.of(context).flutterLocale,
-              supportedLocales: AppLocaleUtils.supportedLocales,
-              // localizationsDelegates: GlobalMaterialLocalizations.delegates,
-              home: const _Window(),
-              builder: (context, child) => Theme(
-                data: ThemeData.dark(),
-                child: CopyOverlay(
-                  child: FeatureListener<ToolsFeature, ToolsState>(
-                    listenWhen: (prev, curr) =>
-                        prev.selectedToolId != curr.selectedToolId,
-                    listener: (context, state) {
-                      // We just listen if selected tool changes
-                      // That's mean, that we did change the page
-                      // So, let's just hide copy overlay
-                      CopyOverlay.hideAll(context);
-                    },
-                    child: child!,
-                  ),
+            builder:
+                (context) => MacosApp(
+                  key: _key,
+                  locale: TranslationProvider.of(context).flutterLocale,
+                  supportedLocales: AppLocaleUtils.supportedLocales,
+                  // localizationsDelegates: GlobalMaterialLocalizations.delegates,
+                  home: const _Window(),
+                  builder:
+                      (context, child) => Theme(
+                        data: ThemeData.dark(),
+                        child: CopyOverlay(
+                          child: FeatureListener<ToolsFeature, ToolsState>(
+                            listenWhen:
+                                (prev, curr) =>
+                                    prev.selectedToolId != curr.selectedToolId,
+                            listener: (context, state) {
+                              // We just listen if selected tool changes
+                              // That's mean, that we did change the page
+                              // So, let's just hide copy overlay
+                              CopyOverlay.hideAll(context);
+                            },
+                            child: child!,
+                          ),
+                        ),
+                      ),
                 ),
-              ),
-            ),
           ),
         ),
       ),
@@ -64,9 +67,8 @@ class _Window extends StatelessWidget {
         minWidth: 200,
         isResizable: false,
         top: const _SearchField(),
-        builder: (context, controller) => _SidebarContent(
-          controller: controller,
-        ),
+        builder:
+            (context, controller) => _SidebarContent(controller: controller),
         bottom: const _BottomWidget(),
       ),
       child: const _BodyContent(),
@@ -88,9 +90,9 @@ class _SearchFieldState extends State<_SearchField> {
   void initState() {
     super.initState();
     _controller.addListener(() {
-      context
-          .read<ToolsFeature>()
-          .accept(ToolsMessage.updateQuery(_controller.text));
+      context.read<ToolsFeature>().accept(
+        ToolsMessage.updateQuery(_controller.text),
+      );
     });
   }
 
@@ -112,20 +114,14 @@ class _SearchFieldState extends State<_SearchField> {
 
   @override
   Widget build(BuildContext context) {
-    return MacosSearchField(
-      controller: _controller,
-      minLines: 1,
-      maxLines: 1,
-    );
+    return MacosSearchField(controller: _controller, minLines: 1, maxLines: 1);
   }
 }
 
 class _SidebarContent extends StatelessWidget {
   final ScrollController controller;
 
-  const _SidebarContent({
-    required this.controller,
-  });
+  const _SidebarContent({required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -146,9 +142,9 @@ class _SidebarContent extends StatelessWidget {
                   leading: MacosIcon(tool.icon),
                 ),
                 onClick: () {
-                  context
-                      .read<ToolsFeature>()
-                      .accept(ToolsMessage.selectTool(results[i]));
+                  context.read<ToolsFeature>().accept(
+                    ToolsMessage.selectTool(results[i]),
+                  );
                 },
                 selected: results[i] == state.selectedToolId,
               );
@@ -166,10 +162,12 @@ class _SidebarContent extends StatelessWidget {
           items: state.toolIds
               .map(ToolsRegistry.toolById)
               .nonNulls
-              .map((tool) => SidebarItem(
-                    leading: MacosIcon(tool.icon),
-                    label: Text(tool.buildTitle(context)),
-                  ))
+              .map(
+                (tool) => SidebarItem(
+                  leading: MacosIcon(tool.icon),
+                  label: Text(tool.buildTitle(context)),
+                ),
+              )
               .toList(growable: false),
         );
       },
@@ -210,7 +208,7 @@ class _BottomWidget extends StatelessWidget {
 
         return DefaultTextStyle.merge(
           style: theme.typography.caption1.copyWith(
-            color: theme.typography.caption1.color?.withOpacity(0.7),
+            color: theme.typography.caption1.color?.withValues(alpha: 0.7),
           ),
           child: Text(text),
         );

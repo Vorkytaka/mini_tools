@@ -15,10 +15,7 @@ final class SqliteEffectHandler
   StreamSubscription? _subscription;
 
   @override
-  Future<void> call(
-    SqliteEffect effect,
-    MsgEmitter<SqliteMsg> emit,
-  ) async {
+  Future<void> call(SqliteEffect effect, MsgEmitter<SqliteMsg> emit) async {
     switch (effect) {
       case ExecuteEffect():
         return _execute(effect, emit);
@@ -67,9 +64,9 @@ final class SqliteEffectHandler
         Disconnect() => const Disconnected(),
         InMemory() => const InMemoryConnection(),
         File() => FileConnection(
-            folder: conn.path,
-            name: context.basename(conn.path),
-          ),
+          folder: conn.path,
+          name: context.basename(conn.path),
+        ),
       };
 
       emit(SqliteMsg.connectionChanged(stateConn));
@@ -99,17 +96,18 @@ final class SqliteEffectHandler
     final datetime = DateTime.now();
 
     final queryResult = _databaseHolder.execute(effect.query);
-    final result = queryResult.leftMap(_formatException).fold(
-          ifLeft: (err) => Result.failure(
-            query: query,
-            datetime: datetime,
-            error: err,
-          ),
-          ifRight: (result) => Result.success(
-            query: query,
-            datetime: datetime,
-            result: result,
-          ),
+    final result = queryResult
+        .leftMap(_formatException)
+        .fold(
+          ifLeft:
+              (err) =>
+                  Result.failure(query: query, datetime: datetime, error: err),
+          ifRight:
+              (result) => Result.success(
+                query: query,
+                datetime: datetime,
+                result: result,
+              ),
         );
 
     emit(SqliteMsg.queryResult(result));
@@ -125,7 +123,7 @@ final class SqliteEffectHandler
         .map(
           (tableName) => (
             tableName,
-            _databaseHolder.rawExecute(_tableSchemaQuery(tableName))
+            _databaseHolder.rawExecute(_tableSchemaQuery(tableName)),
           ),
         )
         .map(_getTableInfo)
@@ -139,17 +137,16 @@ final class SqliteEffectHandler
   }
 
   static TableInfo _getTableInfo(
-      (String, Iterable<Map<String, dynamic>>) data) {
+    (String, Iterable<Map<String, dynamic>>) data,
+  ) {
     return TableInfo(
-        name: data.$1, columns: data.$2.map(_getColumnInfo).toList());
+      name: data.$1,
+      columns: data.$2.map(_getColumnInfo).toList(),
+    );
   }
 
   static ColumnInfo _getColumnInfo(Map<String, dynamic> row) {
-    return ColumnInfo(
-      name: row['name'],
-      type: row['type'],
-      pk: row['pk'] == 1,
-    );
+    return ColumnInfo(name: row['name'], type: row['type'], pk: row['pk'] == 1);
   }
 
   static const _tablesQuery =
