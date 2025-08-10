@@ -9,7 +9,10 @@ extension QrCodeVisualDataUtils on QrCodeVisualData {
         roundFactor: 0,
         color: foregroundColor,
       ),
-      QrCodeShape.circle => PrettyQrSquaresSymbol(color: foregroundColor),
+      QrCodeShape.circle => PrettyQrSquaresSymbol(
+        color: foregroundColor,
+        rounding: 1,
+      ),
       QrCodeShape.smooth => PrettyQrSmoothSymbol(
         roundFactor: 1,
         color: foregroundColor,
