@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 236
+/// Strings: 235
 ///
-/// Built on 2025-05-11 at 22:45 UTC
+/// Built on 2025-08-10 at 19:15 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -227,6 +227,7 @@ class _StringsCommonEn {
   String get percent => '%';
   String get fileDropTitle => 'Drop file here';
   String get cancel => 'Cancel';
+  String get confirm => 'Confirm';
   String get paste => 'Paste';
   String get and => 'and';
   String get on => 'on';
@@ -459,18 +460,10 @@ class _StringsQrCodeEn {
 
   // Translations
   String get title => 'QR Code Generator';
-  late final _StringsQrCodeCorrectionLevelEn correctionLevel =
-      _StringsQrCodeCorrectionLevelEn._(_root);
   String get testBeforeUse => 'Always test a QR code before using it';
-  late final _StringsQrCodeExportTypeEn exportType =
-      _StringsQrCodeExportTypeEn._(_root);
-  late final _StringsQrCodeShapesEn shapes = _StringsQrCodeShapesEn._(_root);
-  String get foregroundColorTitle => 'Foreground color:';
-  String get backgroundColorTitle => 'Background color:';
-  String get exportSizeTitle => 'Export size:';
-  String get exportSizePx => 'px';
-  String exportSizeHint({required Object from, required Object to}) =>
-      'From ${from} to ${to} pixels';
+  late final _StringsQrCodeExportEn export = _StringsQrCodeExportEn._(_root);
+  late final _StringsQrCodeSettingsEn settings =
+      _StringsQrCodeSettingsEn._(_root);
 }
 
 // Path: common.dayOfWeek
@@ -749,44 +742,38 @@ class _StringsCronErrorsEn {
       'Step must be 1 to ${to}, but got ${value}';
 }
 
-// Path: qrCode.correctionLevel
-class _StringsQrCodeCorrectionLevelEn {
-  _StringsQrCodeCorrectionLevelEn._(this._root);
+// Path: qrCode.export
+class _StringsQrCodeExportEn {
+  _StringsQrCodeExportEn._(this._root);
 
   final Translations _root; // ignore: unused_field
 
   // Translations
-  String get title => 'Error Correction:';
-  String get l => 'L (7%)';
-  String get m => 'M (15%)';
-  String get q => 'Q (25%)';
-  String get h => 'H (30%)';
+  String get title => 'Export';
+  late final _StringsQrCodeExportExportSizeEn exportSize =
+      _StringsQrCodeExportExportSizeEn._(_root);
+  late final _StringsQrCodeExportExportTypeEn exportType =
+      _StringsQrCodeExportExportTypeEn._(_root);
+  String get copy => 'Copy';
+  String get save => 'Save';
 }
 
-// Path: qrCode.exportType
-class _StringsQrCodeExportTypeEn {
-  _StringsQrCodeExportTypeEn._(this._root);
+// Path: qrCode.settings
+class _StringsQrCodeSettingsEn {
+  _StringsQrCodeSettingsEn._(this._root);
 
   final Translations _root; // ignore: unused_field
 
   // Translations
-  String get png => 'PNG';
-  String get jpg => 'JPG';
-  String get svg => 'SVG';
-}
-
-// Path: qrCode.shapes
-class _StringsQrCodeShapesEn {
-  _StringsQrCodeShapesEn._(this._root);
-
-  final Translations _root; // ignore: unused_field
-
-  // Translations
-  String get title => 'Shape Style:';
-  String get square => 'Squares';
-  String get circle => 'Circles';
-  String get smooth => 'Smooth';
-  String get svgWarning => 'Shape style remain unchanged in SVG format';
+  String get title => 'Settings';
+  late final _StringsQrCodeSettingsErrorCorrectionEn errorCorrection =
+      _StringsQrCodeSettingsErrorCorrectionEn._(_root);
+  late final _StringsQrCodeSettingsShapeStyleEn shapeStyle =
+      _StringsQrCodeSettingsShapeStyleEn._(_root);
+  late final _StringsQrCodeSettingsForegroundColorEn foregroundColor =
+      _StringsQrCodeSettingsForegroundColorEn._(_root);
+  late final _StringsQrCodeSettingsBackgroundColorEn backgroundColor =
+      _StringsQrCodeSettingsBackgroundColorEn._(_root);
 }
 
 // Path: cron.cronFormat.minutes
@@ -888,6 +875,84 @@ class _StringsCronCronFormatDaysOfWeekEn {
       );
 }
 
+// Path: qrCode.export.exportSize
+class _StringsQrCodeExportExportSizeEn {
+  _StringsQrCodeExportExportSizeEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String title({required Object px}) => 'Export size (${px}px)';
+  String get custom => 'Custom';
+  late final _StringsQrCodeExportExportSizeDialogEn dialog =
+      _StringsQrCodeExportExportSizeDialogEn._(_root);
+}
+
+// Path: qrCode.export.exportType
+class _StringsQrCodeExportExportTypeEn {
+  _StringsQrCodeExportExportTypeEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Export type';
+  String get png => 'PNG';
+  String get jpeg => 'JPEG';
+}
+
+// Path: qrCode.settings.errorCorrection
+class _StringsQrCodeSettingsErrorCorrectionEn {
+  _StringsQrCodeSettingsErrorCorrectionEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String title({required Object percent}) => 'Error correction (${percent})';
+  String get hint =>
+      'QR codes can still work even when parts are damaged or dirty because they store backup data.\n\nYou can choose how much backup data to include - more backup means the code survives more damage but becomes bigger.\n\nUse less backup for screens, more backup for printed codes that might get scratched.';
+}
+
+// Path: qrCode.settings.shapeStyle
+class _StringsQrCodeSettingsShapeStyleEn {
+  _StringsQrCodeSettingsShapeStyleEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Shape style';
+}
+
+// Path: qrCode.settings.foregroundColor
+class _StringsQrCodeSettingsForegroundColorEn {
+  _StringsQrCodeSettingsForegroundColorEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Foreground color';
+}
+
+// Path: qrCode.settings.backgroundColor
+class _StringsQrCodeSettingsBackgroundColorEn {
+  _StringsQrCodeSettingsBackgroundColorEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Background color';
+}
+
+// Path: qrCode.export.exportSize.dialog
+class _StringsQrCodeExportExportSizeDialogEn {
+  _StringsQrCodeExportExportSizeDialogEn._(this._root);
+
+  final Translations _root; // ignore: unused_field
+
+  // Translations
+  String get title => 'Export size';
+  String get body => 'Enter the size in pixels (px):';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -916,6 +981,8 @@ extension on Translations {
         return 'Drop file here';
       case 'common.cancel':
         return 'Cancel';
+      case 'common.confirm':
+        return 'Confirm';
       case 'common.paste':
         return 'Paste';
       case 'common.and':
@@ -1352,45 +1419,40 @@ extension on Translations {
         return 'New text:';
       case 'qrCode.title':
         return 'QR Code Generator';
-      case 'qrCode.correctionLevel.title':
-        return 'Error Correction:';
-      case 'qrCode.correctionLevel.l':
-        return 'L (7%)';
-      case 'qrCode.correctionLevel.m':
-        return 'M (15%)';
-      case 'qrCode.correctionLevel.q':
-        return 'Q (25%)';
-      case 'qrCode.correctionLevel.h':
-        return 'H (30%)';
       case 'qrCode.testBeforeUse':
         return 'Always test a QR code before using it';
-      case 'qrCode.exportType.png':
+      case 'qrCode.export.title':
+        return 'Export';
+      case 'qrCode.export.exportSize.title':
+        return ({required Object px}) => 'Export size (${px}px)';
+      case 'qrCode.export.exportSize.custom':
+        return 'Custom';
+      case 'qrCode.export.exportSize.dialog.title':
+        return 'Export size';
+      case 'qrCode.export.exportSize.dialog.body':
+        return 'Enter the size in pixels (px):';
+      case 'qrCode.export.exportType.title':
+        return 'Export type';
+      case 'qrCode.export.exportType.png':
         return 'PNG';
-      case 'qrCode.exportType.jpg':
-        return 'JPG';
-      case 'qrCode.exportType.svg':
-        return 'SVG';
-      case 'qrCode.shapes.title':
-        return 'Shape Style:';
-      case 'qrCode.shapes.square':
-        return 'Squares';
-      case 'qrCode.shapes.circle':
-        return 'Circles';
-      case 'qrCode.shapes.smooth':
-        return 'Smooth';
-      case 'qrCode.shapes.svgWarning':
-        return 'Shape style remain unchanged in SVG format';
-      case 'qrCode.foregroundColorTitle':
-        return 'Foreground color:';
-      case 'qrCode.backgroundColorTitle':
-        return 'Background color:';
-      case 'qrCode.exportSizeTitle':
-        return 'Export size:';
-      case 'qrCode.exportSizePx':
-        return 'px';
-      case 'qrCode.exportSizeHint':
-        return ({required Object from, required Object to}) =>
-            'From ${from} to ${to} pixels';
+      case 'qrCode.export.exportType.jpeg':
+        return 'JPEG';
+      case 'qrCode.export.copy':
+        return 'Copy';
+      case 'qrCode.export.save':
+        return 'Save';
+      case 'qrCode.settings.title':
+        return 'Settings';
+      case 'qrCode.settings.errorCorrection.title':
+        return ({required Object percent}) => 'Error correction (${percent})';
+      case 'qrCode.settings.errorCorrection.hint':
+        return 'QR codes can still work even when parts are damaged or dirty because they store backup data.\n\nYou can choose how much backup data to include - more backup means the code survives more damage but becomes bigger.\n\nUse less backup for screens, more backup for printed codes that might get scratched.';
+      case 'qrCode.settings.shapeStyle.title':
+        return 'Shape style';
+      case 'qrCode.settings.foregroundColor.title':
+        return 'Foreground color';
+      case 'qrCode.settings.backgroundColor.title':
+        return 'Background color';
       default:
         return null;
     }

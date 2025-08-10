@@ -11,6 +11,7 @@
     "percent": "%",
     "file_drop_title": "Drop file here",
     "cancel": "Cancel",
+    "confirm": "Confirm",
     "paste": "Paste",
     "and": "and",
     "on": "on",
@@ -305,30 +306,40 @@
   },
   "qr_code": {
     "title": "QR Code Generator",
-    "correction_level": {
-      "title": "Error Correction:",
-      "L": "L (7%)",
-      "M": "M (15%)",
-      "Q": "Q (25%)",
-      "H": "H (30%)"
-    },
     "test_before_use": "Always test a QR code before using it",
-    "export_type": {
-      "png": "PNG",
-      "jpg": "JPG",
-      "svg": "SVG"
+    "export": {
+      "title": "Export",
+      "export_size": {
+        "title": "Export size (${px}px)",
+        "custom": "Custom",
+        "dialog": {
+          "title": "Export size",
+          "body": "Enter the size in pixels (px):"
+        }
+      },
+      "export_type": {
+        "title": "Export type",
+        "png": "PNG",
+        "jpeg": "JPEG"
+      },
+      "copy": "Copy",
+      "save": "Save"
     },
-    "shapes": {
-      "title": "Shape Style:",
-      "square": "Squares",
-      "circle": "Circles",
-      "smooth": "Smooth",
-      "svg_warning": "Shape style remain unchanged in SVG format"
-    },
-    "foreground_color_title": "Foreground color:",
-    "background_color_title": "Background color:",
-    "export_size_title": "Export size:",
-    "export_size_px": "px",
-    "export_size_hint": "From $from to $to pixels"
+    "settings": {
+      "title": "Settings",
+      "error_correction": {
+        "title": "Error correction ($percent)",
+        "hint": "QR codes can still work even when parts are damaged or dirty because they store backup data.\n\nYou can choose how much backup data to include - more backup means the code survives more damage but becomes bigger.\n\nUse less backup for screens, more backup for printed codes that might get scratched."
+      },
+      "shape_style": {
+        "title": "Shape style"
+      },
+      "foreground_color": {
+        "title": "Foreground color"
+      },
+      "background_color": {
+        "title": "Background color"
+      }
+    }
   }
 }
