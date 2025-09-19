@@ -4,7 +4,7 @@ import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
-import 'common/copy_overlay/copy_overlay.dart';
+import 'core/presentation/copy_overlay.dart';
 import 'core/common/datetime_inherited_model.dart';
 import 'core/presentation/macos_ui_hacks.dart';
 import 'features/tools/tools_feature.dart';
