@@ -8,7 +8,7 @@ import 'features/hash/hash_tool.dart';
 import 'features/json_formatter/json_formatter_tool.dart';
 import 'features/material_color/material_colors_tool.dart';
 import 'features/number_base_converter/number_base_converter_tool.dart';
-import 'tools/percentages_tool.dart';
+import 'features/percentages_calculator/percentages_tool.dart';
 import 'features/qr_code_generator/qr_code_tool.dart';
 import 'tools/regexp/regexp_tool.dart';
 import 'tools/sqlite/sqlite_tool.dart';
