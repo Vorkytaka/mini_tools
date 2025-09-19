@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../tools.dart';
-import '../../../tools/datetime_converter/datetime_converter_tool.dart';
+import '../../datetime_converter/datetime_converter_tool.dart';
 
 part 'tools_state.freezed.dart';
 

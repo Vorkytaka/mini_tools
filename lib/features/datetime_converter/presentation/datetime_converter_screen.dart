@@ -6,14 +6,14 @@ import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:timezone/timezone.dart';
 
-import '../../common/datetime.dart';
-import '../../common/datetime_inherited_model.dart';
-import '../../common/duration.dart';
-import '../../common/macos_read_only_field.dart';
-import '../../common/padding.dart';
-import '../../common/text_styles.dart';
-import '../../i18n/strings.g.dart';
-import 'feature/datetime_converter_feature.dart';
+import '../../../common/datetime.dart';
+import '../../../common/datetime_inherited_model.dart';
+import '../../../common/duration.dart';
+import '../../../common/macos_read_only_field.dart';
+import '../../../common/padding.dart';
+import '../../../common/text_styles.dart';
+import '../../../i18n/strings.g.dart';
+import '../domain/datetime_converter_feature.dart';
 
 extension on InputType {
   String format(BuildContext context) {

@@ -5,8 +5,8 @@ import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import '../../i18n/strings.g.dart';
 import '../../tool/feature_tool.dart';
 import '../../tool/tool.dart';
-import 'datetime_converter_screen.dart';
-import 'feature/datetime_converter_feature.dart';
+import 'domain/datetime_converter_feature.dart';
+import 'presentation/datetime_converter_screen.dart';
 
 final class DatetimeConverterTool {
   const DatetimeConverterTool._();

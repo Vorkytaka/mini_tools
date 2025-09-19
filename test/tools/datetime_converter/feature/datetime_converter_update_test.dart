@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mini_tools/tools/datetime_converter/feature/datetime_converter_feature.dart';
-import 'package:mini_tools/tools/datetime_converter/feature/datetime_converter_update.dart';
+import 'package:mini_tools/features/datetime_converter/domain/datetime_converter_feature.dart';
 import 'package:timezone/timezone.dart';
 
 void main() {
