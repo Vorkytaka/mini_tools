@@ -13,7 +13,7 @@ import 'features/qr_code_generator/qr_code_tool.dart';
 import 'tools/regexp/regexp_tool.dart';
 import 'tools/sqlite/sqlite_tool.dart';
 import 'tools/text_diff/text_diff_tool.dart';
-import 'tools/uuid/uuid_tool.dart';
+import 'features/uuid_generator/uuid_tool.dart';
 
 class ToolsRegistry {
   static final _tools = <String, Tool>{

@@ -4,9 +4,9 @@ import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/enums.dart';
 
-import '../../common/padding.dart';
-import '../../i18n/strings.g.dart';
-import 'feature/uuid_feature.dart';
+import '../../../common/padding.dart';
+import '../../../i18n/strings.g.dart';
+import '../domain/uuid_feature.dart';
 
 class UuidToolScreen extends StatelessWidget {
   const UuidToolScreen({super.key});

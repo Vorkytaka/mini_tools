@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../i18n/strings.g.dart';
 import '../../tool/feature_tool.dart';
 import '../../tool/tool.dart';
-import 'feature/uuid_feature.dart';
-import 'uuid_tool_screen.dart';
+import 'domain/uuid_feature.dart';
+import 'presentation/uuid_tool_screen.dart';
 
 final class UuidTool {
   const UuidTool._();
