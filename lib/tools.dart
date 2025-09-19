@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import 'tool/tool.dart';
-import 'tools/color/color_tool.dart';
+import 'features/color_converter/color_tool.dart';
 import 'tools/cron/cron_tool.dart';
 import 'tools/datetime_converter/datetime_converter_tool.dart';
 import 'tools/hash/hash_tool.dart';
