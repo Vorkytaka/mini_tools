@@ -5,7 +5,7 @@ analyzer:
     - lib/i18n/**
     - lib/**.freezed.dart
     - lib/**.g.dart
-    - lib/common/color_picker/**
+    - lib/core/presentation/color_picker/**
 
 # https://dart.dev/guides/language/analysis-options
 linter:

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mini_tools/tools/cron/feature/parser/cron_parser.dart';
+import 'package:mini_tools/features/cron/domain/parser/cron_parser.dart';
 
 void main() {
   group('nextRun', () {

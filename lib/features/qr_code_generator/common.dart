@@ -1,0 +1,22 @@
+import 'package:pretty_qr_code/pretty_qr_code.dart';
+
+import 'domain/qr_code_feature.dart';
+
+extension QrCodeVisualDataUtils on QrCodeVisualData {
+  PrettyQrShape get qrCodeShape {
+    return switch (shape) {
+      QrCodeShape.square => PrettyQrSmoothSymbol(
+        roundFactor: 0,
+        color: foregroundColor,
+      ),
+      QrCodeShape.circle => PrettyQrSquaresSymbol(
+        color: foregroundColor,
+        rounding: 1,
+      ),
+      QrCodeShape.smooth => PrettyQrSmoothSymbol(
+        roundFactor: 1,
+        color: foregroundColor,
+      ),
+    };
+  }
+}
