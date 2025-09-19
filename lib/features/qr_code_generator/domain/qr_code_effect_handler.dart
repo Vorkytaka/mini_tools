@@ -12,7 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:super_clipboard/super_clipboard.dart';
 
 import '../../../core/common/color.dart';
-import '../../../common/logger/logger.dart';
+import '../../../core/logger/logger.dart';
 import 'effect/qr_code_effect.dart';
 import 'message/qr_code_message.dart';
 import 'qr_exporter/qr_exporter.dart';

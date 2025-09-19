@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:mini_tea/feature.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../common/logger/logger.dart';
+import '../../core/logger/logger.dart';
 import '../../tools.dart';
 import 'effect/tools_effect.dart';
 import 'message/tools_message.dart';

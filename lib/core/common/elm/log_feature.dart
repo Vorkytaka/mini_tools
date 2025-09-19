@@ -1,6 +1,6 @@
 import 'package:mini_tea/feature.dart';
 
-import '../logger/logger.dart';
+import '../../logger/logger.dart';
 
 final class LogFeature<State, Message, Effect>
     extends ProxyFeature<State, Message, Effect> {

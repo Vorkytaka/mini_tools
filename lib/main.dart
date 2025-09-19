@@ -10,8 +10,8 @@ import 'package:timezone/timezone.dart' as tz;
 import 'package:window_manager/window_manager.dart';
 
 import 'app.dart';
-import 'common/logger/logger.dart';
-import 'common/logger/logging_logger.dart';
+import 'core/logger/logger.dart';
+import 'core/logger/logging_logger.dart';
 import 'core/common/timezone_holder.dart';
 import 'i18n/strings.g.dart';
 
