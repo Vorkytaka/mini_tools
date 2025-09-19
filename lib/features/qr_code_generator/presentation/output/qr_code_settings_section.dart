@@ -4,9 +4,9 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../common/ui/hint_button.dart';
-import '../../../../common/ui/macos_ui_hacks.dart';
-import '../../../../common/ui/mini_color_picker.dart';
+import '../../../../core/presentation/hint_button.dart';
+import '../../../../core/presentation/macos_ui_hacks.dart';
+import '../../../../core/presentation/mini_color_picker.dart';
 import '../../../../i18n/strings.g.dart';
 import '../../domain/qr_code_feature.dart';
 import '../qr_code_screen.dart';
