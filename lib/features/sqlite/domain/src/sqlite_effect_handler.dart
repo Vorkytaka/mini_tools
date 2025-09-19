@@ -4,7 +4,7 @@ import 'package:mini_tea/feature.dart';
 import 'package:path/path.dart';
 import 'package:sqlite3/sqlite3.dart';
 
-import '../../database_holder.dart';
+import '../../../../features/sqlite/database_holder.dart';
 import 'effect/sqlite_effect.dart';
 import 'msg/sqlite_msg.dart';
 import 'state/sqlite_state.dart';

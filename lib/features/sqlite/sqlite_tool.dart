@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../i18n/strings.g.dart';
 import '../../tool/feature_tool.dart';
 import '../../tool/tool.dart';
-import 'feature/sqlite_feature.dart';
-import 'sqlite.dart';
+import 'domain/sqlite_feature.dart';
+import 'presentation/sqlite.dart';
 
 final class SqliteTool {
   const SqliteTool._();

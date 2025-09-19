@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
 
-import 'feature/sqlite_feature.dart';
+import '../domain/sqlite_feature.dart';
 
 typedef SqliteFeatureBuilder = FeatureBuilder<SqliteFeature, SqliteState>;
 

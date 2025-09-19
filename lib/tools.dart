@@ -11,7 +11,7 @@ import 'features/number_base_converter/number_base_converter_tool.dart';
 import 'features/percentages_calculator/percentages_tool.dart';
 import 'features/qr_code_generator/qr_code_tool.dart';
 import 'features/regexp/regexp_tool.dart';
-import 'tools/sqlite/sqlite_tool.dart';
+import 'features/sqlite/sqlite_tool.dart';
 import 'tools/text_diff/text_diff_tool.dart';
 import 'features/uuid_generator/uuid_tool.dart';
 
