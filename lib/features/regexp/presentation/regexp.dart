@@ -6,9 +6,9 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../common/padding.dart';
-import '../../i18n/strings.g.dart';
-import 'feature/regexp_feature.dart';
+import '../../../common/padding.dart';
+import '../../../i18n/strings.g.dart';
+import '../domain/regexp_feature.dart';
 
 class RegExpToolScreen extends StatelessWidget {
   const RegExpToolScreen({super.key});

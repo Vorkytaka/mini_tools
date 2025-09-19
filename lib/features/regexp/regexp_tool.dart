@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../i18n/strings.g.dart';
 import '../../tool/feature_tool.dart';
 import '../../tool/tool.dart';
-import 'feature/regexp_feature.dart';
-import 'regexp.dart';
+import 'domain/regexp_feature.dart';
+import 'presentation/regexp.dart';
 
 final class RegExpTool {
   const RegExpTool._();
