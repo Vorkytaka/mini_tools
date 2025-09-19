@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import 'tool.dart';
+import '../tool.dart';
 
 typedef TitleBuilder = String Function(BuildContext context);
 

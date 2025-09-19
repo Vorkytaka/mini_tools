@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../i18n/strings.g.dart';
-import '../../tool/feature_tool.dart';
-import '../../tool/tool.dart';
+import '../../core/tool/impl/feature_tool.dart';
+import '../../core/tool/tool.dart';
 import 'domain/uuid_feature.dart';
 import 'presentation/uuid_tool_screen.dart';
 
