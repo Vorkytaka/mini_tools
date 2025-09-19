@@ -8,7 +8,7 @@ import '../../../../common/ui/hint_button.dart';
 import '../../../../common/ui/macos_ui_hacks.dart';
 import '../../../../common/ui/mini_color_picker.dart';
 import '../../../../i18n/strings.g.dart';
-import '../../feature/qr_code_feature.dart';
+import '../../domain/qr_code_feature.dart';
 import '../qr_code_screen.dart';
 import 'title_with_selector.dart';
 

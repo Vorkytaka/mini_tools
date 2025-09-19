@@ -1,6 +1,6 @@
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
-import 'feature/state/qr_code_state.dart';
+import 'domain/qr_code_feature.dart';
 
 extension QrCodeVisualDataUtils on QrCodeVisualData {
   PrettyQrShape get qrCodeShape {

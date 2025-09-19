@@ -4,7 +4,7 @@ import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
 import '../../common.dart';
-import '../../feature/qr_code_feature.dart';
+import '../../domain/qr_code_feature.dart';
 import 'qr_code_output_section.dart';
 
 class QrCodeOutputSide extends StatelessWidget {

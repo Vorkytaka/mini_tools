@@ -7,7 +7,7 @@ import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../i18n/strings.g.dart';
-import '../../feature/qr_code_feature.dart';
+import '../../domain/qr_code_feature.dart';
 import '../qr_code_screen.dart';
 import 'title_with_selector.dart';
 

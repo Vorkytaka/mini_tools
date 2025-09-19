@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import '../../../common/padding.dart';
 import '../../../common/ui/input_text.dart';
 import '../../../i18n/strings.g.dart';
-import '../feature/qr_code_feature.dart';
+import '../domain/qr_code_feature.dart';
 import 'output/qr_code_output.dart';
 
 part 'qr_code_extensions.dart';
