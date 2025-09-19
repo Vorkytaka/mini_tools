@@ -5,7 +5,7 @@ import 'features/color_converter/color_tool.dart';
 import 'features/cron/cron_tool.dart';
 import 'features/datetime_converter/datetime_converter_tool.dart';
 import 'features/hash/hash_tool.dart';
-import 'tools/json_formatter/json_formatter_tool.dart';
+import 'features/json_formatter/json_formatter_tool.dart';
 import 'tools/material_color/material_colors_tool.dart';
 import 'tools/number_base_converter/number_base_converter_tool.dart';
 import 'tools/percentages_tool.dart';

@@ -11,11 +11,13 @@ import '../../../common/macos_code_editor.dart';
 import '../../../common/padding.dart';
 import '../../../common/text_styles.dart';
 import '../../../i18n/strings.g.dart';
-import '../feature/json_feature.dart';
-import '../feature/state/json_formatter_state.dart';
+import '../domain/json_feature.dart';
+import '../domain/state/json_formatter_state.dart';
 
 part 'json_formatter_extensions.dart';
+
 part 'json_formatter_input_side.dart';
+
 part 'json_formatter_output_side.dart';
 
 class JsonFormatterScreen extends StatelessWidget {

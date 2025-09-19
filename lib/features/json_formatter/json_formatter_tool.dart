@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../i18n/strings.g.dart';
 import '../../tool/feature_tool.dart';
 import '../../tool/tool.dart';
-import 'feature/json_feature.dart';
-import 'ui/json_formatter_screen.dart';
+import 'domain/json_feature.dart';
+import 'presentation/json_formatter_screen.dart';
 
 final class JsonFormatterTool {
   const JsonFormatterTool._();
