@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 
-import '../../i18n/strings.g.dart';
 import '../../core/tool/impl/feature_tool.dart';
 import '../../core/tool/tool.dart';
+import '../../i18n/strings.g.dart';
 import 'domain/datetime_converter_feature.dart';
 import 'presentation/datetime_converter_screen.dart';
 

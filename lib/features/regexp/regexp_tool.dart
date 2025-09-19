@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../i18n/strings.g.dart';
 import '../../core/tool/impl/feature_tool.dart';
 import '../../core/tool/tool.dart';
+import '../../i18n/strings.g.dart';
 import 'domain/regexp_feature.dart';
 import 'presentation/regexp.dart';
 

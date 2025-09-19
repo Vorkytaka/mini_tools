@@ -5,9 +5,9 @@ import 'package:macos_ui/macos_ui.dart';
 
 import '../../core/common/macos_read_only_field.dart';
 import '../../core/common/num.dart';
-import '../../i18n/strings.g.dart';
 import '../../core/tool/impl/base_tool.dart';
 import '../../core/tool/tool.dart';
+import '../../i18n/strings.g.dart';
 
 final class PercentagesTool {
   static const id = 'percentages';

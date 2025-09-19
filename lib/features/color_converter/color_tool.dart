@@ -7,9 +7,9 @@ import 'package:macos_ui/macos_ui.dart';
 
 import '../../core/common/color.dart';
 import '../../core/common/macos_read_only_field.dart';
-import '../../i18n/strings.g.dart';
 import '../../core/tool/impl/bloc_tool.dart';
 import '../../core/tool/tool.dart';
+import '../../i18n/strings.g.dart';
 import 'color_cubit.dart';
 
 final class ColorConverterTool {

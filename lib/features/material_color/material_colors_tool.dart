@@ -5,12 +5,11 @@ import 'package:responsive_grid/responsive_grid.dart';
 
 import '../../core/common/color.dart';
 import '../../core/presentation/copy_overlay.dart';
-import '../../i18n/strings.g.dart';
 import '../../core/tool/impl/base_tool.dart';
 import '../../core/tool/tool.dart';
+import '../../i18n/strings.g.dart';
 
 part 'material_color_domain.dart';
-
 part 'material_color_ui.dart';
 
 final class MaterialColorsTool {
