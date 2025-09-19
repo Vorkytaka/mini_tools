@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../i18n/strings.g.dart';
 import '../../tool/feature_tool.dart';
 import '../../tool/tool.dart';
-import 'feature/src/hash_feature.dart';
-import 'hash.dart';
+import 'domain/src/hash_feature.dart';
+import 'presentation/hash_screen.dart';
 
 final class HashCalculatorTool {
   const HashCalculatorTool._();
