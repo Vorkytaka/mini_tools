@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_popup/flutter_popup.dart';
 import 'package:macos_ui/macos_ui.dart';
 
-import '../../common/color_picker/color_picker.dart';
+import 'color_picker/src/color_picker.dart';
 
 class MiniColorPicker extends StatefulWidget {
   final ColorChangedCallback onColorChanged;
