@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hsvcolor_picker/flutter_hsvcolor_picker.dart';
 import 'package:macos_ui/macos_ui.dart';
 
-import '../../common/color.dart';
-import '../../common/macos_read_only_field.dart';
+import '../../core/common/color.dart';
+import '../../core/common/macos_read_only_field.dart';
 import '../../i18n/strings.g.dart';
 import '../../tool/bloc_tool.dart';
 import '../../tool/tool.dart';

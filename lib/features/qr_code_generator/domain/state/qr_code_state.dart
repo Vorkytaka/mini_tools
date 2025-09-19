@@ -2,7 +2,7 @@ import 'package:flutter/painting.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-import '../../../../common/json.dart';
+import '../../../../core/common/json.dart';
 
 part 'qr_code_state.freezed.dart';
 

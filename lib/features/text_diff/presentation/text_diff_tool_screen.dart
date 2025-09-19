@@ -5,7 +5,7 @@ import 'package:linked_scroll_controller/linked_scroll_controller.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:provider/provider.dart';
 
-import '../../../common/padding.dart';
+import '../../../core/common/padding.dart';
 import '../../../i18n/strings.g.dart';
 import '../domain/text_diff_feature.dart';
 

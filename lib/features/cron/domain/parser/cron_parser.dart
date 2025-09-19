@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../common/regexp.dart';
+import '../../../../core/common/regexp.dart';
 import 'exception/cron_exception.dart';
 
 part 'cron_parser.freezed.dart';

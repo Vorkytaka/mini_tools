@@ -11,7 +11,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:super_clipboard/super_clipboard.dart';
 
-import '../../../common/color.dart';
+import '../../../core/common/color.dart';
 import '../../../common/logger/logger.dart';
 import 'effect/qr_code_effect.dart';
 import 'message/qr_code_message.dart';

@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 
-import '../i18n/strings.g.dart';
+import '../../i18n/strings.g.dart';
 
 class FileDropWidget extends StatefulWidget {
   final ValueChanged<XFile?>? onFileDropped;

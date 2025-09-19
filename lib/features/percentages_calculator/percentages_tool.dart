@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 
-import '../../common/macos_read_only_field.dart';
-import '../../common/num.dart';
+import '../../core/common/macos_read_only_field.dart';
+import '../../core/common/num.dart';
 import '../../i18n/strings.g.dart';
 import '../../tool/base_tool.dart';
 import '../../tool/tool.dart';

@@ -5,7 +5,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
 import 'common/copy_overlay/copy_overlay.dart';
-import 'common/datetime_inherited_model.dart';
+import 'core/common/datetime_inherited_model.dart';
 import 'common/ui/macos_ui_hacks.dart';
 import 'features/tools/tools_feature.dart';
 import 'i18n/strings.g.dart';

@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../common/color.dart';
+import '../../core/common/color.dart';
 
 class ColorCubit extends Cubit<ColorState> {
   ColorCubit() : super(const ColorState.init());

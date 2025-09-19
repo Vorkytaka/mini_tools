@@ -6,10 +6,10 @@ import 'package:provider/provider.dart';
 import 'package:re_editor/re_editor.dart';
 import 'package:re_highlight/languages/json.dart';
 
-import '../../../common/code_themes.dart';
-import '../../../common/macos_code_editor.dart';
-import '../../../common/padding.dart';
-import '../../../common/text_styles.dart';
+import '../../../core/common/code_themes.dart';
+import '../../../core/common/macos_code_editor.dart';
+import '../../../core/common/padding.dart';
+import '../../../core/common/text_styles.dart';
 import '../../../i18n/strings.g.dart';
 import '../domain/json_feature.dart';
 import '../domain/state/json_formatter_state.dart';

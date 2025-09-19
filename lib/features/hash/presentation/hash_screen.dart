@@ -9,9 +9,9 @@ import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 
-import '../../../common/file_drop_widget.dart';
-import '../../../common/macos_read_only_field.dart';
-import '../../../common/padding.dart';
+import '../../../core/common/file_drop_widget.dart';
+import '../../../core/common/macos_read_only_field.dart';
+import '../../../core/common/padding.dart';
 import '../../../i18n/strings.g.dart';
 import '../domain/hash_feature.dart';
 import 'hash_feature_utils.dart';

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:rxdart/rxdart.dart';
 import 'package:sqlite3/sqlite3.dart';
 
-import '../../common/either.dart';
+import '../../core/common/either.dart';
 
 sealed class DatabaseHolderConnection {
   const DatabaseHolderConnection._();

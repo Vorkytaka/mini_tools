@@ -5,7 +5,7 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../../common/padding.dart';
+import '../../../core/common/padding.dart';
 import '../../../common/ui/input_text.dart';
 import '../../../i18n/strings.g.dart';
 import '../domain/qr_code_feature.dart';

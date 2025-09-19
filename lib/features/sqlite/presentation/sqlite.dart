@@ -4,10 +4,10 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:re_editor/re_editor.dart';
 import 'package:re_highlight/languages/sql.dart';
 
-import '../../../common/code_themes.dart';
-import '../../../common/file_drop_widget.dart';
-import '../../../common/macos_code_editor.dart';
-import '../../../common/text_styles.dart';
+import '../../../core/common/code_themes.dart';
+import '../../../core/common/file_drop_widget.dart';
+import '../../../core/common/macos_code_editor.dart';
+import '../../../core/common/text_styles.dart';
 import '../../../i18n/strings.g.dart';
 import '../domain/sqlite_feature.dart';
 import 'sqlite_feature_utils.dart';

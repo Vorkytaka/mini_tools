@@ -1,7 +1,7 @@
 import 'package:image/image.dart' as img;
 import 'package:qr_flutter/qr_flutter.dart';
 
-import '../../../../common/color.dart';
+import '../../../../core/common/color.dart';
 import '../state/qr_code_state.dart';
 
 abstract interface class OldQrCodeExporter {

@@ -6,12 +6,12 @@ import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:timezone/timezone.dart';
 
-import '../../../common/datetime.dart';
-import '../../../common/datetime_inherited_model.dart';
-import '../../../common/duration.dart';
-import '../../../common/macos_read_only_field.dart';
-import '../../../common/padding.dart';
-import '../../../common/text_styles.dart';
+import '../../../core/common/datetime.dart';
+import '../../../core/common/datetime_inherited_model.dart';
+import '../../../core/common/duration.dart';
+import '../../../core/common/macos_read_only_field.dart';
+import '../../../core/common/padding.dart';
+import '../../../core/common/text_styles.dart';
 import '../../../i18n/strings.g.dart';
 import '../domain/datetime_converter_feature.dart';
 
