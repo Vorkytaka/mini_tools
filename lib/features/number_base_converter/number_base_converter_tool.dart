@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../i18n/strings.g.dart';
 import '../../tool/feature_tool.dart';
 import '../../tool/tool.dart';
-import 'feature/number_base_feature.dart';
-import 'number_base_converter.dart';
+import 'domain/number_base_feature.dart';
+import 'presentation/number_base_converter.dart';
 
 final class NumberBaseConverterTool {
   const NumberBaseConverterTool._();

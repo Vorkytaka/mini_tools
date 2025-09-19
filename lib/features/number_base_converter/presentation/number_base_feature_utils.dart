@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
 
-import 'feature/number_base_feature.dart';
+import '../domain/number_base_feature.dart';
 
 typedef NumberBaseFeatureBuilder =
     FeatureBuilder<NumberBaseFeature, NumberBaseState>;

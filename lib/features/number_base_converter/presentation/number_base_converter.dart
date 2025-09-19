@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 
-import '../../common/padding.dart';
-import '../../i18n/strings.g.dart';
-import 'feature/number_base_feature.dart';
+import '../../../common/padding.dart';
+import '../../../i18n/strings.g.dart';
+import '../domain/number_base_feature.dart';
 import 'number_base_feature_utils.dart';
 
 class NumberBaseConverter extends StatelessWidget {
