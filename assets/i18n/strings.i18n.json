@@ -307,6 +307,7 @@
   "qr_code": {
     "title": "QR Code Generator",
     "test_before_use": "Always test a QR code before using it",
+    "error_too_many_bytes": "Text too long for QR code. Max is $max bytes.",
     "export": {
       "title": "Export",
       "export_size": {

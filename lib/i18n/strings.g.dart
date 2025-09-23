@@ -4,9 +4,9 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 1
-/// Strings: 235
+/// Strings: 236
 ///
-/// Built on 2025-08-10 at 19:15 UTC
+/// Built on 2025-09-23 at 22:23 UTC
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
@@ -476,6 +476,8 @@ class _StringsQrCodeEn {
   // Translations
   String get title => 'QR Code Generator';
   String get testBeforeUse => 'Always test a QR code before using it';
+  String errorTooManyBytes({required Object max}) =>
+      'Text too long for QR code. Max is ${max} bytes.';
   late final _StringsQrCodeExportEn export = _StringsQrCodeExportEn._(_root);
   late final _StringsQrCodeSettingsEn settings = _StringsQrCodeSettingsEn._(
     _root,
@@ -1440,6 +1442,9 @@ extension on Translations {
         return 'QR Code Generator';
       case 'qrCode.testBeforeUse':
         return 'Always test a QR code before using it';
+      case 'qrCode.errorTooManyBytes':
+        return ({required Object max}) =>
+            'Text too long for QR code. Max is ${max} bytes.';
       case 'qrCode.export.title':
         return 'Export';
       case 'qrCode.export.exportSize.title':
