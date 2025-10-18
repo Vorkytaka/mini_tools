@@ -132,7 +132,7 @@ class __$$UpdateVersionMessageImplCopyWithImpl<$Res>
         null == version
             ? _value.version
             : version // ignore: cast_nullable_to_non_nullable
-                as UuidVersion,
+                  as UuidVersion,
       ),
     );
   }
@@ -309,7 +309,7 @@ class __$$UpdateCountMessageImplCopyWithImpl<$Res>
         null == count
             ? _value.count
             : count // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
       ),
     );
   }
@@ -621,7 +621,7 @@ class __$$SetIdsMessageImplCopyWithImpl<$Res>
         null == ids
             ? _value._ids
             : ids // ignore: cast_nullable_to_non_nullable
-                as List<String>,
+                  as List<String>,
       ),
     );
   }
@@ -799,7 +799,7 @@ class __$$UpdateNamespaceMessageImplCopyWithImpl<$Res>
         null == namespace
             ? _value.namespace
             : namespace // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -977,7 +977,7 @@ class __$$UpdateNameMessageImplCopyWithImpl<$Res>
         null == name
             ? _value.name
             : name // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -1152,7 +1152,7 @@ class __$$UpdateLowerCaseImplCopyWithImpl<$Res>
         null == isLowerCase
             ? _value.isLowerCase
             : isLowerCase // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
       ),
     );
   }

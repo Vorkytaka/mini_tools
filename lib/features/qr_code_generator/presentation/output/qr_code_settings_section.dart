@@ -82,8 +82,8 @@ class _ShapeSelector extends StatelessWidget {
       title: Text(t.qrCode.settings.shapeStyle.title),
       selector: Center(
         child: FeatureBuilder<QrCodeFeature, QrCodeState>(
-          buildWhen:
-              (prev, curr) => prev.visualData.shape != curr.visualData.shape,
+          buildWhen: (prev, curr) =>
+              prev.visualData.shape != curr.visualData.shape,
           builder: (context, state) {
             return SizedBox(
               width: double.infinity,
@@ -122,8 +122,8 @@ class _CorrectionLevelSelector extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FeatureBuilder<QrCodeFeature, QrCodeState>(
-            buildWhen:
-                (prev, curr) => prev.correctionLevel != curr.correctionLevel,
+            buildWhen: (prev, curr) =>
+                prev.correctionLevel != curr.correctionLevel,
             builder: (context, state) {
               return Text(
                 t.qrCode.settings.errorCorrection.title(
@@ -139,8 +139,8 @@ class _CorrectionLevelSelector extends StatelessWidget {
       ),
       selector: Center(
         child: FeatureBuilder<QrCodeFeature, QrCodeState>(
-          buildWhen:
-              (prev, curr) => prev.correctionLevel != curr.correctionLevel,
+          buildWhen: (prev, curr) =>
+              prev.correctionLevel != curr.correctionLevel,
           builder: (context, state) {
             return _CorrectionLevelSelectorControl(
               selectedLevel: state.correctionLevel,
@@ -223,10 +223,9 @@ class _ColorPicker extends StatelessWidget {
         children: [
           for (final color in colorPreset)
             FeatureBuilder<QrCodeFeature, QrCodeState>(
-              buildWhen:
-                  (prev, curr) =>
-                      colorFromState(prev).toARGB32() !=
-                      colorFromState(curr).toARGB32(),
+              buildWhen: (prev, curr) =>
+                  colorFromState(prev).toARGB32() !=
+                  colorFromState(curr).toARGB32(),
               builder: (context, state) {
                 return _ColorItem(
                   color: color,
@@ -239,16 +238,13 @@ class _ColorPicker extends StatelessWidget {
               },
             ),
           FeatureBuilder<QrCodeFeature, QrCodeState>(
-            buildWhen:
-                (prev, curr) =>
-                    colorFromState(prev).toARGB32() !=
-                    colorFromState(curr).toARGB32(),
+            buildWhen: (prev, curr) =>
+                colorFromState(prev).toARGB32() !=
+                colorFromState(curr).toARGB32(),
             builder: (context, state) {
-              final isSelected =
-                  !colorPreset.any(
-                    (color) =>
-                        color.toARGB32() == colorFromState(state).toARGB32(),
-                  );
+              final isSelected = !colorPreset.any(
+                (color) => color.toARGB32() == colorFromState(state).toARGB32(),
+              );
               final selectedColor = colorFromState(state);
               final isSelectedColorDark =
                   ThemeData.estimateBrightnessForColor(selectedColor) ==
@@ -266,16 +262,15 @@ class _ColorPicker extends StatelessWidget {
                     decoration: BoxDecoration(
                       border: Border.all(
                         width: 1.5,
-                        color:
-                            isSelected
-                                ? MacosColorProvider.getActiveColor(
-                                  accentColor:
-                                      theme.accentColor ?? AccentColor.blue,
-                                  isDarkModeEnabled:
-                                      theme.brightness == Brightness.dark,
-                                  isWindowMain: true,
-                                )
-                                : Colors.transparent,
+                        color: isSelected
+                            ? MacosColorProvider.getActiveColor(
+                                accentColor:
+                                    theme.accentColor ?? AccentColor.blue,
+                                isDarkModeEnabled:
+                                    theme.brightness == Brightness.dark,
+                                isWindowMain: true,
+                              )
+                            : Colors.transparent,
                       ),
                     ),
                     child: Padding(
@@ -289,8 +284,9 @@ class _ColorPicker extends StatelessWidget {
                         height: 20,
                         child: MacosIcon(
                           size: 16,
-                          color:
-                              isSelectedColorDark ? Colors.white : Colors.black,
+                          color: isSelectedColorDark
+                              ? Colors.white
+                              : Colors.black,
                           Icons.colorize,
                         ),
                       ),
@@ -327,14 +323,13 @@ class _ColorItem extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border.all(
             width: 1.5,
-            color:
-                isSelected
-                    ? MacosColorProvider.getActiveColor(
-                      accentColor: theme.accentColor ?? AccentColor.blue,
-                      isDarkModeEnabled: theme.brightness == Brightness.dark,
-                      isWindowMain: true,
-                    )
-                    : Colors.transparent,
+            color: isSelected
+                ? MacosColorProvider.getActiveColor(
+                    accentColor: theme.accentColor ?? AccentColor.blue,
+                    isDarkModeEnabled: theme.brightness == Brightness.dark,
+                    isWindowMain: true,
+                  )
+                : Colors.transparent,
           ),
         ),
         child: Padding(

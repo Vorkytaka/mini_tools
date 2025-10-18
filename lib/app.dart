@@ -23,32 +23,29 @@ class MiniToolsApp extends StatelessWidget {
       child: DatetimeHolder(
         child: TranslationProvider(
           child: Builder(
-            builder:
-                (context) => MacosApp(
-                  key: _key,
-                  locale: TranslationProvider.of(context).flutterLocale,
-                  supportedLocales: AppLocaleUtils.supportedLocales,
-                  // localizationsDelegates: GlobalMaterialLocalizations.delegates,
-                  home: const _Window(),
-                  builder:
-                      (context, child) => Theme(
-                        data: ThemeData.dark(),
-                        child: CopyOverlay(
-                          child: FeatureListener<ToolsFeature, ToolsState>(
-                            listenWhen:
-                                (prev, curr) =>
-                                    prev.selectedToolId != curr.selectedToolId,
-                            listener: (context, state) {
-                              // We just listen if selected tool changes
-                              // That's mean, that we did change the page
-                              // So, let's just hide copy overlay
-                              CopyOverlay.hideAll(context);
-                            },
-                            child: child!,
-                          ),
-                        ),
-                      ),
+            builder: (context) => MacosApp(
+              key: _key,
+              locale: TranslationProvider.of(context).flutterLocale,
+              supportedLocales: AppLocaleUtils.supportedLocales,
+              // localizationsDelegates: GlobalMaterialLocalizations.delegates,
+              home: const _Window(),
+              builder: (context, child) => Theme(
+                data: ThemeData.dark(),
+                child: CopyOverlay(
+                  child: FeatureListener<ToolsFeature, ToolsState>(
+                    listenWhen: (prev, curr) =>
+                        prev.selectedToolId != curr.selectedToolId,
+                    listener: (context, state) {
+                      // We just listen if selected tool changes
+                      // That's mean, that we did change the page
+                      // So, let's just hide copy overlay
+                      CopyOverlay.hideAll(context);
+                    },
+                    child: child!,
+                  ),
                 ),
+              ),
+            ),
           ),
         ),
       ),
@@ -67,8 +64,8 @@ class _Window extends StatelessWidget {
         minWidth: 200,
         isResizable: false,
         top: const _SearchField(),
-        builder:
-            (context, controller) => _SidebarContent(controller: controller),
+        builder: (context, controller) =>
+            _SidebarContent(controller: controller),
         bottom: const _BottomWidget(),
       ),
       child: const _BodyContent(),

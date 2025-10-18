@@ -109,7 +109,7 @@ class __$$SelectToolMessageImplCopyWithImpl<$Res>
         null == toolId
             ? _value.toolId
             : toolId // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -262,7 +262,7 @@ class __$$UpdateQueryMessageImplCopyWithImpl<$Res>
         null == query
             ? _value.query
             : query // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -415,7 +415,7 @@ class __$$UpdateSearchResultMessageImplCopyWithImpl<$Res>
         null == result
             ? _value._result
             : result // ignore: cast_nullable_to_non_nullable
-                as List<String>,
+                  as List<String>,
       ),
     );
   }
@@ -458,9 +458,10 @@ class _$UpdateSearchResultMessageImpl implements UpdateSearchResultMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateSearchResultMessageImplCopyWith<_$UpdateSearchResultMessageImpl>
-  get copyWith => __$$UpdateSearchResultMessageImplCopyWithImpl<
-    _$UpdateSearchResultMessageImpl
-  >(this, _$identity);
+  get copyWith =>
+      __$$UpdateSearchResultMessageImplCopyWithImpl<
+        _$UpdateSearchResultMessageImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs

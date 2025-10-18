@@ -99,8 +99,8 @@ class _BodyState extends State<_Body> {
               selector: (state) => state.color,
               builder: (context, color) {
                 return _ColorButton(
-                  onChanged:
-                      (color) => context.read<ColorCubit>().setColor(color),
+                  onChanged: (color) =>
+                      context.read<ColorCubit>().setColor(color),
                   color: color,
                 );
               },

@@ -68,10 +68,9 @@ class _ColorItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pretitle = this.pretitle;
-    final title =
-        pretitle != null && pretitle.isNotEmpty
-            ? '$pretitle ${item.title}'
-            : item.title;
+    final title = pretitle != null && pretitle.isNotEmpty
+        ? '$pretitle ${item.title}'
+        : item.title;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -88,10 +87,9 @@ class _ColorItemWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: DefaultTextStyle.merge(
               style: TextStyle(
-                color:
-                    item.brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black,
+                color: item.brightness == Brightness.dark
+                    ? Colors.white
+                    : Colors.black,
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

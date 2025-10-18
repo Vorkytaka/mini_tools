@@ -103,11 +103,10 @@ class _$UpdateInputMessageCopyWithImpl<$Res, $Val extends UpdateInputMessage>
   $Res call({Object? input = null}) {
     return _then(
       _value.copyWith(
-            input:
-                null == input
-                    ? _value.input
-                    : input // ignore: cast_nullable_to_non_nullable
-                        as String,
+            input: null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                      as String,
           )
           as $Val,
     );
@@ -145,7 +144,7 @@ class __$$UpdateBase2MessageImplCopyWithImpl<$Res>
         null == input
             ? _value.input
             : input // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -313,7 +312,7 @@ class __$$UpdateBase8MessageImplCopyWithImpl<$Res>
         null == input
             ? _value.input
             : input // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -481,7 +480,7 @@ class __$$UpdateBase10MessageImplCopyWithImpl<$Res>
         null == input
             ? _value.input
             : input // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -649,7 +648,7 @@ class __$$UpdateBase16MessageImplCopyWithImpl<$Res>
         null == input
             ? _value.input
             : input // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -817,7 +816,7 @@ class __$$UpdateCustomMessageImplCopyWithImpl<$Res>
         null == input
             ? _value.input
             : input // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -995,11 +994,10 @@ class _$UpdateCustomBaseMessageCopyWithImpl<
   $Res call({Object? base = null}) {
     return _then(
       _value.copyWith(
-            base:
-                null == base
-                    ? _value.base
-                    : base // ignore: cast_nullable_to_non_nullable
-                        as int,
+            base: null == base
+                ? _value.base
+                : base // ignore: cast_nullable_to_non_nullable
+                      as int,
           )
           as $Val,
     );
@@ -1038,11 +1036,10 @@ class __$$UpdateCustomBaseMessageImplCopyWithImpl<$Res>
   $Res call({Object? base = null}) {
     return _then(
       _$UpdateCustomBaseMessageImpl(
-        base:
-            null == base
-                ? _value.base
-                : base // ignore: cast_nullable_to_non_nullable
-                    as int,
+        base: null == base
+            ? _value.base
+            : base // ignore: cast_nullable_to_non_nullable
+                  as int,
       ),
     );
   }
@@ -1079,9 +1076,10 @@ class _$UpdateCustomBaseMessageImpl implements _UpdateCustomBaseMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateCustomBaseMessageImplCopyWith<_$UpdateCustomBaseMessageImpl>
-  get copyWith => __$$UpdateCustomBaseMessageImplCopyWithImpl<
-    _$UpdateCustomBaseMessageImpl
-  >(this, _$identity);
+  get copyWith =>
+      __$$UpdateCustomBaseMessageImplCopyWithImpl<
+        _$UpdateCustomBaseMessageImpl
+      >(this, _$identity);
 }
 
 abstract class _UpdateCustomBaseMessage implements UpdateCustomBaseMessage {
@@ -1139,11 +1137,10 @@ class _$SetStateMessageCopyWithImpl<$Res, $Val extends SetStateMessage>
   $Res call({Object? state = null}) {
     return _then(
       _value.copyWith(
-            state:
-                null == state
-                    ? _value.state
-                    : state // ignore: cast_nullable_to_non_nullable
-                        as NumberBaseState,
+            state: null == state
+                ? _value.state
+                : state // ignore: cast_nullable_to_non_nullable
+                      as NumberBaseState,
           )
           as $Val,
     );
@@ -1194,7 +1191,7 @@ class __$$SetStateMessageImplCopyWithImpl<$Res>
         null == state
             ? _value.state
             : state // ignore: cast_nullable_to_non_nullable
-                as NumberBaseState,
+                  as NumberBaseState,
       ),
     );
   }

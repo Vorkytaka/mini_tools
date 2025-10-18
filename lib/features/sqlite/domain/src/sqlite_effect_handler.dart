@@ -99,15 +99,10 @@ final class SqliteEffectHandler
     final result = queryResult
         .leftMap(_formatException)
         .fold(
-          ifLeft:
-              (err) =>
-                  Result.failure(query: query, datetime: datetime, error: err),
-          ifRight:
-              (result) => Result.success(
-                query: query,
-                datetime: datetime,
-                result: result,
-              ),
+          ifLeft: (err) =>
+              Result.failure(query: query, datetime: datetime, error: err),
+          ifRight: (result) =>
+              Result.success(query: query, datetime: datetime, result: result),
         );
 
     emit(SqliteMsg.queryResult(result));

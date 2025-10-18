@@ -164,7 +164,7 @@ class __$$LoadedStateMessageImplCopyWithImpl<$Res>
         null == state
             ? _value.state
             : state // ignore: cast_nullable_to_non_nullable
-                as QrCodeState,
+                  as QrCodeState,
       ),
     );
   }
@@ -380,7 +380,7 @@ class __$$UpdateInputMessageImplCopyWithImpl<$Res>
         null == text
             ? _value.text
             : text // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -587,7 +587,7 @@ class __$$UpdateCorrectionLevelMessageImplCopyWithImpl<$Res>
         null == level
             ? _value.level
             : level // ignore: cast_nullable_to_non_nullable
-                as ErrorCorrectionLevel,
+                  as ErrorCorrectionLevel,
       ),
     );
   }
@@ -626,9 +626,10 @@ class _$UpdateCorrectionLevelMessageImpl
   _$$UpdateCorrectionLevelMessageImplCopyWith<
     _$UpdateCorrectionLevelMessageImpl
   >
-  get copyWith => __$$UpdateCorrectionLevelMessageImplCopyWithImpl<
-    _$UpdateCorrectionLevelMessageImpl
-  >(this, _$identity);
+  get copyWith =>
+      __$$UpdateCorrectionLevelMessageImplCopyWithImpl<
+        _$UpdateCorrectionLevelMessageImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -964,7 +965,7 @@ class __$$UpdateExportTypeMessageImplCopyWithImpl<$Res>
         null == type
             ? _value.type
             : type // ignore: cast_nullable_to_non_nullable
-                as ExportType,
+                  as ExportType,
       ),
     );
   }
@@ -1000,9 +1001,10 @@ class _$UpdateExportTypeMessageImpl implements UpdateExportTypeMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateExportTypeMessageImplCopyWith<_$UpdateExportTypeMessageImpl>
-  get copyWith => __$$UpdateExportTypeMessageImplCopyWithImpl<
-    _$UpdateExportTypeMessageImpl
-  >(this, _$identity);
+  get copyWith =>
+      __$$UpdateExportTypeMessageImplCopyWithImpl<
+        _$UpdateExportTypeMessageImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1337,7 +1339,7 @@ class __$$ShapeUpdateMessageImplCopyWithImpl<$Res>
         null == shape
             ? _value.shape
             : shape // ignore: cast_nullable_to_non_nullable
-                as QrCodeShape,
+                  as QrCodeShape,
       ),
     );
   }
@@ -1543,7 +1545,7 @@ class __$$PaddingUpdateMessageImplCopyWithImpl<$Res>
         null == padding
             ? _value.padding
             : padding // ignore: cast_nullable_to_non_nullable
-                as EdgeInsets,
+                  as EdgeInsets,
       ),
     );
   }
@@ -1751,7 +1753,7 @@ class __$$ForegroundColorUpdateMessageImplCopyWithImpl<$Res>
         null == color
             ? _value.color
             : color // ignore: cast_nullable_to_non_nullable
-                as Color,
+                  as Color,
       ),
     );
   }
@@ -1790,9 +1792,10 @@ class _$ForegroundColorUpdateMessageImpl
   _$$ForegroundColorUpdateMessageImplCopyWith<
     _$ForegroundColorUpdateMessageImpl
   >
-  get copyWith => __$$ForegroundColorUpdateMessageImplCopyWithImpl<
-    _$ForegroundColorUpdateMessageImpl
-  >(this, _$identity);
+  get copyWith =>
+      __$$ForegroundColorUpdateMessageImplCopyWithImpl<
+        _$ForegroundColorUpdateMessageImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1962,7 +1965,7 @@ class __$$BackgroundColorUpdateMessageImplCopyWithImpl<$Res>
         null == color
             ? _value.color
             : color // ignore: cast_nullable_to_non_nullable
-                as Color,
+                  as Color,
       ),
     );
   }
@@ -2001,9 +2004,10 @@ class _$BackgroundColorUpdateMessageImpl
   _$$BackgroundColorUpdateMessageImplCopyWith<
     _$BackgroundColorUpdateMessageImpl
   >
-  get copyWith => __$$BackgroundColorUpdateMessageImplCopyWithImpl<
-    _$BackgroundColorUpdateMessageImpl
-  >(this, _$identity);
+  get copyWith =>
+      __$$BackgroundColorUpdateMessageImplCopyWithImpl<
+        _$BackgroundColorUpdateMessageImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2172,7 +2176,7 @@ class __$$ExportSizeUpdateMessageImplCopyWithImpl<$Res>
         null == size
             ? _value.size
             : size // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
       ),
     );
   }
@@ -2208,9 +2212,10 @@ class _$ExportSizeUpdateMessageImpl implements ExportSizeUpdateMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$ExportSizeUpdateMessageImplCopyWith<_$ExportSizeUpdateMessageImpl>
-  get copyWith => __$$ExportSizeUpdateMessageImplCopyWithImpl<
-    _$ExportSizeUpdateMessageImpl
-  >(this, _$identity);
+  get copyWith =>
+      __$$ExportSizeUpdateMessageImplCopyWithImpl<
+        _$ExportSizeUpdateMessageImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs

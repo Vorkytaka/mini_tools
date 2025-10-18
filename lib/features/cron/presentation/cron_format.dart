@@ -168,11 +168,10 @@ extension CronExpressionFormatting on CronExpression {
       single: (value) => t.cron.cronFormat.minutes.single(minute: value),
       range: rangeMapper,
       list: (values) => _formatList(values, _formatMinutePart, t),
-      step:
-          (base, step) => _formatStep(
-            base.rangeMap(rangeMapper),
-            t.cron.cronFormat.minutes.step(n: step, step: step),
-          ),
+      step: (base, step) => _formatStep(
+        base.rangeMap(rangeMapper),
+        t.cron.cronFormat.minutes.step(n: step, step: step),
+      ),
     );
   }
 
@@ -185,11 +184,10 @@ extension CronExpressionFormatting on CronExpression {
       single: (value) => t.cron.cronFormat.hours.single(hour: value),
       range: rangeMapper,
       list: (values) => _formatList(values, _formatHourPart, t),
-      step:
-          (base, step) => _formatStep(
-            base.rangeMap(rangeMapper),
-            t.cron.cronFormat.hours.step(n: step, step: step),
-          ),
+      step: (base, step) => _formatStep(
+        base.rangeMap(rangeMapper),
+        t.cron.cronFormat.hours.step(n: step, step: step),
+      ),
     );
   }
 
@@ -202,11 +200,10 @@ extension CronExpressionFormatting on CronExpression {
       single: (value) => t.cron.cronFormat.days.single(day: value),
       range: rangeMapper,
       list: (values) => _formatList(values, _formatDayPart, t),
-      step:
-          (base, step) => _formatStep(
-            base.rangeMap(rangeMapper),
-            t.cron.cronFormat.days.step(n: step, step: step),
-          ),
+      step: (base, step) => _formatStep(
+        base.rangeMap(rangeMapper),
+        t.cron.cronFormat.days.step(n: step, step: step),
+      ),
     );
   }
 
@@ -220,11 +217,10 @@ extension CronExpressionFormatting on CronExpression {
       single: (v) => v.formatMonth(t),
       range: rangeMapper,
       list: (values) => _formatList(values, (e) => e.formatMonths(t)!, t),
-      step:
-          (base, step) => _formatStep(
-            base.rangeMap(rangeMapper),
-            t.cron.cronFormat.months.step(n: step, step: step),
-          ),
+      step: (base, step) => _formatStep(
+        base.rangeMap(rangeMapper),
+        t.cron.cronFormat.months.step(n: step, step: step),
+      ),
     );
   }
 
@@ -238,11 +234,10 @@ extension CronExpressionFormatting on CronExpression {
       single: (v) => v.formatWeekday(t),
       range: rangeMapper,
       list: (values) => _formatList(values, (e) => e.formatWeekdays(t)!, t),
-      step:
-          (base, step) => _formatStep(
-            base.rangeMap(rangeMapper),
-            t.cron.cronFormat.daysOfWeek.step(n: step, step: step),
-          ),
+      step: (base, step) => _formatStep(
+        base.rangeMap(rangeMapper),
+        t.cron.cronFormat.daysOfWeek.step(n: step, step: step),
+      ),
     );
   }
 

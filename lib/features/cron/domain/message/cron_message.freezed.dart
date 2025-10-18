@@ -80,16 +80,14 @@ class _$CronMessageCopyWithImpl<$Res, $Val extends CronMessage>
   $Res call({Object? input = null, Object? saveToPersist = null}) {
     return _then(
       _value.copyWith(
-            input:
-                null == input
-                    ? _value.input
-                    : input // ignore: cast_nullable_to_non_nullable
-                        as String,
-            saveToPersist:
-                null == saveToPersist
-                    ? _value.saveToPersist
-                    : saveToPersist // ignore: cast_nullable_to_non_nullable
-                        as bool,
+            input: null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                      as String,
+            saveToPersist: null == saveToPersist
+                ? _value.saveToPersist
+                : saveToPersist // ignore: cast_nullable_to_non_nullable
+                      as bool,
           )
           as $Val,
     );
@@ -124,16 +122,14 @@ class __$$InputUpdateMessageImplCopyWithImpl<$Res>
   $Res call({Object? input = null, Object? saveToPersist = null}) {
     return _then(
       _$InputUpdateMessageImpl(
-        input:
-            null == input
-                ? _value.input
-                : input // ignore: cast_nullable_to_non_nullable
-                    as String,
-        saveToPersist:
-            null == saveToPersist
-                ? _value.saveToPersist
-                : saveToPersist // ignore: cast_nullable_to_non_nullable
-                    as bool,
+        input: null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                  as String,
+        saveToPersist: null == saveToPersist
+            ? _value.saveToPersist
+            : saveToPersist // ignore: cast_nullable_to_non_nullable
+                  as bool,
       ),
     );
   }

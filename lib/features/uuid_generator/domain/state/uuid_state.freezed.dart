@@ -70,36 +70,30 @@ class _$UuidStateCopyWithImpl<$Res, $Val extends UuidState>
   }) {
     return _then(
       _value.copyWith(
-            version:
-                null == version
-                    ? _value.version
-                    : version // ignore: cast_nullable_to_non_nullable
-                        as UuidVersion,
-            namespace:
-                null == namespace
-                    ? _value.namespace
-                    : namespace // ignore: cast_nullable_to_non_nullable
-                        as String,
-            name:
-                null == name
-                    ? _value.name
-                    : name // ignore: cast_nullable_to_non_nullable
-                        as String,
-            count:
-                null == count
-                    ? _value.count
-                    : count // ignore: cast_nullable_to_non_nullable
-                        as int,
-            ids:
-                null == ids
-                    ? _value.ids
-                    : ids // ignore: cast_nullable_to_non_nullable
-                        as List<String>,
-            isLowerCase:
-                null == isLowerCase
-                    ? _value.isLowerCase
-                    : isLowerCase // ignore: cast_nullable_to_non_nullable
-                        as bool,
+            version: null == version
+                ? _value.version
+                : version // ignore: cast_nullable_to_non_nullable
+                      as UuidVersion,
+            namespace: null == namespace
+                ? _value.namespace
+                : namespace // ignore: cast_nullable_to_non_nullable
+                      as String,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            count: null == count
+                ? _value.count
+                : count // ignore: cast_nullable_to_non_nullable
+                      as int,
+            ids: null == ids
+                ? _value.ids
+                : ids // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            isLowerCase: null == isLowerCase
+                ? _value.isLowerCase
+                : isLowerCase // ignore: cast_nullable_to_non_nullable
+                      as bool,
           )
           as $Val,
     );
@@ -148,36 +142,30 @@ class __$$UuidStateImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$UuidStateImpl(
-        version:
-            null == version
-                ? _value.version
-                : version // ignore: cast_nullable_to_non_nullable
-                    as UuidVersion,
-        namespace:
-            null == namespace
-                ? _value.namespace
-                : namespace // ignore: cast_nullable_to_non_nullable
-                    as String,
-        name:
-            null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
-        count:
-            null == count
-                ? _value.count
-                : count // ignore: cast_nullable_to_non_nullable
-                    as int,
-        ids:
-            null == ids
-                ? _value._ids
-                : ids // ignore: cast_nullable_to_non_nullable
-                    as List<String>,
-        isLowerCase:
-            null == isLowerCase
-                ? _value.isLowerCase
-                : isLowerCase // ignore: cast_nullable_to_non_nullable
-                    as bool,
+        version: null == version
+            ? _value.version
+            : version // ignore: cast_nullable_to_non_nullable
+                  as UuidVersion,
+        namespace: null == namespace
+            ? _value.namespace
+            : namespace // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        count: null == count
+            ? _value.count
+            : count // ignore: cast_nullable_to_non_nullable
+                  as int,
+        ids: null == ids
+            ? _value._ids
+            : ids // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        isLowerCase: null == isLowerCase
+            ? _value.isLowerCase
+            : isLowerCase // ignore: cast_nullable_to_non_nullable
+                  as bool,
       ),
     );
   }

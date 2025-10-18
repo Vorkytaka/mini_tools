@@ -81,51 +81,42 @@ class _$RegExpStateCopyWithImpl<$Res, $Val extends RegExpState>
   }) {
     return _then(
       _value.copyWith(
-            input:
-                null == input
-                    ? _value.input
-                    : input // ignore: cast_nullable_to_non_nullable
-                        as String,
-            testString:
-                null == testString
-                    ? _value.testString
-                    : testString // ignore: cast_nullable_to_non_nullable
-                        as String,
-            isGlobal:
-                null == isGlobal
-                    ? _value.isGlobal
-                    : isGlobal // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            isMultiline:
-                null == isMultiline
-                    ? _value.isMultiline
-                    : isMultiline // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            isCaseSensitive:
-                null == isCaseSensitive
-                    ? _value.isCaseSensitive
-                    : isCaseSensitive // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            isUnicode:
-                null == isUnicode
-                    ? _value.isUnicode
-                    : isUnicode // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            isDotAll:
-                null == isDotAll
-                    ? _value.isDotAll
-                    : isDotAll // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            regexp:
-                freezed == regexp
-                    ? _value.regexp
-                    : regexp // ignore: cast_nullable_to_non_nullable
-                        as RegExp?,
-            matches:
-                freezed == matches
-                    ? _value.matches
-                    : matches // ignore: cast_nullable_to_non_nullable
-                        as List<RegExpMatch>?,
+            input: null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                      as String,
+            testString: null == testString
+                ? _value.testString
+                : testString // ignore: cast_nullable_to_non_nullable
+                      as String,
+            isGlobal: null == isGlobal
+                ? _value.isGlobal
+                : isGlobal // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isMultiline: null == isMultiline
+                ? _value.isMultiline
+                : isMultiline // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isCaseSensitive: null == isCaseSensitive
+                ? _value.isCaseSensitive
+                : isCaseSensitive // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isUnicode: null == isUnicode
+                ? _value.isUnicode
+                : isUnicode // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            isDotAll: null == isDotAll
+                ? _value.isDotAll
+                : isDotAll // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            regexp: freezed == regexp
+                ? _value.regexp
+                : regexp // ignore: cast_nullable_to_non_nullable
+                      as RegExp?,
+            matches: freezed == matches
+                ? _value.matches
+                : matches // ignore: cast_nullable_to_non_nullable
+                      as List<RegExpMatch>?,
           )
           as $Val,
     );
@@ -180,51 +171,42 @@ class __$$RegExpStateImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$RegExpStateImpl(
-        input:
-            null == input
-                ? _value.input
-                : input // ignore: cast_nullable_to_non_nullable
-                    as String,
-        testString:
-            null == testString
-                ? _value.testString
-                : testString // ignore: cast_nullable_to_non_nullable
-                    as String,
-        isGlobal:
-            null == isGlobal
-                ? _value.isGlobal
-                : isGlobal // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        isMultiline:
-            null == isMultiline
-                ? _value.isMultiline
-                : isMultiline // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        isCaseSensitive:
-            null == isCaseSensitive
-                ? _value.isCaseSensitive
-                : isCaseSensitive // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        isUnicode:
-            null == isUnicode
-                ? _value.isUnicode
-                : isUnicode // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        isDotAll:
-            null == isDotAll
-                ? _value.isDotAll
-                : isDotAll // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        regexp:
-            freezed == regexp
-                ? _value.regexp
-                : regexp // ignore: cast_nullable_to_non_nullable
-                    as RegExp?,
-        matches:
-            freezed == matches
-                ? _value._matches
-                : matches // ignore: cast_nullable_to_non_nullable
-                    as List<RegExpMatch>?,
+        input: null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                  as String,
+        testString: null == testString
+            ? _value.testString
+            : testString // ignore: cast_nullable_to_non_nullable
+                  as String,
+        isGlobal: null == isGlobal
+            ? _value.isGlobal
+            : isGlobal // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isMultiline: null == isMultiline
+            ? _value.isMultiline
+            : isMultiline // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isCaseSensitive: null == isCaseSensitive
+            ? _value.isCaseSensitive
+            : isCaseSensitive // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isUnicode: null == isUnicode
+            ? _value.isUnicode
+            : isUnicode // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        isDotAll: null == isDotAll
+            ? _value.isDotAll
+            : isDotAll // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        regexp: freezed == regexp
+            ? _value.regexp
+            : regexp // ignore: cast_nullable_to_non_nullable
+                  as RegExp?,
+        matches: freezed == matches
+            ? _value._matches
+            : matches // ignore: cast_nullable_to_non_nullable
+                  as List<RegExpMatch>?,
       ),
     );
   }

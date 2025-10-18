@@ -150,17 +150,16 @@ class _CronPartValues extends StatelessWidget {
           CronPart.weekdays => cron?.weekdays,
         };
         final exception = state.result.maybeWhen(
-          failure:
-              (e) => switch (e) {
-                InvalidCronPartException() => switch (part) {
-                  CronPart.minutes => e.minutes,
-                  CronPart.hours => e.hours,
-                  CronPart.days => e.daysOfMonth,
-                  CronPart.months => e.months,
-                  CronPart.weekdays => e.daysOfWeek,
-                },
-                _ => null,
-              },
+          failure: (e) => switch (e) {
+            InvalidCronPartException() => switch (part) {
+              CronPart.minutes => e.minutes,
+              CronPart.hours => e.hours,
+              CronPart.days => e.daysOfMonth,
+              CronPart.months => e.months,
+              CronPart.weekdays => e.daysOfWeek,
+            },
+            _ => null,
+          },
           orElse: () => null,
         );
 
@@ -188,8 +187,9 @@ class _CronPartValues extends StatelessWidget {
                 part.format(t),
                 style: TextStyle(
                   color: titleColor,
-                  decoration:
-                      titleColor != null ? TextDecoration.underline : null,
+                  decoration: titleColor != null
+                      ? TextDecoration.underline
+                      : null,
                 ),
               ),
             ),
@@ -326,10 +326,9 @@ class _NextAtList extends StatelessWidget {
 
         final nexts = <TZDateTime>[];
         for (int i = 0; i < 5; i++) {
-          final prev =
-              nexts.isNotEmpty && nexts.length >= i
-                  ? nexts[i - 1]
-                  : TZDateTime.from(now, timezone);
+          final prev = nexts.isNotEmpty && nexts.length >= i
+              ? nexts[i - 1]
+              : TZDateTime.from(now, timezone);
           final next = TZDateTime.from(cron.nextRun(prev), timezone);
           nexts.add(next);
         }
@@ -387,16 +386,16 @@ class _NextAtRelative extends StatelessWidget {
     final diffStr = diff.format(
       onZero: t.datetimeConverter.relativeFormat.rightNow,
       onDays: (days) => t.datetimeConverter.relativeFormat.days(days: days),
-      onHours:
-          (hours) => t.datetimeConverter.relativeFormat.hours(hours: hours),
-      onMinutes:
-          (min) => t.datetimeConverter.relativeFormat.minutes(minutes: min),
-      onSeconds:
-          (sec) => t.datetimeConverter.relativeFormat.seconds(seconds: sec),
-      positiveWrapper:
-          (str) => t.datetimeConverter.relativeFormat.positive(str: str),
-      negativeWrapper:
-          (str) => t.datetimeConverter.relativeFormat.negative(str: str),
+      onHours: (hours) =>
+          t.datetimeConverter.relativeFormat.hours(hours: hours),
+      onMinutes: (min) =>
+          t.datetimeConverter.relativeFormat.minutes(minutes: min),
+      onSeconds: (sec) =>
+          t.datetimeConverter.relativeFormat.seconds(seconds: sec),
+      positiveWrapper: (str) =>
+          t.datetimeConverter.relativeFormat.positive(str: str),
+      negativeWrapper: (str) =>
+          t.datetimeConverter.relativeFormat.negative(str: str),
       separator: t.common.textSeparator,
     );
 

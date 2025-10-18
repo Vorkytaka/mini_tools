@@ -144,7 +144,7 @@ class __$$UpdateInputImplCopyWithImpl<$Res>
         null == input
             ? _value.input
             : input // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -328,7 +328,7 @@ class __$$UpdateGlobalImplCopyWithImpl<$Res>
         null == isGlobal
             ? _value.isGlobal
             : isGlobal // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
       ),
     );
   }
@@ -513,7 +513,7 @@ class __$$UpdateMultilineImplCopyWithImpl<$Res>
         null == isMultiline
             ? _value.isMultiline
             : isMultiline // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
       ),
     );
   }
@@ -702,7 +702,7 @@ class __$$UpdateCaseSensitiveImplCopyWithImpl<$Res>
         null == isCaseSensitive
             ? _value.isCaseSensitive
             : isCaseSensitive // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
       ),
     );
   }
@@ -891,7 +891,7 @@ class __$$UpdateUnicodeImplCopyWithImpl<$Res>
         null == isUnicode
             ? _value.isUnicode
             : isUnicode // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
       ),
     );
   }
@@ -1076,7 +1076,7 @@ class __$$UpdateDotAllImplCopyWithImpl<$Res>
         null == isDotAll
             ? _value.isDotAll
             : isDotAll // ignore: cast_nullable_to_non_nullable
-                as bool,
+                  as bool,
       ),
     );
   }
@@ -1261,7 +1261,7 @@ class __$$UpdateTestStringImplCopyWithImpl<$Res>
         null == testString
             ? _value.testString
             : testString // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -1450,7 +1450,7 @@ class __$$UpdateRegExpImplCopyWithImpl<$Res>
         freezed == regexp
             ? _value.regexp
             : regexp // ignore: cast_nullable_to_non_nullable
-                as RegExp?,
+                  as RegExp?,
       ),
     );
   }
@@ -1634,7 +1634,7 @@ class __$$UpdateMatchesImplCopyWithImpl<$Res>
         freezed == matches
             ? _value._matches
             : matches // ignore: cast_nullable_to_non_nullable
-                as List<RegExpMatch>?,
+                  as List<RegExpMatch>?,
       ),
     );
   }

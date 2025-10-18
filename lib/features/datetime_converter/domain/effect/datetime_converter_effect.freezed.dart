@@ -223,16 +223,14 @@ class __$$ParseEffectImplCopyWithImpl<$Res>
   $Res call({Object? input = null, Object? type = null}) {
     return _then(
       _$ParseEffectImpl(
-        input:
-            null == input
-                ? _value.input
-                : input // ignore: cast_nullable_to_non_nullable
-                    as String,
-        type:
-            null == type
-                ? _value.type
-                : type // ignore: cast_nullable_to_non_nullable
-                    as InputType,
+        input: null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                  as String,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as InputType,
       ),
     );
   }
@@ -392,7 +390,7 @@ class __$$SetInitialDatetimeEffectImplCopyWithImpl<$Res>
         null == datetime
             ? _value.datetime
             : datetime // ignore: cast_nullable_to_non_nullable
-                as DateTime,
+                  as DateTime,
       ),
     );
   }
@@ -429,9 +427,10 @@ class _$SetInitialDatetimeEffectImpl implements SetInitialDatetimeEffect {
   @override
   @pragma('vm:prefer-inline')
   _$$SetInitialDatetimeEffectImplCopyWith<_$SetInitialDatetimeEffectImpl>
-  get copyWith => __$$SetInitialDatetimeEffectImplCopyWithImpl<
-    _$SetInitialDatetimeEffectImpl
-  >(this, _$identity);
+  get copyWith =>
+      __$$SetInitialDatetimeEffectImplCopyWithImpl<
+        _$SetInitialDatetimeEffectImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs

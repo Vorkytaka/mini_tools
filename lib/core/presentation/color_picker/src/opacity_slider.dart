@@ -93,8 +93,9 @@ class _OpacitySliderState extends State<OpacitySlider> {
     );
 
     // Use the parent's selected hue/saturation/value, but the current alpha
-    final Color bubbleColor =
-        widget.selectedHue.withAlpha(_currentAlpha).toColor();
+    final Color bubbleColor = widget.selectedHue
+        .withAlpha(_currentAlpha)
+        .toColor();
 
     return Positioned(
       left: position.dx,

@@ -80,16 +80,14 @@ class _$TextDiffEffectCopyWithImpl<$Res, $Val extends TextDiffEffect>
   $Res call({Object? oldText = null, Object? newText = null}) {
     return _then(
       _value.copyWith(
-            oldText:
-                null == oldText
-                    ? _value.oldText
-                    : oldText // ignore: cast_nullable_to_non_nullable
-                        as String,
-            newText:
-                null == newText
-                    ? _value.newText
-                    : newText // ignore: cast_nullable_to_non_nullable
-                        as String,
+            oldText: null == oldText
+                ? _value.oldText
+                : oldText // ignore: cast_nullable_to_non_nullable
+                      as String,
+            newText: null == newText
+                ? _value.newText
+                : newText // ignore: cast_nullable_to_non_nullable
+                      as String,
           )
           as $Val,
     );
@@ -124,16 +122,14 @@ class __$$CountDiffsEffectImplCopyWithImpl<$Res>
   $Res call({Object? oldText = null, Object? newText = null}) {
     return _then(
       _$CountDiffsEffectImpl(
-        oldText:
-            null == oldText
-                ? _value.oldText
-                : oldText // ignore: cast_nullable_to_non_nullable
-                    as String,
-        newText:
-            null == newText
-                ? _value.newText
-                : newText // ignore: cast_nullable_to_non_nullable
-                    as String,
+        oldText: null == oldText
+            ? _value.oldText
+            : oldText // ignore: cast_nullable_to_non_nullable
+                  as String,
+        newText: null == newText
+            ? _value.newText
+            : newText // ignore: cast_nullable_to_non_nullable
+                  as String,
       ),
     );
   }

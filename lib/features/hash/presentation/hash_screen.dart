@@ -73,19 +73,18 @@ class _BodyState extends State<_Body> {
         .state
         .input
         .map(text: (value) => null, file: (value) => value.path);
-    final field =
-        pathToFile != null
-            ? MacosReadonlyField(
-              text: s.hash.hashOfFile(path: pathToFile),
-              maxLines: 10,
-              textAlignVertical: const TextAlignVertical(y: -1),
-            )
-            : MacosTextField(
-              maxLines: null,
-              textAlignVertical: const TextAlignVertical(y: -1),
-              placeholder: s.hash.textInputHint,
-              onChanged: _onTextChanged,
-            );
+    final field = pathToFile != null
+        ? MacosReadonlyField(
+            text: s.hash.hashOfFile(path: pathToFile),
+            maxLines: 10,
+            textAlignVertical: const TextAlignVertical(y: -1),
+          )
+        : MacosTextField(
+            maxLines: null,
+            textAlignVertical: const TextAlignVertical(y: -1),
+            placeholder: s.hash.textInputHint,
+            onChanged: _onTextChanged,
+          );
 
     return Padding(
       padding: panePadding,
@@ -121,15 +120,14 @@ class _BodyState extends State<_Body> {
                   const _HashFormatSelector(),
                   const Spacer(),
                   FeatureBuilder<HashFeature, HashState>(
-                    buildWhen:
-                        (prev, curr) => prev.inputBytes != curr.inputBytes,
-                    builder:
-                        (context, state) => SelectableText(
-                          s.common.bytesCount(
-                            n: state.inputBytes,
-                            bytes: state.inputBytes,
-                          ),
-                        ),
+                    buildWhen: (prev, curr) =>
+                        prev.inputBytes != curr.inputBytes,
+                    builder: (context, state) => SelectableText(
+                      s.common.bytesCount(
+                        n: state.inputBytes,
+                        bytes: state.inputBytes,
+                      ),
+                    ),
                   ),
                 ],
               ),

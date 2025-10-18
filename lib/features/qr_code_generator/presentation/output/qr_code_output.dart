@@ -30,11 +30,10 @@ class _QrCodeWidget extends StatelessWidget {
     final t = Translations.of(context);
 
     return FeatureBuilder<QrCodeFeature, QrCodeState>(
-      buildWhen:
-          (prev, curr) =>
-              prev.code != curr.code ||
-              prev.correctionLevel != curr.correctionLevel ||
-              prev.visualData != curr.visualData,
+      buildWhen: (prev, curr) =>
+          prev.code != curr.code ||
+          prev.correctionLevel != curr.correctionLevel ||
+          prev.visualData != curr.visualData,
       builder: (context, state) {
         final code = state.code;
 
@@ -60,11 +59,11 @@ class _QrCodeWidget extends StatelessWidget {
             final maxBytes = e.inputLimit ~/ 8 - 3;
             final errorColor =
                 ThemeData.estimateBrightnessForColor(
-                          state.visualData.backgroundColor,
-                        ) ==
-                        Brightness.dark
-                    ? Colors.white
-                    : Colors.black;
+                      state.visualData.backgroundColor,
+                    ) ==
+                    Brightness.dark
+                ? Colors.white
+                : Colors.black;
             qrCode = AspectRatio(
               aspectRatio: 1,
               child: Placeholder(

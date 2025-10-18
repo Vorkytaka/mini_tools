@@ -223,10 +223,9 @@ class LightnessAndSaturationPainter extends CustomPainter {
       begin: Alignment.centerLeft,
       end: Alignment.centerRight,
     ).createShader(Offset.zero & size);
-    final saturationPaint =
-        Paint()
-          ..shader = saturationGradientShader
-          ..blendMode = BlendMode.modulate;
+    final saturationPaint = Paint()
+      ..shader = saturationGradientShader
+      ..blendMode = BlendMode.modulate;
     canvas.drawRect(Offset.zero & size, saturationPaint);
   }
 

@@ -31,11 +31,8 @@ class QrCodeScreen extends StatelessWidget {
           },
         ),
         ResizablePane(
-          builder:
-              (context, controller) => const Padding(
-                padding: panePadding,
-                child: QrCodeOutputSide(),
-              ),
+          builder: (context, controller) =>
+              const Padding(padding: panePadding, child: QrCodeOutputSide()),
           minSize: 260,
           resizableSide: ResizableSide.left,
           startSize: 260,

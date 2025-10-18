@@ -26,10 +26,9 @@ Next<SqliteState, SqliteEffect> sqliteUpdate(
       return next(state: state.copyWith(tables: message.tables));
     case ConnectionChangedMsg():
       final isConnected = message.connection.isConnected;
-      final newState =
-          isConnected
-              ? state.copyWith(connection: message.connection)
-              : SqliteState.init;
+      final newState = isConnected
+          ? state.copyWith(connection: message.connection)
+          : SqliteState.init;
 
       return next(
         state: newState,

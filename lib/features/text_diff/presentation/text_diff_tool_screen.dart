@@ -20,9 +20,8 @@ class TextDiffScreen extends StatelessWidget {
       toolBar: ToolBar(centerTitle: true, title: Text(t.textDiff.title)),
       children: [
         ContentArea(
-          builder:
-              (context, _) =>
-                  const Padding(padding: panePadding, child: _Body()),
+          builder: (context, _) =>
+              const Padding(padding: panePadding, child: _Body()),
         ),
       ],
     );

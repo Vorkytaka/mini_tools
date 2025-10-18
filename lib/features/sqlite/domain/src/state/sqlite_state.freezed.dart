@@ -65,21 +65,18 @@ class _$SqliteStateCopyWithImpl<$Res, $Val extends SqliteState>
   }) {
     return _then(
       _value.copyWith(
-            connection:
-                null == connection
-                    ? _value.connection
-                    : connection // ignore: cast_nullable_to_non_nullable
-                        as DatabaseConnection,
-            results:
-                null == results
-                    ? _value.results
-                    : results // ignore: cast_nullable_to_non_nullable
-                        as List<Result>,
-            tables:
-                null == tables
-                    ? _value.tables
-                    : tables // ignore: cast_nullable_to_non_nullable
-                        as List<TableInfo>,
+            connection: null == connection
+                ? _value.connection
+                : connection // ignore: cast_nullable_to_non_nullable
+                      as DatabaseConnection,
+            results: null == results
+                ? _value.results
+                : results // ignore: cast_nullable_to_non_nullable
+                      as List<Result>,
+            tables: null == tables
+                ? _value.tables
+                : tables // ignore: cast_nullable_to_non_nullable
+                      as List<TableInfo>,
           )
           as $Val,
     );
@@ -135,21 +132,18 @@ class __$$SqliteStateImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$SqliteStateImpl(
-        connection:
-            null == connection
-                ? _value.connection
-                : connection // ignore: cast_nullable_to_non_nullable
-                    as DatabaseConnection,
-        results:
-            null == results
-                ? _value._results
-                : results // ignore: cast_nullable_to_non_nullable
-                    as List<Result>,
-        tables:
-            null == tables
-                ? _value._tables
-                : tables // ignore: cast_nullable_to_non_nullable
-                    as List<TableInfo>,
+        connection: null == connection
+            ? _value.connection
+            : connection // ignore: cast_nullable_to_non_nullable
+                  as DatabaseConnection,
+        results: null == results
+            ? _value._results
+            : results // ignore: cast_nullable_to_non_nullable
+                  as List<Result>,
+        tables: null == tables
+            ? _value._tables
+            : tables // ignore: cast_nullable_to_non_nullable
+                  as List<TableInfo>,
       ),
     );
   }
@@ -554,16 +548,14 @@ class __$$FileConnectionImplCopyWithImpl<$Res>
   $Res call({Object? folder = null, Object? name = null}) {
     return _then(
       _$FileConnectionImpl(
-        folder:
-            null == folder
-                ? _value.folder
-                : folder // ignore: cast_nullable_to_non_nullable
-                    as String,
-        name:
-            null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
+        folder: null == folder
+            ? _value.folder
+            : folder // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
       ),
     );
   }
@@ -772,16 +764,14 @@ class _$ResultCopyWithImpl<$Res, $Val extends Result>
   $Res call({Object? query = null, Object? datetime = null}) {
     return _then(
       _value.copyWith(
-            query:
-                null == query
-                    ? _value.query
-                    : query // ignore: cast_nullable_to_non_nullable
-                        as String,
-            datetime:
-                null == datetime
-                    ? _value.datetime
-                    : datetime // ignore: cast_nullable_to_non_nullable
-                        as DateTime,
+            query: null == query
+                ? _value.query
+                : query // ignore: cast_nullable_to_non_nullable
+                      as String,
+            datetime: null == datetime
+                ? _value.datetime
+                : datetime // ignore: cast_nullable_to_non_nullable
+                      as DateTime,
           )
           as $Val,
     );
@@ -820,21 +810,18 @@ class __$$ResultSuccessImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$ResultSuccessImpl(
-        query:
-            null == query
-                ? _value.query
-                : query // ignore: cast_nullable_to_non_nullable
-                    as String,
-        datetime:
-            null == datetime
-                ? _value.datetime
-                : datetime // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        result:
-            null == result
-                ? _value.result
-                : result // ignore: cast_nullable_to_non_nullable
-                    as Iterable<dynamic>,
+        query: null == query
+            ? _value.query
+            : query // ignore: cast_nullable_to_non_nullable
+                  as String,
+        datetime: null == datetime
+            ? _value.datetime
+            : datetime // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        result: null == result
+            ? _value.result
+            : result // ignore: cast_nullable_to_non_nullable
+                  as Iterable<dynamic>,
       ),
     );
   }
@@ -1016,21 +1003,18 @@ class __$$ResultFailureImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$ResultFailureImpl(
-        query:
-            null == query
-                ? _value.query
-                : query // ignore: cast_nullable_to_non_nullable
-                    as String,
-        datetime:
-            null == datetime
-                ? _value.datetime
-                : datetime // ignore: cast_nullable_to_non_nullable
-                    as DateTime,
-        error:
-            null == error
-                ? _value.error
-                : error // ignore: cast_nullable_to_non_nullable
-                    as String,
+        query: null == query
+            ? _value.query
+            : query // ignore: cast_nullable_to_non_nullable
+                  as String,
+        datetime: null == datetime
+            ? _value.datetime
+            : datetime // ignore: cast_nullable_to_non_nullable
+                  as DateTime,
+        error: null == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                  as String,
       ),
     );
   }
@@ -1212,16 +1196,14 @@ class _$TableInfoCopyWithImpl<$Res, $Val extends TableInfo>
   $Res call({Object? name = null, Object? columns = null}) {
     return _then(
       _value.copyWith(
-            name:
-                null == name
-                    ? _value.name
-                    : name // ignore: cast_nullable_to_non_nullable
-                        as String,
-            columns:
-                null == columns
-                    ? _value.columns
-                    : columns // ignore: cast_nullable_to_non_nullable
-                        as List<ColumnInfo>,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            columns: null == columns
+                ? _value.columns
+                : columns // ignore: cast_nullable_to_non_nullable
+                      as List<ColumnInfo>,
           )
           as $Val,
     );
@@ -1256,16 +1238,14 @@ class __$$TableInfoImplCopyWithImpl<$Res>
   $Res call({Object? name = null, Object? columns = null}) {
     return _then(
       _$TableInfoImpl(
-        name:
-            null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
-        columns:
-            null == columns
-                ? _value._columns
-                : columns // ignore: cast_nullable_to_non_nullable
-                    as List<ColumnInfo>,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        columns: null == columns
+            ? _value._columns
+            : columns // ignore: cast_nullable_to_non_nullable
+                  as List<ColumnInfo>,
       ),
     );
   }
@@ -1378,21 +1358,18 @@ class _$ColumnInfoCopyWithImpl<$Res, $Val extends ColumnInfo>
   $Res call({Object? name = null, Object? type = null, Object? pk = null}) {
     return _then(
       _value.copyWith(
-            name:
-                null == name
-                    ? _value.name
-                    : name // ignore: cast_nullable_to_non_nullable
-                        as String,
-            type:
-                null == type
-                    ? _value.type
-                    : type // ignore: cast_nullable_to_non_nullable
-                        as String,
-            pk:
-                null == pk
-                    ? _value.pk
-                    : pk // ignore: cast_nullable_to_non_nullable
-                        as bool,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            type: null == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                      as String,
+            pk: null == pk
+                ? _value.pk
+                : pk // ignore: cast_nullable_to_non_nullable
+                      as bool,
           )
           as $Val,
     );
@@ -1427,21 +1404,18 @@ class __$$ColumnInfoImplCopyWithImpl<$Res>
   $Res call({Object? name = null, Object? type = null, Object? pk = null}) {
     return _then(
       _$ColumnInfoImpl(
-        name:
-            null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
-        type:
-            null == type
-                ? _value.type
-                : type // ignore: cast_nullable_to_non_nullable
-                    as String,
-        pk:
-            null == pk
-                ? _value.pk
-                : pk // ignore: cast_nullable_to_non_nullable
-                    as bool,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        type: null == type
+            ? _value.type
+            : type // ignore: cast_nullable_to_non_nullable
+                  as String,
+        pk: null == pk
+            ? _value.pk
+            : pk // ignore: cast_nullable_to_non_nullable
+                  as bool,
       ),
     );
   }

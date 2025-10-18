@@ -36,7 +36,7 @@ Future<void> main() async {
 Future<void> _preInit() async {
   Log.init(LoggingLogger());
   WidgetsFlutterBinding.ensureInitialized();
-  LocaleSettings.useDeviceLocale();
+  await LocaleSettings.useDeviceLocale();
   _firaCodeLicense();
   await _configureWindow();
 }
@@ -61,7 +61,7 @@ Future<void> _configureWindow() async {
 Future<tz.Location> _initializeTimezone() async {
   final timezone = await FlutterTimezone.getLocalTimezone();
   tz.initializeTimeZones();
-  final location = tz.getLocation(timezone);
+  final location = tz.getLocation(timezone.identifier);
   tz.setLocalLocation(location);
   return tz.local;
 }

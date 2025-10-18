@@ -80,31 +80,26 @@ class _$QrCodeStateCopyWithImpl<$Res, $Val extends QrCodeState>
   }) {
     return _then(
       _value.copyWith(
-            input:
-                null == input
-                    ? _value.input
-                    : input // ignore: cast_nullable_to_non_nullable
-                        as String,
-            correctionLevel:
-                null == correctionLevel
-                    ? _value.correctionLevel
-                    : correctionLevel // ignore: cast_nullable_to_non_nullable
-                        as ErrorCorrectionLevel,
-            exportType:
-                null == exportType
-                    ? _value.exportType
-                    : exportType // ignore: cast_nullable_to_non_nullable
-                        as ExportType,
-            visualData:
-                null == visualData
-                    ? _value.visualData
-                    : visualData // ignore: cast_nullable_to_non_nullable
-                        as QrCodeVisualData,
-            exportSize:
-                null == exportSize
-                    ? _value.exportSize
-                    : exportSize // ignore: cast_nullable_to_non_nullable
-                        as int,
+            input: null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                      as String,
+            correctionLevel: null == correctionLevel
+                ? _value.correctionLevel
+                : correctionLevel // ignore: cast_nullable_to_non_nullable
+                      as ErrorCorrectionLevel,
+            exportType: null == exportType
+                ? _value.exportType
+                : exportType // ignore: cast_nullable_to_non_nullable
+                      as ExportType,
+            visualData: null == visualData
+                ? _value.visualData
+                : visualData // ignore: cast_nullable_to_non_nullable
+                      as QrCodeVisualData,
+            exportSize: null == exportSize
+                ? _value.exportSize
+                : exportSize // ignore: cast_nullable_to_non_nullable
+                      as int,
           )
           as $Val,
     );
@@ -164,31 +159,26 @@ class __$$QrCodeStateImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$QrCodeStateImpl(
-        input:
-            null == input
-                ? _value.input
-                : input // ignore: cast_nullable_to_non_nullable
-                    as String,
-        correctionLevel:
-            null == correctionLevel
-                ? _value.correctionLevel
-                : correctionLevel // ignore: cast_nullable_to_non_nullable
-                    as ErrorCorrectionLevel,
-        exportType:
-            null == exportType
-                ? _value.exportType
-                : exportType // ignore: cast_nullable_to_non_nullable
-                    as ExportType,
-        visualData:
-            null == visualData
-                ? _value.visualData
-                : visualData // ignore: cast_nullable_to_non_nullable
-                    as QrCodeVisualData,
-        exportSize:
-            null == exportSize
-                ? _value.exportSize
-                : exportSize // ignore: cast_nullable_to_non_nullable
-                    as int,
+        input: null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                  as String,
+        correctionLevel: null == correctionLevel
+            ? _value.correctionLevel
+            : correctionLevel // ignore: cast_nullable_to_non_nullable
+                  as ErrorCorrectionLevel,
+        exportType: null == exportType
+            ? _value.exportType
+            : exportType // ignore: cast_nullable_to_non_nullable
+                  as ExportType,
+        visualData: null == visualData
+            ? _value.visualData
+            : visualData // ignore: cast_nullable_to_non_nullable
+                  as QrCodeVisualData,
+        exportSize: null == exportSize
+            ? _value.exportSize
+            : exportSize // ignore: cast_nullable_to_non_nullable
+                  as int,
       ),
     );
   }
@@ -361,26 +351,22 @@ class _$QrCodeVisualDataCopyWithImpl<$Res, $Val extends QrCodeVisualData>
   }) {
     return _then(
       _value.copyWith(
-            backgroundColor:
-                null == backgroundColor
-                    ? _value.backgroundColor
-                    : backgroundColor // ignore: cast_nullable_to_non_nullable
-                        as Color,
-            foregroundColor:
-                null == foregroundColor
-                    ? _value.foregroundColor
-                    : foregroundColor // ignore: cast_nullable_to_non_nullable
-                        as Color,
-            shape:
-                null == shape
-                    ? _value.shape
-                    : shape // ignore: cast_nullable_to_non_nullable
-                        as QrCodeShape,
-            paddings:
-                null == paddings
-                    ? _value.paddings
-                    : paddings // ignore: cast_nullable_to_non_nullable
-                        as EdgeInsets,
+            backgroundColor: null == backgroundColor
+                ? _value.backgroundColor
+                : backgroundColor // ignore: cast_nullable_to_non_nullable
+                      as Color,
+            foregroundColor: null == foregroundColor
+                ? _value.foregroundColor
+                : foregroundColor // ignore: cast_nullable_to_non_nullable
+                      as Color,
+            shape: null == shape
+                ? _value.shape
+                : shape // ignore: cast_nullable_to_non_nullable
+                      as QrCodeShape,
+            paddings: null == paddings
+                ? _value.paddings
+                : paddings // ignore: cast_nullable_to_non_nullable
+                      as EdgeInsets,
           )
           as $Val,
     );
@@ -425,26 +411,22 @@ class __$$QrCodeVisualDataImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$QrCodeVisualDataImpl(
-        backgroundColor:
-            null == backgroundColor
-                ? _value.backgroundColor
-                : backgroundColor // ignore: cast_nullable_to_non_nullable
-                    as Color,
-        foregroundColor:
-            null == foregroundColor
-                ? _value.foregroundColor
-                : foregroundColor // ignore: cast_nullable_to_non_nullable
-                    as Color,
-        shape:
-            null == shape
-                ? _value.shape
-                : shape // ignore: cast_nullable_to_non_nullable
-                    as QrCodeShape,
-        paddings:
-            null == paddings
-                ? _value.paddings
-                : paddings // ignore: cast_nullable_to_non_nullable
-                    as EdgeInsets,
+        backgroundColor: null == backgroundColor
+            ? _value.backgroundColor
+            : backgroundColor // ignore: cast_nullable_to_non_nullable
+                  as Color,
+        foregroundColor: null == foregroundColor
+            ? _value.foregroundColor
+            : foregroundColor // ignore: cast_nullable_to_non_nullable
+                  as Color,
+        shape: null == shape
+            ? _value.shape
+            : shape // ignore: cast_nullable_to_non_nullable
+                  as QrCodeShape,
+        paddings: null == paddings
+            ? _value.paddings
+            : paddings // ignore: cast_nullable_to_non_nullable
+                  as EdgeInsets,
       ),
     );
   }
