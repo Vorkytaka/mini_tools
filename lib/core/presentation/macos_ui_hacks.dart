@@ -113,8 +113,9 @@ class MacosSidebarItem extends StatelessWidget {
                     padding: EdgeInsets.only(right: spacing),
                     child: MacosIconTheme.merge(
                       data: MacosIconThemeData(
-                        color:
-                            selected ? MacosColors.white : theme.primaryColor,
+                        color: selected
+                            ? MacosColors.white
+                            : theme.primaryColor,
                         size: itemSize.iconSize,
                       ),
                       child: item.leading!,

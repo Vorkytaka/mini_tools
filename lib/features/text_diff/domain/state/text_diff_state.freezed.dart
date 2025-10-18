@@ -69,31 +69,26 @@ class _$TextDiffStateCopyWithImpl<$Res, $Val extends TextDiffState>
   }) {
     return _then(
       _value.copyWith(
-            oldText:
-                null == oldText
-                    ? _value.oldText
-                    : oldText // ignore: cast_nullable_to_non_nullable
-                        as String,
-            newText:
-                null == newText
-                    ? _value.newText
-                    : newText // ignore: cast_nullable_to_non_nullable
-                        as String,
-            oldDiffs:
-                null == oldDiffs
-                    ? _value.oldDiffs
-                    : oldDiffs // ignore: cast_nullable_to_non_nullable
-                        as List<Diff>,
-            newDiffs:
-                null == newDiffs
-                    ? _value.newDiffs
-                    : newDiffs // ignore: cast_nullable_to_non_nullable
-                        as List<Diff>,
-            diffs:
-                null == diffs
-                    ? _value.diffs
-                    : diffs // ignore: cast_nullable_to_non_nullable
-                        as List<Diff>,
+            oldText: null == oldText
+                ? _value.oldText
+                : oldText // ignore: cast_nullable_to_non_nullable
+                      as String,
+            newText: null == newText
+                ? _value.newText
+                : newText // ignore: cast_nullable_to_non_nullable
+                      as String,
+            oldDiffs: null == oldDiffs
+                ? _value.oldDiffs
+                : oldDiffs // ignore: cast_nullable_to_non_nullable
+                      as List<Diff>,
+            newDiffs: null == newDiffs
+                ? _value.newDiffs
+                : newDiffs // ignore: cast_nullable_to_non_nullable
+                      as List<Diff>,
+            diffs: null == diffs
+                ? _value.diffs
+                : diffs // ignore: cast_nullable_to_non_nullable
+                      as List<Diff>,
           )
           as $Val,
     );
@@ -140,31 +135,26 @@ class __$$TextDiffStateImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$TextDiffStateImpl(
-        oldText:
-            null == oldText
-                ? _value.oldText
-                : oldText // ignore: cast_nullable_to_non_nullable
-                    as String,
-        newText:
-            null == newText
-                ? _value.newText
-                : newText // ignore: cast_nullable_to_non_nullable
-                    as String,
-        oldDiffs:
-            null == oldDiffs
-                ? _value._oldDiffs
-                : oldDiffs // ignore: cast_nullable_to_non_nullable
-                    as List<Diff>,
-        newDiffs:
-            null == newDiffs
-                ? _value._newDiffs
-                : newDiffs // ignore: cast_nullable_to_non_nullable
-                    as List<Diff>,
-        diffs:
-            null == diffs
-                ? _value._diffs
-                : diffs // ignore: cast_nullable_to_non_nullable
-                    as List<Diff>,
+        oldText: null == oldText
+            ? _value.oldText
+            : oldText // ignore: cast_nullable_to_non_nullable
+                  as String,
+        newText: null == newText
+            ? _value.newText
+            : newText // ignore: cast_nullable_to_non_nullable
+                  as String,
+        oldDiffs: null == oldDiffs
+            ? _value._oldDiffs
+            : oldDiffs // ignore: cast_nullable_to_non_nullable
+                  as List<Diff>,
+        newDiffs: null == newDiffs
+            ? _value._newDiffs
+            : newDiffs // ignore: cast_nullable_to_non_nullable
+                  as List<Diff>,
+        diffs: null == diffs
+            ? _value._diffs
+            : diffs // ignore: cast_nullable_to_non_nullable
+                  as List<Diff>,
       ),
     );
   }

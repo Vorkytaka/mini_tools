@@ -94,11 +94,10 @@ extension CronExpressionUtils on CronExpression {
       single: (value) => [value],
       range: (from, to) => [for (int i = from; i <= to; i++) i],
       list: (values) => [for (final value in values) ...value.getAll(part)],
-      step:
-          (base, step) => base
-              .getAll(part)
-              .where((i) => base.stepMatches(i, step))
-              .toList(growable: false),
+      step: (base, step) => base
+          .getAll(part)
+          .where((i) => base.stepMatches(i, step))
+          .toList(growable: false),
     );
   }
 }
@@ -386,11 +385,10 @@ extension CronExpressionMatcher on CronExpression {
     return when(
       any: () => value % step == 0,
       single: (v) => value >= v && (value - v) % step == 0,
-      range:
-          (from, to) =>
-              value >= from && value <= to && (value - from) % step == 0,
+      range: (from, to) =>
+          value >= from && value <= to && (value - from) % step == 0,
       list: (_) => throw Exception(),
-      step: (_, __) => throw Exception(),
+      step: (_, _) => throw Exception(),
     );
   }
 }

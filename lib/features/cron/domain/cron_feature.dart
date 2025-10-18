@@ -12,15 +12,16 @@ export 'state/cron_state.dart';
 
 typedef CronFeature = Feature<CronState, CronMessage, CronEffect>;
 
-CronFeature cronFeatureFactory() => CronFeature(
-      initialState: CronState.init(),
-      update: cronUpdate,
-      initialEffects: const [CronEffect.load()],
-    )
-    .wrapEffects(const CronLoadEffectHandler())
-    .wrapEffects(
-      DebounceEffectHandler(
-        duration: const Duration(milliseconds: 500),
-        handler: const CronSaveEffectHandler(),
-      ),
-    );
+CronFeature cronFeatureFactory() =>
+    CronFeature(
+          initialState: CronState.init(),
+          update: cronUpdate,
+          initialEffects: const [CronEffect.load()],
+        )
+        .wrapEffects(const CronLoadEffectHandler())
+        .wrapEffects(
+          DebounceEffectHandler(
+            duration: const Duration(milliseconds: 500),
+            handler: const CronSaveEffectHandler(),
+          ),
+        );

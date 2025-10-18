@@ -120,13 +120,12 @@ class _ColorPicker extends State<ColorPicker> {
   Widget _buildColorDisplay() {
     // Adjust width and border radius based on whether opacity slider is shown
     final double displayWidth = _showOpacity ? 150 : double.infinity;
-    final BorderRadius borderRadius =
-        _showOpacity
-            ? const BorderRadius.only(bottomRight: Radius.circular(5))
-            : const BorderRadius.only(
-              bottomRight: Radius.circular(5),
-              bottomLeft: Radius.circular(5),
-            );
+    final BorderRadius borderRadius = _showOpacity
+        ? const BorderRadius.only(bottomRight: Radius.circular(5))
+        : const BorderRadius.only(
+            bottomRight: Radius.circular(5),
+            bottomLeft: Radius.circular(5),
+          );
 
     return Container(
       height: 40,
@@ -140,30 +139,28 @@ class _ColorPicker extends State<ColorPicker> {
           padding: const EdgeInsets.symmetric(horizontal: 7),
           child: Container(
             decoration: BoxDecoration(
-              color:
-                  _showHexCode && _hsvColor.alpha < 0.4
-                      ? Colors.white54
-                      : Colors.transparent,
+              color: _showHexCode && _hsvColor.alpha < 0.4
+                  ? Colors.white54
+                  : Colors.transparent,
               borderRadius: const BorderRadius.all(Radius.circular(4)),
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 4),
               child: DefaultTextStyle(
                 style: const TextStyle(inherit: true),
-                child:
-                    _showHexCode
-                        ? Text(
-                          '#${_hsvColor.toColor().toHexAlpha().toString()}',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color:
-                                _hsvColor.toColor().computeLuminance() > 0.35 ||
-                                        _hsvColor.alpha < 0.4
-                                    ? Colors.black
-                                    : Colors.white,
-                          ),
-                        )
-                        : Container(),
+                child: _showHexCode
+                    ? Text(
+                        '#${_hsvColor.toColor().toHexAlpha().toString()}',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color:
+                              _hsvColor.toColor().computeLuminance() > 0.35 ||
+                                  _hsvColor.alpha < 0.4
+                              ? Colors.black
+                              : Colors.white,
+                        ),
+                      )
+                    : Container(),
               ),
             ),
           ),

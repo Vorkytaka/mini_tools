@@ -118,21 +118,18 @@ class _$ExportEffectCopyWithImpl<$Res, $Val extends ExportEffect>
   }) {
     return _then(
       _value.copyWith(
-            code:
-                null == code
-                    ? _value.code
-                    : code // ignore: cast_nullable_to_non_nullable
-                        as QrCode,
-            visualData:
-                null == visualData
-                    ? _value.visualData
-                    : visualData // ignore: cast_nullable_to_non_nullable
-                        as QrCodeVisualData,
-            exportSize:
-                null == exportSize
-                    ? _value.exportSize
-                    : exportSize // ignore: cast_nullable_to_non_nullable
-                        as int,
+            code: null == code
+                ? _value.code
+                : code // ignore: cast_nullable_to_non_nullable
+                      as QrCode,
+            visualData: null == visualData
+                ? _value.visualData
+                : visualData // ignore: cast_nullable_to_non_nullable
+                      as QrCodeVisualData,
+            exportSize: null == exportSize
+                ? _value.exportSize
+                : exportSize // ignore: cast_nullable_to_non_nullable
+                      as int,
           )
           as $Val,
     );
@@ -190,26 +187,22 @@ class __$$SaveToFileEffectImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$SaveToFileEffectImpl(
-        code:
-            null == code
-                ? _value.code
-                : code // ignore: cast_nullable_to_non_nullable
-                    as QrCode,
-        exportType:
-            null == exportType
-                ? _value.exportType
-                : exportType // ignore: cast_nullable_to_non_nullable
-                    as ExportType,
-        visualData:
-            null == visualData
-                ? _value.visualData
-                : visualData // ignore: cast_nullable_to_non_nullable
-                    as QrCodeVisualData,
-        exportSize:
-            null == exportSize
-                ? _value.exportSize
-                : exportSize // ignore: cast_nullable_to_non_nullable
-                    as int,
+        code: null == code
+            ? _value.code
+            : code // ignore: cast_nullable_to_non_nullable
+                  as QrCode,
+        exportType: null == exportType
+            ? _value.exportType
+            : exportType // ignore: cast_nullable_to_non_nullable
+                  as ExportType,
+        visualData: null == visualData
+            ? _value.visualData
+            : visualData // ignore: cast_nullable_to_non_nullable
+                  as QrCodeVisualData,
+        exportSize: null == exportSize
+            ? _value.exportSize
+            : exportSize // ignore: cast_nullable_to_non_nullable
+                  as int,
       ),
     );
   }
@@ -415,21 +408,18 @@ class __$$CopyToClipboardEffectImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$CopyToClipboardEffectImpl(
-        code:
-            null == code
-                ? _value.code
-                : code // ignore: cast_nullable_to_non_nullable
-                    as QrCode,
-        visualData:
-            null == visualData
-                ? _value.visualData
-                : visualData // ignore: cast_nullable_to_non_nullable
-                    as QrCodeVisualData,
-        exportSize:
-            null == exportSize
-                ? _value.exportSize
-                : exportSize // ignore: cast_nullable_to_non_nullable
-                    as int,
+        code: null == code
+            ? _value.code
+            : code // ignore: cast_nullable_to_non_nullable
+                  as QrCode,
+        visualData: null == visualData
+            ? _value.visualData
+            : visualData // ignore: cast_nullable_to_non_nullable
+                  as QrCodeVisualData,
+        exportSize: null == exportSize
+            ? _value.exportSize
+            : exportSize // ignore: cast_nullable_to_non_nullable
+                  as int,
       ),
     );
   }
@@ -633,11 +623,10 @@ class _$SaveStateEffectCopyWithImpl<$Res, $Val extends SaveStateEffect>
   $Res call({Object? state = null}) {
     return _then(
       _value.copyWith(
-            state:
-                null == state
-                    ? _value.state
-                    : state // ignore: cast_nullable_to_non_nullable
-                        as QrCodeState,
+            state: null == state
+                ? _value.state
+                : state // ignore: cast_nullable_to_non_nullable
+                      as QrCodeState,
           )
           as $Val,
     );
@@ -685,11 +674,10 @@ class __$$SaveStateEffectImplCopyWithImpl<$Res>
   $Res call({Object? state = null}) {
     return _then(
       _$SaveStateEffectImpl(
-        state:
-            null == state
-                ? _value.state
-                : state // ignore: cast_nullable_to_non_nullable
-                    as QrCodeState,
+        state: null == state
+            ? _value.state
+            : state // ignore: cast_nullable_to_non_nullable
+                  as QrCodeState,
       ),
     );
   }

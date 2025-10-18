@@ -68,26 +68,22 @@ class _$JsonFormatterStateCopyWithImpl<$Res, $Val extends JsonFormatterState>
   }) {
     return _then(
       _value.copyWith(
-            input:
-                null == input
-                    ? _value.input
-                    : input // ignore: cast_nullable_to_non_nullable
-                        as String,
-            output:
-                freezed == output
-                    ? _value.output
-                    : output // ignore: cast_nullable_to_non_nullable
-                        as String?,
-            format:
-                null == format
-                    ? _value.format
-                    : format // ignore: cast_nullable_to_non_nullable
-                        as JsonOutputFormat,
-            jsonPath:
-                null == jsonPath
-                    ? _value.jsonPath
-                    : jsonPath // ignore: cast_nullable_to_non_nullable
-                        as JsonPathState,
+            input: null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                      as String,
+            output: freezed == output
+                ? _value.output
+                : output // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            format: null == format
+                ? _value.format
+                : format // ignore: cast_nullable_to_non_nullable
+                      as JsonOutputFormat,
+            jsonPath: null == jsonPath
+                ? _value.jsonPath
+                : jsonPath // ignore: cast_nullable_to_non_nullable
+                      as JsonPathState,
           )
           as $Val,
     );
@@ -145,26 +141,22 @@ class __$$JsonFormatterStateImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$JsonFormatterStateImpl(
-        input:
-            null == input
-                ? _value.input
-                : input // ignore: cast_nullable_to_non_nullable
-                    as String,
-        output:
-            freezed == output
-                ? _value.output
-                : output // ignore: cast_nullable_to_non_nullable
-                    as String?,
-        format:
-            null == format
-                ? _value.format
-                : format // ignore: cast_nullable_to_non_nullable
-                    as JsonOutputFormat,
-        jsonPath:
-            null == jsonPath
-                ? _value.jsonPath
-                : jsonPath // ignore: cast_nullable_to_non_nullable
-                    as JsonPathState,
+        input: null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                  as String,
+        output: freezed == output
+            ? _value.output
+            : output // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        format: null == format
+            ? _value.format
+            : format // ignore: cast_nullable_to_non_nullable
+                  as JsonOutputFormat,
+        jsonPath: null == jsonPath
+            ? _value.jsonPath
+            : jsonPath // ignore: cast_nullable_to_non_nullable
+                  as JsonPathState,
       ),
     );
   }
@@ -285,16 +277,14 @@ class _$JsonPathStateCopyWithImpl<$Res, $Val extends JsonPathState>
   $Res call({Object? input = null, Object? value = freezed}) {
     return _then(
       _value.copyWith(
-            input:
-                null == input
-                    ? _value.input
-                    : input // ignore: cast_nullable_to_non_nullable
-                        as String,
-            value:
-                freezed == value
-                    ? _value.value
-                    : value // ignore: cast_nullable_to_non_nullable
-                        as JsonPath?,
+            input: null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                      as String,
+            value: freezed == value
+                ? _value.value
+                : value // ignore: cast_nullable_to_non_nullable
+                      as JsonPath?,
           )
           as $Val,
     );
@@ -329,16 +319,14 @@ class __$$JsonPathStateImplCopyWithImpl<$Res>
   $Res call({Object? input = null, Object? value = freezed}) {
     return _then(
       _$JsonPathStateImpl(
-        input:
-            null == input
-                ? _value.input
-                : input // ignore: cast_nullable_to_non_nullable
-                    as String,
-        value:
-            freezed == value
-                ? _value.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as JsonPath?,
+        input: null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                  as String,
+        value: freezed == value
+            ? _value.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as JsonPath?,
       ),
     );
   }

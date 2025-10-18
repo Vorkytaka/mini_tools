@@ -19,10 +19,9 @@ class CopyOverlay extends StatefulWidget {
     foregroundColor: foregroundColor,
   );
 
-  static void hideAll(BuildContext context) =>
-      context
-          .findAncestorStateOfType<_CopyOverlayState>()
-          ?._hideAllNotification();
+  static void hideAll(BuildContext context) => context
+      .findAncestorStateOfType<_CopyOverlayState>()
+      ?._hideAllNotification();
 }
 
 class _CopyOverlayState extends State<CopyOverlay>
@@ -61,14 +60,13 @@ class _CopyOverlayState extends State<CopyOverlay>
     // And it will take new position instead of old one
     final pos = _cursorPosition;
     final entry = OverlayEntry(
-      builder:
-          (context) => _CopyNotificationTheme(
-            data: _CopyNotificationThemeData(backgroundColor: backgroundColor),
-            child: _CopyNotificationPositioned(
-              animation: controller,
-              cursorPosition: pos,
-            ),
-          ),
+      builder: (context) => _CopyNotificationTheme(
+        data: _CopyNotificationThemeData(backgroundColor: backgroundColor),
+        child: _CopyNotificationPositioned(
+          animation: controller,
+          cursorPosition: pos,
+        ),
+      ),
     );
     controller.addStatusListener((status) {
       if (status == AnimationStatus.completed && entry.mounted) {
@@ -200,10 +198,9 @@ class _CopyNotificationTheme extends InheritedWidget {
 
   const _CopyNotificationTheme({required super.child, required this.data});
 
-  static _CopyNotificationThemeData? maybeOf(BuildContext context) =>
-      context
-          .dependOnInheritedWidgetOfExactType<_CopyNotificationTheme>()
-          ?.data;
+  static _CopyNotificationThemeData? maybeOf(BuildContext context) => context
+      .dependOnInheritedWidgetOfExactType<_CopyNotificationTheme>()
+      ?.data;
 
   @override
   bool updateShouldNotify(_CopyNotificationTheme oldWidget) =>
@@ -220,9 +217,9 @@ class _CopyNotificationThemeData {
           foregroundColor ??
           (backgroundColor != null
               ? ThemeData.estimateBrightnessForColor(backgroundColor) ==
-                      Brightness.dark
-                  ? Colors.white
-                  : Colors.black
+                        Brightness.dark
+                    ? Colors.white
+                    : Colors.black
               : null);
 
   @override

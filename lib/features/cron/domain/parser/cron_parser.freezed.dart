@@ -72,31 +72,26 @@ class _$CronCopyWithImpl<$Res, $Val extends Cron>
   }) {
     return _then(
       _value.copyWith(
-            minutes:
-                null == minutes
-                    ? _value.minutes
-                    : minutes // ignore: cast_nullable_to_non_nullable
-                        as CronExpression,
-            hours:
-                null == hours
-                    ? _value.hours
-                    : hours // ignore: cast_nullable_to_non_nullable
-                        as CronExpression,
-            days:
-                null == days
-                    ? _value.days
-                    : days // ignore: cast_nullable_to_non_nullable
-                        as CronExpression,
-            months:
-                null == months
-                    ? _value.months
-                    : months // ignore: cast_nullable_to_non_nullable
-                        as CronExpression,
-            weekdays:
-                null == weekdays
-                    ? _value.weekdays
-                    : weekdays // ignore: cast_nullable_to_non_nullable
-                        as CronExpression,
+            minutes: null == minutes
+                ? _value.minutes
+                : minutes // ignore: cast_nullable_to_non_nullable
+                      as CronExpression,
+            hours: null == hours
+                ? _value.hours
+                : hours // ignore: cast_nullable_to_non_nullable
+                      as CronExpression,
+            days: null == days
+                ? _value.days
+                : days // ignore: cast_nullable_to_non_nullable
+                      as CronExpression,
+            months: null == months
+                ? _value.months
+                : months // ignore: cast_nullable_to_non_nullable
+                      as CronExpression,
+            weekdays: null == weekdays
+                ? _value.weekdays
+                : weekdays // ignore: cast_nullable_to_non_nullable
+                      as CronExpression,
           )
           as $Val,
     );
@@ -201,31 +196,26 @@ class __$$CronImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$CronImpl(
-        minutes:
-            null == minutes
-                ? _value.minutes
-                : minutes // ignore: cast_nullable_to_non_nullable
-                    as CronExpression,
-        hours:
-            null == hours
-                ? _value.hours
-                : hours // ignore: cast_nullable_to_non_nullable
-                    as CronExpression,
-        days:
-            null == days
-                ? _value.days
-                : days // ignore: cast_nullable_to_non_nullable
-                    as CronExpression,
-        months:
-            null == months
-                ? _value.months
-                : months // ignore: cast_nullable_to_non_nullable
-                    as CronExpression,
-        weekdays:
-            null == weekdays
-                ? _value.weekdays
-                : weekdays // ignore: cast_nullable_to_non_nullable
-                    as CronExpression,
+        minutes: null == minutes
+            ? _value.minutes
+            : minutes // ignore: cast_nullable_to_non_nullable
+                  as CronExpression,
+        hours: null == hours
+            ? _value.hours
+            : hours // ignore: cast_nullable_to_non_nullable
+                  as CronExpression,
+        days: null == days
+            ? _value.days
+            : days // ignore: cast_nullable_to_non_nullable
+                  as CronExpression,
+        months: null == months
+            ? _value.months
+            : months // ignore: cast_nullable_to_non_nullable
+                  as CronExpression,
+        weekdays: null == weekdays
+            ? _value.weekdays
+            : weekdays // ignore: cast_nullable_to_non_nullable
+                  as CronExpression,
       ),
     );
   }
@@ -538,7 +528,7 @@ class __$$SingleImplCopyWithImpl<$Res>
         null == value
             ? _value.value
             : value // ignore: cast_nullable_to_non_nullable
-                as int,
+                  as int,
       ),
     );
   }
@@ -695,16 +685,14 @@ class __$$RangeImplCopyWithImpl<$Res>
   $Res call({Object? from = null, Object? to = null}) {
     return _then(
       _$RangeImpl(
-        from:
-            null == from
-                ? _value.from
-                : from // ignore: cast_nullable_to_non_nullable
-                    as int,
-        to:
-            null == to
-                ? _value.to
-                : to // ignore: cast_nullable_to_non_nullable
-                    as int,
+        from: null == from
+            ? _value.from
+            : from // ignore: cast_nullable_to_non_nullable
+                  as int,
+        to: null == to
+            ? _value.to
+            : to // ignore: cast_nullable_to_non_nullable
+                  as int,
       ),
     );
   }
@@ -869,7 +857,7 @@ class __$$ValuesListImplCopyWithImpl<$Res>
         null == values
             ? _value._values
             : values // ignore: cast_nullable_to_non_nullable
-                as List<CronExpression>,
+                  as List<CronExpression>,
       ),
     );
   }
@@ -1033,16 +1021,14 @@ class __$$StepImplCopyWithImpl<$Res>
   $Res call({Object? base = null, Object? step = null}) {
     return _then(
       _$StepImpl(
-        base:
-            null == base
-                ? _value.base
-                : base // ignore: cast_nullable_to_non_nullable
-                    as CronExpression,
-        step:
-            null == step
-                ? _value.step
-                : step // ignore: cast_nullable_to_non_nullable
-                    as int,
+        base: null == base
+            ? _value.base
+            : base // ignore: cast_nullable_to_non_nullable
+                  as CronExpression,
+        step: null == step
+            ? _value.step
+            : step // ignore: cast_nullable_to_non_nullable
+                  as int,
       ),
     );
   }

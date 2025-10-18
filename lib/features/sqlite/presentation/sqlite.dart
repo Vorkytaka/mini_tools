@@ -43,66 +43,60 @@ class _SqliteToolScreenState extends State<SqliteToolScreen> {
         toolBar: ToolBar(title: Text(t.sqlite.title), centerTitle: true),
         children: [
           ContentArea(
-            builder:
-                (context, controller) => Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Wrap(
-                        runSpacing: 8,
-                        spacing: 8,
-                        children: [
-                          _RunButton(
-                            onTap: () {
-                              final query = _queryController.text;
-                              if (query.isNotEmpty) {
-                                context.sqliteFeature().accept(
-                                  SqliteMsg.execute(query),
-                                );
-                              }
-                            },
-                          ),
-                          const _ImportDatabaseButton(),
-                          const _ExportDatabaseButton(),
-                          const _DropDatabaseButton(),
-                        ],
+            builder: (context, controller) => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Wrap(
+                    runSpacing: 8,
+                    spacing: 8,
+                    children: [
+                      _RunButton(
+                        onTap: () {
+                          final query = _queryController.text;
+                          if (query.isNotEmpty) {
+                            context.sqliteFeature().accept(
+                              SqliteMsg.execute(query),
+                            );
+                          }
+                        },
                       ),
-                    ),
-                    Flexible(
-                      child: MacosCodeEditor(
-                        controller: _queryController,
-                        style: MacosCodeEditor.defaultStyle(
-                          context,
-                          codeTheme: CodeHighlightTheme(
-                            languages: {
-                              'sql': CodeHighlightThemeMode(mode: langSql),
-                            },
-                            theme: CodeThemes.monokai(TextStyles.firaCode),
-                          ),
-                          defaultFontFamily: TextStyles.firaCode.fontFamily,
-                        ),
-                        indicatorBuilder:
-                            MacosCodeEditor.defaultIndicatorBuilder,
-                      ),
-                    ),
-                    ResizablePane(
-                      builder:
-                          (context, controller) => _History(
-                            controller: controller,
-                            onItemEdit: _onItemEdit,
-                          ),
-                      minSize: 200,
-                      resizableSide: ResizableSide.top,
-                      startSize: 200,
-                    ),
-                  ],
+                      const _ImportDatabaseButton(),
+                      const _ExportDatabaseButton(),
+                      const _DropDatabaseButton(),
+                    ],
+                  ),
                 ),
+                Flexible(
+                  child: MacosCodeEditor(
+                    controller: _queryController,
+                    style: MacosCodeEditor.defaultStyle(
+                      context,
+                      codeTheme: CodeHighlightTheme(
+                        languages: {
+                          'sql': CodeHighlightThemeMode(mode: langSql),
+                        },
+                        theme: CodeThemes.monokai(TextStyles.firaCode),
+                      ),
+                      defaultFontFamily: TextStyles.firaCode.fontFamily,
+                    ),
+                    indicatorBuilder: MacosCodeEditor.defaultIndicatorBuilder,
+                  ),
+                ),
+                ResizablePane(
+                  builder: (context, controller) =>
+                      _History(controller: controller, onItemEdit: _onItemEdit),
+                  minSize: 200,
+                  resizableSide: ResizableSide.top,
+                  startSize: 200,
+                ),
+              ],
+            ),
           ),
           ResizablePane(
-            builder:
-                (context, controller) =>
-                    _TableInfoWidget(controller: controller),
+            builder: (context, controller) =>
+                _TableInfoWidget(controller: controller),
             minSize: 240,
             resizableSide: ResizableSide.left,
             startSize: 240,
@@ -129,18 +123,14 @@ class _DropDatabaseButton extends StatelessWidget {
 
     return SqliteFeatureBuilder(
       buildWhen: (prev, curr) => prev.connection != curr.connection,
-      builder:
-          (context, state) => PushButton(
-            onPressed:
-                state.isConnected
-                    ? () => context.sqliteFeature().accept(
-                      const SqliteMsg.dropTable(),
-                    )
-                    : null,
-            controlSize: ControlSize.regular,
-            secondary: true,
-            child: Text(t.sqlite.drop),
-          ),
+      builder: (context, state) => PushButton(
+        onPressed: state.isConnected
+            ? () => context.sqliteFeature().accept(const SqliteMsg.dropTable())
+            : null,
+        controlSize: ControlSize.regular,
+        secondary: true,
+        child: Text(t.sqlite.drop),
+      ),
     );
   }
 }
@@ -231,9 +221,8 @@ class _History extends StatelessWidget {
           controller: controller,
           itemCount: state.results.length,
           separatorBuilder: (context, _) => const SizedBox(height: 8),
-          itemBuilder:
-              (context, i) =>
-                  _HistoryItem(result: state.results[i], onEdit: onItemEdit),
+          itemBuilder: (context, i) =>
+              _HistoryItem(result: state.results[i], onEdit: onItemEdit),
         );
       },
     );
@@ -305,17 +294,15 @@ class _HistoryItem extends StatelessWidget {
                   const SizedBox(width: 8),
                   Expanded(
                     child: result.map(
-                      failure:
-                          (exc) => DefaultTextStyle.merge(
-                            style: TextStyle(
-                              color: materialTheme.colorScheme.error,
-                            ),
-                            child: Text(exc.error),
-                          ),
-                      success:
-                          (result) => Text(
-                            t.sqlite.rowAffected(count: result.result.length),
-                          ),
+                      failure: (exc) => DefaultTextStyle.merge(
+                        style: TextStyle(
+                          color: materialTheme.colorScheme.error,
+                        ),
+                        child: Text(exc.error),
+                      ),
+                      success: (result) => Text(
+                        t.sqlite.rowAffected(count: result.result.length),
+                      ),
                     ),
                   ),
                 ],
@@ -356,27 +343,26 @@ class _ExportDatabaseButton extends StatelessWidget {
     return SqliteFeatureBuilder(
       builder: (context, state) {
         return PushButton(
-          onPressed:
-              state.isConnected
-                  ? () async {
-                    final cubit = context.sqliteFeature();
+          onPressed: state.isConnected
+              ? () async {
+                  final cubit = context.sqliteFeature();
 
-                    final initialPath = state.connection.mapOrNull(
-                      file: (f) => f.folder,
-                    );
-                    final name =
-                        state.connection.mapOrNull(file: (f) => f.name) ??
-                        'database.sqlite3';
+                  final initialPath = state.connection.mapOrNull(
+                    file: (f) => f.folder,
+                  );
+                  final name =
+                      state.connection.mapOrNull(file: (f) => f.name) ??
+                      'database.sqlite3';
 
-                    final path = await FilePicker.platform.saveFile(
-                      fileName: name,
-                      initialDirectory: initialPath,
-                    );
-                    if (path != null) {
-                      cubit.accept(SqliteMsg.exportDb(path));
-                    }
+                  final path = await FilePicker.platform.saveFile(
+                    fileName: name,
+                    initialDirectory: initialPath,
+                  );
+                  if (path != null) {
+                    cubit.accept(SqliteMsg.exportDb(path));
                   }
-                  : null,
+                }
+              : null,
           controlSize: ControlSize.regular,
           secondary: true,
           child: _IconTextWidget(
@@ -431,12 +417,12 @@ class _ImportDatabaseButton extends StatelessWidget {
 
         return MacosAlertDialog(
           appIcon: const Text('🤔', style: TextStyle(fontSize: 40)),
-          title: Text(t.sqlite.override.title),
-          message: Text(t.sqlite.override.message),
+          title: Text(t.sqlite.kOverride.title),
+          message: Text(t.sqlite.kOverride.message),
           primaryButton: PushButton(
             onPressed: () => Navigator.of(context).pop(true),
             controlSize: ControlSize.large,
-            child: Text(t.sqlite.override.confirm),
+            child: Text(t.sqlite.kOverride.confirm),
           ),
           secondaryButton: PushButton(
             onPressed: () => Navigator.of(context).pop(),

@@ -108,7 +108,7 @@ class __$$UpdateNewTextMessageImplCopyWithImpl<$Res>
         null == text
             ? _value.text
             : text // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -261,7 +261,7 @@ class __$$UpdateOldTextMessageImplCopyWithImpl<$Res>
         null == text
             ? _value.text
             : text // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -414,7 +414,7 @@ class __$$UpdateDiffsMessageImplCopyWithImpl<$Res>
         null == diffs
             ? _value._diffs
             : diffs // ignore: cast_nullable_to_non_nullable
-                as List<Diff>,
+                  as List<Diff>,
       ),
     );
   }

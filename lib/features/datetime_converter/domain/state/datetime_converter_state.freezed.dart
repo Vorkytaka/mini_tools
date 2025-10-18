@@ -72,31 +72,26 @@ class _$DatetimeConverterStateCopyWithImpl<
   }) {
     return _then(
       _value.copyWith(
-            datetime:
-                freezed == datetime
-                    ? _value.datetime
-                    : datetime // ignore: cast_nullable_to_non_nullable
-                        as TZDateTime?,
-            isReadOnly:
-                null == isReadOnly
-                    ? _value.isReadOnly
-                    : isReadOnly // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            input:
-                null == input
-                    ? _value.input
-                    : input // ignore: cast_nullable_to_non_nullable
-                        as String,
-            inputType:
-                null == inputType
-                    ? _value.inputType
-                    : inputType // ignore: cast_nullable_to_non_nullable
-                        as InputType,
-            format:
-                null == format
-                    ? _value.format
-                    : format // ignore: cast_nullable_to_non_nullable
-                        as DatetimeFormat,
+            datetime: freezed == datetime
+                ? _value.datetime
+                : datetime // ignore: cast_nullable_to_non_nullable
+                      as TZDateTime?,
+            isReadOnly: null == isReadOnly
+                ? _value.isReadOnly
+                : isReadOnly // ignore: cast_nullable_to_non_nullable
+                      as bool,
+            input: null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                      as String,
+            inputType: null == inputType
+                ? _value.inputType
+                : inputType // ignore: cast_nullable_to_non_nullable
+                      as InputType,
+            format: null == format
+                ? _value.format
+                : format // ignore: cast_nullable_to_non_nullable
+                      as DatetimeFormat,
           )
           as $Val,
     );
@@ -144,31 +139,26 @@ class __$$DatetimeConverterStateImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$DatetimeConverterStateImpl(
-        datetime:
-            freezed == datetime
-                ? _value.datetime
-                : datetime // ignore: cast_nullable_to_non_nullable
-                    as TZDateTime?,
-        isReadOnly:
-            null == isReadOnly
-                ? _value.isReadOnly
-                : isReadOnly // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        input:
-            null == input
-                ? _value.input
-                : input // ignore: cast_nullable_to_non_nullable
-                    as String,
-        inputType:
-            null == inputType
-                ? _value.inputType
-                : inputType // ignore: cast_nullable_to_non_nullable
-                    as InputType,
-        format:
-            null == format
-                ? _value.format
-                : format // ignore: cast_nullable_to_non_nullable
-                    as DatetimeFormat,
+        datetime: freezed == datetime
+            ? _value.datetime
+            : datetime // ignore: cast_nullable_to_non_nullable
+                  as TZDateTime?,
+        isReadOnly: null == isReadOnly
+            ? _value.isReadOnly
+            : isReadOnly // ignore: cast_nullable_to_non_nullable
+                  as bool,
+        input: null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                  as String,
+        inputType: null == inputType
+            ? _value.inputType
+            : inputType // ignore: cast_nullable_to_non_nullable
+                  as InputType,
+        format: null == format
+            ? _value.format
+            : format // ignore: cast_nullable_to_non_nullable
+                  as DatetimeFormat,
       ),
     );
   }

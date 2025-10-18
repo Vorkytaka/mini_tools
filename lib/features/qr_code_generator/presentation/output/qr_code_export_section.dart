@@ -36,8 +36,9 @@ extension on ExportSizeUI {
       ExportSizeUI.small => '256',
       ExportSizeUI.medium => '512',
       ExportSizeUI.large => '1024',
-      ExportSizeUI.custom =>
-        Translations.of(context).qrCode.export.exportSize.custom,
+      ExportSizeUI.custom => Translations.of(
+        context,
+      ).qrCode.export.exportSize.custom,
     };
   }
 
@@ -154,12 +155,11 @@ class _ExportSizeSelector extends StatelessWidget {
               for (final size in ExportSizeUI.values)
                 size: GestureDetector(
                   // This is hack to RE-select the custom item
-                  onTap:
-                      size == ExportSizeUI.custom && selectedSize == size
-                          ? () {
-                            onChanged(size);
-                          }
-                          : null,
+                  onTap: size == ExportSizeUI.custom && selectedSize == size
+                      ? () {
+                          onChanged(size);
+                        }
+                      : null,
                   child: Text(size.format(context)),
                 ),
             },
@@ -225,14 +225,13 @@ class _ExportButtons extends StatelessWidget {
               return PushButton(
                 secondary: true,
                 controlSize: ControlSize.large,
-                onPressed:
-                    qrCode != null
-                        ? () {
-                          context.read<QrCodeFeature>().accept(
-                            const QrCodeMessage.copyToClipboard(),
-                          );
-                        }
-                        : null,
+                onPressed: qrCode != null
+                    ? () {
+                        context.read<QrCodeFeature>().accept(
+                          const QrCodeMessage.copyToClipboard(),
+                        );
+                      }
+                    : null,
                 child: Text(t.common.copy),
               );
             },
@@ -247,14 +246,13 @@ class _ExportButtons extends StatelessWidget {
 
               return PushButton(
                 controlSize: ControlSize.large,
-                onPressed:
-                    qrCode != null
-                        ? () {
-                          context.read<QrCodeFeature>().accept(
-                            const QrCodeMessage.saveToFile(),
-                          );
-                        }
-                        : null,
+                onPressed: qrCode != null
+                    ? () {
+                        context.read<QrCodeFeature>().accept(
+                          const QrCodeMessage.saveToFile(),
+                        );
+                      }
+                    : null,
                 child: Text(t.common.save),
               );
             },

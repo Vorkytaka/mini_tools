@@ -54,16 +54,14 @@ class _$CronStateCopyWithImpl<$Res, $Val extends CronState>
   $Res call({Object? input = null, Object? result = null}) {
     return _then(
       _value.copyWith(
-            input:
-                null == input
-                    ? _value.input
-                    : input // ignore: cast_nullable_to_non_nullable
-                        as String,
-            result:
-                null == result
-                    ? _value.result
-                    : result // ignore: cast_nullable_to_non_nullable
-                        as CronResult,
+            input: null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                      as String,
+            result: null == result
+                ? _value.result
+                : result // ignore: cast_nullable_to_non_nullable
+                      as CronResult,
           )
           as $Val,
     );
@@ -111,16 +109,14 @@ class __$$CronStateImplCopyWithImpl<$Res>
   $Res call({Object? input = null, Object? result = null}) {
     return _then(
       _$CronStateImpl(
-        input:
-            null == input
-                ? _value.input
-                : input // ignore: cast_nullable_to_non_nullable
-                    as String,
-        result:
-            null == result
-                ? _value.result
-                : result // ignore: cast_nullable_to_non_nullable
-                    as CronResult,
+        input: null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                  as String,
+        result: null == result
+            ? _value.result
+            : result // ignore: cast_nullable_to_non_nullable
+                  as CronResult,
       ),
     );
   }
@@ -387,7 +383,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
         null == cron
             ? _value.cron
             : cron // ignore: cast_nullable_to_non_nullable
-                as Cron,
+                  as Cron,
       ),
     );
   }
@@ -545,7 +541,7 @@ class __$$FailureImplCopyWithImpl<$Res>
         null == exception
             ? _value.exception
             : exception // ignore: cast_nullable_to_non_nullable
-                as CronException,
+                  as CronException,
       ),
     );
   }

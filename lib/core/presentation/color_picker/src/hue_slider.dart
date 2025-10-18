@@ -97,8 +97,12 @@ class _HueSliderState extends State<HueSlider> {
       _currentDragOffset.dy - bubbleSize - bubblePadding,
     );
 
-    final Color bubbleColor =
-        HSVColor.fromAHSV(1.0, _currentHue, 1.0, 1.0).toColor();
+    final Color bubbleColor = HSVColor.fromAHSV(
+      1.0,
+      _currentHue,
+      1.0,
+      1.0,
+    ).toColor();
 
     return Positioned(
       left: position.dx,

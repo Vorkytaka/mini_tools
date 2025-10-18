@@ -66,26 +66,22 @@ class _$ToolsStateCopyWithImpl<$Res, $Val extends ToolsState>
   }) {
     return _then(
       _value.copyWith(
-            selectedToolId:
-                null == selectedToolId
-                    ? _value.selectedToolId
-                    : selectedToolId // ignore: cast_nullable_to_non_nullable
-                        as String,
-            toolIds:
-                null == toolIds
-                    ? _value.toolIds
-                    : toolIds // ignore: cast_nullable_to_non_nullable
-                        as List<String>,
-            searchQuery:
-                null == searchQuery
-                    ? _value.searchQuery
-                    : searchQuery // ignore: cast_nullable_to_non_nullable
-                        as String,
-            searchResult:
-                null == searchResult
-                    ? _value.searchResult
-                    : searchResult // ignore: cast_nullable_to_non_nullable
-                        as List<String>,
+            selectedToolId: null == selectedToolId
+                ? _value.selectedToolId
+                : selectedToolId // ignore: cast_nullable_to_non_nullable
+                      as String,
+            toolIds: null == toolIds
+                ? _value.toolIds
+                : toolIds // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+            searchQuery: null == searchQuery
+                ? _value.searchQuery
+                : searchQuery // ignore: cast_nullable_to_non_nullable
+                      as String,
+            searchResult: null == searchResult
+                ? _value.searchResult
+                : searchResult // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
           )
           as $Val,
     );
@@ -130,26 +126,22 @@ class __$$ToolsStateImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$ToolsStateImpl(
-        selectedToolId:
-            null == selectedToolId
-                ? _value.selectedToolId
-                : selectedToolId // ignore: cast_nullable_to_non_nullable
-                    as String,
-        toolIds:
-            null == toolIds
-                ? _value._toolIds
-                : toolIds // ignore: cast_nullable_to_non_nullable
-                    as List<String>,
-        searchQuery:
-            null == searchQuery
-                ? _value.searchQuery
-                : searchQuery // ignore: cast_nullable_to_non_nullable
-                    as String,
-        searchResult:
-            null == searchResult
-                ? _value._searchResult
-                : searchResult // ignore: cast_nullable_to_non_nullable
-                    as List<String>,
+        selectedToolId: null == selectedToolId
+            ? _value.selectedToolId
+            : selectedToolId // ignore: cast_nullable_to_non_nullable
+                  as String,
+        toolIds: null == toolIds
+            ? _value._toolIds
+            : toolIds // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+        searchQuery: null == searchQuery
+            ? _value.searchQuery
+            : searchQuery // ignore: cast_nullable_to_non_nullable
+                  as String,
+        searchResult: null == searchResult
+            ? _value._searchResult
+            : searchResult // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
       ),
     );
   }

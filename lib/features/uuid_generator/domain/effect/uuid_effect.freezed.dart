@@ -247,26 +247,22 @@ class __$$GenerateEffectImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$GenerateEffectImpl(
-        version:
-            null == version
-                ? _value.version
-                : version // ignore: cast_nullable_to_non_nullable
-                    as UuidVersion,
-        count:
-            null == count
-                ? _value.count
-                : count // ignore: cast_nullable_to_non_nullable
-                    as int,
-        namespace:
-            null == namespace
-                ? _value.namespace
-                : namespace // ignore: cast_nullable_to_non_nullable
-                    as String,
-        name:
-            null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                    as String,
+        version: null == version
+            ? _value.version
+            : version // ignore: cast_nullable_to_non_nullable
+                  as UuidVersion,
+        count: null == count
+            ? _value.count
+            : count // ignore: cast_nullable_to_non_nullable
+                  as int,
+        namespace: null == namespace
+            ? _value.namespace
+            : namespace // ignore: cast_nullable_to_non_nullable
+                  as String,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
       ),
     );
   }

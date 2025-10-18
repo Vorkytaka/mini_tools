@@ -80,16 +80,14 @@ class _$SyncHashEffectCopyWithImpl<$Res, $Val extends SyncHashEffect>
   $Res call({Object? text = null, Object? algorithm = null}) {
     return _then(
       _value.copyWith(
-            text:
-                null == text
-                    ? _value.text
-                    : text // ignore: cast_nullable_to_non_nullable
-                        as String,
-            algorithm:
-                null == algorithm
-                    ? _value.algorithm
-                    : algorithm // ignore: cast_nullable_to_non_nullable
-                        as HashAlgorithm,
+            text: null == text
+                ? _value.text
+                : text // ignore: cast_nullable_to_non_nullable
+                      as String,
+            algorithm: null == algorithm
+                ? _value.algorithm
+                : algorithm // ignore: cast_nullable_to_non_nullable
+                      as HashAlgorithm,
           )
           as $Val,
     );
@@ -127,11 +125,11 @@ class __$$CountTextHashEffectImplCopyWithImpl<$Res>
         null == text
             ? _value.text
             : text // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
         null == algorithm
             ? _value.algorithm
             : algorithm // ignore: cast_nullable_to_non_nullable
-                as HashAlgorithm,
+                  as HashAlgorithm,
       ),
     );
   }
@@ -317,16 +315,14 @@ class _$IsolateHashEffectCopyWithImpl<$Res, $Val extends IsolateHashEffect>
   $Res call({Object? path = null, Object? algorithm = null}) {
     return _then(
       _value.copyWith(
-            path:
-                null == path
-                    ? _value.path
-                    : path // ignore: cast_nullable_to_non_nullable
-                        as String,
-            algorithm:
-                null == algorithm
-                    ? _value.algorithm
-                    : algorithm // ignore: cast_nullable_to_non_nullable
-                        as HashAlgorithm,
+            path: null == path
+                ? _value.path
+                : path // ignore: cast_nullable_to_non_nullable
+                      as String,
+            algorithm: null == algorithm
+                ? _value.algorithm
+                : algorithm // ignore: cast_nullable_to_non_nullable
+                      as HashAlgorithm,
           )
           as $Val,
     );
@@ -364,11 +360,11 @@ class __$$CountFileHashEffectImplCopyWithImpl<$Res>
         null == path
             ? _value.path
             : path // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
         null == algorithm
             ? _value.algorithm
             : algorithm // ignore: cast_nullable_to_non_nullable
-                as HashAlgorithm,
+                  as HashAlgorithm,
       ),
     );
   }

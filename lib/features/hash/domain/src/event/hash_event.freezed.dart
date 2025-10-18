@@ -124,7 +124,7 @@ class __$$UpdateTextEventImplCopyWithImpl<$Res>
         null == text
             ? _value.text
             : text // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -293,7 +293,7 @@ class __$$SetFileEventImplCopyWithImpl<$Res>
         null == path
             ? _value.path
             : path // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -590,7 +590,7 @@ class __$$UpdateFormatEventImplCopyWithImpl<$Res>
         null == format
             ? _value.format
             : format // ignore: cast_nullable_to_non_nullable
-                as HashFormat,
+                  as HashFormat,
       ),
     );
   }
@@ -760,12 +760,11 @@ class __$$UpdateHashEventImplCopyWithImpl<$Res>
         freezed == hash
             ? _value.hash
             : hash // ignore: cast_nullable_to_non_nullable
-                as Uint8List?,
-        bytesInFile:
-            freezed == bytesInFile
-                ? _value.bytesInFile
-                : bytesInFile // ignore: cast_nullable_to_non_nullable
-                    as int?,
+                  as Uint8List?,
+        bytesInFile: freezed == bytesInFile
+            ? _value.bytesInFile
+            : bytesInFile // ignore: cast_nullable_to_non_nullable
+                  as int?,
       ),
     );
   }
@@ -946,7 +945,7 @@ class __$$UpdateAlgorithmEventImplCopyWithImpl<$Res>
         null == algorithm
             ? _value.algorithm
             : algorithm // ignore: cast_nullable_to_non_nullable
-                as HashAlgorithm,
+                  as HashAlgorithm,
       ),
     );
   }

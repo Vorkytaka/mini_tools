@@ -13,8 +13,8 @@ final class PercentagesTool {
   static const id = 'percentages';
 
   static Tool shared = BaseTool(
-    titleBuilder:
-        (context) => Translations.of(context).percentageCalculator.title,
+    titleBuilder: (context) =>
+        Translations.of(context).percentageCalculator.title,
     icon: Icons.percent,
     screenBuilder: (context) => const PercentagesToolScreen(),
   );
@@ -35,23 +35,22 @@ class PercentagesToolScreen extends StatelessWidget {
       ),
       children: [
         ContentArea(
-          builder:
-              (context, controller) => const Padding(
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.all(8),
-                      child: _PercentagesFromValue(),
-                    ),
-                    MacosPulldownMenuDivider(),
-                    Padding(
-                      padding: EdgeInsets.all(8),
-                      child: _PercentagesOfValue(),
-                    ),
-                  ],
+          builder: (context, controller) => const Padding(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: _PercentagesFromValue(),
                 ),
-              ),
+                MacosPulldownMenuDivider(),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: _PercentagesOfValue(),
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );

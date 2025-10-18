@@ -132,7 +132,7 @@ class __$$ExecuteEffectImplCopyWithImpl<$Res>
         null == query
             ? _value.query
             : query // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -441,7 +441,7 @@ class __$$ImportDbEffectImplCopyWithImpl<$Res>
         null == path
             ? _value.path
             : path // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -616,7 +616,7 @@ class __$$ExportDbEffectImplCopyWithImpl<$Res>
         null == path
             ? _value.path
             : path // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }

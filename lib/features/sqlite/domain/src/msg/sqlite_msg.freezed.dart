@@ -136,7 +136,7 @@ class __$$ExecuteMsgImplCopyWithImpl<$Res>
         null == query
             ? _value.query
             : query // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -316,7 +316,7 @@ class __$$QueryResultMsgImplCopyWithImpl<$Res>
         null == result
             ? _value.result
             : result // ignore: cast_nullable_to_non_nullable
-                as Result,
+                  as Result,
       ),
     );
   }
@@ -507,7 +507,7 @@ class __$$ImportDbMsgImplCopyWithImpl<$Res>
         null == path
             ? _value.path
             : path // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -685,7 +685,7 @@ class __$$ExportDbMsgImplCopyWithImpl<$Res>
         null == path
             ? _value.path
             : path // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -1006,7 +1006,7 @@ class __$$TableInfoMsgImplCopyWithImpl<$Res>
         null == tables
             ? _value._tables
             : tables // ignore: cast_nullable_to_non_nullable
-                as List<TableInfo>,
+                  as List<TableInfo>,
       ),
     );
   }
@@ -1192,7 +1192,7 @@ class __$$ConnectionChangedMsgImplCopyWithImpl<$Res>
         null == connection
             ? _value.connection
             : connection // ignore: cast_nullable_to_non_nullable
-                as DatabaseConnection,
+                  as DatabaseConnection,
       ),
     );
   }

@@ -144,7 +144,7 @@ class __$$UpdateInputMessageImplCopyWithImpl<$Res>
         null == input
             ? _value.input
             : input // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }
@@ -332,7 +332,7 @@ class __$$UpdateDatetimeMessageImplCopyWithImpl<$Res>
         null == datetime
             ? _value.datetime
             : datetime // ignore: cast_nullable_to_non_nullable
-                as TZDateTime,
+                  as TZDateTime,
       ),
     );
   }
@@ -522,7 +522,7 @@ class __$$UpdateInputTypeMessageImplCopyWithImpl<$Res>
         null == type
             ? _value.type
             : type // ignore: cast_nullable_to_non_nullable
-                as InputType,
+                  as InputType,
       ),
     );
   }
@@ -711,7 +711,7 @@ class __$$UpdateDatetimeFormatMessageImplCopyWithImpl<$Res>
         null == format
             ? _value.format
             : format // ignore: cast_nullable_to_non_nullable
-                as DatetimeFormat,
+                  as DatetimeFormat,
       ),
     );
   }
@@ -747,9 +747,10 @@ class _$UpdateDatetimeFormatMessageImpl implements UpdateDatetimeFormatMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateDatetimeFormatMessageImplCopyWith<_$UpdateDatetimeFormatMessageImpl>
-  get copyWith => __$$UpdateDatetimeFormatMessageImplCopyWithImpl<
-    _$UpdateDatetimeFormatMessageImpl
-  >(this, _$identity);
+  get copyWith =>
+      __$$UpdateDatetimeFormatMessageImplCopyWithImpl<
+        _$UpdateDatetimeFormatMessageImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1184,7 +1185,7 @@ class __$$SetNowMessageImplCopyWithImpl<$Res>
         null == datetime
             ? _value.datetime
             : datetime // ignore: cast_nullable_to_non_nullable
-                as TZDateTime,
+                  as TZDateTime,
       ),
     );
   }
@@ -1369,7 +1370,7 @@ class __$$SetInitialDatetimeMessageImplCopyWithImpl<$Res>
         null == datetime
             ? _value.datetime
             : datetime // ignore: cast_nullable_to_non_nullable
-                as TZDateTime,
+                  as TZDateTime,
       ),
     );
   }
@@ -1406,9 +1407,10 @@ class _$SetInitialDatetimeMessageImpl implements SetInitialDatetimeMessage {
   @override
   @pragma('vm:prefer-inline')
   _$$SetInitialDatetimeMessageImplCopyWith<_$SetInitialDatetimeMessageImpl>
-  get copyWith => __$$SetInitialDatetimeMessageImplCopyWithImpl<
-    _$SetInitialDatetimeMessageImpl
-  >(this, _$identity);
+  get copyWith =>
+      __$$SetInitialDatetimeMessageImplCopyWithImpl<
+        _$SetInitialDatetimeMessageImpl
+      >(this, _$identity);
 
   @override
   @optionalTypeArgs

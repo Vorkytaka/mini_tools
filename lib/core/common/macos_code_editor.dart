@@ -130,10 +130,9 @@ class _MacosCodeEditorState extends State<MacosCodeEditor> {
       shortcutOverrideActions: widget.shortcutOverrideActions,
       sperator: widget.sperator,
       border: Border.all(
-        color:
-            _focusNode!.hasFocus
-                ? const Color.fromRGBO(26, 169, 255, 0.3)
-                : const Color(0x00000000),
+        color: _focusNode!.hasFocus
+            ? const Color.fromRGBO(26, 169, 255, 0.3)
+            : const Color(0x00000000),
         width: 3,
       ),
       readOnly: widget.readOnly,

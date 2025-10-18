@@ -82,41 +82,34 @@ class _$NumberBaseStateCopyWithImpl<$Res, $Val extends NumberBaseState>
   }) {
     return _then(
       _value.copyWith(
-            base2:
-                null == base2
-                    ? _value.base2
-                    : base2 // ignore: cast_nullable_to_non_nullable
-                        as String,
-            base8:
-                null == base8
-                    ? _value.base8
-                    : base8 // ignore: cast_nullable_to_non_nullable
-                        as String,
-            base10:
-                null == base10
-                    ? _value.base10
-                    : base10 // ignore: cast_nullable_to_non_nullable
-                        as String,
-            base16:
-                null == base16
-                    ? _value.base16
-                    : base16 // ignore: cast_nullable_to_non_nullable
-                        as String,
-            customBase:
-                null == customBase
-                    ? _value.customBase
-                    : customBase // ignore: cast_nullable_to_non_nullable
-                        as int,
-            customBaseValue:
-                null == customBaseValue
-                    ? _value.customBaseValue
-                    : customBaseValue // ignore: cast_nullable_to_non_nullable
-                        as String,
-            value:
-                freezed == value
-                    ? _value.value
-                    : value // ignore: cast_nullable_to_non_nullable
-                        as BigInt?,
+            base2: null == base2
+                ? _value.base2
+                : base2 // ignore: cast_nullable_to_non_nullable
+                      as String,
+            base8: null == base8
+                ? _value.base8
+                : base8 // ignore: cast_nullable_to_non_nullable
+                      as String,
+            base10: null == base10
+                ? _value.base10
+                : base10 // ignore: cast_nullable_to_non_nullable
+                      as String,
+            base16: null == base16
+                ? _value.base16
+                : base16 // ignore: cast_nullable_to_non_nullable
+                      as String,
+            customBase: null == customBase
+                ? _value.customBase
+                : customBase // ignore: cast_nullable_to_non_nullable
+                      as int,
+            customBaseValue: null == customBaseValue
+                ? _value.customBaseValue
+                : customBaseValue // ignore: cast_nullable_to_non_nullable
+                      as String,
+            value: freezed == value
+                ? _value.value
+                : value // ignore: cast_nullable_to_non_nullable
+                      as BigInt?,
           )
           as $Val,
     );
@@ -167,41 +160,34 @@ class __$$NumberBaseStateImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$NumberBaseStateImpl(
-        base2:
-            null == base2
-                ? _value.base2
-                : base2 // ignore: cast_nullable_to_non_nullable
-                    as String,
-        base8:
-            null == base8
-                ? _value.base8
-                : base8 // ignore: cast_nullable_to_non_nullable
-                    as String,
-        base10:
-            null == base10
-                ? _value.base10
-                : base10 // ignore: cast_nullable_to_non_nullable
-                    as String,
-        base16:
-            null == base16
-                ? _value.base16
-                : base16 // ignore: cast_nullable_to_non_nullable
-                    as String,
-        customBase:
-            null == customBase
-                ? _value.customBase
-                : customBase // ignore: cast_nullable_to_non_nullable
-                    as int,
-        customBaseValue:
-            null == customBaseValue
-                ? _value.customBaseValue
-                : customBaseValue // ignore: cast_nullable_to_non_nullable
-                    as String,
-        value:
-            freezed == value
-                ? _value.value
-                : value // ignore: cast_nullable_to_non_nullable
-                    as BigInt?,
+        base2: null == base2
+            ? _value.base2
+            : base2 // ignore: cast_nullable_to_non_nullable
+                  as String,
+        base8: null == base8
+            ? _value.base8
+            : base8 // ignore: cast_nullable_to_non_nullable
+                  as String,
+        base10: null == base10
+            ? _value.base10
+            : base10 // ignore: cast_nullable_to_non_nullable
+                  as String,
+        base16: null == base16
+            ? _value.base16
+            : base16 // ignore: cast_nullable_to_non_nullable
+                  as String,
+        customBase: null == customBase
+            ? _value.customBase
+            : customBase // ignore: cast_nullable_to_non_nullable
+                  as int,
+        customBaseValue: null == customBaseValue
+            ? _value.customBaseValue
+            : customBaseValue // ignore: cast_nullable_to_non_nullable
+                  as String,
+        value: freezed == value
+            ? _value.value
+            : value // ignore: cast_nullable_to_non_nullable
+                  as BigInt?,
       ),
     );
   }

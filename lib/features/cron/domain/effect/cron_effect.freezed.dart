@@ -102,7 +102,7 @@ class __$$SaveEffectImplCopyWithImpl<$Res>
         null == input
             ? _value.input
             : input // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }

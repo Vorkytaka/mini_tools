@@ -105,16 +105,14 @@ class __$$SearchToolsEffectImplCopyWithImpl<$Res>
   $Res call({Object? query = null, Object? tools = null}) {
     return _then(
       _$SearchToolsEffectImpl(
-        query:
-            null == query
-                ? _value.query
-                : query // ignore: cast_nullable_to_non_nullable
-                    as String,
-        tools:
-            null == tools
-                ? _value._tools
-                : tools // ignore: cast_nullable_to_non_nullable
-                    as List<String>,
+        query: null == query
+            ? _value.query
+            : query // ignore: cast_nullable_to_non_nullable
+                  as String,
+        tools: null == tools
+            ? _value._tools
+            : tools // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
       ),
     );
   }
@@ -284,7 +282,7 @@ class __$$SaveSelectedToolEffectImplCopyWithImpl<$Res>
         null == toolId
             ? _value.toolId
             : toolId // ignore: cast_nullable_to_non_nullable
-                as String,
+                  as String,
       ),
     );
   }

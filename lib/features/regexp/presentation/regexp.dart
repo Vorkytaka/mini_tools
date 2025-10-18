@@ -22,24 +22,23 @@ class RegExpToolScreen extends StatelessWidget {
       children: [
         ContentArea(builder: (context, _) => const _Body()),
         ResizablePane(
-          builder:
-              (context, controller) => Padding(
-                padding: panePadding,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          builder: (context, controller) => Padding(
+            padding: panePadding,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(t.regexp.matchInfoTitle),
-                        const _MatchCounter(),
-                      ],
-                    ),
-                    itemSpaceV,
-                    const Expanded(child: _MatchInformation()),
+                    Text(t.regexp.matchInfoTitle),
+                    const _MatchCounter(),
                   ],
                 ),
-              ),
+                itemSpaceV,
+                const Expanded(child: _MatchInformation()),
+              ],
+            ),
+          ),
           minSize: 300,
           maxSize: 400,
           resizableSide: ResizableSide.left,
@@ -197,10 +196,9 @@ class _GlobalCheckbox extends StatelessWidget {
       builder: (context, state) {
         return LabeledCheckbox(
           value: state.isGlobal,
-          onChanged:
-              (isGlobal) => context.read<RegExpFeature>().accept(
-                RegExpMessage.updateGlobal(isGlobal),
-              ),
+          onChanged: (isGlobal) => context.read<RegExpFeature>().accept(
+            RegExpMessage.updateGlobal(isGlobal),
+          ),
           label: t.regexp.settings.global,
         );
       },
@@ -220,10 +218,9 @@ class _MultilineCheckbox extends StatelessWidget {
       builder: (context, state) {
         return LabeledCheckbox(
           value: state.isMultiline,
-          onChanged:
-              (isMultiline) => context.read<RegExpFeature>().accept(
-                RegExpMessage.updateMultiline(isMultiline),
-              ),
+          onChanged: (isMultiline) => context.read<RegExpFeature>().accept(
+            RegExpMessage.updateMultiline(isMultiline),
+          ),
           label: t.regexp.settings.multiline,
         );
       },
@@ -243,10 +240,9 @@ class _CaseSensitiveCheckbox extends StatelessWidget {
       builder: (context, state) {
         return LabeledCheckbox(
           value: state.isCaseSensitive,
-          onChanged:
-              (isCaseSensitive) => context.read<RegExpFeature>().accept(
-                RegExpMessage.updateCaseSensitive(isCaseSensitive),
-              ),
+          onChanged: (isCaseSensitive) => context.read<RegExpFeature>().accept(
+            RegExpMessage.updateCaseSensitive(isCaseSensitive),
+          ),
           label: t.regexp.settings.caseSensitive,
         );
       },
@@ -266,10 +262,9 @@ class _UnicodeCheckbox extends StatelessWidget {
       builder: (context, state) {
         return LabeledCheckbox(
           value: state.isUnicode,
-          onChanged:
-              (isUnicode) => context.read<RegExpFeature>().accept(
-                RegExpMessage.updateUnicode(isUnicode),
-              ),
+          onChanged: (isUnicode) => context.read<RegExpFeature>().accept(
+            RegExpMessage.updateUnicode(isUnicode),
+          ),
           label: t.regexp.settings.unicode,
         );
       },
@@ -289,10 +284,9 @@ class _DotAllCheckbox extends StatelessWidget {
       builder: (context, state) {
         return LabeledCheckbox(
           value: state.isDotAll,
-          onChanged:
-              (isDotAll) => context.read<RegExpFeature>().accept(
-                RegExpMessage.updateDotAll(isDotAll),
-              ),
+          onChanged: (isDotAll) => context.read<RegExpFeature>().accept(
+            RegExpMessage.updateDotAll(isDotAll),
+          ),
           label: t.regexp.settings.dotAll,
         );
       },
@@ -353,8 +347,8 @@ class _MatchInformation extends StatelessWidget {
         return ListView.separated(
           itemCount: matches.length,
           separatorBuilder: (context, i) => const MacosPulldownMenuDivider(),
-          itemBuilder:
-              (context, i) => _MatchWidget(position: i + 1, match: matches[i]),
+          itemBuilder: (context, i) =>
+              _MatchWidget(position: i + 1, match: matches[i]),
         );
       },
     );

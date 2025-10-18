@@ -69,31 +69,26 @@ class _$HashStateCopyWithImpl<$Res, $Val extends HashState>
   }) {
     return _then(
       _value.copyWith(
-            input:
-                null == input
-                    ? _value.input
-                    : input // ignore: cast_nullable_to_non_nullable
-                        as HashInput,
-            format:
-                null == format
-                    ? _value.format
-                    : format // ignore: cast_nullable_to_non_nullable
-                        as HashFormat,
-            algorithm:
-                null == algorithm
-                    ? _value.algorithm
-                    : algorithm // ignore: cast_nullable_to_non_nullable
-                        as HashAlgorithm,
-            hash:
-                freezed == hash
-                    ? _value.hash
-                    : hash // ignore: cast_nullable_to_non_nullable
-                        as Uint8List?,
-            inputBytes:
-                null == inputBytes
-                    ? _value.inputBytes
-                    : inputBytes // ignore: cast_nullable_to_non_nullable
-                        as int,
+            input: null == input
+                ? _value.input
+                : input // ignore: cast_nullable_to_non_nullable
+                      as HashInput,
+            format: null == format
+                ? _value.format
+                : format // ignore: cast_nullable_to_non_nullable
+                      as HashFormat,
+            algorithm: null == algorithm
+                ? _value.algorithm
+                : algorithm // ignore: cast_nullable_to_non_nullable
+                      as HashAlgorithm,
+            hash: freezed == hash
+                ? _value.hash
+                : hash // ignore: cast_nullable_to_non_nullable
+                      as Uint8List?,
+            inputBytes: null == inputBytes
+                ? _value.inputBytes
+                : inputBytes // ignore: cast_nullable_to_non_nullable
+                      as int,
           )
           as $Val,
     );
@@ -153,31 +148,26 @@ class __$$HashStateImplCopyWithImpl<$Res>
   }) {
     return _then(
       _$HashStateImpl(
-        input:
-            null == input
-                ? _value.input
-                : input // ignore: cast_nullable_to_non_nullable
-                    as HashInput,
-        format:
-            null == format
-                ? _value.format
-                : format // ignore: cast_nullable_to_non_nullable
-                    as HashFormat,
-        algorithm:
-            null == algorithm
-                ? _value.algorithm
-                : algorithm // ignore: cast_nullable_to_non_nullable
-                    as HashAlgorithm,
-        hash:
-            freezed == hash
-                ? _value.hash
-                : hash // ignore: cast_nullable_to_non_nullable
-                    as Uint8List?,
-        inputBytes:
-            null == inputBytes
-                ? _value.inputBytes
-                : inputBytes // ignore: cast_nullable_to_non_nullable
-                    as int,
+        input: null == input
+            ? _value.input
+            : input // ignore: cast_nullable_to_non_nullable
+                  as HashInput,
+        format: null == format
+            ? _value.format
+            : format // ignore: cast_nullable_to_non_nullable
+                  as HashFormat,
+        algorithm: null == algorithm
+            ? _value.algorithm
+            : algorithm // ignore: cast_nullable_to_non_nullable
+                  as HashAlgorithm,
+        hash: freezed == hash
+            ? _value.hash
+            : hash // ignore: cast_nullable_to_non_nullable
+                  as Uint8List?,
+        inputBytes: null == inputBytes
+            ? _value.inputBytes
+            : inputBytes // ignore: cast_nullable_to_non_nullable
+                  as int,
       ),
     );
   }
@@ -354,11 +344,10 @@ class __$$TextInputImplCopyWithImpl<$Res>
   $Res call({Object? text = null}) {
     return _then(
       _$TextInputImpl(
-        text:
-            null == text
-                ? _value.text
-                : text // ignore: cast_nullable_to_non_nullable
-                    as String,
+        text: null == text
+            ? _value.text
+            : text // ignore: cast_nullable_to_non_nullable
+                  as String,
       ),
     );
   }
@@ -497,11 +486,10 @@ class __$$FileInputImplCopyWithImpl<$Res>
   $Res call({Object? path = null}) {
     return _then(
       _$FileInputImpl(
-        path:
-            null == path
-                ? _value.path
-                : path // ignore: cast_nullable_to_non_nullable
-                    as String,
+        path: null == path
+            ? _value.path
+            : path // ignore: cast_nullable_to_non_nullable
+                  as String,
       ),
     );
   }

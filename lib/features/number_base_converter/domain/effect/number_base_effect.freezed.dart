@@ -104,7 +104,7 @@ class __$$SaveStateEffectImplCopyWithImpl<$Res>
         null == state
             ? _value.state
             : state // ignore: cast_nullable_to_non_nullable
-                as NumberBaseState,
+                  as NumberBaseState,
       ),
     );
   }

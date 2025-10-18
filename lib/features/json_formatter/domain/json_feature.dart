@@ -19,12 +19,13 @@ part 'json_update.dart';
 typedef JsonFormatterFeature =
     Feature<JsonFormatterState, JsonFormatterMessage, JsonEffect>;
 
-JsonFormatterFeature jsonFormatterFeatureFactory() => JsonFormatterFeature(
-  initialState: JsonFormatterState.init(),
-  update: _jsonFormatterUpdate,
-).wrapEffects(
-  DebounceEffectHandler(
-    duration: const Duration(milliseconds: 300),
-    handler: const JsonEffectHandler(),
-  ),
-);
+JsonFormatterFeature jsonFormatterFeatureFactory() =>
+    JsonFormatterFeature(
+      initialState: JsonFormatterState.init(),
+      update: _jsonFormatterUpdate,
+    ).wrapEffects(
+      DebounceEffectHandler(
+        duration: const Duration(milliseconds: 300),
+        handler: const JsonEffectHandler(),
+      ),
+    );
