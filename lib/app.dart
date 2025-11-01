@@ -5,8 +5,10 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
 import 'core/common/datetime_inherited_model.dart';
+import 'core/di_v0.dart';
 import 'core/presentation/copy_overlay.dart';
 import 'core/presentation/macos_ui_hacks.dart';
+import 'features/tabs/presentation/new_tab_widget.dart';
 import 'features/tools/tools_feature.dart';
 import 'i18n/strings.g.dart';
 import 'tools.dart';
@@ -61,11 +63,22 @@ class _Window extends StatelessWidget {
     return MacosWindow(
       disableWallpaperTinting: true,
       sidebar: Sidebar(
-        minWidth: 200,
+        minWidth: 240,
         isResizable: false,
-        top: const _SearchField(),
-        builder: (context, controller) =>
-            _SidebarContent(controller: controller),
+        top: const Align(
+          alignment: AlignmentDirectional.centerStart,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              NewTabWidget(),
+              MacosPulldownMenuDivider(),
+            ],
+          ),
+        ),
+        builder: (context, controller) => context
+            .read<MiniDepTree>()
+            .tabsListWidgetFactory(scrollController: controller),
         bottom: const _BottomWidget(),
       ),
       child: const _BodyContent(),
@@ -177,12 +190,7 @@ class _BodyContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FeatureBuilder<ToolsFeature, ToolsState>(
-      builder: (context, state) {
-        final tool = ToolsRegistry.toolById(state.selectedToolId)!;
-        return tool.buildScreen(context);
-      },
-    );
+    return context.read<MiniDepTree>().tabViewWidgetFactory();
   }
 }
 

@@ -14,7 +14,7 @@ final class NumberBaseConverterTool {
   static Tool shared = FeatureTool(
     titleBuilder: (context) => Translations.of(context).numberConverter.title,
     icon: Icons.numbers,
-    screenBuilder: (context) => const NumberBaseConverter(),
+    screenBuilder: (context) => const NumberBaseConverterScreen(),
     feature: numberBaseFeatureFactory()..init(),
   );
 }
