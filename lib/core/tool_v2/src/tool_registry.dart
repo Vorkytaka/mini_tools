@@ -7,7 +7,7 @@ final class ToolsRegistry {
 
   ToolsRegistry({
     required List<ToolDescriptor> tools,
-  }) : _tools = tools,
+  }) : _tools = List.unmodifiable(tools),
        _availableTools = tools
            .where((tool) => tool.metadata.isAvailable)
            .toList(growable: false);

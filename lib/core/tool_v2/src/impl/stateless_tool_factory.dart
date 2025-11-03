@@ -10,11 +10,6 @@ final class StatelessToolFactory implements ToolFactory {
   final WidgetBuilder screenBuilder;
 
   @override
-  Widget buildScreen(BuildContext context) {
-    return screenBuilder(context);
-  }
-
-  @override
   ToolInstance create() {
     return _StatelessToolInstance(
       screenBuilder: screenBuilder,
