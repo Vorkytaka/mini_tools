@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/tool_v2/tool_v2.dart';
 import '../../i18n/strings.g.dart';
-import 'percentages_tool.dart';
+import 'percentages_screen.dart';
 
 final class PercentagesToolV2 {
   static const descriptor = ToolDescriptor(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/tool_v2/tool_v2.dart';
 import '../../i18n/strings.g.dart';
-import 'material_colors_tool.dart';
+import 'material_color_ui.dart';
 
 final class MaterialColorsToolV2 {
   static const descriptor = ToolDescriptor(

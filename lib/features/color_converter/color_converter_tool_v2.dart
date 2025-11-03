@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/tool_v2/tool_v2.dart';
 import '../../i18n/strings.g.dart';
 import 'color_cubit.dart';
-import 'color_tool.dart';
+import 'color_screen.dart';
 
 final class ColorConverterToolV2 {
   static const descriptor = ToolDescriptor(
