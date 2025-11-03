@@ -10,18 +10,20 @@ import 'domain/sqlite_feature.dart';
 import 'presentation/sqlite.dart';
 
 final class SqliteToolV2 {
-  static final descriptor = ToolDescriptor(
+  static const descriptor = ToolDescriptor(
     id: 'sqlite',
-    metadata: const ToolMetadata(
-      icon: Icons.hardware,
-      isAvailable: kDebugMode,
-    ),
-    localizationData: ToolLocalizationData(
-      titleDelegate: (context) => Translations.of(context).sqlite.title,
-    ),
+    metadata: ToolMetadata(icon: Icons.table_chart, isAvailable: kDebugMode),
+    localizationData: ToolLocalizationData(titleDelegate: _titleDelegate),
     factory: FeatureToolFactory(
       featureBuilder: sqliteFeatureFactory,
-      screenBuilder: (context) => const SqliteToolScreen(),
+      screenBuilder: _buildScreen,
     ),
   );
+
+  static String _titleDelegate(BuildContext context) =>
+      Translations.of(context).sqlite.title;
+
+  static Widget _buildScreen(BuildContext context) {
+    return const SqliteToolScreen();
+  }
 }

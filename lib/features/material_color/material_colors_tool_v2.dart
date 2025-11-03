@@ -5,17 +5,17 @@ import '../../i18n/strings.g.dart';
 import 'material_colors_tool.dart';
 
 final class MaterialColorsToolV2 {
-  static final descriptor = ToolDescriptor(
+  static const descriptor = ToolDescriptor(
     id: 'material_colors_tool',
-    metadata: const ToolMetadata(
-      icon: Icons.import_contacts,
-      isAvailable: true,
-    ),
-    localizationData: ToolLocalizationData(
-      titleDelegate: (context) => Translations.of(context).materialColors.title,
-    ),
-    factory: StatelessToolFactory(
-      screenBuilder: (context) => const MaterialColorsToolScreen(),
-    ),
+    metadata: ToolMetadata(icon: Icons.invert_colors_sharp, isAvailable: true),
+    localizationData: ToolLocalizationData(titleDelegate: _titleDelegate),
+    factory: StatelessToolFactory(screenBuilder: _buildScreen),
   );
+
+  static String _titleDelegate(BuildContext context) =>
+      Translations.of(context).materialColors.title;
+
+  static Widget _buildScreen(BuildContext context) {
+    return const MaterialColorsToolScreen();
+  }
 }

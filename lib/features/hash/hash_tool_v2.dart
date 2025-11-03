@@ -10,18 +10,25 @@ import 'domain/hash_feature.dart';
 import 'presentation/hash_screen.dart';
 
 final class HashToolV2 {
-  static final descriptor = ToolDescriptor(
+  static const descriptor = ToolDescriptor(
     id: 'hash_tool',
-    metadata: const ToolMetadata(
-      icon: Icons.qr_code,
+    metadata: ToolMetadata(
+      icon: Icons.qr_code_2,
       isAvailable: kDebugMode,
     ),
     localizationData: ToolLocalizationData(
-      titleDelegate: (context) => Translations.of(context).hash.title,
+      titleDelegate: _titleDelegate,
     ),
     factory: FeatureToolFactory(
       featureBuilder: hashFeatureFactory,
-      screenBuilder: (context) => const HashToolScreen(),
+      screenBuilder: _buildScreen,
     ),
   );
+
+  static String _titleDelegate(BuildContext context) =>
+      Translations.of(context).hash.title;
+
+  static Widget _buildScreen(BuildContext context) {
+    return const HashToolScreen();
+  }
 }

@@ -5,18 +5,17 @@ import '../../i18n/strings.g.dart';
 import 'percentages_tool.dart';
 
 final class PercentagesToolV2 {
-  static final descriptor = ToolDescriptor(
+  static const descriptor = ToolDescriptor(
     id: 'percentages_tool',
-    metadata: const ToolMetadata(
-      icon: Icons.percent,
-      isAvailable: true,
-    ),
-    localizationData: ToolLocalizationData(
-      titleDelegate: (context) =>
-          Translations.of(context).percentageCalculator.title,
-    ),
-    factory: StatelessToolFactory(
-      screenBuilder: (context) => const PercentagesToolScreen(),
-    ),
+    metadata: ToolMetadata(icon: Icons.percent, isAvailable: true),
+    localizationData: ToolLocalizationData(titleDelegate: _titleDelegate),
+    factory: StatelessToolFactory(screenBuilder: _buildScreen),
   );
+
+  static String _titleDelegate(BuildContext context) =>
+      Translations.of(context).percentageCalculator.title;
+
+  static Widget _buildScreen(BuildContext context) {
+    return const PercentagesToolScreen();
+  }
 }

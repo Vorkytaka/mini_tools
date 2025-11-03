@@ -6,18 +6,25 @@ import 'domain/regexp_feature.dart';
 import 'presentation/regexp.dart';
 
 final class RegexpToolV2 {
-  static final descriptor = ToolDescriptor(
+  static const descriptor = ToolDescriptor(
     id: 'regexp_tool',
-    metadata: const ToolMetadata(
-      icon: Icons.text_decrease,
+    metadata: ToolMetadata(
+      icon: Icons.manage_search,
       isAvailable: true,
     ),
     localizationData: ToolLocalizationData(
-      titleDelegate: (context) => Translations.of(context).regexp.title,
+      titleDelegate: _titleDelegate,
     ),
     factory: FeatureToolFactory(
       featureBuilder: regExpFeatureFactory,
-      screenBuilder: (context) => const RegExpToolScreen(),
+      screenBuilder: _buildScreen,
     ),
   );
+
+  static String _titleDelegate(BuildContext context) =>
+      Translations.of(context).regexp.title;
+
+  static Widget _buildScreen(BuildContext context) {
+    return const RegExpToolScreen();
+  }
 }

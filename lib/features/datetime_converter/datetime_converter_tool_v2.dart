@@ -6,22 +6,26 @@ import 'domain/datetime_converter_feature.dart';
 import 'presentation/datetime_converter_screen.dart';
 
 final class DatetimeConverterToolV2 {
-  static final descriptor = ToolDescriptor(
+  static const descriptor = ToolDescriptor(
     id: 'datetime_converter',
-    metadata: const ToolMetadata(
+    metadata: ToolMetadata(
       icon: Icons.timelapse,
       isAvailable: true,
     ),
-    localizationData: const ToolLocalizationData(
+    localizationData: ToolLocalizationData(
       titleDelegate: _titleDelegate,
     ),
     factory: FeatureToolFactory(
       featureBuilder: datetimeConverterFeatureFactory,
-      screenBuilder: (context) => const DatetimeConverterScreen(),
+      screenBuilder: _buildScreen,
     ),
   );
 
   static String _titleDelegate(BuildContext context) {
     return Translations.of(context).datetimeConverter.title;
+  }
+
+  static Widget _buildScreen(BuildContext context) {
+    return const DatetimeConverterScreen();
   }
 }

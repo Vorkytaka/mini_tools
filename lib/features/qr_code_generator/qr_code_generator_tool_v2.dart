@@ -6,18 +6,22 @@ import 'domain/qr_code_feature.dart';
 import 'presentation/qr_code_screen.dart';
 
 final class QrCodeGeneratorToolV2 {
-  static final descriptor = ToolDescriptor(
+  static const descriptor = ToolDescriptor(
     id: 'qr_code_generator',
-    metadata: const ToolMetadata(
-      icon: Icons.qr_code,
-      isAvailable: true,
-    ),
+    metadata: ToolMetadata(icon: Icons.qr_code, isAvailable: true),
     localizationData: ToolLocalizationData(
-      titleDelegate: (context) => Translations.of(context).qrCode.title,
+      titleDelegate: _titleDelegate,
     ),
     factory: FeatureToolFactory(
       featureBuilder: qrCodeFeatureFactory,
-      screenBuilder: (context) => const QrCodeScreen(),
+      screenBuilder: _buildScreen,
     ),
   );
+
+  static String _titleDelegate(BuildContext context) =>
+      Translations.of(context).qrCode.title;
+
+  static Widget _buildScreen(BuildContext context) {
+    return const QrCodeScreen();
+  }
 }

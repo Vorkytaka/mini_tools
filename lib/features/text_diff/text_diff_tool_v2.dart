@@ -10,18 +10,20 @@ import 'domain/text_diff_feature.dart';
 import 'presentation/text_diff_tool_screen.dart';
 
 final class TextDiffToolV2 {
-  static final descriptor = ToolDescriptor(
+  static const descriptor = ToolDescriptor(
     id: 'text_diff',
-    metadata: const ToolMetadata(
-      icon: Icons.difference,
-      isAvailable: kDebugMode,
-    ),
-    localizationData: ToolLocalizationData(
-      titleDelegate: (context) => Translations.of(context).textDiff.title,
-    ),
+    metadata: ToolMetadata(icon: Icons.difference, isAvailable: kDebugMode),
+    localizationData: ToolLocalizationData(titleDelegate: _titleDelegate),
     factory: FeatureToolFactory(
       featureBuilder: textDiffFeatureFactory,
-      screenBuilder: (context) => const TextDiffScreen(),
+      screenBuilder: _buildScreen,
     ),
   );
+
+  static String _titleDelegate(BuildContext context) =>
+      Translations.of(context).textDiff.title;
+
+  static Widget _buildScreen(BuildContext context) {
+    return const TextDiffScreen();
+  }
 }

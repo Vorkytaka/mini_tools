@@ -9,18 +9,25 @@ import 'domain/cron_feature.dart';
 import 'presentation/cron_tool_screen.dart';
 
 final class CronToolV2 {
-  static final descriptor = ToolDescriptor(
+  static const descriptor = ToolDescriptor(
     id: 'cron_tool',
-    metadata: const ToolMetadata(
-      icon: Icons.watch_later,
+    metadata: ToolMetadata(
+      icon: Icons.schedule,
       isAvailable: true,
     ),
     localizationData: ToolLocalizationData(
-      titleDelegate: (context) => Translations.of(context).cron.title,
+      titleDelegate: _titleDelegate,
     ),
     factory: FeatureToolFactory(
       featureBuilder: cronFeatureFactory,
-      screenBuilder: (context) => const CronToolScreen(),
+      screenBuilder: _buildScreen,
     ),
   );
+
+  static String _titleDelegate(BuildContext context) =>
+      Translations.of(context).cron.title;
+
+  static Widget _buildScreen(BuildContext context) {
+    return const CronToolScreen();
+  }
 }

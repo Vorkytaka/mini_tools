@@ -42,7 +42,7 @@ final class DepTreeV0 implements MiniDepTree {
 
   @override
   late final toolsRegistry = ToolsRegistry(
-    tools: [
+    tools: const [
       DatetimeConverterToolV2.descriptor,
       UuidToolV2.descriptor,
       TextDiffToolV2.descriptor,
@@ -63,9 +63,7 @@ final class DepTreeV0 implements MiniDepTree {
   TabsListWidget tabsListWidgetFactory({
     required ScrollController scrollController,
   }) {
-    return TabsListWidget(
-      controller: scrollController,
-    );
+    return TabsListWidget(controller: scrollController);
   }
 
   @override

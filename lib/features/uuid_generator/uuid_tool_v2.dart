@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/tool_v2/src/impl/feature_impl.dart';
@@ -9,18 +10,20 @@ import 'domain/uuid_feature.dart';
 import 'presentation/uuid_tool_screen.dart';
 
 final class UuidToolV2 {
-  static final descriptor = ToolDescriptor(
+  static const descriptor = ToolDescriptor(
     id: 'uuid_generator',
-    metadata: const ToolMetadata(
-      icon: Icons.add,
-      isAvailable: true,
-    ),
-    localizationData: ToolLocalizationData(
-      titleDelegate: (context) => Translations.of(context).uuidGenerator.title,
-    ),
+    metadata: ToolMetadata(icon: Icons.tag, isAvailable: kDebugMode),
+    localizationData: ToolLocalizationData(titleDelegate: _titleDelegate),
     factory: FeatureToolFactory(
       featureBuilder: uuidFeatureFactory,
-      screenBuilder: (context) => const UuidToolScreen(),
+      screenBuilder: _buildScreen,
     ),
   );
+
+  static String _titleDelegate(BuildContext context) =>
+      Translations.of(context).uuidGenerator.title;
+
+  static Widget _buildScreen(BuildContext context) {
+    return const UuidToolScreen();
+  }
 }

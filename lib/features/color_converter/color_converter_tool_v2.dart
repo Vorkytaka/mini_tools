@@ -6,18 +6,25 @@ import 'color_cubit.dart';
 import 'color_tool.dart';
 
 final class ColorConverterToolV2 {
-  static final descriptor = ToolDescriptor(
+  static const descriptor = ToolDescriptor(
     id: 'color_converter',
-    metadata: const ToolMetadata(
+    metadata: ToolMetadata(
       icon: Icons.color_lens_outlined,
       isAvailable: true,
     ),
     localizationData: ToolLocalizationData(
-      titleDelegate: (context) => Translations.of(context).color.title,
+      titleDelegate: _titleDelegate,
     ),
     factory: BlocToolFactory(
       blocBuilder: ColorCubit.new,
-      screenBuilder: (context) => const ColorToolScreen(),
+      screenBuilder: _buildScreen,
     ),
   );
+
+  static String _titleDelegate(BuildContext context) =>
+      Translations.of(context).color.title;
+
+  static Widget _buildScreen(BuildContext context) {
+    return const ColorToolScreen();
+  }
 }
