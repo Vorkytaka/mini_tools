@@ -9,9 +9,7 @@ import 'tabs_update.dart';
 
 typedef TabsFeature = Feature<TabsState, TabsMessage, TabsEffect>;
 
-TabsFeature tabsFeatureFactory({
-  required ToolsRegistry toolsRegistry,
-}) {
+TabsFeature tabsFeatureFactory({required ToolsRegistry toolsRegistry}) {
   return TabsFeature(
     initialState: TabsState.initial,
     update: tabsUpdate,

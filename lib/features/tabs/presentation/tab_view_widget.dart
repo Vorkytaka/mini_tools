@@ -5,9 +5,7 @@ import '../domain/state/tabs_state.dart';
 import '../domain/tabs_feature.dart';
 
 final class TabViewWidget extends StatelessWidget {
-  const TabViewWidget({
-    super.key,
-  });
+  const TabViewWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

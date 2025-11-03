@@ -28,10 +28,8 @@ final class _BlocToolInstance<B extends BlocBase<S>, S>
 
   final WidgetBuilder screenBuilder;
 
-  const _BlocToolInstance({
-    required B bloc,
-    required this.screenBuilder,
-  }) : _bloc = bloc;
+  const _BlocToolInstance({required B bloc, required this.screenBuilder})
+    : _bloc = bloc;
 
   @override
   Widget buildScreen(BuildContext context) {

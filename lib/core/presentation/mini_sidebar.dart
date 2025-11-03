@@ -35,9 +35,7 @@ final class MiniSidebarItem extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: const BorderRadius.all(
-            Radius.circular(10),
-          ),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
         ),
         child: Padding(
           padding: const EdgeInsetsDirectional.only(start: 8, end: 4),
@@ -48,15 +46,9 @@ final class MiniSidebarItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                if (leading != null) ...[
-                  leading,
-                  const SizedBox(width: 4),
-                ],
+                if (leading != null) ...[leading, const SizedBox(width: 4)],
                 DefaultTextStyle.merge(maxLines: 1, child: title),
-                if (trailing != null) ...[
-                  const Spacer(),
-                  trailing,
-                ],
+                if (trailing != null) ...[const Spacer(), trailing],
               ],
             ),
           ),

@@ -27,9 +27,7 @@ class MiniToolsApp extends StatelessWidget {
             home: const _Window(),
             builder: (context, child) => Theme(
               data: ThemeData.dark(),
-              child: CopyOverlay(
-                child: child!,
-              ),
+              child: CopyOverlay(child: child!),
             ),
           ),
         ),
@@ -53,10 +51,7 @@ class _Window extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              NewTabWidget(),
-              MacosPulldownMenuDivider(),
-            ],
+            children: [NewTabWidget(), MacosPulldownMenuDivider()],
           ),
         ),
         builder: (context, controller) => context

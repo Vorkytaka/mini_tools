@@ -8,8 +8,5 @@ final class ToolMetadata {
   /// E.g., some tools may only be available in debug mode or on specific platforms.
   final bool isAvailable;
 
-  const ToolMetadata({
-    required this.icon,
-    required this.isAvailable,
-  });
+  const ToolMetadata({required this.icon, required this.isAvailable});
 }

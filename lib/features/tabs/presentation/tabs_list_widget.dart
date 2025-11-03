@@ -11,10 +11,8 @@ import 'tab_item_widget.dart';
 final class TabsListWidget extends StatelessWidget {
   final ScrollController _controller;
 
-  const TabsListWidget({
-    required ScrollController controller,
-    super.key,
-  }) : _controller = controller;
+  const TabsListWidget({required ScrollController controller, super.key})
+    : _controller = controller;
 
   @override
   Widget build(BuildContext context) {

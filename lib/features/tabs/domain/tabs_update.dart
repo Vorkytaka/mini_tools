@@ -21,9 +21,7 @@ Next<TabsState, TabsEffect> tabsUpdate(TabsState state, TabsMessage message) {
         ),
       );
     case SelectTabMessage():
-      return next(
-        state: state.copyWith(activeTabId: message.tabId),
-      );
+      return next(state: state.copyWith(activeTabId: message.tabId));
     case CreatedTabMessage():
       return next(
         state: state.copyWith(

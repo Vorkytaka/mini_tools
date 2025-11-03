@@ -12,15 +12,11 @@ final class TabsEffectHandler
     implements EffectHandler<TabsEffect, TabsMessage> {
   final ToolsRegistry _toolsRegistry;
 
-  const TabsEffectHandler({
-    required ToolsRegistry toolsRegistry,
-  }) : _toolsRegistry = toolsRegistry;
+  const TabsEffectHandler({required ToolsRegistry toolsRegistry})
+    : _toolsRegistry = toolsRegistry;
 
   @override
-  FutureOr<void> call(
-    TabsEffect effect,
-    MsgEmitter<TabsMessage> emit,
-  ) {
+  FutureOr<void> call(TabsEffect effect, MsgEmitter<TabsMessage> emit) {
     return switch (effect) {
       CreateTabEffect() => _createTab(effect, emit),
     };

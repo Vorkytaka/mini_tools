@@ -9,15 +9,10 @@ part 'tabs_state.freezed.dart';
 @freezed
 @immutable
 abstract class TabsState with _$TabsState {
-  const factory TabsState({
-    required List<TabItem> tabs,
-    String? activeTabId,
-  }) = _TabsState;
+  const factory TabsState({required List<TabItem> tabs, String? activeTabId}) =
+      _TabsState;
 
-  static const initial = TabsState(
-    tabs: [],
-    activeTabId: null,
-  );
+  static const initial = TabsState(tabs: [], activeTabId: null);
 }
 
 extension TabsStateX on TabsState {

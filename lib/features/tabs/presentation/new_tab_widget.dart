@@ -174,9 +174,7 @@ class _SearchItemWidgetState extends State<_SearchItemWidget> {
               color: _isHover
                   ? Colors.grey.withValues(alpha: 0.1)
                   : Colors.transparent,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(8),
-              ),
+              borderRadius: const BorderRadius.all(Radius.circular(8)),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.max,
@@ -185,9 +183,7 @@ class _SearchItemWidgetState extends State<_SearchItemWidget> {
                 SizedBox(
                   width: 24,
                   height: 24,
-                  child: Center(
-                    child: widget.icon,
-                  ),
+                  child: Center(child: widget.icon),
                 ),
                 const SizedBox(width: 16),
                 Text(widget.titleBuilder(context)),
