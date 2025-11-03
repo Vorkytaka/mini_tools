@@ -19,6 +19,7 @@ final class TabsEffectHandler
   FutureOr<void> call(TabsEffect effect, MsgEmitter<TabsMessage> emit) {
     return switch (effect) {
       CreateTabEffect() => _createTab(effect, emit),
+      DisposeToolEffect() => _disposeTool(effect, emit),
     };
   }
 
@@ -35,5 +36,12 @@ final class TabsEffectHandler
       descriptor: toolDescriptor,
     );
     emit(CreatedTabMessage(tab: tab));
+  }
+
+  Future<void> _disposeTool(
+    DisposeToolEffect effect,
+    MsgEmitter<TabsMessage> emit,
+  ) async {
+    await effect.tool.dispose();
   }
 }

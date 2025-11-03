@@ -14,61 +14,30 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$TabsEffect {
 
- String get toolId;
-/// Create a copy of TabsEffect
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$TabsEffectCopyWith<TabsEffect> get copyWith => _$TabsEffectCopyWithImpl<TabsEffect>(this as TabsEffect, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is TabsEffect&&(identical(other.toolId, toolId) || other.toolId == toolId));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TabsEffect);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,toolId);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'TabsEffect(toolId: $toolId)';
+  return 'TabsEffect()';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $TabsEffectCopyWith<$Res>  {
-  factory $TabsEffectCopyWith(TabsEffect value, $Res Function(TabsEffect) _then) = _$TabsEffectCopyWithImpl;
-@useResult
-$Res call({
- String toolId
-});
-
-
-
-
-}
-/// @nodoc
-class _$TabsEffectCopyWithImpl<$Res>
-    implements $TabsEffectCopyWith<$Res> {
-  _$TabsEffectCopyWithImpl(this._self, this._then);
-
-  final TabsEffect _self;
-  final $Res Function(TabsEffect) _then;
-
-/// Create a copy of TabsEffect
-/// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? toolId = null,}) {
-  return _then(_self.copyWith(
-toolId: null == toolId ? _self.toolId : toolId // ignore: cast_nullable_to_non_nullable
-as String,
-  ));
-}
-
+class $TabsEffectCopyWith<$Res>  {
+$TabsEffectCopyWith(TabsEffect _, $Res Function(TabsEffect) __);
 }
 
 
@@ -86,11 +55,12 @@ extension TabsEffectPatterns on TabsEffect {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CreateTabEffect value)?  createTab,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CreateTabEffect value)?  createTab,TResult Function( DisposeToolEffect value)?  disposeTool,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case CreateTabEffect() when createTab != null:
-return createTab(_that);case _:
+return createTab(_that);case DisposeToolEffect() when disposeTool != null:
+return disposeTool(_that);case _:
   return orElse();
 
 }
@@ -108,11 +78,12 @@ return createTab(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CreateTabEffect value)  createTab,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CreateTabEffect value)  createTab,required TResult Function( DisposeToolEffect value)  disposeTool,}){
 final _that = this;
 switch (_that) {
 case CreateTabEffect():
-return createTab(_that);}
+return createTab(_that);case DisposeToolEffect():
+return disposeTool(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -126,11 +97,12 @@ return createTab(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CreateTabEffect value)?  createTab,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CreateTabEffect value)?  createTab,TResult? Function( DisposeToolEffect value)?  disposeTool,}){
 final _that = this;
 switch (_that) {
 case CreateTabEffect() when createTab != null:
-return createTab(_that);case _:
+return createTab(_that);case DisposeToolEffect() when disposeTool != null:
+return disposeTool(_that);case _:
   return null;
 
 }
@@ -147,10 +119,11 @@ return createTab(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String toolId)?  createTab,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String toolId)?  createTab,TResult Function( ToolInstance tool)?  disposeTool,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case CreateTabEffect() when createTab != null:
-return createTab(_that.toolId);case _:
+return createTab(_that.toolId);case DisposeToolEffect() when disposeTool != null:
+return disposeTool(_that.tool);case _:
   return orElse();
 
 }
@@ -168,10 +141,11 @@ return createTab(_that.toolId);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String toolId)  createTab,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String toolId)  createTab,required TResult Function( ToolInstance tool)  disposeTool,}) {final _that = this;
 switch (_that) {
 case CreateTabEffect():
-return createTab(_that.toolId);}
+return createTab(_that.toolId);case DisposeToolEffect():
+return disposeTool(_that.tool);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -185,10 +159,11 @@ return createTab(_that.toolId);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String toolId)?  createTab,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String toolId)?  createTab,TResult? Function( ToolInstance tool)?  disposeTool,}) {final _that = this;
 switch (_that) {
 case CreateTabEffect() when createTab != null:
-return createTab(_that.toolId);case _:
+return createTab(_that.toolId);case DisposeToolEffect() when disposeTool != null:
+return disposeTool(_that.tool);case _:
   return null;
 
 }
@@ -203,11 +178,11 @@ class CreateTabEffect implements TabsEffect {
   const CreateTabEffect({required this.toolId});
   
 
-@override final  String toolId;
+ final  String toolId;
 
 /// Create a copy of TabsEffect
 /// with the given fields replaced by the non-null parameter values.
-@override @JsonKey(includeFromJson: false, includeToJson: false)
+@JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
 $CreateTabEffectCopyWith<CreateTabEffect> get copyWith => _$CreateTabEffectCopyWithImpl<CreateTabEffect>(this, _$identity);
 
@@ -233,7 +208,7 @@ String toString() {
 /// @nodoc
 abstract mixin class $CreateTabEffectCopyWith<$Res> implements $TabsEffectCopyWith<$Res> {
   factory $CreateTabEffectCopyWith(CreateTabEffect value, $Res Function(CreateTabEffect) _then) = _$CreateTabEffectCopyWithImpl;
-@override @useResult
+@useResult
 $Res call({
  String toolId
 });
@@ -252,10 +227,76 @@ class _$CreateTabEffectCopyWithImpl<$Res>
 
 /// Create a copy of TabsEffect
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? toolId = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? toolId = null,}) {
   return _then(CreateTabEffect(
 toolId: null == toolId ? _self.toolId : toolId // ignore: cast_nullable_to_non_nullable
 as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class DisposeToolEffect implements TabsEffect {
+  const DisposeToolEffect({required this.tool});
+  
+
+ final  ToolInstance tool;
+
+/// Create a copy of TabsEffect
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$DisposeToolEffectCopyWith<DisposeToolEffect> get copyWith => _$DisposeToolEffectCopyWithImpl<DisposeToolEffect>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DisposeToolEffect&&(identical(other.tool, tool) || other.tool == tool));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,tool);
+
+@override
+String toString() {
+  return 'TabsEffect.disposeTool(tool: $tool)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $DisposeToolEffectCopyWith<$Res> implements $TabsEffectCopyWith<$Res> {
+  factory $DisposeToolEffectCopyWith(DisposeToolEffect value, $Res Function(DisposeToolEffect) _then) = _$DisposeToolEffectCopyWithImpl;
+@useResult
+$Res call({
+ ToolInstance tool
+});
+
+
+
+
+}
+/// @nodoc
+class _$DisposeToolEffectCopyWithImpl<$Res>
+    implements $DisposeToolEffectCopyWith<$Res> {
+  _$DisposeToolEffectCopyWithImpl(this._self, this._then);
+
+  final DisposeToolEffect _self;
+  final $Res Function(DisposeToolEffect) _then;
+
+/// Create a copy of TabsEffect
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? tool = null,}) {
+  return _then(DisposeToolEffect(
+tool: null == tool ? _self.tool : tool // ignore: cast_nullable_to_non_nullable
+as ToolInstance,
   ));
 }
 

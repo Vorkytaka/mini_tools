@@ -9,6 +9,9 @@ Next<TabsState, TabsEffect> tabsUpdate(TabsState state, TabsMessage message) {
     case CreateTabMessage():
       return next(effects: [TabsEffect.createTab(toolId: message.toolId)]);
     case DeleteTabMessage():
+      final deletedTool = state.tabs
+          .firstWhere((tab) => tab.id == message.tabId)
+          .instance;
       final updatedTabs = state.tabs
           .where((tab) => tab.id != message.tabId)
           .toList();
@@ -19,6 +22,9 @@ Next<TabsState, TabsEffect> tabsUpdate(TabsState state, TabsMessage message) {
               ? (updatedTabs.isNotEmpty ? updatedTabs.first.id : null)
               : state.activeTabId,
         ),
+        effects: [
+          TabsEffect.disposeTool(tool: deletedTool),
+        ],
       );
     case SelectTabMessage():
       return next(state: state.copyWith(activeTabId: message.tabId));
