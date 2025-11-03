@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:mini_tea_flutter/mini_tea_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -26,6 +27,7 @@ Future<void> main() async {
   }
 
   final dependencies = DepTreeV0();
+  await dependencies.init();
 
   Log.i('main', 'PreInit successfully');
 
@@ -34,7 +36,10 @@ Future<void> main() async {
       timezone: await _initializeTimezone(),
       child: Provider<MiniDepTree>(
         create: (_) => dependencies,
-        child: const MiniToolsApp(),
+        child: FeatureProvider.value(
+          value: dependencies.tabsFeature,
+          child: const MiniToolsApp(),
+        ),
       ),
     ),
   );

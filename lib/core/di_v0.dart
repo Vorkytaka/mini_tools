@@ -19,7 +19,13 @@ import '../features/text_diff/text_diff_tool_v2.dart';
 import '../features/uuid_generator/uuid_tool_v2.dart';
 import 'tool_v2/src/tool_registry.dart';
 
-abstract interface class MiniDepTree {
+abstract interface class Initializable {
+  Future<void> init();
+
+  Future<void> dispose();
+}
+
+abstract interface class MiniDepTree implements Initializable {
   ToolsRegistry get toolsRegistry;
 
   TabManager get tabManager;
@@ -86,4 +92,14 @@ final class DepTreeV0 implements MiniDepTree {
   late final tabsFeature = tabsFeatureFactory(
     toolsRegistry: toolsRegistry,
   );
+
+  @override
+  Future<void> dispose() async {
+    await tabsFeature.dispose();
+  }
+
+  @override
+  Future<void> init() async {
+    await tabsFeature.init();
+  }
 }
