@@ -11,12 +11,12 @@ import '../features/percentages_calculator/percentages_tool_v2.dart';
 import '../features/qr_code_generator/qr_code_generator_tool_v2.dart';
 import '../features/regexp/regexp_tool_v2.dart';
 import '../features/sqlite/sqlite_tool_v2.dart';
-import '../features/tabs/domain/tab_manager.dart';
 import '../features/tabs/domain/tabs_feature.dart';
 import '../features/tabs/presentation/tab_view_widget.dart';
 import '../features/tabs/presentation/tabs_list_widget.dart';
 import '../features/text_diff/text_diff_tool_v2.dart';
 import '../features/uuid_generator/uuid_tool_v2.dart';
+import 'common/elm/log_feature.dart';
 import 'tool_v2/src/tool_registry.dart';
 
 abstract interface class Initializable {
@@ -28,20 +28,13 @@ abstract interface class Initializable {
 abstract interface class MiniDepTree implements Initializable {
   ToolsRegistry get toolsRegistry;
 
-  TabManager get tabManager;
-
   TabsFeature get tabsFeature;
 
-  // TODO
   TabsListWidget tabsListWidgetFactory({
     required ScrollController scrollController,
   });
 
-  TabViewWidget tabViewWidgetFactory() {
-    return TabViewWidget(
-      manager: tabManager,
-    );
-  }
+  TabViewWidget tabViewWidgetFactory();
 }
 
 final class DepTreeV0 implements MiniDepTree {
@@ -67,31 +60,23 @@ final class DepTreeV0 implements MiniDepTree {
   );
 
   @override
-  late final tabManager = TabManager(
-    toolsRegistry: toolsRegistry,
-  );
-
-  @override
   TabsListWidget tabsListWidgetFactory({
     required ScrollController scrollController,
   }) {
     return TabsListWidget(
       controller: scrollController,
-      manager: tabManager,
     );
   }
 
   @override
   TabViewWidget tabViewWidgetFactory() {
-    return TabViewWidget(
-      manager: tabManager,
-    );
+    return const TabViewWidget();
   }
 
   @override
   late final tabsFeature = tabsFeatureFactory(
     toolsRegistry: toolsRegistry,
-  );
+  ).withLog(tag: 'TabsFeature');
 
   @override
   Future<void> dispose() async {

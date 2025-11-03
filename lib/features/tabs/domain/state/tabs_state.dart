@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../core/common/list_utils.dart';
 import '../../../../core/tool_v2/src/tool_descriptor.dart';
 import '../../../../core/tool_v2/src/tool_instance.dart';
 
@@ -17,6 +18,11 @@ abstract class TabsState with _$TabsState {
     tabs: [],
     activeTabId: null,
   );
+}
+
+extension TabsStateX on TabsState {
+  TabItem? get activeTab =>
+      tabs.firstWhereOrNull((tab) => tab.id == activeTabId);
 }
 
 @freezed

@@ -1,38 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
-import 'package:rxdart/rxdart.dart';
+import 'package:mini_tea_flutter/mini_tea_flutter.dart';
+import 'package:provider/provider.dart';
 
-import '../domain/tab_manager.dart';
+import '../domain/message/tabs_message.dart';
+import '../domain/state/tabs_state.dart';
+import '../domain/tabs_feature.dart';
 import 'tab_item_widget.dart';
 
 final class TabsListWidget extends StatelessWidget {
   final ScrollController _controller;
-  final TabManager _manager;
 
   const TabsListWidget({
     required ScrollController controller,
-    required TabManager manager,
     super.key,
-  }) : _controller = controller,
-       _manager = manager;
+  }) : _controller = controller;
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<(List<TabItem>, TabItem?)>(
-      stream: Rx.combineLatest2(
-        _manager.tabsStream,
-        _manager.activeTabStream,
-        (tabs, activeTab) => (tabs, activeTab),
-      ),
-      builder: (context, snapshot) {
-        final data = snapshot.data;
-
-        if (data == null) {
-          return const SizedBox.shrink();
-        }
-
-        final tabs = data.$1;
-        final activeTab = data.$2;
+    return FeatureBuilder<TabsFeature, TabsState>(
+      builder: (context, state) {
+        final tabs = state.tabs;
+        final activeTabId = state.activeTabId;
 
         return ListView.separated(
           controller: _controller,
@@ -48,12 +37,14 @@ final class TabsListWidget extends StatelessWidget {
                 item.title ??
                     item.descriptor.localizationData.titleDelegate(context),
               ),
-              isSelected: item.id == activeTab?.id,
+              isSelected: item.id == activeTabId,
               onClosePressed: () {
-                _manager.deleteTab(item.id);
+                final feature = context.read<TabsFeature>();
+                feature.accept(TabsMessage.deleteTab(tabId: item.id));
               },
               onPressed: () {
-                _manager.selectTab(item.id);
+                final feature = context.read<TabsFeature>();
+                feature.accept(TabsMessage.selectTab(tabId: item.id));
               },
             );
           },

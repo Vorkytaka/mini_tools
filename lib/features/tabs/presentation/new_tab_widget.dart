@@ -8,6 +8,8 @@ import 'package:macos_ui/macos_ui.dart';
 import '../../../core/di_v0.dart';
 import '../../../core/presentation/mini_sidebar.dart';
 import '../../../core/tool_v2/src/tool_descriptor.dart';
+import '../domain/message/tabs_message.dart';
+import '../domain/tabs_feature.dart';
 
 final class NewTabWidget extends StatelessWidget {
   const NewTabWidget({super.key});
@@ -43,7 +45,7 @@ class _NewTabDialogWidgetState extends State<NewTabDialogWidget> {
   void initState() {
     super.initState();
 
-    _availableTools = context.read<MiniDepTree>().tabManager.availableTools;
+    _availableTools = context.read<MiniDepTree>().toolsRegistry.tools;
     _filteredTools = _availableTools.sublist(0, 5);
 
     _searchController.addListener(() {
@@ -101,13 +103,7 @@ class _NewTabDialogWidgetState extends State<NewTabDialogWidget> {
                 controller: _searchController,
                 onSubmitted: (_) {
                   if (_filteredTools.isNotEmpty) {
-                    Navigator.of(
-                      context,
-                    ).pop(
-                      context.read<MiniDepTree>().tabManager.createTab(
-                        _filteredTools[0].id,
-                      ),
-                    );
+                    _createTab(_filteredTools[0].id);
                   }
                 },
               ),
@@ -116,10 +112,12 @@ class _NewTabDialogWidgetState extends State<NewTabDialogWidget> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                 child: _SearchItemWidget(
-                  id: _filteredTools[i].id,
                   icon: MacosIcon(_filteredTools[i].metadata.icon),
                   titleBuilder:
                       _filteredTools[i].localizationData.titleDelegate,
+                  onPressed: () {
+                    _createTab(_filteredTools[i].id);
+                  },
                 ),
               ),
             const SizedBox(height: 4),
@@ -128,17 +126,27 @@ class _NewTabDialogWidgetState extends State<NewTabDialogWidget> {
       ),
     );
   }
+
+  void _createTab(String toolId) {
+    if (!context.mounted) {
+      return;
+    }
+
+    final feature = context.read<TabsFeature>();
+    feature.accept(TabsMessage.createTab(toolId: toolId));
+    Navigator.of(context).pop();
+  }
 }
 
 final class _SearchItemWidget extends StatefulWidget {
-  final String id;
   final Widget icon;
   final String Function(BuildContext context) titleBuilder;
+  final VoidCallback onPressed;
 
   const _SearchItemWidget({
-    required this.id,
     required this.icon,
     required this.titleBuilder,
+    required this.onPressed,
   });
 
   @override
@@ -158,11 +166,7 @@ class _SearchItemWidgetState extends State<_SearchItemWidget> {
         _isHover = false;
       }),
       child: GestureDetector(
-        onTap: () {
-          Navigator.of(
-            context,
-          ).pop(context.read<MiniDepTree>().tabManager.createTab(widget.id));
-        },
+        onTap: widget.onPressed,
         child: SizedBox(
           height: 40,
           child: DecoratedBox(
