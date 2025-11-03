@@ -7,7 +7,7 @@ part 'tools_state.freezed.dart';
 
 @freezed
 @immutable
-class ToolsState with _$ToolsState {
+abstract class ToolsState with _$ToolsState {
   const factory ToolsState({
     required String selectedToolId,
     required List<String> toolIds,

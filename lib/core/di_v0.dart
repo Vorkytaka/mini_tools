@@ -12,6 +12,7 @@ import '../features/qr_code_generator/qr_code_generator_tool_v2.dart';
 import '../features/regexp/regexp_tool_v2.dart';
 import '../features/sqlite/sqlite_tool_v2.dart';
 import '../features/tabs/domain/tab_manager.dart';
+import '../features/tabs/domain/tabs_feature.dart';
 import '../features/tabs/presentation/tab_view_widget.dart';
 import '../features/tabs/presentation/tabs_list_widget.dart';
 import '../features/text_diff/text_diff_tool_v2.dart';
@@ -22,6 +23,8 @@ abstract interface class MiniDepTree {
   ToolsRegistry get toolsRegistry;
 
   TabManager get tabManager;
+
+  TabsFeature get tabsFeature;
 
   // TODO
   TabsListWidget tabsListWidgetFactory({
@@ -78,4 +81,9 @@ final class DepTreeV0 implements MiniDepTree {
       manager: tabManager,
     );
   }
+
+  @override
+  late final tabsFeature = tabsFeatureFactory(
+    toolsRegistry: toolsRegistry,
+  );
 }

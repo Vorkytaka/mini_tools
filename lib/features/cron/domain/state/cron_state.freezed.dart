@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,654 +9,623 @@ part of 'cron_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$CronState {
-  String get input => throw _privateConstructorUsedError;
-  CronResult get result => throw _privateConstructorUsedError;
 
-  /// Create a copy of CronState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $CronStateCopyWith<CronState> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get input; CronResult get result;
+/// Create a copy of CronState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CronStateCopyWith<CronState> get copyWith => _$CronStateCopyWithImpl<CronState>(this as CronState, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CronState&&(identical(other.input, input) || other.input == input)&&(identical(other.result, result) || other.result == result));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,input,result);
+
+@override
+String toString() {
+  return 'CronState(input: $input, result: $result)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $CronStateCopyWith<$Res> {
-  factory $CronStateCopyWith(CronState value, $Res Function(CronState) then) =
-      _$CronStateCopyWithImpl<$Res, CronState>;
-  @useResult
-  $Res call({String input, CronResult result});
+abstract mixin class $CronStateCopyWith<$Res>  {
+  factory $CronStateCopyWith(CronState value, $Res Function(CronState) _then) = _$CronStateCopyWithImpl;
+@useResult
+$Res call({
+ String input, CronResult result
+});
 
-  $CronResultCopyWith<$Res> get result;
+
+$CronResultCopyWith<$Res> get result;
+
 }
-
 /// @nodoc
-class _$CronStateCopyWithImpl<$Res, $Val extends CronState>
+class _$CronStateCopyWithImpl<$Res>
     implements $CronStateCopyWith<$Res> {
-  _$CronStateCopyWithImpl(this._value, this._then);
+  _$CronStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final CronState _self;
+  final $Res Function(CronState) _then;
 
-  /// Create a copy of CronState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? input = null, Object? result = null}) {
-    return _then(
-      _value.copyWith(
-            input: null == input
-                ? _value.input
-                : input // ignore: cast_nullable_to_non_nullable
-                      as String,
-            result: null == result
-                ? _value.result
-                : result // ignore: cast_nullable_to_non_nullable
-                      as CronResult,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of CronState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? input = null,Object? result = null,}) {
+  return _then(_self.copyWith(
+input: null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
+as String,result: null == result ? _self.result : result // ignore: cast_nullable_to_non_nullable
+as CronResult,
+  ));
+}
+/// Create a copy of CronState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CronResultCopyWith<$Res> get result {
+  
+  return $CronResultCopyWith<$Res>(_self.result, (value) {
+    return _then(_self.copyWith(result: value));
+  });
+}
+}
 
-  /// Create a copy of CronState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CronResultCopyWith<$Res> get result {
-    return $CronResultCopyWith<$Res>(_value.result, (value) {
-      return _then(_value.copyWith(result: value) as $Val);
-    });
-  }
+
+/// Adds pattern-matching-related methods to [CronState].
+extension CronStatePatterns on CronState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CronState value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _CronState() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CronState value)  $default,){
+final _that = this;
+switch (_that) {
+case _CronState():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CronState value)?  $default,){
+final _that = this;
+switch (_that) {
+case _CronState() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String input,  CronResult result)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _CronState() when $default != null:
+return $default(_that.input,_that.result);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String input,  CronResult result)  $default,) {final _that = this;
+switch (_that) {
+case _CronState():
+return $default(_that.input,_that.result);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String input,  CronResult result)?  $default,) {final _that = this;
+switch (_that) {
+case _CronState() when $default != null:
+return $default(_that.input,_that.result);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$CronStateImplCopyWith<$Res>
-    implements $CronStateCopyWith<$Res> {
-  factory _$$CronStateImplCopyWith(
-    _$CronStateImpl value,
-    $Res Function(_$CronStateImpl) then,
-  ) = __$$CronStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String input, CronResult result});
 
-  @override
-  $CronResultCopyWith<$Res> get result;
+
+class _CronState implements CronState {
+  const _CronState({required this.input, required this.result});
+  
+
+@override final  String input;
+@override final  CronResult result;
+
+/// Create a copy of CronState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CronStateCopyWith<_CronState> get copyWith => __$CronStateCopyWithImpl<_CronState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CronState&&(identical(other.input, input) || other.input == input)&&(identical(other.result, result) || other.result == result));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,input,result);
+
+@override
+String toString() {
+  return 'CronState(input: $input, result: $result)';
+}
+
+
 }
 
 /// @nodoc
-class __$$CronStateImplCopyWithImpl<$Res>
-    extends _$CronStateCopyWithImpl<$Res, _$CronStateImpl>
-    implements _$$CronStateImplCopyWith<$Res> {
-  __$$CronStateImplCopyWithImpl(
-    _$CronStateImpl _value,
-    $Res Function(_$CronStateImpl) _then,
-  ) : super(_value, _then);
+abstract mixin class _$CronStateCopyWith<$Res> implements $CronStateCopyWith<$Res> {
+  factory _$CronStateCopyWith(_CronState value, $Res Function(_CronState) _then) = __$CronStateCopyWithImpl;
+@override @useResult
+$Res call({
+ String input, CronResult result
+});
 
-  /// Create a copy of CronState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? input = null, Object? result = null}) {
-    return _then(
-      _$CronStateImpl(
-        input: null == input
-            ? _value.input
-            : input // ignore: cast_nullable_to_non_nullable
-                  as String,
-        result: null == result
-            ? _value.result
-            : result // ignore: cast_nullable_to_non_nullable
-                  as CronResult,
-      ),
-    );
-  }
+
+@override $CronResultCopyWith<$Res> get result;
+
 }
-
 /// @nodoc
+class __$CronStateCopyWithImpl<$Res>
+    implements _$CronStateCopyWith<$Res> {
+  __$CronStateCopyWithImpl(this._self, this._then);
 
-class _$CronStateImpl implements _CronState {
-  const _$CronStateImpl({required this.input, required this.result});
+  final _CronState _self;
+  final $Res Function(_CronState) _then;
 
-  @override
-  final String input;
-  @override
-  final CronResult result;
-
-  @override
-  String toString() {
-    return 'CronState(input: $input, result: $result)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CronStateImpl &&
-            (identical(other.input, input) || other.input == input) &&
-            (identical(other.result, result) || other.result == result));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, input, result);
-
-  /// Create a copy of CronState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CronStateImplCopyWith<_$CronStateImpl> get copyWith =>
-      __$$CronStateImplCopyWithImpl<_$CronStateImpl>(this, _$identity);
+/// Create a copy of CronState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? input = null,Object? result = null,}) {
+  return _then(_CronState(
+input: null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
+as String,result: null == result ? _self.result : result // ignore: cast_nullable_to_non_nullable
+as CronResult,
+  ));
 }
 
-abstract class _CronState implements CronState {
-  const factory _CronState({
-    required final String input,
-    required final CronResult result,
-  }) = _$CronStateImpl;
-
-  @override
-  String get input;
-  @override
-  CronResult get result;
-
-  /// Create a copy of CronState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CronStateImplCopyWith<_$CronStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+/// Create a copy of CronState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CronResultCopyWith<$Res> get result {
+  
+  return $CronResultCopyWith<$Res>(_self.result, (value) {
+    return _then(_self.copyWith(result: value));
+  });
+}
 }
 
 /// @nodoc
 mixin _$CronResult {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() idle,
-    required TResult Function(Cron cron) success,
-    required TResult Function(CronException exception) failure,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? idle,
-    TResult? Function(Cron cron)? success,
-    TResult? Function(CronException exception)? failure,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? idle,
-    TResult Function(Cron cron)? success,
-    TResult Function(CronException exception)? failure,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Idle value) idle,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Idle value)? idle,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Idle value)? idle,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CronResult);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'CronResult()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $CronResultCopyWith<$Res> {
-  factory $CronResultCopyWith(
-    CronResult value,
-    $Res Function(CronResult) then,
-  ) = _$CronResultCopyWithImpl<$Res, CronResult>;
+class $CronResultCopyWith<$Res>  {
+$CronResultCopyWith(CronResult _, $Res Function(CronResult) __);
 }
 
-/// @nodoc
-class _$CronResultCopyWithImpl<$Res, $Val extends CronResult>
-    implements $CronResultCopyWith<$Res> {
-  _$CronResultCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [CronResult].
+extension CronResultPatterns on CronResult {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of CronResult
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Idle value)?  idle,TResult Function( _Success value)?  success,TResult Function( _Failure value)?  failure,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Idle() when idle != null:
+return idle(_that);case _Success() when success != null:
+return success(_that);case _Failure() when failure != null:
+return failure(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Idle value)  idle,required TResult Function( _Success value)  success,required TResult Function( _Failure value)  failure,}){
+final _that = this;
+switch (_that) {
+case _Idle():
+return idle(_that);case _Success():
+return success(_that);case _Failure():
+return failure(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Idle value)?  idle,TResult? Function( _Success value)?  success,TResult? Function( _Failure value)?  failure,}){
+final _that = this;
+switch (_that) {
+case _Idle() when idle != null:
+return idle(_that);case _Success() when success != null:
+return success(_that);case _Failure() when failure != null:
+return failure(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  idle,TResult Function( Cron cron)?  success,TResult Function( CronException exception)?  failure,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Idle() when idle != null:
+return idle();case _Success() when success != null:
+return success(_that.cron);case _Failure() when failure != null:
+return failure(_that.exception);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  idle,required TResult Function( Cron cron)  success,required TResult Function( CronException exception)  failure,}) {final _that = this;
+switch (_that) {
+case _Idle():
+return idle();case _Success():
+return success(_that.cron);case _Failure():
+return failure(_that.exception);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  idle,TResult? Function( Cron cron)?  success,TResult? Function( CronException exception)?  failure,}) {final _that = this;
+switch (_that) {
+case _Idle() when idle != null:
+return idle();case _Success() when success != null:
+return success(_that.cron);case _Failure() when failure != null:
+return failure(_that.exception);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$IdleImplCopyWith<$Res> {
-  factory _$$IdleImplCopyWith(
-    _$IdleImpl value,
-    $Res Function(_$IdleImpl) then,
-  ) = __$$IdleImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$IdleImplCopyWithImpl<$Res>
-    extends _$CronResultCopyWithImpl<$Res, _$IdleImpl>
-    implements _$$IdleImplCopyWith<$Res> {
-  __$$IdleImplCopyWithImpl(_$IdleImpl _value, $Res Function(_$IdleImpl) _then)
-    : super(_value, _then);
-
-  /// Create a copy of CronResult
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$IdleImpl implements _Idle {
-  const _$IdleImpl();
-
-  @override
-  String toString() {
-    return 'CronResult.idle()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$IdleImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() idle,
-    required TResult Function(Cron cron) success,
-    required TResult Function(CronException exception) failure,
-  }) {
-    return idle();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? idle,
-    TResult? Function(Cron cron)? success,
-    TResult? Function(CronException exception)? failure,
-  }) {
-    return idle?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? idle,
-    TResult Function(Cron cron)? success,
-    TResult Function(CronException exception)? failure,
-    required TResult orElse(),
-  }) {
-    if (idle != null) {
-      return idle();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Idle value) idle,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return idle(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Idle value)? idle,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return idle?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Idle value)? idle,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (idle != null) {
-      return idle(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Idle implements CronResult {
-  const factory _Idle() = _$IdleImpl;
-}
-
-/// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-    _$SuccessImpl value,
-    $Res Function(_$SuccessImpl) then,
-  ) = __$$SuccessImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Cron cron});
-
-  $CronCopyWith<$Res> get cron;
-}
-
-/// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$CronResultCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-    _$SuccessImpl _value,
-    $Res Function(_$SuccessImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of CronResult
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? cron = null}) {
-    return _then(
-      _$SuccessImpl(
-        null == cron
-            ? _value.cron
-            : cron // ignore: cast_nullable_to_non_nullable
-                  as Cron,
-      ),
-    );
-  }
-
-  /// Create a copy of CronResult
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $CronCopyWith<$Res> get cron {
-    return $CronCopyWith<$Res>(_value.cron, (value) {
-      return _then(_value.copyWith(cron: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(this.cron);
 
-  @override
-  final Cron cron;
+class _Idle implements CronResult {
+  const _Idle();
+  
 
-  @override
-  String toString() {
-    return 'CronResult.success(cron: $cron)';
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
-            (identical(other.cron, cron) || other.cron == cron));
-  }
 
-  @override
-  int get hashCode => Object.hash(runtimeType, cron);
 
-  /// Create a copy of CronResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() idle,
-    required TResult Function(Cron cron) success,
-    required TResult Function(CronException exception) failure,
-  }) {
-    return success(cron);
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? idle,
-    TResult? Function(Cron cron)? success,
-    TResult? Function(CronException exception)? failure,
-  }) {
-    return success?.call(cron);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? idle,
-    TResult Function(Cron cron)? success,
-    TResult Function(CronException exception)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(cron);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Idle value) idle,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Idle value)? idle,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Idle value)? idle,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Idle);
 }
 
-abstract class _Success implements CronResult {
-  const factory _Success(final Cron cron) = _$SuccessImpl;
 
-  Cron get cron;
+@override
+int get hashCode => runtimeType.hashCode;
 
-  /// Create a copy of CronResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'CronResult.idle()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class _Success implements CronResult {
+  const _Success(this.cron);
+  
+
+ final  Cron cron;
+
+/// Create a copy of CronResult
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SuccessCopyWith<_Success> get copyWith => __$SuccessCopyWithImpl<_Success>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Success&&(identical(other.cron, cron) || other.cron == cron));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,cron);
+
+@override
+String toString() {
+  return 'CronResult.success(cron: $cron)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$FailureImplCopyWith<$Res> {
-  factory _$$FailureImplCopyWith(
-    _$FailureImpl value,
-    $Res Function(_$FailureImpl) then,
-  ) = __$$FailureImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({CronException exception});
+abstract mixin class _$SuccessCopyWith<$Res> implements $CronResultCopyWith<$Res> {
+  factory _$SuccessCopyWith(_Success value, $Res Function(_Success) _then) = __$SuccessCopyWithImpl;
+@useResult
+$Res call({
+ Cron cron
+});
+
+
+$CronCopyWith<$Res> get cron;
+
+}
+/// @nodoc
+class __$SuccessCopyWithImpl<$Res>
+    implements _$SuccessCopyWith<$Res> {
+  __$SuccessCopyWithImpl(this._self, this._then);
+
+  final _Success _self;
+  final $Res Function(_Success) _then;
+
+/// Create a copy of CronResult
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? cron = null,}) {
+  return _then(_Success(
+null == cron ? _self.cron : cron // ignore: cast_nullable_to_non_nullable
+as Cron,
+  ));
 }
 
-/// @nodoc
-class __$$FailureImplCopyWithImpl<$Res>
-    extends _$CronResultCopyWithImpl<$Res, _$FailureImpl>
-    implements _$$FailureImplCopyWith<$Res> {
-  __$$FailureImplCopyWithImpl(
-    _$FailureImpl _value,
-    $Res Function(_$FailureImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of CronResult
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? exception = null}) {
-    return _then(
-      _$FailureImpl(
-        null == exception
-            ? _value.exception
-            : exception // ignore: cast_nullable_to_non_nullable
-                  as CronException,
-      ),
-    );
-  }
+/// Create a copy of CronResult
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CronCopyWith<$Res> get cron {
+  
+  return $CronCopyWith<$Res>(_self.cron, (value) {
+    return _then(_self.copyWith(cron: value));
+  });
+}
 }
 
 /// @nodoc
 
-class _$FailureImpl implements _Failure {
-  const _$FailureImpl(this.exception);
 
-  @override
-  final CronException exception;
+class _Failure implements CronResult {
+  const _Failure(this.exception);
+  
 
-  @override
-  String toString() {
-    return 'CronResult.failure(exception: $exception)';
-  }
+ final  CronException exception;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FailureImpl &&
-            (identical(other.exception, exception) ||
-                other.exception == exception));
-  }
+/// Create a copy of CronResult
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$FailureCopyWith<_Failure> get copyWith => __$FailureCopyWithImpl<_Failure>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, exception);
 
-  /// Create a copy of CronResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() idle,
-    required TResult Function(Cron cron) success,
-    required TResult Function(CronException exception) failure,
-  }) {
-    return failure(exception);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? idle,
-    TResult? Function(Cron cron)? success,
-    TResult? Function(CronException exception)? failure,
-  }) {
-    return failure?.call(exception);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? idle,
-    TResult Function(Cron cron)? success,
-    TResult Function(CronException exception)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(exception);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Idle value) idle,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
-  }) {
-    return failure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Idle value)? idle,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
-  }) {
-    return failure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Idle value)? idle,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Failure&&(identical(other.exception, exception) || other.exception == exception));
 }
 
-abstract class _Failure implements CronResult {
-  const factory _Failure(final CronException exception) = _$FailureImpl;
 
-  CronException get exception;
+@override
+int get hashCode => Object.hash(runtimeType,exception);
 
-  /// Create a copy of CronResult
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'CronResult.failure(exception: $exception)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$FailureCopyWith<$Res> implements $CronResultCopyWith<$Res> {
+  factory _$FailureCopyWith(_Failure value, $Res Function(_Failure) _then) = __$FailureCopyWithImpl;
+@useResult
+$Res call({
+ CronException exception
+});
+
+
+
+
+}
+/// @nodoc
+class __$FailureCopyWithImpl<$Res>
+    implements _$FailureCopyWith<$Res> {
+  __$FailureCopyWithImpl(this._self, this._then);
+
+  final _Failure _self;
+  final $Res Function(_Failure) _then;
+
+/// Create a copy of CronResult
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? exception = null,}) {
+  return _then(_Failure(
+null == exception ? _self.exception : exception // ignore: cast_nullable_to_non_nullable
+as CronException,
+  ));
+}
+
+
+}
+
+// dart format on

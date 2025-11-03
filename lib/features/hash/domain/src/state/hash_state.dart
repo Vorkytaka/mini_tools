@@ -24,7 +24,7 @@ enum HashAlgorithm {
 
 @immutable
 @freezed
-class HashState with _$HashState {
+abstract class HashState with _$HashState {
   static const init = HashState(
     input: HashInput.text(text: ''),
     format: HashFormat.base64,

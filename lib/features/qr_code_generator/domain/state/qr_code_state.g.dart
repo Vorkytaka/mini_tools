@@ -6,22 +6,21 @@ part of 'qr_code_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$QrCodeStateImpl _$$QrCodeStateImplFromJson(Map<String, dynamic> json) =>
-    _$QrCodeStateImpl(
-      input: json['input'] as String,
-      correctionLevel: $enumDecode(
-        _$ErrorCorrectionLevelEnumMap,
-        json['correctionLevel'],
-      ),
-      exportType: $enumDecode(_$ExportTypeEnumMap, json['exportType']),
-      visualData: QrCodeVisualData.fromJson(
-        json['visualData'] as Map<String, dynamic>,
-      ),
-      exportSize: (json['exportSize'] as num?)?.toInt() ?? 1024,
-    );
+_QrCodeState _$QrCodeStateFromJson(Map<String, dynamic> json) => _QrCodeState(
+  input: json['input'] as String,
+  correctionLevel: $enumDecode(
+    _$ErrorCorrectionLevelEnumMap,
+    json['correctionLevel'],
+  ),
+  exportType: $enumDecode(_$ExportTypeEnumMap, json['exportType']),
+  visualData: QrCodeVisualData.fromJson(
+    json['visualData'] as Map<String, dynamic>,
+  ),
+  exportSize: (json['exportSize'] as num?)?.toInt() ?? 1024,
+);
 
-Map<String, dynamic> _$$QrCodeStateImplToJson(
-  _$QrCodeStateImpl instance,
+Map<String, dynamic> _$QrCodeStateToJson(
+  _QrCodeState instance,
 ) => <String, dynamic>{
   'input': instance.input,
   'correctionLevel': _$ErrorCorrectionLevelEnumMap[instance.correctionLevel]!,
@@ -39,23 +38,22 @@ const _$ErrorCorrectionLevelEnumMap = {
 
 const _$ExportTypeEnumMap = {ExportType.png: 'png', ExportType.jpg: 'jpg'};
 
-_$QrCodeVisualDataImpl _$$QrCodeVisualDataImplFromJson(
-  Map<String, dynamic> json,
-) => _$QrCodeVisualDataImpl(
-  backgroundColor: const ColorConverter().fromJson(
-    (json['backgroundColor'] as num).toInt(),
-  ),
-  foregroundColor: const ColorConverter().fromJson(
-    (json['foregroundColor'] as num).toInt(),
-  ),
-  shape: $enumDecode(_$QrCodeShapeEnumMap, json['shape']),
-  paddings: const EdgeInsetsConverter().fromJson(
-    json['paddings'] as Map<String, dynamic>,
-  ),
-);
+_QrCodeVisualData _$QrCodeVisualDataFromJson(Map<String, dynamic> json) =>
+    _QrCodeVisualData(
+      backgroundColor: const ColorConverter().fromJson(
+        (json['backgroundColor'] as num).toInt(),
+      ),
+      foregroundColor: const ColorConverter().fromJson(
+        (json['foregroundColor'] as num).toInt(),
+      ),
+      shape: $enumDecode(_$QrCodeShapeEnumMap, json['shape']),
+      paddings: const EdgeInsetsConverter().fromJson(
+        json['paddings'] as Map<String, dynamic>,
+      ),
+    );
 
-Map<String, dynamic> _$$QrCodeVisualDataImplToJson(
-  _$QrCodeVisualDataImpl instance,
+Map<String, dynamic> _$QrCodeVisualDataToJson(
+  _QrCodeVisualData instance,
 ) => <String, dynamic>{
   'backgroundColor': const ColorConverter().toJson(instance.backgroundColor),
   'foregroundColor': const ColorConverter().toJson(instance.foregroundColor),

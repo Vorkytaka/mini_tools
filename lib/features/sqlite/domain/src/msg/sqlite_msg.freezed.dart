@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,1493 +9,686 @@ part of 'sqlite_msg.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$SqliteMsg {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String query) execute,
-    required TResult Function(Result result) queryResult,
-    required TResult Function(String path) importDb,
-    required TResult Function(String path) exportDb,
-    required TResult Function() dropTable,
-    required TResult Function(List<TableInfo> tables) tableInfo,
-    required TResult Function(DatabaseConnection connection) connectionChanged,
-    required TResult Function() dispose,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? execute,
-    TResult? Function(Result result)? queryResult,
-    TResult? Function(String path)? importDb,
-    TResult? Function(String path)? exportDb,
-    TResult? Function()? dropTable,
-    TResult? Function(List<TableInfo> tables)? tableInfo,
-    TResult? Function(DatabaseConnection connection)? connectionChanged,
-    TResult? Function()? dispose,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? execute,
-    TResult Function(Result result)? queryResult,
-    TResult Function(String path)? importDb,
-    TResult Function(String path)? exportDb,
-    TResult Function()? dropTable,
-    TResult Function(List<TableInfo> tables)? tableInfo,
-    TResult Function(DatabaseConnection connection)? connectionChanged,
-    TResult Function()? dispose,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteMsg value) execute,
-    required TResult Function(QueryResultMsg value) queryResult,
-    required TResult Function(ImportDbMsg value) importDb,
-    required TResult Function(ExportDbMsg value) exportDb,
-    required TResult Function(DropTableMsg value) dropTable,
-    required TResult Function(TableInfoMsg value) tableInfo,
-    required TResult Function(ConnectionChangedMsg value) connectionChanged,
-    required TResult Function(DisposeMsg value) dispose,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteMsg value)? execute,
-    TResult? Function(QueryResultMsg value)? queryResult,
-    TResult? Function(ImportDbMsg value)? importDb,
-    TResult? Function(ExportDbMsg value)? exportDb,
-    TResult? Function(DropTableMsg value)? dropTable,
-    TResult? Function(TableInfoMsg value)? tableInfo,
-    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult? Function(DisposeMsg value)? dispose,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteMsg value)? execute,
-    TResult Function(QueryResultMsg value)? queryResult,
-    TResult Function(ImportDbMsg value)? importDb,
-    TResult Function(ExportDbMsg value)? exportDb,
-    TResult Function(DropTableMsg value)? dropTable,
-    TResult Function(TableInfoMsg value)? tableInfo,
-    TResult Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult Function(DisposeMsg value)? dispose,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SqliteMsg);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'SqliteMsg()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SqliteMsgCopyWith<$Res> {
-  factory $SqliteMsgCopyWith(SqliteMsg value, $Res Function(SqliteMsg) then) =
-      _$SqliteMsgCopyWithImpl<$Res, SqliteMsg>;
+class $SqliteMsgCopyWith<$Res>  {
+$SqliteMsgCopyWith(SqliteMsg _, $Res Function(SqliteMsg) __);
 }
 
-/// @nodoc
-class _$SqliteMsgCopyWithImpl<$Res, $Val extends SqliteMsg>
-    implements $SqliteMsgCopyWith<$Res> {
-  _$SqliteMsgCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [SqliteMsg].
+extension SqliteMsgPatterns on SqliteMsg {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ExecuteMsg value)?  execute,TResult Function( QueryResultMsg value)?  queryResult,TResult Function( ImportDbMsg value)?  importDb,TResult Function( ExportDbMsg value)?  exportDb,TResult Function( DropTableMsg value)?  dropTable,TResult Function( TableInfoMsg value)?  tableInfo,TResult Function( ConnectionChangedMsg value)?  connectionChanged,TResult Function( DisposeMsg value)?  dispose,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case ExecuteMsg() when execute != null:
+return execute(_that);case QueryResultMsg() when queryResult != null:
+return queryResult(_that);case ImportDbMsg() when importDb != null:
+return importDb(_that);case ExportDbMsg() when exportDb != null:
+return exportDb(_that);case DropTableMsg() when dropTable != null:
+return dropTable(_that);case TableInfoMsg() when tableInfo != null:
+return tableInfo(_that);case ConnectionChangedMsg() when connectionChanged != null:
+return connectionChanged(_that);case DisposeMsg() when dispose != null:
+return dispose(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ExecuteMsg value)  execute,required TResult Function( QueryResultMsg value)  queryResult,required TResult Function( ImportDbMsg value)  importDb,required TResult Function( ExportDbMsg value)  exportDb,required TResult Function( DropTableMsg value)  dropTable,required TResult Function( TableInfoMsg value)  tableInfo,required TResult Function( ConnectionChangedMsg value)  connectionChanged,required TResult Function( DisposeMsg value)  dispose,}){
+final _that = this;
+switch (_that) {
+case ExecuteMsg():
+return execute(_that);case QueryResultMsg():
+return queryResult(_that);case ImportDbMsg():
+return importDb(_that);case ExportDbMsg():
+return exportDb(_that);case DropTableMsg():
+return dropTable(_that);case TableInfoMsg():
+return tableInfo(_that);case ConnectionChangedMsg():
+return connectionChanged(_that);case DisposeMsg():
+return dispose(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ExecuteMsg value)?  execute,TResult? Function( QueryResultMsg value)?  queryResult,TResult? Function( ImportDbMsg value)?  importDb,TResult? Function( ExportDbMsg value)?  exportDb,TResult? Function( DropTableMsg value)?  dropTable,TResult? Function( TableInfoMsg value)?  tableInfo,TResult? Function( ConnectionChangedMsg value)?  connectionChanged,TResult? Function( DisposeMsg value)?  dispose,}){
+final _that = this;
+switch (_that) {
+case ExecuteMsg() when execute != null:
+return execute(_that);case QueryResultMsg() when queryResult != null:
+return queryResult(_that);case ImportDbMsg() when importDb != null:
+return importDb(_that);case ExportDbMsg() when exportDb != null:
+return exportDb(_that);case DropTableMsg() when dropTable != null:
+return dropTable(_that);case TableInfoMsg() when tableInfo != null:
+return tableInfo(_that);case ConnectionChangedMsg() when connectionChanged != null:
+return connectionChanged(_that);case DisposeMsg() when dispose != null:
+return dispose(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String query)?  execute,TResult Function( Result result)?  queryResult,TResult Function( String path)?  importDb,TResult Function( String path)?  exportDb,TResult Function()?  dropTable,TResult Function( List<TableInfo> tables)?  tableInfo,TResult Function( DatabaseConnection connection)?  connectionChanged,TResult Function()?  dispose,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case ExecuteMsg() when execute != null:
+return execute(_that.query);case QueryResultMsg() when queryResult != null:
+return queryResult(_that.result);case ImportDbMsg() when importDb != null:
+return importDb(_that.path);case ExportDbMsg() when exportDb != null:
+return exportDb(_that.path);case DropTableMsg() when dropTable != null:
+return dropTable();case TableInfoMsg() when tableInfo != null:
+return tableInfo(_that.tables);case ConnectionChangedMsg() when connectionChanged != null:
+return connectionChanged(_that.connection);case DisposeMsg() when dispose != null:
+return dispose();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String query)  execute,required TResult Function( Result result)  queryResult,required TResult Function( String path)  importDb,required TResult Function( String path)  exportDb,required TResult Function()  dropTable,required TResult Function( List<TableInfo> tables)  tableInfo,required TResult Function( DatabaseConnection connection)  connectionChanged,required TResult Function()  dispose,}) {final _that = this;
+switch (_that) {
+case ExecuteMsg():
+return execute(_that.query);case QueryResultMsg():
+return queryResult(_that.result);case ImportDbMsg():
+return importDb(_that.path);case ExportDbMsg():
+return exportDb(_that.path);case DropTableMsg():
+return dropTable();case TableInfoMsg():
+return tableInfo(_that.tables);case ConnectionChangedMsg():
+return connectionChanged(_that.connection);case DisposeMsg():
+return dispose();}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String query)?  execute,TResult? Function( Result result)?  queryResult,TResult? Function( String path)?  importDb,TResult? Function( String path)?  exportDb,TResult? Function()?  dropTable,TResult? Function( List<TableInfo> tables)?  tableInfo,TResult? Function( DatabaseConnection connection)?  connectionChanged,TResult? Function()?  dispose,}) {final _that = this;
+switch (_that) {
+case ExecuteMsg() when execute != null:
+return execute(_that.query);case QueryResultMsg() when queryResult != null:
+return queryResult(_that.result);case ImportDbMsg() when importDb != null:
+return importDb(_that.path);case ExportDbMsg() when exportDb != null:
+return exportDb(_that.path);case DropTableMsg() when dropTable != null:
+return dropTable();case TableInfoMsg() when tableInfo != null:
+return tableInfo(_that.tables);case ConnectionChangedMsg() when connectionChanged != null:
+return connectionChanged(_that.connection);case DisposeMsg() when dispose != null:
+return dispose();case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$ExecuteMsgImplCopyWith<$Res> {
-  factory _$$ExecuteMsgImplCopyWith(
-    _$ExecuteMsgImpl value,
-    $Res Function(_$ExecuteMsgImpl) then,
-  ) = __$$ExecuteMsgImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String query});
-}
-
-/// @nodoc
-class __$$ExecuteMsgImplCopyWithImpl<$Res>
-    extends _$SqliteMsgCopyWithImpl<$Res, _$ExecuteMsgImpl>
-    implements _$$ExecuteMsgImplCopyWith<$Res> {
-  __$$ExecuteMsgImplCopyWithImpl(
-    _$ExecuteMsgImpl _value,
-    $Res Function(_$ExecuteMsgImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? query = null}) {
-    return _then(
-      _$ExecuteMsgImpl(
-        null == query
-            ? _value.query
-            : query // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
-}
-
-/// @nodoc
-
-class _$ExecuteMsgImpl implements ExecuteMsg {
-  const _$ExecuteMsgImpl(this.query);
-
-  @override
-  final String query;
-
-  @override
-  String toString() {
-    return 'SqliteMsg.execute(query: $query)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ExecuteMsgImpl &&
-            (identical(other.query, query) || other.query == query));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, query);
-
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ExecuteMsgImplCopyWith<_$ExecuteMsgImpl> get copyWith =>
-      __$$ExecuteMsgImplCopyWithImpl<_$ExecuteMsgImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String query) execute,
-    required TResult Function(Result result) queryResult,
-    required TResult Function(String path) importDb,
-    required TResult Function(String path) exportDb,
-    required TResult Function() dropTable,
-    required TResult Function(List<TableInfo> tables) tableInfo,
-    required TResult Function(DatabaseConnection connection) connectionChanged,
-    required TResult Function() dispose,
-  }) {
-    return execute(query);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? execute,
-    TResult? Function(Result result)? queryResult,
-    TResult? Function(String path)? importDb,
-    TResult? Function(String path)? exportDb,
-    TResult? Function()? dropTable,
-    TResult? Function(List<TableInfo> tables)? tableInfo,
-    TResult? Function(DatabaseConnection connection)? connectionChanged,
-    TResult? Function()? dispose,
-  }) {
-    return execute?.call(query);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? execute,
-    TResult Function(Result result)? queryResult,
-    TResult Function(String path)? importDb,
-    TResult Function(String path)? exportDb,
-    TResult Function()? dropTable,
-    TResult Function(List<TableInfo> tables)? tableInfo,
-    TResult Function(DatabaseConnection connection)? connectionChanged,
-    TResult Function()? dispose,
-    required TResult orElse(),
-  }) {
-    if (execute != null) {
-      return execute(query);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteMsg value) execute,
-    required TResult Function(QueryResultMsg value) queryResult,
-    required TResult Function(ImportDbMsg value) importDb,
-    required TResult Function(ExportDbMsg value) exportDb,
-    required TResult Function(DropTableMsg value) dropTable,
-    required TResult Function(TableInfoMsg value) tableInfo,
-    required TResult Function(ConnectionChangedMsg value) connectionChanged,
-    required TResult Function(DisposeMsg value) dispose,
-  }) {
-    return execute(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteMsg value)? execute,
-    TResult? Function(QueryResultMsg value)? queryResult,
-    TResult? Function(ImportDbMsg value)? importDb,
-    TResult? Function(ExportDbMsg value)? exportDb,
-    TResult? Function(DropTableMsg value)? dropTable,
-    TResult? Function(TableInfoMsg value)? tableInfo,
-    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult? Function(DisposeMsg value)? dispose,
-  }) {
-    return execute?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteMsg value)? execute,
-    TResult Function(QueryResultMsg value)? queryResult,
-    TResult Function(ImportDbMsg value)? importDb,
-    TResult Function(ExportDbMsg value)? exportDb,
-    TResult Function(DropTableMsg value)? dropTable,
-    TResult Function(TableInfoMsg value)? tableInfo,
-    TResult Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult Function(DisposeMsg value)? dispose,
-    required TResult orElse(),
-  }) {
-    if (execute != null) {
-      return execute(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ExecuteMsg implements SqliteMsg {
-  const factory ExecuteMsg(final String query) = _$ExecuteMsgImpl;
-
-  String get query;
-
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ExecuteMsgImplCopyWith<_$ExecuteMsgImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$QueryResultMsgImplCopyWith<$Res> {
-  factory _$$QueryResultMsgImplCopyWith(
-    _$QueryResultMsgImpl value,
-    $Res Function(_$QueryResultMsgImpl) then,
-  ) = __$$QueryResultMsgImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({Result result});
-
-  $ResultCopyWith<$Res> get result;
-}
-
-/// @nodoc
-class __$$QueryResultMsgImplCopyWithImpl<$Res>
-    extends _$SqliteMsgCopyWithImpl<$Res, _$QueryResultMsgImpl>
-    implements _$$QueryResultMsgImplCopyWith<$Res> {
-  __$$QueryResultMsgImplCopyWithImpl(
-    _$QueryResultMsgImpl _value,
-    $Res Function(_$QueryResultMsgImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? result = null}) {
-    return _then(
-      _$QueryResultMsgImpl(
-        null == result
-            ? _value.result
-            : result // ignore: cast_nullable_to_non_nullable
-                  as Result,
-      ),
-    );
-  }
-
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ResultCopyWith<$Res> get result {
-    return $ResultCopyWith<$Res>(_value.result, (value) {
-      return _then(_value.copyWith(result: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$QueryResultMsgImpl implements QueryResultMsg {
-  const _$QueryResultMsgImpl(this.result);
 
-  @override
-  final Result result;
+class ExecuteMsg implements SqliteMsg {
+  const ExecuteMsg(this.query);
+  
 
-  @override
-  String toString() {
-    return 'SqliteMsg.queryResult(result: $result)';
-  }
+ final  String query;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$QueryResultMsgImpl &&
-            (identical(other.result, result) || other.result == result));
-  }
+/// Create a copy of SqliteMsg
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ExecuteMsgCopyWith<ExecuteMsg> get copyWith => _$ExecuteMsgCopyWithImpl<ExecuteMsg>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, result);
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$QueryResultMsgImplCopyWith<_$QueryResultMsgImpl> get copyWith =>
-      __$$QueryResultMsgImplCopyWithImpl<_$QueryResultMsgImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String query) execute,
-    required TResult Function(Result result) queryResult,
-    required TResult Function(String path) importDb,
-    required TResult Function(String path) exportDb,
-    required TResult Function() dropTable,
-    required TResult Function(List<TableInfo> tables) tableInfo,
-    required TResult Function(DatabaseConnection connection) connectionChanged,
-    required TResult Function() dispose,
-  }) {
-    return queryResult(result);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? execute,
-    TResult? Function(Result result)? queryResult,
-    TResult? Function(String path)? importDb,
-    TResult? Function(String path)? exportDb,
-    TResult? Function()? dropTable,
-    TResult? Function(List<TableInfo> tables)? tableInfo,
-    TResult? Function(DatabaseConnection connection)? connectionChanged,
-    TResult? Function()? dispose,
-  }) {
-    return queryResult?.call(result);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? execute,
-    TResult Function(Result result)? queryResult,
-    TResult Function(String path)? importDb,
-    TResult Function(String path)? exportDb,
-    TResult Function()? dropTable,
-    TResult Function(List<TableInfo> tables)? tableInfo,
-    TResult Function(DatabaseConnection connection)? connectionChanged,
-    TResult Function()? dispose,
-    required TResult orElse(),
-  }) {
-    if (queryResult != null) {
-      return queryResult(result);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteMsg value) execute,
-    required TResult Function(QueryResultMsg value) queryResult,
-    required TResult Function(ImportDbMsg value) importDb,
-    required TResult Function(ExportDbMsg value) exportDb,
-    required TResult Function(DropTableMsg value) dropTable,
-    required TResult Function(TableInfoMsg value) tableInfo,
-    required TResult Function(ConnectionChangedMsg value) connectionChanged,
-    required TResult Function(DisposeMsg value) dispose,
-  }) {
-    return queryResult(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteMsg value)? execute,
-    TResult? Function(QueryResultMsg value)? queryResult,
-    TResult? Function(ImportDbMsg value)? importDb,
-    TResult? Function(ExportDbMsg value)? exportDb,
-    TResult? Function(DropTableMsg value)? dropTable,
-    TResult? Function(TableInfoMsg value)? tableInfo,
-    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult? Function(DisposeMsg value)? dispose,
-  }) {
-    return queryResult?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteMsg value)? execute,
-    TResult Function(QueryResultMsg value)? queryResult,
-    TResult Function(ImportDbMsg value)? importDb,
-    TResult Function(ExportDbMsg value)? exportDb,
-    TResult Function(DropTableMsg value)? dropTable,
-    TResult Function(TableInfoMsg value)? tableInfo,
-    TResult Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult Function(DisposeMsg value)? dispose,
-    required TResult orElse(),
-  }) {
-    if (queryResult != null) {
-      return queryResult(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExecuteMsg&&(identical(other.query, query) || other.query == query));
 }
 
-abstract class QueryResultMsg implements SqliteMsg {
-  const factory QueryResultMsg(final Result result) = _$QueryResultMsgImpl;
 
-  Result get result;
+@override
+int get hashCode => Object.hash(runtimeType,query);
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$QueryResultMsgImplCopyWith<_$QueryResultMsgImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'SqliteMsg.execute(query: $query)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$ImportDbMsgImplCopyWith<$Res> {
-  factory _$$ImportDbMsgImplCopyWith(
-    _$ImportDbMsgImpl value,
-    $Res Function(_$ImportDbMsgImpl) then,
-  ) = __$$ImportDbMsgImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String path});
+abstract mixin class $ExecuteMsgCopyWith<$Res> implements $SqliteMsgCopyWith<$Res> {
+  factory $ExecuteMsgCopyWith(ExecuteMsg value, $Res Function(ExecuteMsg) _then) = _$ExecuteMsgCopyWithImpl;
+@useResult
+$Res call({
+ String query
+});
+
+
+
+
+}
+/// @nodoc
+class _$ExecuteMsgCopyWithImpl<$Res>
+    implements $ExecuteMsgCopyWith<$Res> {
+  _$ExecuteMsgCopyWithImpl(this._self, this._then);
+
+  final ExecuteMsg _self;
+  final $Res Function(ExecuteMsg) _then;
+
+/// Create a copy of SqliteMsg
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? query = null,}) {
+  return _then(ExecuteMsg(
+null == query ? _self.query : query // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$ImportDbMsgImplCopyWithImpl<$Res>
-    extends _$SqliteMsgCopyWithImpl<$Res, _$ImportDbMsgImpl>
-    implements _$$ImportDbMsgImplCopyWith<$Res> {
-  __$$ImportDbMsgImplCopyWithImpl(
-    _$ImportDbMsgImpl _value,
-    $Res Function(_$ImportDbMsgImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? path = null}) {
-    return _then(
-      _$ImportDbMsgImpl(
-        null == path
-            ? _value.path
-            : path // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$ImportDbMsgImpl implements ImportDbMsg {
-  const _$ImportDbMsgImpl(this.path);
 
-  @override
-  final String path;
+class QueryResultMsg implements SqliteMsg {
+  const QueryResultMsg(this.result);
+  
 
-  @override
-  String toString() {
-    return 'SqliteMsg.importDb(path: $path)';
-  }
+ final  Result result;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ImportDbMsgImpl &&
-            (identical(other.path, path) || other.path == path));
-  }
+/// Create a copy of SqliteMsg
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$QueryResultMsgCopyWith<QueryResultMsg> get copyWith => _$QueryResultMsgCopyWithImpl<QueryResultMsg>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, path);
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ImportDbMsgImplCopyWith<_$ImportDbMsgImpl> get copyWith =>
-      __$$ImportDbMsgImplCopyWithImpl<_$ImportDbMsgImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String query) execute,
-    required TResult Function(Result result) queryResult,
-    required TResult Function(String path) importDb,
-    required TResult Function(String path) exportDb,
-    required TResult Function() dropTable,
-    required TResult Function(List<TableInfo> tables) tableInfo,
-    required TResult Function(DatabaseConnection connection) connectionChanged,
-    required TResult Function() dispose,
-  }) {
-    return importDb(path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? execute,
-    TResult? Function(Result result)? queryResult,
-    TResult? Function(String path)? importDb,
-    TResult? Function(String path)? exportDb,
-    TResult? Function()? dropTable,
-    TResult? Function(List<TableInfo> tables)? tableInfo,
-    TResult? Function(DatabaseConnection connection)? connectionChanged,
-    TResult? Function()? dispose,
-  }) {
-    return importDb?.call(path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? execute,
-    TResult Function(Result result)? queryResult,
-    TResult Function(String path)? importDb,
-    TResult Function(String path)? exportDb,
-    TResult Function()? dropTable,
-    TResult Function(List<TableInfo> tables)? tableInfo,
-    TResult Function(DatabaseConnection connection)? connectionChanged,
-    TResult Function()? dispose,
-    required TResult orElse(),
-  }) {
-    if (importDb != null) {
-      return importDb(path);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteMsg value) execute,
-    required TResult Function(QueryResultMsg value) queryResult,
-    required TResult Function(ImportDbMsg value) importDb,
-    required TResult Function(ExportDbMsg value) exportDb,
-    required TResult Function(DropTableMsg value) dropTable,
-    required TResult Function(TableInfoMsg value) tableInfo,
-    required TResult Function(ConnectionChangedMsg value) connectionChanged,
-    required TResult Function(DisposeMsg value) dispose,
-  }) {
-    return importDb(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteMsg value)? execute,
-    TResult? Function(QueryResultMsg value)? queryResult,
-    TResult? Function(ImportDbMsg value)? importDb,
-    TResult? Function(ExportDbMsg value)? exportDb,
-    TResult? Function(DropTableMsg value)? dropTable,
-    TResult? Function(TableInfoMsg value)? tableInfo,
-    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult? Function(DisposeMsg value)? dispose,
-  }) {
-    return importDb?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteMsg value)? execute,
-    TResult Function(QueryResultMsg value)? queryResult,
-    TResult Function(ImportDbMsg value)? importDb,
-    TResult Function(ExportDbMsg value)? exportDb,
-    TResult Function(DropTableMsg value)? dropTable,
-    TResult Function(TableInfoMsg value)? tableInfo,
-    TResult Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult Function(DisposeMsg value)? dispose,
-    required TResult orElse(),
-  }) {
-    if (importDb != null) {
-      return importDb(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is QueryResultMsg&&(identical(other.result, result) || other.result == result));
 }
 
-abstract class ImportDbMsg implements SqliteMsg {
-  const factory ImportDbMsg(final String path) = _$ImportDbMsgImpl;
 
-  String get path;
+@override
+int get hashCode => Object.hash(runtimeType,result);
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ImportDbMsgImplCopyWith<_$ImportDbMsgImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'SqliteMsg.queryResult(result: $result)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$ExportDbMsgImplCopyWith<$Res> {
-  factory _$$ExportDbMsgImplCopyWith(
-    _$ExportDbMsgImpl value,
-    $Res Function(_$ExportDbMsgImpl) then,
-  ) = __$$ExportDbMsgImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String path});
+abstract mixin class $QueryResultMsgCopyWith<$Res> implements $SqliteMsgCopyWith<$Res> {
+  factory $QueryResultMsgCopyWith(QueryResultMsg value, $Res Function(QueryResultMsg) _then) = _$QueryResultMsgCopyWithImpl;
+@useResult
+$Res call({
+ Result result
+});
+
+
+$ResultCopyWith<$Res> get result;
+
+}
+/// @nodoc
+class _$QueryResultMsgCopyWithImpl<$Res>
+    implements $QueryResultMsgCopyWith<$Res> {
+  _$QueryResultMsgCopyWithImpl(this._self, this._then);
+
+  final QueryResultMsg _self;
+  final $Res Function(QueryResultMsg) _then;
+
+/// Create a copy of SqliteMsg
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? result = null,}) {
+  return _then(QueryResultMsg(
+null == result ? _self.result : result // ignore: cast_nullable_to_non_nullable
+as Result,
+  ));
 }
 
-/// @nodoc
-class __$$ExportDbMsgImplCopyWithImpl<$Res>
-    extends _$SqliteMsgCopyWithImpl<$Res, _$ExportDbMsgImpl>
-    implements _$$ExportDbMsgImplCopyWith<$Res> {
-  __$$ExportDbMsgImplCopyWithImpl(
-    _$ExportDbMsgImpl _value,
-    $Res Function(_$ExportDbMsgImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? path = null}) {
-    return _then(
-      _$ExportDbMsgImpl(
-        null == path
-            ? _value.path
-            : path // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
+/// Create a copy of SqliteMsg
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ResultCopyWith<$Res> get result {
+  
+  return $ResultCopyWith<$Res>(_self.result, (value) {
+    return _then(_self.copyWith(result: value));
+  });
+}
 }
 
 /// @nodoc
 
-class _$ExportDbMsgImpl implements ExportDbMsg {
-  const _$ExportDbMsgImpl(this.path);
 
-  @override
-  final String path;
+class ImportDbMsg implements SqliteMsg {
+  const ImportDbMsg(this.path);
+  
 
-  @override
-  String toString() {
-    return 'SqliteMsg.exportDb(path: $path)';
-  }
+ final  String path;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ExportDbMsgImpl &&
-            (identical(other.path, path) || other.path == path));
-  }
+/// Create a copy of SqliteMsg
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ImportDbMsgCopyWith<ImportDbMsg> get copyWith => _$ImportDbMsgCopyWithImpl<ImportDbMsg>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, path);
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ExportDbMsgImplCopyWith<_$ExportDbMsgImpl> get copyWith =>
-      __$$ExportDbMsgImplCopyWithImpl<_$ExportDbMsgImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String query) execute,
-    required TResult Function(Result result) queryResult,
-    required TResult Function(String path) importDb,
-    required TResult Function(String path) exportDb,
-    required TResult Function() dropTable,
-    required TResult Function(List<TableInfo> tables) tableInfo,
-    required TResult Function(DatabaseConnection connection) connectionChanged,
-    required TResult Function() dispose,
-  }) {
-    return exportDb(path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? execute,
-    TResult? Function(Result result)? queryResult,
-    TResult? Function(String path)? importDb,
-    TResult? Function(String path)? exportDb,
-    TResult? Function()? dropTable,
-    TResult? Function(List<TableInfo> tables)? tableInfo,
-    TResult? Function(DatabaseConnection connection)? connectionChanged,
-    TResult? Function()? dispose,
-  }) {
-    return exportDb?.call(path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? execute,
-    TResult Function(Result result)? queryResult,
-    TResult Function(String path)? importDb,
-    TResult Function(String path)? exportDb,
-    TResult Function()? dropTable,
-    TResult Function(List<TableInfo> tables)? tableInfo,
-    TResult Function(DatabaseConnection connection)? connectionChanged,
-    TResult Function()? dispose,
-    required TResult orElse(),
-  }) {
-    if (exportDb != null) {
-      return exportDb(path);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteMsg value) execute,
-    required TResult Function(QueryResultMsg value) queryResult,
-    required TResult Function(ImportDbMsg value) importDb,
-    required TResult Function(ExportDbMsg value) exportDb,
-    required TResult Function(DropTableMsg value) dropTable,
-    required TResult Function(TableInfoMsg value) tableInfo,
-    required TResult Function(ConnectionChangedMsg value) connectionChanged,
-    required TResult Function(DisposeMsg value) dispose,
-  }) {
-    return exportDb(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteMsg value)? execute,
-    TResult? Function(QueryResultMsg value)? queryResult,
-    TResult? Function(ImportDbMsg value)? importDb,
-    TResult? Function(ExportDbMsg value)? exportDb,
-    TResult? Function(DropTableMsg value)? dropTable,
-    TResult? Function(TableInfoMsg value)? tableInfo,
-    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult? Function(DisposeMsg value)? dispose,
-  }) {
-    return exportDb?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteMsg value)? execute,
-    TResult Function(QueryResultMsg value)? queryResult,
-    TResult Function(ImportDbMsg value)? importDb,
-    TResult Function(ExportDbMsg value)? exportDb,
-    TResult Function(DropTableMsg value)? dropTable,
-    TResult Function(TableInfoMsg value)? tableInfo,
-    TResult Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult Function(DisposeMsg value)? dispose,
-    required TResult orElse(),
-  }) {
-    if (exportDb != null) {
-      return exportDb(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ImportDbMsg&&(identical(other.path, path) || other.path == path));
 }
 
-abstract class ExportDbMsg implements SqliteMsg {
-  const factory ExportDbMsg(final String path) = _$ExportDbMsgImpl;
 
-  String get path;
+@override
+int get hashCode => Object.hash(runtimeType,path);
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ExportDbMsgImplCopyWith<_$ExportDbMsgImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'SqliteMsg.importDb(path: $path)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$DropTableMsgImplCopyWith<$Res> {
-  factory _$$DropTableMsgImplCopyWith(
-    _$DropTableMsgImpl value,
-    $Res Function(_$DropTableMsgImpl) then,
-  ) = __$$DropTableMsgImplCopyWithImpl<$Res>;
+abstract mixin class $ImportDbMsgCopyWith<$Res> implements $SqliteMsgCopyWith<$Res> {
+  factory $ImportDbMsgCopyWith(ImportDbMsg value, $Res Function(ImportDbMsg) _then) = _$ImportDbMsgCopyWithImpl;
+@useResult
+$Res call({
+ String path
+});
+
+
+
+
+}
+/// @nodoc
+class _$ImportDbMsgCopyWithImpl<$Res>
+    implements $ImportDbMsgCopyWith<$Res> {
+  _$ImportDbMsgCopyWithImpl(this._self, this._then);
+
+  final ImportDbMsg _self;
+  final $Res Function(ImportDbMsg) _then;
+
+/// Create a copy of SqliteMsg
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? path = null,}) {
+  return _then(ImportDbMsg(
+null == path ? _self.path : path // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$DropTableMsgImplCopyWithImpl<$Res>
-    extends _$SqliteMsgCopyWithImpl<$Res, _$DropTableMsgImpl>
-    implements _$$DropTableMsgImplCopyWith<$Res> {
-  __$$DropTableMsgImplCopyWithImpl(
-    _$DropTableMsgImpl _value,
-    $Res Function(_$DropTableMsgImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$DropTableMsgImpl implements DropTableMsg {
-  const _$DropTableMsgImpl();
 
-  @override
-  String toString() {
-    return 'SqliteMsg.dropTable()';
-  }
+class ExportDbMsg implements SqliteMsg {
+  const ExportDbMsg(this.path);
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$DropTableMsgImpl);
-  }
+ final  String path;
 
-  @override
-  int get hashCode => runtimeType.hashCode;
+/// Create a copy of SqliteMsg
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ExportDbMsgCopyWith<ExportDbMsg> get copyWith => _$ExportDbMsgCopyWithImpl<ExportDbMsg>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String query) execute,
-    required TResult Function(Result result) queryResult,
-    required TResult Function(String path) importDb,
-    required TResult Function(String path) exportDb,
-    required TResult Function() dropTable,
-    required TResult Function(List<TableInfo> tables) tableInfo,
-    required TResult Function(DatabaseConnection connection) connectionChanged,
-    required TResult Function() dispose,
-  }) {
-    return dropTable();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? execute,
-    TResult? Function(Result result)? queryResult,
-    TResult? Function(String path)? importDb,
-    TResult? Function(String path)? exportDb,
-    TResult? Function()? dropTable,
-    TResult? Function(List<TableInfo> tables)? tableInfo,
-    TResult? Function(DatabaseConnection connection)? connectionChanged,
-    TResult? Function()? dispose,
-  }) {
-    return dropTable?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? execute,
-    TResult Function(Result result)? queryResult,
-    TResult Function(String path)? importDb,
-    TResult Function(String path)? exportDb,
-    TResult Function()? dropTable,
-    TResult Function(List<TableInfo> tables)? tableInfo,
-    TResult Function(DatabaseConnection connection)? connectionChanged,
-    TResult Function()? dispose,
-    required TResult orElse(),
-  }) {
-    if (dropTable != null) {
-      return dropTable();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteMsg value) execute,
-    required TResult Function(QueryResultMsg value) queryResult,
-    required TResult Function(ImportDbMsg value) importDb,
-    required TResult Function(ExportDbMsg value) exportDb,
-    required TResult Function(DropTableMsg value) dropTable,
-    required TResult Function(TableInfoMsg value) tableInfo,
-    required TResult Function(ConnectionChangedMsg value) connectionChanged,
-    required TResult Function(DisposeMsg value) dispose,
-  }) {
-    return dropTable(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteMsg value)? execute,
-    TResult? Function(QueryResultMsg value)? queryResult,
-    TResult? Function(ImportDbMsg value)? importDb,
-    TResult? Function(ExportDbMsg value)? exportDb,
-    TResult? Function(DropTableMsg value)? dropTable,
-    TResult? Function(TableInfoMsg value)? tableInfo,
-    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult? Function(DisposeMsg value)? dispose,
-  }) {
-    return dropTable?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteMsg value)? execute,
-    TResult Function(QueryResultMsg value)? queryResult,
-    TResult Function(ImportDbMsg value)? importDb,
-    TResult Function(ExportDbMsg value)? exportDb,
-    TResult Function(DropTableMsg value)? dropTable,
-    TResult Function(TableInfoMsg value)? tableInfo,
-    TResult Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult Function(DisposeMsg value)? dispose,
-    required TResult orElse(),
-  }) {
-    if (dropTable != null) {
-      return dropTable(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExportDbMsg&&(identical(other.path, path) || other.path == path));
 }
 
-abstract class DropTableMsg implements SqliteMsg {
-  const factory DropTableMsg() = _$DropTableMsgImpl;
+
+@override
+int get hashCode => Object.hash(runtimeType,path);
+
+@override
+String toString() {
+  return 'SqliteMsg.exportDb(path: $path)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$TableInfoMsgImplCopyWith<$Res> {
-  factory _$$TableInfoMsgImplCopyWith(
-    _$TableInfoMsgImpl value,
-    $Res Function(_$TableInfoMsgImpl) then,
-  ) = __$$TableInfoMsgImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<TableInfo> tables});
+abstract mixin class $ExportDbMsgCopyWith<$Res> implements $SqliteMsgCopyWith<$Res> {
+  factory $ExportDbMsgCopyWith(ExportDbMsg value, $Res Function(ExportDbMsg) _then) = _$ExportDbMsgCopyWithImpl;
+@useResult
+$Res call({
+ String path
+});
+
+
+
+
+}
+/// @nodoc
+class _$ExportDbMsgCopyWithImpl<$Res>
+    implements $ExportDbMsgCopyWith<$Res> {
+  _$ExportDbMsgCopyWithImpl(this._self, this._then);
+
+  final ExportDbMsg _self;
+  final $Res Function(ExportDbMsg) _then;
+
+/// Create a copy of SqliteMsg
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? path = null,}) {
+  return _then(ExportDbMsg(
+null == path ? _self.path : path // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$TableInfoMsgImplCopyWithImpl<$Res>
-    extends _$SqliteMsgCopyWithImpl<$Res, _$TableInfoMsgImpl>
-    implements _$$TableInfoMsgImplCopyWith<$Res> {
-  __$$TableInfoMsgImplCopyWithImpl(
-    _$TableInfoMsgImpl _value,
-    $Res Function(_$TableInfoMsgImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? tables = null}) {
-    return _then(
-      _$TableInfoMsgImpl(
-        null == tables
-            ? _value._tables
-            : tables // ignore: cast_nullable_to_non_nullable
-                  as List<TableInfo>,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$TableInfoMsgImpl implements TableInfoMsg {
-  const _$TableInfoMsgImpl(final List<TableInfo> tables) : _tables = tables;
 
-  final List<TableInfo> _tables;
-  @override
-  List<TableInfo> get tables {
-    if (_tables is EqualUnmodifiableListView) return _tables;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tables);
-  }
+class DropTableMsg implements SqliteMsg {
+  const DropTableMsg();
+  
 
-  @override
-  String toString() {
-    return 'SqliteMsg.tableInfo(tables: $tables)';
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TableInfoMsgImpl &&
-            const DeepCollectionEquality().equals(other._tables, _tables));
-  }
 
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_tables));
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TableInfoMsgImplCopyWith<_$TableInfoMsgImpl> get copyWith =>
-      __$$TableInfoMsgImplCopyWithImpl<_$TableInfoMsgImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String query) execute,
-    required TResult Function(Result result) queryResult,
-    required TResult Function(String path) importDb,
-    required TResult Function(String path) exportDb,
-    required TResult Function() dropTable,
-    required TResult Function(List<TableInfo> tables) tableInfo,
-    required TResult Function(DatabaseConnection connection) connectionChanged,
-    required TResult Function() dispose,
-  }) {
-    return tableInfo(tables);
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? execute,
-    TResult? Function(Result result)? queryResult,
-    TResult? Function(String path)? importDb,
-    TResult? Function(String path)? exportDb,
-    TResult? Function()? dropTable,
-    TResult? Function(List<TableInfo> tables)? tableInfo,
-    TResult? Function(DatabaseConnection connection)? connectionChanged,
-    TResult? Function()? dispose,
-  }) {
-    return tableInfo?.call(tables);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? execute,
-    TResult Function(Result result)? queryResult,
-    TResult Function(String path)? importDb,
-    TResult Function(String path)? exportDb,
-    TResult Function()? dropTable,
-    TResult Function(List<TableInfo> tables)? tableInfo,
-    TResult Function(DatabaseConnection connection)? connectionChanged,
-    TResult Function()? dispose,
-    required TResult orElse(),
-  }) {
-    if (tableInfo != null) {
-      return tableInfo(tables);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteMsg value) execute,
-    required TResult Function(QueryResultMsg value) queryResult,
-    required TResult Function(ImportDbMsg value) importDb,
-    required TResult Function(ExportDbMsg value) exportDb,
-    required TResult Function(DropTableMsg value) dropTable,
-    required TResult Function(TableInfoMsg value) tableInfo,
-    required TResult Function(ConnectionChangedMsg value) connectionChanged,
-    required TResult Function(DisposeMsg value) dispose,
-  }) {
-    return tableInfo(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteMsg value)? execute,
-    TResult? Function(QueryResultMsg value)? queryResult,
-    TResult? Function(ImportDbMsg value)? importDb,
-    TResult? Function(ExportDbMsg value)? exportDb,
-    TResult? Function(DropTableMsg value)? dropTable,
-    TResult? Function(TableInfoMsg value)? tableInfo,
-    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult? Function(DisposeMsg value)? dispose,
-  }) {
-    return tableInfo?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteMsg value)? execute,
-    TResult Function(QueryResultMsg value)? queryResult,
-    TResult Function(ImportDbMsg value)? importDb,
-    TResult Function(ExportDbMsg value)? exportDb,
-    TResult Function(DropTableMsg value)? dropTable,
-    TResult Function(TableInfoMsg value)? tableInfo,
-    TResult Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult Function(DisposeMsg value)? dispose,
-    required TResult orElse(),
-  }) {
-    if (tableInfo != null) {
-      return tableInfo(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DropTableMsg);
 }
 
-abstract class TableInfoMsg implements SqliteMsg {
-  const factory TableInfoMsg(final List<TableInfo> tables) = _$TableInfoMsgImpl;
 
-  List<TableInfo> get tables;
+@override
+int get hashCode => runtimeType.hashCode;
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TableInfoMsgImplCopyWith<_$TableInfoMsgImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'SqliteMsg.dropTable()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class TableInfoMsg implements SqliteMsg {
+  const TableInfoMsg(final  List<TableInfo> tables): _tables = tables;
+  
+
+ final  List<TableInfo> _tables;
+ List<TableInfo> get tables {
+  if (_tables is EqualUnmodifiableListView) return _tables;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_tables);
+}
+
+
+/// Create a copy of SqliteMsg
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TableInfoMsgCopyWith<TableInfoMsg> get copyWith => _$TableInfoMsgCopyWithImpl<TableInfoMsg>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TableInfoMsg&&const DeepCollectionEquality().equals(other._tables, _tables));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_tables));
+
+@override
+String toString() {
+  return 'SqliteMsg.tableInfo(tables: $tables)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$ConnectionChangedMsgImplCopyWith<$Res> {
-  factory _$$ConnectionChangedMsgImplCopyWith(
-    _$ConnectionChangedMsgImpl value,
-    $Res Function(_$ConnectionChangedMsgImpl) then,
-  ) = __$$ConnectionChangedMsgImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({DatabaseConnection connection});
+abstract mixin class $TableInfoMsgCopyWith<$Res> implements $SqliteMsgCopyWith<$Res> {
+  factory $TableInfoMsgCopyWith(TableInfoMsg value, $Res Function(TableInfoMsg) _then) = _$TableInfoMsgCopyWithImpl;
+@useResult
+$Res call({
+ List<TableInfo> tables
+});
 
-  $DatabaseConnectionCopyWith<$Res> get connection;
+
+
+
+}
+/// @nodoc
+class _$TableInfoMsgCopyWithImpl<$Res>
+    implements $TableInfoMsgCopyWith<$Res> {
+  _$TableInfoMsgCopyWithImpl(this._self, this._then);
+
+  final TableInfoMsg _self;
+  final $Res Function(TableInfoMsg) _then;
+
+/// Create a copy of SqliteMsg
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? tables = null,}) {
+  return _then(TableInfoMsg(
+null == tables ? _self._tables : tables // ignore: cast_nullable_to_non_nullable
+as List<TableInfo>,
+  ));
 }
 
-/// @nodoc
-class __$$ConnectionChangedMsgImplCopyWithImpl<$Res>
-    extends _$SqliteMsgCopyWithImpl<$Res, _$ConnectionChangedMsgImpl>
-    implements _$$ConnectionChangedMsgImplCopyWith<$Res> {
-  __$$ConnectionChangedMsgImplCopyWithImpl(
-    _$ConnectionChangedMsgImpl _value,
-    $Res Function(_$ConnectionChangedMsgImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? connection = null}) {
-    return _then(
-      _$ConnectionChangedMsgImpl(
-        null == connection
-            ? _value.connection
-            : connection // ignore: cast_nullable_to_non_nullable
-                  as DatabaseConnection,
-      ),
-    );
-  }
-
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DatabaseConnectionCopyWith<$Res> get connection {
-    return $DatabaseConnectionCopyWith<$Res>(_value.connection, (value) {
-      return _then(_value.copyWith(connection: value));
-    });
-  }
 }
 
 /// @nodoc
 
-class _$ConnectionChangedMsgImpl implements ConnectionChangedMsg {
-  const _$ConnectionChangedMsgImpl(this.connection);
 
-  @override
-  final DatabaseConnection connection;
+class ConnectionChangedMsg implements SqliteMsg {
+  const ConnectionChangedMsg(this.connection);
+  
 
-  @override
-  String toString() {
-    return 'SqliteMsg.connectionChanged(connection: $connection)';
-  }
+ final  DatabaseConnection connection;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ConnectionChangedMsgImpl &&
-            (identical(other.connection, connection) ||
-                other.connection == connection));
-  }
+/// Create a copy of SqliteMsg
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ConnectionChangedMsgCopyWith<ConnectionChangedMsg> get copyWith => _$ConnectionChangedMsgCopyWithImpl<ConnectionChangedMsg>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, connection);
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ConnectionChangedMsgImplCopyWith<_$ConnectionChangedMsgImpl>
-  get copyWith =>
-      __$$ConnectionChangedMsgImplCopyWithImpl<_$ConnectionChangedMsgImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String query) execute,
-    required TResult Function(Result result) queryResult,
-    required TResult Function(String path) importDb,
-    required TResult Function(String path) exportDb,
-    required TResult Function() dropTable,
-    required TResult Function(List<TableInfo> tables) tableInfo,
-    required TResult Function(DatabaseConnection connection) connectionChanged,
-    required TResult Function() dispose,
-  }) {
-    return connectionChanged(connection);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? execute,
-    TResult? Function(Result result)? queryResult,
-    TResult? Function(String path)? importDb,
-    TResult? Function(String path)? exportDb,
-    TResult? Function()? dropTable,
-    TResult? Function(List<TableInfo> tables)? tableInfo,
-    TResult? Function(DatabaseConnection connection)? connectionChanged,
-    TResult? Function()? dispose,
-  }) {
-    return connectionChanged?.call(connection);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? execute,
-    TResult Function(Result result)? queryResult,
-    TResult Function(String path)? importDb,
-    TResult Function(String path)? exportDb,
-    TResult Function()? dropTable,
-    TResult Function(List<TableInfo> tables)? tableInfo,
-    TResult Function(DatabaseConnection connection)? connectionChanged,
-    TResult Function()? dispose,
-    required TResult orElse(),
-  }) {
-    if (connectionChanged != null) {
-      return connectionChanged(connection);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteMsg value) execute,
-    required TResult Function(QueryResultMsg value) queryResult,
-    required TResult Function(ImportDbMsg value) importDb,
-    required TResult Function(ExportDbMsg value) exportDb,
-    required TResult Function(DropTableMsg value) dropTable,
-    required TResult Function(TableInfoMsg value) tableInfo,
-    required TResult Function(ConnectionChangedMsg value) connectionChanged,
-    required TResult Function(DisposeMsg value) dispose,
-  }) {
-    return connectionChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteMsg value)? execute,
-    TResult? Function(QueryResultMsg value)? queryResult,
-    TResult? Function(ImportDbMsg value)? importDb,
-    TResult? Function(ExportDbMsg value)? exportDb,
-    TResult? Function(DropTableMsg value)? dropTable,
-    TResult? Function(TableInfoMsg value)? tableInfo,
-    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult? Function(DisposeMsg value)? dispose,
-  }) {
-    return connectionChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteMsg value)? execute,
-    TResult Function(QueryResultMsg value)? queryResult,
-    TResult Function(ImportDbMsg value)? importDb,
-    TResult Function(ExportDbMsg value)? exportDb,
-    TResult Function(DropTableMsg value)? dropTable,
-    TResult Function(TableInfoMsg value)? tableInfo,
-    TResult Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult Function(DisposeMsg value)? dispose,
-    required TResult orElse(),
-  }) {
-    if (connectionChanged != null) {
-      return connectionChanged(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ConnectionChangedMsg&&(identical(other.connection, connection) || other.connection == connection));
 }
 
-abstract class ConnectionChangedMsg implements SqliteMsg {
-  const factory ConnectionChangedMsg(final DatabaseConnection connection) =
-      _$ConnectionChangedMsgImpl;
 
-  DatabaseConnection get connection;
+@override
+int get hashCode => Object.hash(runtimeType,connection);
 
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ConnectionChangedMsgImplCopyWith<_$ConnectionChangedMsgImpl>
-  get copyWith => throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'SqliteMsg.connectionChanged(connection: $connection)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$DisposeMsgImplCopyWith<$Res> {
-  factory _$$DisposeMsgImplCopyWith(
-    _$DisposeMsgImpl value,
-    $Res Function(_$DisposeMsgImpl) then,
-  ) = __$$DisposeMsgImplCopyWithImpl<$Res>;
+abstract mixin class $ConnectionChangedMsgCopyWith<$Res> implements $SqliteMsgCopyWith<$Res> {
+  factory $ConnectionChangedMsgCopyWith(ConnectionChangedMsg value, $Res Function(ConnectionChangedMsg) _then) = _$ConnectionChangedMsgCopyWithImpl;
+@useResult
+$Res call({
+ DatabaseConnection connection
+});
+
+
+$DatabaseConnectionCopyWith<$Res> get connection;
+
+}
+/// @nodoc
+class _$ConnectionChangedMsgCopyWithImpl<$Res>
+    implements $ConnectionChangedMsgCopyWith<$Res> {
+  _$ConnectionChangedMsgCopyWithImpl(this._self, this._then);
+
+  final ConnectionChangedMsg _self;
+  final $Res Function(ConnectionChangedMsg) _then;
+
+/// Create a copy of SqliteMsg
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? connection = null,}) {
+  return _then(ConnectionChangedMsg(
+null == connection ? _self.connection : connection // ignore: cast_nullable_to_non_nullable
+as DatabaseConnection,
+  ));
 }
 
-/// @nodoc
-class __$$DisposeMsgImplCopyWithImpl<$Res>
-    extends _$SqliteMsgCopyWithImpl<$Res, _$DisposeMsgImpl>
-    implements _$$DisposeMsgImplCopyWith<$Res> {
-  __$$DisposeMsgImplCopyWithImpl(
-    _$DisposeMsgImpl _value,
-    $Res Function(_$DisposeMsgImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of SqliteMsg
-  /// with the given fields replaced by the non-null parameter values.
+/// Create a copy of SqliteMsg
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$DatabaseConnectionCopyWith<$Res> get connection {
+  
+  return $DatabaseConnectionCopyWith<$Res>(_self.connection, (value) {
+    return _then(_self.copyWith(connection: value));
+  });
+}
 }
 
 /// @nodoc
 
-class _$DisposeMsgImpl implements DisposeMsg {
-  const _$DisposeMsgImpl();
 
-  @override
-  String toString() {
-    return 'SqliteMsg.dispose()';
-  }
+class DisposeMsg implements SqliteMsg {
+  const DisposeMsg();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$DisposeMsgImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String query) execute,
-    required TResult Function(Result result) queryResult,
-    required TResult Function(String path) importDb,
-    required TResult Function(String path) exportDb,
-    required TResult Function() dropTable,
-    required TResult Function(List<TableInfo> tables) tableInfo,
-    required TResult Function(DatabaseConnection connection) connectionChanged,
-    required TResult Function() dispose,
-  }) {
-    return dispose();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? execute,
-    TResult? Function(Result result)? queryResult,
-    TResult? Function(String path)? importDb,
-    TResult? Function(String path)? exportDb,
-    TResult? Function()? dropTable,
-    TResult? Function(List<TableInfo> tables)? tableInfo,
-    TResult? Function(DatabaseConnection connection)? connectionChanged,
-    TResult? Function()? dispose,
-  }) {
-    return dispose?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? execute,
-    TResult Function(Result result)? queryResult,
-    TResult Function(String path)? importDb,
-    TResult Function(String path)? exportDb,
-    TResult Function()? dropTable,
-    TResult Function(List<TableInfo> tables)? tableInfo,
-    TResult Function(DatabaseConnection connection)? connectionChanged,
-    TResult Function()? dispose,
-    required TResult orElse(),
-  }) {
-    if (dispose != null) {
-      return dispose();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ExecuteMsg value) execute,
-    required TResult Function(QueryResultMsg value) queryResult,
-    required TResult Function(ImportDbMsg value) importDb,
-    required TResult Function(ExportDbMsg value) exportDb,
-    required TResult Function(DropTableMsg value) dropTable,
-    required TResult Function(TableInfoMsg value) tableInfo,
-    required TResult Function(ConnectionChangedMsg value) connectionChanged,
-    required TResult Function(DisposeMsg value) dispose,
-  }) {
-    return dispose(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ExecuteMsg value)? execute,
-    TResult? Function(QueryResultMsg value)? queryResult,
-    TResult? Function(ImportDbMsg value)? importDb,
-    TResult? Function(ExportDbMsg value)? exportDb,
-    TResult? Function(DropTableMsg value)? dropTable,
-    TResult? Function(TableInfoMsg value)? tableInfo,
-    TResult? Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult? Function(DisposeMsg value)? dispose,
-  }) {
-    return dispose?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ExecuteMsg value)? execute,
-    TResult Function(QueryResultMsg value)? queryResult,
-    TResult Function(ImportDbMsg value)? importDb,
-    TResult Function(ExportDbMsg value)? exportDb,
-    TResult Function(DropTableMsg value)? dropTable,
-    TResult Function(TableInfoMsg value)? tableInfo,
-    TResult Function(ConnectionChangedMsg value)? connectionChanged,
-    TResult Function(DisposeMsg value)? dispose,
-    required TResult orElse(),
-  }) {
-    if (dispose != null) {
-      return dispose(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DisposeMsg);
 }
 
-abstract class DisposeMsg implements SqliteMsg {
-  const factory DisposeMsg() = _$DisposeMsgImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'SqliteMsg.dispose()';
 }
+
+
+}
+
+
+
+
+// dart format on

@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,1241 +9,1077 @@ part of 'number_base_message.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$UpdateInputMessage {
-  String get input => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String input) base2,
-    required TResult Function(String input) base8,
-    required TResult Function(String input) base10,
-    required TResult Function(String input) base16,
-    required TResult Function(String input) custom,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String input)? base2,
-    TResult? Function(String input)? base8,
-    TResult? Function(String input)? base10,
-    TResult? Function(String input)? base16,
-    TResult? Function(String input)? custom,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String input)? base2,
-    TResult Function(String input)? base8,
-    TResult Function(String input)? base10,
-    TResult Function(String input)? base16,
-    TResult Function(String input)? custom,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UpdateBase2Message value) base2,
-    required TResult Function(UpdateBase8Message value) base8,
-    required TResult Function(UpdateBase10Message value) base10,
-    required TResult Function(UpdateBase16Message value) base16,
-    required TResult Function(UpdateCustomMessage value) custom,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UpdateBase2Message value)? base2,
-    TResult? Function(UpdateBase8Message value)? base8,
-    TResult? Function(UpdateBase10Message value)? base10,
-    TResult? Function(UpdateBase16Message value)? base16,
-    TResult? Function(UpdateCustomMessage value)? custom,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UpdateBase2Message value)? base2,
-    TResult Function(UpdateBase8Message value)? base8,
-    TResult Function(UpdateBase10Message value)? base10,
-    TResult Function(UpdateBase16Message value)? base16,
-    TResult Function(UpdateCustomMessage value)? custom,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
 
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $UpdateInputMessageCopyWith<UpdateInputMessage> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get input;
+/// Create a copy of UpdateInputMessage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateInputMessageCopyWith<UpdateInputMessage> get copyWith => _$UpdateInputMessageCopyWithImpl<UpdateInputMessage>(this as UpdateInputMessage, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateInputMessage&&(identical(other.input, input) || other.input == input));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,input);
+
+@override
+String toString() {
+  return 'UpdateInputMessage(input: $input)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $UpdateInputMessageCopyWith<$Res> {
-  factory $UpdateInputMessageCopyWith(
-    UpdateInputMessage value,
-    $Res Function(UpdateInputMessage) then,
-  ) = _$UpdateInputMessageCopyWithImpl<$Res, UpdateInputMessage>;
-  @useResult
-  $Res call({String input});
-}
+abstract mixin class $UpdateInputMessageCopyWith<$Res>  {
+  factory $UpdateInputMessageCopyWith(UpdateInputMessage value, $Res Function(UpdateInputMessage) _then) = _$UpdateInputMessageCopyWithImpl;
+@useResult
+$Res call({
+ String input
+});
 
+
+
+
+}
 /// @nodoc
-class _$UpdateInputMessageCopyWithImpl<$Res, $Val extends UpdateInputMessage>
+class _$UpdateInputMessageCopyWithImpl<$Res>
     implements $UpdateInputMessageCopyWith<$Res> {
-  _$UpdateInputMessageCopyWithImpl(this._value, this._then);
+  _$UpdateInputMessageCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final UpdateInputMessage _self;
+  final $Res Function(UpdateInputMessage) _then;
 
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? input = null}) {
-    return _then(
-      _value.copyWith(
-            input: null == input
-                ? _value.input
-                : input // ignore: cast_nullable_to_non_nullable
-                      as String,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of UpdateInputMessage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? input = null,}) {
+  return _then(_self.copyWith(
+input: null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$UpdateBase2MessageImplCopyWith<$Res>
-    implements $UpdateInputMessageCopyWith<$Res> {
-  factory _$$UpdateBase2MessageImplCopyWith(
-    _$UpdateBase2MessageImpl value,
-    $Res Function(_$UpdateBase2MessageImpl) then,
-  ) = __$$UpdateBase2MessageImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String input});
 }
 
-/// @nodoc
-class __$$UpdateBase2MessageImplCopyWithImpl<$Res>
-    extends _$UpdateInputMessageCopyWithImpl<$Res, _$UpdateBase2MessageImpl>
-    implements _$$UpdateBase2MessageImplCopyWith<$Res> {
-  __$$UpdateBase2MessageImplCopyWithImpl(
-    _$UpdateBase2MessageImpl _value,
-    $Res Function(_$UpdateBase2MessageImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? input = null}) {
-    return _then(
-      _$UpdateBase2MessageImpl(
-        null == input
-            ? _value.input
-            : input // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
+/// Adds pattern-matching-related methods to [UpdateInputMessage].
+extension UpdateInputMessagePatterns on UpdateInputMessage {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( UpdateBase2Message value)?  base2,TResult Function( UpdateBase8Message value)?  base8,TResult Function( UpdateBase10Message value)?  base10,TResult Function( UpdateBase16Message value)?  base16,TResult Function( UpdateCustomMessage value)?  custom,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case UpdateBase2Message() when base2 != null:
+return base2(_that);case UpdateBase8Message() when base8 != null:
+return base8(_that);case UpdateBase10Message() when base10 != null:
+return base10(_that);case UpdateBase16Message() when base16 != null:
+return base16(_that);case UpdateCustomMessage() when custom != null:
+return custom(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( UpdateBase2Message value)  base2,required TResult Function( UpdateBase8Message value)  base8,required TResult Function( UpdateBase10Message value)  base10,required TResult Function( UpdateBase16Message value)  base16,required TResult Function( UpdateCustomMessage value)  custom,}){
+final _that = this;
+switch (_that) {
+case UpdateBase2Message():
+return base2(_that);case UpdateBase8Message():
+return base8(_that);case UpdateBase10Message():
+return base10(_that);case UpdateBase16Message():
+return base16(_that);case UpdateCustomMessage():
+return custom(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( UpdateBase2Message value)?  base2,TResult? Function( UpdateBase8Message value)?  base8,TResult? Function( UpdateBase10Message value)?  base10,TResult? Function( UpdateBase16Message value)?  base16,TResult? Function( UpdateCustomMessage value)?  custom,}){
+final _that = this;
+switch (_that) {
+case UpdateBase2Message() when base2 != null:
+return base2(_that);case UpdateBase8Message() when base8 != null:
+return base8(_that);case UpdateBase10Message() when base10 != null:
+return base10(_that);case UpdateBase16Message() when base16 != null:
+return base16(_that);case UpdateCustomMessage() when custom != null:
+return custom(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String input)?  base2,TResult Function( String input)?  base8,TResult Function( String input)?  base10,TResult Function( String input)?  base16,TResult Function( String input)?  custom,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case UpdateBase2Message() when base2 != null:
+return base2(_that.input);case UpdateBase8Message() when base8 != null:
+return base8(_that.input);case UpdateBase10Message() when base10 != null:
+return base10(_that.input);case UpdateBase16Message() when base16 != null:
+return base16(_that.input);case UpdateCustomMessage() when custom != null:
+return custom(_that.input);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String input)  base2,required TResult Function( String input)  base8,required TResult Function( String input)  base10,required TResult Function( String input)  base16,required TResult Function( String input)  custom,}) {final _that = this;
+switch (_that) {
+case UpdateBase2Message():
+return base2(_that.input);case UpdateBase8Message():
+return base8(_that.input);case UpdateBase10Message():
+return base10(_that.input);case UpdateBase16Message():
+return base16(_that.input);case UpdateCustomMessage():
+return custom(_that.input);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String input)?  base2,TResult? Function( String input)?  base8,TResult? Function( String input)?  base10,TResult? Function( String input)?  base16,TResult? Function( String input)?  custom,}) {final _that = this;
+switch (_that) {
+case UpdateBase2Message() when base2 != null:
+return base2(_that.input);case UpdateBase8Message() when base8 != null:
+return base8(_that.input);case UpdateBase10Message() when base10 != null:
+return base10(_that.input);case UpdateBase16Message() when base16 != null:
+return base16(_that.input);case UpdateCustomMessage() when custom != null:
+return custom(_that.input);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-
-class _$UpdateBase2MessageImpl implements UpdateBase2Message {
-  const _$UpdateBase2MessageImpl(this.input);
-
-  @override
-  final String input;
-
-  @override
-  String toString() {
-    return 'UpdateInputMessage.base2(input: $input)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateBase2MessageImpl &&
-            (identical(other.input, input) || other.input == input));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, input);
-
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateBase2MessageImplCopyWith<_$UpdateBase2MessageImpl> get copyWith =>
-      __$$UpdateBase2MessageImplCopyWithImpl<_$UpdateBase2MessageImpl>(
-        this,
-        _$identity,
-      );
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String input) base2,
-    required TResult Function(String input) base8,
-    required TResult Function(String input) base10,
-    required TResult Function(String input) base16,
-    required TResult Function(String input) custom,
-  }) {
-    return base2(input);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String input)? base2,
-    TResult? Function(String input)? base8,
-    TResult? Function(String input)? base10,
-    TResult? Function(String input)? base16,
-    TResult? Function(String input)? custom,
-  }) {
-    return base2?.call(input);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String input)? base2,
-    TResult Function(String input)? base8,
-    TResult Function(String input)? base10,
-    TResult Function(String input)? base16,
-    TResult Function(String input)? custom,
-    required TResult orElse(),
-  }) {
-    if (base2 != null) {
-      return base2(input);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UpdateBase2Message value) base2,
-    required TResult Function(UpdateBase8Message value) base8,
-    required TResult Function(UpdateBase10Message value) base10,
-    required TResult Function(UpdateBase16Message value) base16,
-    required TResult Function(UpdateCustomMessage value) custom,
-  }) {
-    return base2(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UpdateBase2Message value)? base2,
-    TResult? Function(UpdateBase8Message value)? base8,
-    TResult? Function(UpdateBase10Message value)? base10,
-    TResult? Function(UpdateBase16Message value)? base16,
-    TResult? Function(UpdateCustomMessage value)? custom,
-  }) {
-    return base2?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UpdateBase2Message value)? base2,
-    TResult Function(UpdateBase8Message value)? base8,
-    TResult Function(UpdateBase10Message value)? base10,
-    TResult Function(UpdateBase16Message value)? base16,
-    TResult Function(UpdateCustomMessage value)? custom,
-    required TResult orElse(),
-  }) {
-    if (base2 != null) {
-      return base2(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UpdateBase2Message implements UpdateInputMessage {
-  const factory UpdateBase2Message(final String input) =
-      _$UpdateBase2MessageImpl;
-
-  @override
-  String get input;
-
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateBase2MessageImplCopyWith<_$UpdateBase2MessageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdateBase8MessageImplCopyWith<$Res>
-    implements $UpdateInputMessageCopyWith<$Res> {
-  factory _$$UpdateBase8MessageImplCopyWith(
-    _$UpdateBase8MessageImpl value,
-    $Res Function(_$UpdateBase8MessageImpl) then,
-  ) = __$$UpdateBase8MessageImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String input});
-}
-
-/// @nodoc
-class __$$UpdateBase8MessageImplCopyWithImpl<$Res>
-    extends _$UpdateInputMessageCopyWithImpl<$Res, _$UpdateBase8MessageImpl>
-    implements _$$UpdateBase8MessageImplCopyWith<$Res> {
-  __$$UpdateBase8MessageImplCopyWithImpl(
-    _$UpdateBase8MessageImpl _value,
-    $Res Function(_$UpdateBase8MessageImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? input = null}) {
-    return _then(
-      _$UpdateBase8MessageImpl(
-        null == input
-            ? _value.input
-            : input // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$UpdateBase8MessageImpl implements UpdateBase8Message {
-  const _$UpdateBase8MessageImpl(this.input);
 
-  @override
-  final String input;
+class UpdateBase2Message implements UpdateInputMessage {
+  const UpdateBase2Message(this.input);
+  
 
-  @override
-  String toString() {
-    return 'UpdateInputMessage.base8(input: $input)';
-  }
+@override final  String input;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateBase8MessageImpl &&
-            (identical(other.input, input) || other.input == input));
-  }
+/// Create a copy of UpdateInputMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateBase2MessageCopyWith<UpdateBase2Message> get copyWith => _$UpdateBase2MessageCopyWithImpl<UpdateBase2Message>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, input);
 
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateBase8MessageImplCopyWith<_$UpdateBase8MessageImpl> get copyWith =>
-      __$$UpdateBase8MessageImplCopyWithImpl<_$UpdateBase8MessageImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String input) base2,
-    required TResult Function(String input) base8,
-    required TResult Function(String input) base10,
-    required TResult Function(String input) base16,
-    required TResult Function(String input) custom,
-  }) {
-    return base8(input);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String input)? base2,
-    TResult? Function(String input)? base8,
-    TResult? Function(String input)? base10,
-    TResult? Function(String input)? base16,
-    TResult? Function(String input)? custom,
-  }) {
-    return base8?.call(input);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String input)? base2,
-    TResult Function(String input)? base8,
-    TResult Function(String input)? base10,
-    TResult Function(String input)? base16,
-    TResult Function(String input)? custom,
-    required TResult orElse(),
-  }) {
-    if (base8 != null) {
-      return base8(input);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UpdateBase2Message value) base2,
-    required TResult Function(UpdateBase8Message value) base8,
-    required TResult Function(UpdateBase10Message value) base10,
-    required TResult Function(UpdateBase16Message value) base16,
-    required TResult Function(UpdateCustomMessage value) custom,
-  }) {
-    return base8(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UpdateBase2Message value)? base2,
-    TResult? Function(UpdateBase8Message value)? base8,
-    TResult? Function(UpdateBase10Message value)? base10,
-    TResult? Function(UpdateBase16Message value)? base16,
-    TResult? Function(UpdateCustomMessage value)? custom,
-  }) {
-    return base8?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UpdateBase2Message value)? base2,
-    TResult Function(UpdateBase8Message value)? base8,
-    TResult Function(UpdateBase10Message value)? base10,
-    TResult Function(UpdateBase16Message value)? base16,
-    TResult Function(UpdateCustomMessage value)? custom,
-    required TResult orElse(),
-  }) {
-    if (base8 != null) {
-      return base8(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateBase2Message&&(identical(other.input, input) || other.input == input));
 }
 
-abstract class UpdateBase8Message implements UpdateInputMessage {
-  const factory UpdateBase8Message(final String input) =
-      _$UpdateBase8MessageImpl;
 
-  @override
-  String get input;
+@override
+int get hashCode => Object.hash(runtimeType,input);
 
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateBase8MessageImplCopyWith<_$UpdateBase8MessageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'UpdateInputMessage.base2(input: $input)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$UpdateBase10MessageImplCopyWith<$Res>
-    implements $UpdateInputMessageCopyWith<$Res> {
-  factory _$$UpdateBase10MessageImplCopyWith(
-    _$UpdateBase10MessageImpl value,
-    $Res Function(_$UpdateBase10MessageImpl) then,
-  ) = __$$UpdateBase10MessageImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String input});
+abstract mixin class $UpdateBase2MessageCopyWith<$Res> implements $UpdateInputMessageCopyWith<$Res> {
+  factory $UpdateBase2MessageCopyWith(UpdateBase2Message value, $Res Function(UpdateBase2Message) _then) = _$UpdateBase2MessageCopyWithImpl;
+@override @useResult
+$Res call({
+ String input
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpdateBase2MessageCopyWithImpl<$Res>
+    implements $UpdateBase2MessageCopyWith<$Res> {
+  _$UpdateBase2MessageCopyWithImpl(this._self, this._then);
+
+  final UpdateBase2Message _self;
+  final $Res Function(UpdateBase2Message) _then;
+
+/// Create a copy of UpdateInputMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? input = null,}) {
+  return _then(UpdateBase2Message(
+null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$UpdateBase10MessageImplCopyWithImpl<$Res>
-    extends _$UpdateInputMessageCopyWithImpl<$Res, _$UpdateBase10MessageImpl>
-    implements _$$UpdateBase10MessageImplCopyWith<$Res> {
-  __$$UpdateBase10MessageImplCopyWithImpl(
-    _$UpdateBase10MessageImpl _value,
-    $Res Function(_$UpdateBase10MessageImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? input = null}) {
-    return _then(
-      _$UpdateBase10MessageImpl(
-        null == input
-            ? _value.input
-            : input // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$UpdateBase10MessageImpl implements UpdateBase10Message {
-  const _$UpdateBase10MessageImpl(this.input);
 
-  @override
-  final String input;
+class UpdateBase8Message implements UpdateInputMessage {
+  const UpdateBase8Message(this.input);
+  
 
-  @override
-  String toString() {
-    return 'UpdateInputMessage.base10(input: $input)';
-  }
+@override final  String input;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateBase10MessageImpl &&
-            (identical(other.input, input) || other.input == input));
-  }
+/// Create a copy of UpdateInputMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateBase8MessageCopyWith<UpdateBase8Message> get copyWith => _$UpdateBase8MessageCopyWithImpl<UpdateBase8Message>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, input);
 
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateBase10MessageImplCopyWith<_$UpdateBase10MessageImpl> get copyWith =>
-      __$$UpdateBase10MessageImplCopyWithImpl<_$UpdateBase10MessageImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String input) base2,
-    required TResult Function(String input) base8,
-    required TResult Function(String input) base10,
-    required TResult Function(String input) base16,
-    required TResult Function(String input) custom,
-  }) {
-    return base10(input);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String input)? base2,
-    TResult? Function(String input)? base8,
-    TResult? Function(String input)? base10,
-    TResult? Function(String input)? base16,
-    TResult? Function(String input)? custom,
-  }) {
-    return base10?.call(input);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String input)? base2,
-    TResult Function(String input)? base8,
-    TResult Function(String input)? base10,
-    TResult Function(String input)? base16,
-    TResult Function(String input)? custom,
-    required TResult orElse(),
-  }) {
-    if (base10 != null) {
-      return base10(input);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UpdateBase2Message value) base2,
-    required TResult Function(UpdateBase8Message value) base8,
-    required TResult Function(UpdateBase10Message value) base10,
-    required TResult Function(UpdateBase16Message value) base16,
-    required TResult Function(UpdateCustomMessage value) custom,
-  }) {
-    return base10(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UpdateBase2Message value)? base2,
-    TResult? Function(UpdateBase8Message value)? base8,
-    TResult? Function(UpdateBase10Message value)? base10,
-    TResult? Function(UpdateBase16Message value)? base16,
-    TResult? Function(UpdateCustomMessage value)? custom,
-  }) {
-    return base10?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UpdateBase2Message value)? base2,
-    TResult Function(UpdateBase8Message value)? base8,
-    TResult Function(UpdateBase10Message value)? base10,
-    TResult Function(UpdateBase16Message value)? base16,
-    TResult Function(UpdateCustomMessage value)? custom,
-    required TResult orElse(),
-  }) {
-    if (base10 != null) {
-      return base10(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateBase8Message&&(identical(other.input, input) || other.input == input));
 }
 
-abstract class UpdateBase10Message implements UpdateInputMessage {
-  const factory UpdateBase10Message(final String input) =
-      _$UpdateBase10MessageImpl;
 
-  @override
-  String get input;
+@override
+int get hashCode => Object.hash(runtimeType,input);
 
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateBase10MessageImplCopyWith<_$UpdateBase10MessageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'UpdateInputMessage.base8(input: $input)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$UpdateBase16MessageImplCopyWith<$Res>
-    implements $UpdateInputMessageCopyWith<$Res> {
-  factory _$$UpdateBase16MessageImplCopyWith(
-    _$UpdateBase16MessageImpl value,
-    $Res Function(_$UpdateBase16MessageImpl) then,
-  ) = __$$UpdateBase16MessageImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String input});
+abstract mixin class $UpdateBase8MessageCopyWith<$Res> implements $UpdateInputMessageCopyWith<$Res> {
+  factory $UpdateBase8MessageCopyWith(UpdateBase8Message value, $Res Function(UpdateBase8Message) _then) = _$UpdateBase8MessageCopyWithImpl;
+@override @useResult
+$Res call({
+ String input
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpdateBase8MessageCopyWithImpl<$Res>
+    implements $UpdateBase8MessageCopyWith<$Res> {
+  _$UpdateBase8MessageCopyWithImpl(this._self, this._then);
+
+  final UpdateBase8Message _self;
+  final $Res Function(UpdateBase8Message) _then;
+
+/// Create a copy of UpdateInputMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? input = null,}) {
+  return _then(UpdateBase8Message(
+null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$UpdateBase16MessageImplCopyWithImpl<$Res>
-    extends _$UpdateInputMessageCopyWithImpl<$Res, _$UpdateBase16MessageImpl>
-    implements _$$UpdateBase16MessageImplCopyWith<$Res> {
-  __$$UpdateBase16MessageImplCopyWithImpl(
-    _$UpdateBase16MessageImpl _value,
-    $Res Function(_$UpdateBase16MessageImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? input = null}) {
-    return _then(
-      _$UpdateBase16MessageImpl(
-        null == input
-            ? _value.input
-            : input // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$UpdateBase16MessageImpl implements UpdateBase16Message {
-  const _$UpdateBase16MessageImpl(this.input);
 
-  @override
-  final String input;
+class UpdateBase10Message implements UpdateInputMessage {
+  const UpdateBase10Message(this.input);
+  
 
-  @override
-  String toString() {
-    return 'UpdateInputMessage.base16(input: $input)';
-  }
+@override final  String input;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateBase16MessageImpl &&
-            (identical(other.input, input) || other.input == input));
-  }
+/// Create a copy of UpdateInputMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateBase10MessageCopyWith<UpdateBase10Message> get copyWith => _$UpdateBase10MessageCopyWithImpl<UpdateBase10Message>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, input);
 
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateBase16MessageImplCopyWith<_$UpdateBase16MessageImpl> get copyWith =>
-      __$$UpdateBase16MessageImplCopyWithImpl<_$UpdateBase16MessageImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String input) base2,
-    required TResult Function(String input) base8,
-    required TResult Function(String input) base10,
-    required TResult Function(String input) base16,
-    required TResult Function(String input) custom,
-  }) {
-    return base16(input);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String input)? base2,
-    TResult? Function(String input)? base8,
-    TResult? Function(String input)? base10,
-    TResult? Function(String input)? base16,
-    TResult? Function(String input)? custom,
-  }) {
-    return base16?.call(input);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String input)? base2,
-    TResult Function(String input)? base8,
-    TResult Function(String input)? base10,
-    TResult Function(String input)? base16,
-    TResult Function(String input)? custom,
-    required TResult orElse(),
-  }) {
-    if (base16 != null) {
-      return base16(input);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UpdateBase2Message value) base2,
-    required TResult Function(UpdateBase8Message value) base8,
-    required TResult Function(UpdateBase10Message value) base10,
-    required TResult Function(UpdateBase16Message value) base16,
-    required TResult Function(UpdateCustomMessage value) custom,
-  }) {
-    return base16(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UpdateBase2Message value)? base2,
-    TResult? Function(UpdateBase8Message value)? base8,
-    TResult? Function(UpdateBase10Message value)? base10,
-    TResult? Function(UpdateBase16Message value)? base16,
-    TResult? Function(UpdateCustomMessage value)? custom,
-  }) {
-    return base16?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UpdateBase2Message value)? base2,
-    TResult Function(UpdateBase8Message value)? base8,
-    TResult Function(UpdateBase10Message value)? base10,
-    TResult Function(UpdateBase16Message value)? base16,
-    TResult Function(UpdateCustomMessage value)? custom,
-    required TResult orElse(),
-  }) {
-    if (base16 != null) {
-      return base16(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateBase10Message&&(identical(other.input, input) || other.input == input));
 }
 
-abstract class UpdateBase16Message implements UpdateInputMessage {
-  const factory UpdateBase16Message(final String input) =
-      _$UpdateBase16MessageImpl;
 
-  @override
-  String get input;
+@override
+int get hashCode => Object.hash(runtimeType,input);
 
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateBase16MessageImplCopyWith<_$UpdateBase16MessageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'UpdateInputMessage.base10(input: $input)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$UpdateCustomMessageImplCopyWith<$Res>
-    implements $UpdateInputMessageCopyWith<$Res> {
-  factory _$$UpdateCustomMessageImplCopyWith(
-    _$UpdateCustomMessageImpl value,
-    $Res Function(_$UpdateCustomMessageImpl) then,
-  ) = __$$UpdateCustomMessageImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String input});
+abstract mixin class $UpdateBase10MessageCopyWith<$Res> implements $UpdateInputMessageCopyWith<$Res> {
+  factory $UpdateBase10MessageCopyWith(UpdateBase10Message value, $Res Function(UpdateBase10Message) _then) = _$UpdateBase10MessageCopyWithImpl;
+@override @useResult
+$Res call({
+ String input
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpdateBase10MessageCopyWithImpl<$Res>
+    implements $UpdateBase10MessageCopyWith<$Res> {
+  _$UpdateBase10MessageCopyWithImpl(this._self, this._then);
+
+  final UpdateBase10Message _self;
+  final $Res Function(UpdateBase10Message) _then;
+
+/// Create a copy of UpdateInputMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? input = null,}) {
+  return _then(UpdateBase10Message(
+null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$UpdateCustomMessageImplCopyWithImpl<$Res>
-    extends _$UpdateInputMessageCopyWithImpl<$Res, _$UpdateCustomMessageImpl>
-    implements _$$UpdateCustomMessageImplCopyWith<$Res> {
-  __$$UpdateCustomMessageImplCopyWithImpl(
-    _$UpdateCustomMessageImpl _value,
-    $Res Function(_$UpdateCustomMessageImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? input = null}) {
-    return _then(
-      _$UpdateCustomMessageImpl(
-        null == input
-            ? _value.input
-            : input // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$UpdateCustomMessageImpl implements UpdateCustomMessage {
-  const _$UpdateCustomMessageImpl(this.input);
 
-  @override
-  final String input;
+class UpdateBase16Message implements UpdateInputMessage {
+  const UpdateBase16Message(this.input);
+  
 
-  @override
-  String toString() {
-    return 'UpdateInputMessage.custom(input: $input)';
-  }
+@override final  String input;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateCustomMessageImpl &&
-            (identical(other.input, input) || other.input == input));
-  }
+/// Create a copy of UpdateInputMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateBase16MessageCopyWith<UpdateBase16Message> get copyWith => _$UpdateBase16MessageCopyWithImpl<UpdateBase16Message>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, input);
 
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateCustomMessageImplCopyWith<_$UpdateCustomMessageImpl> get copyWith =>
-      __$$UpdateCustomMessageImplCopyWithImpl<_$UpdateCustomMessageImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String input) base2,
-    required TResult Function(String input) base8,
-    required TResult Function(String input) base10,
-    required TResult Function(String input) base16,
-    required TResult Function(String input) custom,
-  }) {
-    return custom(input);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String input)? base2,
-    TResult? Function(String input)? base8,
-    TResult? Function(String input)? base10,
-    TResult? Function(String input)? base16,
-    TResult? Function(String input)? custom,
-  }) {
-    return custom?.call(input);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String input)? base2,
-    TResult Function(String input)? base8,
-    TResult Function(String input)? base10,
-    TResult Function(String input)? base16,
-    TResult Function(String input)? custom,
-    required TResult orElse(),
-  }) {
-    if (custom != null) {
-      return custom(input);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UpdateBase2Message value) base2,
-    required TResult Function(UpdateBase8Message value) base8,
-    required TResult Function(UpdateBase10Message value) base10,
-    required TResult Function(UpdateBase16Message value) base16,
-    required TResult Function(UpdateCustomMessage value) custom,
-  }) {
-    return custom(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UpdateBase2Message value)? base2,
-    TResult? Function(UpdateBase8Message value)? base8,
-    TResult? Function(UpdateBase10Message value)? base10,
-    TResult? Function(UpdateBase16Message value)? base16,
-    TResult? Function(UpdateCustomMessage value)? custom,
-  }) {
-    return custom?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UpdateBase2Message value)? base2,
-    TResult Function(UpdateBase8Message value)? base8,
-    TResult Function(UpdateBase10Message value)? base10,
-    TResult Function(UpdateBase16Message value)? base16,
-    TResult Function(UpdateCustomMessage value)? custom,
-    required TResult orElse(),
-  }) {
-    if (custom != null) {
-      return custom(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateBase16Message&&(identical(other.input, input) || other.input == input));
 }
 
-abstract class UpdateCustomMessage implements UpdateInputMessage {
-  const factory UpdateCustomMessage(final String input) =
-      _$UpdateCustomMessageImpl;
 
-  @override
-  String get input;
+@override
+int get hashCode => Object.hash(runtimeType,input);
 
-  /// Create a copy of UpdateInputMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateCustomMessageImplCopyWith<_$UpdateCustomMessageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'UpdateInputMessage.base16(input: $input)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $UpdateBase16MessageCopyWith<$Res> implements $UpdateInputMessageCopyWith<$Res> {
+  factory $UpdateBase16MessageCopyWith(UpdateBase16Message value, $Res Function(UpdateBase16Message) _then) = _$UpdateBase16MessageCopyWithImpl;
+@override @useResult
+$Res call({
+ String input
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpdateBase16MessageCopyWithImpl<$Res>
+    implements $UpdateBase16MessageCopyWith<$Res> {
+  _$UpdateBase16MessageCopyWithImpl(this._self, this._then);
+
+  final UpdateBase16Message _self;
+  final $Res Function(UpdateBase16Message) _then;
+
+/// Create a copy of UpdateInputMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? input = null,}) {
+  return _then(UpdateBase16Message(
+null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class UpdateCustomMessage implements UpdateInputMessage {
+  const UpdateCustomMessage(this.input);
+  
+
+@override final  String input;
+
+/// Create a copy of UpdateInputMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateCustomMessageCopyWith<UpdateCustomMessage> get copyWith => _$UpdateCustomMessageCopyWithImpl<UpdateCustomMessage>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateCustomMessage&&(identical(other.input, input) || other.input == input));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,input);
+
+@override
+String toString() {
+  return 'UpdateInputMessage.custom(input: $input)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $UpdateCustomMessageCopyWith<$Res> implements $UpdateInputMessageCopyWith<$Res> {
+  factory $UpdateCustomMessageCopyWith(UpdateCustomMessage value, $Res Function(UpdateCustomMessage) _then) = _$UpdateCustomMessageCopyWithImpl;
+@override @useResult
+$Res call({
+ String input
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpdateCustomMessageCopyWithImpl<$Res>
+    implements $UpdateCustomMessageCopyWith<$Res> {
+  _$UpdateCustomMessageCopyWithImpl(this._self, this._then);
+
+  final UpdateCustomMessage _self;
+  final $Res Function(UpdateCustomMessage) _then;
+
+/// Create a copy of UpdateInputMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? input = null,}) {
+  return _then(UpdateCustomMessage(
+null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
 }
 
 /// @nodoc
 mixin _$UpdateCustomBaseMessage {
-  int get base => throw _privateConstructorUsedError;
 
-  /// Create a copy of UpdateCustomBaseMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $UpdateCustomBaseMessageCopyWith<UpdateCustomBaseMessage> get copyWith =>
-      throw _privateConstructorUsedError;
+ int get base;
+/// Create a copy of UpdateCustomBaseMessage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateCustomBaseMessageCopyWith<UpdateCustomBaseMessage> get copyWith => _$UpdateCustomBaseMessageCopyWithImpl<UpdateCustomBaseMessage>(this as UpdateCustomBaseMessage, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateCustomBaseMessage&&(identical(other.base, base) || other.base == base));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,base);
+
+@override
+String toString() {
+  return 'UpdateCustomBaseMessage(base: $base)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $UpdateCustomBaseMessageCopyWith<$Res> {
-  factory $UpdateCustomBaseMessageCopyWith(
-    UpdateCustomBaseMessage value,
-    $Res Function(UpdateCustomBaseMessage) then,
-  ) = _$UpdateCustomBaseMessageCopyWithImpl<$Res, UpdateCustomBaseMessage>;
-  @useResult
-  $Res call({int base});
-}
+abstract mixin class $UpdateCustomBaseMessageCopyWith<$Res>  {
+  factory $UpdateCustomBaseMessageCopyWith(UpdateCustomBaseMessage value, $Res Function(UpdateCustomBaseMessage) _then) = _$UpdateCustomBaseMessageCopyWithImpl;
+@useResult
+$Res call({
+ int base
+});
 
+
+
+
+}
 /// @nodoc
-class _$UpdateCustomBaseMessageCopyWithImpl<
-  $Res,
-  $Val extends UpdateCustomBaseMessage
->
+class _$UpdateCustomBaseMessageCopyWithImpl<$Res>
     implements $UpdateCustomBaseMessageCopyWith<$Res> {
-  _$UpdateCustomBaseMessageCopyWithImpl(this._value, this._then);
+  _$UpdateCustomBaseMessageCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final UpdateCustomBaseMessage _self;
+  final $Res Function(UpdateCustomBaseMessage) _then;
 
-  /// Create a copy of UpdateCustomBaseMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? base = null}) {
-    return _then(
-      _value.copyWith(
-            base: null == base
-                ? _value.base
-                : base // ignore: cast_nullable_to_non_nullable
-                      as int,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of UpdateCustomBaseMessage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? base = null,}) {
+  return _then(_self.copyWith(
+base: null == base ? _self.base : base // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [UpdateCustomBaseMessage].
+extension UpdateCustomBaseMessagePatterns on UpdateCustomBaseMessage {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _UpdateCustomBaseMessage value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _UpdateCustomBaseMessage() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _UpdateCustomBaseMessage value)  $default,){
+final _that = this;
+switch (_that) {
+case _UpdateCustomBaseMessage():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _UpdateCustomBaseMessage value)?  $default,){
+final _that = this;
+switch (_that) {
+case _UpdateCustomBaseMessage() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int base)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _UpdateCustomBaseMessage() when $default != null:
+return $default(_that.base);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int base)  $default,) {final _that = this;
+switch (_that) {
+case _UpdateCustomBaseMessage():
+return $default(_that.base);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int base)?  $default,) {final _that = this;
+switch (_that) {
+case _UpdateCustomBaseMessage() when $default != null:
+return $default(_that.base);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$UpdateCustomBaseMessageImplCopyWith<$Res>
-    implements $UpdateCustomBaseMessageCopyWith<$Res> {
-  factory _$$UpdateCustomBaseMessageImplCopyWith(
-    _$UpdateCustomBaseMessageImpl value,
-    $Res Function(_$UpdateCustomBaseMessageImpl) then,
-  ) = __$$UpdateCustomBaseMessageImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int base});
+
+
+class _UpdateCustomBaseMessage implements UpdateCustomBaseMessage {
+  const _UpdateCustomBaseMessage({required this.base}): assert(base >= 2 && base <= 36);
+  
+
+@override final  int base;
+
+/// Create a copy of UpdateCustomBaseMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$UpdateCustomBaseMessageCopyWith<_UpdateCustomBaseMessage> get copyWith => __$UpdateCustomBaseMessageCopyWithImpl<_UpdateCustomBaseMessage>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _UpdateCustomBaseMessage&&(identical(other.base, base) || other.base == base));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,base);
+
+@override
+String toString() {
+  return 'UpdateCustomBaseMessage(base: $base)';
+}
+
+
 }
 
 /// @nodoc
-class __$$UpdateCustomBaseMessageImplCopyWithImpl<$Res>
-    extends
-        _$UpdateCustomBaseMessageCopyWithImpl<
-          $Res,
-          _$UpdateCustomBaseMessageImpl
-        >
-    implements _$$UpdateCustomBaseMessageImplCopyWith<$Res> {
-  __$$UpdateCustomBaseMessageImplCopyWithImpl(
-    _$UpdateCustomBaseMessageImpl _value,
-    $Res Function(_$UpdateCustomBaseMessageImpl) _then,
-  ) : super(_value, _then);
+abstract mixin class _$UpdateCustomBaseMessageCopyWith<$Res> implements $UpdateCustomBaseMessageCopyWith<$Res> {
+  factory _$UpdateCustomBaseMessageCopyWith(_UpdateCustomBaseMessage value, $Res Function(_UpdateCustomBaseMessage) _then) = __$UpdateCustomBaseMessageCopyWithImpl;
+@override @useResult
+$Res call({
+ int base
+});
 
-  /// Create a copy of UpdateCustomBaseMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? base = null}) {
-    return _then(
-      _$UpdateCustomBaseMessageImpl(
-        base: null == base
-            ? _value.base
-            : base // ignore: cast_nullable_to_non_nullable
-                  as int,
-      ),
-    );
-  }
+
+
+
 }
-
 /// @nodoc
+class __$UpdateCustomBaseMessageCopyWithImpl<$Res>
+    implements _$UpdateCustomBaseMessageCopyWith<$Res> {
+  __$UpdateCustomBaseMessageCopyWithImpl(this._self, this._then);
 
-class _$UpdateCustomBaseMessageImpl implements _UpdateCustomBaseMessage {
-  const _$UpdateCustomBaseMessageImpl({required this.base})
-    : assert(base >= 2 && base <= 36);
+  final _UpdateCustomBaseMessage _self;
+  final $Res Function(_UpdateCustomBaseMessage) _then;
 
-  @override
-  final int base;
-
-  @override
-  String toString() {
-    return 'UpdateCustomBaseMessage(base: $base)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateCustomBaseMessageImpl &&
-            (identical(other.base, base) || other.base == base));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, base);
-
-  /// Create a copy of UpdateCustomBaseMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateCustomBaseMessageImplCopyWith<_$UpdateCustomBaseMessageImpl>
-  get copyWith =>
-      __$$UpdateCustomBaseMessageImplCopyWithImpl<
-        _$UpdateCustomBaseMessageImpl
-      >(this, _$identity);
+/// Create a copy of UpdateCustomBaseMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? base = null,}) {
+  return _then(_UpdateCustomBaseMessage(
+base: null == base ? _self.base : base // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-abstract class _UpdateCustomBaseMessage implements UpdateCustomBaseMessage {
-  const factory _UpdateCustomBaseMessage({required final int base}) =
-      _$UpdateCustomBaseMessageImpl;
 
-  @override
-  int get base;
-
-  /// Create a copy of UpdateCustomBaseMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateCustomBaseMessageImplCopyWith<_$UpdateCustomBaseMessageImpl>
-  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$SetStateMessage {
-  NumberBaseState get state => throw _privateConstructorUsedError;
 
-  /// Create a copy of SetStateMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SetStateMessageCopyWith<SetStateMessage> get copyWith =>
-      throw _privateConstructorUsedError;
+ NumberBaseState get state;
+/// Create a copy of SetStateMessage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SetStateMessageCopyWith<SetStateMessage> get copyWith => _$SetStateMessageCopyWithImpl<SetStateMessage>(this as SetStateMessage, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SetStateMessage&&(identical(other.state, state) || other.state == state));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,state);
+
+@override
+String toString() {
+  return 'SetStateMessage(state: $state)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SetStateMessageCopyWith<$Res> {
-  factory $SetStateMessageCopyWith(
-    SetStateMessage value,
-    $Res Function(SetStateMessage) then,
-  ) = _$SetStateMessageCopyWithImpl<$Res, SetStateMessage>;
-  @useResult
-  $Res call({NumberBaseState state});
+abstract mixin class $SetStateMessageCopyWith<$Res>  {
+  factory $SetStateMessageCopyWith(SetStateMessage value, $Res Function(SetStateMessage) _then) = _$SetStateMessageCopyWithImpl;
+@useResult
+$Res call({
+ NumberBaseState state
+});
 
-  $NumberBaseStateCopyWith<$Res> get state;
+
+$NumberBaseStateCopyWith<$Res> get state;
+
 }
-
 /// @nodoc
-class _$SetStateMessageCopyWithImpl<$Res, $Val extends SetStateMessage>
+class _$SetStateMessageCopyWithImpl<$Res>
     implements $SetStateMessageCopyWith<$Res> {
-  _$SetStateMessageCopyWithImpl(this._value, this._then);
+  _$SetStateMessageCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SetStateMessage _self;
+  final $Res Function(SetStateMessage) _then;
 
-  /// Create a copy of SetStateMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? state = null}) {
-    return _then(
-      _value.copyWith(
-            state: null == state
-                ? _value.state
-                : state // ignore: cast_nullable_to_non_nullable
-                      as NumberBaseState,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of SetStateMessage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? state = null,}) {
+  return _then(_self.copyWith(
+state: null == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
+as NumberBaseState,
+  ));
+}
+/// Create a copy of SetStateMessage
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$NumberBaseStateCopyWith<$Res> get state {
+  
+  return $NumberBaseStateCopyWith<$Res>(_self.state, (value) {
+    return _then(_self.copyWith(state: value));
+  });
+}
+}
 
-  /// Create a copy of SetStateMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $NumberBaseStateCopyWith<$Res> get state {
-    return $NumberBaseStateCopyWith<$Res>(_value.state, (value) {
-      return _then(_value.copyWith(state: value) as $Val);
-    });
-  }
+
+/// Adds pattern-matching-related methods to [SetStateMessage].
+extension SetStateMessagePatterns on SetStateMessage {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SetStateMessage value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SetStateMessage() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SetStateMessage value)  $default,){
+final _that = this;
+switch (_that) {
+case _SetStateMessage():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SetStateMessage value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SetStateMessage() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( NumberBaseState state)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SetStateMessage() when $default != null:
+return $default(_that.state);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( NumberBaseState state)  $default,) {final _that = this;
+switch (_that) {
+case _SetStateMessage():
+return $default(_that.state);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( NumberBaseState state)?  $default,) {final _that = this;
+switch (_that) {
+case _SetStateMessage() when $default != null:
+return $default(_that.state);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$SetStateMessageImplCopyWith<$Res>
-    implements $SetStateMessageCopyWith<$Res> {
-  factory _$$SetStateMessageImplCopyWith(
-    _$SetStateMessageImpl value,
-    $Res Function(_$SetStateMessageImpl) then,
-  ) = __$$SetStateMessageImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({NumberBaseState state});
 
-  @override
-  $NumberBaseStateCopyWith<$Res> get state;
+
+class _SetStateMessage implements SetStateMessage {
+  const _SetStateMessage(this.state);
+  
+
+@override final  NumberBaseState state;
+
+/// Create a copy of SetStateMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SetStateMessageCopyWith<_SetStateMessage> get copyWith => __$SetStateMessageCopyWithImpl<_SetStateMessage>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SetStateMessage&&(identical(other.state, state) || other.state == state));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,state);
+
+@override
+String toString() {
+  return 'SetStateMessage(state: $state)';
+}
+
+
 }
 
 /// @nodoc
-class __$$SetStateMessageImplCopyWithImpl<$Res>
-    extends _$SetStateMessageCopyWithImpl<$Res, _$SetStateMessageImpl>
-    implements _$$SetStateMessageImplCopyWith<$Res> {
-  __$$SetStateMessageImplCopyWithImpl(
-    _$SetStateMessageImpl _value,
-    $Res Function(_$SetStateMessageImpl) _then,
-  ) : super(_value, _then);
+abstract mixin class _$SetStateMessageCopyWith<$Res> implements $SetStateMessageCopyWith<$Res> {
+  factory _$SetStateMessageCopyWith(_SetStateMessage value, $Res Function(_SetStateMessage) _then) = __$SetStateMessageCopyWithImpl;
+@override @useResult
+$Res call({
+ NumberBaseState state
+});
 
-  /// Create a copy of SetStateMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? state = null}) {
-    return _then(
-      _$SetStateMessageImpl(
-        null == state
-            ? _value.state
-            : state // ignore: cast_nullable_to_non_nullable
-                  as NumberBaseState,
-      ),
-    );
-  }
+
+@override $NumberBaseStateCopyWith<$Res> get state;
+
 }
-
 /// @nodoc
+class __$SetStateMessageCopyWithImpl<$Res>
+    implements _$SetStateMessageCopyWith<$Res> {
+  __$SetStateMessageCopyWithImpl(this._self, this._then);
 
-class _$SetStateMessageImpl implements _SetStateMessage {
-  const _$SetStateMessageImpl(this.state);
+  final _SetStateMessage _self;
+  final $Res Function(_SetStateMessage) _then;
 
-  @override
-  final NumberBaseState state;
-
-  @override
-  String toString() {
-    return 'SetStateMessage(state: $state)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SetStateMessageImpl &&
-            (identical(other.state, state) || other.state == state));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, state);
-
-  /// Create a copy of SetStateMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SetStateMessageImplCopyWith<_$SetStateMessageImpl> get copyWith =>
-      __$$SetStateMessageImplCopyWithImpl<_$SetStateMessageImpl>(
-        this,
-        _$identity,
-      );
+/// Create a copy of SetStateMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? state = null,}) {
+  return _then(_SetStateMessage(
+null == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
+as NumberBaseState,
+  ));
 }
 
-abstract class _SetStateMessage implements SetStateMessage {
-  const factory _SetStateMessage(final NumberBaseState state) =
-      _$SetStateMessageImpl;
-
-  @override
-  NumberBaseState get state;
-
-  /// Create a copy of SetStateMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SetStateMessageImplCopyWith<_$SetStateMessageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+/// Create a copy of SetStateMessage
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$NumberBaseStateCopyWith<$Res> get state {
+  
+  return $NumberBaseStateCopyWith<$Res>(_self.state, (value) {
+    return _then(_self.copyWith(state: value));
+  });
 }
+}
+
+// dart format on

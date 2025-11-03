@@ -1,3 +1,4 @@
+import '../../common/list_utils.dart';
 import '../tool_v2.dart';
 
 final class ToolsRegistry {
@@ -14,6 +15,6 @@ final class ToolsRegistry {
   List<ToolDescriptor> get tools => _availableTools;
 
   ToolDescriptor? getToolById(String id) {
-    return _tools.firstWhere((tool) => tool.id == id);
+    return _tools.firstWhereOrNull((tool) => tool.id == id);
   }
 }

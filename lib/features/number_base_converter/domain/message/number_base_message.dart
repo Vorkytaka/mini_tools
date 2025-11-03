@@ -27,7 +27,7 @@ sealed class UpdateInputMessage
 
 @freezed
 @immutable
-class UpdateCustomBaseMessage
+abstract class UpdateCustomBaseMessage
     with _$UpdateCustomBaseMessage
     implements NumberBaseMessage {
   @Assert('base >= 2 && base <= 36')
@@ -37,6 +37,6 @@ class UpdateCustomBaseMessage
 
 @freezed
 @immutable
-class SetStateMessage with _$SetStateMessage implements NumberBaseMessage {
+abstract class SetStateMessage with _$SetStateMessage implements NumberBaseMessage {
   const factory SetStateMessage(NumberBaseState state) = _SetStateMessage;
 }
