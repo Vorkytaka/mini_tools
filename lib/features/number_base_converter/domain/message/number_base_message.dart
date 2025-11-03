@@ -37,6 +37,8 @@ abstract class UpdateCustomBaseMessage
 
 @freezed
 @immutable
-abstract class SetStateMessage with _$SetStateMessage implements NumberBaseMessage {
+abstract class SetStateMessage
+    with _$SetStateMessage
+    implements NumberBaseMessage {
   const factory SetStateMessage(NumberBaseState state) = _SetStateMessage;
 }
