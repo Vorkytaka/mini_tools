@@ -19,11 +19,6 @@ sealed class QrCodeEffect {
     required QrCodeVisualData visualData,
     required int exportSize,
   }) = CopyToClipboardEffect;
-
-  const factory QrCodeEffect.saveState({required QrCodeState state}) =
-      _SaveStateEffect;
-
-  const factory QrCodeEffect.loadState() = _LoadStateEffect;
 }
 
 @freezed
@@ -41,17 +36,4 @@ sealed class ExportEffect with _$ExportEffect implements QrCodeEffect {
     required QrCodeVisualData visualData,
     required int exportSize,
   }) = CopyToClipboardEffect;
-}
-
-@freezed
-@immutable
-abstract class SaveStateEffect with _$SaveStateEffect implements QrCodeEffect {
-  const factory SaveStateEffect({required QrCodeState state}) =
-      _SaveStateEffect;
-}
-
-@freezed
-@immutable
-class LoadStateEffect with _$LoadStateEffect implements QrCodeEffect {
-  const factory LoadStateEffect() = _LoadStateEffect;
 }

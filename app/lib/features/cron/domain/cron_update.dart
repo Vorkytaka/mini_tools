@@ -26,7 +26,6 @@ Next<CronState, CronEffect> cronUpdate(CronState state, CronMessage message) {
       }
       return next(
         state: state.copyWith(input: message.input, result: result),
-        effects: [if (message.saveToPersist) CronEffect.save(message.input)],
       );
   }
 }

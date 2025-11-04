@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
@@ -8,7 +7,6 @@ import 'package:image/image.dart' as img;
 import 'package:mini_tea/feature.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:super_clipboard/super_clipboard.dart';
 
 import '../../../core/common/color.dart';
@@ -26,11 +24,7 @@ final class QrCodeEffectHandler
     implements EffectHandler<QrCodeEffect, QrCodeMessage> {
   static QrCodeBytesExporter exporter = NewQrCodeExporter.generateBytes;
 
-  final EffectHandler<SaveStateEffect, QrCodeMessage> _onSaveState;
-
-  const QrCodeEffectHandler({
-    required EffectHandler<SaveStateEffect, QrCodeMessage> onSaveState,
-  }) : _onSaveState = onSaveState;
+  const QrCodeEffectHandler();
 
   @override
   Future<void> call(QrCodeEffect effect, MsgEmitter<QrCodeMessage> emit) async {
@@ -39,10 +33,6 @@ final class QrCodeEffectHandler
         return _saveToFile(effect, emit);
       case CopyToClipboardEffect():
         return _copyToClipboard(effect, emit);
-      case SaveStateEffect():
-        return _onSaveState(effect, emit);
-      case LoadStateEffect():
-        return _loadState(effect, emit);
     }
   }
 
@@ -160,48 +150,5 @@ final class QrCodeEffectHandler
     item.add(Formats.png(data));
     await clipboard.write([item]);
     Log.v(_tag, 'QR Code successfully copied;');
-  }
-
-  Future<void> _loadState(
-    LoadStateEffect effect,
-    MsgEmitter<QrCodeMessage> emit,
-  ) async {
-    Log.v(_tag, 'Try to load a state;');
-    try {
-      final sharedPreferences = await SharedPreferences.getInstance();
-      final jsonStr = sharedPreferences.getString(_stateKey);
-      if (jsonStr != null) {
-        final json = jsonDecode(jsonStr);
-        final state = QrCodeState.fromJson(json);
-        emit(QrCodeMessage.loadedState(state));
-        Log.v(_tag, 'Successfully load the state;');
-      }
-    } on Object catch (e, st) {
-      Log.e(_tag, 'Could not load the state;', e, st);
-      Log.d(_tag, 'Try to clean the value;');
-      final sharedPreferences = await SharedPreferences.getInstance();
-      await sharedPreferences.remove(_stateKey);
-    }
-  }
-}
-
-final class SaveStateEffectHandler
-    implements EffectHandler<SaveStateEffect, QrCodeMessage> {
-  const SaveStateEffectHandler();
-
-  @override
-  Future<void> call(
-    SaveStateEffect effect,
-    MsgEmitter<QrCodeMessage> emit,
-  ) async {
-    Log.v(_tag, 'Try to save a state;');
-    try {
-      final sharedPreferences = await SharedPreferences.getInstance();
-      final json = jsonEncode(effect.state.toJson());
-      await sharedPreferences.setString(_stateKey, json);
-      Log.v(_tag, 'Successfully save the state;');
-    } on Object catch (e, st) {
-      Log.e(_tag, 'Could not save the state;', e, st);
-    }
   }
 }
