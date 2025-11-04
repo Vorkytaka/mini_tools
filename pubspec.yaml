@@ -10,3 +10,8 @@ workspace:
 dev_dependencies:
   melos: ^7.3.0
   flutter_lints: ^6.0.0
+melos:
+  scripts:
+    test:
+      run: dart pub run melos exec --dir-exists=test -- "flutter test"
+      description: Run `flutter test` in all packages

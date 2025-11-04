@@ -59,4 +59,4 @@ jobs:
         run: flutter analyze .
 
       - name: Run Flutter unit tests
-        run: flutter test
+        run: dart pub run melos run test
