@@ -7,8 +7,12 @@ on:
       - develop
     paths:
       - '.github/**/*.yml'
-      - 'lib/**/*.dart'
-      - 'test/**/*.dart'
+      - 'app/lib/**/*.dart'
+      - 'app/test/**/*.dart'
+      - 'app/pubspec.yaml'
+      - 'packages/**/lib/**/*.dart'
+      - 'packages/**/test/**/*.dart'
+      - 'packages/**/pubspec.yaml'
       - 'pubspec.yaml'
   pull_request:
     branches:

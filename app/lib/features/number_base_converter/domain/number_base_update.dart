@@ -91,5 +91,5 @@ Next<NumberBaseState, NumberBaseEffect> _updateInputHandle(
     value: bigInt,
   );
 
-  return next(state: newState, effects: [NumberBaseEffect.saveState(newState)]);
+  return next(state: newState);
 }

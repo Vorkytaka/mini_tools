@@ -4,8 +4,4 @@ part 'cron_effect.freezed.dart';
 
 @freezed
 @immutable
-sealed class CronEffect with _$CronEffect {
-  const factory CronEffect.save(String input) = SaveEffect;
-
-  const factory CronEffect.load() = LoadEffect;
-}
+sealed class CronEffect with _$CronEffect {}

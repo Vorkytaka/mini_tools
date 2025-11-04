@@ -13,13 +13,11 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       final newState = state.copyWith(input: message.text);
       return next(
         state: newState,
-        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case UpdateCorrectionLevelMessage():
       final newState = state.copyWith(correctionLevel: message.level);
       return next(
         state: newState,
-        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case SaveToFileMessage():
       final code = state.code;
@@ -38,7 +36,6 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       final newState = state.copyWith(exportType: message.type);
       return next(
         state: newState,
-        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case CopyToClipboardMessage():
       final code = state.code;
@@ -58,7 +55,6 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       );
       return next(
         state: newState,
-        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case PaddingUpdateMessage():
       final newState = state.copyWith(
@@ -66,7 +62,6 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       );
       return next(
         state: newState,
-        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case LoadedStateMessage():
       return next(state: message.state);
@@ -76,7 +71,6 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       );
       return next(
         state: newState,
-        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case BackgroundColorUpdateMessage():
       final newState = state.copyWith(
@@ -84,7 +78,6 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       );
       return next(
         state: newState,
-        effects: [QrCodeEffect.saveState(state: newState)],
       );
     case ExportSizeUpdateMessage():
       final exportSize = message.size.clamp(
@@ -94,7 +87,6 @@ Next<QrCodeState, QrCodeEffect> qrCodeUpdate(
       final newState = state.copyWith(exportSize: exportSize);
       return next(
         state: newState,
-        effects: [QrCodeEffect.saveState(state: newState)],
       );
   }
 }

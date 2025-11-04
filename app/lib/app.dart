@@ -4,8 +4,8 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
 import 'core/common/datetime_inherited_model.dart';
-import 'core/di_v0.dart';
 import 'core/presentation/copy_overlay.dart';
+import 'di_v0.dart';
 import 'features/tabs/presentation/new_tab_widget.dart';
 import 'i18n/strings.g.dart';
 
@@ -55,7 +55,8 @@ class _Window extends StatelessWidget {
           ),
         ),
         builder: (context, controller) => context
-            .read<MiniDepTree>()
+            .read<MiniDi>()
+            .tabsDi
             .tabsListWidgetFactory(scrollController: controller),
         bottom: const _BottomWidget(),
       ),
@@ -69,7 +70,7 @@ class _BodyContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return context.read<MiniDepTree>().tabViewWidgetFactory();
+    return context.read<MiniDi>().tabsDi.tabViewWidgetFactory();
   }
 }
 
