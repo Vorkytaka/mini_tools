@@ -17,7 +17,6 @@ import 'qr_exporter/qr_exporter.dart';
 import 'qr_exporter/qr_exporter_2.dart';
 import 'state/qr_code_state.dart';
 
-const _stateKey = 'qr_code/state';
 const _tag = 'QrCodeEffectHandler';
 
 final class QrCodeEffectHandler

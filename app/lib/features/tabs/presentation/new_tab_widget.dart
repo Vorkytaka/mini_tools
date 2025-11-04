@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:macos_ui/macos_ui.dart';
 
-import '../../../di_v0.dart';
 import '../../../core/presentation/mini_sidebar.dart';
 import '../../../core/tool_v2/src/tool_descriptor.dart';
+import '../../../di_v0.dart';
 import '../domain/message/tabs_message.dart';
 import '../domain/tabs_feature.dart';
 

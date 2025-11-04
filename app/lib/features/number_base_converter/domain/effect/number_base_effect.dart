@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../number_base_feature.dart';
-
 part 'number_base_effect.freezed.dart';
 
 @freezed

@@ -4,8 +4,8 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
 import 'core/common/datetime_inherited_model.dart';
-import 'di_v0.dart';
 import 'core/presentation/copy_overlay.dart';
+import 'di_v0.dart';
 import 'features/tabs/presentation/new_tab_widget.dart';
 import 'i18n/strings.g.dart';
 
