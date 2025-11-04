@@ -35,7 +35,7 @@ extension ExportTypeUtils on ExportType {
 
 @freezed
 @immutable
-class QrCodeState with _$QrCodeState {
+abstract class QrCodeState with _$QrCodeState {
   static const minExportSize = 256;
   static const maxExportSize = 10000;
 
@@ -84,7 +84,7 @@ enum QrCodeShape { smooth, square, circle }
 
 @freezed
 @immutable
-class QrCodeVisualData with _$QrCodeVisualData {
+abstract class QrCodeVisualData with _$QrCodeVisualData {
   const factory QrCodeVisualData({
     @ColorConverter() required Color backgroundColor,
     @ColorConverter() required Color foregroundColor,

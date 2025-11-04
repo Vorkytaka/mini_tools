@@ -5,7 +5,7 @@ part 'text_diff_state.freezed.dart';
 
 @freezed
 @immutable
-class TextDiffState with _$TextDiffState {
+abstract class TextDiffState with _$TextDiffState {
   const factory TextDiffState({
     required String oldText,
     required String newText,

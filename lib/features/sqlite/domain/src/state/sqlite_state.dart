@@ -4,7 +4,7 @@ part 'sqlite_state.freezed.dart';
 
 @immutable
 @freezed
-class SqliteState with _$SqliteState {
+abstract class SqliteState with _$SqliteState {
   static const init = SqliteState(
     connection: DatabaseConnection.disconnect(),
     results: [],
@@ -63,7 +63,7 @@ sealed class Result with _$Result {
 
 @immutable
 @freezed
-class TableInfo with _$TableInfo {
+abstract class TableInfo with _$TableInfo {
   const factory TableInfo({
     required String name,
     required List<ColumnInfo> columns,
@@ -72,7 +72,7 @@ class TableInfo with _$TableInfo {
 
 @immutable
 @freezed
-class ColumnInfo with _$ColumnInfo {
+abstract class ColumnInfo with _$ColumnInfo {
   const factory ColumnInfo({
     required String name,
     required String type,

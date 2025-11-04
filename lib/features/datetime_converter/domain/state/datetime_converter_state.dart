@@ -9,7 +9,7 @@ enum DatetimeFormat { iso8601, rfc2822 }
 
 @freezed
 @immutable
-class DatetimeConverterState with _$DatetimeConverterState {
+abstract class DatetimeConverterState with _$DatetimeConverterState {
   const factory DatetimeConverterState({
     required TZDateTime? datetime,
     required bool isReadOnly,

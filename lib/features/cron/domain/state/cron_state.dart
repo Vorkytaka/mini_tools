@@ -7,7 +7,7 @@ part 'cron_state.freezed.dart';
 
 @freezed
 @immutable
-class CronState with _$CronState {
+abstract class CronState with _$CronState {
   const factory CronState({required String input, required CronResult result}) =
       _CronState;
 

@@ -4,7 +4,7 @@ part 'regexp_state.freezed.dart';
 
 @immutable
 @freezed
-class RegExpState with _$RegExpState {
+abstract class RegExpState with _$RegExpState {
   const factory RegExpState({
     required String input,
     required String testString,

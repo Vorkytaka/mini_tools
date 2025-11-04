@@ -12,7 +12,7 @@ import '../../../core/common/padding.dart';
 import '../../../core/common/regexp.dart';
 import '../../../core/common/timezone_holder.dart';
 import '../../../i18n/strings.g.dart';
-import '../../datetime_converter/datetime_converter_tool.dart';
+import '../../datetime_converter/datetime_converter_tool_v2.dart';
 import '../domain/cron_feature.dart';
 import '../domain/parser/cron_parser.dart';
 import '../domain/parser/exception/cron_exception.dart';
@@ -345,7 +345,7 @@ class _NextAtList extends StatelessWidget {
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
                     onTap: () {
-                      DatetimeConverterTool.showDatetimeConverterSheet(
+                      DatetimeConverterToolV2.showDatetimeConverterSheet(
                         context: context,
                         datetime: next,
                       );

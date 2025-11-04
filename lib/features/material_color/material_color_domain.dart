@@ -1,4 +1,6 @@
-part of 'material_colors_tool.dart';
+import 'package:flutter/material.dart';
+
+import '../../core/common/color.dart';
 
 /// Just a wrapper for the Material Colors and their accent colors.
 class _MaterialAndAccentColor {
@@ -48,9 +50,9 @@ const _materialAndAccentColors = [
   _MaterialAndAccentColor('Blue Grey', Colors.blueGrey),
 ];
 
-final _materialColorItems = _materialAndAccentColors
+final materialColorItems = _materialAndAccentColors
     .map(
-      (item) => _ColorCollection(
+      (item) => ColorCollection(
         name: item.title,
         colors: [...item.color.items, ...?item.accentColor?.items],
       ),
@@ -61,11 +63,11 @@ const _materialColorsValues = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 const _materialAccentColorsValues = [100, 200, 400, 700];
 
 extension on MaterialColor {
-  List<_ColorItem> get items {
+  List<ColorItem> get items {
     return List.generate(_materialColorsValues.length, (i) {
       final shade = _materialColorsValues[i];
       final color = this[shade]!;
-      return _ColorItem(
+      return ColorItem(
         color: color,
         title: '$shade',
         hex: color.toHexString,
@@ -76,11 +78,11 @@ extension on MaterialColor {
 }
 
 extension on MaterialAccentColor {
-  List<_ColorItem> get items {
+  List<ColorItem> get items {
     return List.generate(_materialAccentColorsValues.length, (i) {
       final shade = _materialAccentColorsValues[i];
       final color = this[shade]!;
-      return _ColorItem(
+      return ColorItem(
         color: color,
         title: '$shade',
         hex: color.toHexString,
@@ -90,21 +92,21 @@ extension on MaterialAccentColor {
   }
 }
 
-class _ColorCollection {
+class ColorCollection {
   final String name;
-  final List<_ColorItem> colors;
+  final List<ColorItem> colors;
 
-  const _ColorCollection({required this.name, required this.colors});
+  const ColorCollection({required this.name, required this.colors});
 }
 
 @immutable
-class _ColorItem {
+class ColorItem {
   final Color color;
   final String title;
   final String hex;
   final Brightness brightness;
 
-  const _ColorItem({
+  const ColorItem({
     required this.color,
     required this.title,
     required this.hex,

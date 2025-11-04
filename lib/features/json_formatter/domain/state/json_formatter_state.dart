@@ -7,7 +7,7 @@ enum JsonOutputFormat { min, two, four, tab }
 
 @immutable
 @freezed
-class JsonFormatterState with _$JsonFormatterState {
+abstract class JsonFormatterState with _$JsonFormatterState {
   const factory JsonFormatterState({
     required String input,
     required String? output,
@@ -25,7 +25,7 @@ class JsonFormatterState with _$JsonFormatterState {
 
 @immutable
 @freezed
-class JsonPathState with _$JsonPathState {
+abstract class JsonPathState with _$JsonPathState {
   const factory JsonPathState({
     required String input,
     required JsonPath? value,

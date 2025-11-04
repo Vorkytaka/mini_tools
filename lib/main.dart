@@ -5,12 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:mini_tea_flutter/mini_tea_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:window_manager/window_manager.dart';
 
 import 'app.dart';
 import 'core/common/timezone_holder.dart';
+import 'core/di_v0.dart';
 import 'core/logger/logger.dart';
 import 'core/logger/logging_logger.dart';
 import 'i18n/strings.g.dart';
@@ -23,12 +26,21 @@ Future<void> main() async {
     rethrow;
   }
 
+  final dependencies = DepTreeV0();
+  await dependencies.init();
+
   Log.i('main', 'PreInit successfully');
 
   runApp(
     TimezoneHolder(
       timezone: await _initializeTimezone(),
-      child: const MiniToolsApp(),
+      child: Provider<MiniDepTree>(
+        create: (_) => dependencies,
+        child: FeatureProvider.value(
+          value: dependencies.tabsFeature,
+          child: const MiniToolsApp(),
+        ),
+      ),
     ),
   );
 }

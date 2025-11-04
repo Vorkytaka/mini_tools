@@ -4,7 +4,7 @@ part 'sqlite_effect.freezed.dart';
 
 @immutable
 @freezed
-sealed class SqliteEffect {
+sealed class SqliteEffect with _$SqliteEffect {
   const factory SqliteEffect.execute(String query) = ExecuteEffect;
 
   const factory SqliteEffect.updateTables() = UpdateTablesEffect;

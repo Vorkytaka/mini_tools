@@ -6,7 +6,7 @@ part 'number_base_state.g.dart';
 
 @freezed
 @immutable
-class NumberBaseState with _$NumberBaseState {
+abstract class NumberBaseState with _$NumberBaseState {
   @Assert('customBase >= 2 && customBase <= 36')
   const factory NumberBaseState({
     required String base2,

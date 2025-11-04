@@ -7,6 +7,9 @@ analyzer:
     - lib/**.g.dart
     - lib/core/presentation/color_picker/**
 
+formatter:
+  trailing_commas: preserve
+
 # https://dart.dev/guides/language/analysis-options
 linter:
   rules:

@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,1292 +9,630 @@ part of 'uuid_message.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$UuidMessage {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(UuidVersion version) updateVersion,
-    required TResult Function(int count) updateCount,
-    required TResult Function() generate,
-    required TResult Function(List<String> ids) setIds,
-    required TResult Function(String namespace) updateNamespace,
-    required TResult Function(String name) updateName,
-    required TResult Function(bool isLowerCase) updateLowerCase,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UuidVersion version)? updateVersion,
-    TResult? Function(int count)? updateCount,
-    TResult? Function()? generate,
-    TResult? Function(List<String> ids)? setIds,
-    TResult? Function(String namespace)? updateNamespace,
-    TResult? Function(String name)? updateName,
-    TResult? Function(bool isLowerCase)? updateLowerCase,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UuidVersion version)? updateVersion,
-    TResult Function(int count)? updateCount,
-    TResult Function()? generate,
-    TResult Function(List<String> ids)? setIds,
-    TResult Function(String namespace)? updateNamespace,
-    TResult Function(String name)? updateName,
-    TResult Function(bool isLowerCase)? updateLowerCase,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UpdateVersionMessage value) updateVersion,
-    required TResult Function(UpdateCountMessage value) updateCount,
-    required TResult Function(GenerateMessage value) generate,
-    required TResult Function(SetIdsMessage value) setIds,
-    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
-    required TResult Function(UpdateNameMessage value) updateName,
-    required TResult Function(UpdateLowerCase value) updateLowerCase,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UpdateVersionMessage value)? updateVersion,
-    TResult? Function(UpdateCountMessage value)? updateCount,
-    TResult? Function(GenerateMessage value)? generate,
-    TResult? Function(SetIdsMessage value)? setIds,
-    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult? Function(UpdateNameMessage value)? updateName,
-    TResult? Function(UpdateLowerCase value)? updateLowerCase,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UpdateVersionMessage value)? updateVersion,
-    TResult Function(UpdateCountMessage value)? updateCount,
-    TResult Function(GenerateMessage value)? generate,
-    TResult Function(SetIdsMessage value)? setIds,
-    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult Function(UpdateNameMessage value)? updateName,
-    TResult Function(UpdateLowerCase value)? updateLowerCase,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UuidMessage);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'UuidMessage()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $UuidMessageCopyWith<$Res> {
-  factory $UuidMessageCopyWith(
-    UuidMessage value,
-    $Res Function(UuidMessage) then,
-  ) = _$UuidMessageCopyWithImpl<$Res, UuidMessage>;
+class $UuidMessageCopyWith<$Res>  {
+$UuidMessageCopyWith(UuidMessage _, $Res Function(UuidMessage) __);
 }
 
-/// @nodoc
-class _$UuidMessageCopyWithImpl<$Res, $Val extends UuidMessage>
-    implements $UuidMessageCopyWith<$Res> {
-  _$UuidMessageCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [UuidMessage].
+extension UuidMessagePatterns on UuidMessage {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( UpdateVersionMessage value)?  updateVersion,TResult Function( UpdateCountMessage value)?  updateCount,TResult Function( GenerateMessage value)?  generate,TResult Function( SetIdsMessage value)?  setIds,TResult Function( UpdateNamespaceMessage value)?  updateNamespace,TResult Function( UpdateNameMessage value)?  updateName,TResult Function( UpdateLowerCase value)?  updateLowerCase,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case UpdateVersionMessage() when updateVersion != null:
+return updateVersion(_that);case UpdateCountMessage() when updateCount != null:
+return updateCount(_that);case GenerateMessage() when generate != null:
+return generate(_that);case SetIdsMessage() when setIds != null:
+return setIds(_that);case UpdateNamespaceMessage() when updateNamespace != null:
+return updateNamespace(_that);case UpdateNameMessage() when updateName != null:
+return updateName(_that);case UpdateLowerCase() when updateLowerCase != null:
+return updateLowerCase(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( UpdateVersionMessage value)  updateVersion,required TResult Function( UpdateCountMessage value)  updateCount,required TResult Function( GenerateMessage value)  generate,required TResult Function( SetIdsMessage value)  setIds,required TResult Function( UpdateNamespaceMessage value)  updateNamespace,required TResult Function( UpdateNameMessage value)  updateName,required TResult Function( UpdateLowerCase value)  updateLowerCase,}){
+final _that = this;
+switch (_that) {
+case UpdateVersionMessage():
+return updateVersion(_that);case UpdateCountMessage():
+return updateCount(_that);case GenerateMessage():
+return generate(_that);case SetIdsMessage():
+return setIds(_that);case UpdateNamespaceMessage():
+return updateNamespace(_that);case UpdateNameMessage():
+return updateName(_that);case UpdateLowerCase():
+return updateLowerCase(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( UpdateVersionMessage value)?  updateVersion,TResult? Function( UpdateCountMessage value)?  updateCount,TResult? Function( GenerateMessage value)?  generate,TResult? Function( SetIdsMessage value)?  setIds,TResult? Function( UpdateNamespaceMessage value)?  updateNamespace,TResult? Function( UpdateNameMessage value)?  updateName,TResult? Function( UpdateLowerCase value)?  updateLowerCase,}){
+final _that = this;
+switch (_that) {
+case UpdateVersionMessage() when updateVersion != null:
+return updateVersion(_that);case UpdateCountMessage() when updateCount != null:
+return updateCount(_that);case GenerateMessage() when generate != null:
+return generate(_that);case SetIdsMessage() when setIds != null:
+return setIds(_that);case UpdateNamespaceMessage() when updateNamespace != null:
+return updateNamespace(_that);case UpdateNameMessage() when updateName != null:
+return updateName(_that);case UpdateLowerCase() when updateLowerCase != null:
+return updateLowerCase(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( UuidVersion version)?  updateVersion,TResult Function( int count)?  updateCount,TResult Function()?  generate,TResult Function( List<String> ids)?  setIds,TResult Function( String namespace)?  updateNamespace,TResult Function( String name)?  updateName,TResult Function( bool isLowerCase)?  updateLowerCase,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case UpdateVersionMessage() when updateVersion != null:
+return updateVersion(_that.version);case UpdateCountMessage() when updateCount != null:
+return updateCount(_that.count);case GenerateMessage() when generate != null:
+return generate();case SetIdsMessage() when setIds != null:
+return setIds(_that.ids);case UpdateNamespaceMessage() when updateNamespace != null:
+return updateNamespace(_that.namespace);case UpdateNameMessage() when updateName != null:
+return updateName(_that.name);case UpdateLowerCase() when updateLowerCase != null:
+return updateLowerCase(_that.isLowerCase);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( UuidVersion version)  updateVersion,required TResult Function( int count)  updateCount,required TResult Function()  generate,required TResult Function( List<String> ids)  setIds,required TResult Function( String namespace)  updateNamespace,required TResult Function( String name)  updateName,required TResult Function( bool isLowerCase)  updateLowerCase,}) {final _that = this;
+switch (_that) {
+case UpdateVersionMessage():
+return updateVersion(_that.version);case UpdateCountMessage():
+return updateCount(_that.count);case GenerateMessage():
+return generate();case SetIdsMessage():
+return setIds(_that.ids);case UpdateNamespaceMessage():
+return updateNamespace(_that.namespace);case UpdateNameMessage():
+return updateName(_that.name);case UpdateLowerCase():
+return updateLowerCase(_that.isLowerCase);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( UuidVersion version)?  updateVersion,TResult? Function( int count)?  updateCount,TResult? Function()?  generate,TResult? Function( List<String> ids)?  setIds,TResult? Function( String namespace)?  updateNamespace,TResult? Function( String name)?  updateName,TResult? Function( bool isLowerCase)?  updateLowerCase,}) {final _that = this;
+switch (_that) {
+case UpdateVersionMessage() when updateVersion != null:
+return updateVersion(_that.version);case UpdateCountMessage() when updateCount != null:
+return updateCount(_that.count);case GenerateMessage() when generate != null:
+return generate();case SetIdsMessage() when setIds != null:
+return setIds(_that.ids);case UpdateNamespaceMessage() when updateNamespace != null:
+return updateNamespace(_that.namespace);case UpdateNameMessage() when updateName != null:
+return updateName(_that.name);case UpdateLowerCase() when updateLowerCase != null:
+return updateLowerCase(_that.isLowerCase);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$UpdateVersionMessageImplCopyWith<$Res> {
-  factory _$$UpdateVersionMessageImplCopyWith(
-    _$UpdateVersionMessageImpl value,
-    $Res Function(_$UpdateVersionMessageImpl) then,
-  ) = __$$UpdateVersionMessageImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({UuidVersion version});
-}
-
-/// @nodoc
-class __$$UpdateVersionMessageImplCopyWithImpl<$Res>
-    extends _$UuidMessageCopyWithImpl<$Res, _$UpdateVersionMessageImpl>
-    implements _$$UpdateVersionMessageImplCopyWith<$Res> {
-  __$$UpdateVersionMessageImplCopyWithImpl(
-    _$UpdateVersionMessageImpl _value,
-    $Res Function(_$UpdateVersionMessageImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? version = null}) {
-    return _then(
-      _$UpdateVersionMessageImpl(
-        null == version
-            ? _value.version
-            : version // ignore: cast_nullable_to_non_nullable
-                  as UuidVersion,
-      ),
-    );
-  }
-}
-
-/// @nodoc
-
-class _$UpdateVersionMessageImpl implements UpdateVersionMessage {
-  const _$UpdateVersionMessageImpl(this.version);
-
-  @override
-  final UuidVersion version;
-
-  @override
-  String toString() {
-    return 'UuidMessage.updateVersion(version: $version)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateVersionMessageImpl &&
-            (identical(other.version, version) || other.version == version));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, version);
-
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateVersionMessageImplCopyWith<_$UpdateVersionMessageImpl>
-  get copyWith =>
-      __$$UpdateVersionMessageImplCopyWithImpl<_$UpdateVersionMessageImpl>(
-        this,
-        _$identity,
-      );
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(UuidVersion version) updateVersion,
-    required TResult Function(int count) updateCount,
-    required TResult Function() generate,
-    required TResult Function(List<String> ids) setIds,
-    required TResult Function(String namespace) updateNamespace,
-    required TResult Function(String name) updateName,
-    required TResult Function(bool isLowerCase) updateLowerCase,
-  }) {
-    return updateVersion(version);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UuidVersion version)? updateVersion,
-    TResult? Function(int count)? updateCount,
-    TResult? Function()? generate,
-    TResult? Function(List<String> ids)? setIds,
-    TResult? Function(String namespace)? updateNamespace,
-    TResult? Function(String name)? updateName,
-    TResult? Function(bool isLowerCase)? updateLowerCase,
-  }) {
-    return updateVersion?.call(version);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UuidVersion version)? updateVersion,
-    TResult Function(int count)? updateCount,
-    TResult Function()? generate,
-    TResult Function(List<String> ids)? setIds,
-    TResult Function(String namespace)? updateNamespace,
-    TResult Function(String name)? updateName,
-    TResult Function(bool isLowerCase)? updateLowerCase,
-    required TResult orElse(),
-  }) {
-    if (updateVersion != null) {
-      return updateVersion(version);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UpdateVersionMessage value) updateVersion,
-    required TResult Function(UpdateCountMessage value) updateCount,
-    required TResult Function(GenerateMessage value) generate,
-    required TResult Function(SetIdsMessage value) setIds,
-    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
-    required TResult Function(UpdateNameMessage value) updateName,
-    required TResult Function(UpdateLowerCase value) updateLowerCase,
-  }) {
-    return updateVersion(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UpdateVersionMessage value)? updateVersion,
-    TResult? Function(UpdateCountMessage value)? updateCount,
-    TResult? Function(GenerateMessage value)? generate,
-    TResult? Function(SetIdsMessage value)? setIds,
-    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult? Function(UpdateNameMessage value)? updateName,
-    TResult? Function(UpdateLowerCase value)? updateLowerCase,
-  }) {
-    return updateVersion?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UpdateVersionMessage value)? updateVersion,
-    TResult Function(UpdateCountMessage value)? updateCount,
-    TResult Function(GenerateMessage value)? generate,
-    TResult Function(SetIdsMessage value)? setIds,
-    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult Function(UpdateNameMessage value)? updateName,
-    TResult Function(UpdateLowerCase value)? updateLowerCase,
-    required TResult orElse(),
-  }) {
-    if (updateVersion != null) {
-      return updateVersion(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UpdateVersionMessage implements UuidMessage {
-  const factory UpdateVersionMessage(final UuidVersion version) =
-      _$UpdateVersionMessageImpl;
-
-  UuidVersion get version;
-
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateVersionMessageImplCopyWith<_$UpdateVersionMessageImpl>
-  get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$UpdateCountMessageImplCopyWith<$Res> {
-  factory _$$UpdateCountMessageImplCopyWith(
-    _$UpdateCountMessageImpl value,
-    $Res Function(_$UpdateCountMessageImpl) then,
-  ) = __$$UpdateCountMessageImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int count});
-}
-
-/// @nodoc
-class __$$UpdateCountMessageImplCopyWithImpl<$Res>
-    extends _$UuidMessageCopyWithImpl<$Res, _$UpdateCountMessageImpl>
-    implements _$$UpdateCountMessageImplCopyWith<$Res> {
-  __$$UpdateCountMessageImplCopyWithImpl(
-    _$UpdateCountMessageImpl _value,
-    $Res Function(_$UpdateCountMessageImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? count = null}) {
-    return _then(
-      _$UpdateCountMessageImpl(
-        null == count
-            ? _value.count
-            : count // ignore: cast_nullable_to_non_nullable
-                  as int,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$UpdateCountMessageImpl implements UpdateCountMessage {
-  const _$UpdateCountMessageImpl(this.count);
 
-  @override
-  final int count;
+class UpdateVersionMessage implements UuidMessage {
+  const UpdateVersionMessage(this.version);
+  
 
-  @override
-  String toString() {
-    return 'UuidMessage.updateCount(count: $count)';
-  }
+ final  UuidVersion version;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateCountMessageImpl &&
-            (identical(other.count, count) || other.count == count));
-  }
+/// Create a copy of UuidMessage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateVersionMessageCopyWith<UpdateVersionMessage> get copyWith => _$UpdateVersionMessageCopyWithImpl<UpdateVersionMessage>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, count);
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateCountMessageImplCopyWith<_$UpdateCountMessageImpl> get copyWith =>
-      __$$UpdateCountMessageImplCopyWithImpl<_$UpdateCountMessageImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(UuidVersion version) updateVersion,
-    required TResult Function(int count) updateCount,
-    required TResult Function() generate,
-    required TResult Function(List<String> ids) setIds,
-    required TResult Function(String namespace) updateNamespace,
-    required TResult Function(String name) updateName,
-    required TResult Function(bool isLowerCase) updateLowerCase,
-  }) {
-    return updateCount(count);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UuidVersion version)? updateVersion,
-    TResult? Function(int count)? updateCount,
-    TResult? Function()? generate,
-    TResult? Function(List<String> ids)? setIds,
-    TResult? Function(String namespace)? updateNamespace,
-    TResult? Function(String name)? updateName,
-    TResult? Function(bool isLowerCase)? updateLowerCase,
-  }) {
-    return updateCount?.call(count);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UuidVersion version)? updateVersion,
-    TResult Function(int count)? updateCount,
-    TResult Function()? generate,
-    TResult Function(List<String> ids)? setIds,
-    TResult Function(String namespace)? updateNamespace,
-    TResult Function(String name)? updateName,
-    TResult Function(bool isLowerCase)? updateLowerCase,
-    required TResult orElse(),
-  }) {
-    if (updateCount != null) {
-      return updateCount(count);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UpdateVersionMessage value) updateVersion,
-    required TResult Function(UpdateCountMessage value) updateCount,
-    required TResult Function(GenerateMessage value) generate,
-    required TResult Function(SetIdsMessage value) setIds,
-    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
-    required TResult Function(UpdateNameMessage value) updateName,
-    required TResult Function(UpdateLowerCase value) updateLowerCase,
-  }) {
-    return updateCount(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UpdateVersionMessage value)? updateVersion,
-    TResult? Function(UpdateCountMessage value)? updateCount,
-    TResult? Function(GenerateMessage value)? generate,
-    TResult? Function(SetIdsMessage value)? setIds,
-    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult? Function(UpdateNameMessage value)? updateName,
-    TResult? Function(UpdateLowerCase value)? updateLowerCase,
-  }) {
-    return updateCount?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UpdateVersionMessage value)? updateVersion,
-    TResult Function(UpdateCountMessage value)? updateCount,
-    TResult Function(GenerateMessage value)? generate,
-    TResult Function(SetIdsMessage value)? setIds,
-    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult Function(UpdateNameMessage value)? updateName,
-    TResult Function(UpdateLowerCase value)? updateLowerCase,
-    required TResult orElse(),
-  }) {
-    if (updateCount != null) {
-      return updateCount(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateVersionMessage&&(identical(other.version, version) || other.version == version));
 }
 
-abstract class UpdateCountMessage implements UuidMessage {
-  const factory UpdateCountMessage(final int count) = _$UpdateCountMessageImpl;
 
-  int get count;
+@override
+int get hashCode => Object.hash(runtimeType,version);
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateCountMessageImplCopyWith<_$UpdateCountMessageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'UuidMessage.updateVersion(version: $version)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$GenerateMessageImplCopyWith<$Res> {
-  factory _$$GenerateMessageImplCopyWith(
-    _$GenerateMessageImpl value,
-    $Res Function(_$GenerateMessageImpl) then,
-  ) = __$$GenerateMessageImplCopyWithImpl<$Res>;
+abstract mixin class $UpdateVersionMessageCopyWith<$Res> implements $UuidMessageCopyWith<$Res> {
+  factory $UpdateVersionMessageCopyWith(UpdateVersionMessage value, $Res Function(UpdateVersionMessage) _then) = _$UpdateVersionMessageCopyWithImpl;
+@useResult
+$Res call({
+ UuidVersion version
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpdateVersionMessageCopyWithImpl<$Res>
+    implements $UpdateVersionMessageCopyWith<$Res> {
+  _$UpdateVersionMessageCopyWithImpl(this._self, this._then);
+
+  final UpdateVersionMessage _self;
+  final $Res Function(UpdateVersionMessage) _then;
+
+/// Create a copy of UuidMessage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? version = null,}) {
+  return _then(UpdateVersionMessage(
+null == version ? _self.version : version // ignore: cast_nullable_to_non_nullable
+as UuidVersion,
+  ));
 }
 
-/// @nodoc
-class __$$GenerateMessageImplCopyWithImpl<$Res>
-    extends _$UuidMessageCopyWithImpl<$Res, _$GenerateMessageImpl>
-    implements _$$GenerateMessageImplCopyWith<$Res> {
-  __$$GenerateMessageImplCopyWithImpl(
-    _$GenerateMessageImpl _value,
-    $Res Function(_$GenerateMessageImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$GenerateMessageImpl implements GenerateMessage {
-  const _$GenerateMessageImpl();
 
-  @override
-  String toString() {
-    return 'UuidMessage.generate()';
-  }
+class UpdateCountMessage implements UuidMessage {
+  const UpdateCountMessage(this.count);
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GenerateMessageImpl);
-  }
+ final  int count;
 
-  @override
-  int get hashCode => runtimeType.hashCode;
+/// Create a copy of UuidMessage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateCountMessageCopyWith<UpdateCountMessage> get copyWith => _$UpdateCountMessageCopyWithImpl<UpdateCountMessage>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(UuidVersion version) updateVersion,
-    required TResult Function(int count) updateCount,
-    required TResult Function() generate,
-    required TResult Function(List<String> ids) setIds,
-    required TResult Function(String namespace) updateNamespace,
-    required TResult Function(String name) updateName,
-    required TResult Function(bool isLowerCase) updateLowerCase,
-  }) {
-    return generate();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UuidVersion version)? updateVersion,
-    TResult? Function(int count)? updateCount,
-    TResult? Function()? generate,
-    TResult? Function(List<String> ids)? setIds,
-    TResult? Function(String namespace)? updateNamespace,
-    TResult? Function(String name)? updateName,
-    TResult? Function(bool isLowerCase)? updateLowerCase,
-  }) {
-    return generate?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UuidVersion version)? updateVersion,
-    TResult Function(int count)? updateCount,
-    TResult Function()? generate,
-    TResult Function(List<String> ids)? setIds,
-    TResult Function(String namespace)? updateNamespace,
-    TResult Function(String name)? updateName,
-    TResult Function(bool isLowerCase)? updateLowerCase,
-    required TResult orElse(),
-  }) {
-    if (generate != null) {
-      return generate();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UpdateVersionMessage value) updateVersion,
-    required TResult Function(UpdateCountMessage value) updateCount,
-    required TResult Function(GenerateMessage value) generate,
-    required TResult Function(SetIdsMessage value) setIds,
-    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
-    required TResult Function(UpdateNameMessage value) updateName,
-    required TResult Function(UpdateLowerCase value) updateLowerCase,
-  }) {
-    return generate(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UpdateVersionMessage value)? updateVersion,
-    TResult? Function(UpdateCountMessage value)? updateCount,
-    TResult? Function(GenerateMessage value)? generate,
-    TResult? Function(SetIdsMessage value)? setIds,
-    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult? Function(UpdateNameMessage value)? updateName,
-    TResult? Function(UpdateLowerCase value)? updateLowerCase,
-  }) {
-    return generate?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UpdateVersionMessage value)? updateVersion,
-    TResult Function(UpdateCountMessage value)? updateCount,
-    TResult Function(GenerateMessage value)? generate,
-    TResult Function(SetIdsMessage value)? setIds,
-    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult Function(UpdateNameMessage value)? updateName,
-    TResult Function(UpdateLowerCase value)? updateLowerCase,
-    required TResult orElse(),
-  }) {
-    if (generate != null) {
-      return generate(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateCountMessage&&(identical(other.count, count) || other.count == count));
 }
 
-abstract class GenerateMessage implements UuidMessage {
-  const factory GenerateMessage() = _$GenerateMessageImpl;
+
+@override
+int get hashCode => Object.hash(runtimeType,count);
+
+@override
+String toString() {
+  return 'UuidMessage.updateCount(count: $count)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$SetIdsMessageImplCopyWith<$Res> {
-  factory _$$SetIdsMessageImplCopyWith(
-    _$SetIdsMessageImpl value,
-    $Res Function(_$SetIdsMessageImpl) then,
-  ) = __$$SetIdsMessageImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<String> ids});
+abstract mixin class $UpdateCountMessageCopyWith<$Res> implements $UuidMessageCopyWith<$Res> {
+  factory $UpdateCountMessageCopyWith(UpdateCountMessage value, $Res Function(UpdateCountMessage) _then) = _$UpdateCountMessageCopyWithImpl;
+@useResult
+$Res call({
+ int count
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpdateCountMessageCopyWithImpl<$Res>
+    implements $UpdateCountMessageCopyWith<$Res> {
+  _$UpdateCountMessageCopyWithImpl(this._self, this._then);
+
+  final UpdateCountMessage _self;
+  final $Res Function(UpdateCountMessage) _then;
+
+/// Create a copy of UuidMessage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? count = null,}) {
+  return _then(UpdateCountMessage(
+null == count ? _self.count : count // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-class __$$SetIdsMessageImplCopyWithImpl<$Res>
-    extends _$UuidMessageCopyWithImpl<$Res, _$SetIdsMessageImpl>
-    implements _$$SetIdsMessageImplCopyWith<$Res> {
-  __$$SetIdsMessageImplCopyWithImpl(
-    _$SetIdsMessageImpl _value,
-    $Res Function(_$SetIdsMessageImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? ids = null}) {
-    return _then(
-      _$SetIdsMessageImpl(
-        null == ids
-            ? _value._ids
-            : ids // ignore: cast_nullable_to_non_nullable
-                  as List<String>,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$SetIdsMessageImpl implements SetIdsMessage {
-  const _$SetIdsMessageImpl(final List<String> ids) : _ids = ids;
 
-  final List<String> _ids;
-  @override
-  List<String> get ids {
-    if (_ids is EqualUnmodifiableListView) return _ids;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_ids);
-  }
+class GenerateMessage implements UuidMessage {
+  const GenerateMessage();
+  
 
-  @override
-  String toString() {
-    return 'UuidMessage.setIds(ids: $ids)';
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SetIdsMessageImpl &&
-            const DeepCollectionEquality().equals(other._ids, _ids));
-  }
 
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_ids));
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SetIdsMessageImplCopyWith<_$SetIdsMessageImpl> get copyWith =>
-      __$$SetIdsMessageImplCopyWithImpl<_$SetIdsMessageImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(UuidVersion version) updateVersion,
-    required TResult Function(int count) updateCount,
-    required TResult Function() generate,
-    required TResult Function(List<String> ids) setIds,
-    required TResult Function(String namespace) updateNamespace,
-    required TResult Function(String name) updateName,
-    required TResult Function(bool isLowerCase) updateLowerCase,
-  }) {
-    return setIds(ids);
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UuidVersion version)? updateVersion,
-    TResult? Function(int count)? updateCount,
-    TResult? Function()? generate,
-    TResult? Function(List<String> ids)? setIds,
-    TResult? Function(String namespace)? updateNamespace,
-    TResult? Function(String name)? updateName,
-    TResult? Function(bool isLowerCase)? updateLowerCase,
-  }) {
-    return setIds?.call(ids);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UuidVersion version)? updateVersion,
-    TResult Function(int count)? updateCount,
-    TResult Function()? generate,
-    TResult Function(List<String> ids)? setIds,
-    TResult Function(String namespace)? updateNamespace,
-    TResult Function(String name)? updateName,
-    TResult Function(bool isLowerCase)? updateLowerCase,
-    required TResult orElse(),
-  }) {
-    if (setIds != null) {
-      return setIds(ids);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UpdateVersionMessage value) updateVersion,
-    required TResult Function(UpdateCountMessage value) updateCount,
-    required TResult Function(GenerateMessage value) generate,
-    required TResult Function(SetIdsMessage value) setIds,
-    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
-    required TResult Function(UpdateNameMessage value) updateName,
-    required TResult Function(UpdateLowerCase value) updateLowerCase,
-  }) {
-    return setIds(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UpdateVersionMessage value)? updateVersion,
-    TResult? Function(UpdateCountMessage value)? updateCount,
-    TResult? Function(GenerateMessage value)? generate,
-    TResult? Function(SetIdsMessage value)? setIds,
-    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult? Function(UpdateNameMessage value)? updateName,
-    TResult? Function(UpdateLowerCase value)? updateLowerCase,
-  }) {
-    return setIds?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UpdateVersionMessage value)? updateVersion,
-    TResult Function(UpdateCountMessage value)? updateCount,
-    TResult Function(GenerateMessage value)? generate,
-    TResult Function(SetIdsMessage value)? setIds,
-    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult Function(UpdateNameMessage value)? updateName,
-    TResult Function(UpdateLowerCase value)? updateLowerCase,
-    required TResult orElse(),
-  }) {
-    if (setIds != null) {
-      return setIds(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is GenerateMessage);
 }
 
-abstract class SetIdsMessage implements UuidMessage {
-  const factory SetIdsMessage(final List<String> ids) = _$SetIdsMessageImpl;
 
-  List<String> get ids;
+@override
+int get hashCode => runtimeType.hashCode;
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SetIdsMessageImplCopyWith<_$SetIdsMessageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'UuidMessage.generate()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class SetIdsMessage implements UuidMessage {
+  const SetIdsMessage(final  List<String> ids): _ids = ids;
+  
+
+ final  List<String> _ids;
+ List<String> get ids {
+  if (_ids is EqualUnmodifiableListView) return _ids;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_ids);
+}
+
+
+/// Create a copy of UuidMessage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SetIdsMessageCopyWith<SetIdsMessage> get copyWith => _$SetIdsMessageCopyWithImpl<SetIdsMessage>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SetIdsMessage&&const DeepCollectionEquality().equals(other._ids, _ids));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_ids));
+
+@override
+String toString() {
+  return 'UuidMessage.setIds(ids: $ids)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$UpdateNamespaceMessageImplCopyWith<$Res> {
-  factory _$$UpdateNamespaceMessageImplCopyWith(
-    _$UpdateNamespaceMessageImpl value,
-    $Res Function(_$UpdateNamespaceMessageImpl) then,
-  ) = __$$UpdateNamespaceMessageImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String namespace});
+abstract mixin class $SetIdsMessageCopyWith<$Res> implements $UuidMessageCopyWith<$Res> {
+  factory $SetIdsMessageCopyWith(SetIdsMessage value, $Res Function(SetIdsMessage) _then) = _$SetIdsMessageCopyWithImpl;
+@useResult
+$Res call({
+ List<String> ids
+});
+
+
+
+
+}
+/// @nodoc
+class _$SetIdsMessageCopyWithImpl<$Res>
+    implements $SetIdsMessageCopyWith<$Res> {
+  _$SetIdsMessageCopyWithImpl(this._self, this._then);
+
+  final SetIdsMessage _self;
+  final $Res Function(SetIdsMessage) _then;
+
+/// Create a copy of UuidMessage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? ids = null,}) {
+  return _then(SetIdsMessage(
+null == ids ? _self._ids : ids // ignore: cast_nullable_to_non_nullable
+as List<String>,
+  ));
 }
 
-/// @nodoc
-class __$$UpdateNamespaceMessageImplCopyWithImpl<$Res>
-    extends _$UuidMessageCopyWithImpl<$Res, _$UpdateNamespaceMessageImpl>
-    implements _$$UpdateNamespaceMessageImplCopyWith<$Res> {
-  __$$UpdateNamespaceMessageImplCopyWithImpl(
-    _$UpdateNamespaceMessageImpl _value,
-    $Res Function(_$UpdateNamespaceMessageImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? namespace = null}) {
-    return _then(
-      _$UpdateNamespaceMessageImpl(
-        null == namespace
-            ? _value.namespace
-            : namespace // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$UpdateNamespaceMessageImpl implements UpdateNamespaceMessage {
-  const _$UpdateNamespaceMessageImpl(this.namespace);
 
-  @override
-  final String namespace;
+class UpdateNamespaceMessage implements UuidMessage {
+  const UpdateNamespaceMessage(this.namespace);
+  
 
-  @override
-  String toString() {
-    return 'UuidMessage.updateNamespace(namespace: $namespace)';
-  }
+ final  String namespace;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateNamespaceMessageImpl &&
-            (identical(other.namespace, namespace) ||
-                other.namespace == namespace));
-  }
+/// Create a copy of UuidMessage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateNamespaceMessageCopyWith<UpdateNamespaceMessage> get copyWith => _$UpdateNamespaceMessageCopyWithImpl<UpdateNamespaceMessage>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, namespace);
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateNamespaceMessageImplCopyWith<_$UpdateNamespaceMessageImpl>
-  get copyWith =>
-      __$$UpdateNamespaceMessageImplCopyWithImpl<_$UpdateNamespaceMessageImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(UuidVersion version) updateVersion,
-    required TResult Function(int count) updateCount,
-    required TResult Function() generate,
-    required TResult Function(List<String> ids) setIds,
-    required TResult Function(String namespace) updateNamespace,
-    required TResult Function(String name) updateName,
-    required TResult Function(bool isLowerCase) updateLowerCase,
-  }) {
-    return updateNamespace(namespace);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UuidVersion version)? updateVersion,
-    TResult? Function(int count)? updateCount,
-    TResult? Function()? generate,
-    TResult? Function(List<String> ids)? setIds,
-    TResult? Function(String namespace)? updateNamespace,
-    TResult? Function(String name)? updateName,
-    TResult? Function(bool isLowerCase)? updateLowerCase,
-  }) {
-    return updateNamespace?.call(namespace);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UuidVersion version)? updateVersion,
-    TResult Function(int count)? updateCount,
-    TResult Function()? generate,
-    TResult Function(List<String> ids)? setIds,
-    TResult Function(String namespace)? updateNamespace,
-    TResult Function(String name)? updateName,
-    TResult Function(bool isLowerCase)? updateLowerCase,
-    required TResult orElse(),
-  }) {
-    if (updateNamespace != null) {
-      return updateNamespace(namespace);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UpdateVersionMessage value) updateVersion,
-    required TResult Function(UpdateCountMessage value) updateCount,
-    required TResult Function(GenerateMessage value) generate,
-    required TResult Function(SetIdsMessage value) setIds,
-    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
-    required TResult Function(UpdateNameMessage value) updateName,
-    required TResult Function(UpdateLowerCase value) updateLowerCase,
-  }) {
-    return updateNamespace(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UpdateVersionMessage value)? updateVersion,
-    TResult? Function(UpdateCountMessage value)? updateCount,
-    TResult? Function(GenerateMessage value)? generate,
-    TResult? Function(SetIdsMessage value)? setIds,
-    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult? Function(UpdateNameMessage value)? updateName,
-    TResult? Function(UpdateLowerCase value)? updateLowerCase,
-  }) {
-    return updateNamespace?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UpdateVersionMessage value)? updateVersion,
-    TResult Function(UpdateCountMessage value)? updateCount,
-    TResult Function(GenerateMessage value)? generate,
-    TResult Function(SetIdsMessage value)? setIds,
-    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult Function(UpdateNameMessage value)? updateName,
-    TResult Function(UpdateLowerCase value)? updateLowerCase,
-    required TResult orElse(),
-  }) {
-    if (updateNamespace != null) {
-      return updateNamespace(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateNamespaceMessage&&(identical(other.namespace, namespace) || other.namespace == namespace));
 }
 
-abstract class UpdateNamespaceMessage implements UuidMessage {
-  const factory UpdateNamespaceMessage(final String namespace) =
-      _$UpdateNamespaceMessageImpl;
 
-  String get namespace;
+@override
+int get hashCode => Object.hash(runtimeType,namespace);
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateNamespaceMessageImplCopyWith<_$UpdateNamespaceMessageImpl>
-  get copyWith => throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'UuidMessage.updateNamespace(namespace: $namespace)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$UpdateNameMessageImplCopyWith<$Res> {
-  factory _$$UpdateNameMessageImplCopyWith(
-    _$UpdateNameMessageImpl value,
-    $Res Function(_$UpdateNameMessageImpl) then,
-  ) = __$$UpdateNameMessageImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String name});
+abstract mixin class $UpdateNamespaceMessageCopyWith<$Res> implements $UuidMessageCopyWith<$Res> {
+  factory $UpdateNamespaceMessageCopyWith(UpdateNamespaceMessage value, $Res Function(UpdateNamespaceMessage) _then) = _$UpdateNamespaceMessageCopyWithImpl;
+@useResult
+$Res call({
+ String namespace
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpdateNamespaceMessageCopyWithImpl<$Res>
+    implements $UpdateNamespaceMessageCopyWith<$Res> {
+  _$UpdateNamespaceMessageCopyWithImpl(this._self, this._then);
+
+  final UpdateNamespaceMessage _self;
+  final $Res Function(UpdateNamespaceMessage) _then;
+
+/// Create a copy of UuidMessage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? namespace = null,}) {
+  return _then(UpdateNamespaceMessage(
+null == namespace ? _self.namespace : namespace // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$UpdateNameMessageImplCopyWithImpl<$Res>
-    extends _$UuidMessageCopyWithImpl<$Res, _$UpdateNameMessageImpl>
-    implements _$$UpdateNameMessageImplCopyWith<$Res> {
-  __$$UpdateNameMessageImplCopyWithImpl(
-    _$UpdateNameMessageImpl _value,
-    $Res Function(_$UpdateNameMessageImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? name = null}) {
-    return _then(
-      _$UpdateNameMessageImpl(
-        null == name
-            ? _value.name
-            : name // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$UpdateNameMessageImpl implements UpdateNameMessage {
-  const _$UpdateNameMessageImpl(this.name);
 
-  @override
-  final String name;
+class UpdateNameMessage implements UuidMessage {
+  const UpdateNameMessage(this.name);
+  
 
-  @override
-  String toString() {
-    return 'UuidMessage.updateName(name: $name)';
-  }
+ final  String name;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateNameMessageImpl &&
-            (identical(other.name, name) || other.name == name));
-  }
+/// Create a copy of UuidMessage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateNameMessageCopyWith<UpdateNameMessage> get copyWith => _$UpdateNameMessageCopyWithImpl<UpdateNameMessage>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, name);
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateNameMessageImplCopyWith<_$UpdateNameMessageImpl> get copyWith =>
-      __$$UpdateNameMessageImplCopyWithImpl<_$UpdateNameMessageImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(UuidVersion version) updateVersion,
-    required TResult Function(int count) updateCount,
-    required TResult Function() generate,
-    required TResult Function(List<String> ids) setIds,
-    required TResult Function(String namespace) updateNamespace,
-    required TResult Function(String name) updateName,
-    required TResult Function(bool isLowerCase) updateLowerCase,
-  }) {
-    return updateName(name);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UuidVersion version)? updateVersion,
-    TResult? Function(int count)? updateCount,
-    TResult? Function()? generate,
-    TResult? Function(List<String> ids)? setIds,
-    TResult? Function(String namespace)? updateNamespace,
-    TResult? Function(String name)? updateName,
-    TResult? Function(bool isLowerCase)? updateLowerCase,
-  }) {
-    return updateName?.call(name);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UuidVersion version)? updateVersion,
-    TResult Function(int count)? updateCount,
-    TResult Function()? generate,
-    TResult Function(List<String> ids)? setIds,
-    TResult Function(String namespace)? updateNamespace,
-    TResult Function(String name)? updateName,
-    TResult Function(bool isLowerCase)? updateLowerCase,
-    required TResult orElse(),
-  }) {
-    if (updateName != null) {
-      return updateName(name);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UpdateVersionMessage value) updateVersion,
-    required TResult Function(UpdateCountMessage value) updateCount,
-    required TResult Function(GenerateMessage value) generate,
-    required TResult Function(SetIdsMessage value) setIds,
-    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
-    required TResult Function(UpdateNameMessage value) updateName,
-    required TResult Function(UpdateLowerCase value) updateLowerCase,
-  }) {
-    return updateName(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UpdateVersionMessage value)? updateVersion,
-    TResult? Function(UpdateCountMessage value)? updateCount,
-    TResult? Function(GenerateMessage value)? generate,
-    TResult? Function(SetIdsMessage value)? setIds,
-    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult? Function(UpdateNameMessage value)? updateName,
-    TResult? Function(UpdateLowerCase value)? updateLowerCase,
-  }) {
-    return updateName?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UpdateVersionMessage value)? updateVersion,
-    TResult Function(UpdateCountMessage value)? updateCount,
-    TResult Function(GenerateMessage value)? generate,
-    TResult Function(SetIdsMessage value)? setIds,
-    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult Function(UpdateNameMessage value)? updateName,
-    TResult Function(UpdateLowerCase value)? updateLowerCase,
-    required TResult orElse(),
-  }) {
-    if (updateName != null) {
-      return updateName(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateNameMessage&&(identical(other.name, name) || other.name == name));
 }
 
-abstract class UpdateNameMessage implements UuidMessage {
-  const factory UpdateNameMessage(final String name) = _$UpdateNameMessageImpl;
 
-  String get name;
+@override
+int get hashCode => Object.hash(runtimeType,name);
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateNameMessageImplCopyWith<_$UpdateNameMessageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'UuidMessage.updateName(name: $name)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$UpdateLowerCaseImplCopyWith<$Res> {
-  factory _$$UpdateLowerCaseImplCopyWith(
-    _$UpdateLowerCaseImpl value,
-    $Res Function(_$UpdateLowerCaseImpl) then,
-  ) = __$$UpdateLowerCaseImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({bool isLowerCase});
+abstract mixin class $UpdateNameMessageCopyWith<$Res> implements $UuidMessageCopyWith<$Res> {
+  factory $UpdateNameMessageCopyWith(UpdateNameMessage value, $Res Function(UpdateNameMessage) _then) = _$UpdateNameMessageCopyWithImpl;
+@useResult
+$Res call({
+ String name
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpdateNameMessageCopyWithImpl<$Res>
+    implements $UpdateNameMessageCopyWith<$Res> {
+  _$UpdateNameMessageCopyWithImpl(this._self, this._then);
+
+  final UpdateNameMessage _self;
+  final $Res Function(UpdateNameMessage) _then;
+
+/// Create a copy of UuidMessage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? name = null,}) {
+  return _then(UpdateNameMessage(
+null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-class __$$UpdateLowerCaseImplCopyWithImpl<$Res>
-    extends _$UuidMessageCopyWithImpl<$Res, _$UpdateLowerCaseImpl>
-    implements _$$UpdateLowerCaseImplCopyWith<$Res> {
-  __$$UpdateLowerCaseImplCopyWithImpl(
-    _$UpdateLowerCaseImpl _value,
-    $Res Function(_$UpdateLowerCaseImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? isLowerCase = null}) {
-    return _then(
-      _$UpdateLowerCaseImpl(
-        null == isLowerCase
-            ? _value.isLowerCase
-            : isLowerCase // ignore: cast_nullable_to_non_nullable
-                  as bool,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$UpdateLowerCaseImpl implements UpdateLowerCase {
-  const _$UpdateLowerCaseImpl(this.isLowerCase);
 
-  @override
-  final bool isLowerCase;
+class UpdateLowerCase implements UuidMessage {
+  const UpdateLowerCase(this.isLowerCase);
+  
 
-  @override
-  String toString() {
-    return 'UuidMessage.updateLowerCase(isLowerCase: $isLowerCase)';
-  }
+ final  bool isLowerCase;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UpdateLowerCaseImpl &&
-            (identical(other.isLowerCase, isLowerCase) ||
-                other.isLowerCase == isLowerCase));
-  }
+/// Create a copy of UuidMessage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$UpdateLowerCaseCopyWith<UpdateLowerCase> get copyWith => _$UpdateLowerCaseCopyWithImpl<UpdateLowerCase>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, isLowerCase);
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$UpdateLowerCaseImplCopyWith<_$UpdateLowerCaseImpl> get copyWith =>
-      __$$UpdateLowerCaseImplCopyWithImpl<_$UpdateLowerCaseImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(UuidVersion version) updateVersion,
-    required TResult Function(int count) updateCount,
-    required TResult Function() generate,
-    required TResult Function(List<String> ids) setIds,
-    required TResult Function(String namespace) updateNamespace,
-    required TResult Function(String name) updateName,
-    required TResult Function(bool isLowerCase) updateLowerCase,
-  }) {
-    return updateLowerCase(isLowerCase);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(UuidVersion version)? updateVersion,
-    TResult? Function(int count)? updateCount,
-    TResult? Function()? generate,
-    TResult? Function(List<String> ids)? setIds,
-    TResult? Function(String namespace)? updateNamespace,
-    TResult? Function(String name)? updateName,
-    TResult? Function(bool isLowerCase)? updateLowerCase,
-  }) {
-    return updateLowerCase?.call(isLowerCase);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(UuidVersion version)? updateVersion,
-    TResult Function(int count)? updateCount,
-    TResult Function()? generate,
-    TResult Function(List<String> ids)? setIds,
-    TResult Function(String namespace)? updateNamespace,
-    TResult Function(String name)? updateName,
-    TResult Function(bool isLowerCase)? updateLowerCase,
-    required TResult orElse(),
-  }) {
-    if (updateLowerCase != null) {
-      return updateLowerCase(isLowerCase);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(UpdateVersionMessage value) updateVersion,
-    required TResult Function(UpdateCountMessage value) updateCount,
-    required TResult Function(GenerateMessage value) generate,
-    required TResult Function(SetIdsMessage value) setIds,
-    required TResult Function(UpdateNamespaceMessage value) updateNamespace,
-    required TResult Function(UpdateNameMessage value) updateName,
-    required TResult Function(UpdateLowerCase value) updateLowerCase,
-  }) {
-    return updateLowerCase(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(UpdateVersionMessage value)? updateVersion,
-    TResult? Function(UpdateCountMessage value)? updateCount,
-    TResult? Function(GenerateMessage value)? generate,
-    TResult? Function(SetIdsMessage value)? setIds,
-    TResult? Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult? Function(UpdateNameMessage value)? updateName,
-    TResult? Function(UpdateLowerCase value)? updateLowerCase,
-  }) {
-    return updateLowerCase?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(UpdateVersionMessage value)? updateVersion,
-    TResult Function(UpdateCountMessage value)? updateCount,
-    TResult Function(GenerateMessage value)? generate,
-    TResult Function(SetIdsMessage value)? setIds,
-    TResult Function(UpdateNamespaceMessage value)? updateNamespace,
-    TResult Function(UpdateNameMessage value)? updateName,
-    TResult Function(UpdateLowerCase value)? updateLowerCase,
-    required TResult orElse(),
-  }) {
-    if (updateLowerCase != null) {
-      return updateLowerCase(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is UpdateLowerCase&&(identical(other.isLowerCase, isLowerCase) || other.isLowerCase == isLowerCase));
 }
 
-abstract class UpdateLowerCase implements UuidMessage {
-  const factory UpdateLowerCase(final bool isLowerCase) = _$UpdateLowerCaseImpl;
 
-  bool get isLowerCase;
+@override
+int get hashCode => Object.hash(runtimeType,isLowerCase);
 
-  /// Create a copy of UuidMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UpdateLowerCaseImplCopyWith<_$UpdateLowerCaseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'UuidMessage.updateLowerCase(isLowerCase: $isLowerCase)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class $UpdateLowerCaseCopyWith<$Res> implements $UuidMessageCopyWith<$Res> {
+  factory $UpdateLowerCaseCopyWith(UpdateLowerCase value, $Res Function(UpdateLowerCase) _then) = _$UpdateLowerCaseCopyWithImpl;
+@useResult
+$Res call({
+ bool isLowerCase
+});
+
+
+
+
+}
+/// @nodoc
+class _$UpdateLowerCaseCopyWithImpl<$Res>
+    implements $UpdateLowerCaseCopyWith<$Res> {
+  _$UpdateLowerCaseCopyWithImpl(this._self, this._then);
+
+  final UpdateLowerCase _self;
+  final $Res Function(UpdateLowerCase) _then;
+
+/// Create a copy of UuidMessage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? isLowerCase = null,}) {
+  return _then(UpdateLowerCase(
+null == isLowerCase ? _self.isLowerCase : isLowerCase // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
+// dart format on

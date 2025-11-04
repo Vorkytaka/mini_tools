@@ -45,7 +45,7 @@ sealed class ExportEffect with _$ExportEffect implements QrCodeEffect {
 
 @freezed
 @immutable
-class SaveStateEffect with _$SaveStateEffect implements QrCodeEffect {
+abstract class SaveStateEffect with _$SaveStateEffect implements QrCodeEffect {
   const factory SaveStateEffect({required QrCodeState state}) =
       _SaveStateEffect;
 }

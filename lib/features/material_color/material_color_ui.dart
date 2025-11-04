@@ -1,4 +1,11 @@
-part of 'material_colors_tool.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:macos_ui/macos_ui.dart';
+import 'package:responsive_grid/responsive_grid.dart';
+
+import '../../core/presentation/copy_overlay.dart';
+import '../../i18n/strings.g.dart';
+import 'material_color_domain.dart';
 
 const double _itemWidth = 220;
 const double _spacing = 10;
@@ -31,7 +38,7 @@ class _Body extends StatelessWidget {
     return ResponsiveGridList(
       desiredItemWidth: _itemWidth + _spacing,
       minSpacing: _spacing,
-      children: _materialColorItems
+      children: materialColorItems
           .map((colors) => _ColorCollectionWidget(collection: colors))
           .toList(growable: false),
     );
@@ -39,7 +46,7 @@ class _Body extends StatelessWidget {
 }
 
 class _ColorCollectionWidget extends StatelessWidget {
-  final _ColorCollection collection;
+  final ColorCollection collection;
 
   const _ColorCollectionWidget({required this.collection});
 
@@ -61,7 +68,7 @@ class _ColorCollectionWidget extends StatelessWidget {
 
 class _ColorItemWidget extends StatelessWidget {
   final String? pretitle;
-  final _ColorItem item;
+  final ColorItem item;
 
   const _ColorItemWidget({required this.pretitle, required this.item});
 

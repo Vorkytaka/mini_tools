@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,1479 +9,1458 @@ part of 'sqlite_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$SqliteState {
-  DatabaseConnection get connection => throw _privateConstructorUsedError;
-  List<Result> get results => throw _privateConstructorUsedError;
-  List<TableInfo> get tables => throw _privateConstructorUsedError;
 
-  /// Create a copy of SqliteState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SqliteStateCopyWith<SqliteState> get copyWith =>
-      throw _privateConstructorUsedError;
+ DatabaseConnection get connection; List<Result> get results; List<TableInfo> get tables;
+/// Create a copy of SqliteState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SqliteStateCopyWith<SqliteState> get copyWith => _$SqliteStateCopyWithImpl<SqliteState>(this as SqliteState, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SqliteState&&(identical(other.connection, connection) || other.connection == connection)&&const DeepCollectionEquality().equals(other.results, results)&&const DeepCollectionEquality().equals(other.tables, tables));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,connection,const DeepCollectionEquality().hash(results),const DeepCollectionEquality().hash(tables));
+
+@override
+String toString() {
+  return 'SqliteState(connection: $connection, results: $results, tables: $tables)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SqliteStateCopyWith<$Res> {
-  factory $SqliteStateCopyWith(
-    SqliteState value,
-    $Res Function(SqliteState) then,
-  ) = _$SqliteStateCopyWithImpl<$Res, SqliteState>;
-  @useResult
-  $Res call({
-    DatabaseConnection connection,
-    List<Result> results,
-    List<TableInfo> tables,
-  });
+abstract mixin class $SqliteStateCopyWith<$Res>  {
+  factory $SqliteStateCopyWith(SqliteState value, $Res Function(SqliteState) _then) = _$SqliteStateCopyWithImpl;
+@useResult
+$Res call({
+ DatabaseConnection connection, List<Result> results, List<TableInfo> tables
+});
 
-  $DatabaseConnectionCopyWith<$Res> get connection;
+
+$DatabaseConnectionCopyWith<$Res> get connection;
+
 }
-
 /// @nodoc
-class _$SqliteStateCopyWithImpl<$Res, $Val extends SqliteState>
+class _$SqliteStateCopyWithImpl<$Res>
     implements $SqliteStateCopyWith<$Res> {
-  _$SqliteStateCopyWithImpl(this._value, this._then);
+  _$SqliteStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SqliteState _self;
+  final $Res Function(SqliteState) _then;
 
-  /// Create a copy of SqliteState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? connection = null,
-    Object? results = null,
-    Object? tables = null,
-  }) {
-    return _then(
-      _value.copyWith(
-            connection: null == connection
-                ? _value.connection
-                : connection // ignore: cast_nullable_to_non_nullable
-                      as DatabaseConnection,
-            results: null == results
-                ? _value.results
-                : results // ignore: cast_nullable_to_non_nullable
-                      as List<Result>,
-            tables: null == tables
-                ? _value.tables
-                : tables // ignore: cast_nullable_to_non_nullable
-                      as List<TableInfo>,
-          )
-          as $Val,
-    );
-  }
-
-  /// Create a copy of SqliteState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $DatabaseConnectionCopyWith<$Res> get connection {
-    return $DatabaseConnectionCopyWith<$Res>(_value.connection, (value) {
-      return _then(_value.copyWith(connection: value) as $Val);
-    });
-  }
+/// Create a copy of SqliteState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? connection = null,Object? results = null,Object? tables = null,}) {
+  return _then(_self.copyWith(
+connection: null == connection ? _self.connection : connection // ignore: cast_nullable_to_non_nullable
+as DatabaseConnection,results: null == results ? _self.results : results // ignore: cast_nullable_to_non_nullable
+as List<Result>,tables: null == tables ? _self.tables : tables // ignore: cast_nullable_to_non_nullable
+as List<TableInfo>,
+  ));
 }
-
-/// @nodoc
-abstract class _$$SqliteStateImplCopyWith<$Res>
-    implements $SqliteStateCopyWith<$Res> {
-  factory _$$SqliteStateImplCopyWith(
-    _$SqliteStateImpl value,
-    $Res Function(_$SqliteStateImpl) then,
-  ) = __$$SqliteStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    DatabaseConnection connection,
-    List<Result> results,
-    List<TableInfo> tables,
+/// Create a copy of SqliteState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$DatabaseConnectionCopyWith<$Res> get connection {
+  
+  return $DatabaseConnectionCopyWith<$Res>(_self.connection, (value) {
+    return _then(_self.copyWith(connection: value));
   });
+}
+}
 
-  @override
-  $DatabaseConnectionCopyWith<$Res> get connection;
+
+/// Adds pattern-matching-related methods to [SqliteState].
+extension SqliteStatePatterns on SqliteState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SqliteState value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SqliteState() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SqliteState value)  $default,){
+final _that = this;
+switch (_that) {
+case _SqliteState():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SqliteState value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SqliteState() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( DatabaseConnection connection,  List<Result> results,  List<TableInfo> tables)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SqliteState() when $default != null:
+return $default(_that.connection,_that.results,_that.tables);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( DatabaseConnection connection,  List<Result> results,  List<TableInfo> tables)  $default,) {final _that = this;
+switch (_that) {
+case _SqliteState():
+return $default(_that.connection,_that.results,_that.tables);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( DatabaseConnection connection,  List<Result> results,  List<TableInfo> tables)?  $default,) {final _that = this;
+switch (_that) {
+case _SqliteState() when $default != null:
+return $default(_that.connection,_that.results,_that.tables);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-class __$$SqliteStateImplCopyWithImpl<$Res>
-    extends _$SqliteStateCopyWithImpl<$Res, _$SqliteStateImpl>
-    implements _$$SqliteStateImplCopyWith<$Res> {
-  __$$SqliteStateImplCopyWithImpl(
-    _$SqliteStateImpl _value,
-    $Res Function(_$SqliteStateImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of SqliteState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? connection = null,
-    Object? results = null,
-    Object? tables = null,
-  }) {
-    return _then(
-      _$SqliteStateImpl(
-        connection: null == connection
-            ? _value.connection
-            : connection // ignore: cast_nullable_to_non_nullable
-                  as DatabaseConnection,
-        results: null == results
-            ? _value._results
-            : results // ignore: cast_nullable_to_non_nullable
-                  as List<Result>,
-        tables: null == tables
-            ? _value._tables
-            : tables // ignore: cast_nullable_to_non_nullable
-                  as List<TableInfo>,
-      ),
-    );
-  }
+
+class _SqliteState implements SqliteState {
+  const _SqliteState({required this.connection, required final  List<Result> results, required final  List<TableInfo> tables}): _results = results,_tables = tables;
+  
+
+@override final  DatabaseConnection connection;
+ final  List<Result> _results;
+@override List<Result> get results {
+  if (_results is EqualUnmodifiableListView) return _results;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_results);
+}
+
+ final  List<TableInfo> _tables;
+@override List<TableInfo> get tables {
+  if (_tables is EqualUnmodifiableListView) return _tables;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_tables);
+}
+
+
+/// Create a copy of SqliteState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SqliteStateCopyWith<_SqliteState> get copyWith => __$SqliteStateCopyWithImpl<_SqliteState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SqliteState&&(identical(other.connection, connection) || other.connection == connection)&&const DeepCollectionEquality().equals(other._results, _results)&&const DeepCollectionEquality().equals(other._tables, _tables));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,connection,const DeepCollectionEquality().hash(_results),const DeepCollectionEquality().hash(_tables));
+
+@override
+String toString() {
+  return 'SqliteState(connection: $connection, results: $results, tables: $tables)';
+}
+
+
 }
 
 /// @nodoc
+abstract mixin class _$SqliteStateCopyWith<$Res> implements $SqliteStateCopyWith<$Res> {
+  factory _$SqliteStateCopyWith(_SqliteState value, $Res Function(_SqliteState) _then) = __$SqliteStateCopyWithImpl;
+@override @useResult
+$Res call({
+ DatabaseConnection connection, List<Result> results, List<TableInfo> tables
+});
 
-class _$SqliteStateImpl implements _SqliteState {
-  const _$SqliteStateImpl({
-    required this.connection,
-    required final List<Result> results,
-    required final List<TableInfo> tables,
-  }) : _results = results,
-       _tables = tables;
 
-  @override
-  final DatabaseConnection connection;
-  final List<Result> _results;
-  @override
-  List<Result> get results {
-    if (_results is EqualUnmodifiableListView) return _results;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_results);
-  }
+@override $DatabaseConnectionCopyWith<$Res> get connection;
 
-  final List<TableInfo> _tables;
-  @override
-  List<TableInfo> get tables {
-    if (_tables is EqualUnmodifiableListView) return _tables;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tables);
-  }
+}
+/// @nodoc
+class __$SqliteStateCopyWithImpl<$Res>
+    implements _$SqliteStateCopyWith<$Res> {
+  __$SqliteStateCopyWithImpl(this._self, this._then);
 
-  @override
-  String toString() {
-    return 'SqliteState(connection: $connection, results: $results, tables: $tables)';
-  }
+  final _SqliteState _self;
+  final $Res Function(_SqliteState) _then;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SqliteStateImpl &&
-            (identical(other.connection, connection) ||
-                other.connection == connection) &&
-            const DeepCollectionEquality().equals(other._results, _results) &&
-            const DeepCollectionEquality().equals(other._tables, _tables));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    connection,
-    const DeepCollectionEquality().hash(_results),
-    const DeepCollectionEquality().hash(_tables),
-  );
-
-  /// Create a copy of SqliteState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SqliteStateImplCopyWith<_$SqliteStateImpl> get copyWith =>
-      __$$SqliteStateImplCopyWithImpl<_$SqliteStateImpl>(this, _$identity);
+/// Create a copy of SqliteState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? connection = null,Object? results = null,Object? tables = null,}) {
+  return _then(_SqliteState(
+connection: null == connection ? _self.connection : connection // ignore: cast_nullable_to_non_nullable
+as DatabaseConnection,results: null == results ? _self._results : results // ignore: cast_nullable_to_non_nullable
+as List<Result>,tables: null == tables ? _self._tables : tables // ignore: cast_nullable_to_non_nullable
+as List<TableInfo>,
+  ));
 }
 
-abstract class _SqliteState implements SqliteState {
-  const factory _SqliteState({
-    required final DatabaseConnection connection,
-    required final List<Result> results,
-    required final List<TableInfo> tables,
-  }) = _$SqliteStateImpl;
-
-  @override
-  DatabaseConnection get connection;
-  @override
-  List<Result> get results;
-  @override
-  List<TableInfo> get tables;
-
-  /// Create a copy of SqliteState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SqliteStateImplCopyWith<_$SqliteStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+/// Create a copy of SqliteState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$DatabaseConnectionCopyWith<$Res> get connection {
+  
+  return $DatabaseConnectionCopyWith<$Res>(_self.connection, (value) {
+    return _then(_self.copyWith(connection: value));
+  });
+}
 }
 
 /// @nodoc
 mixin _$DatabaseConnection {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() disconnect,
-    required TResult Function() inMemory,
-    required TResult Function(String folder, String name) file,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? disconnect,
-    TResult? Function()? inMemory,
-    TResult? Function(String folder, String name)? file,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? disconnect,
-    TResult Function()? inMemory,
-    TResult Function(String folder, String name)? file,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Disconnected value) disconnect,
-    required TResult Function(InMemoryConnection value) inMemory,
-    required TResult Function(FileConnection value) file,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Disconnected value)? disconnect,
-    TResult? Function(InMemoryConnection value)? inMemory,
-    TResult? Function(FileConnection value)? file,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Disconnected value)? disconnect,
-    TResult Function(InMemoryConnection value)? inMemory,
-    TResult Function(FileConnection value)? file,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DatabaseConnection);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'DatabaseConnection()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $DatabaseConnectionCopyWith<$Res> {
-  factory $DatabaseConnectionCopyWith(
-    DatabaseConnection value,
-    $Res Function(DatabaseConnection) then,
-  ) = _$DatabaseConnectionCopyWithImpl<$Res, DatabaseConnection>;
+class $DatabaseConnectionCopyWith<$Res>  {
+$DatabaseConnectionCopyWith(DatabaseConnection _, $Res Function(DatabaseConnection) __);
 }
 
-/// @nodoc
-class _$DatabaseConnectionCopyWithImpl<$Res, $Val extends DatabaseConnection>
-    implements $DatabaseConnectionCopyWith<$Res> {
-  _$DatabaseConnectionCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [DatabaseConnection].
+extension DatabaseConnectionPatterns on DatabaseConnection {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of DatabaseConnection
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( Disconnected value)?  disconnect,TResult Function( InMemoryConnection value)?  inMemory,TResult Function( FileConnection value)?  file,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case Disconnected() when disconnect != null:
+return disconnect(_that);case InMemoryConnection() when inMemory != null:
+return inMemory(_that);case FileConnection() when file != null:
+return file(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( Disconnected value)  disconnect,required TResult Function( InMemoryConnection value)  inMemory,required TResult Function( FileConnection value)  file,}){
+final _that = this;
+switch (_that) {
+case Disconnected():
+return disconnect(_that);case InMemoryConnection():
+return inMemory(_that);case FileConnection():
+return file(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( Disconnected value)?  disconnect,TResult? Function( InMemoryConnection value)?  inMemory,TResult? Function( FileConnection value)?  file,}){
+final _that = this;
+switch (_that) {
+case Disconnected() when disconnect != null:
+return disconnect(_that);case InMemoryConnection() when inMemory != null:
+return inMemory(_that);case FileConnection() when file != null:
+return file(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  disconnect,TResult Function()?  inMemory,TResult Function( String folder,  String name)?  file,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case Disconnected() when disconnect != null:
+return disconnect();case InMemoryConnection() when inMemory != null:
+return inMemory();case FileConnection() when file != null:
+return file(_that.folder,_that.name);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  disconnect,required TResult Function()  inMemory,required TResult Function( String folder,  String name)  file,}) {final _that = this;
+switch (_that) {
+case Disconnected():
+return disconnect();case InMemoryConnection():
+return inMemory();case FileConnection():
+return file(_that.folder,_that.name);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  disconnect,TResult? Function()?  inMemory,TResult? Function( String folder,  String name)?  file,}) {final _that = this;
+switch (_that) {
+case Disconnected() when disconnect != null:
+return disconnect();case InMemoryConnection() when inMemory != null:
+return inMemory();case FileConnection() when file != null:
+return file(_that.folder,_that.name);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$DisconnectedImplCopyWith<$Res> {
-  factory _$$DisconnectedImplCopyWith(
-    _$DisconnectedImpl value,
-    $Res Function(_$DisconnectedImpl) then,
-  ) = __$$DisconnectedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$DisconnectedImplCopyWithImpl<$Res>
-    extends _$DatabaseConnectionCopyWithImpl<$Res, _$DisconnectedImpl>
-    implements _$$DisconnectedImplCopyWith<$Res> {
-  __$$DisconnectedImplCopyWithImpl(
-    _$DisconnectedImpl _value,
-    $Res Function(_$DisconnectedImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of DatabaseConnection
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$DisconnectedImpl implements Disconnected {
-  const _$DisconnectedImpl();
-
-  @override
-  String toString() {
-    return 'DatabaseConnection.disconnect()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$DisconnectedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() disconnect,
-    required TResult Function() inMemory,
-    required TResult Function(String folder, String name) file,
-  }) {
-    return disconnect();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? disconnect,
-    TResult? Function()? inMemory,
-    TResult? Function(String folder, String name)? file,
-  }) {
-    return disconnect?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? disconnect,
-    TResult Function()? inMemory,
-    TResult Function(String folder, String name)? file,
-    required TResult orElse(),
-  }) {
-    if (disconnect != null) {
-      return disconnect();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Disconnected value) disconnect,
-    required TResult Function(InMemoryConnection value) inMemory,
-    required TResult Function(FileConnection value) file,
-  }) {
-    return disconnect(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Disconnected value)? disconnect,
-    TResult? Function(InMemoryConnection value)? inMemory,
-    TResult? Function(FileConnection value)? file,
-  }) {
-    return disconnect?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Disconnected value)? disconnect,
-    TResult Function(InMemoryConnection value)? inMemory,
-    TResult Function(FileConnection value)? file,
-    required TResult orElse(),
-  }) {
-    if (disconnect != null) {
-      return disconnect(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Disconnected implements DatabaseConnection {
-  const factory Disconnected() = _$DisconnectedImpl;
-}
-
-/// @nodoc
-abstract class _$$InMemoryConnectionImplCopyWith<$Res> {
-  factory _$$InMemoryConnectionImplCopyWith(
-    _$InMemoryConnectionImpl value,
-    $Res Function(_$InMemoryConnectionImpl) then,
-  ) = __$$InMemoryConnectionImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InMemoryConnectionImplCopyWithImpl<$Res>
-    extends _$DatabaseConnectionCopyWithImpl<$Res, _$InMemoryConnectionImpl>
-    implements _$$InMemoryConnectionImplCopyWith<$Res> {
-  __$$InMemoryConnectionImplCopyWithImpl(
-    _$InMemoryConnectionImpl _value,
-    $Res Function(_$InMemoryConnectionImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of DatabaseConnection
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$InMemoryConnectionImpl implements InMemoryConnection {
-  const _$InMemoryConnectionImpl();
 
-  @override
-  String toString() {
-    return 'DatabaseConnection.inMemory()';
-  }
+class Disconnected implements DatabaseConnection {
+  const Disconnected();
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InMemoryConnectionImpl);
-  }
 
-  @override
-  int get hashCode => runtimeType.hashCode;
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() disconnect,
-    required TResult Function() inMemory,
-    required TResult Function(String folder, String name) file,
-  }) {
-    return inMemory();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? disconnect,
-    TResult? Function()? inMemory,
-    TResult? Function(String folder, String name)? file,
-  }) {
-    return inMemory?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? disconnect,
-    TResult Function()? inMemory,
-    TResult Function(String folder, String name)? file,
-    required TResult orElse(),
-  }) {
-    if (inMemory != null) {
-      return inMemory();
-    }
-    return orElse();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Disconnected value) disconnect,
-    required TResult Function(InMemoryConnection value) inMemory,
-    required TResult Function(FileConnection value) file,
-  }) {
-    return inMemory(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Disconnected value)? disconnect,
-    TResult? Function(InMemoryConnection value)? inMemory,
-    TResult? Function(FileConnection value)? file,
-  }) {
-    return inMemory?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Disconnected value)? disconnect,
-    TResult Function(InMemoryConnection value)? inMemory,
-    TResult Function(FileConnection value)? file,
-    required TResult orElse(),
-  }) {
-    if (inMemory != null) {
-      return inMemory(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Disconnected);
 }
 
-abstract class InMemoryConnection implements DatabaseConnection {
-  const factory InMemoryConnection() = _$InMemoryConnectionImpl;
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'DatabaseConnection.disconnect()';
 }
 
-/// @nodoc
-abstract class _$$FileConnectionImplCopyWith<$Res> {
-  factory _$$FileConnectionImplCopyWith(
-    _$FileConnectionImpl value,
-    $Res Function(_$FileConnectionImpl) then,
-  ) = __$$FileConnectionImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String folder, String name});
+
 }
 
-/// @nodoc
-class __$$FileConnectionImplCopyWithImpl<$Res>
-    extends _$DatabaseConnectionCopyWithImpl<$Res, _$FileConnectionImpl>
-    implements _$$FileConnectionImplCopyWith<$Res> {
-  __$$FileConnectionImplCopyWithImpl(
-    _$FileConnectionImpl _value,
-    $Res Function(_$FileConnectionImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of DatabaseConnection
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? folder = null, Object? name = null}) {
-    return _then(
-      _$FileConnectionImpl(
-        folder: null == folder
-            ? _value.folder
-            : folder // ignore: cast_nullable_to_non_nullable
-                  as String,
-        name: null == name
-            ? _value.name
-            : name // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
-}
+
 
 /// @nodoc
 
-class _$FileConnectionImpl implements FileConnection {
-  const _$FileConnectionImpl({required this.folder, required this.name});
 
-  @override
-  final String folder;
-  @override
-  final String name;
+class InMemoryConnection implements DatabaseConnection {
+  const InMemoryConnection();
+  
 
-  @override
-  String toString() {
-    return 'DatabaseConnection.file(folder: $folder, name: $name)';
-  }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FileConnectionImpl &&
-            (identical(other.folder, folder) || other.folder == folder) &&
-            (identical(other.name, name) || other.name == name));
-  }
 
-  @override
-  int get hashCode => Object.hash(runtimeType, folder, name);
 
-  /// Create a copy of DatabaseConnection
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FileConnectionImplCopyWith<_$FileConnectionImpl> get copyWith =>
-      __$$FileConnectionImplCopyWithImpl<_$FileConnectionImpl>(
-        this,
-        _$identity,
-      );
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() disconnect,
-    required TResult Function() inMemory,
-    required TResult Function(String folder, String name) file,
-  }) {
-    return file(folder, name);
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? disconnect,
-    TResult? Function()? inMemory,
-    TResult? Function(String folder, String name)? file,
-  }) {
-    return file?.call(folder, name);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? disconnect,
-    TResult Function()? inMemory,
-    TResult Function(String folder, String name)? file,
-    required TResult orElse(),
-  }) {
-    if (file != null) {
-      return file(folder, name);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Disconnected value) disconnect,
-    required TResult Function(InMemoryConnection value) inMemory,
-    required TResult Function(FileConnection value) file,
-  }) {
-    return file(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Disconnected value)? disconnect,
-    TResult? Function(InMemoryConnection value)? inMemory,
-    TResult? Function(FileConnection value)? file,
-  }) {
-    return file?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Disconnected value)? disconnect,
-    TResult Function(InMemoryConnection value)? inMemory,
-    TResult Function(FileConnection value)? file,
-    required TResult orElse(),
-  }) {
-    if (file != null) {
-      return file(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is InMemoryConnection);
 }
 
-abstract class FileConnection implements DatabaseConnection {
-  const factory FileConnection({
-    required final String folder,
-    required final String name,
-  }) = _$FileConnectionImpl;
 
-  String get folder;
-  String get name;
+@override
+int get hashCode => runtimeType.hashCode;
 
-  /// Create a copy of DatabaseConnection
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FileConnectionImplCopyWith<_$FileConnectionImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'DatabaseConnection.inMemory()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class FileConnection implements DatabaseConnection {
+  const FileConnection({required this.folder, required this.name});
+  
+
+ final  String folder;
+ final  String name;
+
+/// Create a copy of DatabaseConnection
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FileConnectionCopyWith<FileConnection> get copyWith => _$FileConnectionCopyWithImpl<FileConnection>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FileConnection&&(identical(other.folder, folder) || other.folder == folder)&&(identical(other.name, name) || other.name == name));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,folder,name);
+
+@override
+String toString() {
+  return 'DatabaseConnection.file(folder: $folder, name: $name)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $FileConnectionCopyWith<$Res> implements $DatabaseConnectionCopyWith<$Res> {
+  factory $FileConnectionCopyWith(FileConnection value, $Res Function(FileConnection) _then) = _$FileConnectionCopyWithImpl;
+@useResult
+$Res call({
+ String folder, String name
+});
+
+
+
+
+}
+/// @nodoc
+class _$FileConnectionCopyWithImpl<$Res>
+    implements $FileConnectionCopyWith<$Res> {
+  _$FileConnectionCopyWithImpl(this._self, this._then);
+
+  final FileConnection _self;
+  final $Res Function(FileConnection) _then;
+
+/// Create a copy of DatabaseConnection
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? folder = null,Object? name = null,}) {
+  return _then(FileConnection(
+folder: null == folder ? _self.folder : folder // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
 }
 
 /// @nodoc
 mixin _$Result {
-  String get query => throw _privateConstructorUsedError;
-  DateTime get datetime => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-      String query,
-      DateTime datetime,
-      Iterable<dynamic> result,
-    )
-    success,
-    required TResult Function(String query, DateTime datetime, String error)
-    failure,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-      String query,
-      DateTime datetime,
-      Iterable<dynamic> result,
-    )?
-    success,
-    TResult? Function(String query, DateTime datetime, String error)? failure,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query, DateTime datetime, Iterable<dynamic> result)?
-    success,
-    TResult Function(String query, DateTime datetime, String error)? failure,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ResultSuccess value) success,
-    required TResult Function(ResultFailure value) failure,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResultSuccess value)? success,
-    TResult? Function(ResultFailure value)? failure,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResultSuccess value)? success,
-    TResult Function(ResultFailure value)? failure,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
 
-  /// Create a copy of Result
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ResultCopyWith<Result> get copyWith => throw _privateConstructorUsedError;
+ String get query; DateTime get datetime;
+/// Create a copy of Result
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ResultCopyWith<Result> get copyWith => _$ResultCopyWithImpl<Result>(this as Result, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Result&&(identical(other.query, query) || other.query == query)&&(identical(other.datetime, datetime) || other.datetime == datetime));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,query,datetime);
+
+@override
+String toString() {
+  return 'Result(query: $query, datetime: $datetime)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ResultCopyWith<$Res> {
-  factory $ResultCopyWith(Result value, $Res Function(Result) then) =
-      _$ResultCopyWithImpl<$Res, Result>;
-  @useResult
-  $Res call({String query, DateTime datetime});
-}
+abstract mixin class $ResultCopyWith<$Res>  {
+  factory $ResultCopyWith(Result value, $Res Function(Result) _then) = _$ResultCopyWithImpl;
+@useResult
+$Res call({
+ String query, DateTime datetime
+});
 
+
+
+
+}
 /// @nodoc
-class _$ResultCopyWithImpl<$Res, $Val extends Result>
+class _$ResultCopyWithImpl<$Res>
     implements $ResultCopyWith<$Res> {
-  _$ResultCopyWithImpl(this._value, this._then);
+  _$ResultCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Result _self;
+  final $Res Function(Result) _then;
 
-  /// Create a copy of Result
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? query = null, Object? datetime = null}) {
-    return _then(
-      _value.copyWith(
-            query: null == query
-                ? _value.query
-                : query // ignore: cast_nullable_to_non_nullable
-                      as String,
-            datetime: null == datetime
-                ? _value.datetime
-                : datetime // ignore: cast_nullable_to_non_nullable
-                      as DateTime,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of Result
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? query = null,Object? datetime = null,}) {
+  return _then(_self.copyWith(
+query: null == query ? _self.query : query // ignore: cast_nullable_to_non_nullable
+as String,datetime: null == datetime ? _self.datetime : datetime // ignore: cast_nullable_to_non_nullable
+as DateTime,
+  ));
 }
 
-/// @nodoc
-abstract class _$$ResultSuccessImplCopyWith<$Res>
-    implements $ResultCopyWith<$Res> {
-  factory _$$ResultSuccessImplCopyWith(
-    _$ResultSuccessImpl value,
-    $Res Function(_$ResultSuccessImpl) then,
-  ) = __$$ResultSuccessImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String query, DateTime datetime, Iterable<dynamic> result});
 }
 
-/// @nodoc
-class __$$ResultSuccessImplCopyWithImpl<$Res>
-    extends _$ResultCopyWithImpl<$Res, _$ResultSuccessImpl>
-    implements _$$ResultSuccessImplCopyWith<$Res> {
-  __$$ResultSuccessImplCopyWithImpl(
-    _$ResultSuccessImpl _value,
-    $Res Function(_$ResultSuccessImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of Result
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? query = null,
-    Object? datetime = null,
-    Object? result = null,
-  }) {
-    return _then(
-      _$ResultSuccessImpl(
-        query: null == query
-            ? _value.query
-            : query // ignore: cast_nullable_to_non_nullable
-                  as String,
-        datetime: null == datetime
-            ? _value.datetime
-            : datetime // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
-        result: null == result
-            ? _value.result
-            : result // ignore: cast_nullable_to_non_nullable
-                  as Iterable<dynamic>,
-      ),
-    );
-  }
+/// Adds pattern-matching-related methods to [Result].
+extension ResultPatterns on Result {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( ResultSuccess value)?  success,TResult Function( ResultFailure value)?  failure,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case ResultSuccess() when success != null:
+return success(_that);case ResultFailure() when failure != null:
+return failure(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( ResultSuccess value)  success,required TResult Function( ResultFailure value)  failure,}){
+final _that = this;
+switch (_that) {
+case ResultSuccess():
+return success(_that);case ResultFailure():
+return failure(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( ResultSuccess value)?  success,TResult? Function( ResultFailure value)?  failure,}){
+final _that = this;
+switch (_that) {
+case ResultSuccess() when success != null:
+return success(_that);case ResultFailure() when failure != null:
+return failure(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String query,  DateTime datetime,  Iterable<dynamic> result)?  success,TResult Function( String query,  DateTime datetime,  String error)?  failure,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case ResultSuccess() when success != null:
+return success(_that.query,_that.datetime,_that.result);case ResultFailure() when failure != null:
+return failure(_that.query,_that.datetime,_that.error);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String query,  DateTime datetime,  Iterable<dynamic> result)  success,required TResult Function( String query,  DateTime datetime,  String error)  failure,}) {final _that = this;
+switch (_that) {
+case ResultSuccess():
+return success(_that.query,_that.datetime,_that.result);case ResultFailure():
+return failure(_that.query,_that.datetime,_that.error);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String query,  DateTime datetime,  Iterable<dynamic> result)?  success,TResult? Function( String query,  DateTime datetime,  String error)?  failure,}) {final _that = this;
+switch (_that) {
+case ResultSuccess() when success != null:
+return success(_that.query,_that.datetime,_that.result);case ResultFailure() when failure != null:
+return failure(_that.query,_that.datetime,_that.error);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-
-class _$ResultSuccessImpl implements ResultSuccess {
-  const _$ResultSuccessImpl({
-    required this.query,
-    required this.datetime,
-    required this.result,
-  });
-
-  @override
-  final String query;
-  @override
-  final DateTime datetime;
-  @override
-  final Iterable<dynamic> result;
-
-  @override
-  String toString() {
-    return 'Result.success(query: $query, datetime: $datetime, result: $result)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ResultSuccessImpl &&
-            (identical(other.query, query) || other.query == query) &&
-            (identical(other.datetime, datetime) ||
-                other.datetime == datetime) &&
-            const DeepCollectionEquality().equals(other.result, result));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    query,
-    datetime,
-    const DeepCollectionEquality().hash(result),
-  );
-
-  /// Create a copy of Result
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ResultSuccessImplCopyWith<_$ResultSuccessImpl> get copyWith =>
-      __$$ResultSuccessImplCopyWithImpl<_$ResultSuccessImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-      String query,
-      DateTime datetime,
-      Iterable<dynamic> result,
-    )
-    success,
-    required TResult Function(String query, DateTime datetime, String error)
-    failure,
-  }) {
-    return success(query, datetime, result);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-      String query,
-      DateTime datetime,
-      Iterable<dynamic> result,
-    )?
-    success,
-    TResult? Function(String query, DateTime datetime, String error)? failure,
-  }) {
-    return success?.call(query, datetime, result);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query, DateTime datetime, Iterable<dynamic> result)?
-    success,
-    TResult Function(String query, DateTime datetime, String error)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(query, datetime, result);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ResultSuccess value) success,
-    required TResult Function(ResultFailure value) failure,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResultSuccess value)? success,
-    TResult? Function(ResultFailure value)? failure,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResultSuccess value)? success,
-    TResult Function(ResultFailure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ResultSuccess implements Result {
-  const factory ResultSuccess({
-    required final String query,
-    required final DateTime datetime,
-    required final Iterable<dynamic> result,
-  }) = _$ResultSuccessImpl;
-
-  @override
-  String get query;
-  @override
-  DateTime get datetime;
-  Iterable<dynamic> get result;
-
-  /// Create a copy of Result
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ResultSuccessImplCopyWith<_$ResultSuccessImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ResultFailureImplCopyWith<$Res>
-    implements $ResultCopyWith<$Res> {
-  factory _$$ResultFailureImplCopyWith(
-    _$ResultFailureImpl value,
-    $Res Function(_$ResultFailureImpl) then,
-  ) = __$$ResultFailureImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String query, DateTime datetime, String error});
-}
-
-/// @nodoc
-class __$$ResultFailureImplCopyWithImpl<$Res>
-    extends _$ResultCopyWithImpl<$Res, _$ResultFailureImpl>
-    implements _$$ResultFailureImplCopyWith<$Res> {
-  __$$ResultFailureImplCopyWithImpl(
-    _$ResultFailureImpl _value,
-    $Res Function(_$ResultFailureImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of Result
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? query = null,
-    Object? datetime = null,
-    Object? error = null,
-  }) {
-    return _then(
-      _$ResultFailureImpl(
-        query: null == query
-            ? _value.query
-            : query // ignore: cast_nullable_to_non_nullable
-                  as String,
-        datetime: null == datetime
-            ? _value.datetime
-            : datetime // ignore: cast_nullable_to_non_nullable
-                  as DateTime,
-        error: null == error
-            ? _value.error
-            : error // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$ResultFailureImpl implements ResultFailure {
-  const _$ResultFailureImpl({
-    required this.query,
-    required this.datetime,
-    required this.error,
-  });
 
-  @override
-  final String query;
-  @override
-  final DateTime datetime;
-  @override
-  final String error;
+class ResultSuccess implements Result {
+  const ResultSuccess({required this.query, required this.datetime, required this.result});
+  
 
-  @override
-  String toString() {
-    return 'Result.failure(query: $query, datetime: $datetime, error: $error)';
-  }
+@override final  String query;
+@override final  DateTime datetime;
+ final  Iterable<dynamic> result;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ResultFailureImpl &&
-            (identical(other.query, query) || other.query == query) &&
-            (identical(other.datetime, datetime) ||
-                other.datetime == datetime) &&
-            (identical(other.error, error) || other.error == error));
-  }
+/// Create a copy of Result
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ResultSuccessCopyWith<ResultSuccess> get copyWith => _$ResultSuccessCopyWithImpl<ResultSuccess>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, query, datetime, error);
 
-  /// Create a copy of Result
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ResultFailureImplCopyWith<_$ResultFailureImpl> get copyWith =>
-      __$$ResultFailureImplCopyWithImpl<_$ResultFailureImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-      String query,
-      DateTime datetime,
-      Iterable<dynamic> result,
-    )
-    success,
-    required TResult Function(String query, DateTime datetime, String error)
-    failure,
-  }) {
-    return failure(query, datetime, error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-      String query,
-      DateTime datetime,
-      Iterable<dynamic> result,
-    )?
-    success,
-    TResult? Function(String query, DateTime datetime, String error)? failure,
-  }) {
-    return failure?.call(query, datetime, error);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query, DateTime datetime, Iterable<dynamic> result)?
-    success,
-    TResult Function(String query, DateTime datetime, String error)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(query, datetime, error);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ResultSuccess value) success,
-    required TResult Function(ResultFailure value) failure,
-  }) {
-    return failure(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ResultSuccess value)? success,
-    TResult? Function(ResultFailure value)? failure,
-  }) {
-    return failure?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ResultSuccess value)? success,
-    TResult Function(ResultFailure value)? failure,
-    required TResult orElse(),
-  }) {
-    if (failure != null) {
-      return failure(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ResultSuccess&&(identical(other.query, query) || other.query == query)&&(identical(other.datetime, datetime) || other.datetime == datetime)&&const DeepCollectionEquality().equals(other.result, result));
 }
 
-abstract class ResultFailure implements Result {
-  const factory ResultFailure({
-    required final String query,
-    required final DateTime datetime,
-    required final String error,
-  }) = _$ResultFailureImpl;
 
-  @override
-  String get query;
-  @override
-  DateTime get datetime;
-  String get error;
+@override
+int get hashCode => Object.hash(runtimeType,query,datetime,const DeepCollectionEquality().hash(result));
 
-  /// Create a copy of Result
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ResultFailureImplCopyWith<_$ResultFailureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'Result.success(query: $query, datetime: $datetime, result: $result)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ResultSuccessCopyWith<$Res> implements $ResultCopyWith<$Res> {
+  factory $ResultSuccessCopyWith(ResultSuccess value, $Res Function(ResultSuccess) _then) = _$ResultSuccessCopyWithImpl;
+@override @useResult
+$Res call({
+ String query, DateTime datetime, Iterable<dynamic> result
+});
+
+
+
+
+}
+/// @nodoc
+class _$ResultSuccessCopyWithImpl<$Res>
+    implements $ResultSuccessCopyWith<$Res> {
+  _$ResultSuccessCopyWithImpl(this._self, this._then);
+
+  final ResultSuccess _self;
+  final $Res Function(ResultSuccess) _then;
+
+/// Create a copy of Result
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? query = null,Object? datetime = null,Object? result = null,}) {
+  return _then(ResultSuccess(
+query: null == query ? _self.query : query // ignore: cast_nullable_to_non_nullable
+as String,datetime: null == datetime ? _self.datetime : datetime // ignore: cast_nullable_to_non_nullable
+as DateTime,result: null == result ? _self.result : result // ignore: cast_nullable_to_non_nullable
+as Iterable<dynamic>,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class ResultFailure implements Result {
+  const ResultFailure({required this.query, required this.datetime, required this.error});
+  
+
+@override final  String query;
+@override final  DateTime datetime;
+ final  String error;
+
+/// Create a copy of Result
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ResultFailureCopyWith<ResultFailure> get copyWith => _$ResultFailureCopyWithImpl<ResultFailure>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ResultFailure&&(identical(other.query, query) || other.query == query)&&(identical(other.datetime, datetime) || other.datetime == datetime)&&(identical(other.error, error) || other.error == error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,query,datetime,error);
+
+@override
+String toString() {
+  return 'Result.failure(query: $query, datetime: $datetime, error: $error)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $ResultFailureCopyWith<$Res> implements $ResultCopyWith<$Res> {
+  factory $ResultFailureCopyWith(ResultFailure value, $Res Function(ResultFailure) _then) = _$ResultFailureCopyWithImpl;
+@override @useResult
+$Res call({
+ String query, DateTime datetime, String error
+});
+
+
+
+
+}
+/// @nodoc
+class _$ResultFailureCopyWithImpl<$Res>
+    implements $ResultFailureCopyWith<$Res> {
+  _$ResultFailureCopyWithImpl(this._self, this._then);
+
+  final ResultFailure _self;
+  final $Res Function(ResultFailure) _then;
+
+/// Create a copy of Result
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? query = null,Object? datetime = null,Object? error = null,}) {
+  return _then(ResultFailure(
+query: null == query ? _self.query : query // ignore: cast_nullable_to_non_nullable
+as String,datetime: null == datetime ? _self.datetime : datetime // ignore: cast_nullable_to_non_nullable
+as DateTime,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
 }
 
 /// @nodoc
 mixin _$TableInfo {
-  String get name => throw _privateConstructorUsedError;
-  List<ColumnInfo> get columns => throw _privateConstructorUsedError;
 
-  /// Create a copy of TableInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $TableInfoCopyWith<TableInfo> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get name; List<ColumnInfo> get columns;
+/// Create a copy of TableInfo
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TableInfoCopyWith<TableInfo> get copyWith => _$TableInfoCopyWithImpl<TableInfo>(this as TableInfo, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TableInfo&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other.columns, columns));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,name,const DeepCollectionEquality().hash(columns));
+
+@override
+String toString() {
+  return 'TableInfo(name: $name, columns: $columns)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $TableInfoCopyWith<$Res> {
-  factory $TableInfoCopyWith(TableInfo value, $Res Function(TableInfo) then) =
-      _$TableInfoCopyWithImpl<$Res, TableInfo>;
-  @useResult
-  $Res call({String name, List<ColumnInfo> columns});
-}
+abstract mixin class $TableInfoCopyWith<$Res>  {
+  factory $TableInfoCopyWith(TableInfo value, $Res Function(TableInfo) _then) = _$TableInfoCopyWithImpl;
+@useResult
+$Res call({
+ String name, List<ColumnInfo> columns
+});
 
+
+
+
+}
 /// @nodoc
-class _$TableInfoCopyWithImpl<$Res, $Val extends TableInfo>
+class _$TableInfoCopyWithImpl<$Res>
     implements $TableInfoCopyWith<$Res> {
-  _$TableInfoCopyWithImpl(this._value, this._then);
+  _$TableInfoCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final TableInfo _self;
+  final $Res Function(TableInfo) _then;
 
-  /// Create a copy of TableInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? name = null, Object? columns = null}) {
-    return _then(
-      _value.copyWith(
-            name: null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                      as String,
-            columns: null == columns
-                ? _value.columns
-                : columns // ignore: cast_nullable_to_non_nullable
-                      as List<ColumnInfo>,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of TableInfo
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? columns = null,}) {
+  return _then(_self.copyWith(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,columns: null == columns ? _self.columns : columns // ignore: cast_nullable_to_non_nullable
+as List<ColumnInfo>,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [TableInfo].
+extension TableInfoPatterns on TableInfo {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _TableInfo value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _TableInfo() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _TableInfo value)  $default,){
+final _that = this;
+switch (_that) {
+case _TableInfo():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _TableInfo value)?  $default,){
+final _that = this;
+switch (_that) {
+case _TableInfo() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  List<ColumnInfo> columns)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _TableInfo() when $default != null:
+return $default(_that.name,_that.columns);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  List<ColumnInfo> columns)  $default,) {final _that = this;
+switch (_that) {
+case _TableInfo():
+return $default(_that.name,_that.columns);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  List<ColumnInfo> columns)?  $default,) {final _that = this;
+switch (_that) {
+case _TableInfo() when $default != null:
+return $default(_that.name,_that.columns);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$TableInfoImplCopyWith<$Res>
-    implements $TableInfoCopyWith<$Res> {
-  factory _$$TableInfoImplCopyWith(
-    _$TableInfoImpl value,
-    $Res Function(_$TableInfoImpl) then,
-  ) = __$$TableInfoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String name, List<ColumnInfo> columns});
+
+
+class _TableInfo implements TableInfo {
+  const _TableInfo({required this.name, required final  List<ColumnInfo> columns}): _columns = columns;
+  
+
+@override final  String name;
+ final  List<ColumnInfo> _columns;
+@override List<ColumnInfo> get columns {
+  if (_columns is EqualUnmodifiableListView) return _columns;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_columns);
+}
+
+
+/// Create a copy of TableInfo
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$TableInfoCopyWith<_TableInfo> get copyWith => __$TableInfoCopyWithImpl<_TableInfo>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TableInfo&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other._columns, _columns));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,name,const DeepCollectionEquality().hash(_columns));
+
+@override
+String toString() {
+  return 'TableInfo(name: $name, columns: $columns)';
+}
+
+
 }
 
 /// @nodoc
-class __$$TableInfoImplCopyWithImpl<$Res>
-    extends _$TableInfoCopyWithImpl<$Res, _$TableInfoImpl>
-    implements _$$TableInfoImplCopyWith<$Res> {
-  __$$TableInfoImplCopyWithImpl(
-    _$TableInfoImpl _value,
-    $Res Function(_$TableInfoImpl) _then,
-  ) : super(_value, _then);
+abstract mixin class _$TableInfoCopyWith<$Res> implements $TableInfoCopyWith<$Res> {
+  factory _$TableInfoCopyWith(_TableInfo value, $Res Function(_TableInfo) _then) = __$TableInfoCopyWithImpl;
+@override @useResult
+$Res call({
+ String name, List<ColumnInfo> columns
+});
 
-  /// Create a copy of TableInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? name = null, Object? columns = null}) {
-    return _then(
-      _$TableInfoImpl(
-        name: null == name
-            ? _value.name
-            : name // ignore: cast_nullable_to_non_nullable
-                  as String,
-        columns: null == columns
-            ? _value._columns
-            : columns // ignore: cast_nullable_to_non_nullable
-                  as List<ColumnInfo>,
-      ),
-    );
-  }
+
+
+
 }
-
 /// @nodoc
+class __$TableInfoCopyWithImpl<$Res>
+    implements _$TableInfoCopyWith<$Res> {
+  __$TableInfoCopyWithImpl(this._self, this._then);
 
-class _$TableInfoImpl implements _TableInfo {
-  const _$TableInfoImpl({
-    required this.name,
-    required final List<ColumnInfo> columns,
-  }) : _columns = columns;
+  final _TableInfo _self;
+  final $Res Function(_TableInfo) _then;
 
-  @override
-  final String name;
-  final List<ColumnInfo> _columns;
-  @override
-  List<ColumnInfo> get columns {
-    if (_columns is EqualUnmodifiableListView) return _columns;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_columns);
-  }
-
-  @override
-  String toString() {
-    return 'TableInfo(name: $name, columns: $columns)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TableInfoImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            const DeepCollectionEquality().equals(other._columns, _columns));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    name,
-    const DeepCollectionEquality().hash(_columns),
-  );
-
-  /// Create a copy of TableInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TableInfoImplCopyWith<_$TableInfoImpl> get copyWith =>
-      __$$TableInfoImplCopyWithImpl<_$TableInfoImpl>(this, _$identity);
+/// Create a copy of TableInfo
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? columns = null,}) {
+  return _then(_TableInfo(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,columns: null == columns ? _self._columns : columns // ignore: cast_nullable_to_non_nullable
+as List<ColumnInfo>,
+  ));
 }
 
-abstract class _TableInfo implements TableInfo {
-  const factory _TableInfo({
-    required final String name,
-    required final List<ColumnInfo> columns,
-  }) = _$TableInfoImpl;
 
-  @override
-  String get name;
-  @override
-  List<ColumnInfo> get columns;
-
-  /// Create a copy of TableInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TableInfoImplCopyWith<_$TableInfoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$ColumnInfo {
-  String get name => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
-  bool get pk => throw _privateConstructorUsedError;
 
-  /// Create a copy of ColumnInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $ColumnInfoCopyWith<ColumnInfo> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get name; String get type; bool get pk;
+/// Create a copy of ColumnInfo
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ColumnInfoCopyWith<ColumnInfo> get copyWith => _$ColumnInfoCopyWithImpl<ColumnInfo>(this as ColumnInfo, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ColumnInfo&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.pk, pk) || other.pk == pk));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,name,type,pk);
+
+@override
+String toString() {
+  return 'ColumnInfo(name: $name, type: $type, pk: $pk)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ColumnInfoCopyWith<$Res> {
-  factory $ColumnInfoCopyWith(
-    ColumnInfo value,
-    $Res Function(ColumnInfo) then,
-  ) = _$ColumnInfoCopyWithImpl<$Res, ColumnInfo>;
-  @useResult
-  $Res call({String name, String type, bool pk});
-}
+abstract mixin class $ColumnInfoCopyWith<$Res>  {
+  factory $ColumnInfoCopyWith(ColumnInfo value, $Res Function(ColumnInfo) _then) = _$ColumnInfoCopyWithImpl;
+@useResult
+$Res call({
+ String name, String type, bool pk
+});
 
+
+
+
+}
 /// @nodoc
-class _$ColumnInfoCopyWithImpl<$Res, $Val extends ColumnInfo>
+class _$ColumnInfoCopyWithImpl<$Res>
     implements $ColumnInfoCopyWith<$Res> {
-  _$ColumnInfoCopyWithImpl(this._value, this._then);
+  _$ColumnInfoCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final ColumnInfo _self;
+  final $Res Function(ColumnInfo) _then;
 
-  /// Create a copy of ColumnInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? name = null, Object? type = null, Object? pk = null}) {
-    return _then(
-      _value.copyWith(
-            name: null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                      as String,
-            type: null == type
-                ? _value.type
-                : type // ignore: cast_nullable_to_non_nullable
-                      as String,
-            pk: null == pk
-                ? _value.pk
-                : pk // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of ColumnInfo
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? type = null,Object? pk = null,}) {
+  return _then(_self.copyWith(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String,pk: null == pk ? _self.pk : pk // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [ColumnInfo].
+extension ColumnInfoPatterns on ColumnInfo {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ColumnInfo value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _ColumnInfo() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ColumnInfo value)  $default,){
+final _that = this;
+switch (_that) {
+case _ColumnInfo():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ColumnInfo value)?  $default,){
+final _that = this;
+switch (_that) {
+case _ColumnInfo() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String type,  bool pk)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _ColumnInfo() when $default != null:
+return $default(_that.name,_that.type,_that.pk);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String type,  bool pk)  $default,) {final _that = this;
+switch (_that) {
+case _ColumnInfo():
+return $default(_that.name,_that.type,_that.pk);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String type,  bool pk)?  $default,) {final _that = this;
+switch (_that) {
+case _ColumnInfo() when $default != null:
+return $default(_that.name,_that.type,_that.pk);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-abstract class _$$ColumnInfoImplCopyWith<$Res>
-    implements $ColumnInfoCopyWith<$Res> {
-  factory _$$ColumnInfoImplCopyWith(
-    _$ColumnInfoImpl value,
-    $Res Function(_$ColumnInfoImpl) then,
-  ) = __$$ColumnInfoImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String name, String type, bool pk});
+
+
+class _ColumnInfo implements ColumnInfo {
+  const _ColumnInfo({required this.name, required this.type, required this.pk});
+  
+
+@override final  String name;
+@override final  String type;
+@override final  bool pk;
+
+/// Create a copy of ColumnInfo
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ColumnInfoCopyWith<_ColumnInfo> get copyWith => __$ColumnInfoCopyWithImpl<_ColumnInfo>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ColumnInfo&&(identical(other.name, name) || other.name == name)&&(identical(other.type, type) || other.type == type)&&(identical(other.pk, pk) || other.pk == pk));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,name,type,pk);
+
+@override
+String toString() {
+  return 'ColumnInfo(name: $name, type: $type, pk: $pk)';
+}
+
+
 }
 
 /// @nodoc
-class __$$ColumnInfoImplCopyWithImpl<$Res>
-    extends _$ColumnInfoCopyWithImpl<$Res, _$ColumnInfoImpl>
-    implements _$$ColumnInfoImplCopyWith<$Res> {
-  __$$ColumnInfoImplCopyWithImpl(
-    _$ColumnInfoImpl _value,
-    $Res Function(_$ColumnInfoImpl) _then,
-  ) : super(_value, _then);
+abstract mixin class _$ColumnInfoCopyWith<$Res> implements $ColumnInfoCopyWith<$Res> {
+  factory _$ColumnInfoCopyWith(_ColumnInfo value, $Res Function(_ColumnInfo) _then) = __$ColumnInfoCopyWithImpl;
+@override @useResult
+$Res call({
+ String name, String type, bool pk
+});
 
-  /// Create a copy of ColumnInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? name = null, Object? type = null, Object? pk = null}) {
-    return _then(
-      _$ColumnInfoImpl(
-        name: null == name
-            ? _value.name
-            : name // ignore: cast_nullable_to_non_nullable
-                  as String,
-        type: null == type
-            ? _value.type
-            : type // ignore: cast_nullable_to_non_nullable
-                  as String,
-        pk: null == pk
-            ? _value.pk
-            : pk // ignore: cast_nullable_to_non_nullable
-                  as bool,
-      ),
-    );
-  }
+
+
+
 }
-
 /// @nodoc
+class __$ColumnInfoCopyWithImpl<$Res>
+    implements _$ColumnInfoCopyWith<$Res> {
+  __$ColumnInfoCopyWithImpl(this._self, this._then);
 
-class _$ColumnInfoImpl implements _ColumnInfo {
-  const _$ColumnInfoImpl({
-    required this.name,
-    required this.type,
-    required this.pk,
-  });
+  final _ColumnInfo _self;
+  final $Res Function(_ColumnInfo) _then;
 
-  @override
-  final String name;
-  @override
-  final String type;
-  @override
-  final bool pk;
-
-  @override
-  String toString() {
-    return 'ColumnInfo(name: $name, type: $type, pk: $pk)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ColumnInfoImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.pk, pk) || other.pk == pk));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, name, type, pk);
-
-  /// Create a copy of ColumnInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ColumnInfoImplCopyWith<_$ColumnInfoImpl> get copyWith =>
-      __$$ColumnInfoImplCopyWithImpl<_$ColumnInfoImpl>(this, _$identity);
+/// Create a copy of ColumnInfo
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? type = null,Object? pk = null,}) {
+  return _then(_ColumnInfo(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as String,pk: null == pk ? _self.pk : pk // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
 }
 
-abstract class _ColumnInfo implements ColumnInfo {
-  const factory _ColumnInfo({
-    required final String name,
-    required final String type,
-    required final bool pk,
-  }) = _$ColumnInfoImpl;
 
-  @override
-  String get name;
-  @override
-  String get type;
-  @override
-  bool get pk;
-
-  /// Create a copy of ColumnInfo
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ColumnInfoImplCopyWith<_$ColumnInfoImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
+
+// dart format on

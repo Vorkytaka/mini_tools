@@ -8,8 +8,8 @@ import '../../../i18n/strings.g.dart';
 import '../domain/number_base_feature.dart';
 import 'number_base_feature_utils.dart';
 
-class NumberBaseConverter extends StatelessWidget {
-  const NumberBaseConverter({super.key});
+class NumberBaseConverterScreen extends StatelessWidget {
+  const NumberBaseConverterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

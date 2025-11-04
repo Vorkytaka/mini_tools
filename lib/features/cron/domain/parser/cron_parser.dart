@@ -158,7 +158,7 @@ extension CronPartUtils on CronPart {
 
 @freezed
 @immutable
-class Cron with _$Cron {
+abstract class Cron with _$Cron {
   const factory Cron({
     required CronExpression minutes,
     required CronExpression hours,

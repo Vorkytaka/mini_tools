@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,595 +9,585 @@ part of 'hash_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$HashState {
-  HashInput get input => throw _privateConstructorUsedError;
-  HashFormat get format => throw _privateConstructorUsedError;
-  HashAlgorithm get algorithm => throw _privateConstructorUsedError;
-  Uint8List? get hash => throw _privateConstructorUsedError;
-  int get inputBytes => throw _privateConstructorUsedError;
 
-  /// Create a copy of HashState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $HashStateCopyWith<HashState> get copyWith =>
-      throw _privateConstructorUsedError;
+ HashInput get input; HashFormat get format; HashAlgorithm get algorithm; Uint8List? get hash; int get inputBytes;
+/// Create a copy of HashState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$HashStateCopyWith<HashState> get copyWith => _$HashStateCopyWithImpl<HashState>(this as HashState, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HashState&&(identical(other.input, input) || other.input == input)&&(identical(other.format, format) || other.format == format)&&(identical(other.algorithm, algorithm) || other.algorithm == algorithm)&&const DeepCollectionEquality().equals(other.hash, hash)&&(identical(other.inputBytes, inputBytes) || other.inputBytes == inputBytes));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,input,format,algorithm,const DeepCollectionEquality().hash(hash),inputBytes);
+
+@override
+String toString() {
+  return 'HashState(input: $input, format: $format, algorithm: $algorithm, hash: $hash, inputBytes: $inputBytes)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $HashStateCopyWith<$Res> {
-  factory $HashStateCopyWith(HashState value, $Res Function(HashState) then) =
-      _$HashStateCopyWithImpl<$Res, HashState>;
-  @useResult
-  $Res call({
-    HashInput input,
-    HashFormat format,
-    HashAlgorithm algorithm,
-    Uint8List? hash,
-    int inputBytes,
-  });
+abstract mixin class $HashStateCopyWith<$Res>  {
+  factory $HashStateCopyWith(HashState value, $Res Function(HashState) _then) = _$HashStateCopyWithImpl;
+@useResult
+$Res call({
+ HashInput input, HashFormat format, HashAlgorithm algorithm, Uint8List? hash, int inputBytes
+});
 
-  $HashInputCopyWith<$Res> get input;
+
+$HashInputCopyWith<$Res> get input;
+
 }
-
 /// @nodoc
-class _$HashStateCopyWithImpl<$Res, $Val extends HashState>
+class _$HashStateCopyWithImpl<$Res>
     implements $HashStateCopyWith<$Res> {
-  _$HashStateCopyWithImpl(this._value, this._then);
+  _$HashStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final HashState _self;
+  final $Res Function(HashState) _then;
 
-  /// Create a copy of HashState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? input = null,
-    Object? format = null,
-    Object? algorithm = null,
-    Object? hash = freezed,
-    Object? inputBytes = null,
-  }) {
-    return _then(
-      _value.copyWith(
-            input: null == input
-                ? _value.input
-                : input // ignore: cast_nullable_to_non_nullable
-                      as HashInput,
-            format: null == format
-                ? _value.format
-                : format // ignore: cast_nullable_to_non_nullable
-                      as HashFormat,
-            algorithm: null == algorithm
-                ? _value.algorithm
-                : algorithm // ignore: cast_nullable_to_non_nullable
-                      as HashAlgorithm,
-            hash: freezed == hash
-                ? _value.hash
-                : hash // ignore: cast_nullable_to_non_nullable
-                      as Uint8List?,
-            inputBytes: null == inputBytes
-                ? _value.inputBytes
-                : inputBytes // ignore: cast_nullable_to_non_nullable
-                      as int,
-          )
-          as $Val,
-    );
-  }
-
-  /// Create a copy of HashState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $HashInputCopyWith<$Res> get input {
-    return $HashInputCopyWith<$Res>(_value.input, (value) {
-      return _then(_value.copyWith(input: value) as $Val);
-    });
-  }
+/// Create a copy of HashState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? input = null,Object? format = null,Object? algorithm = null,Object? hash = freezed,Object? inputBytes = null,}) {
+  return _then(_self.copyWith(
+input: null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
+as HashInput,format: null == format ? _self.format : format // ignore: cast_nullable_to_non_nullable
+as HashFormat,algorithm: null == algorithm ? _self.algorithm : algorithm // ignore: cast_nullable_to_non_nullable
+as HashAlgorithm,hash: freezed == hash ? _self.hash : hash // ignore: cast_nullable_to_non_nullable
+as Uint8List?,inputBytes: null == inputBytes ? _self.inputBytes : inputBytes // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
-
-/// @nodoc
-abstract class _$$HashStateImplCopyWith<$Res>
-    implements $HashStateCopyWith<$Res> {
-  factory _$$HashStateImplCopyWith(
-    _$HashStateImpl value,
-    $Res Function(_$HashStateImpl) then,
-  ) = __$$HashStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    HashInput input,
-    HashFormat format,
-    HashAlgorithm algorithm,
-    Uint8List? hash,
-    int inputBytes,
+/// Create a copy of HashState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$HashInputCopyWith<$Res> get input {
+  
+  return $HashInputCopyWith<$Res>(_self.input, (value) {
+    return _then(_self.copyWith(input: value));
   });
+}
+}
 
-  @override
-  $HashInputCopyWith<$Res> get input;
+
+/// Adds pattern-matching-related methods to [HashState].
+extension HashStatePatterns on HashState {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _HashState value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _HashState() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _HashState value)  $default,){
+final _that = this;
+switch (_that) {
+case _HashState():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _HashState value)?  $default,){
+final _that = this;
+switch (_that) {
+case _HashState() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( HashInput input,  HashFormat format,  HashAlgorithm algorithm,  Uint8List? hash,  int inputBytes)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _HashState() when $default != null:
+return $default(_that.input,_that.format,_that.algorithm,_that.hash,_that.inputBytes);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( HashInput input,  HashFormat format,  HashAlgorithm algorithm,  Uint8List? hash,  int inputBytes)  $default,) {final _that = this;
+switch (_that) {
+case _HashState():
+return $default(_that.input,_that.format,_that.algorithm,_that.hash,_that.inputBytes);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( HashInput input,  HashFormat format,  HashAlgorithm algorithm,  Uint8List? hash,  int inputBytes)?  $default,) {final _that = this;
+switch (_that) {
+case _HashState() when $default != null:
+return $default(_that.input,_that.format,_that.algorithm,_that.hash,_that.inputBytes);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
-class __$$HashStateImplCopyWithImpl<$Res>
-    extends _$HashStateCopyWithImpl<$Res, _$HashStateImpl>
-    implements _$$HashStateImplCopyWith<$Res> {
-  __$$HashStateImplCopyWithImpl(
-    _$HashStateImpl _value,
-    $Res Function(_$HashStateImpl) _then,
-  ) : super(_value, _then);
 
-  /// Create a copy of HashState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? input = null,
-    Object? format = null,
-    Object? algorithm = null,
-    Object? hash = freezed,
-    Object? inputBytes = null,
-  }) {
-    return _then(
-      _$HashStateImpl(
-        input: null == input
-            ? _value.input
-            : input // ignore: cast_nullable_to_non_nullable
-                  as HashInput,
-        format: null == format
-            ? _value.format
-            : format // ignore: cast_nullable_to_non_nullable
-                  as HashFormat,
-        algorithm: null == algorithm
-            ? _value.algorithm
-            : algorithm // ignore: cast_nullable_to_non_nullable
-                  as HashAlgorithm,
-        hash: freezed == hash
-            ? _value.hash
-            : hash // ignore: cast_nullable_to_non_nullable
-                  as Uint8List?,
-        inputBytes: null == inputBytes
-            ? _value.inputBytes
-            : inputBytes // ignore: cast_nullable_to_non_nullable
-                  as int,
-      ),
-    );
-  }
+
+class _HashState implements HashState {
+  const _HashState({required this.input, required this.format, required this.algorithm, required this.hash, this.inputBytes = 0});
+  
+
+@override final  HashInput input;
+@override final  HashFormat format;
+@override final  HashAlgorithm algorithm;
+@override final  Uint8List? hash;
+@override@JsonKey() final  int inputBytes;
+
+/// Create a copy of HashState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$HashStateCopyWith<_HashState> get copyWith => __$HashStateCopyWithImpl<_HashState>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HashState&&(identical(other.input, input) || other.input == input)&&(identical(other.format, format) || other.format == format)&&(identical(other.algorithm, algorithm) || other.algorithm == algorithm)&&const DeepCollectionEquality().equals(other.hash, hash)&&(identical(other.inputBytes, inputBytes) || other.inputBytes == inputBytes));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,input,format,algorithm,const DeepCollectionEquality().hash(hash),inputBytes);
+
+@override
+String toString() {
+  return 'HashState(input: $input, format: $format, algorithm: $algorithm, hash: $hash, inputBytes: $inputBytes)';
+}
+
+
 }
 
 /// @nodoc
+abstract mixin class _$HashStateCopyWith<$Res> implements $HashStateCopyWith<$Res> {
+  factory _$HashStateCopyWith(_HashState value, $Res Function(_HashState) _then) = __$HashStateCopyWithImpl;
+@override @useResult
+$Res call({
+ HashInput input, HashFormat format, HashAlgorithm algorithm, Uint8List? hash, int inputBytes
+});
 
-class _$HashStateImpl implements _HashState {
-  const _$HashStateImpl({
-    required this.input,
-    required this.format,
-    required this.algorithm,
-    required this.hash,
-    this.inputBytes = 0,
+
+@override $HashInputCopyWith<$Res> get input;
+
+}
+/// @nodoc
+class __$HashStateCopyWithImpl<$Res>
+    implements _$HashStateCopyWith<$Res> {
+  __$HashStateCopyWithImpl(this._self, this._then);
+
+  final _HashState _self;
+  final $Res Function(_HashState) _then;
+
+/// Create a copy of HashState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? input = null,Object? format = null,Object? algorithm = null,Object? hash = freezed,Object? inputBytes = null,}) {
+  return _then(_HashState(
+input: null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
+as HashInput,format: null == format ? _self.format : format // ignore: cast_nullable_to_non_nullable
+as HashFormat,algorithm: null == algorithm ? _self.algorithm : algorithm // ignore: cast_nullable_to_non_nullable
+as HashAlgorithm,hash: freezed == hash ? _self.hash : hash // ignore: cast_nullable_to_non_nullable
+as Uint8List?,inputBytes: null == inputBytes ? _self.inputBytes : inputBytes // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+/// Create a copy of HashState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$HashInputCopyWith<$Res> get input {
+  
+  return $HashInputCopyWith<$Res>(_self.input, (value) {
+    return _then(_self.copyWith(input: value));
   });
-
-  @override
-  final HashInput input;
-  @override
-  final HashFormat format;
-  @override
-  final HashAlgorithm algorithm;
-  @override
-  final Uint8List? hash;
-  @override
-  @JsonKey()
-  final int inputBytes;
-
-  @override
-  String toString() {
-    return 'HashState(input: $input, format: $format, algorithm: $algorithm, hash: $hash, inputBytes: $inputBytes)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$HashStateImpl &&
-            (identical(other.input, input) || other.input == input) &&
-            (identical(other.format, format) || other.format == format) &&
-            (identical(other.algorithm, algorithm) ||
-                other.algorithm == algorithm) &&
-            const DeepCollectionEquality().equals(other.hash, hash) &&
-            (identical(other.inputBytes, inputBytes) ||
-                other.inputBytes == inputBytes));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    input,
-    format,
-    algorithm,
-    const DeepCollectionEquality().hash(hash),
-    inputBytes,
-  );
-
-  /// Create a copy of HashState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$HashStateImplCopyWith<_$HashStateImpl> get copyWith =>
-      __$$HashStateImplCopyWithImpl<_$HashStateImpl>(this, _$identity);
 }
-
-abstract class _HashState implements HashState {
-  const factory _HashState({
-    required final HashInput input,
-    required final HashFormat format,
-    required final HashAlgorithm algorithm,
-    required final Uint8List? hash,
-    final int inputBytes,
-  }) = _$HashStateImpl;
-
-  @override
-  HashInput get input;
-  @override
-  HashFormat get format;
-  @override
-  HashAlgorithm get algorithm;
-  @override
-  Uint8List? get hash;
-  @override
-  int get inputBytes;
-
-  /// Create a copy of HashState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$HashStateImplCopyWith<_$HashStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$HashInput {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String text) text,
-    required TResult Function(String path) file,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text)? text,
-    TResult? Function(String path)? file,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text)? text,
-    TResult Function(String path)? file,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TextInput value) text,
-    required TResult Function(FileInput value) file,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TextInput value)? text,
-    TResult? Function(FileInput value)? file,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TextInput value)? text,
-    TResult Function(FileInput value)? file,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HashInput);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HashInput()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $HashInputCopyWith<$Res> {
-  factory $HashInputCopyWith(HashInput value, $Res Function(HashInput) then) =
-      _$HashInputCopyWithImpl<$Res, HashInput>;
+class $HashInputCopyWith<$Res>  {
+$HashInputCopyWith(HashInput _, $Res Function(HashInput) __);
 }
 
-/// @nodoc
-class _$HashInputCopyWithImpl<$Res, $Val extends HashInput>
-    implements $HashInputCopyWith<$Res> {
-  _$HashInputCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [HashInput].
+extension HashInputPatterns on HashInput {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of HashInput
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( TextInput value)?  text,TResult Function( FileInput value)?  file,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case TextInput() when text != null:
+return text(_that);case FileInput() when file != null:
+return file(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( TextInput value)  text,required TResult Function( FileInput value)  file,}){
+final _that = this;
+switch (_that) {
+case TextInput():
+return text(_that);case FileInput():
+return file(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( TextInput value)?  text,TResult? Function( FileInput value)?  file,}){
+final _that = this;
+switch (_that) {
+case TextInput() when text != null:
+return text(_that);case FileInput() when file != null:
+return file(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String text)?  text,TResult Function( String path)?  file,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case TextInput() when text != null:
+return text(_that.text);case FileInput() when file != null:
+return file(_that.path);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String text)  text,required TResult Function( String path)  file,}) {final _that = this;
+switch (_that) {
+case TextInput():
+return text(_that.text);case FileInput():
+return file(_that.path);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String text)?  text,TResult? Function( String path)?  file,}) {final _that = this;
+switch (_that) {
+case TextInput() when text != null:
+return text(_that.text);case FileInput() when file != null:
+return file(_that.path);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$TextInputImplCopyWith<$Res> {
-  factory _$$TextInputImplCopyWith(
-    _$TextInputImpl value,
-    $Res Function(_$TextInputImpl) then,
-  ) = __$$TextInputImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String text});
-}
-
-/// @nodoc
-class __$$TextInputImplCopyWithImpl<$Res>
-    extends _$HashInputCopyWithImpl<$Res, _$TextInputImpl>
-    implements _$$TextInputImplCopyWith<$Res> {
-  __$$TextInputImplCopyWithImpl(
-    _$TextInputImpl _value,
-    $Res Function(_$TextInputImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of HashInput
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? text = null}) {
-    return _then(
-      _$TextInputImpl(
-        text: null == text
-            ? _value.text
-            : text // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
-}
-
-/// @nodoc
-
-class _$TextInputImpl implements TextInput {
-  const _$TextInputImpl({required this.text});
-
-  @override
-  final String text;
-
-  @override
-  String toString() {
-    return 'HashInput.text(text: $text)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TextInputImpl &&
-            (identical(other.text, text) || other.text == text));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, text);
-
-  /// Create a copy of HashInput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TextInputImplCopyWith<_$TextInputImpl> get copyWith =>
-      __$$TextInputImplCopyWithImpl<_$TextInputImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String text) text,
-    required TResult Function(String path) file,
-  }) {
-    return text(this.text);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text)? text,
-    TResult? Function(String path)? file,
-  }) {
-    return text?.call(this.text);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text)? text,
-    TResult Function(String path)? file,
-    required TResult orElse(),
-  }) {
-    if (text != null) {
-      return text(this.text);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TextInput value) text,
-    required TResult Function(FileInput value) file,
-  }) {
-    return text(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TextInput value)? text,
-    TResult? Function(FileInput value)? file,
-  }) {
-    return text?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TextInput value)? text,
-    TResult Function(FileInput value)? file,
-    required TResult orElse(),
-  }) {
-    if (text != null) {
-      return text(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class TextInput implements HashInput {
-  const factory TextInput({required final String text}) = _$TextInputImpl;
-
-  String get text;
-
-  /// Create a copy of HashInput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TextInputImplCopyWith<_$TextInputImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$FileInputImplCopyWith<$Res> {
-  factory _$$FileInputImplCopyWith(
-    _$FileInputImpl value,
-    $Res Function(_$FileInputImpl) then,
-  ) = __$$FileInputImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String path});
-}
-
-/// @nodoc
-class __$$FileInputImplCopyWithImpl<$Res>
-    extends _$HashInputCopyWithImpl<$Res, _$FileInputImpl>
-    implements _$$FileInputImplCopyWith<$Res> {
-  __$$FileInputImplCopyWithImpl(
-    _$FileInputImpl _value,
-    $Res Function(_$FileInputImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of HashInput
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? path = null}) {
-    return _then(
-      _$FileInputImpl(
-        path: null == path
-            ? _value.path
-            : path // ignore: cast_nullable_to_non_nullable
-                  as String,
-      ),
-    );
-  }
 }
 
 /// @nodoc
 
-class _$FileInputImpl implements FileInput {
-  const _$FileInputImpl({required this.path});
 
-  @override
-  final String path;
+class TextInput implements HashInput {
+  const TextInput({required this.text});
+  
 
-  @override
-  String toString() {
-    return 'HashInput.file(path: $path)';
-  }
+ final  String text;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FileInputImpl &&
-            (identical(other.path, path) || other.path == path));
-  }
+/// Create a copy of HashInput
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TextInputCopyWith<TextInput> get copyWith => _$TextInputCopyWithImpl<TextInput>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, path);
 
-  /// Create a copy of HashInput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FileInputImplCopyWith<_$FileInputImpl> get copyWith =>
-      __$$FileInputImplCopyWithImpl<_$FileInputImpl>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String text) text,
-    required TResult Function(String path) file,
-  }) {
-    return file(path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String text)? text,
-    TResult? Function(String path)? file,
-  }) {
-    return file?.call(path);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String text)? text,
-    TResult Function(String path)? file,
-    required TResult orElse(),
-  }) {
-    if (file != null) {
-      return file(path);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(TextInput value) text,
-    required TResult Function(FileInput value) file,
-  }) {
-    return file(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(TextInput value)? text,
-    TResult? Function(FileInput value)? file,
-  }) {
-    return file?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(TextInput value)? text,
-    TResult Function(FileInput value)? file,
-    required TResult orElse(),
-  }) {
-    if (file != null) {
-      return file(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TextInput&&(identical(other.text, text) || other.text == text));
 }
 
-abstract class FileInput implements HashInput {
-  const factory FileInput({required final String path}) = _$FileInputImpl;
 
-  String get path;
+@override
+int get hashCode => Object.hash(runtimeType,text);
 
-  /// Create a copy of HashInput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FileInputImplCopyWith<_$FileInputImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'HashInput.text(text: $text)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class $TextInputCopyWith<$Res> implements $HashInputCopyWith<$Res> {
+  factory $TextInputCopyWith(TextInput value, $Res Function(TextInput) _then) = _$TextInputCopyWithImpl;
+@useResult
+$Res call({
+ String text
+});
+
+
+
+
+}
+/// @nodoc
+class _$TextInputCopyWithImpl<$Res>
+    implements $TextInputCopyWith<$Res> {
+  _$TextInputCopyWithImpl(this._self, this._then);
+
+  final TextInput _self;
+  final $Res Function(TextInput) _then;
+
+/// Create a copy of HashInput
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? text = null,}) {
+  return _then(TextInput(
+text: null == text ? _self.text : text // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class FileInput implements HashInput {
+  const FileInput({required this.path});
+  
+
+ final  String path;
+
+/// Create a copy of HashInput
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FileInputCopyWith<FileInput> get copyWith => _$FileInputCopyWithImpl<FileInput>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is FileInput&&(identical(other.path, path) || other.path == path));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,path);
+
+@override
+String toString() {
+  return 'HashInput.file(path: $path)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $FileInputCopyWith<$Res> implements $HashInputCopyWith<$Res> {
+  factory $FileInputCopyWith(FileInput value, $Res Function(FileInput) _then) = _$FileInputCopyWithImpl;
+@useResult
+$Res call({
+ String path
+});
+
+
+
+
+}
+/// @nodoc
+class _$FileInputCopyWithImpl<$Res>
+    implements $FileInputCopyWith<$Res> {
+  _$FileInputCopyWithImpl(this._self, this._then);
+
+  final FileInput _self;
+  final $Res Function(FileInput) _then;
+
+/// Create a copy of HashInput
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? path = null,}) {
+  return _then(FileInput(
+path: null == path ? _self.path : path // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

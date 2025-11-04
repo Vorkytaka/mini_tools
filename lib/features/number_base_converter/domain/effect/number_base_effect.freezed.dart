@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,331 +9,273 @@ part of 'number_base_effect.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$NumberBaseEffect {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(NumberBaseState state) saveState,
-    required TResult Function() loadState,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(NumberBaseState state)? saveState,
-    TResult? Function()? loadState,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NumberBaseState state)? saveState,
-    TResult Function()? loadState,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SaveStateEffect value) saveState,
-    required TResult Function(LoadStateEffect value) loadState,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SaveStateEffect value)? saveState,
-    TResult? Function(LoadStateEffect value)? loadState,
-  }) => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SaveStateEffect value)? saveState,
-    TResult Function(LoadStateEffect value)? loadState,
-    required TResult orElse(),
-  }) => throw _privateConstructorUsedError;
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is NumberBaseEffect);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'NumberBaseEffect()';
+}
+
+
 }
 
 /// @nodoc
-abstract class $NumberBaseEffectCopyWith<$Res> {
-  factory $NumberBaseEffectCopyWith(
-    NumberBaseEffect value,
-    $Res Function(NumberBaseEffect) then,
-  ) = _$NumberBaseEffectCopyWithImpl<$Res, NumberBaseEffect>;
+class $NumberBaseEffectCopyWith<$Res>  {
+$NumberBaseEffectCopyWith(NumberBaseEffect _, $Res Function(NumberBaseEffect) __);
 }
 
-/// @nodoc
-class _$NumberBaseEffectCopyWithImpl<$Res, $Val extends NumberBaseEffect>
-    implements $NumberBaseEffectCopyWith<$Res> {
-  _$NumberBaseEffectCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [NumberBaseEffect].
+extension NumberBaseEffectPatterns on NumberBaseEffect {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of NumberBaseEffect
-  /// with the given fields replaced by the non-null parameter values.
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( SaveStateEffect value)?  saveState,TResult Function( LoadStateEffect value)?  loadState,required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case SaveStateEffect() when saveState != null:
+return saveState(_that);case LoadStateEffect() when loadState != null:
+return loadState(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( SaveStateEffect value)  saveState,required TResult Function( LoadStateEffect value)  loadState,}){
+final _that = this;
+switch (_that) {
+case SaveStateEffect():
+return saveState(_that);case LoadStateEffect():
+return loadState(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( SaveStateEffect value)?  saveState,TResult? Function( LoadStateEffect value)?  loadState,}){
+final _that = this;
+switch (_that) {
+case SaveStateEffect() when saveState != null:
+return saveState(_that);case LoadStateEffect() when loadState != null:
+return loadState(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( NumberBaseState state)?  saveState,TResult Function()?  loadState,required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case SaveStateEffect() when saveState != null:
+return saveState(_that.state);case LoadStateEffect() when loadState != null:
+return loadState();case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( NumberBaseState state)  saveState,required TResult Function()  loadState,}) {final _that = this;
+switch (_that) {
+case SaveStateEffect():
+return saveState(_that.state);case LoadStateEffect():
+return loadState();}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( NumberBaseState state)?  saveState,TResult? Function()?  loadState,}) {final _that = this;
+switch (_that) {
+case SaveStateEffect() when saveState != null:
+return saveState(_that.state);case LoadStateEffect() when loadState != null:
+return loadState();case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$SaveStateEffectImplCopyWith<$Res> {
-  factory _$$SaveStateEffectImplCopyWith(
-    _$SaveStateEffectImpl value,
-    $Res Function(_$SaveStateEffectImpl) then,
-  ) = __$$SaveStateEffectImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({NumberBaseState state});
-
-  $NumberBaseStateCopyWith<$Res> get state;
-}
-
-/// @nodoc
-class __$$SaveStateEffectImplCopyWithImpl<$Res>
-    extends _$NumberBaseEffectCopyWithImpl<$Res, _$SaveStateEffectImpl>
-    implements _$$SaveStateEffectImplCopyWith<$Res> {
-  __$$SaveStateEffectImplCopyWithImpl(
-    _$SaveStateEffectImpl _value,
-    $Res Function(_$SaveStateEffectImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of NumberBaseEffect
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? state = null}) {
-    return _then(
-      _$SaveStateEffectImpl(
-        null == state
-            ? _value.state
-            : state // ignore: cast_nullable_to_non_nullable
-                  as NumberBaseState,
-      ),
-    );
-  }
-
-  /// Create a copy of NumberBaseEffect
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $NumberBaseStateCopyWith<$Res> get state {
-    return $NumberBaseStateCopyWith<$Res>(_value.state, (value) {
-      return _then(_value.copyWith(state: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$SaveStateEffectImpl implements SaveStateEffect {
-  const _$SaveStateEffectImpl(this.state);
-
-  @override
-  final NumberBaseState state;
-
-  @override
-  String toString() {
-    return 'NumberBaseEffect.saveState(state: $state)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SaveStateEffectImpl &&
-            (identical(other.state, state) || other.state == state));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, state);
-
-  /// Create a copy of NumberBaseEffect
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SaveStateEffectImplCopyWith<_$SaveStateEffectImpl> get copyWith =>
-      __$$SaveStateEffectImplCopyWithImpl<_$SaveStateEffectImpl>(
-        this,
-        _$identity,
-      );
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(NumberBaseState state) saveState,
-    required TResult Function() loadState,
-  }) {
-    return saveState(state);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(NumberBaseState state)? saveState,
-    TResult? Function()? loadState,
-  }) {
-    return saveState?.call(state);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NumberBaseState state)? saveState,
-    TResult Function()? loadState,
-    required TResult orElse(),
-  }) {
-    if (saveState != null) {
-      return saveState(state);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SaveStateEffect value) saveState,
-    required TResult Function(LoadStateEffect value) loadState,
-  }) {
-    return saveState(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SaveStateEffect value)? saveState,
-    TResult? Function(LoadStateEffect value)? loadState,
-  }) {
-    return saveState?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SaveStateEffect value)? saveState,
-    TResult Function(LoadStateEffect value)? loadState,
-    required TResult orElse(),
-  }) {
-    if (saveState != null) {
-      return saveState(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class SaveStateEffect implements NumberBaseEffect {
-  const factory SaveStateEffect(final NumberBaseState state) =
-      _$SaveStateEffectImpl;
-
-  NumberBaseState get state;
-
-  /// Create a copy of NumberBaseEffect
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SaveStateEffectImplCopyWith<_$SaveStateEffectImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$LoadStateEffectImplCopyWith<$Res> {
-  factory _$$LoadStateEffectImplCopyWith(
-    _$LoadStateEffectImpl value,
-    $Res Function(_$LoadStateEffectImpl) then,
-  ) = __$$LoadStateEffectImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadStateEffectImplCopyWithImpl<$Res>
-    extends _$NumberBaseEffectCopyWithImpl<$Res, _$LoadStateEffectImpl>
-    implements _$$LoadStateEffectImplCopyWith<$Res> {
-  __$$LoadStateEffectImplCopyWithImpl(
-    _$LoadStateEffectImpl _value,
-    $Res Function(_$LoadStateEffectImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of NumberBaseEffect
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
 
-class _$LoadStateEffectImpl implements LoadStateEffect {
-  const _$LoadStateEffectImpl();
 
-  @override
-  String toString() {
-    return 'NumberBaseEffect.loadState()';
-  }
+class SaveStateEffect implements NumberBaseEffect {
+  const SaveStateEffect(this.state);
+  
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadStateEffectImpl);
-  }
+ final  NumberBaseState state;
 
-  @override
-  int get hashCode => runtimeType.hashCode;
+/// Create a copy of NumberBaseEffect
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SaveStateEffectCopyWith<SaveStateEffect> get copyWith => _$SaveStateEffectCopyWithImpl<SaveStateEffect>(this, _$identity);
 
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(NumberBaseState state) saveState,
-    required TResult Function() loadState,
-  }) {
-    return loadState();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(NumberBaseState state)? saveState,
-    TResult? Function()? loadState,
-  }) {
-    return loadState?.call();
-  }
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(NumberBaseState state)? saveState,
-    TResult Function()? loadState,
-    required TResult orElse(),
-  }) {
-    if (loadState != null) {
-      return loadState();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(SaveStateEffect value) saveState,
-    required TResult Function(LoadStateEffect value) loadState,
-  }) {
-    return loadState(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SaveStateEffect value)? saveState,
-    TResult? Function(LoadStateEffect value)? loadState,
-  }) {
-    return loadState?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(SaveStateEffect value)? saveState,
-    TResult Function(LoadStateEffect value)? loadState,
-    required TResult orElse(),
-  }) {
-    if (loadState != null) {
-      return loadState(this);
-    }
-    return orElse();
-  }
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SaveStateEffect&&(identical(other.state, state) || other.state == state));
 }
 
-abstract class LoadStateEffect implements NumberBaseEffect {
-  const factory LoadStateEffect() = _$LoadStateEffectImpl;
+
+@override
+int get hashCode => Object.hash(runtimeType,state);
+
+@override
+String toString() {
+  return 'NumberBaseEffect.saveState(state: $state)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class $SaveStateEffectCopyWith<$Res> implements $NumberBaseEffectCopyWith<$Res> {
+  factory $SaveStateEffectCopyWith(SaveStateEffect value, $Res Function(SaveStateEffect) _then) = _$SaveStateEffectCopyWithImpl;
+@useResult
+$Res call({
+ NumberBaseState state
+});
+
+
+$NumberBaseStateCopyWith<$Res> get state;
+
+}
+/// @nodoc
+class _$SaveStateEffectCopyWithImpl<$Res>
+    implements $SaveStateEffectCopyWith<$Res> {
+  _$SaveStateEffectCopyWithImpl(this._self, this._then);
+
+  final SaveStateEffect _self;
+  final $Res Function(SaveStateEffect) _then;
+
+/// Create a copy of NumberBaseEffect
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? state = null,}) {
+  return _then(SaveStateEffect(
+null == state ? _self.state : state // ignore: cast_nullable_to_non_nullable
+as NumberBaseState,
+  ));
+}
+
+/// Create a copy of NumberBaseEffect
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$NumberBaseStateCopyWith<$Res> get state {
+  
+  return $NumberBaseStateCopyWith<$Res>(_self.state, (value) {
+    return _then(_self.copyWith(state: value));
+  });
+}
+}
+
+/// @nodoc
+
+
+class LoadStateEffect implements NumberBaseEffect {
+  const LoadStateEffect();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LoadStateEffect);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'NumberBaseEffect.loadState()';
+}
+
+
+}
+
+
+
+
+// dart format on
