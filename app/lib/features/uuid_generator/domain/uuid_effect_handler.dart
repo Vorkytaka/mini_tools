@@ -26,8 +26,8 @@ final class UuidEffectHandler
   }
 
   Future<void> _init(InitEffect effect, MsgEmitter<UuidMessage> emit) async {
-    final options = GlobalOptions(CryptoRNG());
-    _uuid = Uuid(goptions: options);
+    const options = GlobalOptions(CryptoRNG());
+    _uuid = const Uuid(goptions: options);
   }
 
   Future<void> _generate(

@@ -102,7 +102,6 @@ final class FeatureObserverWrapper<State, Msg, Effect>
   /// Creates a new [FeatureObserverWrapper].
   ///
   /// - [feature]: The feature being observed.
-  /// - [observer]: The observer handling lifecycle and interaction events.
   FeatureObserverWrapper({
     required super.feature,
     OnInit? onInit,

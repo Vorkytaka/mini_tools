@@ -9,10 +9,6 @@ import 'package:provider/provider.dart';
 /// within a [FeatureProvider].
 ///
 /// - [F]: The type of the [Feature].
-/// - [S]: The type of the state managed by the feature.
-/// - [M]: The type of messages handled by the feature.
-/// - [E]: The type of effects emitted by the feature.
-/// ```
 @experimental
 typedef CreateFeature<F extends Feature> = F Function(BuildContext context);
 
@@ -42,9 +38,6 @@ typedef CreateFeature<F extends Feature> = F Function(BuildContext context);
 ///
 /// ### Key Parameters
 /// - [F]: The type of the [Feature].
-/// - [S]: The type of the state managed by the feature.
-/// - [M]: The type of messages handled by the feature.
-/// - [E]: The type of effects emitted by the feature.
 @experimental
 class FeatureProvider<F extends Feature> extends StatelessWidget {
   /// An existing [Feature] instance to be provided.
