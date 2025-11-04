@@ -53,10 +53,10 @@ jobs:
         run: flutter doctor -v
 
       - name: Ensure the Dart code is formatted correctly
-        run: dart format --set-exit-if-changed --trailing-commas preserve .
+        run: dart pub run melos format --set-exit-if-changed .
 
       - name: Check flutter analyze
         run: flutter analyze .
 
       - name: Run Flutter unit tests
-        run: flutter test
+        run: dart pub run melos run test
