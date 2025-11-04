@@ -1,0 +1,30 @@
+name: mini_tea_flutter
+description: A bunch of widgets that helps you to easily works with mini_tea with Flutter.
+version: 0.2.0
+
+repository: https://github.com/Vorkytaka/mini_tea/tree/master/packages/mini_tea_flutter
+issue_tracker: https://github.com/Vorkytaka/mini_tea/issues
+homepage: https://github.com/Vorkytaka/mini_tea
+topics:
+  - state-management
+  - architecture
+  - unidirectional-data-flow
+  - mvi
+
+environment:
+  sdk: ^3.5.0
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  meta: ^1.0.0
+  mini_tea: ^0.1.2
+  provider: ^6.0.0
+  rxdart: '>=0.27.0 <1.0.0'
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.4
