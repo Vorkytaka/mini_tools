@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 
-import '../../../core/presentation/mini_sidebar.dart';
+import '../../../../core/presentation/mini_sidebar.dart';
 
 final class TabItemWidget extends StatefulWidget {
   final Widget icon;

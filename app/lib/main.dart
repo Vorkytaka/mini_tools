@@ -15,7 +15,7 @@ import 'app.dart';
 import 'core/common/timezone_holder.dart';
 import 'core/logger/logger.dart';
 import 'core/logger/logging_logger.dart';
-import 'di_v0.dart';
+import 'app_feature.dart';
 import 'i18n/strings.g.dart';
 
 Future<void> main() async {
@@ -26,7 +26,7 @@ Future<void> main() async {
     rethrow;
   }
 
-  final dependencies = MiniDi();
+  final dependencies = AppFeatureController();
   await dependencies.init();
 
   Log.i('main', 'PreInit successfully');
@@ -34,10 +34,10 @@ Future<void> main() async {
   runApp(
     TimezoneHolder(
       timezone: await _initializeTimezone(),
-      child: Provider<MiniDi>(
+      child: Provider<AppFeatureController>(
         create: (_) => dependencies,
         child: FeatureProvider.value(
-          value: dependencies.tabsDi.tabsFeature,
+          value: dependencies.tabs.tabsFeature,
           child: const MiniToolsApp(),
         ),
       ),

@@ -1,3 +1,4 @@
+import 'core/common/initializable.dart';
 import 'core/tool_v2/src/tool_registry.dart';
 import 'features/color_converter/color_converter_tool_v2.dart';
 import 'features/cron/cron_tool_v2.dart';
@@ -10,26 +11,20 @@ import 'features/percentages_calculator/percentages_tool_v2.dart';
 import 'features/qr_code_generator/qr_code_generator_tool_v2.dart';
 import 'features/regexp/regexp_tool_v2.dart';
 import 'features/sqlite/sqlite_tool_v2.dart';
-import 'features/tabs/tabs_di.dart';
+import 'features/tabs/tabs_feature.dart';
 import 'features/text_diff/text_diff_tool_v2.dart';
 import 'features/uuid_generator/uuid_tool_v2.dart';
 
-abstract interface class Initializable {
-  Future<void> init();
-
-  Future<void> dispose();
-}
-
-abstract interface class MiniDi implements Initializable {
-  factory MiniDi() = _DepTreeV0;
+abstract interface class AppFeatureController implements Initializable {
+  factory AppFeatureController() = _AppFeatureController;
 
   ToolsRegistry get toolsRegistry;
 
-  TabsDi get tabsDi;
+  TabsFeatureController get tabs;
 }
 
-final class _DepTreeV0 implements MiniDi {
-  _DepTreeV0();
+final class _AppFeatureController implements AppFeatureController {
+  _AppFeatureController();
 
   @override
   late final toolsRegistry = ToolsRegistry(
@@ -51,17 +46,17 @@ final class _DepTreeV0 implements MiniDi {
   );
 
   @override
-  late final TabsDi tabsDi = TabsDi(
-    depTree: this,
+  late final TabsFeatureController tabs = TabsFeatureController(
+    toolsRegistry: toolsRegistry,
   );
 
   @override
   Future<void> dispose() async {
-    await tabsDi.dispose();
+    await tabs.dispose();
   }
 
   @override
   Future<void> init() async {
-    await tabsDi.init();
+    await tabs.init();
   }
 }
