@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/tool_v2/src/tool_instance.dart';
+import '../../../../../core/tool_v2/tool_v2.dart';
 
 part 'tabs_effect.freezed.dart';
 

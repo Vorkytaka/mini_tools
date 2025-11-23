@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:mini_tea/feature.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../../core/tool_v2/src/tool_registry.dart';
+import '../../../../core/tool_v2/src/tool_registry.dart';
 import 'effect/tabs_effect.dart';
 import 'message/tabs_message.dart';
 import 'state/tabs_state.dart';
