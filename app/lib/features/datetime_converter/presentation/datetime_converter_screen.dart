@@ -361,7 +361,6 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
         const SizedBox(height: 12),
         FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
           builder: (context, state) {
-            final format = state.format;
             return _DateItem(
               title: t.datetimeConverter.unixTimestamp,
               datetime: widget.datetime,
