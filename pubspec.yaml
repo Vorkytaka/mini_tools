@@ -7,6 +7,7 @@ workspace:
   - packages/mini_tea
   - packages/mini_tea_flutter
   - packages/mini_tea_test
+  - packages/mini_tea_time_travel
 dev_dependencies:
   melos: ^7.3.0
   flutter_lints: ^6.0.0
