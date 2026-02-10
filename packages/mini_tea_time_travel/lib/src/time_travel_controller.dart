@@ -7,14 +7,7 @@ import 'package:rxdart/rxdart.dart';
 final class TimeTravelController implements Disposable {
   static final global = TimeTravelController();
 
-  final _stateSubject = BehaviorSubject<TimeTravelStateV2>.seeded((
-    timeline: const [],
-    currentIndex: -1,
-  ));
-
-  // TODO: Move it's all to the state
-  final _timeTravelFeatures = <String, TimeTravelFeature>{};
-  final _snapshots = <Map<String, dynamic>>[{}];
+  final _stateSubject = BehaviorSubject.seeded(_initialTimeTravelState);
   final _stopwatch = Stopwatch();
 
   final int _snapshotAtEach;
@@ -28,31 +21,45 @@ final class TimeTravelController implements Disposable {
   @override
   Future<void> dispose() async {
     await _stateSubject.close();
-    _timeTravelFeatures.clear();
     _stopwatch.stop();
   }
 
   bool get isTimeTraveled => _stateSubject.value.currentIndex != -1;
 
   void register(String name, TimeTravelFeature feature) {
-    _timeTravelFeatures[name] = feature;
-    _snapshots.last[name] = feature.state;
+    _stateSubject.add(state.copyWith(
+      features: {
+        ...state.features,
+        name: feature,
+      },
+      stateSnapshots: [
+        ...state.stateSnapshots.map((snapshot) => {
+              ...snapshot,
+              name: feature.state,
+            }),
+      ],
+    ));
 
-    if (_stateSubject.value.timeline.isEmpty &&
-        _timeTravelFeatures.length == 1) {
+    if (state.timeline.isEmpty && state.features.length == 1) {
       _stopwatch.reset();
       _stopwatch.start();
     }
   }
 
   void unregister(String name) {
-    _timeTravelFeatures.remove(name);
-
-    for (final snapshots in _snapshots) {
-      if (snapshots.containsKey(name)) {
-        snapshots.remove(name);
-      }
-    }
+    _stateSubject.add(state.copyWith(
+      features: {
+        for (final featureName in state.features.keys)
+          if (name != featureName) featureName: state.features[featureName]!,
+      },
+      stateSnapshots: [
+        for (final snapshot in state.stateSnapshots)
+          {
+            for (final featureName in snapshot.keys)
+              if (name != featureName) featureName: snapshot[featureName],
+          }
+      ],
+    ));
   }
 
   void _onMessage(String featureName, dynamic message) {
@@ -66,16 +73,22 @@ final class TimeTravelController implements Disposable {
             message: message,
             millisecondsSinceStart: _stopwatch.elapsedMilliseconds,
           ),
-        ].toUnmodifiable,
+        ],
       ),
     );
 
-    if (_stateSubject.value.timeline.length % _snapshotAtEach == 0) {
+    if (state.timeline.length % _snapshotAtEach == 0) {
       final states = <String, dynamic>{
-        for (final featureName in _timeTravelFeatures.keys)
-          featureName: _timeTravelFeatures[featureName]!.state,
+        for (final featureName in state.features.keys)
+          featureName: state.features[featureName]!.state,
       };
-      _snapshots.add(states);
+
+      _stateSubject.add(state.copyWith(
+        stateSnapshots: [
+          ...state.stateSnapshots,
+          states,
+        ],
+      ));
     }
   }
 
@@ -140,17 +153,17 @@ final class TimeTravelController implements Disposable {
     final snapshotsIndex = (index ~/ _snapshotAtEach);
     final from = snapshotsIndex * _snapshotAtEach;
 
-    final snapshots = _snapshots[snapshotsIndex];
-    for (final featureName in _timeTravelFeatures.keys) {
-      final state = snapshots[featureName]!;
-      final feature = _timeTravelFeatures[featureName]!;
+    final snapshots = state.stateSnapshots[snapshotsIndex];
+    for (final featureName in state.features.keys) {
+      final featureState = snapshots[featureName]!;
+      final feature = state.features[featureName]!;
 
-      feature._processState(state);
+      feature._processState(featureState);
     }
 
     for (int i = from; i <= index; i++) {
       final event = _stateSubject.value.timeline[i];
-      final feature = _timeTravelFeatures[event.featureName]!;
+      final feature = state.features[event.featureName]!;
       feature.accept(event.message);
     }
 
@@ -265,16 +278,29 @@ final class TimeTravelFeature<State, Message, Effect>
 
 typedef TimeTravelStateV2 = ({
   List<TimeTravelEventV2> timeline,
+  Map<String, TimeTravelFeature> features,
+  List<Map<String, dynamic>> stateSnapshots,
   int currentIndex,
 });
+
+TimeTravelStateV2 get _initialTimeTravelState => (
+      timeline: const [],
+      features: const {},
+      stateSnapshots: const [{}],
+      currentIndex: -1,
+    );
 
 extension on TimeTravelStateV2 {
   TimeTravelStateV2 copyWith({
     List<TimeTravelEventV2>? timeline,
+    Map<String, TimeTravelFeature>? features,
+    List<Map<String, dynamic>>? stateSnapshots,
     int? currentIndex,
   }) =>
       (
-        timeline: timeline ?? this.timeline,
+        timeline: timeline?.toUnmodifiable ?? this.timeline,
+        features: features?.toUnmodifiable ?? this.features,
+        stateSnapshots: stateSnapshots?.toUnmodifiable ?? this.stateSnapshots,
         currentIndex: currentIndex ?? this.currentIndex,
       );
 }
@@ -287,4 +313,8 @@ typedef TimeTravelEventV2<Message> = ({
 
 extension<E> on List<E> {
   List<E> get toUnmodifiable => List.unmodifiable(this);
+}
+
+extension<K, V> on Map<K, V> {
+  Map<K, V> get toUnmodifiable => Map.unmodifiable(this);
 }
