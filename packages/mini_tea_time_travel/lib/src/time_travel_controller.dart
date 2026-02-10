@@ -14,7 +14,11 @@ final class TimeTravelController implements Disposable {
   final _snapshots = <Map<String, dynamic>>[{}];
   final _stopwatch = Stopwatch();
 
-  TimeTravelController();
+  final int _snapshotAtEach;
+
+  TimeTravelController({
+    int snapshotAtEach = 100,
+  }) : _snapshotAtEach = snapshotAtEach;
 
   @override
   Future<void> dispose() async {
@@ -38,7 +42,12 @@ final class TimeTravelController implements Disposable {
 
   void unregister(String name) {
     _timeTravelFeatures.remove(name);
-    // TODO: Remove feature from snapshots
+
+    for (final snapshots in _snapshots) {
+      if (snapshots.containsKey(name)) {
+        snapshots.remove(name);
+      }
+    }
   }
 
   void _onMessage(String featureName, dynamic message) {
@@ -56,13 +65,57 @@ final class TimeTravelController implements Disposable {
       ),
     );
 
-    if (_stateSubject.value.timeline.length % 100 == 0) {
+    if (_stateSubject.value.timeline.length % _snapshotAtEach == 0) {
       final states = <String, dynamic>{
         for (final featureName in _timeTravelFeatures.keys)
           featureName: _timeTravelFeatures[featureName]!.state,
       };
       _snapshots.add(states);
     }
+  }
+
+  void goToStart() => _moveTo(0);
+
+  void goToEnd() => _moveTo(_stateSubject.value.timeline.length - 1);
+
+  void goBack() {
+    if (_stateSubject.value.currentIndex == 0) {
+      return;
+    }
+
+    _moveTo(_stateSubject.value.currentIndex - 1);
+  }
+
+  void goForward() {
+    if (_stateSubject.value.currentIndex ==
+        _stateSubject.value.timeline.length - 1) {
+      return;
+    }
+
+    _moveTo(_stateSubject.value.currentIndex + 1);
+  }
+
+  void _moveTo(int index) {
+    assert(index >= 0 && index < _stateSubject.value.timeline.length);
+
+    final snapshotsIndex = (index ~/ _snapshotAtEach);
+    final from = snapshotsIndex * _snapshotAtEach + 1;
+
+    final snapshots = _snapshots[snapshotsIndex];
+    for (final featureName in _timeTravelFeatures.keys) {
+      final state = snapshots[featureName]!;
+      final feature = _timeTravelFeatures[featureName]!;
+
+      feature._processState(state);
+    }
+
+    for (int i = from; i <= index; i++) {
+      final message = _stateSubject.value.timeline[i];
+      final feature = _timeTravelFeatures[message.featureName]!;
+      feature.accept(message);
+    }
+
+    _stateSubject.add(_stateSubject.value.copyWith(currentIndex: index));
   }
 }
 
@@ -166,6 +219,8 @@ final class TimeTravelFeature<State, Message, Effect>
       handler(effect, accept);
     }
   }
+
+  void _processState(State state) => _stateSubject.add(state);
 }
 
 typedef TimeTravelStateV2 = ({
