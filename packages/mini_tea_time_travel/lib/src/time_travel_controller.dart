@@ -6,11 +6,13 @@ import 'package:rxdart/rxdart.dart';
 final class TimeTravelController implements Disposable {
   static final global = TimeTravelController();
 
-  final _stateSubject = BehaviorSubject<TimeTravelState>.seeded(TimeTravelState(
+  final _stateSubject = BehaviorSubject<TimeTravelStateV2>.seeded((
     timeline: [],
     currentIndex: -1,
   ));
   final _timeTravelFeatures = <String, TimeTravelFeature>{};
+  final _snapshots = <Map<String, dynamic>>[{}];
+  final _stopwatch = Stopwatch();
 
   TimeTravelController();
 
@@ -18,48 +20,52 @@ final class TimeTravelController implements Disposable {
   Future<void> dispose() async {
     await _stateSubject.close();
     _timeTravelFeatures.clear();
+    _stopwatch.stop();
   }
 
   bool get isTimeTraveled => _stateSubject.value.currentIndex != -1;
 
-  void clear() {
-    // TODO
-  }
-
   void register(String name, TimeTravelFeature feature) {
     _timeTravelFeatures[name] = feature;
-    // TODO: Maybe save initial state?
+    _snapshots.last[name] = feature.state;
+
+    if (_stateSubject.value.timeline.isEmpty &&
+        _timeTravelFeatures.length == 1) {
+      _stopwatch.reset();
+      _stopwatch.start();
+    }
   }
 
   void unregister(String name) {
     _timeTravelFeatures.remove(name);
+    // TODO: Remove feature from snapshots
   }
 
-  void _onEvent(TimeTravelEvent event) {
+  void _onMessage(String featureName, dynamic message) {
     // TODO: Add timeline limit
     _stateSubject.add(
-      TimeTravelState(
+      _stateSubject.value.copyWith(
         timeline: [
           ..._stateSubject.value.timeline,
-          event,
+          (
+            featureName: featureName,
+            message: message,
+            millisecondsSinceStart: _stopwatch.elapsedMilliseconds,
+          ),
         ],
-        currentIndex: _stateSubject.value.currentIndex,
       ),
     );
+
+    if (_stateSubject.value.timeline.length % 100 == 0) {
+      final states = <String, dynamic>{
+        for (final featureName in _timeTravelFeatures.keys)
+          featureName: _timeTravelFeatures[featureName]!.state,
+      };
+      _snapshots.add(states);
+    }
   }
 }
 
-final class TimeTravelState {
-  final List<TimeTravelEvent> timeline;
-  final int currentIndex;
-
-  const TimeTravelState({
-    required this.timeline,
-    required this.currentIndex,
-  });
-}
-
-// TODO: Migrate from ProxyFeature to a factory
 final class TimeTravelFeature<State, Message, Effect>
     implements Feature<State, Message, Effect> {
   final TimeTravelController _timeTravelController;
@@ -131,8 +137,6 @@ final class TimeTravelFeature<State, Message, Effect>
 
   @override
   void accept(Message message) {
-    final stateBefore = state;
-
     final (newState, effects) = _update(state, message);
 
     if (!_timeTravelController.isTimeTraveled) {
@@ -143,14 +147,7 @@ final class TimeTravelFeature<State, Message, Effect>
         effects.forEach(_effectsController.add);
       }
 
-      // TODO: Check if this is right place
-      final stateAfter = newState ?? stateBefore;
-      _timeTravelController._onEvent(TimeTravelEvent(
-        feature: this,
-        stateBefore: stateBefore,
-        stateAfter: stateAfter,
-        message: message,
-      ));
+      _timeTravelController._onMessage(name, message);
     }
   }
 
@@ -171,18 +168,24 @@ final class TimeTravelFeature<State, Message, Effect>
   }
 }
 
-// TODO: Bring types
-// TODO: Migrate from feature itself to some ID or not?
-final class TimeTravelEvent {
-  final TimeTravelFeature feature;
-  final dynamic stateBefore;
-  final dynamic stateAfter;
-  final dynamic message;
+typedef TimeTravelStateV2 = ({
+  List<TimeTravelEventV2> timeline,
+  int currentIndex,
+});
 
-  const TimeTravelEvent({
-    required this.feature,
-    required this.stateBefore,
-    required this.stateAfter,
-    required this.message,
-  });
+extension on TimeTravelStateV2 {
+  TimeTravelStateV2 copyWith({
+    List<TimeTravelEventV2>? timeline,
+    int? currentIndex,
+  }) =>
+      (
+        timeline: timeline ?? this.timeline,
+        currentIndex: currentIndex ?? this.currentIndex,
+      );
 }
+
+typedef TimeTravelEventV2<Message> = ({
+  String featureName,
+  Message message,
+  int millisecondsSinceStart,
+});
