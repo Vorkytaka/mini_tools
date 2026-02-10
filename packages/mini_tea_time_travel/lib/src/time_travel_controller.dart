@@ -3,13 +3,16 @@ import 'dart:async';
 import 'package:mini_tea/feature.dart';
 import 'package:rxdart/rxdart.dart';
 
+// TODO: Think about how to handle -1/0 index, so we will not call first message and go to true init state
 final class TimeTravelController implements Disposable {
   static final global = TimeTravelController();
 
   final _stateSubject = BehaviorSubject<TimeTravelStateV2>.seeded((
-    timeline: [],
+    timeline: const [],
     currentIndex: -1,
   ));
+
+  // TODO: Move it's all to the state
   final _timeTravelFeatures = <String, TimeTravelFeature>{};
   final _snapshots = <Map<String, dynamic>>[{}];
   final _stopwatch = Stopwatch();
@@ -19,6 +22,8 @@ final class TimeTravelController implements Disposable {
   TimeTravelController({
     int snapshotAtEach = 100,
   }) : _snapshotAtEach = snapshotAtEach;
+
+  TimeTravelStateV2 get state => _stateSubject.value;
 
   @override
   Future<void> dispose() async {
@@ -61,7 +66,7 @@ final class TimeTravelController implements Disposable {
             message: message,
             millisecondsSinceStart: _stopwatch.elapsedMilliseconds,
           ),
-        ],
+        ].toUnmodifiable,
       ),
     );
 
@@ -76,30 +81,64 @@ final class TimeTravelController implements Disposable {
 
   void goToStart() => _moveTo(0);
 
-  void goToEnd() => _moveTo(_stateSubject.value.timeline.length - 1);
+  void goToEnd() {
+    if (_stateSubject.value.timeline.isEmpty) {
+      return;
+    }
+    final lastIndex = _stateSubject.value.timeline.length - 1;
+    _moveTo(lastIndex);
+    // TODO: Don't set current index to -1 here
+    // Exit time travel mode when explicitly going to end
+    _stateSubject.add(_stateSubject.value.copyWith(currentIndex: -1));
+  }
 
   void goBack() {
-    if (_stateSubject.value.currentIndex == 0) {
+    // TODO: Validate this shit
+
+    final currentIndex = _stateSubject.value.currentIndex;
+
+    // If not time traveled, go to second-to-last
+    if (currentIndex == -1) {
+      if (_stateSubject.value.timeline.length >= 2) {
+        _moveTo(_stateSubject.value.timeline.length - 2);
+      }
       return;
     }
 
-    _moveTo(_stateSubject.value.currentIndex - 1);
+    // If at start, do nothing
+    if (currentIndex == 0) {
+      return;
+    }
+
+    _moveTo(currentIndex - 1);
   }
 
   void goForward() {
-    if (_stateSubject.value.currentIndex ==
-        _stateSubject.value.timeline.length - 1) {
+    // TODO: Validate this shit
+
+    final currentIndex = _stateSubject.value.currentIndex;
+
+    // If not time traveled, do nothing
+    if (currentIndex == -1) {
       return;
     }
 
-    _moveTo(_stateSubject.value.currentIndex + 1);
+    // If at end, do nothing
+    if (currentIndex == _stateSubject.value.timeline.length - 1) {
+      return;
+    }
+
+    _moveTo(currentIndex + 1);
   }
 
   void _moveTo(int index) {
     assert(index >= 0 && index < _stateSubject.value.timeline.length);
 
+    // Set time travel mode
+    _stateSubject.add(_stateSubject.value.copyWith(currentIndex: index));
+
     final snapshotsIndex = (index ~/ _snapshotAtEach);
-    final from = snapshotsIndex * _snapshotAtEach + 1;
+    final from = snapshotsIndex * _snapshotAtEach;
 
     final snapshots = _snapshots[snapshotsIndex];
     for (final featureName in _timeTravelFeatures.keys) {
@@ -110,12 +149,12 @@ final class TimeTravelController implements Disposable {
     }
 
     for (int i = from; i <= index; i++) {
-      final message = _stateSubject.value.timeline[i];
-      final feature = _timeTravelFeatures[message.featureName]!;
-      feature.accept(message);
+      final event = _stateSubject.value.timeline[i];
+      final feature = _timeTravelFeatures[event.featureName]!;
+      feature.accept(event.message);
     }
 
-    _stateSubject.add(_stateSubject.value.copyWith(currentIndex: index));
+    // TODO: Maybe change current index to -1 here?
   }
 }
 
@@ -192,10 +231,11 @@ final class TimeTravelFeature<State, Message, Effect>
   void accept(Message message) {
     final (newState, effects) = _update(state, message);
 
+    if (newState != null && _stateSubject.value != newState) {
+      _stateSubject.add(newState);
+    }
+
     if (!_timeTravelController.isTimeTraveled) {
-      if (newState != null && _stateSubject.value != newState) {
-        _stateSubject.add(newState);
-      }
       if (effects.isNotEmpty) {
         effects.forEach(_effectsController.add);
       }
@@ -244,3 +284,7 @@ typedef TimeTravelEventV2<Message> = ({
   Message message,
   int millisecondsSinceStart,
 });
+
+extension<E> on List<E> {
+  List<E> get toUnmodifiable => List.unmodifiable(this);
+}
