@@ -97,10 +97,11 @@ void main() {
       await controller.dispose();
     });
 
-    test('initial state has empty timeline and currentIndex -1', () {
+    test('initial state has empty timeline and is not time traveling', () {
       expect(controller.state.timeline, isEmpty);
-      expect(controller.state.currentIndex, -1);
-      expect(controller.isTimeTraveled, isFalse);
+      expect(controller.state.navigation.currentIndex, isNull);
+      expect(controller.state.navigation.isTimeTraveling, isFalse);
+      expect(controller.isTimeTraveling, isFalse);
     });
 
     test('dispose clears features and closes stream', () async {
@@ -329,8 +330,8 @@ void main() {
       feature.accept(CounterMsg.increment); // state 3, timeline[2]
 
       controller.goBack(); // should move to index 1
-      expect(controller.state.currentIndex, 1);
-      expect(controller.isTimeTraveled, isTrue);
+      expect(controller.state.navigation.currentIndex, 1);
+      expect(controller.isTimeTraveling, isTrue);
       expect(feature.state, 2);
     });
 
@@ -339,29 +340,46 @@ void main() {
         () {
       // Empty timeline
       controller.goBack();
-      expect(controller.state.currentIndex, -1);
+      expect(controller.state.navigation.currentIndex, isNull);
+      expect(controller.isTimeTraveling, isFalse);
 
       // Single event
       feature.accept(CounterMsg.increment);
       controller.goBack();
-      expect(controller.state.currentIndex, -1);
+      expect(controller.state.navigation.currentIndex, isNull);
+      expect(controller.isTimeTraveling, isFalse);
     });
 
-    test('goBack at index 0 does nothing', () {
+    test('goBack at index 0 goes to initial state', () {
       feature.accept(CounterMsg.increment);
       feature.accept(CounterMsg.increment);
 
-      controller.goToStart(); // index 0
-      controller.goBack(); // should stay at 0
-      expect(controller.state.currentIndex, 0);
+      controller.goToStart(); // initial state
+      controller.goForward(); // index 0
+      expect(controller.state.navigation.currentIndex, 0);
+
+      controller.goBack(); // should go to initial state
+      expect(controller.state.navigation.currentIndex, isNull);
+      expect(controller.isTimeTraveling, isTrue);
+      expect(feature.state, 0); // initial state
+    });
+
+    test('goBack at initial state does nothing', () {
+      feature.accept(CounterMsg.increment);
+      feature.accept(CounterMsg.increment);
+
+      controller.goToStart(); // initial state
+      controller.goBack(); // should stay at initial state
+      expect(controller.state.navigation.currentIndex, isNull);
+      expect(controller.isTimeTraveling, isTrue);
     });
 
     test('goForward in live mode does nothing', () {
       feature.accept(CounterMsg.increment);
 
       controller.goForward();
-      expect(controller.state.currentIndex, -1);
-      expect(controller.isTimeTraveled, isFalse);
+      expect(controller.state.navigation.currentIndex, isNull);
+      expect(controller.isTimeTraveling, isFalse);
     });
 
     test('goForward at end of timeline does nothing', () {
@@ -373,7 +391,7 @@ void main() {
 
       // Now at last index – goForward should be no-op
       controller.goForward();
-      expect(controller.state.currentIndex, 1);
+      expect(controller.state.navigation.currentIndex, 1);
     });
 
     test('goForward moves one step forward', () {
@@ -381,11 +399,15 @@ void main() {
       feature.accept(CounterMsg.increment); // 2
       feature.accept(CounterMsg.increment); // 3
 
-      controller.goToStart(); // index 0, state restored to 1
+      controller.goToStart(); // initial state, state = 0
+      expect(feature.state, 0);
+
+      controller.goForward(); // index 0, state should be 1
+      expect(controller.state.navigation.currentIndex, 0);
       expect(feature.state, 1);
 
       controller.goForward(); // index 1, state should be 2
-      expect(controller.state.currentIndex, 1);
+      expect(controller.state.navigation.currentIndex, 1);
       expect(feature.state, 2);
     });
   });
@@ -408,33 +430,35 @@ void main() {
       await controller.dispose();
     });
 
-    test('goToStart sets index to 0 and replays to first message state', () {
+    test('goToStart restores to true initial state', () {
       feature.accept(CounterMsg.increment); // 1
       feature.accept(CounterMsg.increment); // 2
       feature.accept(CounterMsg.increment); // 3
 
       controller.goToStart();
-      expect(controller.state.currentIndex, 0);
-      expect(feature.state, 1); // initial 0 + increment
+      expect(controller.state.navigation.currentIndex, isNull);
+      expect(controller.state.navigation.isTimeTraveling, isTrue);
+      expect(feature.state, 0); // true initial state
     });
 
-    test('goToEnd restores final state and exits time travel mode', () {
+    test('goToEnd restores final state and stays in time travel mode', () {
       feature.accept(CounterMsg.increment); // 1
       feature.accept(CounterMsg.increment); // 2
       feature.accept(CounterMsg.increment); // 3
 
       controller.goToStart();
-      expect(feature.state, 1);
+      expect(feature.state, 0);
 
       controller.goToEnd();
-      expect(controller.state.currentIndex, -1);
-      expect(controller.isTimeTraveled, isFalse);
+      expect(controller.state.navigation.currentIndex, 2);
+      expect(controller.isTimeTraveling, isTrue);
       expect(feature.state, 3);
     });
 
-    test('goToEnd on empty timeline is a no-op', () {
+    test('goToEnd on empty timeline goes to initial state', () {
       controller.goToEnd();
-      expect(controller.state.currentIndex, -1);
+      expect(controller.state.navigation.currentIndex, isNull);
+      expect(controller.isTimeTraveling, isTrue);
     });
   });
 
@@ -464,15 +488,15 @@ void main() {
       expect(feature.state, 4);
 
       controller.goBack(); // index 2 (second-to-last), state 3
-      expect(controller.state.currentIndex, 2);
+      expect(controller.state.navigation.currentIndex, 2);
       expect(feature.state, 3);
 
       controller.goBack(); // index 1, state 2
-      expect(controller.state.currentIndex, 1);
+      expect(controller.state.navigation.currentIndex, 1);
       expect(feature.state, 2);
 
       controller.goForward(); // index 2, state 3
-      expect(controller.state.currentIndex, 2);
+      expect(controller.state.navigation.currentIndex, 2);
       expect(feature.state, 3);
     });
 
@@ -482,7 +506,10 @@ void main() {
       feature.accept(CounterMsg.increment); // 2
       feature.accept(CounterMsg.increment); // 3
 
-      controller.goToStart(); // index 0
+      controller.goToStart(); // initial state
+      expect(feature.state, 0);
+
+      controller.goForward(); // index 0
       expect(feature.state, 1);
 
       controller.goForward(); // index 1
@@ -494,23 +521,25 @@ void main() {
       // Already at end – stays put
       controller.goForward();
       expect(feature.state, 3);
-      expect(controller.state.currentIndex, 2);
+      expect(controller.state.navigation.currentIndex, 2);
     });
 
-    test('back-back-back saturates at index 0', () {
+    test('back-back-back saturates at initial state', () {
       feature.accept(CounterMsg.increment); // 1
       feature.accept(CounterMsg.increment); // 2
 
       controller.goBack(); // index 0
-      expect(controller.state.currentIndex, 0);
+      expect(controller.state.navigation.currentIndex, 0);
       expect(feature.state, 1);
 
-      controller.goBack(); // stays 0
-      expect(controller.state.currentIndex, 0);
-      expect(feature.state, 1);
+      controller.goBack(); // initial state
+      expect(controller.state.navigation.currentIndex, isNull);
+      expect(controller.isTimeTraveling, isTrue);
+      expect(feature.state, 0);
 
-      controller.goBack(); // still 0
-      expect(controller.state.currentIndex, 0);
+      controller.goBack(); // still initial state
+      expect(controller.state.navigation.currentIndex, isNull);
+      expect(controller.isTimeTraveling, isTrue);
     });
 
     test('goToEnd after multiple backs restores final state', () {
@@ -524,7 +553,8 @@ void main() {
       controller.goBack(); // index 0, state 1
 
       controller.goToEnd();
-      expect(controller.state.currentIndex, -1);
+      expect(controller.state.navigation.currentIndex, 3);
+      expect(controller.isTimeTraveling, isTrue);
       expect(feature.state, 4);
     });
 
@@ -534,8 +564,12 @@ void main() {
       feature.accept(CounterMsg.decrement); // 2->1
       feature.accept(CounterMsg.reset); // 1->0
 
-      // At index 0: state after first increment = 1
+      // goToStart -> initial state = 0
       controller.goToStart();
+      expect(feature.state, 0);
+
+      // At index 0: state after first increment = 1
+      controller.goForward();
       expect(feature.state, 1);
 
       // At index 1: state after two increments = 2
@@ -567,17 +601,19 @@ void main() {
       }
       expect(feature.state, 6);
 
-      // Traveling to index 0 should still work – uses initial snapshot
+      // goToStart -> initial state = 0
       controller.goToStart();
+      expect(feature.state, 0);
+
+      // Step forward through history
+      controller.goForward(); // index 0 -> state 1
       expect(feature.state, 1);
 
-      // Traveling to index 4 (past first snapshot boundary) should use
-      // snapshot[1] (taken after 3 msgs with state=3) + replay msg 3,4
-      controller.goForward(); // 1
-      controller.goForward(); // 2
-      controller.goForward(); // 3
-      controller.goForward(); // 4
-      expect(controller.state.currentIndex, 4);
+      controller.goForward(); // index 1
+      controller.goForward(); // index 2
+      controller.goForward(); // index 3
+      controller.goForward(); // index 4
+      expect(controller.state.navigation.currentIndex, 4);
       expect(feature.state, 5);
 
       await feature.dispose();
@@ -596,11 +632,12 @@ void main() {
       }
 
       // Jump to index 3 – should use snapshot at index 2 (state=2), replay msgs 2,3
-      controller.goToStart();
-      controller.goForward();
-      controller.goForward();
-      controller.goForward();
-      expect(controller.state.currentIndex, 3);
+      controller.goToStart(); // initial state
+      controller.goForward(); // index 0
+      controller.goForward(); // index 1
+      controller.goForward(); // index 2
+      controller.goForward(); // index 3
+      expect(controller.state.navigation.currentIndex, 3);
       expect(feature.state, 4);
 
       await feature.dispose();
@@ -617,13 +654,16 @@ void main() {
       }
 
       // Navigate to each position and verify
-      controller.goToStart();
+      controller.goToStart(); // initial state
+      expect(feature.state, 0);
+
+      controller.goForward(); // index 0
       expect(feature.state, 1);
 
-      controller.goForward();
+      controller.goForward(); // index 1
       expect(feature.state, 2);
 
-      controller.goForward();
+      controller.goForward(); // index 2
       expect(feature.state, 3);
 
       await feature.dispose();
@@ -668,17 +708,14 @@ void main() {
       expect(timeline[2].featureName, 'counter');
     });
 
-    test('goToStart replays both features to their state after first message',
-        () {
+    test('goToStart restores both features to their initial state', () {
       counter.accept(CounterMsg.increment); // counter: 1
       accumulator.accept(AccMsg.append); // acc: 'x'
       counter.accept(CounterMsg.increment); // counter: 2
       accumulator.accept(AccMsg.append); // acc: 'xx'
 
-      controller.goToStart(); // replay only timeline[0]
-      expect(counter.state, 1);
-      // Accumulator should be restored to its initial snapshot state (empty)
-      // then only timeline[0] replayed – which is a counter msg, so acc stays ''
+      controller.goToStart(); // initial state
+      expect(counter.state, 0);
       expect(accumulator.state, '');
     });
 
@@ -700,7 +737,11 @@ void main() {
       counter.accept(CounterMsg.decrement); // timeline[2]: counter 0
       accumulator.accept(AccMsg.append); // timeline[3]: acc 'xx'
 
-      controller.goToStart(); // index 0
+      controller.goToStart(); // initial state
+      expect(counter.state, 0);
+      expect(accumulator.state, '');
+
+      controller.goForward(); // index 0
       expect(counter.state, 1);
       expect(accumulator.state, '');
 
@@ -741,10 +782,11 @@ void main() {
       // Go to index 2 – should use snapshot from index 2 boundary
       // snapshot[1] has counter=1, acc='x' (taken after 2 messages)
       // then replay timeline[2] -> counter gets inc -> counter=2
-      controller.goToStart();
-      controller.goForward();
-      controller.goForward();
-      expect(controller.state.currentIndex, 2);
+      controller.goToStart(); // initial state
+      controller.goForward(); // index 0
+      controller.goForward(); // index 1
+      controller.goForward(); // index 2
+      expect(controller.state.navigation.currentIndex, 2);
       expect(counter.state, 2);
       expect(accumulator.state, 'x');
     });
@@ -754,17 +796,23 @@ void main() {
   // Corner cases
   // =========================================================================
   group('Corner cases', () {
-    test('goToStart on empty timeline triggers assertion in debug mode', () {
+    test('goToStart on empty timeline restores initial state', () async {
       final controller = TimeTravelController();
-
-      // _moveTo asserts index >= 0 && index < timeline.length
-      // With empty timeline, goToStart calls _moveTo(0) which violates assert.
-      expect(
-        () => controller.goToStart(),
-        throwsA(isA<AssertionError>()),
+      final feature = createCounter(
+        name: 'c',
+        controller: controller,
+        initialState: 42,
       );
+      await feature.init();
 
-      controller.dispose();
+      // goToStart should restore to initial state even with empty timeline
+      controller.goToStart();
+      expect(controller.isTimeTraveling, isTrue);
+      expect(controller.state.navigation.currentIndex, isNull);
+      expect(feature.state, 42);
+
+      await feature.dispose();
+      await controller.dispose();
     });
 
     test('goBack with exactly 1 event does nothing', () async {
@@ -775,7 +823,8 @@ void main() {
       feature.accept(CounterMsg.increment); // only 1 event
       controller.goBack(); // needs >= 2 events to go back from live mode
 
-      expect(controller.state.currentIndex, -1);
+      expect(controller.state.navigation.currentIndex, isNull);
+      expect(controller.isTimeTraveling, isFalse);
       expect(feature.state, 1); // unchanged
 
       await feature.dispose();
@@ -792,7 +841,7 @@ void main() {
       feature.accept(CounterMsg.increment); // state 2
 
       controller.goBack(); // index 0 (second-to-last)
-      expect(controller.state.currentIndex, 0);
+      expect(controller.state.navigation.currentIndex, 0);
       expect(feature.state, 1);
 
       await feature.dispose();
@@ -816,8 +865,8 @@ void main() {
       await Future.delayed(Duration.zero);
       effectHandler.handled.clear();
 
-      controller.goToStart(); // enter time travel, index 0
-      expect(controller.isTimeTraveled, isTrue);
+      controller.goToStart(); // enter time travel
+      expect(controller.isTimeTraveling, isTrue);
 
       // The timeline length should remain at 2 –
       // accept calls during replay should not add to timeline.
@@ -841,20 +890,23 @@ void main() {
       feature.accept(CounterMsg.increment); // 102
       feature.accept(CounterMsg.decrement); // 101
 
-      controller.goToStart(); // snapshot(100) + replay[0](inc) = 101
+      controller.goToStart(); // initial state = 100
+      expect(feature.state, 100);
+
+      controller.goForward(); // index 0: 100 + inc = 101
       expect(feature.state, 101);
 
-      controller.goForward(); // snapshot(100) + replay[0..1] = 102
+      controller.goForward(); // index 1: 102
       expect(feature.state, 102);
 
-      controller.goForward(); // snapshot(100) + replay[0..2] = 101
+      controller.goForward(); // index 2: 101
       expect(feature.state, 101);
 
       await feature.dispose();
       await controller.dispose();
     });
 
-    test('isTimeTraveled is false after goToEnd', () async {
+    test('isTimeTraveling is false after endTimeTravel', () async {
       final controller = TimeTravelController();
       final feature = createCounter(name: 'c', controller: controller);
       await feature.init();
@@ -863,11 +915,11 @@ void main() {
       feature.accept(CounterMsg.increment);
 
       controller.goToStart();
-      expect(controller.isTimeTraveled, isTrue);
+      expect(controller.isTimeTraveling, isTrue);
 
-      controller.goToEnd();
-      expect(controller.isTimeTraveled, isFalse);
-      expect(controller.state.currentIndex, -1);
+      controller.endTimeTravel();
+      expect(controller.isTimeTraveling, isFalse);
+      expect(controller.state.navigation.currentIndex, isNull);
 
       await feature.dispose();
       await controller.dispose();
@@ -884,8 +936,8 @@ void main() {
       controller.goToEnd();
       controller.goToEnd();
 
-      expect(controller.state.currentIndex, -1);
-      expect(feature.state, 1);
+      expect(controller.state.navigation.currentIndex, 0);
+      expect(controller.isTimeTraveling, isTrue);
 
       await feature.dispose();
       await controller.dispose();
@@ -900,14 +952,14 @@ void main() {
       feature.accept(CounterMsg.increment); // 1
       feature.accept(CounterMsg.increment); // 2
 
-      controller.goToStart(); // time travel to index 0
-      controller.goToEnd(); // exit time travel
+      controller.goToStart(); // time travel to initial state
+      controller.endTimeTravel(); // exit time travel
 
       // Now send more messages – they should be recorded normally
       feature.accept(CounterMsg.increment); // 3
       expect(controller.state.timeline, hasLength(3));
       expect(feature.state, 3);
-      expect(controller.isTimeTraveled, isFalse);
+      expect(controller.isTimeTraveling, isFalse);
 
       await feature.dispose();
       await controller.dispose();
@@ -978,7 +1030,15 @@ void main() {
       expect(counter.state, 1);
       expect(acc.state, '');
 
+      controller.goBack(); // initial state
+      expect(counter.state, 0);
+      expect(acc.state, '');
+
       // Now forward
+      controller.goForward(); // index 0
+      expect(counter.state, 1);
+      expect(acc.state, '');
+
       controller.goForward(); // index 1
       expect(counter.state, 1);
       expect(acc.state, 'x');
@@ -992,8 +1052,7 @@ void main() {
       await controller.dispose();
     });
 
-    test(
-        'goToStart with multiple features resets all to initial snapshot + first message',
+    test('goToStart with multiple features resets all to initial state',
         () async {
       final controller = TimeTravelController();
       final counter = createCounter(
@@ -1015,10 +1074,9 @@ void main() {
 
       controller.goToStart();
       // snapshot has counter=50, acc='start'
-      // replay t[0] -> acc appends -> acc='startx'
-      // counter is not touched by t[0] -> stays at snapshot 50
+      // no messages replayed – true initial state
       expect(counter.state, 50);
-      expect(acc.state, 'startx');
+      expect(acc.state, 'start');
 
       await counter.dispose();
       await acc.dispose();
@@ -1071,7 +1129,7 @@ void main() {
       await acc.dispose();
 
       controller.goToStart();
-      expect(counter.state, 1);
+      expect(counter.state, 0);
 
       controller.goToEnd();
       expect(counter.state, 2);
@@ -1099,10 +1157,10 @@ void main() {
       expect(feature.state, 10);
 
       // Navigate to each index and verify
-      controller.goToStart();
-      expect(feature.state, 1); // index 0
+      controller.goToStart(); // initial state = 0
+      expect(feature.state, 0);
 
-      for (var i = 1; i <= 9; i++) {
+      for (var i = 0; i <= 9; i++) {
         controller.goForward();
         expect(feature.state, i + 1, reason: 'at index $i');
       }
@@ -1123,11 +1181,12 @@ void main() {
       }
 
       controller.goToStart();
-      expect(feature.state, 1);
+      expect(feature.state, 0);
 
       controller.goToEnd();
       expect(feature.state, 7);
-      expect(controller.isTimeTraveled, isFalse);
+      expect(controller.isTimeTraveling, isTrue);
+      expect(controller.state.navigation.currentIndex, 6);
 
       await feature.dispose();
       await controller.dispose();

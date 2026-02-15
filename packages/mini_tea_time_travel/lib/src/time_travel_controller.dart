@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:mini_tea/feature.dart';
 import 'package:rxdart/rxdart.dart';
 
-// TODO: Think about how to handle -1/0 index, so we will not call first message and go to true init state
 final class TimeTravelController implements Disposable {
   static final global = TimeTravelController();
 
@@ -24,7 +23,7 @@ final class TimeTravelController implements Disposable {
     _stopwatch.stop();
   }
 
-  bool get isTimeTraveled => _stateSubject.value.currentIndex != -1;
+  bool get isTimeTraveling => _stateSubject.value.navigation.isTimeTraveling;
 
   void register(String name, TimeTravelFeature feature) {
     _stateSubject.add(state.copyWith(
@@ -92,68 +91,107 @@ final class TimeTravelController implements Disposable {
     }
   }
 
-  void goToStart() => _moveTo(0);
+  void endTimeTravel() {
+    // First restore to final state
+    goToEnd();
+
+    // Then exit time travel mode
+    _stateSubject.add(
+      state.copyWith(
+        navigation: (
+          currentIndex: null,
+          isTimeTraveling: false,
+        ),
+      ),
+    );
+  }
+
+  void goToStart() {
+    _moveTo(-1);
+  }
 
   void goToEnd() {
-    if (_stateSubject.value.timeline.isEmpty) {
+    if (state.timeline.isEmpty) {
+      // No events to replay, stay at initial state
+      _moveTo(-1);
       return;
     }
-    final lastIndex = _stateSubject.value.timeline.length - 1;
-    _moveTo(lastIndex);
-    // TODO: Don't set current index to -1 here
-    // Exit time travel mode when explicitly going to end
-    _stateSubject.add(_stateSubject.value.copyWith(currentIndex: -1));
+
+    // Restore to final state by replaying all events
+    _moveTo(state.timeline.length - 1);
   }
 
   void goBack() {
-    // TODO: Validate this shit
+    final currentIndex = state.navigation.currentIndex;
+    final isTimeTraveling = state.navigation.isTimeTraveling;
 
-    final currentIndex = _stateSubject.value.currentIndex;
-
-    // If not time traveled, go to second-to-last
-    if (currentIndex == -1) {
-      if (_stateSubject.value.timeline.length >= 2) {
-        _moveTo(_stateSubject.value.timeline.length - 2);
+    if (currentIndex == null && !isTimeTraveling) {
+      // Not yet time traveling
+      if (state.timeline.length < 2) {
+        // Not enough events to step back, do nothing
+        return;
       }
+      // Start from one step before the end
+      _moveTo(state.timeline.length - 2);
+    } else if (currentIndex == null && isTimeTraveling) {
+      // Already at initial state while time traveling, do nothing
       return;
+    } else if (currentIndex == 0) {
+      // At first event, go to initial state (null index)
+      _moveTo(-1);
+    } else {
+      // Step back one event
+      _moveTo(currentIndex! - 1);
     }
-
-    // If at start, do nothing
-    if (currentIndex == 0) {
-      return;
-    }
-
-    _moveTo(currentIndex - 1);
   }
 
   void goForward() {
-    // TODO: Validate this shit
+    final currentIndex = state.navigation.currentIndex;
+    final isTimeTraveling = state.navigation.isTimeTraveling;
 
-    final currentIndex = _stateSubject.value.currentIndex;
-
-    // If not time traveled, do nothing
-    if (currentIndex == -1) {
+    if (!isTimeTraveling) {
+      // Not time traveling, do nothing
       return;
     }
 
-    // If at end, do nothing
-    if (currentIndex == _stateSubject.value.timeline.length - 1) {
+    if (currentIndex == null) {
+      // At initial state, move to first event
+      if (state.timeline.isEmpty) {
+        return;
+      }
+      _moveTo(0);
+    } else if (currentIndex >= state.timeline.length - 1) {
+      // Already at the end, do nothing
       return;
+    } else {
+      _moveTo(currentIndex + 1);
     }
-
-    _moveTo(currentIndex + 1);
   }
 
   void _moveTo(int index) {
-    assert(index >= 0 && index < _stateSubject.value.timeline.length);
+    assert(index >= -1 && index < _stateSubject.value.timeline.length);
 
     // Set time travel mode
-    _stateSubject.add(_stateSubject.value.copyWith(currentIndex: index));
+    // When index is -1, we're at the initial state, represented by null
+    _stateSubject.add(
+      _stateSubject.value.copyWith(
+        navigation: (
+          currentIndex: index == -1 ? null : index,
+          isTimeTraveling: true,
+        ),
+      ),
+    );
 
     final snapshotsIndex = (index ~/ _snapshotAtEach);
     final from = snapshotsIndex * _snapshotAtEach;
 
-    final snapshots = state.stateSnapshots[snapshotsIndex];
+    final Map<String, dynamic> snapshots;
+    if (index == -1) {
+      snapshots = state.stateSnapshots.first;
+    } else {
+      snapshots = state.stateSnapshots[snapshotsIndex];
+    }
+
     for (final featureName in state.features.keys) {
       final featureState = snapshots[featureName]!;
       final feature = state.features[featureName]!;
@@ -161,13 +199,13 @@ final class TimeTravelController implements Disposable {
       feature._processState(featureState);
     }
 
-    for (int i = from; i <= index; i++) {
-      final event = _stateSubject.value.timeline[i];
-      final feature = state.features[event.featureName]!;
-      feature.accept(event.message);
+    if (index >= 0) {
+      for (int i = from; i <= index; i++) {
+        final event = _stateSubject.value.timeline[i];
+        final feature = state.features[event.featureName]!;
+        feature.accept(event.message);
+      }
     }
-
-    // TODO: Maybe change current index to -1 here?
   }
 }
 
@@ -248,7 +286,7 @@ final class TimeTravelFeature<State, Message, Effect>
       _stateSubject.add(newState);
     }
 
-    if (!_timeTravelController.isTimeTraveled) {
+    if (!_timeTravelController.isTimeTraveling) {
       if (effects.isNotEmpty) {
         effects.forEach(_effectsController.add);
       }
@@ -276,18 +314,28 @@ final class TimeTravelFeature<State, Message, Effect>
   void _processState(State state) => _stateSubject.add(state);
 }
 
+typedef TimeTravelNavigation = ({
+  /// The index of the currently viewed event in the timeline.
+  /// `null` means we are viewing the initial state (before any messages).
+  int? currentIndex,
+
+  /// Whether we are currently in time travel mode.
+  /// When `true`, effects are suppressed and new messages are not recorded.
+  bool isTimeTraveling,
+});
+
 typedef TimeTravelStateV2 = ({
   List<TimeTravelEventV2> timeline,
   Map<String, TimeTravelFeature> features,
   List<Map<String, dynamic>> stateSnapshots,
-  int currentIndex,
+  TimeTravelNavigation navigation,
 });
 
 TimeTravelStateV2 get _initialTimeTravelState => (
       timeline: const [],
       features: const {},
       stateSnapshots: const [{}],
-      currentIndex: -1,
+      navigation: (currentIndex: null, isTimeTraveling: false),
     );
 
 extension on TimeTravelStateV2 {
@@ -295,13 +343,13 @@ extension on TimeTravelStateV2 {
     List<TimeTravelEventV2>? timeline,
     Map<String, TimeTravelFeature>? features,
     List<Map<String, dynamic>>? stateSnapshots,
-    int? currentIndex,
+    TimeTravelNavigation? navigation,
   }) =>
       (
         timeline: timeline?.toUnmodifiable ?? this.timeline,
         features: features?.toUnmodifiable ?? this.features,
         stateSnapshots: stateSnapshots?.toUnmodifiable ?? this.stateSnapshots,
-        currentIndex: currentIndex ?? this.currentIndex,
+        navigation: navigation ?? this.navigation,
       );
 }
 
