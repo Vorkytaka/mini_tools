@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:developer' as developer;
 
 import 'package:mini_tea/feature.dart';
 import 'package:rxdart/rxdart.dart';
@@ -11,6 +13,9 @@ final class TimeTravelController implements Disposable {
 
   final int _snapshotAtEach;
 
+  bool _serviceExtensionRegistered = false;
+  StreamSubscription? _stateSubscription;
+
   TimeTravelController({
     int snapshotAtEach = 100,
   }) : _snapshotAtEach = snapshotAtEach;
@@ -19,13 +24,52 @@ final class TimeTravelController implements Disposable {
 
   @override
   Future<void> dispose() async {
+    await _stateSubscription?.cancel();
     await _stateSubject.close();
     _stopwatch.stop();
   }
 
   bool get isTimeTraveling => _stateSubject.value.navigation.isTimeTraveling;
 
+  /// Serializes the current time travel state to a JSON-compatible map.
+  ///
+  /// Used by the DevTools extension to read the state via service extension.
+  Map<String, dynamic> toJson() => {
+        'timeline': state.timeline
+            .map((e) => {
+                  'featureName': e.featureName,
+                  'message': e.message.toString(),
+                  'millisecondsSinceStart': e.millisecondsSinceStart,
+                })
+            .toList(),
+        'navigation': {
+          'currentIndex': state.navigation.currentIndex,
+          'isTimeTraveling': state.navigation.isTimeTraveling,
+        },
+        'features': state.features.keys.toList(),
+      };
+
+  void _ensureServiceExtension() {
+    if (_serviceExtensionRegistered) return;
+    _serviceExtensionRegistered = true;
+
+    developer.registerExtension(
+      'ext.miniTea.getTimeTravelState',
+      (method, params) async {
+        return developer.ServiceExtensionResponse.result(
+          jsonEncode(toJson()),
+        );
+      },
+    );
+
+    _stateSubscription = _stateSubject.stream.listen((_) {
+      developer.postEvent('ext.miniTea.stateChanged', {});
+    });
+  }
+
   void register(String name, TimeTravelFeature feature) {
+    _ensureServiceExtension();
+
     _stateSubject.add(state.copyWith(
       features: {
         ...state.features,
@@ -192,6 +236,17 @@ final class TimeTravelController implements Disposable {
       snapshots = state.stateSnapshots[snapshotsIndex];
     }
 
+    // Что если такая ситуация
+    // - - - - - - - - - - - - - - - - - - - - ->
+    // |     |            |        |       |
+    // первый снапшот     |        второй снапшот
+    //       |            |                |
+    //       фича А       |                фича Б
+    //                    передвигаемся сюда
+    //
+    // В таком случае получется, что фича Б не будет восстановлена
+    // а значит может сломаться, когда дойдем до ее message
+    // надо искать для всех фичей состояние
     for (final featureName in state.features.keys) {
       final featureState = snapshots[featureName]!;
       final feature = state.features[featureName]!;

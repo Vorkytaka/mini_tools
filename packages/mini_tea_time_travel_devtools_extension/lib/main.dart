@@ -1,18 +1,18 @@
 import 'package:devtools_extensions/devtools_extensions.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:mini_tea_time_travel_devtools_extension/time_travel/time_travel_screen.dart';
 
 void main() {
-  runApp(const SomePkgDevToolsExtension());
+  runApp(const MiniTeaTimeTravelDevToolsExtension());
 }
 
-class SomePkgDevToolsExtension extends StatelessWidget {
-  const SomePkgDevToolsExtension({super.key});
+class MiniTeaTimeTravelDevToolsExtension extends StatelessWidget {
+  const MiniTeaTimeTravelDevToolsExtension({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const DevToolsExtension(
-      child: TimeTravelScreen(), // Build your extension here
+      child: TimeTravelScreen(),
     );
   }
 }
