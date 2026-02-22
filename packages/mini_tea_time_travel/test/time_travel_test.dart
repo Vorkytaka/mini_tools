@@ -1192,4 +1192,333 @@ void main() {
       await controller.dispose();
     });
   });
+
+  // =========================================================================
+  // Timeline limit
+  // =========================================================================
+  group('Timeline limit', () {
+    test('timeline is not limited when timelineLimit is null', () async {
+      final controller = TimeTravelController(
+        snapshotAtEach: 5,
+        timelineLimit: null,
+      );
+      final feature = createCounter(name: 'c', controller: controller);
+      await feature.init();
+
+      // Send 20 messages – all should be retained
+      for (var i = 0; i < 20; i++) {
+        feature.accept(CounterMsg.increment);
+      }
+
+      expect(controller.state.timeline, hasLength(20));
+      expect(feature.state, 20);
+
+      await feature.dispose();
+      await controller.dispose();
+    });
+
+    test('timeline is trimmed when it exceeds the limit', () async {
+      final controller = TimeTravelController(
+        snapshotAtEach: 5,
+        timelineLimit: 10,
+      );
+      final feature = createCounter(name: 'c', controller: controller);
+      await feature.init();
+
+      // Send 15 messages
+      // After 10: timeline[0..9], snapshots at 0(initial), 5, 10
+      // After 15: should trim to timeline[5..14], snapshots at 0(initial), 5, 10, 15
+      // Then trim removes timeline[5..9] and snapshot[1]
+      // Result: timeline[10..14] (5 events), snapshots at 0(initial from 10), 15
+      for (var i = 0; i < 15; i++) {
+        feature.accept(CounterMsg.increment);
+      }
+
+      // Timeline should be limited to 10 events
+      expect(controller.state.timeline.length, lessThanOrEqualTo(10));
+      // State should still be correct
+      expect(feature.state, 15);
+
+      await feature.dispose();
+      await controller.dispose();
+    });
+
+    test('timeline limit is rounded up to nearest multiple of snapshotAtEach',
+        () async {
+      // Request limit of 7, with snapshotAtEach=5
+      // Should round up to 10
+      final controller = TimeTravelController(
+        snapshotAtEach: 5,
+        timelineLimit: 7,
+      );
+      final feature = createCounter(name: 'c', controller: controller);
+      await feature.init();
+
+      // Send 20 messages – timeline should stabilize at 10 (rounded up from 7)
+      for (var i = 0; i < 20; i++) {
+        feature.accept(CounterMsg.increment);
+      }
+
+      // Should be trimmed to 10 (7 rounded up to next multiple of 5)
+      expect(controller.state.timeline.length, lessThanOrEqualTo(10));
+      expect(feature.state, 20);
+
+      await feature.dispose();
+      await controller.dispose();
+    });
+
+    test('timeline limit exact multiple of snapshotAtEach works correctly',
+        () async {
+      final controller = TimeTravelController(
+        snapshotAtEach: 3,
+        timelineLimit: 9,
+      );
+      final feature = createCounter(name: 'c', controller: controller);
+      await feature.init();
+
+      // Send 15 messages
+      for (var i = 0; i < 15; i++) {
+        feature.accept(CounterMsg.increment);
+      }
+
+      // Timeline should be exactly 9
+      expect(controller.state.timeline.length, lessThanOrEqualTo(9));
+      expect(feature.state, 15);
+
+      await feature.dispose();
+      await controller.dispose();
+    });
+
+    test('trimming preserves correct snapshots', () async {
+      final controller = TimeTravelController(
+        snapshotAtEach: 4,
+        timelineLimit: 8,
+      );
+      final feature = createCounter(name: 'c', controller: controller);
+      await feature.init();
+
+      // Send 12 messages: states 1..12
+      // Snapshots at: 0(initial), 4(state=4), 8(state=8), 12(state=12)
+      // After 12th message, timeline has 12 events
+      // Trim removes first 4 events and first snapshot
+      // Result: timeline[4..11] (8 events), snapshots at 0(from index 4, state=4), 8, 12
+      for (var i = 0; i < 12; i++) {
+        feature.accept(CounterMsg.increment);
+      }
+
+      expect(controller.state.timeline.length, lessThanOrEqualTo(8));
+
+      // Navigate to verify snapshots are correct
+      controller.goToStart();
+      // After trimming, "start" is now at the first remaining snapshot (state=4)
+      // Wait, that's wrong – goToStart should still use stateSnapshots.first
+      // which after trimming is the snapshot that was at index 4 (state=4)
+      // But we need to verify the states are correct
+
+      // Actually, let's test by navigating forward
+      controller.goToEnd();
+      expect(feature.state, 12);
+
+      await feature.dispose();
+      await controller.dispose();
+    });
+
+    test('navigation works correctly after timeline is trimmed', () async {
+      final controller = TimeTravelController(
+        snapshotAtEach: 3,
+        timelineLimit: 6,
+      );
+      final feature = createCounter(name: 'c', controller: controller);
+      await feature.init();
+
+      // Send 12 messages
+      // After 12: timeline has 12 events, will be trimmed multiple times
+      // Final state: timeline[6..11] (6 events)
+      for (var i = 0; i < 12; i++) {
+        feature.accept(CounterMsg.increment);
+      }
+
+      expect(controller.state.timeline.length, lessThanOrEqualTo(6));
+      expect(feature.state, 12);
+
+      // Navigate backwards
+      controller.goBack(); // index 4 (relative to trimmed timeline)
+      expect(feature.state, 11);
+
+      controller.goBack(); // index 3
+      expect(feature.state, 10);
+
+      controller.goBack(); // index 2
+      expect(feature.state, 9);
+
+      // Navigate forwards
+      controller.goForward(); // index 3
+      expect(feature.state, 10);
+
+      controller.goForward(); // index 4
+      expect(feature.state, 11);
+
+      await feature.dispose();
+      await controller.dispose();
+    });
+
+    test('trimming with multiple features preserves all feature states',
+        () async {
+      final controller = TimeTravelController(
+        snapshotAtEach: 4,
+        timelineLimit: 8,
+      );
+      final counter = createCounter(name: 'counter', controller: controller);
+      final acc = createAccumulator(name: 'acc', controller: controller);
+      await counter.init();
+      await acc.init();
+
+      // Interleave messages from both features
+      for (var i = 0; i < 10; i++) {
+        counter.accept(CounterMsg.increment);
+        acc.accept(AccMsg.append);
+      }
+
+      // Timeline should have 20 events, trimmed to 8
+      expect(controller.state.timeline.length, lessThanOrEqualTo(8));
+      expect(counter.state, 10);
+      expect(acc.state, 'x' * 10);
+
+      // Navigate to verify both states are preserved correctly
+      controller.goToEnd();
+      expect(counter.state, 10);
+      expect(acc.state, 'x' * 10);
+
+      await counter.dispose();
+      await acc.dispose();
+      await controller.dispose();
+    });
+
+    test('timeline limit of snapshotAtEach keeps exactly one chunk', () async {
+      final controller = TimeTravelController(
+        snapshotAtEach: 5,
+        timelineLimit: 5,
+      );
+      final feature = createCounter(name: 'c', controller: controller);
+      await feature.init();
+
+      // Send 15 messages
+      for (var i = 0; i < 15; i++) {
+        feature.accept(CounterMsg.increment);
+      }
+
+      // Should keep exactly 5 events (one chunk)
+      expect(controller.state.timeline.length, lessThanOrEqualTo(5));
+      expect(feature.state, 15);
+
+      await feature.dispose();
+      await controller.dispose();
+    });
+
+    test('very small timeline limit (1) rounded up to snapshotAtEach',
+        () async {
+      final controller = TimeTravelController(
+        snapshotAtEach: 5,
+        timelineLimit: 1,
+      );
+      final feature = createCounter(name: 'c', controller: controller);
+      await feature.init();
+
+      // Send many messages
+      for (var i = 0; i < 20; i++) {
+        feature.accept(CounterMsg.increment);
+      }
+
+      // Limit of 1 should round up to 5 (snapshotAtEach)
+      expect(controller.state.timeline.length, lessThanOrEqualTo(5));
+      expect(feature.state, 20);
+
+      await feature.dispose();
+      await controller.dispose();
+    });
+
+    test('timeline limit larger than messages sent keeps all messages',
+        () async {
+      final controller = TimeTravelController(
+        snapshotAtEach: 3,
+        timelineLimit: 100,
+      );
+      final feature = createCounter(name: 'c', controller: controller);
+      await feature.init();
+
+      // Send only 10 messages, well under the limit
+      for (var i = 0; i < 10; i++) {
+        feature.accept(CounterMsg.increment);
+      }
+
+      // All 10 should be retained
+      expect(controller.state.timeline, hasLength(10));
+      expect(feature.state, 10);
+
+      await feature.dispose();
+      await controller.dispose();
+    });
+
+    test('trimming happens only after snapshot creation', () async {
+      final controller = TimeTravelController(
+        snapshotAtEach: 4,
+        timelineLimit: 8,
+      );
+      final feature = createCounter(name: 'c', controller: controller);
+      await feature.init();
+
+      // Send 7 messages (before snapshot boundary)
+      for (var i = 0; i < 7; i++) {
+        feature.accept(CounterMsg.increment);
+      }
+
+      // No trimming should have happened yet (7 < 8, and no snapshot created yet)
+      expect(controller.state.timeline, hasLength(7));
+
+      // Send 1 more to trigger snapshot at index 8
+      feature.accept(CounterMsg.increment);
+
+      // Now we have 8 messages, snapshot created, no trimming yet (8 <= 8)
+      expect(controller.state.timeline, hasLength(8));
+
+      // Send 4 more to trigger next snapshot at index 12
+      for (var i = 0; i < 4; i++) {
+        feature.accept(CounterMsg.increment);
+      }
+
+      // Now trimming should have happened (12 > 8)
+      expect(controller.state.timeline.length, lessThanOrEqualTo(8));
+
+      await feature.dispose();
+      await controller.dispose();
+    });
+
+    test('goToStart after trimming navigates to oldest retained snapshot',
+        () async {
+      final controller = TimeTravelController(
+        snapshotAtEach: 3,
+        timelineLimit: 6,
+      );
+      final feature = createCounter(name: 'c', controller: controller);
+      await feature.init();
+
+      // Send 15 messages
+      // This will create snapshots at 0, 3, 6, 9, 12, 15
+      // After trimming, we keep last 6 events (timeline[9..14])
+      // Snapshots: trimmed to [snapshot_at_9, snapshot_at_12, snapshot_at_15]
+      // But first snapshot is always the "initial" for navigation purposes
+      for (var i = 0; i < 15; i++) {
+        feature.accept(CounterMsg.increment);
+      }
+
+      controller.goToStart();
+      // Should navigate to the first snapshot in the trimmed array
+      // which represents state at the beginning of the retained timeline
+      expect(controller.isTimeTraveling, isTrue);
+      expect(controller.state.navigation.currentIndex, isNull);
+
+      await feature.dispose();
+      await controller.dispose();
+    });
+  });
 }

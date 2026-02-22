@@ -6,19 +6,42 @@ import 'package:mini_tea/feature.dart';
 import 'package:rxdart/rxdart.dart';
 
 final class TimeTravelController implements Disposable {
-  static final global = TimeTravelController();
+  static final global =
+      TimeTravelController(snapshotAtEach: 5, timelineLimit: 10);
+  static bool _globalServiceExtensionRegistered = false;
 
   final _stateSubject = BehaviorSubject.seeded(_initialTimeTravelState);
   final _stopwatch = Stopwatch();
 
-  final int _snapshotAtEach;
+  /// Take a full state snapshot after every [snapshotAtEach] timeline events.
+  final int snapshotAtEach;
 
-  bool _serviceExtensionRegistered = false;
+  /// Maximum number of timeline events to retain.
+  ///
+  /// When set, the limit is rounded up to the nearest multiple of
+  /// [snapshotAtEach] so snapshots and timeline indices stay aligned. When the
+  /// limit is reached, the oldest chunk of events (size [snapshotAtEach]) and
+  /// its snapshot are trimmed. After trimming, [goToStart] navigates to the
+  /// oldest retained snapshot, not the original initial state.
+  final int? timelineLimit;
+
   StreamSubscription? _stateSubscription;
 
+  /// Creates a time travel controller.
+  ///
+  /// [snapshotAtEach] controls how often state snapshots are captured.
+  /// [timelineLimit], when provided, caps the number of timeline events kept in
+  /// memory. It is rounded up to the nearest multiple of [snapshotAtEach].
   TimeTravelController({
-    int snapshotAtEach = 100,
-  }) : _snapshotAtEach = snapshotAtEach;
+    this.snapshotAtEach = 100,
+    int? timelineLimit,
+  }) : timelineLimit = _countTimelineLimit(timelineLimit, snapshotAtEach);
+
+  static int? _countTimelineLimit(int? timelineLimit, int snapshotAtEach) =>
+      timelineLimit == null
+          ? null
+          : ((timelineLimit + snapshotAtEach - 1) ~/ snapshotAtEach) *
+              snapshotAtEach;
 
   TimeTravelStateV2 get state => _stateSubject.value;
 
@@ -36,8 +59,8 @@ final class TimeTravelController implements Disposable {
   /// Used by the DevTools extension to read the state via service extension.
 
   void _ensureServiceExtension() {
-    if (_serviceExtensionRegistered) return;
-    _serviceExtensionRegistered = true;
+    if (_globalServiceExtensionRegistered) return;
+    _globalServiceExtensionRegistered = true;
 
     developer.registerExtension(
       'ext.miniTea.getTimeTravelState',
@@ -91,8 +114,13 @@ final class TimeTravelController implements Disposable {
     ));
   }
 
+  /// Records a message in the timeline.
+  ///
+  /// This is called when a feature processes a message outside time travel mode.
+  /// Every [snapshotAtEach] messages, a full state snapshot is taken. If
+  /// [timelineLimit] is set and exceeded after creating a snapshot, the oldest
+  /// [snapshotAtEach] events and the first snapshot are trimmed from memory.
   void _onMessage(String featureName, dynamic message) {
-    // TODO: Add timeline limit
     _stateSubject.add(
       _stateSubject.value.copyWith(
         timeline: [
@@ -106,7 +134,7 @@ final class TimeTravelController implements Disposable {
       ),
     );
 
-    if (state.timeline.length % _snapshotAtEach == 0) {
+    if (state.timeline.length % snapshotAtEach == 0) {
       final states = <String, dynamic>{
         for (final featureName in state.features.keys)
           featureName: state.features[featureName]!.state,
@@ -118,9 +146,20 @@ final class TimeTravelController implements Disposable {
           states,
         ],
       ));
+
+      // Trim timeline if it exceeds the limit
+      if (timelineLimit != null && state.timeline.length > timelineLimit!) {
+        _stateSubject.add(state.copyWith(
+          timeline: state.timeline.sublist(snapshotAtEach),
+          stateSnapshots: state.stateSnapshots.sublist(1),
+        ));
+      }
     }
   }
 
+  /// Exit time travel mode and return to live state.
+  ///
+  /// Restores to the final state (last event in the timeline) before exiting.
   void endTimeTravel() {
     // First restore to final state
     goToEnd();
@@ -136,10 +175,15 @@ final class TimeTravelController implements Disposable {
     );
   }
 
+  /// Navigate to the initial state.
+  ///
+  /// If the timeline has been trimmed (due to [timelineLimit]), this navigates
+  /// to the oldest retained snapshot, not the original application initial state.
   void goToStart() {
     _moveTo(-1);
   }
 
+  /// Navigate to the final state (last event in the timeline).
   void goToEnd() {
     if (state.timeline.isEmpty) {
       // No events to replay, stay at initial state
@@ -151,6 +195,11 @@ final class TimeTravelController implements Disposable {
     _moveTo(state.timeline.length - 1);
   }
 
+  /// Navigate one step backward in the timeline.
+  ///
+  /// If not yet time-traveling, enters time travel mode at the second-to-last event.
+  /// If already at the initial state (after trimming, the oldest retained snapshot),
+  /// does nothing.
   void goBack() {
     final currentIndex = state.navigation.currentIndex;
     final isTimeTraveling = state.navigation.isTimeTraveling;
@@ -175,6 +224,9 @@ final class TimeTravelController implements Disposable {
     }
   }
 
+  /// Navigate one step forward in the timeline.
+  ///
+  /// Does nothing if not in time travel mode or already at the end.
   void goForward() {
     final currentIndex = state.navigation.currentIndex;
     final isTimeTraveling = state.navigation.isTimeTraveling;
@@ -198,6 +250,12 @@ final class TimeTravelController implements Disposable {
     }
   }
 
+  /// Internal: Navigate to a specific timeline index.
+  ///
+  /// [index] can be -1 (initial state) to timeline.length - 1 (final state).
+  /// Uses snapshots and replay to reconstruct the state at the given point.
+  /// When [index] is -1, restores [stateSnapshots.first] (which is the oldest
+  /// retained snapshot if the timeline has been trimmed).
   void _moveTo(int index) {
     assert(index >= -1 && index < _stateSubject.value.timeline.length);
 
@@ -212,8 +270,8 @@ final class TimeTravelController implements Disposable {
       ),
     );
 
-    final snapshotsIndex = (index ~/ _snapshotAtEach);
-    final from = snapshotsIndex * _snapshotAtEach;
+    final snapshotsIndex = (index ~/ snapshotAtEach);
+    final from = snapshotsIndex * snapshotAtEach;
 
     final Map<String, dynamic> snapshots;
     if (index == -1) {
