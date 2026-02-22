@@ -1,0 +1,24 @@
+name: mini_tea_time_travel_devtools_extension
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+resolution: workspace
+
+dependencies:
+  cupertino_icons: ^1.0.8
+  devtools_app_shared: ^0.5.0
+  devtools_extensions: ^0.5.0
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
