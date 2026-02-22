@@ -4,6 +4,7 @@ import 'package:devtools_app_shared/service.dart';
 import 'package:devtools_app_shared/utils.dart';
 import 'package:devtools_extensions/devtools_extensions.dart';
 
+import 'time_travel_controller.dart' show TimeTravelController;
 import 'time_travel_state.dart';
 
 /// Abstracts communication with the running application's
@@ -31,7 +32,7 @@ final class TimeTravelService {
   /// Throws [LibraryNotFound] if the target library is not available in the
   /// running application.
   Future<void> init() async {
-    await serviceManager.onServiceAvailable.timeout(Duration(seconds: 5));
+    await serviceManager.onServiceAvailable.timeout(const Duration(seconds: 5));
 
     _disposable = Disposable();
     _eval = EvalOnDartLibrary(
@@ -40,13 +41,13 @@ final class TimeTravelService {
       serviceManager: serviceManager,
     );
 
-    _eventSubscription = serviceManager.service!.onExtensionEvent.listen(
-      (event) {
-        if (event.extensionKind == _stateChangedEventKind) {
-          _stateChangedController.add(null);
-        }
-      },
-    );
+    _eventSubscription = serviceManager.service!.onExtensionEvent.listen((
+      event,
+    ) {
+      if (event.extensionKind == _stateChangedEventKind) {
+        _stateChangedController.add(null);
+      }
+    });
   }
 
   final _stateChangedController = StreamController<void>.broadcast();
@@ -89,7 +90,9 @@ final class TimeTravelService {
   Future<void> _evalCommand(String expression) async {
     final eval = _eval;
     final disposable = _disposable;
-    if (eval == null || disposable == null || disposable.disposed) return;
+    if (eval == null || disposable == null || disposable.disposed) {
+      return;
+    }
 
     await eval.eval(expression, isAlive: disposable);
   }

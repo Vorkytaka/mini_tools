@@ -1,7 +1,10 @@
 import 'dart:async';
 
 import 'package:devtools_app_shared/service.dart';
+import 'package:flutter/cupertino.dart' show State;
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' show State;
+import 'package:flutter/widgets.dart' show State;
 
 import 'time_travel_service.dart';
 import 'time_travel_state.dart';
@@ -13,13 +16,14 @@ import 'time_travel_state.dart';
 final class TimeTravelController {
   final TimeTravelService _service;
 
-  final ValueNotifier<TimeTravelViewState> _state =
-      ValueNotifier(const TimeTravelViewState.connecting());
+  final ValueNotifier<TimeTravelViewState> _state = ValueNotifier(
+    const TimeTravelViewState.connecting(),
+  );
 
   StreamSubscription? _stateChangedSubscription;
 
   TimeTravelController({TimeTravelService? service})
-      : _service = service ?? TimeTravelService();
+    : _service = service ?? TimeTravelService();
 
   /// The current view state for the UI to observe.
   ValueListenable<TimeTravelViewState> get state => _state;
@@ -33,7 +37,7 @@ final class TimeTravelController {
     } on LibraryNotFound {
       _state.value = const TimeTravelViewState.unavailable();
       return;
-    } catch (e) {
+    } on Object catch (e) {
       _state.value = TimeTravelViewState.withError(e.toString());
       return;
     }
@@ -50,7 +54,7 @@ final class TimeTravelController {
     try {
       final snapshot = await _service.getState();
       _state.value = TimeTravelViewState.connected(snapshot);
-    } catch (e) {
+    } on Object catch (e) {
       _state.value = TimeTravelViewState.withError(e.toString());
     }
   }

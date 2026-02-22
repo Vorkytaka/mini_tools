@@ -105,27 +105,18 @@ class _ConnectedView extends StatelessWidget {
   final TimeTravelSnapshot snapshot;
   final TimeTravelController controller;
 
-  const _ConnectedView({
-    required this.snapshot,
-    required this.controller,
-  });
+  const _ConnectedView({required this.snapshot, required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _NavigationToolbar(
-          snapshot: snapshot,
-          controller: controller,
-        ),
+        _NavigationToolbar(snapshot: snapshot, controller: controller),
         const Divider(height: 1),
         Expanded(
           child: snapshot.timeline.isEmpty
               ? const Center(child: Text('No events recorded yet.'))
-              : _TimelineList(
-                  snapshot: snapshot,
-                  controller: controller,
-                ),
+              : _TimelineList(snapshot: snapshot, controller: controller),
         ),
       ],
     );
@@ -138,10 +129,7 @@ class _NavigationToolbar extends StatelessWidget {
   final TimeTravelSnapshot snapshot;
   final TimeTravelController controller;
 
-  const _NavigationToolbar({
-    required this.snapshot,
-    required this.controller,
-  });
+  const _NavigationToolbar({required this.snapshot, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -166,12 +154,12 @@ class _NavigationToolbar extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.skip_previous),
             tooltip: 'Go to start',
-            onPressed: totalEvents > 0 ? () => controller.goToStart() : null,
+            onPressed: totalEvents > 0 ? controller.goToStart : null,
           ),
           IconButton(
             icon: const Icon(Icons.navigate_before),
             tooltip: 'Step back',
-            onPressed: totalEvents > 0 ? () => controller.goBack() : null,
+            onPressed: totalEvents > 0 ? controller.goBack : null,
           ),
           Expanded(
             child: Text(
@@ -183,25 +171,23 @@ class _NavigationToolbar extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.navigate_next),
             tooltip: 'Step forward',
-            onPressed: isTimeTraveling ? () => controller.goForward() : null,
+            onPressed: isTimeTraveling ? controller.goForward : null,
           ),
           IconButton(
             icon: const Icon(Icons.skip_next),
             tooltip: 'Go to end',
-            onPressed: isTimeTraveling ? () => controller.goToEnd() : null,
+            onPressed: isTimeTraveling ? controller.goToEnd : null,
           ),
           const SizedBox(width: 8),
           FilledButton.tonal(
-            onPressed: isTimeTraveling
-                ? () => controller.endTimeTravel()
-                : null,
+            onPressed: isTimeTraveling ? controller.endTimeTravel : null,
             child: const Text('End Time Travel'),
           ),
           const SizedBox(width: 8),
           IconButton(
             icon: const Icon(Icons.refresh),
             tooltip: 'Refresh',
-            onPressed: () => controller.refresh(),
+            onPressed: controller.refresh,
           ),
         ],
       ),
@@ -215,10 +201,7 @@ class _TimelineList extends StatelessWidget {
   final TimeTravelSnapshot snapshot;
   final TimeTravelController controller;
 
-  const _TimelineList({
-    required this.snapshot,
-    required this.controller,
-  });
+  const _TimelineList({required this.snapshot, required this.controller});
 
   @override
   Widget build(BuildContext context) {

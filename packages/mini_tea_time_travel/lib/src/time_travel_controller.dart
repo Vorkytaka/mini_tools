@@ -58,7 +58,9 @@ final class TimeTravelController implements Disposable {
   /// Used by the DevTools extension to read the state via service extension.
 
   void _ensureServiceExtension() {
-    if (_globalServiceExtensionRegistered) return;
+    if (_globalServiceExtensionRegistered) {
+      return;
+    }
     _globalServiceExtensionRegistered = true;
 
     developer.registerExtension(
@@ -119,7 +121,7 @@ final class TimeTravelController implements Disposable {
   /// Every [snapshotAtEach] messages, a full state snapshot is taken. If
   /// [timelineLimit] is set and exceeded after creating a snapshot, the oldest
   /// [snapshotAtEach] events and the first snapshot are trimmed from memory.
-  void _onMessage(String featureName, dynamic message) {
+  void _onMessage(String featureName, message) {
     _stateSubject.add(
       _stateSubject.value.copyWith(
         timeline: [
@@ -256,7 +258,7 @@ final class TimeTravelController implements Disposable {
   ///
   /// [index] can be -1 (initial state) to timeline.length - 1 (final state).
   /// Uses snapshots and replay to reconstruct the state at the given point.
-  /// When [index] is -1, restores [stateSnapshots.first] (which is the oldest
+  /// When [index] is -1, restores `stateSnapshots.first` (which is the oldest
   /// retained snapshot if the timeline has been trimmed).
   void _moveTo(int index) {
     assert(index >= -1 && index < _stateSubject.value.timeline.length);
@@ -272,7 +274,7 @@ final class TimeTravelController implements Disposable {
       ),
     );
 
-    final snapshotsIndex = (index ~/ snapshotAtEach);
+    final snapshotsIndex = index ~/ snapshotAtEach;
     final from = snapshotsIndex * snapshotAtEach;
 
     final Map<String, dynamic> snapshots;
@@ -283,7 +285,7 @@ final class TimeTravelController implements Disposable {
     }
 
     for (final featureName in state.features.keys) {
-      final featureState = snapshots[featureName]!;
+      final featureState = snapshots[featureName];
       final feature = state.features[featureName]!;
 
       feature._processState(featureState);
