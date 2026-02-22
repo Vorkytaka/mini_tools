@@ -83,6 +83,9 @@ final class TimeTravelService {
   Future<void> endTimeTravel() =>
       _evalCommand('TimeTravelController.global.endTimeTravel()');
 
+  Future<void> goToIndex(int index) =>
+      _evalCommand('TimeTravelController.global.goToIndex($index)');
+
   Future<void> _evalCommand(String expression) async {
     final eval = _eval;
     final disposable = _disposable;

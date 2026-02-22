@@ -6,8 +6,7 @@ import 'package:mini_tea/feature.dart';
 import 'package:rxdart/rxdart.dart';
 
 final class TimeTravelController implements Disposable {
-  static final global =
-      TimeTravelController(snapshotAtEach: 5, timelineLimit: 10);
+  static final global = TimeTravelController();
   static bool _globalServiceExtensionRegistered = false;
 
   final _stateSubject = BehaviorSubject.seeded(_initialTimeTravelState);
@@ -249,6 +248,9 @@ final class TimeTravelController implements Disposable {
       _moveTo(currentIndex + 1);
     }
   }
+
+  /// Navigate to a specific timeline index.
+  void goToIndex(int index) => _moveTo(index);
 
   /// Internal: Navigate to a specific timeline index.
   ///

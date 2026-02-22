@@ -34,12 +34,13 @@ class _TimeTravelScreenState extends State<TimeTravelScreen> {
         return switch (viewState.status) {
           ConnectionStatus.connecting => const _ConnectingView(),
           ConnectionStatus.unavailable => const _UnavailableView(),
-          ConnectionStatus.error =>
-            _ErrorView(message: viewState.errorMessage!),
+          ConnectionStatus.error => _ErrorView(
+            message: viewState.errorMessage!,
+          ),
           ConnectionStatus.connected => _ConnectedView(
-              snapshot: viewState.snapshot!,
-              controller: _controller,
-            ),
+            snapshot: viewState.snapshot!,
+            controller: _controller,
+          ),
         };
       },
     );
@@ -121,7 +122,10 @@ class _ConnectedView extends StatelessWidget {
         Expanded(
           child: snapshot.timeline.isEmpty
               ? const Center(child: Text('No events recorded yet.'))
-              : _TimelineList(snapshot: snapshot),
+              : _TimelineList(
+                  snapshot: snapshot,
+                  controller: controller,
+                ),
         ),
       ],
     );
@@ -188,8 +192,9 @@ class _NavigationToolbar extends StatelessWidget {
           ),
           const SizedBox(width: 8),
           FilledButton.tonal(
-            onPressed:
-                isTimeTraveling ? () => controller.endTimeTravel() : null,
+            onPressed: isTimeTraveling
+                ? () => controller.endTimeTravel()
+                : null,
             child: const Text('End Time Travel'),
           ),
           const SizedBox(width: 8),
@@ -208,8 +213,12 @@ class _NavigationToolbar extends StatelessWidget {
 
 class _TimelineList extends StatelessWidget {
   final TimeTravelSnapshot snapshot;
+  final TimeTravelController controller;
 
-  const _TimelineList({required this.snapshot});
+  const _TimelineList({
+    required this.snapshot,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -227,6 +236,7 @@ class _TimelineList extends StatelessWidget {
           entry: entry,
           index: index,
           isHighlighted: isCurrentPosition,
+          onTap: () => controller.goToIndex(index),
         );
       },
     );
@@ -237,11 +247,13 @@ class _TimelineEntryTile extends StatelessWidget {
   final TimelineEntry entry;
   final int index;
   final bool isHighlighted;
+  final VoidCallback? onTap;
 
   const _TimelineEntryTile({
     required this.entry,
     required this.index,
     required this.isHighlighted,
+    this.onTap,
   });
 
   @override
@@ -251,27 +263,31 @@ class _TimelineEntryTile extends StatelessWidget {
     final duration = Duration(milliseconds: entry.millisecondsSinceStart);
     final timestamp = _formatDuration(duration);
 
-    return Container(
-      color: isHighlighted ? theme.colorScheme.primaryContainer : null,
-      child: ListTile(
-        dense: true,
-        leading: Text(
-          '#$index',
-          style: theme.textTheme.bodySmall?.copyWith(
-            color: theme.colorScheme.onSurfaceVariant,
+    return InkWell(
+      mouseCursor: SystemMouseCursors.click,
+      onTap: isHighlighted ? null : onTap,
+      child: Container(
+        color: isHighlighted ? theme.colorScheme.primaryContainer : null,
+        child: ListTile(
+          dense: true,
+          leading: Text(
+            '#$index',
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
           ),
-        ),
-        title: Text(
-          entry.message,
-          style: theme.textTheme.bodyMedium?.copyWith(
-            fontWeight: isHighlighted ? FontWeight.bold : null,
+          title: Text(
+            entry.message,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              fontWeight: isHighlighted ? FontWeight.bold : null,
+            ),
           ),
-        ),
-        subtitle: Text(entry.featureName),
-        trailing: Text(
-          timestamp,
-          style: theme.textTheme.bodySmall?.copyWith(
-            color: theme.colorScheme.onSurfaceVariant,
+          subtitle: Text(entry.featureName),
+          trailing: Text(
+            timestamp,
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
           ),
         ),
       ),

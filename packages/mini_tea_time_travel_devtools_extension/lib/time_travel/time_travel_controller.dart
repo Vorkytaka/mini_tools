@@ -70,6 +70,8 @@ final class TimeTravelController {
 
   Future<void> goToEnd() => _service.goToEnd();
 
+  Future<void> goToIndex(int index) => _service.goToIndex(index);
+
   Future<void> endTimeTravel() => _service.endTimeTravel();
 
   void dispose() {
