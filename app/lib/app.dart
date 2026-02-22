@@ -3,9 +3,9 @@ import 'package:macos_ui/macos_ui.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
+import 'app_feature.dart';
 import 'core/common/datetime_inherited_model.dart';
 import 'core/presentation/copy_overlay.dart';
-import 'app_feature.dart';
 import 'features/tabs/src/presentation/new_tab_widget.dart';
 import 'i18n/strings.g.dart';
 
