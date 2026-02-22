@@ -34,20 +34,6 @@ final class TimeTravelController implements Disposable {
   /// Serializes the current time travel state to a JSON-compatible map.
   ///
   /// Used by the DevTools extension to read the state via service extension.
-  Map<String, dynamic> toJson() => {
-        'timeline': state.timeline
-            .map((e) => {
-                  'featureName': e.featureName,
-                  'message': e.message.toString(),
-                  'millisecondsSinceStart': e.millisecondsSinceStart,
-                })
-            .toList(),
-        'navigation': {
-          'currentIndex': state.navigation.currentIndex,
-          'isTimeTraveling': state.navigation.isTimeTraveling,
-        },
-        'features': state.features.keys.toList(),
-      };
 
   void _ensureServiceExtension() {
     if (_serviceExtensionRegistered) return;
@@ -57,7 +43,7 @@ final class TimeTravelController implements Disposable {
       'ext.miniTea.getTimeTravelState',
       (method, params) async {
         return developer.ServiceExtensionResponse.result(
-          jsonEncode(toJson()),
+          jsonEncode(state.toJson()),
         );
       },
     );
@@ -236,17 +222,6 @@ final class TimeTravelController implements Disposable {
       snapshots = state.stateSnapshots[snapshotsIndex];
     }
 
-    // Что если такая ситуация
-    // - - - - - - - - - - - - - - - - - - - - ->
-    // |     |            |        |       |
-    // первый снапшот     |        второй снапшот
-    //       |            |                |
-    //       фича А       |                фича Б
-    //                    передвигаемся сюда
-    //
-    // В таком случае получется, что фича Б не будет восстановлена
-    // а значит может сломаться, когда дойдем до ее message
-    // надо искать для всех фичей состояние
     for (final featureName in state.features.keys) {
       final featureState = snapshots[featureName]!;
       final feature = state.features[featureName]!;
@@ -406,6 +381,21 @@ extension on TimeTravelStateV2 {
         stateSnapshots: stateSnapshots?.toUnmodifiable ?? this.stateSnapshots,
         navigation: navigation ?? this.navigation,
       );
+
+  Map<String, dynamic> toJson() => {
+        'timeline': timeline
+            .map((e) => {
+                  'featureName': e.featureName,
+                  'message': e.message.toString(),
+                  'millisecondsSinceStart': e.millisecondsSinceStart,
+                })
+            .toList(),
+        'navigation': {
+          'currentIndex': navigation.currentIndex,
+          'isTimeTraveling': navigation.isTimeTraveling,
+        },
+        'features': features.keys.toList(),
+      };
 }
 
 typedef TimeTravelEventV2<Message> = ({
