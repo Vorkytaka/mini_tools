@@ -360,6 +360,17 @@ class _DateTimeLocalUTCOutputState extends State<_DateTimeLocalUTCOutput> {
         ),
         const SizedBox(height: 12),
         FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
+          builder: (context, state) {
+            return _DateItem(
+              title: t.datetimeConverter.unixTimestamp,
+              datetime: widget.datetime,
+              mapper: (datetime) =>
+                  '${datetime.millisecondsSinceEpoch ~/ 1000}',
+            );
+          },
+        ),
+        const SizedBox(height: 12),
+        FeatureBuilder<DatetimeConverterFeature, DatetimeConverterState>(
           buildWhen: (prev, curr) => prev.datetime != curr.datetime,
           builder: (context, state) {
             final t = Translations.of(context);

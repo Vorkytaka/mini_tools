@@ -177,6 +177,9 @@ class TranslationsDatetimeConverterEn {
   /// en: 'UTC time'
   String get utc => 'UTC time';
 
+  /// en: 'Unix Timestamp (sec)'
+  String get unixTimestamp => 'Unix Timestamp (sec)';
+
   /// en: 'Weekday'
   String get weekday => 'Weekday';
 
@@ -1252,221 +1255,376 @@ class TranslationsQrCodeExportExportSizeDialogEn {
 
 /// The flat map containing all translations for locale <en>.
 /// Only for edge cases! For simple maps, use the map function of this library.
-/// Note: We use a HashMap because Dart seems to be unable to compile large switch statements.
-Map<String, dynamic>? _map;
-
+///
+/// The Dart AOT compiler has issues with very large switch statements,
+/// so the map is split into smaller functions (512 entries each).
 extension on Translations {
   dynamic _flatMapFunction(String path) {
-    final map = _map ?? _initFlatMap();
-    return map[path];
+    return _flatMapFunction$0(path);
   }
 
-  /// Initializes the flat map and returns it.
-  Map<String, dynamic> _initFlatMap() {
-    final map = <String, dynamic>{};
-    map['common.input'] = 'Input:';
-    map['common.output'] = 'Output:';
-    map['common.clear'] = 'Clear';
-    map['common.yes'] = 'Yes';
-    map['common.no'] = 'No';
-    map['common.copy'] = 'Copy';
-    map['common.copied'] = 'Copied';
-    map['common.questionMark'] = '?';
-    map['common.percent'] = '%';
-    map['common.fileDropTitle'] = 'Drop file here';
-    map['common.cancel'] = 'Cancel';
-    map['common.confirm'] = 'Confirm';
-    map['common.paste'] = 'Paste';
-    map['common.and'] = 'and';
-    map['common.on'] = 'on';
-    map['common.inWord'] = 'in';
-    map['common.textSeparator'] = ', ';
-    map['common.save'] = 'Save';
-    map['common.dayOfWeek.full.0'] = 'Sunday';
-    map['common.dayOfWeek.full.1'] = 'Monday';
-    map['common.dayOfWeek.full.2'] = 'Tuesday';
-    map['common.dayOfWeek.full.3'] = 'Wednesday';
-    map['common.dayOfWeek.full.4'] = 'Thursday';
-    map['common.dayOfWeek.full.5'] = 'Friday';
-    map['common.dayOfWeek.full.6'] = 'Saturday';
-    map['common.dayOfWeek.full.7'] = 'Sunday';
-    map['common.months.full.0'] = 'January';
-    map['common.months.full.1'] = 'February';
-    map['common.months.full.2'] = 'March';
-    map['common.months.full.3'] = 'April';
-    map['common.months.full.4'] = 'May';
-    map['common.months.full.5'] = 'June';
-    map['common.months.full.6'] = 'July';
-    map['common.months.full.7'] = 'August';
-    map['common.months.full.8'] = 'September';
-    map['common.months.full.9'] = 'October';
-    map['common.months.full.10'] = 'November';
-    map['common.months.full.11'] = 'December';
-    map['common.bytesCount'] = ({required num n, required Object bytes}) =>
-        (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(
-          n,
-          one: '${bytes} byte',
-          other: '${bytes} bytes',
-        );
-    map['datetimeConverter.title'] = 'Datetime Converter';
-    map['datetimeConverter.inputType.sec'] = 'Seconds since epoch';
-    map['datetimeConverter.inputType.ms'] = 'Milliseconds since epoch';
-    map['datetimeConverter.inputType.us'] = 'Microseconds since epoch';
-    map['datetimeConverter.inputType.iso'] = 'ISO 8601';
-    map['datetimeConverter.datetimeFormat.hint'] = 'Datetime format:';
-    map['datetimeConverter.datetimeFormat.iso'] = 'ISO 8601';
-    map['datetimeConverter.datetimeFormat.rfc'] = 'RFC 2822';
-    map['datetimeConverter.now'] = 'Now';
-    map['datetimeConverter.local'] = 'Local time';
-    map['datetimeConverter.utc'] = 'UTC time';
-    map['datetimeConverter.weekday'] = 'Weekday';
-    map['datetimeConverter.weekOfTheYear'] = 'Week of the year';
-    map['datetimeConverter.dayOfTheYear'] = 'Day of the year';
-    map['datetimeConverter.leapYear'] = 'Leap year';
-    map['datetimeConverter.dateOnly'] = 'Date only';
-    map['datetimeConverter.timeOnly'] = 'Time only';
-    map['datetimeConverter.relative'] = 'Relative';
-    map['datetimeConverter.relativeFormat.rightNow'] = 'Right now';
-    map['datetimeConverter.relativeFormat.days'] = ({required Object days}) =>
-        '${days}d';
-    map['datetimeConverter.relativeFormat.hours'] = ({required Object hours}) =>
-        '${hours}h';
-    map['datetimeConverter.relativeFormat.minutes'] =
-        ({required Object minutes}) => '${minutes}m';
-    map['datetimeConverter.relativeFormat.seconds'] =
-        ({required Object seconds}) => '${seconds}s';
-    map['datetimeConverter.relativeFormat.positive'] =
-        ({required Object str}) => '${str} ago';
-    map['datetimeConverter.relativeFormat.negative'] =
-        ({required Object str}) => 'In ${str}';
-    map['numberConverter.title'] = 'Number base converter';
-    map['numberConverter.binary'] = 'Base 2 (Binary):';
-    map['numberConverter.octal'] = 'Base 8 (Octal):';
-    map['numberConverter.decimal'] = 'Base 10 (Decimal):';
-    map['numberConverter.hex'] = 'Base 16 (Hex):';
-    map['numberConverter.custom'] = 'Select base:';
-    map['regexp.title'] = 'RegExp tester';
-    map['regexp.regexpHint'] = 'RegExp (e.g. [^0-9])';
-    map['regexp.testStringTitle'] = 'Test string:';
-    map['regexp.matchesCount'] = ({required num n, required Object count}) =>
-        (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(
-          n,
-          one: '${count} match',
-          other: '${count} matches',
-        );
-    map['regexp.matchInfoTitle'] = 'Match information:';
-    map['regexp.matchInfoMatch'] = ({required Object position}) =>
-        'Match #${position}';
-    map['regexp.matchInfoGroup'] = ({required Object position}) =>
-        'Group #${position}';
-    map['regexp.matchInfoIndexes'] =
-        ({required Object start, required Object end}) => '(${start}-${end})';
-    map['regexp.matchInfoNothing'] = 'No matches found';
-    map['regexp.settings.global'] = 'Global';
-    map['regexp.settings.globalDesc'] = 'Search for all matches';
-    map['regexp.settings.multiline'] = 'Multiline';
-    map['regexp.settings.multilineDesc'] =
-        '^ and \$ match the start/end of each line';
-    map['regexp.settings.caseSensitive'] = 'Case sensitive';
-    map['regexp.settings.caseSensitiveDesc'] = 'Case sensitive search';
-    map['regexp.settings.unicode'] = 'Unicode';
-    map['regexp.settings.unicodeDesc'] = 'Enable all Unicode features';
-    map['regexp.settings.dotAll'] = 'Dot all';
-    map['regexp.settings.dotAllDesk'] =
-        'Dot matches all characters,\nincluding line terminators';
-    map['jsonFormatter.title'] = 'JSON Formatter';
-    map['jsonFormatter.inputHint'] = '{"key": "value"}';
-    map['jsonFormatter.jsonFormat.min'] = 'Minify';
-    map['jsonFormatter.jsonFormat.two'] = '2 spaces';
-    map['jsonFormatter.jsonFormat.four'] = '4 spaces';
-    map['jsonFormatter.jsonFormat.tab'] = 'Tab';
-    map['jsonFormatter.jsonPathHint'] =
-        'JSONPath (e.g. \$.order.products[*].title)';
-    map['percentageCalculator.title'] = 'Percentage Calculator';
-    map['percentageCalculator.percentFromValue.whatIs'] = 'What is ';
-    map['percentageCalculator.percentFromValue.of'] = ' of ';
-    map['percentageCalculator.partOfTotal.isWhat'] = ' is what % of ';
-    map['color.title'] = 'Color converter';
-    map['color.inputPlaceholder'] = '#FFFFFF';
-    map['color.titles.hex'] = 'HEX:';
-    map['color.titles.hexWithAlpha'] = 'HEX with alpha:';
-    map['color.titles.rgb'] = 'RGB:';
-    map['color.titles.rgba'] = 'RGBA:';
-    map['color.titles.hsl'] = 'HSL:';
-    map['color.titles.hsb'] = 'HSB';
-    map['color.titles.hwb'] = 'HWB';
-    map['materialColors.title'] = 'Material Colors';
-    map['materialColors.colors.red'] = 'Red';
-    map['materialColors.colors.pink'] = 'Pink';
-    map['materialColors.colors.purple'] = 'Purple';
-    map['materialColors.colors.deepPurple'] = 'Deep Purple';
-    map['materialColors.colors.indigo'] = 'Indigo';
-    map['materialColors.colors.blue'] = 'Blue';
-    map['materialColors.colors.lightBlue'] = 'Light Blue';
-    map['materialColors.colors.cyan'] = 'Cyan';
-    map['materialColors.colors.teal'] = 'Teal';
-    map['materialColors.colors.green'] = 'Green';
-    map['materialColors.colors.lightGreen'] = 'Light Green';
-    map['materialColors.colors.lime'] = 'Lime';
-    map['materialColors.colors.yellow'] = 'Yellow';
-    map['materialColors.colors.amber'] = 'Amber';
-    map['materialColors.colors.orange'] = 'Orange';
-    map['materialColors.colors.deepOrange'] = 'Deep Orange';
-    map['materialColors.colors.brown'] = 'Brown';
-    map['materialColors.colors.grey'] = 'Grey';
-    map['materialColors.colors.blueGrey'] = 'Blue Grey';
-    map['hash.title'] = 'Hash calculator';
-    map['hash.loadFile'] = 'Load file';
-    map['hash.dropFile'] = 'Drop file';
-    map['hash.textInputHint'] = 'Input any text here';
-    map['hash.hashFormat.hex'] = 'HEX';
-    map['hash.hashFormat.base64'] = 'Base64';
-    map['hash.hashOfFile'] = ({required Object path}) =>
-        'Hash of file: ${path}';
-    map['sqlite.title'] = 'SQLite Editor';
-    map['sqlite.run'] = 'Run';
-    map['sqlite.import'] = 'Import';
-    map['sqlite.export'] = 'Export';
-    map['sqlite.drop'] = 'Drop';
-    map['sqlite.tables'] = 'Tables';
-    map['sqlite.history'] = 'History';
-    map['sqlite.kOverride.title'] = 'Override current database?';
-    map['sqlite.kOverride.message'] =
-        'This action will override your current snapshot. It cannot be undone. Do you want to continue?';
-    map['sqlite.kOverride.confirm'] = 'Override';
-    map['sqlite.edit'] = 'Edit';
-    map['sqlite.rowAffected'] = ({required Object count}) =>
-        '${count} row affected';
-    map['uuidGenerator.title'] = 'UUID Generator';
-    map['uuidGenerator.hint'] = 'Generate IDs:';
-    map['uuidGenerator.types.uuidV1'] = 'UUID v1';
-    map['uuidGenerator.types.uuidV4'] = 'UUID v4';
-    map['uuidGenerator.types.uuidV5'] = 'UUID v5';
-    map['uuidGenerator.namespace'] = 'Namespace:';
-    map['uuidGenerator.name'] = 'Name:';
-    map['uuidGenerator.namespaces.dns'] = 'DNS';
-    map['uuidGenerator.namespaces.url'] = 'URL';
-    map['uuidGenerator.namespaces.oid'] = 'OID';
-    map['uuidGenerator.namespaces.x500'] = 'x500';
-    map['uuidGenerator.namespaces.nil'] = 'NIL';
-    map['uuidGenerator.namespaces.max'] = 'MAX';
-    map['uuidGenerator.generate'] = 'Generate';
-    map['uuidGenerator.lowercase'] = 'Lowercase';
-    map['cron.title'] = 'Cron Parser';
-    map['cron.nextAt'] = 'Next at:';
-    map['cron.cronHint'] = '* * * * *';
-    map['cron.cronFormat.atWhatTime'] = ({required Object str}) =>
-        '“At ${str}“';
-    map['cron.cronFormat.atBegin'] = '“At ';
-    map['cron.cronFormat.atEnd'] = '“';
-    map['cron.cronFormat.minutes.any'] = 'every minute';
-    map['cron.cronFormat.minutes.single'] = ({required Object minute}) =>
-        'minute ${minute}';
-    map['cron.cronFormat.minutes.range'] =
-        ({required Object from, required Object to}) =>
+  dynamic _flatMapFunction$0(String path) {
+    switch (path) {
+      case 'common.input':
+        return 'Input:';
+      case 'common.output':
+        return 'Output:';
+      case 'common.clear':
+        return 'Clear';
+      case 'common.yes':
+        return 'Yes';
+      case 'common.no':
+        return 'No';
+      case 'common.copy':
+        return 'Copy';
+      case 'common.copied':
+        return 'Copied';
+      case 'common.questionMark':
+        return '?';
+      case 'common.percent':
+        return '%';
+      case 'common.fileDropTitle':
+        return 'Drop file here';
+      case 'common.cancel':
+        return 'Cancel';
+      case 'common.confirm':
+        return 'Confirm';
+      case 'common.paste':
+        return 'Paste';
+      case 'common.and':
+        return 'and';
+      case 'common.on':
+        return 'on';
+      case 'common.inWord':
+        return 'in';
+      case 'common.textSeparator':
+        return ', ';
+      case 'common.save':
+        return 'Save';
+      case 'common.dayOfWeek.full.0':
+        return 'Sunday';
+      case 'common.dayOfWeek.full.1':
+        return 'Monday';
+      case 'common.dayOfWeek.full.2':
+        return 'Tuesday';
+      case 'common.dayOfWeek.full.3':
+        return 'Wednesday';
+      case 'common.dayOfWeek.full.4':
+        return 'Thursday';
+      case 'common.dayOfWeek.full.5':
+        return 'Friday';
+      case 'common.dayOfWeek.full.6':
+        return 'Saturday';
+      case 'common.dayOfWeek.full.7':
+        return 'Sunday';
+      case 'common.months.full.0':
+        return 'January';
+      case 'common.months.full.1':
+        return 'February';
+      case 'common.months.full.2':
+        return 'March';
+      case 'common.months.full.3':
+        return 'April';
+      case 'common.months.full.4':
+        return 'May';
+      case 'common.months.full.5':
+        return 'June';
+      case 'common.months.full.6':
+        return 'July';
+      case 'common.months.full.7':
+        return 'August';
+      case 'common.months.full.8':
+        return 'September';
+      case 'common.months.full.9':
+        return 'October';
+      case 'common.months.full.10':
+        return 'November';
+      case 'common.months.full.11':
+        return 'December';
+      case 'common.bytesCount':
+        return ({required num n, required Object bytes}) =>
+            (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(
+              n,
+              one: '${bytes} byte',
+              other: '${bytes} bytes',
+            );
+      case 'datetimeConverter.title':
+        return 'Datetime Converter';
+      case 'datetimeConverter.inputType.sec':
+        return 'Seconds since epoch';
+      case 'datetimeConverter.inputType.ms':
+        return 'Milliseconds since epoch';
+      case 'datetimeConverter.inputType.us':
+        return 'Microseconds since epoch';
+      case 'datetimeConverter.inputType.iso':
+        return 'ISO 8601';
+      case 'datetimeConverter.datetimeFormat.hint':
+        return 'Datetime format:';
+      case 'datetimeConverter.datetimeFormat.iso':
+        return 'ISO 8601';
+      case 'datetimeConverter.datetimeFormat.rfc':
+        return 'RFC 2822';
+      case 'datetimeConverter.now':
+        return 'Now';
+      case 'datetimeConverter.local':
+        return 'Local time';
+      case 'datetimeConverter.utc':
+        return 'UTC time';
+      case 'datetimeConverter.unixTimestamp':
+        return 'Unix Timestamp (sec)';
+      case 'datetimeConverter.weekday':
+        return 'Weekday';
+      case 'datetimeConverter.weekOfTheYear':
+        return 'Week of the year';
+      case 'datetimeConverter.dayOfTheYear':
+        return 'Day of the year';
+      case 'datetimeConverter.leapYear':
+        return 'Leap year';
+      case 'datetimeConverter.dateOnly':
+        return 'Date only';
+      case 'datetimeConverter.timeOnly':
+        return 'Time only';
+      case 'datetimeConverter.relative':
+        return 'Relative';
+      case 'datetimeConverter.relativeFormat.rightNow':
+        return 'Right now';
+      case 'datetimeConverter.relativeFormat.days':
+        return ({required Object days}) => '${days}d';
+      case 'datetimeConverter.relativeFormat.hours':
+        return ({required Object hours}) => '${hours}h';
+      case 'datetimeConverter.relativeFormat.minutes':
+        return ({required Object minutes}) => '${minutes}m';
+      case 'datetimeConverter.relativeFormat.seconds':
+        return ({required Object seconds}) => '${seconds}s';
+      case 'datetimeConverter.relativeFormat.positive':
+        return ({required Object str}) => '${str} ago';
+      case 'datetimeConverter.relativeFormat.negative':
+        return ({required Object str}) => 'In ${str}';
+      case 'numberConverter.title':
+        return 'Number base converter';
+      case 'numberConverter.binary':
+        return 'Base 2 (Binary):';
+      case 'numberConverter.octal':
+        return 'Base 8 (Octal):';
+      case 'numberConverter.decimal':
+        return 'Base 10 (Decimal):';
+      case 'numberConverter.hex':
+        return 'Base 16 (Hex):';
+      case 'numberConverter.custom':
+        return 'Select base:';
+      case 'regexp.title':
+        return 'RegExp tester';
+      case 'regexp.regexpHint':
+        return 'RegExp (e.g. [^0-9])';
+      case 'regexp.testStringTitle':
+        return 'Test string:';
+      case 'regexp.matchesCount':
+        return ({required num n, required Object count}) =>
+            (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(
+              n,
+              one: '${count} match',
+              other: '${count} matches',
+            );
+      case 'regexp.matchInfoTitle':
+        return 'Match information:';
+      case 'regexp.matchInfoMatch':
+        return ({required Object position}) => 'Match #${position}';
+      case 'regexp.matchInfoGroup':
+        return ({required Object position}) => 'Group #${position}';
+      case 'regexp.matchInfoIndexes':
+        return ({required Object start, required Object end}) =>
+            '(${start}-${end})';
+      case 'regexp.matchInfoNothing':
+        return 'No matches found';
+      case 'regexp.settings.global':
+        return 'Global';
+      case 'regexp.settings.globalDesc':
+        return 'Search for all matches';
+      case 'regexp.settings.multiline':
+        return 'Multiline';
+      case 'regexp.settings.multilineDesc':
+        return '^ and \$ match the start/end of each line';
+      case 'regexp.settings.caseSensitive':
+        return 'Case sensitive';
+      case 'regexp.settings.caseSensitiveDesc':
+        return 'Case sensitive search';
+      case 'regexp.settings.unicode':
+        return 'Unicode';
+      case 'regexp.settings.unicodeDesc':
+        return 'Enable all Unicode features';
+      case 'regexp.settings.dotAll':
+        return 'Dot all';
+      case 'regexp.settings.dotAllDesk':
+        return 'Dot matches all characters,\nincluding line terminators';
+      case 'jsonFormatter.title':
+        return 'JSON Formatter';
+      case 'jsonFormatter.inputHint':
+        return '{"key": "value"}';
+      case 'jsonFormatter.jsonFormat.min':
+        return 'Minify';
+      case 'jsonFormatter.jsonFormat.two':
+        return '2 spaces';
+      case 'jsonFormatter.jsonFormat.four':
+        return '4 spaces';
+      case 'jsonFormatter.jsonFormat.tab':
+        return 'Tab';
+      case 'jsonFormatter.jsonPathHint':
+        return 'JSONPath (e.g. \$.order.products[*].title)';
+      case 'percentageCalculator.title':
+        return 'Percentage Calculator';
+      case 'percentageCalculator.percentFromValue.whatIs':
+        return 'What is ';
+      case 'percentageCalculator.percentFromValue.of':
+        return ' of ';
+      case 'percentageCalculator.partOfTotal.isWhat':
+        return ' is what % of ';
+      case 'color.title':
+        return 'Color converter';
+      case 'color.inputPlaceholder':
+        return '#FFFFFF';
+      case 'color.titles.hex':
+        return 'HEX:';
+      case 'color.titles.hexWithAlpha':
+        return 'HEX with alpha:';
+      case 'color.titles.rgb':
+        return 'RGB:';
+      case 'color.titles.rgba':
+        return 'RGBA:';
+      case 'color.titles.hsl':
+        return 'HSL:';
+      case 'color.titles.hsb':
+        return 'HSB';
+      case 'color.titles.hwb':
+        return 'HWB';
+      case 'materialColors.title':
+        return 'Material Colors';
+      case 'materialColors.colors.red':
+        return 'Red';
+      case 'materialColors.colors.pink':
+        return 'Pink';
+      case 'materialColors.colors.purple':
+        return 'Purple';
+      case 'materialColors.colors.deepPurple':
+        return 'Deep Purple';
+      case 'materialColors.colors.indigo':
+        return 'Indigo';
+      case 'materialColors.colors.blue':
+        return 'Blue';
+      case 'materialColors.colors.lightBlue':
+        return 'Light Blue';
+      case 'materialColors.colors.cyan':
+        return 'Cyan';
+      case 'materialColors.colors.teal':
+        return 'Teal';
+      case 'materialColors.colors.green':
+        return 'Green';
+      case 'materialColors.colors.lightGreen':
+        return 'Light Green';
+      case 'materialColors.colors.lime':
+        return 'Lime';
+      case 'materialColors.colors.yellow':
+        return 'Yellow';
+      case 'materialColors.colors.amber':
+        return 'Amber';
+      case 'materialColors.colors.orange':
+        return 'Orange';
+      case 'materialColors.colors.deepOrange':
+        return 'Deep Orange';
+      case 'materialColors.colors.brown':
+        return 'Brown';
+      case 'materialColors.colors.grey':
+        return 'Grey';
+      case 'materialColors.colors.blueGrey':
+        return 'Blue Grey';
+      case 'hash.title':
+        return 'Hash calculator';
+      case 'hash.loadFile':
+        return 'Load file';
+      case 'hash.dropFile':
+        return 'Drop file';
+      case 'hash.textInputHint':
+        return 'Input any text here';
+      case 'hash.hashFormat.hex':
+        return 'HEX';
+      case 'hash.hashFormat.base64':
+        return 'Base64';
+      case 'hash.hashOfFile':
+        return ({required Object path}) => 'Hash of file: ${path}';
+      case 'sqlite.title':
+        return 'SQLite Editor';
+      case 'sqlite.run':
+        return 'Run';
+      case 'sqlite.import':
+        return 'Import';
+      case 'sqlite.export':
+        return 'Export';
+      case 'sqlite.drop':
+        return 'Drop';
+      case 'sqlite.tables':
+        return 'Tables';
+      case 'sqlite.history':
+        return 'History';
+      case 'sqlite.kOverride.title':
+        return 'Override current database?';
+      case 'sqlite.kOverride.message':
+        return 'This action will override your current snapshot. It cannot be undone. Do you want to continue?';
+      case 'sqlite.kOverride.confirm':
+        return 'Override';
+      case 'sqlite.edit':
+        return 'Edit';
+      case 'sqlite.rowAffected':
+        return ({required Object count}) => '${count} row affected';
+      case 'uuidGenerator.title':
+        return 'UUID Generator';
+      case 'uuidGenerator.hint':
+        return 'Generate IDs:';
+      case 'uuidGenerator.types.uuidV1':
+        return 'UUID v1';
+      case 'uuidGenerator.types.uuidV4':
+        return 'UUID v4';
+      case 'uuidGenerator.types.uuidV5':
+        return 'UUID v5';
+      case 'uuidGenerator.namespace':
+        return 'Namespace:';
+      case 'uuidGenerator.name':
+        return 'Name:';
+      case 'uuidGenerator.namespaces.dns':
+        return 'DNS';
+      case 'uuidGenerator.namespaces.url':
+        return 'URL';
+      case 'uuidGenerator.namespaces.oid':
+        return 'OID';
+      case 'uuidGenerator.namespaces.x500':
+        return 'x500';
+      case 'uuidGenerator.namespaces.nil':
+        return 'NIL';
+      case 'uuidGenerator.namespaces.max':
+        return 'MAX';
+      case 'uuidGenerator.generate':
+        return 'Generate';
+      case 'uuidGenerator.lowercase':
+        return 'Lowercase';
+      case 'cron.title':
+        return 'Cron Parser';
+      case 'cron.nextAt':
+        return 'Next at:';
+      case 'cron.cronHint':
+        return '* * * * *';
+      case 'cron.cronFormat.atWhatTime':
+        return ({required Object str}) => '“At ${str}“';
+      case 'cron.cronFormat.atBegin':
+        return '“At ';
+      case 'cron.cronFormat.atEnd':
+        return '“';
+      case 'cron.cronFormat.minutes.any':
+        return 'every minute';
+      case 'cron.cronFormat.minutes.single':
+        return ({required Object minute}) => 'minute ${minute}';
+      case 'cron.cronFormat.minutes.range':
+        return ({required Object from, required Object to}) =>
             'every minute from ${from} to ${to}';
-    map['cron.cronFormat.minutes.step'] =
-        ({required num n, required Object step}) =>
+      case 'cron.cronFormat.minutes.step':
+        return ({required num n, required Object step}) =>
             (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
               n,
               one: 'every minute',
@@ -1474,13 +1632,13 @@ extension on Translations {
               few: 'every ${step}rd minutes',
               other: 'every ${step}th minutes',
             );
-    map['cron.cronFormat.hours.single'] = ({required Object hour}) =>
-        'hour ${hour}';
-    map['cron.cronFormat.hours.range'] =
-        ({required Object from, required Object to}) =>
+      case 'cron.cronFormat.hours.single':
+        return ({required Object hour}) => 'hour ${hour}';
+      case 'cron.cronFormat.hours.range':
+        return ({required Object from, required Object to}) =>
             'every hour from ${from} to ${to}';
-    map['cron.cronFormat.hours.step'] =
-        ({required num n, required Object step}) =>
+      case 'cron.cronFormat.hours.step':
+        return ({required num n, required Object step}) =>
             (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
               n,
               one: 'every hour',
@@ -1488,13 +1646,13 @@ extension on Translations {
               few: 'every ${step}rd hours',
               other: 'every ${step}th hours',
             );
-    map['cron.cronFormat.days.single'] = ({required Object day}) =>
-        'day-of-month ${day}';
-    map['cron.cronFormat.days.range'] =
-        ({required Object from, required Object to}) =>
+      case 'cron.cronFormat.days.single':
+        return ({required Object day}) => 'day-of-month ${day}';
+      case 'cron.cronFormat.days.range':
+        return ({required Object from, required Object to}) =>
             'every day-of-month from ${from} to ${to}';
-    map['cron.cronFormat.days.step'] =
-        ({required num n, required Object step}) =>
+      case 'cron.cronFormat.days.step':
+        return ({required num n, required Object step}) =>
             (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
               n,
               one: 'every day-of-month',
@@ -1502,10 +1660,11 @@ extension on Translations {
               few: 'every ${step}rd day-of-month',
               other: 'every ${step}th day-of-month',
             );
-    map['cron.cronFormat.months.range'] =
-        ({required Object from, required Object to}) => 'from ${from} to ${to}';
-    map['cron.cronFormat.months.step'] =
-        ({required num n, required Object step}) =>
+      case 'cron.cronFormat.months.range':
+        return ({required Object from, required Object to}) =>
+            'from ${from} to ${to}';
+      case 'cron.cronFormat.months.step':
+        return ({required num n, required Object step}) =>
             (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
               n,
               one: 'every month',
@@ -1513,11 +1672,11 @@ extension on Translations {
               few: 'every ${step}rd month',
               other: 'every ${step}th month',
             );
-    map['cron.cronFormat.daysOfWeek.range'] =
-        ({required Object from, required Object to}) =>
+      case 'cron.cronFormat.daysOfWeek.range':
+        return ({required Object from, required Object to}) =>
             'every day-of-week from ${from} to ${to}';
-    map['cron.cronFormat.daysOfWeek.step'] =
-        ({required num n, required Object step}) =>
+      case 'cron.cronFormat.daysOfWeek.step':
+        return ({required num n, required Object step}) =>
             (_root.$meta.ordinalResolver ?? PluralResolvers.ordinal('en'))(
               n,
               one: 'every day-of-week',
@@ -1525,56 +1684,88 @@ extension on Translations {
               few: 'every ${step}rd day-of-week',
               other: 'every ${step}th day-of-week',
             );
-    map['cron.cronFormat.step'] =
-        ({required Object from, required Object to}) =>
+      case 'cron.cronFormat.step':
+        return ({required Object from, required Object to}) =>
             'between ${from} to ${to}';
-    map['cron.minutes'] = 'Minutes:';
-    map['cron.hours'] = 'Hours:';
-    map['cron.daysOfMonth'] = 'Day-of-month:';
-    map['cron.months'] = 'Months:';
-    map['cron.daysOfWeek'] = 'Day-of-week:';
-    map['cron.all'] = '(All)';
-    map['cron.errors.empty'] = 'Empty cron part';
-    map['cron.errors.custom'] = 'Something goes wrong';
-    map['cron.errors.invalidValue'] =
-        ({required Object from, required Object to, required Object value}) =>
-            'Value must be ${from} to ${to}, but got ${value}';
-    map['cron.errors.rangeLength'] = 'Range must be in format N-M';
-    map['cron.errors.range'] = ({required Object from, required Object to}) =>
-        '${from} must be less than ${to}';
-    map['cron.errors.stepLength'] = 'Step must be in format N-M/X, N/X or */X';
-    map['cron.errors.invalidStep'] =
-        ({required Object to, required Object value}) =>
+      case 'cron.minutes':
+        return 'Minutes:';
+      case 'cron.hours':
+        return 'Hours:';
+      case 'cron.daysOfMonth':
+        return 'Day-of-month:';
+      case 'cron.months':
+        return 'Months:';
+      case 'cron.daysOfWeek':
+        return 'Day-of-week:';
+      case 'cron.all':
+        return '(All)';
+      case 'cron.errors.empty':
+        return 'Empty cron part';
+      case 'cron.errors.custom':
+        return 'Something goes wrong';
+      case 'cron.errors.invalidValue':
+        return ({
+          required Object from,
+          required Object to,
+          required Object value,
+        }) => 'Value must be ${from} to ${to}, but got ${value}';
+      case 'cron.errors.rangeLength':
+        return 'Range must be in format N-M';
+      case 'cron.errors.range':
+        return ({required Object from, required Object to}) =>
+            '${from} must be less than ${to}';
+      case 'cron.errors.stepLength':
+        return 'Step must be in format N-M/X, N/X or */X';
+      case 'cron.errors.invalidStep':
+        return ({required Object to, required Object value}) =>
             'Step must be 1 to ${to}, but got ${value}';
-    map['textDiff.title'] = 'Text Diff';
-    map['textDiff.oldInput'] = 'Old text:';
-    map['textDiff.newInput'] = 'New text:';
-    map['qrCode.title'] = 'QR Code Generator';
-    map['qrCode.testBeforeUse'] = 'Always test a QR code before using it';
-    map['qrCode.errorTooManyBytes'] = ({required Object max}) =>
-        'Text too long for QR code. Max is ${max} bytes.';
-    map['qrCode.export.title'] = 'Export';
-    map['qrCode.export.exportSize.title'] = ({required Object px}) =>
-        'Export size (${px}px)';
-    map['qrCode.export.exportSize.custom'] = 'Custom';
-    map['qrCode.export.exportSize.dialog.title'] = 'Export size';
-    map['qrCode.export.exportSize.dialog.body'] =
-        'Enter the size in pixels (px):';
-    map['qrCode.export.exportType.title'] = 'Export type';
-    map['qrCode.export.exportType.png'] = 'PNG';
-    map['qrCode.export.exportType.jpeg'] = 'JPEG';
-    map['qrCode.export.copy'] = 'Copy';
-    map['qrCode.export.save'] = 'Save';
-    map['qrCode.settings.title'] = 'Settings';
-    map['qrCode.settings.errorCorrection.title'] =
-        ({required Object percent}) => 'Error correction (${percent})';
-    map['qrCode.settings.errorCorrection.hint'] =
-        'QR codes can still work even when parts are damaged or dirty because they store backup data.\n\nYou can choose how much backup data to include - more backup means the code survives more damage but becomes bigger.\n\nUse less backup for screens, more backup for printed codes that might get scratched.';
-    map['qrCode.settings.shapeStyle.title'] = 'Shape style';
-    map['qrCode.settings.foregroundColor.title'] = 'Foreground color';
-    map['qrCode.settings.backgroundColor.title'] = 'Background color';
-
-    _map = map;
-    return map;
+      case 'textDiff.title':
+        return 'Text Diff';
+      case 'textDiff.oldInput':
+        return 'Old text:';
+      case 'textDiff.newInput':
+        return 'New text:';
+      case 'qrCode.title':
+        return 'QR Code Generator';
+      case 'qrCode.testBeforeUse':
+        return 'Always test a QR code before using it';
+      case 'qrCode.errorTooManyBytes':
+        return ({required Object max}) =>
+            'Text too long for QR code. Max is ${max} bytes.';
+      case 'qrCode.export.title':
+        return 'Export';
+      case 'qrCode.export.exportSize.title':
+        return ({required Object px}) => 'Export size (${px}px)';
+      case 'qrCode.export.exportSize.custom':
+        return 'Custom';
+      case 'qrCode.export.exportSize.dialog.title':
+        return 'Export size';
+      case 'qrCode.export.exportSize.dialog.body':
+        return 'Enter the size in pixels (px):';
+      case 'qrCode.export.exportType.title':
+        return 'Export type';
+      case 'qrCode.export.exportType.png':
+        return 'PNG';
+      case 'qrCode.export.exportType.jpeg':
+        return 'JPEG';
+      case 'qrCode.export.copy':
+        return 'Copy';
+      case 'qrCode.export.save':
+        return 'Save';
+      case 'qrCode.settings.title':
+        return 'Settings';
+      case 'qrCode.settings.errorCorrection.title':
+        return ({required Object percent}) => 'Error correction (${percent})';
+      case 'qrCode.settings.errorCorrection.hint':
+        return 'QR codes can still work even when parts are damaged or dirty because they store backup data.\n\nYou can choose how much backup data to include - more backup means the code survives more damage but becomes bigger.\n\nUse less backup for screens, more backup for printed codes that might get scratched.';
+      case 'qrCode.settings.shapeStyle.title':
+        return 'Shape style';
+      case 'qrCode.settings.foregroundColor.title':
+        return 'Foreground color';
+      case 'qrCode.settings.backgroundColor.title':
+        return 'Background color';
+      default:
+        return null;
+    }
   }
 }

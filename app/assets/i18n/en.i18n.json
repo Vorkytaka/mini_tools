@@ -67,6 +67,7 @@
     "now": "Now",
     "local": "Local time",
     "utc": "UTC time",
+    "unix_timestamp": "Unix Timestamp (sec)",
     "weekday": "Weekday",
     "week_of_the_year": "Week of the year",
     "day_of_the_year": "Day of the year",
